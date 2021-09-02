@@ -7,7 +7,7 @@
 <meta name="title" content="버켓컬리 :: 내일의 장보기, 버켓컬리" />
 <meta name="description" content="Love Food, Love Life. 버켓컬리! 당일 수확 채소, 과일, 맛집 음식까지 내일 아침 문 앞에서 만나요!" />
 <!--  
-<meta property="og:title" content="버켓컬리 :: 내일의 장보기, 마켓컬리" />
+<meta property="og:title" content="버켓컬리 :: 내일의 장보기, 마켓컬리1" />
 <meta property="og:description" content="Love Food, Love Life. 버켓컬리! 당일 수확 채소, 과일, 맛집 음식까지 내일 아침 문 앞에서 만나요!" />
 <meta property="og:image" content="https://res.kurly.com/images/marketkurly/logo/logo_sns_marketkurly.jpg" />
 <meta property="og:url" content="https://www.kurly.com/shop/main/index.php?" />
@@ -17,7 +17,7 @@
 <title>버켓컬리 :: 내일의 장보기, 버켓컬리</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
-<meta name="naver-site-verification" content="58ff7c242d41178131208256bfec0c2f93426a1d" />
+<meta name="naver-site-verification" content="58ff7c242d41178131208256bfec0c2f93426a1d" />ㅋㅋ
 <meta name="facebook-domain-verification" content="tyur3wmoos7t63tpkb7zosur6p98m1" />
 
 
