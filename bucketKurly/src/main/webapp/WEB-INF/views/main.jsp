@@ -14,7 +14,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="www.kurly.com" />-->
 <meta name="keywords" content="다이어트, 식단, 닭가슴살, 요리, 치아바타, 레시피, 요리, 상차림, 다이어트음식, 이유식, 건강이유식" />
-<title>버켓컬리 :: 내일의 장보기, 마켓컬리</title>
+<title>버켓컬리 :: 내일의 장보기, 버켓컬리</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 <meta name="naver-site-verification" content="58ff7c242d41178131208256bfec0c2f93426a1d" />
