@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
-<meta name="title" content="버켓컬리 :: 내일의 장보기, 버켓컬리" />
+
 <meta name="title" content="버켓컬리 :: 내일의 장보기, 버켓컬리" />
 <meta name="description" content="Love Food, Love Life. 버켓컬리! 당일 수확 채소, 과일, 맛집 음식까지 내일 아침 문 앞에서 만나요!" />
 <!--  
