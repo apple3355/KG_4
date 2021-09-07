@@ -60,7 +60,7 @@
  .boardView th {width: 130px;padding: 13px 0 13px 20px;background-color: #f7f5f8;border-top: 1px solid #f4f4f4;text-align: left;}
  .boardView td {width: auto;padding: 13px 0 13px 23px;border-top: 1px solid #f4f4f4;}
  .boardView tr.etcArea td {padding: 0;border: 0;}
- .boardView tr.etcArea ul {position: relative;z-index: 1;overflow: hidden;width: 100%;border-top: 1px solid #f4f4f4;}
+ .boardView tr.etcArea ul {margin: 0;position: relative;z-index: 1;overflow: hidden;width: 100%;border-top: 1px solid #f4f4f4;}
  .boardView tr.etcArea ul li {float: left;}
  .boardView tr.etcArea ul .th {float: left;padding: 13px 0 13px 20px;width: 130px;background-color: #f7f5f8;}
  .boardView tr.etcArea ul .td {float: left;padding: 13px 0 13px 20px;width: 180px;}

@@ -30,6 +30,8 @@
 
 <!-- 외부 스타일 시트 삽입 -->
 <link rel="stylesheet" href="resources/notice_no.css">
+<!-- 공통 스타일 시트 -->
+<link rel="stylesheet" href="resources/common.css">
 <link rel="shortcut icon"
 	href="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/favicon_v2.webp" type="image/x-icon">
 
