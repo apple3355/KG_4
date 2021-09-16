@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<!-- 공지사항 글 목록 -->
+	<mapper namespace="board_notice_mappings">
+	<select id="selectBoard_notice" parameterType="int" resultType="board_notice">
+		SELECT * FROM TB_BOARD_NOTICE 
+		ORDER BY BOARD_NOTICE_NO DESC
+		LIMIT #{listSize} OFFSET #{startList}
+	</select>
+
+	<!-- 공지사항 게시글 상세보기 -->
+	<select id="select_notice_no" resultType="board_notice" parameterType="board_notice">
+	 	SELECT * 
+	 	FROM TB_BOARD_NOTICE 
+	 	WHERE BOARD_NOTICE_NO = #{board_notice_no}
+	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="select_notice_cnt" parameterType="int" >
+		UPDATE TB_BOARD_NOTICE 
+		SET BOARD_NOTICE_HITS = board_notice_hits +1
+		WHERE BOARD_NOTICE_NO = #{board_notice_no}
+	</update>
+	
+		
+	<!-- 공지사항 게시글 총 DB -->
+	<select id="getnotice_cnt" resultType="int" >
+	 	SELECT COUNT(*)
+	 	FROM TB_BOARD_NOTICE
+	</select>
+	
+
+	<!-- 이전 글 -->
+	<select id="getPrev" resultType="board_notice" >
+	 	SELECT BOARD_NOTICE_NO
+ 		FROM TB_BOARD_NOTICE
+	    WHERE BOARD_NOTICE_NO IN
+ 		((SELECT BOARD_NOTICE_NO
+ 		FROM TB_BOARD_NOTICE
+ 		WHERE BOARD_NOTICE_NO &lt; #{board_notice_no} 
+ 		ORDER BY BOARD_NOTICE_NO DESC LIMIT 1))
+
+	 </select>
+	 
+	 <!--  다음 글 -->
+	<select id="getNext" resultType="board_notice" >
+	 	SELECT BOARD_NOTICE_NO
+ 		FROM TB_BOARD_NOTICE
+	    WHERE BOARD_NOTICE_NO IN
+ 		((SELECT BOARD_NOTICE_NO
+ 		FROM TB_BOARD_NOTICE
+ 		WHERE BOARD_NOTICE_NO &gt; #{board_notice_no} 
+ 		ORDER BY BOARD_NOTICE_NO LIMIT 1))	
+	 	
+	</select>
+	
+
+ 
+	 <!-- 공지사항 검색  
+ 	<select id="search_notice" resultType="int" >
+ 		SELECT COUNT(BOARD_NOTICE_NO)
+ 		FROM TB_BOARD_NOTICE
+ 		
+	 		<if test='searchType_notice("title")'>
+	 			WHERE board_notice_title LIKE CONCAT ('%', #{keyword}, '%')
+	 		</if>
+	 		<if test='searchType_notice("writer")'>
+	 			WHERE board_notice_writer LIKE CONCAT ('%', #{keyword}, '%')
+	 		</if>
+	 		<if test='searchType_notice("content")'>
+	 			WHERE board_notice_content LIKE CONCAT ('%', #{keyword}, '%')
+	 		</if>
+	 		
+
+	</select> -->
+	
+	
+	
+
+	
+
+
+</mapper>

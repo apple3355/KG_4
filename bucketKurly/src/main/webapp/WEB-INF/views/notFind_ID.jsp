@@ -29,7 +29,7 @@
 		<div id="pos_scroll"></div>
 		<div id="container">
 			<!-- header -->
-			<%@ include file="/WEB-INF/views/header.jsp"%>
+			<%@ include file="/WEB-INF/views/layout/header.jsp"%>
 			<div id="main">
 				<div id="content">
 					<div class="section_login">
@@ -125,9 +125,9 @@
 
 
 			<!-- layerDSR -->
-			<%@ include file="/WEB-INF/views/layerDSR.jsp"%>
+			<%@ include file="/WEB-INF/views/layout/layerDSR.jsp"%>
 			<!-- footer -->
-			<%@ include file="/WEB-INF/views/footer.jsp"%>
+			<%@ include file="/WEB-INF/views/layout/footer.jsp"%>
 		</div>
 	</div>
 	<a href="#top" id="pageTop">맨 위로가기</a>

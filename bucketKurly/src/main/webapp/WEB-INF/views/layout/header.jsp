@@ -32,8 +32,8 @@
 				<li class="menu none_sub menu_login"> <a href="/login.do" class="link_menu">로그인</a></li>
 				<li class="menu lst"><a href="/shop/board/list.php?id=notice" class="link_menu">고객센터</a>
 					<ul class="sub">
-						<li><a href="#none" onclick="KurlyTrackerLink('/shop/board/list.php?id=notice', 'select_my_kurly_notice_list')">공지사항</a></li>
-						<li><a href="#none" onclick="KurlyTrackerLink('/shop/service/faq.php', 'select_my_kurly_frequently_qna')">자주하는질문</a></li>
+						<li><a href="${pageContext.request.contextPath}/board_notice.do" onclick="####">공지사항</a></li>
+						<li><a href="${pageContext.request.contextPath}/board_faq.do" onclick="#####">자주하는질문</a></li>
 						<li><a href="#none"	onclick="KurlyTrackerLink('/shop/mypage/mypage_qna.php', 'select_my_kurly_personal_inquiry_history')">1:1문의</a></li>
 						<li><a href="#none" onclick="KurlyTrackerLink('/shop/mypage/offer.php', 'select_my_kurly_product_offer')">상품제안</a></li>
 						<li><a href="#none" onclick="KurlyTrackerLink('/shop/mypage/echo_packing.php', 'select_my_kurly_eco_packing_feedback')">에코포장 피드백</a></li>

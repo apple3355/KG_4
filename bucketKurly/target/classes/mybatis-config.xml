@@ -4,12 +4,18 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<properties resource="db.properties" />
-   <typeAliases>
-      <typeAlias type="bucket.kurly.member.MemberVO" alias="member"/>
-		<typeAlias type="bucket.kurly.member.MemberTermsVO" alias="memberterms"/>
-   </typeAliases>
-   
-   <mappers>
-      <mapper resource="mappings/member-mapping.xml" />
-   </mappers>
+	<typeAliases>
+		<typeAlias type="bucket.kurly.member.MemberVO"
+			alias="member" />
+		<typeAlias type="bucket.kurly.member.MemberTermsVO"
+			alias="memberterms" />
+		<typeAlias type="bucket.kurly.board.Board_noticeVO"
+			alias="board_notice" />
+
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="mappings/member-mapping.xml" />
+		<mapper resource="mappings/board_notice-mapping.xml" />
+	</mappers>
 </configuration>
