@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemberDAO">
+	
+	<insert id="insertMember" parameterType="member">
+		INSERT INTO tb_member(member_id, member_pw, member_name, member_email,member_birth, member_phone, member_sex, member_address1, member_address2, member_zipcode)
+		VALUES(#{member_id}, #{member_pw}, #{member_name}, #{member_email}, #{member_birth}, #{member_phone}, #{member_sex}, #{member_address1}, #{member_address2}, #{member_zipcode})
+	</insert>
+	
+	<update id="updateMember" parameterType="member">
+	  UPDATE tb_member SET member_pw=#{member_pw}, member_name=#{member_name}, member_email=#{member_email}, member_birth=#{member_birth}, member_phone=#{member_phone}, member_sex=#{member_sex},
+	  member_address1=#{member_address1}, member_address2=#{member_address2},  member_zipcode=#{member_zipcode} WHERE member_id=#{member_id}
+	</update>
+	
+	<delete id="deleteMember" parameterType="member">
+	  DELETE FROM tb_member WHERE member_id=#{member_id}
+	</delete>
+	
+	<select id="getMember" parameterType="member" resultType="member">
+		SELECT member_id, member_name, member_email, member_phone FROM tb_member WHERE member_id = #{member_id}
+	</select>
+	
+	<select id="login" resultType="member">
+	  	SELECT member_id, member_pw, member_name FROM tb_member WHERE member_id=#{member_id}
+	</select>
+	
+	<select id="find_id" resultType="member">
+	  	SELECT member_id FROM tb_member WHERE member_name=#{member_name} and member_email=#{member_email}
+	</select>
+	
+	<insert id="insertMemberTerms" parameterType="memberterms">
+		INSERT INTO tb_terms_agree(member_id, terms_agree_status, terms_agree_date, terms_agree_modified_date)
+		VALUES(#{member_id}, 'y', current_date, current_date)
+	</insert>
+	
+	<select id="idCheck" parameterType="String"  resultType="member">
+		SELECT member_id FROM tb_member WHERE member_id = #{member_id}
+	</select>
+	
+	<select id="emailCheck" parameterType="String"  resultType="member">
+		SELECT member_email FROM tb_member WHERE member_email = #{member_email}
+	</select>
+	
+</mapper> 
