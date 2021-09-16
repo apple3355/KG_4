@@ -3,11 +3,13 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	<properties resource="db.properties" />
    <typeAliases>
-      <!-- <typeAlias type="bucket.kurly.test.TestVO" alias="test"/> -->
+      <typeAlias type="bucket.kurly.member.MemberVO" alias="member"/>
+		<typeAlias type="bucket.kurly.member.MemberTermsVO" alias="memberterms"/>
    </typeAliases>
    
    <mappers>
-      <mapper resource="mappings/test-mapping.xml" />
+      <mapper resource="mappings/member-mapping.xml" />
    </mappers>
 </configuration>
