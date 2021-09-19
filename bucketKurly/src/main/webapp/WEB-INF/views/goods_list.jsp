@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,15 +87,17 @@
 													<ul class="list">
 													
 														<!-- 상품 리스트 구분선 -->
-														<li>
+														<c:forEach items="${selectgoods_list}" var="selectgoods_list"  >
+														<li>															
 															<div class="item">
-																<div class="thumb">
-																	<a class="img" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg&quot;);">
+																<div class="thumb"><img alt="${selectgoods_list.category_goods_name}" src="${selectgoods_list.category_goods_image_thumb}" />
+																															
+																	<a class="img" style="background-image: src="${selectgoods_list.category_goods_image_thumb}"></a>
 																		<!---->
 																		<!---->
 																		<!---->
-																			<img src="https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg" alt="든든하게 즐기는 알찬 한 끼" onerror="this.src='https://res.kurly.com/mobile/img/1808/img_none_x2.png'">
-																	</a>
+																			<!-- <img src="https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg" alt="든든하게 즐기는 알찬 한 끼" onerror="this.src='https://res.kurly.com/mobile/img/1808/img_none_x2.png'"> -->
+																
 																		<!---->
 																	<div class="group_btn">
 																		<button type="button" class="btn.btn_cart">
@@ -103,374 +108,22 @@
 																	</div>
 																</div>
 																<a class="info">
-																	<span class="name">[1번 줄] 첫번째 상품</span>
+																	<!-- span class="name">${selectgoods_list.category_goods_name}</span> -->
+																	<span class="name"><c:out value="${selectgoods_list.category_goods_name}"/></span>
 																	<span class="cost">
 																		<!---->
 																		<span class="price">##금액##</span>
 																		<!---->
 																	</span>
-																	<span class="desc">부과 설명</span>
+																	<span class="desc"><c:out value="${selectgoods_list.category_goods_name_sub}"/></span>
 																	<span class="tag">
 																		<!---->
 																	</span>
 																</a>
+																<a onclick="javascript:menuDetail('${selectgoods_list.category_goods_no}');" class="product" href="#"></a>
 															</div>
 														</li>
-														<li>
-															<div class="item">
-																<div class="thumb">
-																	<a class="img" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg&quot;);">
-																		<!---->
-																		<!---->
-																		<!---->
-																			<img src="https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg" alt="든든하게 즐기는 알찬 한 끼" onerror="this.src='https://res.kurly.com/mobile/img/1808/img_none_x2.png'">
-																	</a>
-																		<!---->
-																	<div class="group_btn">
-																		<button type="button" class="btn.btn_cart">
-																			<span class="screen_out"></span>
-																		</button>
-																		<!---->
-																		<!---->
-																	</div>
-																</div>
-																<a class="info">
-																	<span class="name">[1번 줄] 두번째 상품</span>
-																	<span class="cost">
-																		<!---->
-																		<span class="price">##금액##</span>
-																		<!---->
-																	</span>
-																	<span class="desc">부과 설명</span>
-																	<span class="tag">
-																		<!---->
-																	</span>
-																</a>
-															</div>
-														</li>
-														<li>
-															<div class="item">
-																<div class="thumb">
-																	<a class="img" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg&quot;);">
-																		<!---->
-																		<!---->
-																		<!---->
-																			<img src="https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg" alt="든든하게 즐기는 알찬 한 끼" onerror="this.src='https://res.kurly.com/mobile/img/1808/img_none_x2.png'">
-																	</a>
-																		<!---->
-																	<div class="group_btn">
-																		<button type="button" class="btn.btn_cart">
-																			<span class="screen_out"></span>
-																		</button>
-																		<!---->
-																		<!---->
-																	</div>
-																</div>
-																<a class="info">
-																	<span class="name">[1번 줄] 세번째 상품</span>
-																	<span class="cost">
-																		<!---->
-																		<span class="price">##금액##</span>
-																		<!---->
-																	</span>
-																	<span class="desc">부과 설명</span>
-																	<span class="tag">
-																		<!---->
-																	</span>
-																</a>
-															</div>
-														</li>
-														<!-- 2번 줄 상품 리스트 구분선 -->
-														<li>
-															<div class="item">
-																<div class="thumb">
-																	<a class="img" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg&quot;);">
-																		<!---->
-																		<!---->
-																		<!---->
-																			<img src="https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg" alt="든든하게 즐기는 알찬 한 끼" onerror="this.src='https://res.kurly.com/mobile/img/1808/img_none_x2.png'">
-																	</a>
-																		<!---->
-																	<div class="group_btn">
-																		<button type="button" class="btn.btn_cart">
-																			<span class="screen_out"></span>
-																		</button>
-																		<!---->
-																		<!---->
-																	</div>
-																</div>
-																<a class="info">
-																	<span class="name">[2번 줄] 첫번째 상품</span>
-																	<span class="cost">
-																		<!---->
-																		<span class="price">##금액##</span>
-																		<!---->
-																	</span>
-																	<span class="desc">부과 설명</span>
-																	<span class="tag">
-																		<!---->
-																	</span>
-																</a>
-															</div>
-														</li>
-														<li>
-															<div class="item">
-																<div class="thumb">
-																	<a class="img" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg&quot;);">
-																		<!---->
-																		<!---->
-																		<!---->
-																			<img src="https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg" alt="든든하게 즐기는 알찬 한 끼" onerror="this.src='https://res.kurly.com/mobile/img/1808/img_none_x2.png'">
-																	</a>
-																		<!---->
-																	<div class="group_btn">
-																		<button type="button" class="btn.btn_cart">
-																			<span class="screen_out"></span>
-																		</button>
-																		<!---->
-																		<!---->
-																	</div>
-																</div>
-																<a class="info">
-																	<span class="name">[2번 줄] 두번째 상품</span>
-																	<span class="cost">
-																		<!---->
-																		<span class="price">##금액##</span>
-																		<!---->
-																	</span>
-																	<span class="desc">부과 설명</span>
-																	<span class="tag">
-																		<!---->
-																	</span>
-																</a>
-															</div>
-														</li>
-														<li>
-															<div class="item">
-																<div class="thumb">
-																	<a class="img" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg&quot;);">
-																		<!---->
-																		<!---->
-																		<!---->
-																			<img src="https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg" alt="든든하게 즐기는 알찬 한 끼" onerror="this.src='https://res.kurly.com/mobile/img/1808/img_none_x2.png'">
-																	</a>
-																		<!---->
-																	<div class="group_btn">
-																		<button type="button" class="btn.btn_cart">
-																			<span class="screen_out"></span>
-																		</button>
-																		<!---->
-																		<!---->
-																	</div>
-																</div>
-																<a class="info">
-																	<span class="name">[2번 줄] 세번째 상품</span>
-																	<span class="cost">
-																		<!---->
-																		<span class="price">##금액##</span>
-																		<!---->
-																	</span>
-																	<span class="desc">부과 설명</span>
-																	<span class="tag">
-																		<!---->
-																	</span>
-																</a>
-															</div>
-														</li>													
-														<!-- 3번 줄 상품 리스트 구분선 -->
-														<li>
-															<div class="item">
-																<div class="thumb">
-																	<a class="img" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg&quot;);">
-																		<!---->
-																		<!---->
-																		<!---->
-																			<img src="https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg" alt="든든하게 즐기는 알찬 한 끼" onerror="this.src='https://res.kurly.com/mobile/img/1808/img_none_x2.png'">
-																	</a>
-																		<!---->
-																	<div class="group_btn">
-																		<button type="button" class="btn.btn_cart">
-																			<span class="screen_out"></span>
-																		</button>
-																		<!---->
-																		<!---->
-																	</div>
-																</div>
-																<a class="info">
-																	<span class="name">[3번 줄] 첫번째 상품</span>
-																	<span class="cost">
-																		<!---->
-																		<span class="price">##금액##</span>
-																		<!---->
-																	</span>
-																	<span class="desc">부과 설명</span>
-																	<span class="tag">
-																		<!---->
-																	</span>
-																</a>
-															</div>
-														</li>
-														<li>
-															<div class="item">
-																<div class="thumb">
-																	<a class="img" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg&quot;);">
-																		<!---->
-																		<!---->
-																		<!---->
-																			<img src="https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg" alt="든든하게 즐기는 알찬 한 끼" onerror="this.src='https://res.kurly.com/mobile/img/1808/img_none_x2.png'">
-																	</a>
-																		<!---->
-																	<div class="group_btn">
-																		<button type="button" class="btn.btn_cart">
-																			<span class="screen_out"></span>
-																		</button>
-																		<!---->
-																		<!---->
-																	</div>
-																</div>
-																<a class="info">
-																	<span class="name">[3번 줄] 두번째 상품</span>
-																	<span class="cost">
-																		<!---->
-																		<span class="price">##금액##</span>
-																		<!---->
-																	</span>
-																	<span class="desc">부과 설명</span>
-																	<span class="tag">
-																		<!---->
-																	</span>
-																</a>
-															</div>
-														</li>
-														<li>
-															<div class="item">
-																<div class="thumb">
-																	<a class="img" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg&quot;);">
-																		<!---->
-																		<!---->
-																		<!---->
-																			<img src="https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg" alt="든든하게 즐기는 알찬 한 끼" onerror="this.src='https://res.kurly.com/mobile/img/1808/img_none_x2.png'">
-																	</a>
-																		<!---->
-																	<div class="group_btn">
-																		<button type="button" class="btn.btn_cart">
-																			<span class="screen_out"></span>
-																		</button>
-																		<!---->
-																		<!---->
-																	</div>
-																</div>
-																<a class="info">
-																	<span class="name">[3번 줄] 세번째 상품</span>
-																	<span class="cost">
-																		<!---->
-																		<span class="price">##금액##</span>
-																		<!---->
-																	</span>
-																	<span class="desc">부과 설명</span>
-																	<span class="tag">
-																		<!---->
-																	</span>
-																</a>
-															</div>
-														</li>													
-														<!-- 4번 줄 상품 리스트 구분선 -->
-														<li>
-															<div class="item">
-																<div class="thumb">
-																	<a class="img" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg&quot;);">
-																		<!---->
-																		<!---->
-																		<!---->
-																			<img src="https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg" alt="든든하게 즐기는 알찬 한 끼" onerror="this.src='https://res.kurly.com/mobile/img/1808/img_none_x2.png'">
-																	</a>
-																		<!---->
-																	<div class="group_btn">
-																		<button type="button" class="btn.btn_cart">
-																			<span class="screen_out"></span>
-																		</button>
-																		<!---->
-																		<!---->
-																	</div>
-																</div>
-																<a class="info">
-																	<span class="name">[4번 줄] 첫번째 상품</span>
-																	<span class="cost">
-																		<!---->
-																		<span class="price">##금액##</span>
-																		<!---->
-																	</span>
-																	<span class="desc">부과 설명</span>
-																	<span class="tag">
-																		<!---->
-																	</span>
-																</a>
-															</div>
-														</li>
-														<li>
-															<div class="item">
-																<div class="thumb">
-																	<a class="img" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg&quot;);">
-																		<!---->
-																		<!---->
-																		<!---->
-																			<img src="https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg" alt="든든하게 즐기는 알찬 한 끼" onerror="this.src='https://res.kurly.com/mobile/img/1808/img_none_x2.png'">
-																	</a>
-																		<!---->
-																	<div class="group_btn">
-																		<button type="button" class="btn.btn_cart">
-																			<span class="screen_out"></span>
-																		</button>
-																		<!---->
-																		<!---->
-																	</div>
-																</div>
-																<a class="info">
-																	<span class="name">[4번 줄] 두번째 상품</span>
-																	<span class="cost">
-																		<!---->
-																		<span class="price">##금액##</span>
-																		<!---->
-																	</span>
-																	<span class="desc">부과 설명</span>
-																	<span class="tag">
-																		<!---->
-																	</span>
-																</a>
-															</div>
-														</li>
-														<li>
-															<div class="item">
-																<div class="thumb">
-																	<a class="img" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg&quot;);">
-																		<!---->
-																		<!---->
-																		<!---->
-																			<img src="https://img-cf.kurly.com/shop/data/goods/1631506970541l0.jpg" alt="든든하게 즐기는 알찬 한 끼" onerror="this.src='https://res.kurly.com/mobile/img/1808/img_none_x2.png'">
-																	</a>
-																		<!---->
-																	<div class="group_btn">
-																		<button type="button" class="btn.btn_cart">
-																			<span class="screen_out"></span>
-																		</button>
-																		<!---->
-																		<!---->
-																	</div>
-																</div>
-																<a class="info">
-																	<span class="name">[4번 줄] 세번째 상품</span>
-																	<span class="cost">
-																		<!---->
-																		<span class="price">##금액##</span>
-																		<!---->
-																	</span>
-																	<span class="desc">부과 설명</span>
-																	<span class="tag">
-																		<!---->
-																	</span>
-																</a>
-															</div>
-														</li>													
+														</c:forEach>									
 														<!-- 상품 리스트 구분선 -->
 														
 														
@@ -478,6 +131,8 @@
 															
 															
 														<list-goods v-for="(goods, idx) in goodsItem" v-if="!noData" :get-category-num="getCategoryNum" :key="'goods'+idx" :idx="idx" :item="goods" :tag-name="goods.tags.names" :tag-type="goods.tags.tagType" :sort-delivery="sortDelivery" :sort-user="sortUser" :type="type" :page-type="pageType" :login-check="loginCheck" :page-count="(pageCount-1)*pageLimit" :tracking="tracking"></list-goods>
+													
+													
 													</ul>
 												</div>
 											</div>

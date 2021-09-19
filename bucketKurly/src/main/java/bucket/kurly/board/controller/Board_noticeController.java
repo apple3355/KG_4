@@ -10,11 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import bucket.kurly.board.Board_noticeVO;
-
 import bucket.kurly.board.service.Board_noticeService;
-import bucket.kurly.board.service.Board_qnaService;
 import bucket.kurly.util.Pagination;
-import bucket.kurly.util.S3Service;
 
 //@RequestMapping("/WEB-INF/*")
 @Controller
