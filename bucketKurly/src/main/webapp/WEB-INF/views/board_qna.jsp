@@ -119,7 +119,7 @@
 						<!-- 글쓰기 버튼 -->
 						<div style="position: relative">
 							<div style="position: absolute; right: 0; top: 60px;">
-								<a href="/test/board_qna_insert.do"><span class="bhs_buttonsm yb" style="float: none;">글쓰기</span></a>
+								<a href="${pageContext.request.contextPath}/board_qna_insert.do"><span class="bhs_buttonsm yb" style="float: none;">글쓰기</span></a>
 							</div>
 						</div>
 						

@@ -4,8 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- 외부 스타일 시트 삽입 -->
-<link rel="stylesheet" href="resources/css/common.css">
 <title>layerDSR</title>
 </head>
 <body>
