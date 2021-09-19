@@ -1,0 +1,199 @@
+@charset "UTF-8";
+
+/* 페이지 내용 내부 */
+.page_aticle {width: 1050px;margin: 0 auto;}
+.page_aticle.aticle_type2 {padding-top: 65px;}
+.page_aticle.aticle_type2:after {content: "";display: block;overflow: hidden;width: 100%;clear: both;}
+
+#main {border-bottom: 1px solid #f7f7f7;}
+#content {min-width: 1050px;padding-bottom: 120px;}
+#snb {float: left;width: 200px;}
+
+/* 페이지 내용 내부 - 제목 */
+.page_aticle .head_aticle {padding: 5px 0 34px;}
+.page_aticle .head_aticle .tit {height: 36px; font-weight: 700; font-size: 24px; line-height: 36px;color: #333; letter-spacing: -.5px;}
+.xans-board-listheader {border-top: 2px solid #522772; font-size: 13px; line-height: 140%;}
+.xans-board-listheader th {padding: 20px 0; vertical-align: middle; font-size: 12px;}
+.page_aticle .no_data {padding: 50px 0; font-size: 13px; color: #757575; text-align: center;}
+
+  
+/* 메뉴 - 제목(고객센터) 스타일 */
+#snb .tit_snb {padding: 5px 0 35px 1px;font-weight: 700;font-size: 28px;line-height: 35px;color: #333;letter-spacing: -1px;}
+
+  
+/* 메뉴 - 하위 메뉴 스타일 */
+#snb .inner_snb {border: 1px solid #f2f2f2;	border-bottom: 0;}
+#snb .list_menu li {border-bottom: 1px solid #f2f2f2;}
+#snb .list_menu li a {display: block;overflow: hidden;padding: 14px 0 16px 20px; background: #fff url("https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/ico_arrow_6x11.svg") no-repeat 174px 52%; background-size: 6px 11px; font-size: 14px; color: #666; line-height: 20px; letter-spacing: -.3px;}
+#snb .list_menu li.on a, #snb .list_menu li a:hover {background: #fafafa url("https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/ico_arrow_6x11.svg") no-repeat 174px 52%; background-size: 6px 11px; font-weight: 700; color: #5f0080;}
+ 
+
+/* 메뉴 - 하위메뉴 하단(도움이 필요하신가요) 스타일 */
+#snb .link_inquire {display: block; overflow: hidden;width: 200px; height: 60px; margin-top: 20px;padding: 9px 0 0 22px;border-radius: 0 100px 100px 0;background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 175px 25px; background-size: 6px 11px; font-size: 12px; color: #333; line-height: 20px;} #snb .link_inquire .emph { display: block; padding-bottom: 1px;font-weight: 700; font-size: 14px;}
+  
+
+/* 테이블 */
+table {border-collapse: collapse; border-spacing: 0;}
+tr{display: table-row; vertical-align: inherit; border-color: inherit;}
+.table_faq {border-top: 1px solid #f4f4f4;}
+.table_faq tr td {padding: 20px 0;}
+
+/* 관리자 답변글 */
+.mypage_wrap .replayD tr td {padding: 10px; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;}
+
+/* 페이징 처리 */
+.page_aticle .layout-pagination {font-size: 0;}
+.page_aticle .layout-pagination-first-page:first-child {border-left: 1px solid #ddd;}
+.page_aticle .layout-pagination a {cursor: pointer;}
+.page_aticle .layout-pagination a, .page_aticle .layout-pagination strong{font-weight: 700; font-size: 12px;}
+.layout-pagination {margin: 60px 0 0; text-align: center;}
+.layout-pagination-first-page {background-image:url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-first.png);}
+.layout-pagination-first-page, .layout-pagination-prev-page,.layout-pagination-next-page, .layout-pagination-last-page {background-repeat: no-repeat;background-position: 50% 50%; text-indent: -9999px;}
+.layout-pagination-button {display: inline-block; width: 34px; height: 34px;border: 1px solid #ddd; border-left: 0; vertical-align: top;}
+.layout-pagination-prev-page {background-image:url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-prev.png);}
+.layout-pagination-number:hover, .layout-pagination-number.__active {background-color: #f7f7f7; color: #5f0080;}
+.layout-pagination-next-page {background-image:url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-next.png);}
+.layout-pagination-last-page {background-image:url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-last.png);}
+.layout-pagination-number {font-weight: 700; color: #333; line-height: 34px;}
+b, strong {
+	font-weight: 700;
+}
+
+/* 수정 버튼 */
+.goods-review-grp-btn .styled-button {width: auto; min-width: 75px; padding: 0 15px; height: 30px; line-height: 28px; font-size: 12px;}
+
+/* 글쓰기 버튼 */
+element.style {	position: relative; }
+.bhs_buttonsm { width: 100px; display: inline-block; line-height: 30px; text-align: center; background-color: #795b8f; border: 1px solid #5f0080; color: #fff; font-size: 15px; float: right; margin-left: 2px; font-size: 13px;}
+
+/* 페이지 내용 내부 - 하단 (글쓰기 위에) 스타일 */
+.layout-pagination { margin: 60px 0 0;text-align: center;}
+
+
+/*#########################*/
+/*글쓰기 테이블*/
+.xans-board-write .boardWrite2 {
+    table-layout: fixed;
+    border-top: 2px solid #333;
+    line-height: 180%;
+}
+.xans-board-write table th {
+    width: 110px;
+    padding: 15px 0 15px 20px;
+    background-color: #f7f5f8;
+    border-bottom: 1px solid #f4f4f4;
+    text-align: left;
+    font-weight: 400;
+    vertical-align: middle;
+}
+.boardWrite2 th {
+    text-align: left;
+    padding: 15px;
+    background: #f7f5f8;
+    vertical-align: middle;
+}
+
+.xans-board-write table td {
+    width: auto;
+    padding: 15px 0 15px 10px;
+    height: 23px;
+    border-top: 1px solid #f4f4f4;
+    border-bottom: 1px solid #f4f4f4;
+    vertical-align: middle;
+    line-height: 20px;
+}
+
+
+.boardWrite2 td {
+    padding-left: 5px;
+}
+
+.xans-board-write table select {
+    padding: 6px 5px;
+    border: 1px solid #d9d9d9;
+    margin-bottom: 5px;
+    color: #202020;
+}
+
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.bhs_button.yb {
+    background-color: #795b8f;
+    color: #fff;
+}
+
+element.style {
+    position: relative;
+    z-index: 1;
+}
+
+.boardWrite2 .smalle input[type=checkbox] {
+    position: relative;
+    right: 2px;
+    vertical-align: middle;
+}
+
+.xans-board-write .boardWrite2 input[type=text].read_only {
+    color: #949296;
+}
+
+.xans-board-write table input[type=text], .xans-board-write table input[type=password], .xans-board-write table textarea {
+    height: 30px;
+    line-height: 25px;
+    border: 1px solid #d9d9d9;
+    color: #202020;
+}
+
+.xans-board-write table input[type=text], .xans-board-write table input[type=password] {
+    height: 25px;
+    padding: 3px;
+}
+
+#qnaNotice .tit {
+    display: block;
+    padding: 4px 0 10px;
+    font-size: 12px;
+    line-height: 20px;
+    font-family: noto sans;
+    font-weight: 700;
+}
+
+#qnaNotice dt {
+    font-family: noto sans;
+    font-weight: 700;
+}
+
+#qnaNotice .list span {
+    display: block;
+    position: relative;
+    padding-left: 9px;
+}
+
+#qnaNotice .list .info {
+    color: #5f0080;
+}
+
+img {
+    border: 0;
+}
+img, video, canvas {
+    max-width: 100%;
+}
+
+.bhs_button {
+    width: 150px;
+    display: inline-block;
+    line-height: 40px;
+    text-align: center;
+    background-color: #795b8f;
+    border: 1px solid #5f0080;
+    color: #fff;
+    font-size: 15px;
+    float: right;
+    margin-left: 2px;
+    font-size: 13px;
+}

@@ -3,7 +3,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 	<!-- 공지사항 글 목록 -->
-	<mapper namespace="board_notice_mappings">
+	<mapper namespace="board-mapping">
 	<select id="selectBoard_notice" parameterType="int" resultType="board_notice">
 		SELECT * FROM TB_BOARD_NOTICE 
 		ORDER BY BOARD_NOTICE_NO DESC
@@ -56,9 +56,7 @@
 	 	
 	</select>
 	
-
- 
-	 <!-- 공지사항 검색  
+	<!-- 공지사항 검색  
  	<select id="search_notice" resultType="int" >
  		SELECT COUNT(BOARD_NOTICE_NO)
  		FROM TB_BOARD_NOTICE
@@ -72,11 +70,32 @@
 	 		<if test='searchType_notice("content")'>
 	 			WHERE board_notice_content LIKE CONCAT ('%', #{keyword}, '%')
 	 		</if>
-	 		
-
 	</select> -->
 	
+	<!-- 1:1문의 -->
+	<select id="selectBoard_qna" parameterType="int" resultType="board_qna">
+		SELECT * FROM TB_BOARD_QNA 
+		ORDER BY BOARD_QNA_NO DESC
+		limit #{listSize} offset #{startList}
+	</select>
 	
+	
+	<select id="selectBoard_qnaListCnt" resultType="int">
+		SELECT COUNT(*) FROM TB_BOARD_QNA 
+	</select>
+	
+	
+	<insert id="insertBoard_qna" parameterType="board_qna">
+		INSERT INTO TB_BOARD_QNA(BOARD_QNA_TYPE,BOARD_QNA_TITLE,BOARD_QNA_ORDER_NO,BOARD_QNA_MEMBER_NO,BOARD_QNA_CONTENT)
+		VALUES(#{board_qna_type},#{board_qna_title},#{board_qna_order_no},#{board_qna_member_no},#{board_qna_content})
+	</insert>
+	
+	
+	<!-- 파일 -->
+	<insert id="insertBoard_qnaFile" parameterType="board_file">
+		INSERT INTO TB_BOARD_FILE(BOARD_FILE_QNA_NO,BOARD_FILE_MEMBER_NO,BOARD_FILE_NAME,BOARD_FILE_RESOURCE)
+		VALUES(#{board_file_qna_no},#{board_file_member_no},#{board_file_name},#{board_file_resource})
+	</insert>
 	
 
 	

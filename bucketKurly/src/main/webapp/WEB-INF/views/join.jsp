@@ -260,7 +260,7 @@ amplitude.getInstance().init("65bebb55595beb82e78d5d1ae808702c", amplitudeUid);
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="/asset/js/useKurly/kurlyAPI.bundle.js"></script>
-<link rel="stylesheet" href="resources/joinstyle.css">
+<link rel="stylesheet" type="text/css" href="resources/css/join.css">
 
 <link rel="shortcut icon"
 	href="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/favicon_v2.webp"

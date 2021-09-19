@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <!-- 외부 스타일 시트 삽입 -->
-<link rel="stylesheet" href="resources/common.css">
+<link rel="stylesheet" href="resources/css/common.css">
 <title>header</title>
 </head>
 <body>
@@ -28,15 +28,15 @@
 		<!-- 사용자 메뉴  / 회원가입, 로그인, 고객센터 / 이부분 로그인하면 회원 이름으로 변경-->
 		<div id="userMenu">
 			<ul class="list_menu">
-				<li class="menu none_sub menu_join"><a href="/join.do" class="link_menu">회원가입</a></li>
-				<li class="menu none_sub menu_login"> <a href="/login.do" class="link_menu">로그인</a></li>
-				<li class="menu lst"><a href="/shop/board/list.php?id=notice" class="link_menu">고객센터</a>
+				<li class="menu none_sub menu_join"><a href="${pageContext.request.contextPath}/join.do" class="link_menu">회원가입</a></li>
+				<li class="menu none_sub menu_login"> <a href="${pageContext.request.contextPath}/login.do" class="link_menu">로그인</a></li>
+				<li class="menu lst"><a href="############" class="link_menu">고객센터</a>
 					<ul class="sub">
 						<li><a href="${pageContext.request.contextPath}/board_notice.do" onclick="####">공지사항</a></li>
 						<li><a href="${pageContext.request.contextPath}/board_faq.do" onclick="#####">자주하는질문</a></li>
-						<li><a href="#none"	onclick="KurlyTrackerLink('/shop/mypage/mypage_qna.php', 'select_my_kurly_personal_inquiry_history')">1:1문의</a></li>
-						<li><a href="#none" onclick="KurlyTrackerLink('/shop/mypage/offer.php', 'select_my_kurly_product_offer')">상품제안</a></li>
-						<li><a href="#none" onclick="KurlyTrackerLink('/shop/mypage/echo_packing.php', 'select_my_kurly_eco_packing_feedback')">에코포장 피드백</a></li>
+						<li><a href="${pageContext.request.contextPath}/board_qna.do"	onclick="KurlyTrackerLink('/shop/mypage/mypage_qna.php', 'select_my_kurly_personal_inquiry_history')">1:1문의</a></li>
+						<li><a href="############" onclick="KurlyTrackerLink('/shop/mypage/offer.php', 'select_my_kurly_product_offer')">상품제안</a></li>
+						<li><a href="############" onclick="KurlyTrackerLink('/shop/mypage/echo_packing.php', 'select_my_kurly_eco_packing_feedback')">에코포장 피드백</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -47,7 +47,7 @@
 		<!-- 헤더 로고 -->
 		<div id="headerLogo" class="layout-wrapper">
 			<h1 class="logo">
-				<a href="/" class="link_main"> <span id="gnbLogoContainer"></span>
+				<a href="${pageContext.request.contextPath}/main.do" class="link_main"> <span id="gnbLogoContainer"></span>
 					<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/bucketKurly.png" alt="마켓컬리 로고" style="display: block;">
 				</a>
 			</h1>
@@ -107,7 +107,7 @@
 						<div class="cart_count">
 						
 							<div class="inner_cartcount">
-								<a href="#########" class="btn_cart">
+								<a href="${pageContext.request.contextPath}/goods_cart.do" class="btn_cart">
 									<span class="screen_out">장바구니</span> 
 									<span id="cart_item_count" class="num realtime_cartcount" style="display: none;"></span>
 								</a>

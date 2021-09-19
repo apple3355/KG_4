@@ -1,4 +1,4 @@
-package bucket.kurly.member.service;
+package bucket.kurly.util;
 
 import java.util.HashMap;
 import java.util.Random;

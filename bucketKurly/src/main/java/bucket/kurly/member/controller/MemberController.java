@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import bucket.kurly.member.MemberTermsVO;
 import bucket.kurly.member.MemberVO;
-import bucket.kurly.member.service.Coolsms;
 import bucket.kurly.member.service.MemberService;
-import bucket.kurly.member.service.SHA256;
+import bucket.kurly.util.Coolsms;
+import bucket.kurly.util.SHA256;
 
 
 

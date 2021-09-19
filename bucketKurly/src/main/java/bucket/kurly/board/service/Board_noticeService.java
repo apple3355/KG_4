@@ -7,11 +7,11 @@ import bucket.kurly.util.Pagination;
 
 public interface Board_noticeService {
 	
-	//글조회
+	//글 조회
 	List<Board_noticeVO> selectBoard_notice(Pagination pagination);
-	//글상세보기
+	//글 상세보기
 	Board_noticeVO select_notice_no(int num);
-	//글조회수증가
+	//글 조회수증가
 	int select_notice_cnt(int num);
 	//페이징
 	int getnotice_cnt();
@@ -21,8 +21,6 @@ public interface Board_noticeService {
 	//다음 글
 	Board_noticeVO getNext(int num);
 
-	
-	
 	//게시글 검색
 //	int search_notice(String searchType, String keyword) throws Exception;
 	

@@ -7,6 +7,16 @@
   div, th, td, li, dt, dd, p {word-break: break-all;}
   button { outline: none; }
   
+  /*회원가입/로그인/고객센터 스크립트*/
+    .menu:hover 
+  .sub {display: block}
+  .none_sub:hover 
+  .sub {display: none}
+  .sub .ico_new {margin: 7px 0 0 1px}
+  .none_sub:before, 
+  .lst:after {display: none}
+  .none_sub .link_menu {padding-right: 11px}
+  
  /* 페이지 내용 일괄적용 */
  .page_aticle .head_aticle { padding: 5px 0 34px; }
  .page_aticle .head_aticle .tit {height: 36px; font-weight: 700; font-size: 24px; line-height: 36px; color: #333;letter-spacing: -.5px;}

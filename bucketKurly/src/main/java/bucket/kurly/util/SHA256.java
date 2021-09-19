@@ -1,4 +1,4 @@
-package bucket.kurly.member.service;
+package bucket.kurly.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

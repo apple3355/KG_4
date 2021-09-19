@@ -28,7 +28,9 @@
 	content="58ff7c242d41178131208256bfec0c2f93426a1d" />
 <meta name="facebook-domain-verification"
 	content="tyur3wmoos7t63tpkb7zosur6p98m1" />
-<link rel="stylesheet" href="resources/member_infostyle.css">
+<link rel="stylesheet" type="text/css" href="resources/css/member_info.css">
+<link rel="stylesheet" type="text/css" href="resources/css/common.css">
+
 <link rel="shortcut icon"
 	href="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/favicon_v2.webp"
 	type="image/x-icon">

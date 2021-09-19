@@ -5,17 +5,15 @@
 <configuration>
 	<properties resource="db.properties" />
 	<typeAliases>
-		<typeAlias type="bucket.kurly.member.MemberVO"
-			alias="member" />
-		<typeAlias type="bucket.kurly.member.MemberTermsVO"
-			alias="memberterms" />
-		<typeAlias type="bucket.kurly.board.Board_noticeVO"
-			alias="board_notice" />
-
+		<typeAlias type="bucket.kurly.member.MemberVO" alias="member" />
+		<typeAlias type="bucket.kurly.member.MemberTermsVO" alias="memberterms" />
+		<typeAlias type="bucket.kurly.board.Board_noticeVO" alias="board_notice" />
+		<typeAlias type="bucket.kurly.board.Board_qnaVO" alias="board_qna"/>
+		<typeAlias type="bucket.kurly.board.Board_fileVO" alias="board_file"/>
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="mappings/member-mapping.xml" />
-		<mapper resource="mappings/board_notice-mapping.xml" />
+		<mapper resource="mappings/board-mapping.xml" />
 	</mappers>
 </configuration>

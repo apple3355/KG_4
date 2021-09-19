@@ -21,7 +21,8 @@
 	content="다이어트, 식단, 닭가슴살, 요리, 치아바타, 레시피, 요리, 상차림, 다이어트음식, 이유식, 건강이유식" />
 <title>버켓컬리 :: 내일의 장보기, 버켓컬리</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<link rel="stylesheet" href="resources/find_IDstyle.css">
+<link rel="stylesheet" type="text/css" href="resources/css/login_find_ID.css">
+
 <link rel="shortcut icon"
 	href="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/favicon_v2.webp"
 	type="image/x-icon">

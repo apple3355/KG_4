@@ -23,11 +23,13 @@ public class Board_noticeServiceImpl implements Board_noticeService {
 	public List<Board_noticeVO> selectBoard_notice(Pagination pagination) {
 		return dao.selectBoard_notice(pagination);
 	}
+	
 	//게시물 상세보기
 	@Override
 	public Board_noticeVO select_notice_no(int num) { //no = num
 		return dao.select_notice_no(num);
 	}
+	
 	//조회수 증가
 	@Override
 	public int select_notice_cnt(int num) {
@@ -45,6 +47,7 @@ public class Board_noticeServiceImpl implements Board_noticeService {
 	public Board_noticeVO getPrev(int num) {
 		return dao.getPrev(num);
 	}
+	
 	//다음글
 	@Override
 	public Board_noticeVO getNext(int num) {

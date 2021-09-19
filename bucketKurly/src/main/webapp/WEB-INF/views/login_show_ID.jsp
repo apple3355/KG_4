@@ -21,7 +21,8 @@
 	content="다이어트, 식단, 닭가슴살, 요리, 치아바타, 레시피, 요리, 상차림, 다이어트음식, 이유식, 건강이유식" />
 <title>버켓컬리 :: 내일의 장보기, 버켓컬리</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<link rel="stylesheet" href="resources/find_pwdstyle.css">
+<link rel="stylesheet" type="text/css" href="resources/css/login_show_ID.css">
+
 <link rel="shortcut icon" href="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/favicon_v2.webp" type="image/x-icon">
 </head>
 <body>
@@ -33,28 +34,22 @@
 			<div id="main">
 				<div id="content">
 					<div class="section_login">
-						<h3 class="tit_login">비밀번호 찾기</h3>
-					    <div class="write_form find_view">
-							<form method="post" id="form" name="fm" action="" onsubmit="return chkForm( this );">
-								<input type="hidden" name="act" value="Y"> 
-								<input type="hidden" name=rncheck value="none"> 
-								<input type="hidden" name=dupeinfo value=""> 
-								<strong class="tit_label">이름</strong> 
-								<input name="srch_name" type="text" size="29" required label="이름" tabindex=2>
-								<strong class="tit_label">아이디</strong>  
-								<input name="srch_id" value="" type="text" size="29" required label="아이디" tabindex=2>
-								<p></p>
-								<strong class="tit_label">이메일</strong> 
-								<input name="srch_mail"type="text" size="29" required label="메일주소" tabindex=5>
-								<p></p>
-								<button type="submit" class="btn_type1">
-								<span class="txt_type">찾기</span>
-								</button>
-							</form>
+					  <h3 class="tit_login">아이디 찾기</h3>
+						<div class="write_form find_view">
+						<img class="thumb" src="https://res.kurly.com/pc/service/member/1908/img_id_find_succsess_v2.png" alt="아이디찾기완료">
+						<p class="desc">
+						고객님의
+						<br>
+						아이디 찾기가 완료되었습니다! 
+						<br>
+						<span class="find_ID" value="">아이디 : ${find_ID}</span>
+						</p>
+							<a href="/find_ID.do" class="btn_type1"><span class="txt_type">로그인 하기</span></a>
 						</div>
 					</div>
 				</div>
 			</div>
+			
 			<!-- 화면 위로가기 버튼 -->
 			<script>
 				$(document).ready(function(){
@@ -141,3 +136,4 @@
 	<a href="#top" id="pageTop">맨 위로가기</a>
 </body>
 </html>
+			

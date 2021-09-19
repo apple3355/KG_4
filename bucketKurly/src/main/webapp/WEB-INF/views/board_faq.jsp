@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="resources/css/faq.css">
+<link rel="stylesheet" type="text/css" href="resources/css/board_faq.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common.css">
 
 <title>faq</title>

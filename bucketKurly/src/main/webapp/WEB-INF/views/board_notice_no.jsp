@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="resources/css/notice_no.css">
+<link rel="stylesheet" type="text/css" href="resources/css/board_notice_no.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common.css">
 
 <title>board_no</title>

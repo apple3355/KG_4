@@ -18,8 +18,8 @@
 
 <link rel="shortcut icon" href="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/favicon_v2.webp" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="resources/mainstyle.css">
-<link rel="stylesheet" type="text/css" href="resources/productstyle.css">
+<link rel="stylesheet" type="text/css" href="resources/css/mainstyle.css">
+<link rel="stylesheet" type="text/css" href="resources/css/goods.css">
 
 
 

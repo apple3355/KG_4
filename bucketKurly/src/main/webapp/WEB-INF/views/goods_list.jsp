@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<link rel="stylesheet" type="text/css" href="resources/css/goodslist.css">
+<link rel="stylesheet" type="text/css" href="resources/css/goods_list.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common.css">
 <title>layout</title>
 </head>

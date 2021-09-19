@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MainController {
 
-	//비로그인 메인화면
+		//비로그인 메인화면
 		@RequestMapping("/main.do")
 		public String main() {
 			return "main";
@@ -66,16 +66,10 @@ public class MainController {
 		public String product() {
 			return "product";
 		}
-	
-	//��������
-	@RequestMapping("/notice.do")
-	public String notice() {
-		return "notice";
-	}
-	
-	//�������� �Խñ� �󼼺���
-	@RequestMapping("/notice_no.do")
-	public String notice_no() {
-		return "notice_no";
-	}
+		
+		//상품 상세화면
+		@RequestMapping("/goods_cart.do")
+		public String goods_cart() {
+			return "goods_cart";
+		}
 }
