@@ -46,10 +46,10 @@
 		<div id="headerLogo" class="layout-wrapper">
 			<h1 class="logo">
 				<a href="${pageContext.request.contextPath}/main.do" class="link_main"> <span id="gnbLogoContainer"></span>
-					<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/bucketKurly.png" alt="마켓컬리 로고" style="display: block;">
+					<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketkurly_logo.png" alt="마켓컬리 로고" style="display: block;">
 				</a>
 			</h1>
-			<a href="########" onclick="#######"> 
+			<a href="########" onclick="#######" class="bnr_delivery"> 
 				<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%83%9B%EB%B3%84_+%ED%83%9D%EB%B0%B0+%EB%B0%B0%EC%86%A1%EC%95%88%EB%82%B4.png"
 					alt="샛별, 택배 배송안내" width="121" height="22">
 			</a>
