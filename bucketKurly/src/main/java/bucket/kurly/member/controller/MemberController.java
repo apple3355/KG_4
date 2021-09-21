@@ -100,9 +100,18 @@ public class MemberController {
 		  }
 	      
 		  session.setAttribute("id", result.getMember_id());
-		  session.setAttribute("name", result.getMember_name());
+		  session.setAttribute("name", result.getMember_name());    
 		
-		  return "redirect:/member_main.do";
+		  return "redirect:/main.do";
+	  }
+	  
+	  //로그아웃
+	  @RequestMapping("/logout.do")
+	  public String logout(HttpSession session, Model model){
+		 
+		  session.invalidate();    
+		
+		  return "redirect:/main.do";
 	  }
 	  
 	  //아이디 찾기
@@ -204,7 +213,7 @@ public class MemberController {
 	  }
 	  
 	  
-	  	//경고창
+	  //경고창
 	  public void alertView(String message, int returnPage, HttpServletResponse response) throws IOException {
 		  response.setContentType("text/html; charset=utf-8");
 		  PrintWriter out = response.getWriter();

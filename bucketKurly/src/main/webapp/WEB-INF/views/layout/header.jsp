@@ -1,46 +1,145 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>header</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+	  $('.menu1').hover(function(){
+			$(".menu1").children().first().addClass("on");
+			$(".gnb_sub").css("display","block");
+		}, function() {
+			$(".menu1").children().first().removeClass("on");
+			$(".gnb_sub").css("display","none");
+		});
+		
+		$('.gnb_sub').hover(function(){
+			$(".menu1").children().first().addClass("on");
+			$(".gnb_sub").css("display","block");
+		}, function() {
+			$(".menu1").children().first().removeClass("on");
+			$(".gnb_sub").css("display","none");
+		});
+
+		$('.inner_sub ul li').hover(function(){
+			$(this).addClass("current");
+			$(".gnb_sub").css("width","438px");
+		}, function() {
+		    $(this).removeClass("current");
+		    $(".gnb_sub").css("width","219px");
+		});
+
+	
+	
+	//스크롤 내렸을때 메뉴 고정
+    var topBar = $("#main").offset(); //header 밑 main의 맨윗부분 절대위치
+    
+    $(window).scroll(function(){
+        var docScrollY = $(document).scrollTop()
+ 		//스크롤 내린 위치가 main의 절대위치보다 높으면 fix(gnb_stop)추가
+        if( docScrollY > topBar.top ) {
+        	$('#gnb').addClass("gnb_stop");
+        }else{
+        	$('#gnb').removeClass("gnb_stop");
+        }
+    }); 
+});
+  
+</script>
 </head>
 <body>
 	<div id = "header">
 	
-		<!-- 맨위 보라색 띠 -->
-		<div class="bnr_header" id="top-message">
-			<a href="https://www.kurly.com/shop/event/kurlyEvent.php?htmid=event/join/join_210825" id="eventLanding"> 
-			지금 가입하고 인기상품 <b>100원</b>에 받아가세요!<img src="https://res.kurly.com/pc/ico/1908/ico_arrow_fff_84x84.png" class="bnr_arr">
-				<div class="bnr_top">
-					<div class="inner_top_close">
-						<button id="top-message-close" class="btn_top_bnr">가입하고 혜택받기</button>
+	<!-- sessionScopre.id가 없으면 -->
+		<c:if test="${empty sessionScope.id }"> 
+			<div class="bnr_header" id="top-message">
+				<a href="########" id="eventLanding"> 
+				지금 가입하고 인기상품 <b>100원</b>에 받아가세요!<img src="https://res.kurly.com/pc/ico/1908/ico_arrow_fff_84x84.png" class="bnr_arr">
+					<div class="bnr_top">
+						<div class="inner_top_close">
+							<button id="top-message-close" class="btn_top_bnr">가입하고 혜택받기</button>
+						</div>
+					</div>
+				</a>
+			</div>
+			
+			<div id="userMenu">
+				<ul class="list_menu">
+					<li class="menu none_sub menu_join"><a href="/kurly/join.do" class="link_menu">회원가입</a></li>
+					<li class="menu none_sub menu_login"> <a href="/kurly/login.do" class="link_menu">로그인</a></li>
+					<li class="menu lst"><a href="############" class="link_menu">고객센터</a>
+						<ul class="sub">
+							<li><a href="${pageContext.request.contextPath}/board_notice.do" onclick="####">공지사항</a></li>
+							<li><a href="${pageContext.request.contextPath}/board_faq.do" onclick="#####">자주하는질문</a></li>
+							<li><a href="${pageContext.request.contextPath}/login.do" onclick="alert('로그인을 하셔야 본 서비스를 이용하실 수 있습니다.');">1:1문의</a></li>
+							<li><a href="############" onclick="######">상품제안</a></li>
+							<li><a href="############" onclick="######">에코포장 피드백</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</c:if>
+		
+		<!-- sessionScopre.id가 있으면 -->
+		<c:if test="${not empty sessionScope.id }"> 
+			<div class="bnr_header bnr_top_friend" id="top-message">
+				<div id="topBanner" class="on">
+					<div id="bannerImc">
+						<a href="https://www.kurly.com/shop/main/html.php?htmid=event/kurly.htm&amp;name=friend">
+						친구 초대하면 친구도 나도 적립금 <b>5천원!</b><img src="https://res.kurly.com/pc/ico/1908/ico_arrow_333_84x84.png" class="bnr_arr">
+						</a>
+					</div>
+					<div class="bnr_top">
+						<div class="inner_top_close">
+							<button id="top-message-close" class="btn_top_bnr">가입하고 혜택받기</button>
+						</div>
 					</div>
 				</div>
-			</a>
-		</div>
+			</div>
+			
+			<div id="userMenu">
+				<ul class="list_menu">
+					<li class="menu menu_user">
+						<a class="link_menu grade_comm" onclick="#####">
+							<span class="ico_grade grade0">일반</span> 
+							<span class="txt"><span class="name">${name}</span>
+							<span class="sir">님</span></span>
+						</a> 
+						<ul class="sub">
+							<li><a href="########">주문 내역</a></li> 
+							<li><a href="#none" onclick="#############">선물 내역</a></li> 
+							<li><a href="#none" onclick="#############">배송지 관리</a></li> 
+							<li><a href="#none">상품 후기</a></li> 
+							<li><a>상품 문의</a></li> 
+							<li><a href="#none" onclick="#############">적립금</a></li> 
+							<li><a href="#none" onclick="#############">쿠폰</a> </li> 
+							<li><a href="#none">개인 정보 수정</a></li> 
+							<li><a href="${pageContext.request.contextPath}/logout.do">로그아웃</a></li>
+						</ul>
+					</li>
+					<li class="menu lst"><a href="############" class="link_menu">고객센터</a>
+						<ul class="sub">
+							<li><a href="${pageContext.request.contextPath}/board_notice.do" onclick="####">공지사항</a></li>
+							<li><a href="${pageContext.request.contextPath}/board_faq.do" onclick="#####">자주하는질문</a></li>
+							<li><a href="${pageContext.request.contextPath}/board_qna.do" onclick="#####">1:1문의</a></li>
+							<li><a href="############" onclick="######">상품제안</a></li>
+							<li><a href="############" onclick="######">에코포장 피드백</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			
+		</c:if>
+
+
 		
-		
-		
-		<!-- 사용자 메뉴  / 회원가입, 로그인, 고객센터 / 이부분 로그인하면 회원 이름으로 변경-->
-		<div id="userMenu">
-			<ul class="list_menu">
-				<li class="menu none_sub menu_join"><a href="${pageContext.request.contextPath}/join.do" class="link_menu">회원가입</a></li>
-				<li class="menu none_sub menu_login"> <a href="${pageContext.request.contextPath}/login.do" class="link_menu">로그인</a></li>
-				<li class="menu lst"><a href="############" class="link_menu">고객센터</a>
-					<ul class="sub">
-						<li><a href="${pageContext.request.contextPath}/board_notice.do" onclick="####">공지사항</a></li>
-						<li><a href="${pageContext.request.contextPath}/board_faq.do" onclick="#####">자주하는질문</a></li>
-						<li><a href="${pageContext.request.contextPath}/board_qna.do"	onclick="KurlyTrackerLink('/shop/mypage/mypage_qna.php', 'select_my_kurly_personal_inquiry_history')">1:1문의</a></li>
-						<li><a href="############" onclick="KurlyTrackerLink('/shop/mypage/offer.php', 'select_my_kurly_product_offer')">상품제안</a></li>
-						<li><a href="############" onclick="KurlyTrackerLink('/shop/mypage/echo_packing.php', 'select_my_kurly_eco_packing_feedback')">에코포장 피드백</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
 	
 	
+
 	
 		<!-- 헤더 로고 -->
 		<div id="headerLogo" class="layout-wrapper">

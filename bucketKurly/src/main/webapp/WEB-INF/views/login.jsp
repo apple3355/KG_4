@@ -43,7 +43,7 @@
 						<h3 class="tit_login">로그인</h3>
 						<div class="write_form">
 							<div class="write_view login_view">
-								<form method="post" name="form" id="form"onsubmit="return checkReCaptcha();"action="/chklogin.do">
+								<form method="post" name="form" id="form"onsubmit="return checkReCaptcha();"action="${pageContext.request.contextPath}/chklogin.do">
 									<input type=hidden name=returnUrl value=""> 
 									<input type=hidden name=return_url value=""> 
 									<input type=hidden name=close value=""> 
@@ -58,9 +58,9 @@
 										</label>
 
 										<div class="login_search">
-											<a href="/find_ID.do" class="link">아이디 찾기</a>
+											<a href="${pageContext.request.contextPath}/find_ID.do" class="link">아이디 찾기</a>
 											<span class="bar"></span> 
-											<a href="/find_pwd.do" class="link">비밀번호 찾기</a>
+											<a href="${pageContext.request.contextPath}/find_pwd.do" class="link">비밀번호 찾기</a>
 										</div>
 									</div>
 									<button type="submit" class="btn_type1">
