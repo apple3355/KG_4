@@ -1,5 +1,30 @@
 @charset "UTF-8";
 
+/*goods_name*/
+.goods-name p {display: block;margin-block-start: 0em;margin-block-end: 0em;margin-inline-start: 0px;margin-inline-end: 0px;}
+
+/*goods view*/
+.goods-view-infomation {margin-top: 50px;}
+.goods-view-infomation-tab {display: flex;flex: 1;vertical-align: top;}
+.goods-view-infomation-tab-group {display: flex;flex-direction: row;width: 1010px;margin: 0 auto;}
+.goods-view-infomation-tab:first-child .goods-view-infomation-tab-anchor {border-left: 1px solid #eee;}
+.goods-view-infomation-tab-anchor.__active{background-color: #fff;color: #5f0080;border-bottom: 0;}
+.goods-view-infomation-tab-anchor {flex: 1;position: relative;top: 1px;height: 60px;line-height: 59px;text-align: center;display: block;color: #666;font-size: 16px;font-weight: 700;letter-spacing: -.3px;font-family: noto sans;background-color: #fafafa;border: 1px solid #eee;border-left: none;}
+
+/*goods-view-infomation-content_active*/
+.goods-view-infomation-content.__active {display: block;}
+.goods-view-infomation-content {padding-top: 40px;min-height: 500px;margin-bottom: 50px;}
+
+/*goods_wrap*/
+.goods_wrap {width: 1010px;margin: 0 auto;font-family: noto sans;font-weight: 200;letter-spacing: 0;}
+
+/*context_last*/
+.goods_wrap .context.last {margin-bottom: 170px;}
+.goods_wrap .context {margin-bottom: 130px;}
+.goods_wrap .goods_intro .context h3 {display: block;margin: 75px 0 0;padding-bottom: 35px;font-size: 38px;line-height: 46px;text-align: center;border-bottom: 1px solid #c1c1c1;color: #666;}
+.goods_wrap .goods_intro .context .words {margin-top: 28px;}
+.goods_wrap .context .words {margin-top: 55px;font-size: 18px;line-height: 32px;color: #373737;}
+
 /* sectionView */
 .section_view {width: 1050px;margin: 0 auto;padding-top: 20px;}
 #shareLayer {position: relative;}
@@ -57,8 +82,11 @@ b, strong {font-weight: 700;}
 #sectionView .goods_info .desc {overflow: hidden;font-size: 14px;line-height: 20px;word-break: break-all;}
 #sectionView .goods_info .emph {display: block;padding-top: 4px;font-weight: 400;font-size: 12px;color: #666;line-height: 16px;}
 #sectionView .goods_info .txt {display: block;}
-#sectionView .goods_info .txt:before {content: "- ";display: inline;}
 .section_view:after {content: "";display: block;overflow: hidden;height: 0;clear: both;}
+
+/*layout-wrapper goods_view_area*/
+.layout-wrapper.goods-view-area {padding-right: 40px;}
+.layout-wrapper {position: relative;width: 1050px;height: 100%;margin: 0 auto;}
 
 
 /* cartPut */

@@ -17,13 +17,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 
 <link rel="shortcut icon" href="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/favicon_v2.webp" type="image/x-icon">
+
+<link rel="stylesheet" type="text/css" href="resources/css/goods_list_detail.css">
+<link rel="stylesheet" type="text/css" href="resources/css/main.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="resources/css/mainstyle.css">
-<link rel="stylesheet" type="text/css" href="resources/css/goods.css">
-
-
-
-
 <script>
     $(function(){
         var mySlider = $("#slideBanner").bxSlider({
@@ -233,34 +230,34 @@ $(function(){
 							</div>
 						</div>
 					</div>
+					
+					<c:forEach var="getGoods_list_detail" items="${getGoods_list_detail}">
 					<div id="sectionView">
 						<div class="inner_view">
 							<div class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1607935872129y0.jpg&quot;);">
-								<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXcAAAHnCAQAAADpr9U2AAABeUlEQVR42u3BMQEAAADCoPVPbQ0PoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALg0lPQAATTM2xoAAAAASUVORK5CYII=" alt="상품 대표 이미지" class="bg"></div> 
+								<img src="${getGoods_list_detail.category_goods_image_thumb }" alt="상품 대표 이미지" class="bg"></div> 
 							<p class="goods_name">
 								<span class="btn_share"><button id="btnShare" class="btnShare" data-goodsno="6016">공유하기</button></span> 
-								<strong class="name">[돈마루] 한돈 목살 구이용 300g</strong> 
-								<span class="short_desc">100g 당 판매가: 3,300원</span></p> 
+								<strong class="name">${getGoods_list_detail.category_goods_name }</strong> 
+								<span class="short_desc">${getGoods_list_detail.category_goods_name_sub }</span></p> 
 								<p class="goods_dcinfo">회원할인가</p> 
 								<p class="goods_price">
 									<span class="position">
 										<span class="dc"><!----> 
-											<span class="dc_price">8,910<span class="won">원</span></span> 
-											<span class="dc_percent">10<span class="per">%</span></span></span> 
+											<span class="dc_price">0<span class="won">원</span></span> 
+											<span class="dc_percent">99<span class="per">%</span></span></span> 
 										<a class="original_price">
-											<span class="price">9,900<span class="won">원</span></span>
+											<span class="price">0<span class="won">원</span></span>
 											<img src="https://res.kurly.com/kurly/ico/2021/question_24_24_c999.svg" alt="물음표" class="ico">
 										</a> 
 										<span class="layer_position"><!----> 
 											<span class="layer_price">
-												<strong class="tit_layer">컬리판매가 기준 할인
-												</strong>
+												<strong class="tit_layer">컬리판매가 기준 할인</strong>
 												동일 품질 상품의 주요 온/오프라인 유통사 가격과 비교하여 컬리가 설정한 가격에서 할인된 가격입니다.
 												<span class="bar"></span>                        
 												적용된 할인가는 대표 상품의 가격으로 옵션에 따라 할인 혜택이 다를 수 있습니다. 할인 혜택은 당사 사정에 따라 변경될 수 있습니다.                    
 											</span> 
-											<button type="button" class="btn_close">
-											레이어 닫기</button>
+											<button type="button" class="btn_close">레이어 닫기</button>
 										</span>
 									</span> 
 									<!----> 
@@ -283,54 +280,63 @@ $(function(){
 								</div> 
 								<div class="goods_info">
 									<dl class="list fst">
-										<dt class="tit">판매단위</dt> 
-										<dd class="desc">1팩</dd>
+										<dt class="tit"><b>판매단위</b></dt> 
+										<dd class="desc">${getGoods_list_detail.category_goods_unit }</dd>
 									</dl> 
 									<dl class="list">
-										<dt class="tit">중량/용량</dt> 
-										<dd class="desc">300g</dd>
+										<dt class="tit"><b>중량/용량</b></dt> 
+										<dd class="desc">${getGoods_list_detail.category_goods_weight }</dd>
 									</dl> 
 									<dl class="list">
-										<dt class="tit">배송구분</dt> 
+										<dt class="tit"><b>배송구분</b></dt> 
 										<!----> 
-										<dd class="desc">샛별배송/택배배송</dd>
+										<dd class="desc">${getGoods_list_detail.category_goods_delivery_type }</dd>
 									</dl> 
 									<dl class="list">
-										<dt class="tit">원산지</dt> 
-										<dd class="desc">국내산</dd>
+										<dt class="tit"><b>원산지</b></dt> 
+										<dd class="desc">${getGoods_list_detail.category_goods_from }</dd>
 									</dl> 
 									<dl class="list">
-										<dt class="tit">포장타입</dt> 
-										<dd class="desc">                    
-											냉장/종이포장                    
-											<strong class="emph">                      
-											택배배송은 에코포장이 스티로폼으로 대체됩니다.                    
-											</strong>
-										</dd>
-									</dl> 
-									<dl class="list">
-										<dt class="tit">알레르기정보</dt> 
-										<dd class="desc">- 돼지고기 함유</dd>
-									</dl> 
-									<!----> 
-									<dl class="list">
-										<dt class="tit">유통기한</dt> 
-										<dd class="desc">수령일 포함 최소 5일 이상 남은 제품을 보내드립니다. </dd>
-									</dl> 
-									<!----> 
-									<!----> 
-									<dl class="list">
-										<dt class="tit">축산물이력정보</dt> 
-										<dd class="desc">이력번호가 표시된 제품이며, 이력번호는 수령하시는 상품 패키지에서 확인 가능합니다.</dd>
-									</dl> 
-									<dl class="list">
-										<dt class="tit">안내사항</dt> 
+										<dt class="tit"><b>포장타입</b></dt> 
 										<dd class="desc">
-											<span class="txt">정육 상품의 특성상 중량은 3%내외의 차이가 발생할 수 있습니다.</span>
-											<span class="txt">보관기간이 신선도에 많은 영향을 주는 정육식품이기 때문에 수령후 최대한 빠른 시일내에 섭취를 권장드립니다.</span>
-											<span class="txt">기온이 내려감에 따라 운물에 지방비율이 증가할 가능성이 있사오니 구매시에 유의하시기 바랍니다.</span>
-											<span class="txt">패키지가 변경되어 상품 안내와 패키지가 상이하며 상품페이지 작업중에 있습니다.</span>
+										    ${getGoods_list_detail.category_goods_packaging_type }
+											<strong class="emph"></strong>
 										</dd>
+									</dl> 
+									<!----> 
+									<dl class="list">
+										<dt class="tit"><b>유통기한</b></dt> 
+										<dd class="desc">${getGoods_list_detail.category_goods_exp_date }</dd>
+									</dl> 
+									<!----> 
+									<!----> 
+									<dl class="list">
+										<dt class="tit"><b>안내사항<br>(알레르기,<br>당도)</b></dt> 
+										<dd class="desc">
+											<span class="txt">${getGoods_list_detail.category_goods_info_1 }</span>
+											<span class="txt">${getGoods_list_detail.category_goods_info_2 }</span>
+											<span class="txt">${getGoods_list_detail.category_goods_info_3 }</span>
+											<span class="txt">${getGoods_list_detail.category_goods_info_4 }</span>
+											<span class="txt">${getGoods_list_detail.category_goods_info_5 }</span>
+										</dd>
+									</dl> 
+									<dl class="list">
+										<dt class="tit"><b>참고사항<br>(알레르기,<br>당도)</b></dt> 
+										<dd class="desc">
+											<span class="txt">${getGoods_list_detail.category_goods_ref_1 }</span>
+											<span class="txt">${getGoods_list_detail.category_goods_ref_2 }</span>
+											<span class="txt">${getGoods_list_detail.category_goods_ref_3 }</span>
+											<span class="txt">${getGoods_list_detail.category_goods_ref_4 }</span>
+											<span class="txt">${getGoods_list_detail.category_goods_ref_5 }</span>
+										</dd>
+										<!-- 
+										<dt class="tit"><b>참고사항<br>(축산물 이력정보,<br>사육 환경번호)</b></dt> 
+										<dd class="desc">${getGoods_list_detail.category_goods_ref_1 }</dd>
+										<dd class="desc">${getGoods_list_detail.category_goods_ref_2 }</dd>
+										<dd class="desc">${getGoods_list_detail.category_goods_ref_3 }</dd>
+										<dd class="desc">${getGoods_list_detail.category_goods_ref_4 }</dd>
+										<dd class="desc">${getGoods_list_detail.category_goods_ref_5 }</dd>
+										 -->
 									</dl> 
 									<!----> 
 									<!---->
@@ -339,6 +345,8 @@ $(function(){
 						</div> 
 						<!---->
 					</div>
+					
+					
 					<div id="cartPut">
 						<div class="cart_option cartList cart_type2">
 							<div class="inner_option">
@@ -358,7 +366,7 @@ $(function(){
 											</span> 
 											<span class="name">
 											<!---->                                 
-											[돈마루] 한돈 목살 구이용 300g                                  
+											${getGoods_list_detail.category_goods_name }                                  
 											<!---->
 											</span> 
 											<span class="tit_item">구매수량</span> 
@@ -455,7 +463,7 @@ $(function(){
 					<div class="cart_option cart_type3 notify_option">
 						<div class="inner_option">
 							<strong class="tit">재입고 알림 신청</strong> 
-							<p class="name_deal">[돈마루] 한돈 목살 구이용 300g</p> 
+							<p class="name_deal">${getGoods_list_detail.category_goods_name }</p> 
 							<!----> 
 							<!----> 
 							<p class="notice">
@@ -499,9 +507,55 @@ $(function(){
 					</form> 
 					<form name="frmWishlist" method="post"></form>
 				</div>
-				
+				</c:forEach>
 				<!--상품설명, 장바구니 -->
 			  </div>
+			  
+			  <!-- 상품 컨텐츠 -->
+<!--			  <c:forEach var="getGoods_list_detail" items="${getGoods_list_detail}">  -->
+			  <div class="layout-wrapper goods-view-area">
+			  	<div class="goods-view-infomation detail_wrap_outer" id="goods-view-infomation">
+			  		<div class="goods-view-tab">
+						<ul class="goods-view-infomation-tab-group">
+							<li class="goods-view-infomation-tab"><a href="#goods-description" class="goods-view-infomation-tab-anchor __active">상품설명</a></li>
+							<li class="goods-view-infomation-tab"><a href="#goods-infomation" class="goods-view-infomation-tab-anchor">상세정보</a></li>
+							<li class="goods-view-infomation-tab goods-view-review-tab"><a href="#goods-review" class="goods-view-infomation-tab-anchor">후기 <span class="count_review"></span></a></li>
+							<li class="goods-view-infomation-tab qna-show"><a href="#goods-qna" class="goods-view-infomation-tab-anchor">문의</a></li>
+						</ul>
+					</div>
+					<div class="goods-view-infomation-content __active fixed_tab" id="goods-description">
+						<div class="goods_wrap">
+							<div class="goods_intro">
+								<div class="pic">
+									<img src="${getGoods_list_detail.category_goods_image_head }">
+								</div>
+								<div class="context last">
+									<h3>
+										<small>${getGoods_list_detail.category_goods_contents_tit_main}</small>
+										<br>${getGoods_list_detail.category_goods_contents_tit_sub}
+									</h3>
+									<p class="words">
+										${getGoods_list_detail.category_goods_contents_intro }
+									</p>
+									<div class="goods_point">
+										<img src="${getGoods_list_detail.category_goods_image_contents}">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="goods-view-infomation-content" id="goods-infomation">
+						<div id="goods_image">
+							<div id="goods_pi">
+								<p class="pic">
+									<img src="${getGoods_list_detail.category_goods_image_contents_detail }">
+								</p>
+							</div>
+						</div>
+					</div>
+			  	</div>
+			  </div>
+<!-- 			  </c:forEach>  -->
 			</div>
 		</div>
 	

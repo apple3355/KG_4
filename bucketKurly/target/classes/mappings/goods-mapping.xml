@@ -7,8 +7,28 @@
   	<select id="selectGoods_list" parameterType="string" resultType="goods">
   		SELECT * FROM
   		TB_CATEGORY_GOODS
-  		ORDER BY category_goods_no
+  		ORDER BY CATEGORY_GOODS_NO
   	</select>
+  	
+  	<!-- 상품리스트 총 DB  -->
+	<select id="getGoods_cnt" resultType="string" >
+	 	SELECT COUNT(*)
+	 	FROM TB_CATEGORY_GOODS
+	</select>
+	
+	<!-- 상품 상세페이지 -->
+   <select id="getGoods_list_detail" resultType="goods">
+     SELECT * FROM tb_category_goods where category_goods_name = '친환경 대파 250g';
+   </select>
+	
+	
+	<!-- 상품 상세페이지 
+  	<select id="get_Goods" parameterType="goods" resultType="goods">
+  		SELECT * 
+  		FROM TB_CATEGORY_GOODS
+  		WHERE BY CATEGORY_GOODS_NO = #{category_goods_no}
+  	</select> -->
+  	
   	
   
   
