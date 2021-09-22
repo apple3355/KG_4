@@ -55,10 +55,11 @@ public class Board_qnaController {
 		map.put( "startList", pagination.getStartList() );
 		
 		List<Board_qnaVO> board_qnaList = board_qnaService.selectBoard_qna(map);
+		List<Board_fileVO> board_fileList = board_qnaService.selectBoard_qnaFile(1111);
 		
 		model.addAttribute("pagination",pagination);
 		model.addAttribute("board_qnaList", board_qnaList);
-		model.addAttribute("listCnt",listCnt);
+		model.addAttribute("board_fileList", board_fileList);
 		
 		return "board_qna";
 	}

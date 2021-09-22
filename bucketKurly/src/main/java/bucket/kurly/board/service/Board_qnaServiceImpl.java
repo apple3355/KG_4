@@ -47,14 +47,21 @@ public class Board_qnaServiceImpl implements Board_qnaService {
 		return qnaDao.selectBoard_qnaListCnt(member_no);
 	}
 
+	
+	@Override
+	public int selectBoard_qnaLastNo() {
+		return qnaDao.selectBoard_qnaLastNo();
+	}
+	
+	
 	@Override
 	public void insertBoard_qnaFile(Board_fileVO vo) {
 		fileDao.insertBoard_qnaFile(vo);
 	}
 
 	@Override
-	public int selectBoard_qnaLastNo() {
-		return qnaDao.selectBoard_qnaLastNo();
+	public List<Board_fileVO> selectBoard_qnaFile(int member_no) {
+		return fileDao.selectBoard_qnaFile(member_no);
 	}
 	
 }

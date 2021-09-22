@@ -66,14 +66,13 @@
 						
 						<c:forEach items="${board_qnaList}" var="board_qnaList" varStatus="status">
 							<div class="mypage_wrap" style="float: none; width: 100%">
-							<c:set var="no" value="${listCnt-status.index}" />
-								
+							
 								<!-- 고객 질문 글 -->
 								<c:if test="${board_qnaList.board_qna_gstep == 0}">
 									<table class="table_faq" width="100%" onclick="view_content(this, event)">
 										<tbody>
 											<tr>
-												<td width="8%" align="center">${no}</td>
+												<td width="8%" align="center">	${pagination.listCnt- ((pagination.page-1) * pagination.rangeSize + status.index) }</td>
 												<td width="15%" align="center" class="stxt"><b>[ <c:out value="${board_qnaList.board_qna_type}"/> ]</b></td>
 												<td style="padding-top: 5px; padding-bottom: 5px;"><c:out value="${board_qnaList.board_qna_title}"/> <span style="color: #007FC8;" class="stxt">[ <c:out value="${board_qnaList.board_qna_no}"/> ]</span></td>
 												<td width="12%" align="center"><c:out value="${board_qnaList.board_qna_writer}"/></td>
@@ -84,7 +83,14 @@
 									
 									<div style="display: none; padding: 30px; border-top: 1px solid rgb(230, 230, 230);">
 										<div width="100%" style="padding-left: 55px; padding-bottom: 20px;">[ 주문번호 <c:out value="${board_qnaList.board_qna_order_no}"/> 문의 ]</div>
-										<div width="100%" style="padding-left: 55px;"><c:out value="${board_qnaList.board_qna_content}"/></div>
+										<div width="100%" style="padding-left: 55px;">
+											<c:forEach items="${board_fileList}" var="board_fileList">
+												<c:if test="${board_qnaList.board_qna_no == board_fileList.board_file_qna_no}">
+													<img class="thumb" src="${board_fileList.board_file_resource}" alt="${board_fileList.board_file_name}"><br>
+												</c:if>
+											</c:forEach>
+											<c:out value="${board_qnaList.board_qna_content}"/>
+										</div>
 										<div class="goods-review-grp-btn" style="text-align: right;">
 											<button type="button" class="styled-button" onclick="popup_register( 'mod_qna', '4779684' );">수정</button>
 										</div>
@@ -97,7 +103,7 @@
 									<table width="100%" class="replayD" onclick="view_content(this, event)">
 										<tbody>
 											<tr>
-												<td width="8%" align="center">${no}</td>
+												<td width="8%" align="center">${pagination.listCnt- ((pagination.page-1) * pagination.rangeSize + status.index) }</td>
 												
 												<td width="15%" align="right"><img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/myqna_answer.gif"></td>
 												<td style="padding-top: 5px; padding-bottom: 5px;" class="stxt"><c:out value="${board_qnaList.board_qna_title}"/></td>

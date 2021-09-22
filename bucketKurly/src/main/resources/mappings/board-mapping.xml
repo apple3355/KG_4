@@ -92,7 +92,7 @@
 		VALUES(#{board_qna_type},#{board_qna_title},#{board_qna_order_no},#{board_qna_member_no},#{board_qna_writer},#{board_qna_content},NEXTVAL('TB_BOARD_QNA_GROUP_SEQ'),0)
 	</insert>
 	
-	<select id="selectBoard_qnaLastNo"  resultType="int">
+	<select id="selectBoard_qnaLastNo" resultType="int">
 		SELECT MAX(BOARD_QNA_NO) FROM TB_BOARD_QNA 
 	</select>
 	
@@ -102,8 +102,10 @@
 		VALUES(#{board_file_qna_no},#{board_file_member_no},#{board_file_name},#{board_file_resource})
 	</insert>
 	
-
+	<select id="selectBoard_qnaFile" parameterType="int" resultType="board_file">
+		SELECT * from TB_BOARD_FILE
+		WHERE BOARD_FILE_MEMBER_NO=#{board_file_member_no}	
+	</select>
 	
-
 
 </mapper>

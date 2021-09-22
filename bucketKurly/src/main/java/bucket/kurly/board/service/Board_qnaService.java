@@ -21,4 +21,5 @@ public interface Board_qnaService {
 	
 	//파일
 	void insertBoard_qnaFile(Board_fileVO vo);
+	List<Board_fileVO> selectBoard_qnaFile(int member_no);
 }
