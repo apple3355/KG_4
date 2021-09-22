@@ -73,23 +73,28 @@
 	</select> -->
 	
 	<!-- 1:1문의 -->
-	<select id="selectBoard_qna" parameterType="int" resultType="board_qna">
-		SELECT * FROM TB_BOARD_QNA 
-		ORDER BY BOARD_QNA_NO DESC
-		limit #{listSize} offset #{startList}
+	<select id="selectBoard_qna" parameterType="map" resultType="board_qna">
+		SELECT * from TB_BOARD_QNA
+		WHERE BOARD_QNA_MEMBER_NO=#{board_qna_member_no}
+		ORDER BY BOARD_QNA_GROUP DESC,BOARD_QNA_GSTEP ASC
+		limit #{listSize} offset #{startList}		
 	</select>
 	
 	
-	<select id="selectBoard_qnaListCnt" resultType="int">
+	<select id="selectBoard_qnaListCnt"  parameterType="int" resultType="int">
 		SELECT COUNT(*) FROM TB_BOARD_QNA 
+		WHERE BOARD_QNA_MEMBER_NO=#{board_qna_member_no}
 	</select>
 	
 	
 	<insert id="insertBoard_qna" parameterType="board_qna">
-		INSERT INTO TB_BOARD_QNA(BOARD_QNA_TYPE,BOARD_QNA_TITLE,BOARD_QNA_ORDER_NO,BOARD_QNA_MEMBER_NO,BOARD_QNA_CONTENT)
-		VALUES(#{board_qna_type},#{board_qna_title},#{board_qna_order_no},#{board_qna_member_no},#{board_qna_content})
+		INSERT INTO TB_BOARD_QNA(BOARD_QNA_TYPE,BOARD_QNA_TITLE,BOARD_QNA_ORDER_NO,BOARD_QNA_MEMBER_NO,BOARD_QNA_WRITER,BOARD_QNA_CONTENT,BOARD_QNA_GROUP,BOARD_QNA_GSTEP)
+		VALUES(#{board_qna_type},#{board_qna_title},#{board_qna_order_no},#{board_qna_member_no},#{board_qna_writer},#{board_qna_content},NEXTVAL('TB_BOARD_QNA_GROUP_SEQ'),0)
 	</insert>
 	
+	<select id="selectBoard_qnaLastNo"  resultType="int">
+		SELECT MAX(BOARD_QNA_NO) FROM TB_BOARD_QNA 
+	</select>
 	
 	<!-- 파일 -->
 	<insert id="insertBoard_qnaFile" parameterType="board_file">

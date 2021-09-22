@@ -28,8 +28,8 @@ public class S3Service {
 	private AmazonS3 s3Client;
 
 	String bucketName = "bucketkurly";
-	String accessKey = "AKIAQY45O5JBG6UEREHB";
-	String secretKey = "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";
+	String accessKey = "AKIAQY45O5JBLIZZ6PHS";
+	String secretKey = "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";
 
 	public S3Service() {
 		createS3Client();

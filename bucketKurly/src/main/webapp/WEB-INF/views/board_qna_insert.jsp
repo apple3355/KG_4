@@ -48,10 +48,9 @@
 							<div class="head_aticle"><h2 class="tit">1:1 문의</h2></div>
 							
 							<div class="xans-board-write">
-								<form name="fm" id="fm" method="post" action="/test/board_qna_insertDB.do" enctype="multipart/form-data" style="height: 100%;">
-									<input type="hidden" name="mode" value="add_qna">
+								<form name="fm" id="fm" method="post" action="${pageContext.request.contextPath}/board_qna_insertDB.do" enctype="multipart/form-data" style="height: 100%;">
 									<input type="hidden" name="board_qna_type" value="">
-									<input type="hidden" name="sno" value="0">
+									
 									<table id="table_after" class="boardWrite2" width="100%">
 										<colgroup><col width="14%" align="right"></colgroup>
 										<tbody>

@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +32,7 @@
 					<div id="snb" class="snb_cc">
 						<h2 class="tit_snb">고객센터</h2>
 						<div class="inner_snb">
-							<ul class="list_menu" style="float: left;">
+							<ul class="list_menu">
 								<li><a href="#############" onclick="KurlyTrackerLink('/shop/board/list.php?id=notice', 'select_service_notice_list')">공지사항</a></li>
 								<li><a href="#############" onclick="KurlyTrackerLink('/shop/service/faq.php', 'select_service_frequently_qna')">자주하는 질문</a></li>
 								<li class="on"><a href="#############" onclick="KurlyTrackerLink('/shop/mypage/mypage_qna.php', 'select_service_personal_inquiry_history')">1:1문의</a></li>
@@ -61,61 +63,64 @@
 							</tbody>
 						</table>
 						
-						<!-- 고객 질문 글 -->
-						<c:forEach items="${board_qnaList}" var="board_qnaList">
-							<div class="mypage_wrap" style="float: none; width: 100%">
 						
-								<table class="table_faq" width="100%" onclick="view_content(this, event)">
-									<tbody>
-										<tr>
-											<td width="8%" align="center">${board_qnaList.board_qna_no}</td>
-											<td width="15%" align="center" class="stxt"><b>[ <c:out value="${board_qnaList.board_qna_type}"/> ]</b></td>
-											<td style="padding-top: 5px; padding-bottom: 5px;"><c:out value="${board_qnaList.board_qna_title}"/> <span style="color: #007FC8;" class="stxt">[ <c:out value="${board_qnaList.board_qna_no}"/> ]</span></td>
-											<td width="12%" align="center">juykim98</td>
-											<td width="12%" align="center"><c:out value="${board_qnaList.board_qna_regdate}"/></td>
-										</tr>
-									</tbody>
-								</table>
+						<c:forEach items="${board_qnaList}" var="board_qnaList" varStatus="status">
+							<div class="mypage_wrap" style="float: none; width: 100%">
+							<c:set var="no" value="${listCnt-status.index}" />
 								
-								<div style="display: none; padding: 30px; border-top: 1px solid rgb(230, 230, 230);">
-									<div width="100%" style="padding-left: 55px; padding-bottom: 20px;">[ 주문번호 <c:out value="${board_qnaList.board_qna_order_no}"/> 문의 ]</div>
-									<div width="100%" style="padding-left: 55px;"><c:out value="${board_qnaList.board_qna_content}"/></div>
-									<div class="goods-review-grp-btn" style="text-align: right;">
-										<button type="button" class="styled-button" onclick="popup_register( 'mod_qna', '4779684' );">수정</button>
+								<!-- 고객 질문 글 -->
+								<c:if test="${board_qnaList.board_qna_gstep == 0}">
+									<table class="table_faq" width="100%" onclick="view_content(this, event)">
+										<tbody>
+											<tr>
+												<td width="8%" align="center">${no}</td>
+												<td width="15%" align="center" class="stxt"><b>[ <c:out value="${board_qnaList.board_qna_type}"/> ]</b></td>
+												<td style="padding-top: 5px; padding-bottom: 5px;"><c:out value="${board_qnaList.board_qna_title}"/> <span style="color: #007FC8;" class="stxt">[ <c:out value="${board_qnaList.board_qna_no}"/> ]</span></td>
+												<td width="12%" align="center"><c:out value="${board_qnaList.board_qna_writer}"/></td>
+												<td width="12%" align="center"><c:out value="${board_qnaList.board_qna_regdate}"/></td>
+											</tr>
+										</tbody>
+									</table>
+									
+									<div style="display: none; padding: 30px; border-top: 1px solid rgb(230, 230, 230);">
+										<div width="100%" style="padding-left: 55px; padding-bottom: 20px;">[ 주문번호 <c:out value="${board_qnaList.board_qna_order_no}"/> 문의 ]</div>
+										<div width="100%" style="padding-left: 55px;"><c:out value="${board_qnaList.board_qna_content}"/></div>
+										<div class="goods-review-grp-btn" style="text-align: right;">
+											<button type="button" class="styled-button" onclick="popup_register( 'mod_qna', '4779684' );">수정</button>
+										</div>
 									</div>
-								</div>
-							
+								
+								</c:if>
+						
+								<!-- 관리자 답변글 -->
+								<c:if test="${board_qnaList.board_qna_gstep == 1}">
+									<table width="100%" class="replayD" onclick="view_content(this, event)">
+										<tbody>
+											<tr>
+												<td width="8%" align="center">${no}</td>
+												
+												<td width="15%" align="right"><img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/myqna_answer.gif"></td>
+												<td style="padding-top: 5px; padding-bottom: 5px;" class="stxt"><c:out value="${board_qnaList.board_qna_title}"/></td>
+												<td width="12%" align="center"><c:out value="${board_qnaList.board_qna_writer}"/></td>
+												<td width="12%" align="center"><c:out value="${board_qnaList.board_qna_regdate}"/></td>
+											</tr>
+										</tbody>
+									</table>
+								
+									<div style="display: none; padding: 30px; border-top: 1px solid rgb(230, 230, 230);">
+										<div width="100%" style="padding-left: 55px;">
+											<c:out value="${board_qnaList.board_qna_content}"/>
+										</div>
+										<div class="goods-review-grp-btn" style="text-align: right;">
+										</div>
+									</div>
+								
+								</c:if>
 							</div>
+							
 						</c:forEach>
 						
-						<!-- 관리자 답변글 -->
-						<div class="mypage_wrap" style="float: none; width: 100%">
-							<table width="100%" class="replayD" onclick="view_content(this, event)">
-								<tbody>
-									<tr>
-										<td width="8%" align="center">1</td>
-										<td width="15%" align="right"><img src="/shop/data/skin/designgj/img/common/myqna_answer.gif"></td>
-										<td style="padding-top: 5px; padding-bottom: 5px;" class="stxt">안녕하세요 고객님, 답변드립니다.</td>
-										<td width="12%" align="center">marketkurly</td>
-										<td width="12%" align="center">2021-09-08</td>
-									</tr>
-								</tbody>
-							</table>
-						
-							<div style="display: none; padding: 30px; border-top: 1px solid rgb(230, 230, 230);">
-								<div width="100%" style="padding-left: 55px;">
-									Love food, Love life!<br> <br> 안녕하세요. 마켓컬리입니다.<br>
-									순차적인 문의 확인으로 답변에 지연이 발생 된 점 깊이 사과드립니다. <br> <br>
-									문의남겨주신 내용만으로는 상담이 어려워<br> 번거로우시겠지만 컬리 이용하심에 상품으로 불편을 겪으시거나
-									다른 어려움이 있으실 경우<br> 컬리 고객센터(1644-1107) 및 카카오톡, 1:1게시판으로
-									문의주시면 확인후 성실하게 조치드리겠습니다.<br> <br> 감사합니다. 마켓컬리 드림.
-								</div>
-								<div class="goods-review-grp-btn" style="text-align: right;">
-								</div>
-							</div>
-						</div>
-						
-						
+					
 						<!-- 글쓰기 버튼 -->
 						<div style="position: relative">
 							<div style="position: absolute; right: 0; top: 60px;">
