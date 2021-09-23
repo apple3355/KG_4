@@ -26,9 +26,9 @@
 				
 							<div class="page_aticle">
 								<div class="lnb_menu" id="lnbMenu" v-cloak>
-									<div id="bnrCategory" class="bnr_category">
+									<div id="bnrCategory" class="bnr_category" style="display: block;">
 										<div class="thumb">
-											<img src="" alt="카테고리배너">
+											<img src="	https://img-cf.kurly.com/category/banner/pc/ae744106-f596-4ca5-a940-7e86a0b8a9a3" alt="카테고리배너">
 										</div>
 									</div>
 										<div class="inner_lnb">
@@ -49,7 +49,7 @@
 																<view-sort :page-type="pageType" :sort-data="sortData" :sort-delivery="sortDelivery" :delivery-check="deliveryCheck" :sort-user-check="sortUserCheck" :type="type" :data-paging-total="dataPagingTotal" @sort-regist="sortRegist" @sort-layer-view="sortLayerView"></view-sort>
 																<div class>
 																	<p class="count">
-																		<span class="inner_count">총 ###건</span>
+																		<span class="inner_count">총 ${itemCnt}건</span>
 																	</p>
 																	<div class="select_type user_sort">
 																		<a class="name_select">추천순</a>
@@ -88,7 +88,9 @@
 													
 														<!-- 상품 리스트 구분선 -->
 														<c:forEach items="${selectgoods_list}" var="selectgoods_list"  >
-														<li>															
+														
+														<li>
+															<a href=/bucketkurly/goods_list_detail.do></a>																
 															<div class="item">
 																<div class="thumb"><img alt="${selectgoods_list.category_goods_name}" src="${selectgoods_list.category_goods_image_thumb}" />
 																															
@@ -112,24 +114,23 @@
 																	<span class="name"><c:out value="${selectgoods_list.category_goods_name}"/></span>
 																	<span class="cost">
 																		<!---->
-																		<span class="price">##금액##</span>
+																		<span class="price"><c:out value="${getGoods_sell.goods_sell_price }"/></span>
 																		<!---->
 																	</span>
 																	<span class="desc"><c:out value="${selectgoods_list.category_goods_name_sub}"/></span>
 																	<span class="tag">
 																		<!---->
 																	</span>
-																</a>
-																<a onclick="javascript:menuDetail('${selectgoods_list.category_goods_no}');" class="product" href="#"></a>
-															</div>
-														</li>
+																</a>																 	
+															</div>								
+														</li>			
+															
+															<!-- <a onclick="javascript:menuDetail('${selectgoods_list.category_goods_no}');" class="btn_view" href="#"></a>  -->
+															<!-- <a href="${path}/bucketkurly/goods.do?no=${board_noticeList.board_notice_no}">${board_noticeList.board_notice_title}&nbsp;</a> -->
+															<!-- <a href="#" onclick="location.href='index.html'">text</a> -->														
 														</c:forEach>									
-														<!-- 상품 리스트 구분선 -->
-														
-														
-														
-															
-															
+														<!-- 상품 리스트 구분선 -->			
+																			
 														<list-goods v-for="(goods, idx) in goodsItem" v-if="!noData" :get-category-num="getCategoryNum" :key="'goods'+idx" :idx="idx" :item="goods" :tag-name="goods.tags.names" :tag-type="goods.tags.tagType" :sort-delivery="sortDelivery" :sort-user="sortUser" :type="type" :page-type="pageType" :login-check="loginCheck" :page-count="(pageCount-1)*pageLimit" :tracking="tracking"></list-goods>
 													
 													

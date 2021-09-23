@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import bucket.kurly.goods.GoodsDAO;
 import bucket.kurly.goods.GoodsVO;
+import bucket.kurly.goods.Goods_SellVO;
 
 @Service
 public class GoodsServicImpl implements GoodsService {
@@ -30,6 +31,12 @@ public class GoodsServicImpl implements GoodsService {
 	@Override
 	public List<GoodsVO> getGoods_list_detail() {
 		return dao.getGoods_list_detail();
+	}
+
+	// 상품 판매 정보
+	@Override
+	public Goods_SellVO getGoods_sell(Goods_SellVO gsvo) {
+		return dao.getGoods_sell(gsvo);
 	}
 
 }

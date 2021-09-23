@@ -12,6 +12,7 @@
 		<typeAlias type="bucket.kurly.board.Board_fileVO" alias="board_file"/>
 		<typeAlias type="bucket.kurly.board.Board_fileVO" alias="board_file"/>
 		<typeAlias type="bucket.kurly.goods.GoodsVO" alias="goods"/>
+		<typeAlias type="bucket.kurly.goods.Goods_SellVO" alias="goods_sell"/>
 	</typeAliases>
 
 	<mappers>
