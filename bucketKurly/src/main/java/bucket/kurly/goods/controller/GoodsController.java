@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import bucket.kurly.goods.GoodsVO;
+import bucket.kurly.goods.Goods_SellVO;
 import bucket.kurly.goods.service.GoodsService;
 
 @Controller
@@ -37,25 +37,25 @@ public class GoodsController {
 		return "goods_list";
 	}
 
-	// 상품 상세페이지
-	@RequestMapping("/goods.do")
-	public String goods() {
-		return "goods";
-	}
 
-	// 상품 상세페이지
+
+	// 상품 상세페이지 + 판매 정보(가격,할인율)
 	@GetMapping("/goods_list_detail.do")
-	public String getGoods_list_detail(Model model) {
+	public String getGoods_list_detail(Goods_SellVO gsvo, Model model) {
 
 		List<GoodsVO> getGoods_list_detail = goodsService.getGoods_list_detail();
+		
+		Goods_SellVO getGoods_sell = goodsService.getGoods_sell(gsvo); //상품 판매정보
 
-		// db값 잘 가져오는지 확인
-		System.out.println(goodsService.getGoods_list_detail());
-
+		System.out.println(goodsService.getGoods_list_detail()); //상품 상세보기 내역
+		System.out.println(goodsService.getGoods_sell(gsvo)); //상품 판매정보 내역
+		
 		// model에 화면에 출력할 값 저장
 		model.addAttribute("getGoods_list_detail", getGoods_list_detail);
+		model.addAttribute("getGoods_sell", getGoods_sell);
 		return "goods_list_detail";
 	}
-
+	
+	
 	
 }

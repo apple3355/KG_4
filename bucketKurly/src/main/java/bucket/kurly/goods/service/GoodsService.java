@@ -3,6 +3,7 @@ package bucket.kurly.goods.service;
 import java.util.List;
 
 import bucket.kurly.goods.GoodsVO;
+import bucket.kurly.goods.Goods_SellVO;
 
 
 public interface GoodsService {
@@ -15,6 +16,8 @@ public interface GoodsService {
 	
 	//상품상세페이지
 	List<GoodsVO> getGoods_list_detail();
-
+	
+	//상품 판매 정보
+	Goods_SellVO getGoods_sell(Goods_SellVO gsvo);
 
 }

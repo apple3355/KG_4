@@ -26,9 +26,16 @@ public class GoodsDAO {
 
 	// 상품 상세페이지(상품정보)
 	public List<GoodsVO> getGoods_list_detail() {
-		// System.out.println("getGoods_list_detail<> 실행");
+		 System.out.println("getGoods_list_detail<> 실행");
 		return sqlSessionTemplate.selectList("GoodsDAO.getGoods_list_detail");
 	}
+	
+	// 상품 판매 정보
+	public Goods_SellVO getGoods_sell(Goods_SellVO gsvo) {
+		System.out.println("판매 정보");
+		return sqlSessionTemplate.selectOne("GoodsDAO.getGoods_sell", gsvo);
+	}
+
 
 	/*
 	 * //공지사항 페이징 public int getnotice_cnt() { System.out.println("게시글 DB수"); return

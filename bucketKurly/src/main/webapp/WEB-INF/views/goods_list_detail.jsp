@@ -231,7 +231,7 @@ $(function(){
 						</div>
 					</div>
 					
-					<c:forEach var="getGoods_list_detail" items="${getGoods_list_detail}">
+					<!-- <c:forEach var="getGoods_list_detail" items="${getGoods_list_detail}"> -->
 					<div id="sectionView">
 						<div class="inner_view">
 							<div class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1607935872129y0.jpg&quot;);">
@@ -244,10 +244,10 @@ $(function(){
 								<p class="goods_price">
 									<span class="position">
 										<span class="dc"><!----> 
-											<span class="dc_price">0<span class="won">원</span></span> 
-											<span class="dc_percent">99<span class="per">%</span></span></span> 
+											<span class="dc_price">${getGoods_sell.goods_sell_price }<span class="won">원</span></span> 
+											<span class="dc_percent">${getGoods_sell.goods_sell_discount }<span class="per">%</span></span></span> 
 										<a class="original_price">
-											<span class="price">0<span class="won">원</span></span>
+											<span class="price">3,120<span class="won">원</span></span>
 											<img src="https://res.kurly.com/kurly/ico/2021/question_24_24_c999.svg" alt="물음표" class="ico">
 										</a> 
 										<span class="layer_position"><!----> 
@@ -378,7 +378,7 @@ $(function(){
 												</span> 
 												<span class="price">
 													<!----> 
-													<span class="dc_price">9,900원</span>
+													<span class="dc_price">#######</span>
 												</span>
 											</div>
 										</li>
@@ -389,7 +389,7 @@ $(function(){
 										<!----> 
 										<strong class="tit">총 상품금액 :</strong> 
 										<span class="sum">
-											<span class="num">9,900</span> 
+											<span class="num">###</span> 
 											<span class="won">원</span>
 										</span>
 									</div> 

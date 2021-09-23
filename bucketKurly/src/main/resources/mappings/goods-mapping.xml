@@ -18,42 +18,22 @@
 	
 	<!-- 상품 상세페이지 -->
    <select id="getGoods_list_detail" resultType="goods">
-     SELECT * FROM tb_category_goods where category_goods_name = '친환경 대파 250g';
+     SELECT *
+     FROM tb_category_goods
+     WHERE category_goods_name = '친환경 대파 250g';
    </select>
 	
 	
-	<!-- 상품 상세페이지 
-  	<select id="get_Goods" parameterType="goods" resultType="goods">
-  		SELECT * 
-  		FROM TB_CATEGORY_GOODS
-  		WHERE BY CATEGORY_GOODS_NO = #{category_goods_no}
-  	</select> -->
-  	
-  	
-  
-  
- <!-- 공지사항 글 목록 
-	<mapper namespace="board_notice_mappings">
-	<select id="selectBoard_notice" parameterType="int" resultType="board_notice">
-		SELECT * FROM TB_BOARD_NOTICE 
-		ORDER BY BOARD_NOTICE_NO DESC
-		LIMIT #{listSize} OFFSET #{startList}
-	</select>
-
-	 공지사항 게시글 상세보기 
-	<select id="select_notice_no" resultType="board_notice" parameterType="board_notice">
-	 	SELECT * 
-	 	FROM TB_BOARD_NOTICE 
-	 	WHERE BOARD_NOTICE_NO = #{board_notice_no}
-	</select>
+	<!-- 상품 판매 정보 -->
+	<select id="getGoods_sell" resultType="goods_sell" >
+     SELECT *
+     FROM TB_GOODS_SELL
+     WHERE goods_sell_no = 1
+   </select>	
+   
+   
 	
-	공지사항 게시글 총 DB
-	<select id="getnotice_cnt" resultType="int" >
-	 	SELECT COUNT(*)
-	 	FROM TB_BOARD_NOTICE
-	</select>
-	
--->
+  	
   
   </mapper>
   

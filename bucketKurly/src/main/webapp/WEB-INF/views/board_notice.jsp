@@ -91,7 +91,7 @@
 															<td width=50 nowrap align=center><c:out value="${board_noticeList.board_notice_no}"/></td>
 															<td style="padding-left: 10px; text-align: left; color: #999">
 														<!-- <a href="view.php?id=notice&no=1038"><b><c:out value="${board_noticeList.board_notice_title}"/></a></td> -->
-															    <a href="${path}/bucketkurly/board_notice_no.do?no=${board_noticeList.board_notice_no}">${board_noticeList.board_notice_title}&nbsp;</a></td>	
+															    <a href="${pageContext.request.contextPath}/board_notice_no.do?no=${board_noticeList.board_notice_no}">${board_noticeList.board_notice_title}&nbsp;</a></td>	
 															<td width=100 nowrap d>
 																<align=center><c:out value="${board_noticeList.board_notice_writer}"/></td>
 															<td width=100 nowrap align=center class=eng2><fmt:formatDate value="${board_noticeList.board_notice_date}" pattern="yyyy-MM-dd" />
