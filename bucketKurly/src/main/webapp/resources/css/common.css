@@ -3,6 +3,7 @@
  /* header, 배너, 메뉴카테고리, footer 공통 스타일시트입니다. */
  
   /* document */
+  html {scroll-behavior: smooth;}
   html {display: block;}
   head {display: none;}
   script {display: none;}
