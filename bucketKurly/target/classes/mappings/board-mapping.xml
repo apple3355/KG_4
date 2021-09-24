@@ -72,7 +72,12 @@
 	 		</if>
 	</select> -->
 	
-	<!-- 1:1문의 -->
+	<!-- 1:1문의-->
+	<select id="selectBoard_qna_no" parameterType="int" resultType="board_qna">
+		SELECT * from TB_BOARD_QNA
+		WHERE BOARD_QNA_NO=#{board_qna_no}
+	</select> 
+	
 	<select id="selectBoard_qna" parameterType="map" resultType="board_qna">
 		SELECT * from TB_BOARD_QNA
 		WHERE BOARD_QNA_MEMBER_NO=#{board_qna_member_no}
