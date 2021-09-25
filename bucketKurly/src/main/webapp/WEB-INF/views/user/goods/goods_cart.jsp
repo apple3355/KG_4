@@ -24,7 +24,7 @@
 <link rel="shortcut icon" href="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/favicon_v2.webp" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="resources/css/main.css">
 <link rel="stylesheet" type="text/css" href="resources/css/goods_cart.css">
-<link rel="stylesheet" type="text/css" href="">
+<link rel="stylesheet" type="text/css" href="resources/css/common.css">
 </head>
 <body>
 <!-- header 시작 -->
@@ -44,42 +44,7 @@
 				<a href="/shop/board/view.php?id=notice&amp;no=64" id="brnQuickObj">
    			 		<img class="thumb" src="https://res.kurly.com/pc/service/main/1904/bnr_quick_20190403.png" alt="퀄리티있게 샛별배송">
 				</a>
-				<script>
-    			var brnQuickScript = (function(){
-        		var $target = $('#brnQuickObj'), $targetThumb = $('#brnQuickObj .thumb');
-        		// 시간체크
-       			function timeCheck(){
-            		var now = brnQuick.nowTime; // 호출 하는 js에서 변수선언되어 가져다 사용
-           			if( new Date('2020-12-31T11:00:00+09:00').getTime() <= now && now < new Date('2021-01-15T11:00:00+09:00').getTime() ){
-              			$target.attr('href', '/shop/event/kurlyEvent.php?htmid=event/2020/1231/newyearsday');
-              			$targetThumb.attr('src', 'https://res.kurly.com/pc/service/main/2012/bnr_quick.png');
-              			$targetThumb.attr('alt', '2021 설 선물');
-            		}else if( new Date('2021-01-15T11:00:00+09:00').getTime() <= now && now <= new Date('2021-02-10T23:00:00+09:00').getTime() ){
-              			$target.attr('href', '/shop/event/kurlyEvent.php?htmid=event/2021/0115/newyearsday');
-              			$targetThumb.attr('src', 'https://res.kurly.com/pc/service/main/2101/bnr_quick.png');
-              			$targetThumb.attr('alt', '2021 설 선물');
-            					}
-        					}
-        			return {
-            			timeCheck : timeCheck
-        			}
-    			})();
-    			brnQuickScript.timeCheck();
-				</script>
 			</div>
-			<script>
-    		var brnQuick = {
-        		nowTime : '1631673074407',
-        		update : function(){
-            		$.ajax({
-                	url : campaginUrl + 'pc/service/bnr_quick.html'
-            		}).done(function(result){
-                		$('#brnQuick').html(result);
-            			});    
-        			}
-   				}
-    			brnQuick.update();
-			</script>
 
 			<div class="side_menu">
 				<a href="/shop/main/html.php?htmid=event/kurly.htm&amp;name=lovers" class="link_menu ">등급별 혜택</a>
@@ -95,47 +60,11 @@
 			<button type="button" class="btn btn_down off">최근 본 상품 아래로 내리기</button>
 			</div>
 
-			<script>
 			/**
 			 * 상품상세일때 현재 보고 있는 상품 담기. 상품URL & 상품이미지
 			 * 최종 저장 날짜로 부터 24시가 지날시 localStorage 삭제
 			 */
-			var getGoodsRecent = (function(){
-			    var i, len, getGoodsRecent, item, _nowTime = '1631673074407';
 			
-			    _goodsRecent();
-			    function _goodsRecent(){
-			        if(localStorage.getItem('goodsRecent') === null){
-			            return false;
-			        }
-			        
-			        try{
-			            getGoodsRecent = JSON.parse(localStorage.getItem("goodsRecent"));
-			            len = getGoodsRecent.length;
-			            if(addDays(getGoodsRecent[len - 1].time, 1) < _nowTime){
-			                localStorage.removeItem('goodsRecent');
-			            }else{
-			                for(i = 0; i < len; i++){
-			                    item = '<li><a class="link_goods" href="/shop/goods/goods_view.php?goodsno=' + getGoodsRecent[i].no + '"><img src="' + getGoodsRecent[i].thumb + '" alt=""></a></li>';
-			                    $('.side_recent .list').append(item);
-			                }
-			                $('.side_recent').show();
-			            }
-			        } catch(e){
-			            console.log("JSON parse error from the Quick menu goods list!!!", e);
-			        }
-			    }
-			
-			    function addDays(date, days){
-			        var result = new Date(date);
-			        result.setDate(result.getDate() + days);
-			        return result.getTime();
-			    }
-			    
-			    // return {
-			    // }
-			})();
-			</script>
 			</div>
 			
 			<link rel="stylesheet" type="text/css" href="/asset/css/cart/list.bundle.css?ver=1.39.11">
@@ -144,33 +73,8 @@
 			
 			<form>
 				<div id="cartItemList" class="only_pc" style="min-height: 561px;">
-					<div class="empty">
-						<div class="cart_item no_item">
-							<div class="cart_select">
-								<div class="inner_select">
-								<label class="check">
-								<input type="checkbox" name="checkAll" disabled="" checked="">
-								<span class="ico">
-								</span>전체선택 (0/0)</label>
-								<a href="#none" class="btn_delete">선택삭제</a>
-								</div>
-							</div>
-							<div class="inner_empty">
-								<span class="bg"></span>
-								<p class="txt">장바구니에 담긴 상품이 없습니다</p>
-								<div class="btn_submit  ">
-								<button type="button" class="btn disabled">상품을 담아주세요</button>
-								</div>
-							</div>
-							<div class="cart_select">
-								<div class="inner_select">
-								<label class="check">
-								<input type="checkbox" name="checkAll" disabled="" checked="">
-								<span class="ico"></span>전체선택 (0/0)</label>
-								<a href="#none" class="btn_delete">선택삭제</a>
-								</div>
-							</div>
-						</div>
+					<div class="empty"><!-- class empty or "" 시작 -->
+					<!-- 이곳에 장바구니 페이지 코드 입력 -->
 				<div class="cart_result">
 					<div class="inner_result" style="top: 60px;">
 						<div class="cart_delivery">
@@ -223,7 +127,7 @@
 						</div>
 					</div>
 				</div>
-				</div>
+				</div><!-- class empty or "" 끝 -->
 				</div>
 			</form>
 

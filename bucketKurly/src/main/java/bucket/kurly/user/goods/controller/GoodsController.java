@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import bucket.kurly.user.goods.GoodsVO;
+import bucket.kurly.user.goods.Goods_CartVO;
 import bucket.kurly.user.goods.Goods_SellVO;
 import bucket.kurly.user.goods.service.GoodsService;
 
@@ -44,7 +46,6 @@ public class GoodsController {
 	public String getGoods_list_detail(Goods_SellVO gsvo, Model model) {
 
 		List<GoodsVO> getGoods_list_detail = goodsService.getGoods_list_detail();
-		
 		Goods_SellVO getGoods_sell = goodsService.getGoods_sell(gsvo); //상품 판매정보
 
 		System.out.println(goodsService.getGoods_list_detail()); //상품 상세보기 내역
@@ -55,6 +56,17 @@ public class GoodsController {
 		model.addAttribute("getGoods_sell", getGoods_sell);
 		return "goods/goods_list_detail";
 	}
+	
+	//장바구니에 담기
+	@RequestMapping("/insertGoods_cart.do")
+	public String insertGoods_cart(Goods_CartVO gcvo) {
+		
+		goodsService.insertGoods_cart(gcvo);
+		return "redirect:/goods_list_detail.do";
+	}
+	
+	//장바구니 정보
+	//장바구니 삭제
 	
 	
 	

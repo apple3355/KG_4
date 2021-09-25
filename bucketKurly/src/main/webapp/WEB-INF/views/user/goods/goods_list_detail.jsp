@@ -21,6 +21,8 @@
 <link rel="stylesheet" type="text/css" href="resources/css/goods_list_detail.css">
 <link rel="stylesheet" type="text/css" href="resources/css/main.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common.css">
+
+<script src="resources/js/goods_list_detail.js"></script>
 <script>
     $(function(){
         var mySlider = $("#slideBanner").bxSlider({
@@ -313,30 +315,14 @@ $(function(){
 									<dl class="list">
 										<dt class="tit"><b>안내사항<br>(알레르기,<br>당도)</b></dt> 
 										<dd class="desc">
-											<span class="txt">${getGoods_list_detail.category_goods_info_1 }</span>
-											<span class="txt">${getGoods_list_detail.category_goods_info_2 }</span>
-											<span class="txt">${getGoods_list_detail.category_goods_info_3 }</span>
-											<span class="txt">${getGoods_list_detail.category_goods_info_4 }</span>
-											<span class="txt">${getGoods_list_detail.category_goods_info_5 }</span>
+											<span class="txt">${getGoods_list_detail.category_goods_info }</span>
 										</dd>
 									</dl> 
 									<dl class="list">
-										<dt class="tit"><b>참고사항<br>(알레르기,<br>당도)</b></dt> 
-										<dd class="desc">
-											<span class="txt">${getGoods_list_detail.category_goods_ref_1 }</span>
-											<span class="txt">${getGoods_list_detail.category_goods_ref_2 }</span>
-											<span class="txt">${getGoods_list_detail.category_goods_ref_3 }</span>
-											<span class="txt">${getGoods_list_detail.category_goods_ref_4 }</span>
-											<span class="txt">${getGoods_list_detail.category_goods_ref_5 }</span>
-										</dd>
-										<!-- 
 										<dt class="tit"><b>참고사항<br>(축산물 이력정보,<br>사육 환경번호)</b></dt> 
-										<dd class="desc">${getGoods_list_detail.category_goods_ref_1 }</dd>
-										<dd class="desc">${getGoods_list_detail.category_goods_ref_2 }</dd>
-										<dd class="desc">${getGoods_list_detail.category_goods_ref_3 }</dd>
-										<dd class="desc">${getGoods_list_detail.category_goods_ref_4 }</dd>
-										<dd class="desc">${getGoods_list_detail.category_goods_ref_5 }</dd>
-										 -->
+										<dd class="desc">
+											<span class="txt">${getGoods_list_detail.category_goods_ref }</span>
+										</dd>
 									</dl> 
 									<!----> 
 									<!---->
@@ -372,15 +358,16 @@ $(function(){
 											<span class="tit_item">구매수량</span> 
 											<div class="option">
 												<span class="count">
-													<button type="button" class="btn down on">수량내리기</button> 
-													<input type="number" readonly="readonly" onfocus="this.blur()" class="inp"> 
-													<button type="button" class="btn up on">수량올리기</button>
+													<button type="button" class="btn down on" onclick='fnCount("minus")' value='-'>수량내리기</button>
+													<input type="number" id= "number" name="number" readonly="readonly" value="1" onfocus="this.blur()" class="inp"> 
+													<button type="button" class="btn up on" onclick='fnCount("plus")' value='+'>수량올리기</button>
 												</span> 
 												<span class="price">
 													<!----> 
 													<span class="dc_price">#######</span>
 												</span>
 											</div>
+											
 										</li>
 									</ul>
 								</div> 
@@ -408,10 +395,17 @@ $(function(){
 									<button type="button" class="btn btn_alarm">재입고 알림</button>
 								</div> 
 								<span class="btn_type1">
-									<button type="button" class="txt_type">                        
+									<button type="button" class="txt_type" onclick="fnCart()">                        
 									장바구니 담기                      
 									</button> 
 									<!---->
+									<script type="text/javascript">
+										function fnCart(){
+											if(confirm("장바구니에 담으시겠습니까?")){
+												location.href="insertGoods_cart.do";
+											}
+										}
+									</script>
 								</span> 
 								<!----> 
 								<!----> 
