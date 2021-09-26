@@ -3,42 +3,71 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="GoodsDAO">
 
+	<resultMap type="goodsVo" id="goodsVo">		
+		<result property="category_goods_parent_no" column="category_goods_parent_no"/>
+		<result property="category_goods_sub_no" column="category_goods_sub_no"/>
+		<result property="category_goods_no" column="category_goods_no"/>
+		<result property="category_goods_name" column="category_goods_name"/>
+		<result property="category_goods_name_sub" column="category_goods_name_sub"/>
+		<result property="category_goods_unit" column="category_goods_unit"/>
+		<result property="category_goods_weight" column="category_goods_weight"/>
+		<result property="category_goods_from" column="category_goods_from"/>
+		<result property="category_goods_packaging_type" column="category_goods_packaging_type"/>
+		<result property="category_goods_delivery_type" column="category_goods_delivery_type"/>
+		<result property="category_goods_exp_date" column="category_goods_exp_date"/>
+		<result property="category_goods_info" column="category_goods_info"/>
+		<result property="category_goods_ref" column="category_goods_ref"/>
+		<result property="category_goods_contents_tit_main" column="category_goods_contents_tit_main"/>
+		<result property="category_goods_contents_tit_sub" column="category_goods_contents_tit_sub"/>
+		<result property="category_goods_contents_intro" column="category_goods_contents_intro"/>
+		<result property="category_goods_image_head" column="category_goods_image_head"/>
+		<result property="category_goods_image_thumb" column="category_goods_image_thumb"/>
+		<result property="category_goods_image_contents" column="category_goods_image_contents"/>
+		<result property="category_goods_image_contents_detail" column="category_goods_image_contents_detail"/>
+	</resultMap>
+
+	<resultMap type="goods_sell" id="goods_sell">
+		<result property="goods_sell_no" column="goods_sell_no"/>
+		<result property="goods_sell_parent_no" column="goods_sell_parent_no"/>
+		<result property="goods_sell_sub_no" column="goods_sell_sub_no"/>
+		<result property="goods_sell_goods_no" column="goods_sell_goods_no"/>
+		<result property="goods_sell_price" column="goods_sell_price"/>
+		<result property="goods_sell_in_date" column="goods_sell_in_date"/>
+		<result property="goods_sell_in_ea" column="goods_sell_in_ea"/>
+		<result property="goods_sell_stock_ea" column="goods_sell_stock_ea"/>
+		<result property="goods_sell_rea" column="goods_sell_rea"/>
+		<result property="goods_sell_exp" column="goods_sell_exp"/>
+		<result property="goods_sell_promotion" column="goods_sell_promotion"/>
+		<result property="goods_sell_status" column="goods_sell_status"/>
+		<result property="goods_sell_discount" column="goods_sell_discount"/>
+		<collection property="goodsvo" resultMap="goodsVo" />
+	</resultMap>
+	
+	
 	<!-- 상품리스트 목록 -->
-	<select id="selectGoods_list" parameterType="string"
-		resultType="goods">
-		SELECT * FROM
-		TB_CATEGORY_GOODS
-		ORDER BY CATEGORY_GOODS_NO
+	<select id="selectGoods_sell" parameterType="String" resultMap="goods_sell">
+		SELECT *
+		FROM TB_GOODS_SELL s JOIN TB_CATEGORY_GOODS g
+		ON s.goods_sell_goods_no = g.category_goods_no
+		
+		<if test='select_type.equals("new")'> 
+			ORDER BY GOODS_SELL_IN_DATE DESC
+		</if> 
+		<if test='select_type.equals("price_low")'> 
+			ORDER BY GOODS_SELL_PRICE
+		</if>
+		<if test='select_type.equals("price_high")'> 
+			ORDER BY GOODS_SELL_PRICE DESC
+		</if>
 	</select>
-
-	<!-- 상품리스트 총 DB -->
-	<select id="getGoods_cnt" resultType="string">
-		SELECT COUNT(*)
-		FROM TB_CATEGORY_GOODS
-	</select>
-
+	
 	<!-- 상품 상세페이지 -->
-	<select id="getGoods_list_detail" resultType="goods">
+	<select id="getGoods_detail" parameterType="int" resultMap="goods_sell">
 		SELECT *
-		FROM tb_category_goods
-		WHERE category_goods_name = '친환경 양상추 200g';
+		FROM TB_GOODS_SELL s , TB_CATEGORY_GOODS g
+		WHERE s.goods_sell_goods_no = g.category_goods_no		
+		AND s.goods_sell_no = #{goods_sell_no}
 	</select>
-
-	<!-- 상품 판매 정보 -->
-	<select id="getGoods_sell" resultType="goods_sell">
-		SELECT *
-		FROM TB_GOODS_SELL
-		WHERE goods_sell_no = 1
-	</select>
-
-	<!-- 장바구니 담기 -->
-
-	<insert id="insertGoods_cart" parameterType="goods">
-		INSERT INTO
-		TB_GOODS_CART(GOODS_CART_MEMBER_NO,GOODS_CART_DELIVERY_TYPE,GOODS_CART_IMAGE_URL,GOODS_CART_NAME,
-		GOODS_CART_COUNT,GOODS_CART_PRICE,GOODS_CART_STATUS)
-		values (1111,#{category_goods_delivery_type},#{category_goods_image_thumb},#{category_goods_name},2,7800,1);
-	</insert>
 
 </mapper>
   

@@ -170,10 +170,10 @@
 								<a href="#####"><span class="ico"></span><span class="txt">전체 카테고리</span></a>
 							</li>
 							<li class="menu2">
-								<a href="#####" class="link new "><span class="txt">신상품</span></a>
+								<a href="${pageContext.request.contextPath}/goods_list.do?type=new" class="link new "><span class="txt">신상품</span></a>
 							</li>
 							<li class="menu3">
-								<a href="/shop/goods/goods_list.php?category=029" class="link best "><span class="txt">베스트</span></a>
+								<a href="${pageContext.request.contextPath}/goods_list.do?type=best" class="link best "><span class="txt">베스트</span></a>
 							</li>
 							<li class="menu4">
 								<a href="/shop/goods/goods_list.php?list=sale" class="link bargain "><span class="txt">알뜰쇼핑</span></a>
