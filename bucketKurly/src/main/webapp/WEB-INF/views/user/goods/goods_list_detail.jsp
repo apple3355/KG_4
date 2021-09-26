@@ -365,13 +365,13 @@ $(function(){
 											<div class="option">
 												 <span class="count">
 						                              <button type="button" class="btn down on">수량내리기</button> 
-						                              <input type="number" readonly="readonly" onfocus="this.blur()" class="inp" value="1" id="inp"> 
+						                              <input type="number" readonly="readonly" class="inp" value="1" id="inp" onchange="inp_change(this)"> 
 						                              <button type="button" class="btn up on">수량올리기</button>
 						                           </span>
 						                    
 												<span class="price">
 													<!----> 
-													<span class="dc_price">#######</span>
+													<span class="dc_price">${goods_sellVO.goods_sell_price}</span>
 												</span>
 											</div>
 											
@@ -560,46 +560,45 @@ $(function(){
 	
 	<!-- 수량관련 -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.min.js" ></script>
+	
+	
+	
+	<!-- 화면 위로가기 버튼 -->
     <script type="text/javascript">
-	   $(function(){
-	        $(".btn.down.on").click(function(){
-	           let EA = Number($("#inp").val()); 
+	$(document).ready(function(){
+		   $("#inp").on("propertychange change keyup paste input", function() {
+			   alert("input 어딘가에서 값이 변경되었습니다.");
+               
+            });
+		
+		function inp_change(obj) {
+			  obj.value ='yellow';
+			}
 
+		 $(".btn.down.on").click(function(){
+	           let EA = Number($("#inp").val()); 
 	           if(EA == 1){
 	             alert("1 개 이하로 선택 할 수 없습니다. ");
 	           }else{
 	               EA = EA-1;
-
 	           }
 	           $("#inp").val(EA);
 	        });
 	        
 	        $(".btn.up.on").click(function(){
-
 	        	let EA = Number($("#inp").val());
-
 	        	let Max = Number(10);
-
 	        	if(EA == Max){
 	              alert("해당 상품은 " + Max + "개 이상 선택할 수 없습니다");
 	             }else{
-
 	            	 EA = EA+1;
 	             }
 	           $("#inp").val(EA);
 	        });
 	        
-	//        $(".inp").change(function(){
-	//           alert("input 어딘가에서 값이 변경되었습니다.");
-	//        });
-	   });
-	   </script>
-	
-	
-	
-	<!-- 화면 위로가기 버튼 -->
-    <script>
-	$(document).ready(function(){
+	       
+		
+		
 		var pageTop = {
 			$target : $('#pageTop'),
 			$targetDefault : 0,

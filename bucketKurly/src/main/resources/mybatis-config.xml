@@ -5,6 +5,7 @@
 <configuration>
 	<properties resource="db.properties" />
 	<typeAliases>
+		<typeAlias type="bucket.kurly.admin.board.Admin_Board_noticeVO" alias="admin_board_notice" />
 		<typeAlias type="bucket.kurly.user.member.MemberVO" alias="member" />
 		<typeAlias type="bucket.kurly.user.member.MemberTermsVO" alias="memberterms" />
 		<typeAlias type="bucket.kurly.user.board.Board_noticeVO" alias="board_notice" />

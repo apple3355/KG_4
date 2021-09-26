@@ -112,5 +112,27 @@
 		WHERE BOARD_FILE_MEMBER_NO=#{board_file_member_no}	
 	</select>
 	
-
+	<!-- 관리자 -->
+	<select id="admin_selectBoard_notice" resultType="admin_board_notice">
+		SELECT * FROM TB_BOARD_NOTICE
+		ORDER BY BOARD_NOTICE_NO DESC
+	</select>
+	
+	<select id="admin_selectBoard_notice_no" parameterType="int" resultType="admin_board_notice">
+		SELECT * FROM TB_BOARD_NOTICE
+		WHERE board_notice_no = ${board_notice_no}
+	</select>
+	
+	<update id ="admin_updateBoard_notice_no" parameterType="admin_board_notice">
+		UPDATE TB_BOARD_NOTICE 
+		SET BOARD_NOTICE_TITLE = #{board_notice_title} 
+		,BOARD_NOTICE_CONTENT = #{board_notice_content} 
+		WHERE BOARD_NOTICE_NO = #{board_notice_no}
+	</update>
+	
+	<delete id ="admin_deleteBoard_notice_no" parameterType="int">
+		DELETE FROM TB_BOARD_NOTICE 
+		WHERE BOARD_NOTICE_NO = #{board_notice_no}
+	</delete>
+		
 </mapper>

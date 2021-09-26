@@ -109,7 +109,7 @@
 												<td width="15%" align="right"><img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/myqna_answer.gif"></td>
 												<td style="padding-top: 5px; padding-bottom: 5px;" class="stxt"><c:out value="${board_qnaList.board_qna_title}"/></td>
 												<td width="12%" align="center"><c:out value="${board_qnaList.board_qna_writer}"/></td>
-												<td width="12%" align="center"><c:out value="${board_qnaList.board_qna_regdate}"/></td>
+												<td width="12%" align="center"><fmt:formatDate value="${board_qnaList.board_qna_regdate}" pattern="yyyy-MM-dd" /></td>
 											</tr>
 										</tbody>
 									</table>
