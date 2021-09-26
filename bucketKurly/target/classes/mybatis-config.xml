@@ -14,12 +14,13 @@
 		<typeAlias type="bucket.kurly.user.goods.GoodsVO" alias="goods"/>
 		<typeAlias type="bucket.kurly.user.goods.Goods_SellVO" alias="goods_sell"/>
 		<typeAlias type="bucket.kurly.user.goods.Goods_CartVO" alias="goods_cart"/>
-		
+		<typeAlias type="bucket.kurly.user.order.OrderVO" alias="order"/>
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="mappings/member-mapping.xml" />
 		<mapper resource="mappings/board-mapping.xml" />
 		<mapper resource="mappings/goods-mapping.xml" />
+		<mapper resource="mappings/order-mapping.xml"/>
 	</mappers>
 </configuration>
