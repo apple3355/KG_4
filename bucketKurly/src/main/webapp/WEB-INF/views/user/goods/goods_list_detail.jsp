@@ -365,7 +365,7 @@ $(function(){
 											<div class="option">
 												 <span class="count">
 						                              <button type="button" class="btn down on">수량내리기</button> 
-						                              <input type="number" readonly="readonly" onfocus="this.blur()" class="inp" value="1"> 
+						                              <input type="number" readonly="readonly" onfocus="this.blur()" class="inp" value="1" id="inp"> 
 						                              <button type="button" class="btn up on">수량올리기</button>
 						                           </span>
 						                    
@@ -563,31 +563,30 @@ $(function(){
     <script type="text/javascript">
 	   $(function(){
 	        $(".btn.down.on").click(function(){
-	           let EA = Number($('.inp').val()); 
-	           alert(typeof(EA));
+	           let EA = Number($("#inp").val()); 
+
 	           if(EA == 1){
 	             alert("1 개 이하로 선택 할 수 없습니다. ");
 	           }else{
 	               EA = EA-1;
-	               alert(typeof(EA)+ "계산된" + EA);
+
 	           }
-	           $(".inp").val(EA);
+	           $("#inp").val(EA);
 	        });
 	        
 	        $(".btn.up.on").click(function(){
-	           alert("들어옴");
-	           let EA = Number($('.inp').val());
-	           alert(EA);
-	           let Max = Number(10);
-	           alert(typeof(Max));
-	           if(EA == Max){
+
+	        	let EA = Number($("#inp").val());
+
+	        	let Max = Number(10);
+
+	        	if(EA == Max){
 	              alert("해당 상품은 " + Max + "개 이상 선택할 수 없습니다");
 	             }else{
-	            	alert(parseInt(EA)+1);
-	                EA = EA+1;
-	                alert(typeof(EA)+ "계산된" + EA);
+
+	            	 EA = EA+1;
 	             }
-	           $(".inp").val(EA);
+	           $("#inp").val(EA);
 	        });
 	        
 	//        $(".inp").change(function(){
