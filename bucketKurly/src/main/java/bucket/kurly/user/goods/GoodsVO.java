@@ -23,15 +23,6 @@ public class GoodsVO {
 	private String category_goods_image_contents;
 	private String category_goods_image_contents_detail;
 	
-	//장바구니 테이블로 조인할 vo
-	private Goods_SellVO goods_SellVO;
-	
-	public Goods_SellVO getGoods_SellVO() {
-		return goods_SellVO;
-	}
-	public void setGoods_SellVO(Goods_SellVO goods_SellVO) {
-		this.goods_SellVO = goods_SellVO;
-	}
 	public String getCategory_goods_parent_no() {
 		return category_goods_parent_no;
 	}

@@ -11,7 +11,7 @@
 		<typeAlias type="bucket.kurly.user.board.Board_qnaVO" alias="board_qna"/>
 		<typeAlias type="bucket.kurly.user.board.Board_fileVO" alias="board_file"/>
 		<typeAlias type="bucket.kurly.user.board.Board_fileVO" alias="board_file"/>
-		<typeAlias type="bucket.kurly.user.goods.GoodsVO" alias="goods"/>
+		<typeAlias type="bucket.kurly.user.goods.GoodsVO" alias="goodsVo"/>
 		<typeAlias type="bucket.kurly.user.goods.Goods_SellVO" alias="goods_sell"/>
 		<typeAlias type="bucket.kurly.user.goods.Goods_CartVO" alias="goods_cart"/>
 		

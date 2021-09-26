@@ -16,6 +16,15 @@ public class Goods_SellVO {
 	private String goods_sell_status;
 	private int goods_sell_discount;
 	
+	private GoodsVO goodsvo;
+	public GoodsVO getGoodsvo() {
+		return goodsvo;
+	}
+	public void setGoodsvo(GoodsVO goodsvo) {
+		this.goodsvo = goodsvo;
+	}
+	
+	
 	public int getGoods_sell_no() {
 		return goods_sell_no;
 	}
@@ -102,6 +111,7 @@ public class Goods_SellVO {
 				+ ", goods_sell_in_ea=" + goods_sell_in_ea + ", goods_sell_stock_ea=" + goods_sell_stock_ea
 				+ ", goods_sell_rea=" + goods_sell_rea + ", goods_sell_exp=" + goods_sell_exp
 				+ ", goods_sell_promotion=" + goods_sell_promotion + ", goods_sell_status=" + goods_sell_status
-				+ ", goods_sell_discount=" + goods_sell_discount + "]";
+				+ ", goods_sell_discount=" + goods_sell_discount + ", goodsvo=" + goodsvo + "]";
 	}
+	
 }

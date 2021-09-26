@@ -149,15 +149,23 @@ $(function(){
     
     
 });
-
-
-
-
 </script>
 
 
 
 <style>
+
+	/* 상품 수량 관련(지우지 말아주세요ㅜㅜ-경원) */
+   #cartPut .cart_option .list .up.on { background-image: url(https://res.kurly.com/pc/ico/2010/ico_plus_on.svg);}
+   #cartPut .cart_option .list .up {    float: right;    margin-left: -1px;    background: #fff url(https://res.kurly.com/pc/ico/2010/ico_plus.svg) no-repeat 50% 50%;    background-size: 30px 30px;}
+   #cartPut .cart_option .list .btn {    overflow: hidden;    float: left;    width: 28px;    height: 28px;    border: 0;    font-size: 0;    line-height: 0;    text-indent: -9999px;}
+   #cartPut .cart_option .list .inp {    float: left;    width: 30px;    height: 30px;    margin-right: -1px;    padding: 0 0 4px;    border: 0;    background-color: #fff;    font-size: 14px;    color: #000;    line-height: 18px;    text-align: center;}
+   #cartPut .cart_option .list .count {    overflow: hidden;    float: left;    width: 88px;    height: 30px;    border: 1px solid #dddfe1;    border-radius: 3px;}
+   #cartPut * {    font-family: noto sans;    color: #333;    letter-spacing: 0;}
+   #cartPut .cart_option .list .down.on {    background-image: url(https://res.kurly.com/pc/ico/2010/ico_minus_on.svg);}
+   #cartPut .cart_option .list .down {    background: #fff url(https://res.kurly.com/pc/ico/2010/ico_minus.svg) no-repeat 50% 50%;    background-size: 30px 30px;}
+   #cartPut .cart_type2 .list_nopackage li {    float: none;    width: 100%;    padding: 0 0 5px;    margin: 0; border: 0;}
+
 /* 메인 배너의 좌측 화살표버튼 */
 #prevBtn{cursor: pointer; overflow:hidden;position:absolute;bottom:316px;width:60px;height:60px;border:0 none;font-size:0;line-height:0;text-indent:-9999px;transition:opacity 0.5s ease; user-select: none}
 #prevBtn{left:-30px;background:url(https://res.kurly.com/pc/service/main/1908/btn_prev_default.png?v=1) no-repeat 50% 50%;transition:background 0.5s}
@@ -215,8 +223,8 @@ $(function(){
       <%@ include file="/WEB-INF/views/layout/header.jsp"%>  								
 	  <div id="main">
 				<div id="content">
+				
 				<div class="section_view">
-
 					<div id="shareLayer">
 						<div class="layer_share" style="display: none;">
 							<div class="inner_layersns">
@@ -232,22 +240,20 @@ $(function(){
 							</div>
 						</div>
 					</div>
-					
-					<!-- <c:forEach var="getGoods_list_detail" items="${getGoods_list_detail}"> -->
 					<div id="sectionView">
 						<div class="inner_view">
 							<div class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1607935872129y0.jpg&quot;);">
-								<img src="${getGoods_list_detail.category_goods_image_thumb }" alt="상품 대표 이미지" class="bg"></div> 
+								<img src="${goods_sellVO.goodsvo.category_goods_image_thumb}" alt="상품 대표 이미지" class="bg"></div> 
 							<p class="goods_name">
 								<span class="btn_share"><button id="btnShare" class="btnShare" data-goodsno="6016">공유하기</button></span> 
-								<strong class="name">${getGoods_list_detail.category_goods_name }</strong> 
-								<span class="short_desc">${getGoods_list_detail.category_goods_name_sub }</span></p> 
+								<strong class="name">${goods_sellVO.goodsvo.category_goods_name}</strong> 
+								<span class="short_desc">${goods_sellVO.goodsvo.category_goods_name_sub}</span></p> 
 								<p class="goods_dcinfo">회원할인가</p> 
 								<p class="goods_price">
 									<span class="position">
 										<span class="dc"><!----> 
-											<span class="dc_price">${getGoods_sell.goods_sell_price }<span class="won">원</span></span> 
-											<span class="dc_percent">${getGoods_sell.goods_sell_discount }<span class="per">%</span></span></span> 
+											<span class="dc_price">${goods_sellVO.goods_sell_price}<span class="won">원</span></span> 
+											<span class="dc_percent">${goods_sellVO.goods_sell_discount}<span class="per">%</span></span></span> 
 										<a class="original_price">
 											<span class="price">3,120<span class="won">원</span></span>
 											<img src="https://res.kurly.com/kurly/ico/2021/question_24_24_c999.svg" alt="물음표" class="ico">
@@ -283,45 +289,45 @@ $(function(){
 								<div class="goods_info">
 									<dl class="list fst">
 										<dt class="tit"><b>판매단위</b></dt> 
-										<dd class="desc">${getGoods_list_detail.category_goods_unit }</dd>
+										<dd class="desc">${goods_sellVO.goodsvo.category_goods_unit }</dd>
 									</dl> 
 									<dl class="list">
 										<dt class="tit"><b>중량/용량</b></dt> 
-										<dd class="desc">${getGoods_list_detail.category_goods_weight }</dd>
+										<dd class="desc">${goods_sellVO.goodsvo.category_goods_weight }</dd>
 									</dl> 
 									<dl class="list">
 										<dt class="tit"><b>배송구분</b></dt> 
 										<!----> 
-										<dd class="desc">${getGoods_list_detail.category_goods_delivery_type }</dd>
+										<dd class="desc">${goods_sellVO.goodsvo.category_goods_delivery_type }</dd>
 									</dl> 
 									<dl class="list">
 										<dt class="tit"><b>원산지</b></dt> 
-										<dd class="desc">${getGoods_list_detail.category_goods_from }</dd>
+										<dd class="desc">${goods_sellVO.goodsvo.category_goods_from }</dd>
 									</dl> 
 									<dl class="list">
 										<dt class="tit"><b>포장타입</b></dt> 
 										<dd class="desc">
-										    ${getGoods_list_detail.category_goods_packaging_type }
+										    ${goods_sellVO.goodsvo.category_goods_packaging_type }
 											<strong class="emph"></strong>
 										</dd>
 									</dl> 
 									<!----> 
 									<dl class="list">
 										<dt class="tit"><b>유통기한</b></dt> 
-										<dd class="desc">${getGoods_list_detail.category_goods_exp_date }</dd>
+										<dd class="desc">${goods_sellVO.goodsvo.category_goods_exp_date }</dd>
 									</dl> 
 									<!----> 
 									<!----> 
 									<dl class="list">
 										<dt class="tit"><b>안내사항<br>(알레르기,<br>당도)</b></dt> 
 										<dd class="desc">
-											<span class="txt">${getGoods_list_detail.category_goods_info }</span>
+											<span class="txt">${goods_sellVO.goodsvo.category_goods_info }</span>
 										</dd>
 									</dl> 
 									<dl class="list">
 										<dt class="tit"><b>참고사항<br>(축산물 이력정보,<br>사육 환경번호)</b></dt> 
 										<dd class="desc">
-											<span class="txt">${getGoods_list_detail.category_goods_ref }</span>
+											<span class="txt">${goods_sellVO.goodsvo.category_goods_ref }</span>
 										</dd>
 									</dl> 
 									<!----> 
@@ -352,16 +358,17 @@ $(function(){
 											</span> 
 											<span class="name">
 											<!---->                                 
-											${getGoods_list_detail.category_goods_name }                                  
+											${goods_sellVO.goodsvo.category_goods_name }                                  
 											<!---->
 											</span> 
 											<span class="tit_item">구매수량</span> 
 											<div class="option">
-												<span class="count">
-													<button type="button" class="btn down on" onclick='fnCount("minus")' value='-'>수량내리기</button>
-													<input type="number" id= "number" name="number" readonly="readonly" value="1" onfocus="this.blur()" class="inp"> 
-													<button type="button" class="btn up on" onclick='fnCount("plus")' value='+'>수량올리기</button>
-												</span> 
+												 <span class="count">
+						                              <button type="button" class="btn down on">수량내리기</button> 
+						                              <input type="number" readonly="readonly" onfocus="this.blur()" class="inp" value="1"> 
+						                              <button type="button" class="btn up on">수량올리기</button>
+						                           </span>
+						                    
 												<span class="price">
 													<!----> 
 													<span class="dc_price">#######</span>
@@ -457,7 +464,7 @@ $(function(){
 					<div class="cart_option cart_type3 notify_option">
 						<div class="inner_option">
 							<strong class="tit">재입고 알림 신청</strong> 
-							<p class="name_deal">${getGoods_list_detail.category_goods_name }</p> 
+							<p class="name_deal">${goods_sellVO.goodsvo.category_goods_name }</p> 
 							<!----> 
 							<!----> 
 							<p class="notice">
@@ -501,12 +508,10 @@ $(function(){
 					</form> 
 					<form name="frmWishlist" method="post"></form>
 				</div>
-				</c:forEach>
 				<!--상품설명, 장바구니 -->
 			  </div>
 			  
 			  <!-- 상품 컨텐츠 -->
-<!--			  <c:forEach var="getGoods_list_detail" items="${getGoods_list_detail}">  -->
 			  <div class="layout-wrapper goods-view-area">
 			  	<div class="goods-view-infomation detail_wrap_outer" id="goods-view-infomation">
 			  		<div class="goods-view-tab">
@@ -521,18 +526,18 @@ $(function(){
 						<div class="goods_wrap">
 							<div class="goods_intro">
 								<div class="pic">
-									<img src="${getGoods_list_detail.category_goods_image_head }">
+									<img src="${goods_sellVO.goodsvo.category_goods_image_head }">
 								</div>
 								<div class="context last">
 									<h3>
-										<small>${getGoods_list_detail.category_goods_contents_tit_main}</small>
-										<br>${getGoods_list_detail.category_goods_contents_tit_sub}
+										<small>${goods_sellVO.goodsvo.category_goods_contents_tit_main}</small>
+										<br>${goods_sellVO.goodsvo.category_goods_contents_tit_sub}
 									</h3>
 									<p class="words">
-										${getGoods_list_detail.category_goods_contents_intro }
+										${goods_sellVO.goodsvo.category_goods_contents_intro }
 									</p>
 									<div class="goods_point">
-										<img src="${getGoods_list_detail.category_goods_image_contents}">
+										<img src="${goods_sellVO.goodsvo.category_goods_image_contents}">
 									</div>
 								</div>
 							</div>
@@ -542,16 +547,56 @@ $(function(){
 						<div id="goods_image">
 							<div id="goods_pi">
 								<p class="pic">
-									<img src="${getGoods_list_detail.category_goods_image_contents_detail }">
+									<img src="${goods_sellVO.goodsvo.category_goods_image_contents_detail }">
 								</p>
 							</div>
 						</div>
 					</div>
 			  	</div>
 			  </div>
-<!-- 			  </c:forEach>  -->
+			 
 			</div>
 		</div>
+	
+	<!-- 수량관련 -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.min.js" ></script>
+    <script type="text/javascript">
+	   $(function(){
+	        $(".btn.down.on").click(function(){
+	           let EA = Number($('.inp').val()); 
+	           alert(typeof(EA));
+	           if(EA == 1){
+	             alert("1 개 이하로 선택 할 수 없습니다. ");
+	           }else{
+	               EA = EA-1;
+	               alert(typeof(EA)+ "계산된" + EA);
+	           }
+	           $(".inp").val(EA);
+	        });
+	        
+	        $(".btn.up.on").click(function(){
+	           alert("들어옴");
+	           let EA = Number($('.inp').val());
+	           alert(EA);
+	           let Max = Number(10);
+	           alert(typeof(Max));
+	           if(EA == Max){
+	              alert("해당 상품은 " + Max + "개 이상 선택할 수 없습니다");
+	             }else{
+	            	alert(parseInt(EA)+1);
+	                EA = EA+1;
+	                alert(typeof(EA)+ "계산된" + EA);
+	             }
+	           $(".inp").val(EA);
+	        });
+	        
+	//        $(".inp").change(function(){
+	//           alert("input 어딘가에서 값이 변경되었습니다.");
+	//        });
+	   });
+	   </script>
+	
+	
 	
 	<!-- 화면 위로가기 버튼 -->
     <script>

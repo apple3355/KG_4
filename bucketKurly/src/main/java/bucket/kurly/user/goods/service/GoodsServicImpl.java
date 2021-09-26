@@ -18,21 +18,23 @@ public class GoodsServicImpl implements GoodsService {
 
 	// 상품리스트
 	@Override
-	public List<GoodsVO> selectGoods_list() {
-		return dao.selectGoods_list();
+	public List<Goods_SellVO> selectGoods_sell(String select_type) {
+		return dao.selectGoods_sell(select_type);
 	}
-
+	
+	// 상품 상세페이지
+	@Override
+	public Goods_SellVO getGoods_detail(int goods_sell_no) {
+		// TODO Auto-generated method stub
+		return dao.getGoods_detail(goods_sell_no);
+	}
+	
 	// 상품카운트
 	@Override
 	public String getGoods_cnt() {
 		return dao.getGoods_cnt();
 	}
 
-	// 상품 상세페이지
-	@Override
-	public List<GoodsVO> getGoods_list_detail() {
-		return dao.getGoods_list_detail();
-	}
 
 	// 상품 판매 정보
 	@Override
@@ -51,5 +53,7 @@ public class GoodsServicImpl implements GoodsService {
 	public List<Goods_CartVO> getGoodslist_cart(int goods_cart_member_no) {
 		return dao.getGoodslist_cart(goods_cart_member_no);
 	}
+
+
 
 }

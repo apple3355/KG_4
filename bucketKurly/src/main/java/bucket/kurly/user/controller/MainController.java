@@ -15,7 +15,7 @@ public class MainController {
 		//로그인화면
 		@RequestMapping("/login.do")
 		public String login() {
-			return "/login/login";
+			return "login/login";
 		}
 		
 		//아이디 찾기화면
