@@ -17,7 +17,7 @@ public class Goods_adminDAO {
 	//상품리스트
 	public List<Goods_adminSellVO> selectGoods_admin_list() {
 		System.out.println("Goods_adminDAO - selectGoods_admin_list() 실행");
-		return sqlSessionTemplate.selectList("Goods_adminDAO.selectGoods_admin_list");
+		return sqlSessionTemplate.selectList("GoodsDAO.selectGoods_admin_list");
 	}
 	
 	//상품등록
@@ -25,14 +25,14 @@ public class Goods_adminDAO {
 	//상품수정
 	public void updateGoods(int goods_sell_no) {
 		System.out.println("Goods_adminDAO - selectGoods_update 실행");
-		sqlSessionTemplate.selectOne("Goods_adminDAO.selectGoods_update", goods_sell_no);
+		sqlSessionTemplate.selectOne("GoodsDAO.selectGoods_update", goods_sell_no);
 	}
 	
 	
 	//상품리스트 삭제
 	public void deleteGoods(int goods_sell_no) {
 		System.out.println("Goods_adminDAO - selectGoods_delete() 실행");
-		sqlSessionTemplate.selectOne("Goods_adminDAO.selectGoods_delete", goods_sell_no);
+		sqlSessionTemplate.selectOne("GoodsDAO.selectGoods_delete", goods_sell_no);
 	}
 	
 	
