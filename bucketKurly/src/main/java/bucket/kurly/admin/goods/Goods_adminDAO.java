@@ -23,9 +23,9 @@ public class Goods_adminDAO {
 	//상품등록
 	
 	//상품수정
-	public void updateGoods(int goods_sell_no) {
-		System.out.println("Goods_adminDAO - selectGoods_update 실행");
-		sqlSessionTemplate.selectOne("GoodsDAO.selectGoods_update", goods_sell_no);
+	public void updateGoods(Goods_adminSellVO vo) {
+		System.out.println("Goods_adminDAO - updateGoods_admin 실행");
+		sqlSessionTemplate.update("GoodsDAO.updateGoods_admin", vo);
 	}
 	
 	

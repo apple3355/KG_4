@@ -9,7 +9,7 @@ import bucket.kurly.admin.goods.Goods_adminDAO;
 import bucket.kurly.admin.goods.Goods_adminSellVO;
 
 @Service
-public class Goods_adminServiceImpl implements Goods_aminService {
+public class Goods_adminServiceImpl implements Goods_adminService {
 
 	@Autowired
 	private Goods_adminDAO admindao;
@@ -23,11 +23,12 @@ public class Goods_adminServiceImpl implements Goods_aminService {
 	//상품등록
 	
 	//상품수정
+	
 	@Override
-	public void updateGoods(int goods_sell_no) {
-		admindao.updateGoods(goods_sell_no);
-		
+	public void updateGoods(Goods_adminSellVO vo) {
+		admindao.updateGoods(vo);
 	}
+
 	
 	//상품삭제
 	@Override

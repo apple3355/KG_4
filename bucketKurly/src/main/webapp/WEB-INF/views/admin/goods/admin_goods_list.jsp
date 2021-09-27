@@ -25,7 +25,11 @@
 
     <!-- Custom styles for this page -->
     <link href="resources/bootstrap/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+	
+	<!-- 숨김 column -->
+	<style>
+		.hidden-col{display:none;}
+	</style>
 </head>
 
 <body id="page-top">
@@ -41,7 +45,9 @@
             <div id="content">
   				
   				<!-- topbar -->
-      			<%@ include file="/WEB-INF/views//admin_layout/admin_topbar.jsp"%>  		
+      			<%@ include file="/WEB-INF/views/admin_layout/admin_topbar.jsp"%>  	
+      			
+      				
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -62,14 +68,15 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
-                                        <tr>                                        	
+                                        <tr>  
+                                        	<th class="hidden-col">숨김 번호</th>                                     	
                                             <th>상품일련번호</th>
                                             <th>1차 카테고리</th>
                                             <th>2차 카테고리</th>
                                             <th>상품 번호</th>
                                             <th>가격</th>
                                             <th>입고 일자</th>
-                                            <th>압고 수량</th>
+                                            <th>입고 수량</th>
                                             <th>재고 수량</th>
                                             <th>재고 알림 수량</th>
                                             <th>유통기한</th>
@@ -89,75 +96,68 @@
                                             <th>Salary</th>
                                         </tr>
                                     </tfoot> -->
-                                    <c:forEach items="${selectgoods_sell}" var="selectgoods_sell" varStatus="status">
+                                  
                                     <tbody>
-                                   	
-                                        <tr>                                        	
-                                            <td>${status.count}</td>
-                                        	<td><c:out value="${selectgoods_sell.goods_sell_parent_no}"/></td>
-                                        	<td><c:out value="${selectgoods_sell.goods_sell_sub_no}"/></td>
-                                        	<td><c:out value="${selectgoods_sell.goods_sell_goods_no}"/></td>
-                                        	<td><c:out value="${selectgoods_sell.goods_sell_price}"/></td>
-                                        	<td><c:out value="${selectgoods_sell.goods_sell_in_date}"/></td>
-                                        	<td><c:out value="${selectgoods_sell.goods_sell_in_ea}"/></td>
-                                        	<td><c:out value="${selectgoods_sell.goods_sell_stock_ea}"/></td>
-                                        	<td><c:out value="${selectgoods_sell.goods_sell_rea}"/></td>
-                                        	<td><c:out value="${selectgoods_sell.goods_sell_exp}"/></td>
-                                        	<td>
-	                                        	<select id="promotion" c:out value="${selectgoods_sell.goods_sell_promotion}" name="goods_sell_promotion">
-															    <option value=0>미적용</option>
-															    <option value=1>적용</option>
-												</select>
-                                        	</td>                                        	
-                                        	<td>
-                                        		<c:set var="name" value="${selectgoods_sell.goods_sell_status}" />
-	                                        	<select id="status" c:out value="name">	                                        		
-	                                        		
-	                                        		<option value=1 <c:if test="${name == 0}">selected</c:if>>상태선택</option>									
-								                    <option value=2 <c:if test="${name == 1}">selected</c:if>>판매중</option>									
-								                    <option value=3 <c:if test="${name == 2}">selected</c:if>>판매중지</option>									
-								                    <option value=4 <c:if test="${name == 3}">selected</c:if>>판매완료</option>	
-															    															    
-												</select>
-                                        	</td>                                 	
-                                        	<td>
-	                                        	<select id="discount" c:out value="${selectgoods_sell.goods_sell_discount}" name="goods_sell_discount">
-															    <option value=0>할인미적용</option>
-															    <option value=1>할인적용</option>													
-												</select>
-                                        	</td>
-                                        	<td>
-                                        		<button type="button" class="btn btn-sm btn-primary" id="saveBtn" onclick="fn_undate('${selectgoods_sell.goods_sell_no}','${status.count}')">수정</button>
-                                        		<button type="button" class="btn btn-sm btn-primary" id="saveBtn" onclick="fn_delete('${selectgoods_sell.goods_sell_no}')">삭제</button>	
-                                        		                                     		
-                                        		                   					
-                                         	</td>
-                                           
-                                        </tr>                                      
-                                    </tbody>
-                                    </c:forEach>                                    
-                                </table>                                
-                            </div>
-                            		<tr> 
-			                   			<th>   </th>
-			                   			<td>			                   				
-			                   				  <td align="right"> <a href=/bucketkurly/admin_goods_insertsell.mdo><span class="btn btn-sm btn-primary" id="saveBtn" style="float: none;">상품 등록</span></a></td>
-			                   			</td>
-			                   		</tr>
-			                  
-                        </div>
-                        			
+                                   		<c:forEach items="${selectgoods_sell}" var="selectgoods_sell" varStatus="tablerow">
+                                   		<c:set var="promotion" value="${selectgoods_sell.goods_sell_promotion}" />
+                                   		<c:set var="status" value="${selectgoods_sell.goods_sell_status}" />
+                                   		<c:set var="discount" value="${selectgoods_sell.goods_sell_discount}" />
+	                                        <tr>
+	                                        	<td class="hidden-col"><c:out value="${selectgoods_sell.goods_sell_no}"/></td>                                        	
+	                                            <td>${tablerow.count}</td>
+	                                        	<td><c:out value="${selectgoods_sell.goods_sell_parent_no}"/></td>
+	                                        	<td><c:out value="${selectgoods_sell.goods_sell_sub_no}"/></td>
+	                                        	<td><c:out value="${selectgoods_sell.goods_sell_goods_no}"/></td>
+	                                        	<td><c:out value="${selectgoods_sell.goods_sell_price}"/></td>
+	                                        	<td><c:out value="${selectgoods_sell.goods_sell_in_date}"/></td>
+	                                        	<td><c:out value="${selectgoods_sell.goods_sell_in_ea}"/></td>
+	                                        	<td><c:out value="${selectgoods_sell.goods_sell_stock_ea}"/></td>
+	                                        	<td><c:out value="${selectgoods_sell.goods_sell_rea}"/></td>
+	                                        	<td><c:out value="${selectgoods_sell.goods_sell_exp}"/></td>
+	                                        	<td><select id="promotion">
+													    <option value=0 <c:if test="${promotion == 0}">selected</c:if>>미적용</option>
+													    <option value=1 <c:if test="${promotion == 1}">selected</c:if>>적용</option>
+													</select>
+	                                        	</td>                                        	
+	                                        	<td><select id="status">	                                        		
+		                                        		<option value=0 <c:if test="${status == 0}">selected</c:if>>상태선택</option>									
+									                    <option value=1 <c:if test="${status == 1}">selected</c:if>>판매중</option>									
+									                    <option value=2 <c:if test="${status == 2}">selected</c:if>>판매중지</option>									
+									                    <option value=3 <c:if test="${status == 3}">selected</c:if>>판매완료</option>	
+													</select>
+	                                        	</td>                                 	
+	                                        	<td><select id="discount">
+													    <option value=0 <c:if test="${discount == 0}">selected</c:if>>할인미적용</option>
+													    <option value=1 <c:if test="${discount == 1}">selected</c:if>>할인적용</option>													
+													</select>
+	                                        	</td>
+	                                        	<td>
+	                                        		<button type="button" class="btn btn-sm btn-primary" id="saveBtn" onclick="fn_update(this)">수정</button>
+	                                        		<button type="button" class="btn btn-sm btn-primary" id="saveBtn" onclick="fn_delete('${selectgoods_sell.goods_sell_no}')">삭제</button>	                   					
+	                                         	</td>
+	                                        </tr> 
+                                    	</c:forEach>    
+	                            		<tr> 
+	                            			<td colspan="15" align="right"> 
+				                   				<a href="${pageContext.request.contextPath}/admin_goods_insertsell.mdo">
+				                   					<span class="btn btn-sm btn-primary" id="saveBtn" style="float: none;">상품 등록</span>
+				                   				</a>
+				                   			</td>
+				                   		</tr>
+			                   		</tbody>
+			                  </table>   
+			                  </div>
+                        </div>	
                     </div>
-                   
                 </div>
                 <!-- /.container-fluid -->
-
             </div>
             <!-- End of Main Content -->
 
 
         <!-- Footer -->
-     		 <%@ include file="/WEB-INF/views/admin/admin_layout/admin_footer.jsp"%>  
+        <%@ include file="/WEB-INF/views/admin_layout/admin_footer.jsp"%>  	
+     		
         <!-- End of Footer -->
 
         </div>
@@ -183,29 +183,55 @@
     <!-- Page level custom scripts -->
     <script src="resources/bootstrap/js/demo/datatables-demo.js"></script>
 	<script>
-		function fn_onChange(status) {
+		function fn_update(row) {
 			var result = confirm("이 상품을 수정하시겠습니까? ");
 			if(result){ 
-				alert(status);
-				var id_name = promotion + '[' + (status-1) + ']';
-				alert("id_name"+ id_name);
-				let a = document.getElementById('id_name');
-				alert(a.selectedIndex);
+				alert("수정 안으로 들어옴");
+				var i = row.parentNode.parentNode.rowIndex;	//버튼이 눌러진 테이블의 로우넘버 저장
+				
+				var goods_sell_no = document.getElementById("dataTable").rows[i].cells[0].innerHTML;	//해당 로우넘버의 아이디가 있는 칼럼 값 저장
+				//프로모션
+				var selectbox_pro = document.getElementById("dataTable").rows[i].cells[11].childNodes[0];
+				var promotion = selectbox_pro.options[selectbox_pro.selectedIndex].value;
+				//상태
+				var selectbox_sta = document.getElementById("dataTable").rows[i].cells[12].childNodes[0];
+				var status = selectbox_sta.options[selectbox_sta.selectedIndex].value;
+				//할인
+				var selectbox_dis = document.getElementById("dataTable").rows[i].cells[13].childNodes[0];
+				var discount = selectbox_dis.options[selectbox_dis.selectedIndex].value;
 				
 			
-		      }else{
-			  	    location.href = "javascript:void(0);";
-		      }
-		}
-	
-		function fn_undate(goods_sell_no,status) {
-			var result = confirm("이 상품을 수정하시겠습니까? ");
-			if(result){ 
-				alert(status);
-				var id_name = promotion + '[' + (status-1) + ']';
-				var a = document.getElementById('id_name');
-				alert(a.selectedIndex);
+				var form = document.createElement("form");
+				form.setAttribute("method", "Post");
+				form.setAttribute("action", "${pageContext.request.contextPath}/admin_goodsupdate.mdo");
 				
+				var goods_sell_noField = document.createElement("input");
+				goods_sell_noField.setAttribute("type", "hidden");
+				goods_sell_noField.setAttribute("name", "goods_sell_no");
+				goods_sell_noField.setAttribute("value", goods_sell_no);
+				
+				var promotionField = document.createElement("input");
+				promotionField.setAttribute("type", "hidden");
+				promotionField.setAttribute("name", "goods_sell_promotion");
+				promotionField.setAttribute("value", promotion);
+				
+				var statusField = document.createElement("input");
+				statusField.setAttribute("type", "hidden");
+				statusField.setAttribute("name", "goods_sell_status");
+				statusField.setAttribute("value", status);
+				
+				var discountField = document.createElement("input");
+				discountField.setAttribute("type", "hidden");
+				discountField.setAttribute("name", "goods_sell_discount");
+				discountField.setAttribute("value", discount);
+				
+				form.appendChild(goods_sell_noField);
+				form.appendChild(promotionField);
+				form.appendChild(statusField);
+				form.appendChild(discountField);
+				
+				document.body.appendChild(form);
+				form.submit();
 			
 		      }else{
 			  	    location.href = "javascript:void(0);";
