@@ -3,113 +3,106 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="GoodsDAO">
 
-	<resultMap type="goodsVo" id="goodsVo">		
-		<result property="category_goods_parent_no" column="category_goods_parent_no"/>
-		<result property="category_goods_sub_no" column="category_goods_sub_no"/>
-		<result property="category_goods_no" column="category_goods_no"/>
-		<result property="category_goods_name" column="category_goods_name"/>
-		<result property="category_goods_name_sub" column="category_goods_name_sub"/>
-		<result property="category_goods_unit" column="category_goods_unit"/>
-		<result property="category_goods_weight" column="category_goods_weight"/>
-		<result property="category_goods_from" column="category_goods_from"/>
-		<result property="category_goods_packaging_type" column="category_goods_packaging_type"/>
-		<result property="category_goods_delivery_type" column="category_goods_delivery_type"/>
-		<result property="category_goods_exp_date" column="category_goods_exp_date"/>
-		<result property="category_goods_info" column="category_goods_info"/>
-		<result property="category_goods_ref" column="category_goods_ref"/>
-		<result property="category_goods_contents_tit_main" column="category_goods_contents_tit_main"/>
-		<result property="category_goods_contents_tit_sub" column="category_goods_contents_tit_sub"/>
-		<result property="category_goods_contents_intro" column="category_goods_contents_intro"/>
-		<result property="category_goods_image_head" column="category_goods_image_head"/>
-		<result property="category_goods_image_thumb" column="category_goods_image_thumb"/>
-		<result property="category_goods_image_contents" column="category_goods_image_contents"/>
-		<result property="category_goods_image_contents_detail" column="category_goods_image_contents_detail"/>
+	<resultMap type="goodsVo" id="goodsVo">
+		<result property="category_goods_parent_no" column="category_goods_parent_no" />
+		<result property="category_goods_sub_no" column="category_goods_sub_no" />
+		<result property="category_goods_no" column="category_goods_no" />
+		<result property="category_goods_name" column="category_goods_name" />
+		<result property="category_goods_name_sub" column="category_goods_name_sub" />
+		<result property="category_goods_unit"	column="category_goods_unit" />
+		<result property="category_goods_weight" column="category_goods_weight" />
+		<result property="category_goods_from"	column="category_goods_from" />
+		<result property="category_goods_packaging_type"	column="category_goods_packaging_type" />
+		<result property="category_goods_delivery_type"	column="category_goods_delivery_type" />
+		<result property="category_goods_exp_date" column="category_goods_exp_date" />
+		<result property="category_goods_info"	column="category_goods_info" />
+		<result property="category_goods_ref"	column="category_goods_ref" />
+		<result property="category_goods_contents_tit_main"	column="category_goods_contents_tit_main" />
+		<result property="category_goods_contents_tit_sub"	column="category_goods_contents_tit_sub" />
+		<result property="category_goods_contents_intro"	column="category_goods_contents_intro" />
+		<result property="category_goods_image_head"	column="category_goods_image_head" />
+		<result property="category_goods_image_thumb"	column="category_goods_image_thumb" />
+		<result property="category_goods_image_contents"	column="category_goods_image_contents" />
+		<result property="category_goods_image_contents_detail"	column="category_goods_image_contents_detail" />
 	</resultMap>
 
 	<resultMap type="goods_sell" id="goods_sell">
-		<result property="goods_sell_no" column="goods_sell_no"/>
-		<result property="goods_sell_parent_no" column="goods_sell_parent_no"/>
-		<result property="goods_sell_sub_no" column="goods_sell_sub_no"/>
-		<result property="goods_sell_goods_no" column="goods_sell_goods_no"/>
-		<result property="goods_sell_price" column="goods_sell_price"/>
-		<result property="goods_sell_in_date" column="goods_sell_in_date"/>
-		<result property="goods_sell_in_ea" column="goods_sell_in_ea"/>
-		<result property="goods_sell_stock_ea" column="goods_sell_stock_ea"/>
-		<result property="goods_sell_rea" column="goods_sell_rea"/>
-		<result property="goods_sell_exp" column="goods_sell_exp"/>
-		<result property="goods_sell_promotion" column="goods_sell_promotion"/>
-		<result property="goods_sell_status" column="goods_sell_status"/>
-		<result property="goods_sell_discount" column="goods_sell_discount"/>
+		<result property="goods_sell_no" column="goods_sell_no" />
+		<result property="goods_sell_parent_no"	column="goods_sell_parent_no" />
+		<result property="goods_sell_sub_no" column="goods_sell_sub_no" />
+		<result property="goods_sell_goods_no"	column="goods_sell_goods_no" />
+		<result property="goods_sell_price" column="goods_sell_price" />
+		<result property="goods_sell_in_date"	column="goods_sell_in_date" />
+		<result property="goods_sell_in_ea" column="goods_sell_in_ea" />
+		<result property="goods_sell_stock_ea"	column="goods_sell_stock_ea" />
+		<result property="goods_sell_rea" column="goods_sell_rea" />
+		<result property="goods_sell_exp" column="goods_sell_exp" />
+		<result property="goods_sell_promotion"	column="goods_sell_promotion" />
+		<result property="goods_sell_status" column="goods_sell_status" />
+		<result property="goods_sell_discount"	column="goods_sell_discount" />
 		<collection property="goodsvo" resultMap="goodsVo" />
 	</resultMap>
-	
-	
+
+	<resultMap type="goods_cart" id="goods_cart">
+		<result property="goods_cart_no" column="goods_cart_no" />
+		<result property="goods_cart_sell_no"	column="goods_cart_sell_no" />
+		<result property="goods_cart_member_no"	column="goods_cart_member_no" />
+		<result property="goods_cart_count" column="goods_cart_count" />
+		<result property="goods_cart_status" column="goods_cart_status" />
+		<collection property="goods_sellvo"	resultMap="goods_sellVo" />
+	</resultMap>
+
 	<!-- 상품리스트 목록 -->
-	<select id="selectGoods_sell" parameterType="String" resultMap="goods_sell">
+	<select id="selectGoods_sell" parameterType="String"
+		resultMap="goods_sell">
 		SELECT *
 		FROM TB_GOODS_SELL s JOIN TB_CATEGORY_GOODS g
 		ON s.goods_sell_goods_no = g.category_goods_no
-		
-		<if test='select_type.equals("new")'> 
+
+		<if test='select_type.equals("new")'>
 			ORDER BY GOODS_SELL_IN_DATE DESC
-		</if> 
-		<if test='select_type.equals("price_low")'> 
+		</if>
+		<if test='select_type.equals("price_low")'>
 			ORDER BY GOODS_SELL_PRICE
 		</if>
-		<if test='select_type.equals("price_high")'> 
+		<if test='select_type.equals("price_high")'>
 			ORDER BY GOODS_SELL_PRICE DESC
 		</if>
 	</select>
-	
+
 	<!-- 상품 상세페이지 -->
-	<select id="getGoods_detail" parameterType="int" resultMap="goods_sell">
+	<select id="getGoods_detail" parameterType="int"
+		resultMap="goods_sell">
 		SELECT *
 		FROM TB_GOODS_SELL s , TB_CATEGORY_GOODS g
-		WHERE s.goods_sell_goods_no = g.category_goods_no		
+		WHERE s.goods_sell_goods_no = g.category_goods_no
 		AND s.goods_sell_no = #{goods_sell_no}
 	</select>
-	
-	
-	
-	
-	<!--  관리자  -->
-	
-	<!-- 상품리스트 목록  --> 
-  	<select id="selectGoods_admin_list"  resultType="goods_adminsell" >
-  		SELECT * 
-  		FROM TB_GOODS_SELL
-  		ORDER BY GOODS_SELL_NO
-  	</select> 
-	
-	<!-- 상품리스트 수정 -->
-	<update id="selectGoods_update" parameterType="goods_adminsell">
-		UPDATE TB_GOODS_SELL 
-		SET GOODS_SELL_PROMOTION = #{goods_sell_promotion} 
-		,GOODS_SELL_STATUS = #{goods_sell_status}
-		,GOODS_SELL_DISCOUNT = #{goods_sell_discount}
-		WHERE GOODS_SELL_NO = #{goods_sell_no}		
-	</update>
-	
-	
 
-	<!-- 상품리스트 삭제 -->
-	<delete id="selectGoods_delete" parameterType="int">
-		DELETE FROM TB_GOODS_SELL
-  		WHERE GOODS_SELL_NO = #{goods_sell_no}
-  		
-	</delete>
-	
-	
-	<!-- 상품리스트 등록
-	<insert id="insertGoods" parameterType="goods_adminsell">
-		INSERT TB_GOODS_SELL
-		SET GOODS_SELL_PARENT_NO = #{goods_sell_parent_no},
-		GOODS_SELL_SUB_NO = #{goods_sell_sub_no},
-		GOODS_SELL_GOODS_NO = #{goods_sell_goods_no}
-		WHERE GOODS_SELL_NO
-	
-	</insert>  -->
+	<insert id="insertGoods_cart" parameterType="goods_cart">
+		INSERT INTO
+		TB_GOODS_CART
+		VALUES(nextval('tb_goods_cart_goods_cart_no_seq'),#{goods_cart_sell_no},
+		#{goods_cart_member_no}, #{goods_cart_count}, 0)
+	</insert>
 
+	<select id="getGoods_cart" parameterType="int"
+		resultType="goods_cartshow">
+		SELECT 
+		cart.goods_cart_no,
+		sell.goods_sell_no,
+		goods.category_goods_image_thumb, 
+		goods.category_goods_name,
+		goods.category_goods_delivery_type,
+		cart.goods_cart_count, 
+		sell.goods_sell_price, 
+		cart.goods_cart_status
+		FROM tb_goods_cart cart
+		LEFT OUTER JOIN tb_goods_sell sell
+		ON cart.goods_cart_sell_no = sell.goods_sell_no
+		LEFT OUTER JOIN tb_category_goods goods ON sell.goods_sell_goods_no =
+		goods.category_goods_no
+		where cart.GOODS_CART_MEMBER_NO = #{goods_cart_member_no}
+		order by cart.goods_cart_no
+	</select>
 </mapper>
-  
-  

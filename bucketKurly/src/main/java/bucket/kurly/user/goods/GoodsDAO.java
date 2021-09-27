@@ -41,13 +41,13 @@ public class GoodsDAO {
 	// 장바구니에 담기
 	public void insertGoods_cart(Goods_CartVO gcvo) {
 		System.out.println("insertGoods_cart() 실행");
-		sqlSessionTemplate.insert("GoodsDAO.insertGoods_cart");
+		sqlSessionTemplate.insert("GoodsDAO.insertGoods_cart",gcvo);
 	}
 	
 	// 장바구니 불러오기
-	public List<Goods_CartVO> getGoodslist_cart(int goods_cart_member_no){
-		System.out.println("getGoodslist_cart() 실행");
-		return sqlSessionTemplate.selectList("GoodsDAO.getGoodslist_cart",goods_cart_member_no);
+	public List<Goods_CartShowVO> getGoods_cart(int goods_cart_member_no){
+		System.out.println("getGoods_cart() 실행");
+		return sqlSessionTemplate.selectList("GoodsDAO.getGoods_cart",goods_cart_member_no);
 	}
 
 

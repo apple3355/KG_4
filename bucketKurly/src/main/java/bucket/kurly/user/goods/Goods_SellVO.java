@@ -15,15 +15,14 @@ public class Goods_SellVO {
 	private String goods_sell_promotion;
 	private String goods_sell_status;
 	private int goods_sell_discount;
-	
 	private GoodsVO goodsvo;
+	
 	public GoodsVO getGoodsvo() {
 		return goodsvo;
 	}
 	public void setGoodsvo(GoodsVO goodsvo) {
 		this.goodsvo = goodsvo;
 	}
-	
 	
 	public int getGoods_sell_no() {
 		return goods_sell_no;

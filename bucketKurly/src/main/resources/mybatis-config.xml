@@ -15,6 +15,7 @@
 		<typeAlias type="bucket.kurly.user.goods.GoodsVO" alias="goodsVo"/>
 		<typeAlias type="bucket.kurly.user.goods.Goods_SellVO" alias="goods_sell"/>
 		<typeAlias type="bucket.kurly.user.goods.Goods_CartVO" alias="goods_cart"/>
+		<typeAlias type="bucket.kurly.user.goods.Goods_CartShowVO" alias="goods_cartshow"/>
 		<typeAlias type="bucket.kurly.user.order.OrderVO" alias="order"/>
 	</typeAliases>
 

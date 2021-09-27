@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bucket.kurly.user.goods.GoodsDAO;
-import bucket.kurly.user.goods.GoodsVO;
+import bucket.kurly.user.goods.Goods_CartShowVO;
 import bucket.kurly.user.goods.Goods_CartVO;
 import bucket.kurly.user.goods.Goods_SellVO;
 
@@ -47,11 +47,11 @@ public class GoodsServicImpl implements GoodsService {
 	public void insertGoods_cart(Goods_CartVO gcvo) {
 		dao.insertGoods_cart(gcvo);
 	}
-	
+
 	// 장바구니 정보
 	@Override
-	public List<Goods_CartVO> getGoodslist_cart(int goods_cart_member_no) {
-		return dao.getGoodslist_cart(goods_cart_member_no);
+	public List<Goods_CartShowVO> getGoods_cart(int goods_cart_member_no) {
+		return dao.getGoods_cart(goods_cart_member_no);
 	}
 
 

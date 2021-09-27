@@ -5,11 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import bucket.kurly.user.goods.GoodsVO;
+import bucket.kurly.user.goods.Goods_CartShowVO;
 import bucket.kurly.user.goods.Goods_CartVO;
 import bucket.kurly.user.goods.Goods_SellVO;
 import bucket.kurly.user.goods.service.GoodsService;
@@ -39,7 +38,6 @@ public class GoodsController {
 			
 		}
 
-		
 		model.addAttribute("goods_sell_list", goods_sell_list); // 상품DB품목
 		model.addAttribute("itemCnt", goods_sell_list.size()); // 상품카운트
 		model.addAttribute("select_type",A); // 상품카운트
@@ -61,12 +59,33 @@ public class GoodsController {
 	
 	//장바구니에 담기
 	@RequestMapping("/insertGoods_cart.do")
-	public String insertGoods_cart(Goods_CartVO gcvo) {
+	public String insertGoods_cart(@RequestParam(value="goods_sell_no",required=false) int goods_sell_no,@RequestParam("count") int count) {
 		
-		goodsService.insertGoods_cart(gcvo);
-		return "redirect:/goods_list_detail.do";
+		Goods_CartVO vo = new Goods_CartVO();
+		vo.setGoods_cart_count(count);
+		vo.setGoods_cart_sell_no(goods_sell_no);
+		vo.setGoods_cart_member_no(1111);
+		
+		System.out.println(goods_sell_no);
+		System.out.println(count);
+		goodsService.insertGoods_cart(vo);
+		
+		
+		String path = "/goods_list_detail.do?goods_sell_no="+goods_sell_no;
+	      
+	    return "redirect:"+path;
 	}
 	
+	@RequestMapping("/getGoods_cart.do")
+	public String getGoods_cart(Model model) {
+		
+		List<Goods_CartShowVO> goods_cartShowVO = goodsService.getGoods_cart(1111);
+		
+		model.addAttribute("goods_cartShowVO", goods_cartShowVO);
+		
+		return "goods/goods_cart";
+		
+	}
 	//장바구니 정보
 	//장바구니 삭제
 	

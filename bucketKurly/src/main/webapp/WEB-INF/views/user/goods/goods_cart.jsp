@@ -73,7 +73,92 @@
 			
 			<form>
 				<div id="cartItemList" class="only_pc" style="min-height: 561px;">
-					<div class="empty"><!-- class empty or "" 시작 -->
+					<div class="empty">
+					<!-- div class "" or empty 시작 -->
+					<div class="cart_item ">
+						<div class="cart_select">
+							<div class="inner_select">
+								<label class="check">
+								<input type="checkbox" name="checkAll" checked="">
+								<span class="ico"></span>전체선택 (2/2)
+								</label>
+								<a href="#none" class="btn_delete">선택삭제</a>
+							</div>
+						</div>
+						
+						
+						
+						<c:forEach items="${goods_cartShowVO }" var="goods_cartShowVO">
+						<div class="box cold">
+							<div class="tit_box">
+								<h4 class="tit">
+								<span class="inner_tit">
+									<span class="ico">
+									</span>냉장 상품
+								</span>
+								</h4>
+								<button type="button" class="btn_dropup ">접기 / 펼치기</button>
+							</div>
+							<ul class="list ">
+								<li>
+									<div class="item">
+										<label class="check" for="chkItem50302188-e7ab-4a35-930d-d3421536c81d">
+											<input type="checkbox" id="chkItem50302188-e7ab-4a35-930d-d3421536c81d" 
+												 name="chkItem" 
+												 data-item-id="50302188-e7ab-4a35-930d-d3421536c81d"
+												 data-item-no="63110"
+												 data-item-parent-no="63110"
+												 checked="">
+												 <span class="ico"></span>
+										</label>
+										<div class="name">
+											<div class="inner_name">
+												<a href="#" class="package ">
+												<c:out value="${goods_cartShowVO.category_goods_name}"/></a>
+												<div class="info"></div>
+											</div>
+										</div>
+										<div class="goods">
+											<a href="#" class="thumb " style="background-image: url(&quot;${goods_cartShowVO.category_goods_image_thumb}&quot;);">상품이미지</a>
+											<div class="price">
+												<div class="in_price">
+													<span class="selling"><c:out value="${goods_cartShowVO.goods_sell_price}"/>
+														<span class="won">원</span>
+													</span>
+													<p class="noti"></p>
+												</div>
+												<div class="stamper count">
+													<button type="button" class="btn minus off"
+													 data-item-id="50302188-e7ab-4a35-930d-d3421536c81d"
+													 data-item-no="63110" data-opt="decrease">감소
+													 </button>
+													 <input type="number" id="stepperCounter" class="num" readonly="" value="<c:out value="${goods_cartShowVO.goods_cart_count}"/>">
+													 <button type="button" class="btn plus" data-item-id="50302188-e7ab-4a35-930d-d3421536c81d" data-item-no="63110" data-opt="increase">추가</button>
+												</div>
+											</div>
+										</div>
+										<button type="button" class="btn_delete" 
+										data-item-id="50302188-e7ab-4a35-930d-d3421536c81d"
+										 data-item-no="63110" data-type="cold">상품 삭제
+										 </button>
+									</div>
+								</li>
+							</ul>
+						</div>
+						</c:forEach>
+						
+						
+						
+					<div class="cart_select">
+						<div class="inner_select">
+							<label class="check">
+								<input type="checkbox" name="checkAll" checked="">
+								<span class="ico"></span>전체선택 (2/2)
+							</label>
+							<a href="#none" class="btn_delete">선택삭제</a>
+						</div>
+					</div>
+				</div>
 					<!-- 이곳에 장바구니 페이지 코드 입력 -->
 				<div class="cart_result">
 					<div class="inner_result" style="top: 60px;">

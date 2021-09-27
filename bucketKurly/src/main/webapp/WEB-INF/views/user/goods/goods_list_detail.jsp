@@ -402,16 +402,21 @@ $(function(){
 									<button type="button" class="btn btn_alarm">재입고 알림</button>
 								</div> 
 								<span class="btn_type1">
-									<button type="button" class="txt_type" onclick="fnCart()">                        
+									<button type="button" class="txt_type" onclick="fnCart(${goods_sellVO.goods_sell_no})">                        
 									장바구니 담기                      
 									</button> 
 									<!---->
 									<script type="text/javascript">
-										function fnCart(){
-											if(confirm("장바구니에 담으시겠습니까?")){
-												location.href="insertGoods_cart.do";
-											}
-										}
+									function fnCart(good_sell_no){
+										var count = document.getElementById("inp").value;
+		                                 if(confirm("장바구니에 담으시겠습니까?")){
+		                                    var url = "${pageContext.request.contextPath}/insertGoods_cart.do";
+		                                    url = url + "?goods_sell_no=" + good_sell_no;
+		                                    url = url + "&count=" + count;
+		                                    location.href = url;
+		                                    alert("해당 상품이 장바구니에 담겼습니다.");
+		                                 }
+		                              }
 									</script>
 								</span> 
 								<!----> 
@@ -434,6 +439,7 @@ $(function(){
 										<button type="button" class="btn_close">
 											<span class="ico">상품 선택</span>
 										</button>
+										
 									</div> 
 									<!----> 
 									<!----> 
@@ -446,10 +452,21 @@ $(function(){
 									<button type="button" class="btn btn_alarm">재입고 알림</button>
 								</div> 
 								<span class="btn_type1">
-									<button type="button" class="txt_type">                        
+									<button type="button" class="txt_type" onclick="fnCart(${goods_sellVO.goods_sell_no})">                        
 									장바구니 담기                      
 									</button> 
 									<!---->
+									<script type="text/javascript">
+									function fnCart(good_sell_no){
+										var count = document.getElementById("inp").value;
+		                                 if(confirm("장바구니에 담으시겠습니까?")){
+		                                    var url = "${pageContext.request.contextPath}/insertGoods_cart.do";
+		                                    url = url + "?goods_sell_no=" + good_sell_no;
+		                                    url = url + "&count=" + count;
+		                                    location.href = url;
+		                                 }
+		                              }
+									</script>
 								</span> 
 								<!----> 
 								<!----> 
