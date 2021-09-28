@@ -89,8 +89,10 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">컬리 카테고리 및 상품관리 :</h6>
-                        <a class="collapse-item" href="buttons.html">카테고리 관리</a>
-                        <a class="collapse-item" href="/admin_goods.do">상품관리</a>
+                        <a class="collapse-item" href="/admin_category_parent.mdo">상위 카테고리 관리</a>
+                        <a class="collapse-item" href="/admin_category_sub.mdo">중위 카테고리 관리</a>
+                        <a class="collapse-item" href="##########">하위 카테고리(상품) 관리</a>
+                        <a class="collapse-item" href="/admin_goods_list.mdo">상품 판매 관리</a>
                     </div>
                 </div>
             </li>
