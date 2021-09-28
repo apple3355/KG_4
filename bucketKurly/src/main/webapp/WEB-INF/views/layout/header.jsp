@@ -5,8 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!-- 외부 스타일 시트 삽입 -->
+<link rel="stylesheet" href="resources/common.css">
 <title>header</title>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
 <script>
   $(document).ready(function(){
 	  $('.menu1').hover(function(){
@@ -27,7 +30,8 @@
 
 		$('.inner_sub ul li').hover(function(){
 			$(this).addClass("current");
-			$(".gnb_sub").css("width","438px");
+			$(".gnb_sub").css("width","438px" );
+			$(".inner_sub ul").css("height","800px");	
 		}, function() {
 		    $(this).removeClass("current");
 		    $(".gnb_sub").css("width","219px");
@@ -50,11 +54,86 @@
 });
   
 </script>
+
+
+<style>
+ /*여기추가*/
+/*   #gnb .gnb_sub .sub_menu{background-color: #d8d8d8;} */
+  #gnb .gnb_sub .sub_menu{position:relative;z-index:0;left:200px;top:0;width:248px;height:100%;padding:0 0 0 20px;background:url(https://res.kurly.com/images/common/bg_1_1.gif) repeat 0 0;opacity:0;transition:opacity 0.2s} 
+  #gnb .gnb_sub .sub_menu .sub {font-size: 75%;line-height: 0;position: relative;vertical-align: baseline}
+  #gnb .gnb_sub .sub_menu .sub{display:block;overflow:hidden;width:100%;height:40px;padding:0 0 0 14px;cursor:pointer}  
+  
+  #gnb .sub_menu li a{background-color:#f7f7f7; border:0; outline:0;}
+ 
+
+  .menu {position: relative;z-index: 400;float: left;}
+  .menu_login .link_menu {padding: 0 16px 0 15px;}
+  .menu:after {content: "";float: right;width: 1px;height: 13px;margin-top: 12px;background-color: #d8d8d8;}
+  .menu.lst:before {right: 0;}
+  .menu.lst:before {content: "";position: absolute;top: 16px;width: 8px;height: 5px;background: url(https://res.kurly.com/pc/ico/1908/ico_down_8x5.png) no-repeat 0 0;}
+  .menu.lst .link_menu {padding-right: 13px;}
+  .sub{list-style-type: none;margin-block-start: 0px;margin-block-end: 0px;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;}
+  .sub a {font-size: 12px;color: #404040;line-height: 24px;white-space: nowrap;cursor: pointer;}
+  .lst .sub {left: auto;right: 0;}
+  .sub {display: none;position: absolute;left: 0;top: 34px;width: 102px;padding: 3px 9px;border: 1px solid #ddd;background-color: #fff;}
+  
+  #gnb .gnb_sub{display:none;overflow:hidden;position:absolute;z-index:301;left:0;top:55px;width:213px;padding-top:1px}
+  #gnb .gnb_sub .inner_sub{width:100%;border:1px solid #ddd;background:url(https://res.kurly.com/pc/service/common/1908/bg_gnb_sub_v3.png) repeat-y 0 0}
+  #gnb .size_over{overflow-x:hidden;overflow-y:auto}
+  #gnb .gnb_sub .gnb_menu{width:219px}
+  #gnb .gnb_sub .gnb_menu li{width:100%;text-align:left}
+  #gnb .gnb_sub .gnb_menu li:first-child{padding-top:0}
+  #gnb .gnb_sub .menu{display:block;overflow:hidden;width:100%;height:40px;padding:8px 0 0 14px;cursor:pointer;background:#fffff}
+  #gnb .gnb_sub .gnb_menu li:first-child .menu{height:39px;padding-top:7px}
+  
+
+  #gnb .gnb_sub .menu{background:#fffff;}
+  
+  
+  #gnb .gnb_sub .current .menu{background:#f7f7f7;}
+  #gnb .gnb_sub .current .txt,
+  #gnb .gnb_sub .menu.on.off:hover .txt,
+  #gnb .gnb_sub .menu.on .txt{font-weight:700;color:#5f0080}
+  #gnb .gnb_sub .ico{float:left;width:24px;height:24px}
+  #gnb .gnb_sub .ico img{width:24px;height:24px}
+  #gnb .gnb_sub .ico .ico_off{display:block}
+  #gnb .gnb_sub .ico .ico_on{display:none}
+  #gnb .gnb_sub .current .ico_off,
+  #gnb .gnb_sub .menu.on .ico_off,
+  #gnb .gnb_sub .menu:hover .ico_off{display:none}
+  #gnb .gnb_sub .current .ico_on,
+  #gnb .gnb_sub .menu.on .ico_on,
+  #gnb .gnb_sub .menu:hover .ico_on{display:block}
+  #gnb .gnb_sub .ico_arrow{display:none;float:right;width:16px;height:17px;padding:6px 9px 0 0}
+  #gnb .gnb_sub .ico_arrow img{width:7px;height:11px}
+  #gnb .gnb_sub .current .ico_arrow{display:block}
+  #gnb .gnb_sub .txt{float:left;padding:0 4px 0 10px;font-weight:400;font-size:14px;color:#333;line-height:22px;white-space:nowrap}
+  #gnb .gnb_sub .ico_new{overflow:hidden;float:left;width:14px;height:14px;margin-top:5px;background-position:50% 50%;background-repeat:no-repeat;background-size:14px 14px;font-size:0;line-height:0;text-indent:-9999px}
+  #gnb .gnb_sub .sub_menu{position:absolute;z-index:0;left:200px;top:0;width:248px;height:100%;padding:0 0 0 20px;background:url(https://res.kurly.com/images/common/bg_1_1.gif) repeat 0 0;opacity:0;transition:opacity 0.2s}
+  #gnb .gnb_sub .current .sub_menu{z-index:1;opacity:1;transition:opacity 0.5s}
+  
+  #gnb .gnb_sub .sub_menu li:first-child{padding-top:0px; position:absolute}
+  #gnb .gnb_sub .sub_menu .sub{display:block;overflow:hidden;height:40px;padding-left:20px;font-size:14px;color:#333;line-height:30px;cursor:pointer} /*line-height 18->30 수정*/
+  #gnb .gnb_sub .sub_menu .sub:hover .name{border-bottom:1px solid #5f0080;font-weight:700;color:#5f0080}
+  #gnb .gnb_sub .sub_menu .sub.on{font-weight:700;color:#5f0080}
+  
+  #gnb .gnb_sub .recommend{overflow:hidden;width:529px;padding:21px 0 0 40px}
+  #gnb .gnb_sub .recommend li{float:left;width:120px;height:130px;padding:0 10px 0 0}
+  #gnb .gnb_sub .recommend li:first-child{padding-top:0}
+  #gnb .gnb_sub .recommend .sub{display:block;overflow:hidden;width:120px;height:130px;padding:0;cursor:pointer}
+  #gnb .gnb_sub .recommend .thumb{display:block;width:110px;height:83.4px;margin-bottom:8px;background-position:50% 50%;background-repeat:no-repeat;background-size:cover}
+  #gnb .gnb_sub .recommend .thumb img{width:110px;height:84px}
+  #gnb .gnb_sub .recommend .name{font-size:14px;line-height:18px}
+  
+
+</style>
+
+
 </head>
 <body>
 	<div id = "header">
 	
-	<!-- sessionScopre.id가 없으면 -->
+		<!-- sessionScopre.id가 없으면 -->
 		<c:if test="${empty sessionScope.id }"> 
 			<div class="bnr_header" id="top-message">
 				<a href="########" id="eventLanding"> 
@@ -83,7 +162,8 @@
 				</ul>
 			</div>
 		</c:if>
-		
+	
+	
 		<!-- sessionScopre.id가 있으면 -->
 		<c:if test="${not empty sessionScope.id }"> 
 			<div class="bnr_header bnr_top_friend" id="top-message">
@@ -134,12 +214,7 @@
 			</div>
 			
 		</c:if>
-
-
-		
 	
-	
-
 	
 		<!-- 헤더 로고 -->
 		<div id="headerLogo" class="layout-wrapper">
@@ -170,10 +245,10 @@
 								<a href="#####"><span class="ico"></span><span class="txt">전체 카테고리</span></a>
 							</li>
 							<li class="menu2">
-								<a href="${pageContext.request.contextPath}/goods_list.do?type=new" class="link new "><span class="txt">신상품</span></a>
+								<a href="${pageContext.request.contextPath}/goods_list.do?type=new?" class="link new "><span class="txt">신상품</span></a>
 							</li>
 							<li class="menu3">
-								<a href="${pageContext.request.contextPath}/goods_list.do?type=best" class="link best "><span class="txt">베스트</span></a>
+								<a href="${pageContext.request.contextPath}/goods_list.do?type=best?"><span class="txt">베스트</span></a>
 							</li>
 							<li class="menu4">
 								<a href="/shop/goods/goods_list.php?list=sale" class="link bargain "><span class="txt">알뜰쇼핑</span></a>
@@ -204,7 +279,7 @@
 						<div class="cart_count">
 						
 							<div class="inner_cartcount">
-								<a href="${pageContext.request.contextPath}/goods_cart.do" class="btn_cart">
+								<a href="#########" class="btn_cart">
 									<span class="screen_out">장바구니</span> 
 									<span id="cart_item_count" class="num realtime_cartcount" style="display: none;"></span>
 								</a>
@@ -244,7 +319,7 @@
 						<div class="inner_sub">
 							<ul data-default="219" data-min="219" data-max="731"
 								class="gnb_menu" style="height: auto;">
-								<li>
+								<li>				
 									<a class="menu">
 										<span class="ico">
 											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(2).png" alt="카테고리 아이콘" class="ico_off"> 
@@ -255,7 +330,6 @@
 											<span class="ico_new" style="background-image: url(&quot;https://res.kurly.com/pc/service/common/1908/ico_new_42x42_v2.png&quot;);">new</span>
 										</span>
 									</a>
-				
 									<ul class="sub_menu">
 										<li><a class="sub"><span class="name">=== 카테고리별 ===</span></a></li>
 										<li><a class="sub"><span class="name">홍삼·즙·건강식품</span></a></li>
@@ -356,7 +430,7 @@
 											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(10).png" alt="카테고리 아이콘" class="ico_off"> 
 											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(12).png" alt="카테고리 아이콘" class="ico_on">
 										</span> 
-										<span class="tit"><spanclass="txt">국·반찬·메인요리</span></span>
+										<span class="tit"><span class="txt">국·반찬·메인요리</span></span>
 									</a>
 									<ul class="sub_menu">
 										<li><a class="sub"><span class="name">국·탕·찌개</span></a></li>
