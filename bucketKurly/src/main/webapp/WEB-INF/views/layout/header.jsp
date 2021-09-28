@@ -69,8 +69,8 @@
 			
 			<div id="userMenu">
 				<ul class="list_menu">
-					<li class="menu none_sub menu_join"><a href="/kurly/join.do" class="link_menu">회원가입</a></li>
-					<li class="menu none_sub menu_login"> <a href="/kurly/login.do" class="link_menu">로그인</a></li>
+					<li class="menu none_sub menu_join"><a href="${pageContext.request.contextPath}/join.do" class="link_menu">회원가입</a></li>
+					<li class="menu none_sub menu_login"> <a href="${pageContext.request.contextPath}/login.do" class="link_menu">로그인</a></li>
 					<li class="menu lst"><a href="############" class="link_menu">고객센터</a>
 						<ul class="sub">
 							<li><a href="${pageContext.request.contextPath}/board_notice.do" onclick="####">공지사항</a></li>
@@ -105,7 +105,7 @@
 				<ul class="list_menu">
 					<li class="menu menu_user">
 						<a class="link_menu grade_comm" onclick="#####">
-							<span class="ico_grade grade0">일반</span> 
+							<span class="ico_grade grade0">${rank }</span> 
 							<span class="txt"><span class="name">${name}</span>
 							<span class="sir">님</span></span>
 						</a> 
@@ -117,7 +117,7 @@
 							<li><a>상품 문의</a></li> 
 							<li><a href="#none" onclick="#############">적립금</a></li> 
 							<li><a href="#none" onclick="#############">쿠폰</a> </li> 
-							<li><a href="#none">개인 정보 수정</a></li> 
+							<li><a href="${pageContext.request.contextPath}/memberinfo.do">개인 정보 수정</a></li> 
 							<li><a href="${pageContext.request.contextPath}/logout.do">로그아웃</a></li>
 						</ul>
 					</li>

@@ -7,9 +7,22 @@
 		VALUES(#{member_id}, #{member_pw}, #{member_name}, #{member_email}, #{member_birth}, #{member_phone}, #{member_sex}, #{member_address1}, #{member_address2}, #{member_zipcode})
 	</insert>
 	
+	<insert id="insertMemberDetail" parameterType="memberDetail">
+		INSERT INTO tb_member_details(member_id)
+		VALUES(#{member_id})
+	</insert>
+	
+	<select id="selectMember" resultType="member">
+		SELECT member_id, member_pw, member_name, member_email, member_birth, member_phone  FROM tb_member WHERE member_id=#{member_id}
+	</select>
+	
+	<select id="selectMemberDetail" resultType="memberDetail">
+		SELECT member_rank, member_point, member_total_cost FROM tb_member_details WHERE member_id=#{member_id}
+	</select>
+	
 	<update id="updateMember" parameterType="member">
-	  UPDATE tb_member SET member_pw=#{member_pw}, member_name=#{member_name}, member_email=#{member_email}, member_birth=#{member_birth}, member_phone=#{member_phone}, member_sex=#{member_sex},
-	  member_address1=#{member_address1}, member_address2=#{member_address2},  member_zipcode=#{member_zipcode} WHERE member_id=#{member_id}
+	  UPDATE tb_member SET member_pw=#{member_pw}, member_name=#{member_name}, member_email=#{member_email}, member_birth=#{member_birth}, member_phone=#{member_phone}, member_sex=#{member_sex}
+	   WHERE member_id=#{member_id}
 	</update>
 	
 	<delete id="deleteMember" parameterType="member">
@@ -28,6 +41,14 @@
 	  	SELECT member_id FROM tb_member WHERE member_name=#{member_name} and member_email=#{member_email}
 	</select>
 	
+	<select id="find_pwd" resultType="member">
+		SELECT member_email, member_id from tb_member WHERE member_id = #{member_id} and member_name = #{member_name} and member_email = #{member_email};
+	</select>
+	
+	<update id="update_pwd" parameterType="member">
+		UPDATE tb_member set member_pw= #{member_pw} where member_id= #{member_id}
+	</update>
+	
 	<insert id="insertMemberTerms" parameterType="memberterms">
 		INSERT INTO tb_terms_agree(member_id, terms_agree_status, terms_agree_date, terms_agree_modified_date)
 		VALUES(#{member_id}, 'y', current_date, current_date)
@@ -37,8 +58,16 @@
 		SELECT member_id FROM tb_member WHERE member_id = #{member_id}
 	</select>
 	
+	<select id="pwCheck" parameterType="String"  resultType="member">
+		SELECT member_pw FROM tb_member WHERE member_pw = #{member_pw}
+	</select>
+	
 	<select id="emailCheck" parameterType="String"  resultType="member">
 		SELECT member_email FROM tb_member WHERE member_email = #{member_email}
+	</select>
+	
+	<select id="phoneCheck" parameterType="String"  resultType="member">
+		SELECT member_phone FROM tb_member WHERE member_phone = #{member_phone}
 	</select>
 	
 </mapper> 

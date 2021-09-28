@@ -11,10 +11,10 @@
 		<typeAlias type="bucket.kurly.admin.board.Admin_Board_noticeVO" alias="admin_board_notice" />
 		<typeAlias type="bucket.kurly.admin.goods.Goods_adminSellVO" alias="goods_adminsell" />
 		<typeAlias type="bucket.kurly.user.member.MemberVO" alias="member" />
+		<typeAlias type="bucket.kurly.user.member.MemberDetailVO" alias="memberDetail" />
 		<typeAlias type="bucket.kurly.user.member.MemberTermsVO" alias="memberterms" />
 		<typeAlias type="bucket.kurly.user.board.Board_noticeVO" alias="board_notice" />
 		<typeAlias type="bucket.kurly.user.board.Board_qnaVO" alias="board_qna"/>
-		<typeAlias type="bucket.kurly.user.board.Board_fileVO" alias="board_file"/>
 		<typeAlias type="bucket.kurly.user.board.Board_fileVO" alias="board_file"/>
 		<typeAlias type="bucket.kurly.user.goods.GoodsVO" alias="goodsVo"/>
 		<typeAlias type="bucket.kurly.user.goods.Goods_SellVO" alias="goods_sell"/>

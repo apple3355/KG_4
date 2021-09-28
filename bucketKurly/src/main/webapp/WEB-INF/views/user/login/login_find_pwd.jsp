@@ -21,8 +21,7 @@
 	content="다이어트, 식단, 닭가슴살, 요리, 치아바타, 레시피, 요리, 상차림, 다이어트음식, 이유식, 건강이유식" />
 <title>버켓컬리 :: 내일의 장보기, 버켓컬리</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-<link rel="stylesheet" type="text/css" href="resources/css/login_find_pwd.css">
+<link rel="stylesheet" href="resources/find_pwdstyle.css">
 <link rel="shortcut icon" href="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/favicon_v2.webp" type="image/x-icon">
 </head>
 <body>
@@ -36,17 +35,17 @@
 					<div class="section_login">
 						<h3 class="tit_login">비밀번호 찾기</h3>
 					    <div class="write_form find_view">
-							<form method="post" id="form" name="fm" action="" onsubmit="return chkForm( this );">
+							<form method="post" id="form" name="fm" action="/find_pwd_chk.do" onsubmit="return chkForm( this );">
 								<input type="hidden" name="act" value="Y"> 
 								<input type="hidden" name=rncheck value="none"> 
 								<input type="hidden" name=dupeinfo value=""> 
 								<strong class="tit_label">이름</strong> 
-								<input name="srch_name" type="text" size="29" required label="이름" tabindex=2>
+								<input name="member_name" id="member_name" type="text" size="29" required label="이름" tabindex=2>
 								<strong class="tit_label">아이디</strong>  
-								<input name="srch_id" value="" type="text" size="29" required label="아이디" tabindex=2>
+								<input name="member_id" id="member_id" value="" type="text" size="29" required label="아이디" tabindex=2>
 								<p></p>
 								<strong class="tit_label">이메일</strong> 
-								<input name="srch_mail"type="text" size="29" required label="메일주소" tabindex=5>
+								<input name="member_email" id="member_email" type="text" size="29" required label="메일주소" tabindex=5>
 								<p></p>
 								<button type="submit" class="btn_type1">
 								<span class="txt_type">찾기</span>
