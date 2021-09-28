@@ -11,16 +11,17 @@
 		<typeAlias type="bucket.kurly.admin.board.Admin_Board_noticeVO" alias="admin_board_notice" />
 		<typeAlias type="bucket.kurly.admin.goods.Goods_adminSellVO" alias="goods_adminsell" />
 		<typeAlias type="bucket.kurly.user.member.MemberVO" alias="member" />
+		<typeAlias type="bucket.kurly.user.member.MemberDetailVO" alias="memberDetail" />
 		<typeAlias type="bucket.kurly.user.member.MemberTermsVO" alias="memberterms" />
 		<typeAlias type="bucket.kurly.user.board.Board_noticeVO" alias="board_notice" />
 		<typeAlias type="bucket.kurly.user.board.Board_qnaVO" alias="board_qna"/>
-		<typeAlias type="bucket.kurly.user.board.Board_fileVO" alias="board_file"/>
 		<typeAlias type="bucket.kurly.user.board.Board_fileVO" alias="board_file"/>
 		<typeAlias type="bucket.kurly.user.goods.GoodsVO" alias="goodsVo"/>
 		<typeAlias type="bucket.kurly.user.goods.Goods_SellVO" alias="goods_sell"/>
 		<typeAlias type="bucket.kurly.user.goods.Goods_CartVO" alias="goods_cart"/>
 		<typeAlias type="bucket.kurly.user.goods.Goods_CartShowVO" alias="goods_cartshow"/>
 		<typeAlias type="bucket.kurly.user.order.OrderVO" alias="order"/>
+		<typeAlias type="bucket.kurly.admin.manager.AdminTermsVO" alias="adminterms"/>
 	</typeAliases>
 
 	<mappers>
@@ -29,5 +30,6 @@
 		<mapper resource="mappings/board-mapping.xml" />
 		<mapper resource="mappings/goods-mapping.xml" />
 		<mapper resource="mappings/order-mapping.xml"/>
+		<mapper resource="mappings/admin-mapping.xml" />
 	</mappers>
 </configuration>

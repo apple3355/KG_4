@@ -37,12 +37,6 @@ public class MainController {
 			return "member/join";
 		}
 		
-		//회원 상세정보화면
-		@RequestMapping("/memberinfo.do")
-		public String memberinfo() {
-			return "member/member_info";
-		}
-		
 		
 		//회원 메인화면
 		@RequestMapping("/notFind_ID.do")

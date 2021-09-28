@@ -44,4 +44,20 @@
 		<property name="defaultEncoding" value="utf-8" />
 	</bean>
 	
+	<!-- navermail설정 -->
+	<bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" /> <!-- 메일서버 호스트(naver: smtp.naver.com) -->
+		<property name="port" value="587" /> <!-- 메일서버 포트번호 (naver:465) -->
+		<property name="username" value="bucketkurly@gmail.com" /> <!-- 자신의 이메일 아이디 -->
+		<property name="password" value="!bucketkurly4@" /> <!-- 자신의 비밀번호 -->
+		<!-- 보안연결 SSL과 관련된 설정 -->
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+	
 </beans>
