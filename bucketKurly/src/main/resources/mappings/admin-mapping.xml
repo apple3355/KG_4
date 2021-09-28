@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="AdminDAO">
+	
+	<!-- 약관리스트 조회 -->
+	<select id="getTermsList" resultType="adminterms">
+		SELECT seq, terms_no, terms_title, terms_essential, terms_reg_date FROM tb_terms
+	</select>
+	
+	<!-- 약관 상세페이지 조회 -->
+	<select id="getTerms" parameterType="Integer" resultType="adminterms">
+		SELECT * FROM tb_terms WHERE seq=#{seq}
+	</select>
+	
+	<!-- 약관등록 -->
+	<insert id="insertAdminTerms" parameterType="adminterms">
+		INSERT INTO tb_terms(terms_no, terms_title, terms_essential, terms_contents, terms_reg_date)
+		VALUES(#{terms_no}, #{terms_title}, #{terms_essential}, #{terms_contents}, current_date)
+	</insert>
+	
+	<!-- 약관수정 -->
+	<update id="updateAdminTerms" parameterType="adminterms">
+	  UPDATE tb_terms SET terms_no=#{terms_no}, terms_title=#{terms_title}, terms_essential=#{terms_essential}, terms_contents=#{terms_contents}, terms_reg_date=#{terms_reg_date} 
+	  WHERE seq=#{seq}	
+	</update>
+	
+	<!-- 약관삭제 -->
+	<delete id="deleteAdminTerms">
+		DELETE FROM tb_terms WHERE seq=#{seq}
+	</delete>
+	
+</mapper>
