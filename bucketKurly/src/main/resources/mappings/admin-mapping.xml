@@ -4,6 +4,11 @@
 
 <mapper namespace="AdminDAO">
 	
+	<!-- 로그인 -->
+	<select id="login" resultType="admin">
+	  	SELECT admin_id, admin_pw FROM tb_admin WHERE admin_id=#{admin_id}
+	</select>
+	
 	<!-- 약관리스트 조회 -->
 	<select id="getTermsList" resultType="adminterms">
 		SELECT seq, terms_no, terms_title, terms_essential, terms_reg_date FROM tb_terms
@@ -29,6 +34,27 @@
 	<!-- 약관삭제 -->
 	<delete id="deleteAdminTerms">
 		DELETE FROM tb_terms WHERE seq=#{seq}
+	</delete>
+	
+	<!--관리자 추가 -->
+	<insert id="insertAdmin" parameterType="admin">
+		INSERT INTO tb_admin(admin_id, admin_pw, admin_name, admin_position)
+		VALUES(#{admin_id}, #{admin_pw}, #{admin_name}, #{admin_position})
+	</insert>
+	
+	<!--관리자 목록 -->
+	<select id="adminList" resultType="admin">
+		SELECT admin_no, admin_name, admin_position, admin_id  from tb_admin 
+	</select>
+	
+	<!--관리자 수정 -->
+	<update id="updateAdmin" parameterType="admin">
+		UPDATE tb_admin SET admin_name=#{admin_name}, admin_position=#{admin_position} ,admin_id=#{admin_id}, admin_pw=#{admin_pw}  WHERE admin_no=#{admin_no}
+	</update>
+	
+	<!--관리자 삭제 -->
+	<delete id="deleteAdmin">
+		DELETE FROM tb_admin WHERE admin_no=#{admin_no}
 	</delete>
 	
 </mapper>

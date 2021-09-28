@@ -7,12 +7,19 @@ import org.springframework.stereotype.Service;
 
 import bucket.kurly.admin.manager.AdminDAO;
 import bucket.kurly.admin.manager.AdminTermsVO;
+import bucket.kurly.admin.manager.AdminVO;
 
 @Service
 public class AdminServiceImpl implements AdminService{
 
 	@Autowired
 	private AdminDAO dao;
+	
+	//로그인
+	@Override
+	public AdminVO login(String admin_id) throws Exception {
+		return dao.login(admin_id);
+	}
 	
 	//약관리스트 조회
 	@Override
@@ -44,6 +51,32 @@ public class AdminServiceImpl implements AdminService{
 	public void deleteAdminTerms(AdminTermsVO vo){
 		dao.deleteAdminTerms(vo);
 	}
+
+	//관리자 등록
+	@Override
+	public void insertAdmin(AdminVO vo) {
+		dao.insertAdmin(vo);
+	}
+
+	//관리자 목록
+	@Override
+	public List<AdminVO> getAdminList() {
+		return dao.getAdminList();
+	}
+
+	//관리자 수정
+	@Override
+	public void updateAdmin(AdminVO vo) {
+		dao.updateAdmin(vo);
+	}
+
+	//관리자 삭제
+	@Override
+	public void deleteAdmin(int admin_no) {
+		dao.deleteAdmin(admin_no);
+	}
+
+	
 
 
 }

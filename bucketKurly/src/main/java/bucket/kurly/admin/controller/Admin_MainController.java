@@ -13,5 +13,8 @@ public class Admin_MainController {
 	}
 	
 	//로그인화면
-	
+	@RequestMapping("/admin_login.mdo")
+	public String admin_login() {
+		return "manager/admin_login";
+	}
 }

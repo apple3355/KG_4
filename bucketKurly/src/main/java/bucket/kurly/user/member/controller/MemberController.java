@@ -9,7 +9,6 @@ import java.util.Random;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.xml.transform.Result;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -111,8 +110,7 @@ public class MemberController {
 
 	// 로그인
 	@RequestMapping("/chklogin.do")
-	public String login(@ModelAttribute MemberVO vo, @RequestParam("pw") String pw, HttpSession session, Model model,
-			HttpServletResponse response) throws Exception {
+	public String login(@ModelAttribute MemberVO vo, @RequestParam("pw") String pw, HttpSession session, HttpServletResponse response) throws Exception {
 		
 		MemberVO result = memberService.login(vo);
 		
