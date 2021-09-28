@@ -41,7 +41,7 @@
             <div id="content">
   				
   				<!-- topbar -->
-      			<%@ include file="/WEB-INF/views//admin_layout/admin_topbar.jsp"%>  		
+      			<%@ include file="/WEB-INF/views/admin_layout/admin_topbar.jsp"%>  		
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -157,7 +157,7 @@
 
 
         <!-- Footer -->
-     		 <%@ include file="/WEB-INF/views/admin/admin_layout/admin_footer.jsp"%>  
+     		 <%@ include file="/WEB-INF/views/admin_layout/admin_footer.jsp"%>  
         <!-- End of Footer -->
 
         </div>
