@@ -255,7 +255,7 @@ $(function(){
 											<span class="dc_price">${goods_sellVO.goods_sell_price}<span class="won">원</span></span> 
 											<span class="dc_percent">${goods_sellVO.goods_sell_discount}<span class="per">%</span></span></span> 
 										<a class="original_price">
-											<span class="price">3,120<span class="won">원</span></span>
+											<span class="price">${goods_sellVO.goods_sell_price}<span class="won">원</span></span>
 											<img src="https://res.kurly.com/kurly/ico/2021/question_24_24_c999.svg" alt="물음표" class="ico">
 										</a> 
 										<span class="layer_position"><!----> 
@@ -383,7 +383,7 @@ $(function(){
 										<!----> 
 										<strong class="tit">총 상품금액 :</strong> 
 										<span class="sum">
-											<span class="num">###</span> 
+											<span class="num">${goods_sellVO.goods_sell_price}</span> 
 											<span class="won">원</span>
 										</span>
 									</div> 
