@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<!-- 상위 카테고리 -->
+	<mapper namespace="category-mapping">
+	
+	<select id="selectCategory_parent" resultType="admin_category_parent">
+		SELECT * FROM TB_CATEGORY_PARENT
+	</select>
+	
+	<delete id="deleteCategory_parent" parameterType="String">
+		DELETE FROM TB_CATEGORY_PARENT
+		WHERE category_parent_no = #{category_parent_no}
+	</delete>
+
+
+		
+</mapper>

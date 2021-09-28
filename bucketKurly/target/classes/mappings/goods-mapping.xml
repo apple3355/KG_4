@@ -105,4 +105,35 @@
 		where cart.GOODS_CART_MEMBER_NO = #{goods_cart_member_no}
 		order by cart.goods_cart_no
 	</select>
+	
+	
+	
+	<!-- 관리자 -->
+	<!-- 상품리스트 목록  --> 
+  	<select id="selectGoods_admin_list"  resultType="goods_adminsell" >
+  		SELECT * 
+  		FROM TB_GOODS_SELL
+  		ORDER BY GOODS_SELL_NO
+  	</select> 
+	
+	<!-- 상품리스트 수정 -->
+	<update id="updateGoods_admin" parameterType="goods_adminsell">
+		UPDATE TB_GOODS_SELL 
+		SET GOODS_SELL_PROMOTION = #{goods_sell_promotion} 
+		,GOODS_SELL_STATUS = #{goods_sell_status}
+		,GOODS_SELL_DISCOUNT = #{goods_sell_discount}
+		WHERE GOODS_SELL_NO = #{goods_sell_no}		
+	</update>
+	
+	
+
+	<!-- 상품리스트 삭제 -->
+	<delete id="selectGoods_delete" parameterType="int">
+		DELETE FROM TB_GOODS_SELL
+  		WHERE GOODS_SELL_NO = #{goods_sell_no}
+  		
+	</delete>
+	
+
+	
 </mapper>

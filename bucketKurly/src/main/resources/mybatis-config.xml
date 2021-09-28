@@ -5,7 +5,11 @@
 <configuration>
 	<properties resource="db.properties" />
 	<typeAliases>
+		
+		<typeAlias type="bucket.kurly.admin.category.Admin_Category_parentVO" alias="admin_category_parent" />
+		<typeAlias type="bucket.kurly.admin.category.Admin_Category_subVO" alias="admin_category_sub" />
 		<typeAlias type="bucket.kurly.admin.board.Admin_Board_noticeVO" alias="admin_board_notice" />
+		<typeAlias type="bucket.kurly.admin.goods.Goods_adminSellVO" alias="goods_adminsell" />
 		<typeAlias type="bucket.kurly.user.member.MemberVO" alias="member" />
 		<typeAlias type="bucket.kurly.user.member.MemberTermsVO" alias="memberterms" />
 		<typeAlias type="bucket.kurly.user.board.Board_noticeVO" alias="board_notice" />
@@ -20,6 +24,7 @@
 	</typeAliases>
 
 	<mappers>
+		<mapper resource="mappings/category-mapping.xml" />
 		<mapper resource="mappings/member-mapping.xml" />
 		<mapper resource="mappings/board-mapping.xml" />
 		<mapper resource="mappings/goods-mapping.xml" />
