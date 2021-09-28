@@ -23,4 +23,9 @@ public class Admin_Category_parentServiceImpl implements Admin_Category_parentSe
 	public void deleteCategory_parent(String category_parent_no) {
 		dao.deleteCategory_parent(category_parent_no);
 	}
+
+	@Override
+	public void insertCategory_parent(Admin_Category_parentVO vo) {
+		dao.insertCategory_parent(vo);		
+	}
 }

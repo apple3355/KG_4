@@ -72,7 +72,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">컬리 게시글관리 :</h6>
-                        <a class="collapse-item" href="buttons.html">공지사항</a>
+                        <a class="collapse-item" href="/admin_board_notice.mdo">공지사항</a>
                         <a class="collapse-item" href="buttons.html">자주하는 질문</a>
                         <a class="collapse-item" href="buttons.html">1:1문의</a>
                         <a class="collapse-item" href="buttons.html">상품문의</a>

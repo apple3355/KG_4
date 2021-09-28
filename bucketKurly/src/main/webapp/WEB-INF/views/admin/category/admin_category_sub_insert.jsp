@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="UTF-8">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache"> <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
 
 <!-- 본 파일은 템플릿입니다.  -->
 
@@ -25,7 +26,7 @@
 
     <!-- Custom styles for this page -->
     <link href="resources/bootstrap/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-	
+
 </head>
 
 <body id="page-top">
@@ -48,45 +49,29 @@
 
                     <!-- Page Heading / 기본 테이블 템플릿 사용을 원하시면 해당 부분 아래로 수정하시면 됩니다.-->
                     <h1 class="h3 mb-2 text-gray-800">카테고리 관리</h1>
-                    
-
+                   
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">상위 카테고리</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">상위 카테고리 등록</h6>
                         </div>
-                        <div align = "right" style="padding:10px 20px 0px 0px; ">
-                        	 <a href="${pageContext.request.contextPath}/admin_category_parent_insert.mdo">
-			            	 	<span class="btn btn-sm btn-primary" id="saveBtn" style="float: none; font-size:18px;">등록</span>
-			                 </a>
-                       	</div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"  style="text-align:center;">
-                                    <thead>
-                                    	<tr>
-											<th>번호</th>
-											<th>코드 번호</th>   
-											<th>제목</th>
-											<th>icon</th>
-											<th>icon(color)</th>
-											<th></th>
-										</tr>
-                                    </thead>
-                                   <tbody>	
-                                  		 <c:forEach items="${admin_Category_parent}" var="admin_Category_parent" varStatus="status">	
-											<tr>
-											 	<td>${status.count}</td>
-												<td><c:out value="${admin_Category_parent.category_parent_no}"/></td>
-												<td><c:out value="${admin_Category_parent.category_parent_name}"/></td>
-												<td><img src="${admin_Category_parent.category_parent_icon}" /></td>
-												<td><img src="${admin_Category_parent.category_parent_icon_color}" /></td>
-												<td><button type="button" class="btn btn-sm btn-primary" style="font-size:18px;" id="saveBtn" onclick="fn_delete('${admin_Category_parent.category_parent_no}')">삭제</button></td>
+                            <div class="table-responsive" style="text-align:center;">
+	                            <form method="post" role="form" action="${pageContext.request.contextPath}/admin_category_sub_insertDB.mdo" >
+	                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+	                                      	<tr>
+	                                      		<th width="20%">상위 카테고리</th><td><input class="form-control" name="category_sub_parent_no"></td>
+												<th width="20%">이름</th><td><input class="form-control" name="category_sub_name"></td>
 											</tr>
-										</c:forEach>
-									</tbody>
-                                </table>
-                            </div>
+											<tr>
+												<td colspan="4" align="right">
+													<button type="submit" class="btn btn-outline btn-warning" style="font-size:18px;">확인</button>
+													<button type="button" class="btn btn-outline btn-default" onclick="history.back()" style="font-size:18px;">취소</button>
+												</td>
+											</tr>
+	                                </table>
+								</form>
+							</div>
                         </div>
                     </div>
 
@@ -123,22 +108,6 @@
 
     <!-- Page level custom scripts -->
     <script src="resources/bootstrap/js/demo/datatables-demo.js"></script>
-   
-    <script>
-		function fn_delete(category_parent_no) {
-		  	  var result = confirm(" [ "+category_parent_no+" ]  상위 카테고리를 삭제하시겠습니까? ");
-		      if(result){
-		    	 	var url = "${pageContext.request.contextPath}/admin_category_parent_deleteDB.mdo";
-		  			url = url + "?category_parent_no=" + category_parent_no;
-		  			location.href = url;
-		  			
-		            alert("해당 카테고리가 삭제되었습니다.");
-		      }else{
-			  	    location.href = "javascript:void(0);";
-		      }
-	  	
-		}
-    </script>
 
 </body>
 

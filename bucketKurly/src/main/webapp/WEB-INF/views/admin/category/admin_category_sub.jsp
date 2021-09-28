@@ -53,10 +53,10 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">상위 카테고리</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">중위 카테고리</h6>
                         </div>
                         <div align = "right" style="padding:10px 20px 0px 0px; ">
-                        	 <a href="${pageContext.request.contextPath}/admin_category_parent_insert.mdo">
+                        	 <a href="${pageContext.request.contextPath}/admin_category_sub_insert.mdo">
 			            	 	<span class="btn btn-sm btn-primary" id="saveBtn" style="float: none; font-size:18px;">등록</span>
 			                 </a>
                        	</div>
@@ -66,22 +66,18 @@
                                     <thead>
                                     	<tr>
 											<th>번호</th>
-											<th>코드 번호</th>   
-											<th>제목</th>
-											<th>icon</th>
-											<th>icon(color)</th>
+											<th>상위 카테고리 번호</th>   
+											<th>이름</th>
 											<th></th>
 										</tr>
                                     </thead>
                                    <tbody>	
-                                  		 <c:forEach items="${admin_Category_parent}" var="admin_Category_parent" varStatus="status">	
+                                  		 <c:forEach items="${admin_Category_sub}" var="admin_Category_sub" varStatus="status">	
 											<tr>
 											 	<td>${status.count}</td>
-												<td><c:out value="${admin_Category_parent.category_parent_no}"/></td>
-												<td><c:out value="${admin_Category_parent.category_parent_name}"/></td>
-												<td><img src="${admin_Category_parent.category_parent_icon}" /></td>
-												<td><img src="${admin_Category_parent.category_parent_icon_color}" /></td>
-												<td><button type="button" class="btn btn-sm btn-primary" style="font-size:18px;" id="saveBtn" onclick="fn_delete('${admin_Category_parent.category_parent_no}')">삭제</button></td>
+												<td><c:out value="${admin_Category_sub.category_sub_parent_no}"/></td>
+												<td><c:out value="${admin_Category_sub.category_sub_name}"/></td>
+												<td><button type="button" class="btn btn-sm btn-primary" style="font-size:18px;" id="saveBtn" onclick="fn_delete('${admin_Category_sub.category_sub_no}')">삭제</button></td>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -123,13 +119,13 @@
 
     <!-- Page level custom scripts -->
     <script src="resources/bootstrap/js/demo/datatables-demo.js"></script>
-   
+    
     <script>
-		function fn_delete(category_parent_no) {
-		  	  var result = confirm(" [ "+category_parent_no+" ]  상위 카테고리를 삭제하시겠습니까? ");
+		function fn_delete(category_sub_no) {
+		  	  var result = confirm(" [ "+category_sub_no+" ]  상위 카테고리를 삭제하시겠습니까? ");
 		      if(result){
-		    	 	var url = "${pageContext.request.contextPath}/admin_category_parent_deleteDB.mdo";
-		  			url = url + "?category_parent_no=" + category_parent_no;
+		    	 	var url = "${pageContext.request.contextPath}/admin_category_sub_deleteDB.mdo";
+		  			url = url + "?category_sub_no=" + category_sub_no;
 		  			location.href = url;
 		  			
 		            alert("해당 카테고리가 삭제되었습니다.");

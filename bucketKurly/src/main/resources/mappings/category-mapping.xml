@@ -2,11 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-	<!-- 상위 카테고리 -->
-	<mapper namespace="category-mapping">
 	
+<mapper namespace="category-mapping">
+
+	<!-- 상위 카테고리 -->
 	<select id="selectCategory_parent" resultType="admin_category_parent">
 		SELECT * FROM TB_CATEGORY_PARENT
+		ORDER BY category_parent_no
 	</select>
 	
 	<delete id="deleteCategory_parent" parameterType="String">
@@ -14,6 +16,30 @@
 		WHERE category_parent_no = #{category_parent_no}
 	</delete>
 
+	<insert id="insertCategory_parent" parameterType="admin_category_parent">
+		INSERT INTO TB_CATEGORY_PARENT
+		VALUES('P'|| LPAD(CAST(NEXTVAL('TB_CATEGORY_PARENT_SEQ')AS VARCHAR), 2, '0'),#{category_parent_name},#{category_parent_icon},#{category_parent_icon_color})
+	</insert>
+	
+	<!-- 중위 카테고리 -->
+	<select id="selectCategory_sub" resultType="admin_category_sub">
+		SELECT * FROM TB_CATEGORY_SUB
+		ORDER BY category_sub_parent_no
+	</select>
+	
+	<delete id="deleteCategory_sub" parameterType="String">
+		DELETE FROM TB_CATEGORY_SUB
+		WHERE category_sub_no = #{category_sub_no}
+	</delete>
 
-		
+	<insert id="insertCategory_sub" parameterType="admin_category_sub">
+		INSERT INTO TB_CATEGORY_SUB
+		VALUES(LPAD(CAST(NEXTVAL('TB_CATEGORY_SUB_SEQ')AS VARCHAR), 3, '0'),#{category_sub_name},#{category_sub_parent_no})
+	</insert>
+	
+	<!-- 하위 카테고리 (상품) -->
+	
+	
+	
+	
 </mapper>

@@ -75,8 +75,8 @@
 											</tr>
 											<tr>
 												<td colspan="4" align="right">
-													<button type="submit" class="btn btn-outline btn-warning">확인</button>
-													<button type="button" class="btn btn-outline btn-default" onclick="history.back()">취소</button>
+													<button type="submit" class="btn btn-outline btn-warning"  style="font-size:18px;" >확인</button>
+													<button type="button" class="btn btn-outline btn-default" onclick="history.back()"  style="font-size:18px;">취소</button>
 												</td>
 											</tr>
 	                                </table>

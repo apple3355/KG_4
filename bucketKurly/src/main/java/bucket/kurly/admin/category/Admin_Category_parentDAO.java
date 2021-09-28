@@ -24,6 +24,10 @@ public class Admin_Category_parentDAO {
 		 System.out.println("Admin_Category_parentDAO - deleteCategory_parent 실행");
 		 sqlSessionTemplate.delete("category-mapping.deleteCategory_parent",category_parent_no);
 	}
-
 	
+	// 상위 카테고리 추가
+	public void insertCategory_parent(Admin_Category_parentVO vo) {
+		 System.out.println("Admin_Category_parentDAO - insertCategory_parent 실행");
+		 sqlSessionTemplate.delete("category-mapping.insertCategory_parent",vo);
+	}
 }
