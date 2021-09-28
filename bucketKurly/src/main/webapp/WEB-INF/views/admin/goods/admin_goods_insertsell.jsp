@@ -58,6 +58,11 @@
 		    });
 		   }
 		  });
+	   
+	   
+	   
+	   
+	   
 
 
 		 });
@@ -103,32 +108,34 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                            <c:set var="no" value="${vo.board_notice_no}" />
+                             <form role="form" action="${pageContext.request.contextPath}/admin_goods_insertsellDB.mdo">
+                           		 <c:set var="no" value="${vo.goods_sell_no}" />
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                      	<tr>
+                                      <!--  	<tr>
 											<th>카테고리</th><td colspan="3">
 												
 												<select name="parent_no" id="parent_no"  style="width: 200px" onchange="itemChange(this.value);"></select>
                       						    <select name="sub_no" id="sub_no" style="width: 200px;" onchange="itemChange2(this.value);"></select>
-                      						    <select id="goods_no" style="width: 200px;" onchange="itemChange2(this.value);"></select>
+                      						    <select id="goods_no" id="goods_no" style="width: 200px;" onchange="itemChange3(this.value);"></select>
 											</td>
-										</tr>									
+										</tr>	 -->								
 										<tr>
-											<th>입고날짜</th><td><input type="text" class="form-control" name="fat" id="fat" ></td>
-											<th>입고수량</th><td><input type="text" class="form-control" name="fat" id="fat" ></td>
+											<th>입고날짜</th><td><input type="text" class="form-control" value="${vo.goods_sell_in_date}" name="goods_sell_in_date" id="in_date" ></td>
+											<th>입고수량</th><td><input type="text" class="form-control" value="${vo.goods_sell_in_ea}" name="goods_sell_in_ea" id="in_ea" ></td>
 										</tr>
 										<tr>
-											<th>유통기한</th><td><input type="text" class="form-control" name="fat" id="fat" ></td>
-											<th>판매가격</th><td><input type="text" class="form-control" name="fat" id="fat" ></td>
+											<th>유통기한</th><td><input type="text" class="form-control" value="${vo.goods_sell_exp}" name="goods_sell_exp" id="exp" ></td>
+											<th>판매가격</th><td><input type="text" class="form-control" value="${vo.goods_sell_price}" name="goods_sell_price" id="price" ></td>
 										</tr>
 										<tr>
-											<th>할인율</th><td><input type="text" class="form-control" name="fat" id="fat" ></td>
-											<th>프로모션</th><td><input type="text" class="form-control" name="fat" id="fat" ></td>
-										</tr>
+											<th>할인율</th><td><input type="text" class="form-control" value="${vo.goods_sell_discount}" name="goods_sell_discount" id="discount" ></td>
+											<th>프로모션</th><td><input type="text" class="form-control" value="${vo.goods_sell_promotion}" name="goods_sell_promotion" id="promotion" ></td>
+										</tr>	
+																				
 										<tr>
 											<th>상태</th>
 												<td colspan="3">
-													<select name="status">
+													<select value="${vo.goods_sell_status}" name="goods_sell_status" id="status">
 													    <option value="">상태선택</option>
 													    <option value="학생">판매중</option>
 													    <option value="회사원">판매중지</option>
@@ -140,19 +147,19 @@
 										
 										
 											<td colspan="4" align="right">												
-												<button type="button" class="btn btn-outline btn-danger" 
-													onclick="fn_delete('${no}')">
+												<button type="button" class="btn btn-outline btn-danger" id="fn_insert"
+													onclick="fn_insert('${vo.goods_sell_no}')">
 													등록하기
 												</button>
 												<button type="button" class="btn btn btn-outline btn-primary" 
-													onclick="location.href='${pageContext.request.contextPath}/admin_board_notice.mdo'">
+													onclick="location.href='${pageContext.request.contextPath}/admin_goods_list.mdo'">
 													목록보기
 												</button>
 												
 											</td>
 										</tr>
                                 </table>
-
+							</form>
 							</div>
                         </div>
                     </div>
@@ -191,24 +198,41 @@
     <!-- Page level custom scripts -->
     <script src="resources/bootstrap/js/demo/datatables-demo.js"></script>
     <script>
-  	//이전 버튼 이벤트
-    function fn_updatePage(notice_no) {
-    	var url = "${pageContext.request.contextPath}/admin_board_notice_update.mdo";
-		url = url + "?notice_no=" + notice_no;
-		location.href = url;
-	}
-  	function fn_delete(notice_no) {
-	  	  var result = confirm("이 게시글을 삭제하시겠습니까? ");
-	      if(result){
-	    	 	var url = "${pageContext.request.contextPath}/admin_board_notice_deleteDB.mdo";
-	  			url = url + "?notice_no=" + notice_no;
-	  			location.href = url;
-	            alert("게시글이 삭제되었습니다.");
-	      }else{
-		  	    location.href = "javascript:void(0);";
-	      }
-    	
-	}
+ 	//상품 등록 실행
+ 	$(document).ready(function(){
+		//상품 판매 등록 유효성검사
+		$("#fn_insert").click(function(){
+			alert("상품을 동록하시겠습니까?");
+			var in_date = $("#in_date").val();
+			var in_ea = $("#in_ea").val();
+			var exp = $("#exp").val();
+			var price = $("#price").val();
+			var discount = $("#discount").val();
+			var promotion = $("#promotion").val();
+			var status = $("#status").val();
+			
+			if(in_date == ""){
+				alert("입고 날짜를 입력해주세요");
+				in_date.foucs();
+			} else if (in_ea == ""){
+				alert("입고 수량을 입력해주세요");
+				in_ea.foucs();
+			} else if (exp == ""){
+				alert("유통기한을 입력해주세요");
+				exp.foucs();
+			} else if (price == ""){
+				alert("상품 가격을 입력해주세요");
+				price.foucs();
+			}
+			// 상품 판매 정보 전송
+			alert("상품 정보 전송");
+			alert(get.document.dataTable.action);
+			document.form.action = "${pageContext.request.contextPath}/admin_goods_insertsellDB.mdo"
+			document.form.submit();
+		});		
+		
+	});
+ 			
   
     </script>
    

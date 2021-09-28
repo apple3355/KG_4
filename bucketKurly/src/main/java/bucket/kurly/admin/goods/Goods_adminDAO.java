@@ -6,8 +6,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import bucket.kurly.user.board.Board_noticeVO;
-
 @Repository
 public class Goods_adminDAO {
 	
@@ -16,11 +14,16 @@ public class Goods_adminDAO {
 		
 	//상품리스트
 	public List<Goods_adminSellVO> selectGoods_admin_list() {
-		System.out.println("Goods_adminDAO - selectGoods_admin_list() 실행");
+		System.out.println("GoodsDAO - selectGoods_admin_list() 실행");
 		return sqlSessionTemplate.selectList("GoodsDAO.selectGoods_admin_list");
 	}
 	
 	//상품등록
+	public void insertGoods(Goods_adminSellVO vo) {
+		System.out.println("GoodsDAO - insertGoods() 실행");
+		sqlSessionTemplate.insert("GoodsDAO.insertGoods", vo); 
+	}
+	
 	
 	//상품수정
 	public void updateGoods(Goods_adminSellVO vo) {

@@ -109,14 +109,28 @@
 	
 	
 	<!-- 관리자 -->
-	<!-- 상품리스트 목록  --> 
+	<!-- 상품판매 리스트 목록  --> 
   	<select id="selectGoods_admin_list"  resultType="goods_adminsell" >
   		SELECT * 
   		FROM TB_GOODS_SELL
   		ORDER BY GOODS_SELL_NO
   	</select> 
 	
-	<!-- 상품리스트 수정 -->
+	<!-- 상품판매 리스트 등록 -->
+	<insert id="insertGoods" parameterType="goods_adminsell">
+		INSERT INTO
+		TB_GOODS_SELL(GOODS_SELL_PARENT_NO, GOODS_SELL_SUB_NO, GOODS_SELL_GOODS_NO,
+		GOODS_SELL_IN_DATE, GOODS_SELL_IN_EA, GOODS_SELL_EXP, GOODS_SELL_PRICE,
+		GOODS_SELL_PROMOTION, GOODS_SELL_STATUS, GOODS_SELL_DISCOUNT)
+		VALUES(#{goods_sell_parent_no}, #{goods_sell_sub_no}, #{goods_sell_goods_no}, #{goods_sell_price}, #{goods_sell_in_date},
+		#{goods_sell_in_ea}, #{goods_sell_exp}, #{goods_sell_promotion}, #{goods_sell_status}, #{goods_sell_discount})
+		
+	</insert> 
+	
+	
+	
+	
+	<!-- 상품판매 리스트 수정 -->
 	<update id="updateGoods_admin" parameterType="goods_adminsell">
 		UPDATE TB_GOODS_SELL 
 		SET GOODS_SELL_PROMOTION = #{goods_sell_promotion} 
@@ -125,9 +139,8 @@
 		WHERE GOODS_SELL_NO = #{goods_sell_no}		
 	</update>
 	
-	
 
-	<!-- 상품리스트 삭제 -->
+	<!-- 상품판매 리스트 삭제 -->
 	<delete id="selectGoods_delete" parameterType="int">
 		DELETE FROM TB_GOODS_SELL
   		WHERE GOODS_SELL_NO = #{goods_sell_no}

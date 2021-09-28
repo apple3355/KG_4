@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -13,7 +12,6 @@ import bucket.kurly.admin.board.Admin_Board_noticeVO;
 import bucket.kurly.admin.goods.Goods_adminSellVO;
 import bucket.kurly.admin.goods.service.Goods_adminService;
 import bucket.kurly.user.board.Board_noticeVO;
-import bucket.kurly.user.goods.Goods_SellVO;
 
 @Controller
 public class Goods_admin_Controller {
@@ -44,8 +42,14 @@ public class Goods_admin_Controller {
 	@RequestMapping("/admin_goods_insertsellDB.mdo")
 	public String admin_goods_insertsellDB(Model model,Goods_adminSellVO vo){
 		System.out.println("[상품 DB 등록 요청]");	
+		
+		goods_adminService.insertGoods(vo);		
+		
 		return "redirect:/admin_goods_list.mdo";
 	} 
+	
+	
+	
 	
 	//상품 수정
 	@RequestMapping("/admin_goodsupdate.mdo")

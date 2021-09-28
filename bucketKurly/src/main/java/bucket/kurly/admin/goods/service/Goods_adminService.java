@@ -3,18 +3,17 @@ package bucket.kurly.admin.goods.service;
 import java.util.List;
 
 import bucket.kurly.admin.goods.Goods_adminSellVO;
-import bucket.kurly.user.board.Board_noticeVO;
 
 public interface Goods_adminService {
 
 	//판매정보리스트
 	List<Goods_adminSellVO> selectGoods_admin_list();
 	
-	//상품등록
-	
-	//상품수정
+	//상품판매 리스트 등록
+	void insertGoods(Goods_adminSellVO vo);
+	//상품판매 리스트 수정
 	void updateGoods(Goods_adminSellVO vo);
-	//상품삭제
+	//상품 리스트 삭제
 	void deleteGoods(int goods_sell_no);
 	
 }
