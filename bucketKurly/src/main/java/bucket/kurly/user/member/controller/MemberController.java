@@ -379,6 +379,14 @@ public class MemberController {
 
 	}
 
+	//로그아웃
+	@RequestMapping("/logout.do")
+	public String logout(HttpSession session){
+		session.invalidate();
+		
+    return "redirect:/main.do";
+	}
+	
 	// 경고창
 	public void alertView(String message, int returnPage, HttpServletResponse response) throws IOException {
 		response.setContentType("text/html; charset=utf-8");

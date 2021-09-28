@@ -1,5 +1,7 @@
 package bucket.kurly.user.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -11,6 +13,7 @@ public class MainController {
 		public String main() {
 			return "main";
 		}
+		
 		
 		//로그인화면
 		@RequestMapping("/login.do")
