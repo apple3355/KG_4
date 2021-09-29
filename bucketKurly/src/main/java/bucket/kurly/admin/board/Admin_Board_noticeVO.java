@@ -3,6 +3,7 @@ package bucket.kurly.admin.board;
 import java.util.Date;
 
 public class Admin_Board_noticeVO {
+
 	private int board_notice_no;
 	private String board_notice_title;
 	private String board_notice_writer;

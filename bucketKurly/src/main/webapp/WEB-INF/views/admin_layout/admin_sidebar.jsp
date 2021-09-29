@@ -62,7 +62,7 @@
                         <a class="collapse-item" href="buttons.html">회원관리</a>
                         <a class="collapse-item" href="buttons.html">비회원관리</a>
                         <a class="collapse-item" href="buttons.html">회원등급 관리</a>
-                        <a class="collapse-item" href="/admin_terms_getList.mdo">약관관리</a>
+                        <a class="collapse-item" href="${pageContext.request.contextPath}/admin_terms_getList.mdo">약관관리</a>
                     </div>
                 </div>
             </li>
@@ -75,11 +75,24 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">컬리 게시글관리 :</h6>
-                        <a class="collapse-item" href="/admin_board_notice.mdo">공지사항</a>
-                        <a class="collapse-item" href="buttons.html">자주하는 질문</a>
-                        <a class="collapse-item" href="buttons.html">1:1문의</a>
-                        <a class="collapse-item" href="buttons.html">상품문의</a>
-                        <a class="collapse-item" href="buttons.html">상품후기</a>
+                        <a class="collapse-item" href="${pageContext.request.contextPath}/admin_board_notice.mdo">공지사항</a>
+                        <a class="collapse-item" href="${pageContext.request.contextPath}/admin_board_faq.mdo">자주하는 질문</a>
+                        <a class="collapse-item" href="${pageContext.request.contextPath}/admin_board_qna.mdo">1:1문의</a>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>카테고리</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">컬리 카테고리 :</h6>
+                        <a class="collapse-item" href="${pageContext.request.contextPath}/admin_category_parent.mdo">상위 카테고리</a>
+                        <a class="collapse-item" href="${pageContext.request.contextPath}/admin_category_sub.mdo">중위 카테고리</a>
+                        <a class="collapse-item" href="##########">하위 카테고리(상품)</a>
                     </div>
                 </div>
             </li>
@@ -91,12 +104,10 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">컬리 카테고리 및 상품관리 :</h6>
-                        <a class="collapse-item" href="/admin_category_parent.mdo">상위 카테고리 관리</a>
-                        <a class="collapse-item" href="/admin_category_sub.mdo">중위 카테고리 관리</a>
-                        <a class="collapse-item" href="##########">하위 카테고리(상품) 관리</a>
-                        <a class="collapse-item" href="/admin_goods_list.mdo">상품 판매 관리</a>
-                    </div>
+                        <h6 class="collapse-header">컬리 상품관리 :</h6>
+                       <a class="collapse-item" href="${pageContext.request.contextPath}/admin_goods_list.mdo">상품판매</a>
+                    	<a class="collapse-item" href="${pageContext.request.contextPath}/admin_board_review.mdo">상품후기</a>
+                    </div> 
                 </div>
             </li>
             
@@ -109,8 +120,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">주문 및 결제 관리 :</h6>
                         <a class="collapse-item" href="buttons.html">주문관리</a>
-                        <a class="collapse-item" href="buttons.html">배송관리 </a>
-                        <a class="collapse-item" href="buttons.html">결제관리</a>
+                        <a class="collapse-item" href="buttons.html">결제·배송관리 </a>
                     </div>
                 </div>
             </li>

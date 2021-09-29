@@ -28,7 +28,13 @@ public class Admin_Board_noticeServiceImpl implements Admin_Board_noticeService 
 	}
 
 	@Override
-	public void updateBoard_notice_no(Board_noticeVO vo) {
+	public void insertBoard_notice(Admin_Board_noticeVO vo) {
+		// TODO Auto-generated method stub
+		dao.insertBoard_notice(vo);
+	}
+	
+	@Override
+	public void updateBoard_notice_no(Admin_Board_noticeVO vo) {
 		dao.updateBoard_notice_no(vo);
 	}
 
@@ -36,10 +42,6 @@ public class Admin_Board_noticeServiceImpl implements Admin_Board_noticeService 
 	public void deleteBoard_notice_no(int notice_no) {
 		dao.deleteBoard_notice_no(notice_no);
 	}
-	
-	
-	
-
 	
 }
 

@@ -72,7 +72,7 @@
 	 		</if>
 	</select> -->
 	
-	<!-- 1:1문의-->
+	<!-- 1:1문의 -->
 	<select id="selectBoard_qna_no" parameterType="int" resultType="board_qna">
 		SELECT * from TB_BOARD_QNA
 		WHERE BOARD_QNA_NO=#{board_qna_no}
@@ -111,8 +111,11 @@
 		SELECT * from TB_BOARD_FILE
 		WHERE BOARD_FILE_MEMBER_NO=#{board_file_member_no}	
 	</select>
+	<!-- =========================== -->
+	
 	
 	<!-- 관리자 -->
+	<!-- 관리자 notice -->
 	<select id="admin_selectBoard_notice" resultType="admin_board_notice">
 		SELECT * FROM TB_BOARD_NOTICE
 		ORDER BY BOARD_NOTICE_NO DESC
@@ -122,6 +125,12 @@
 		SELECT * FROM TB_BOARD_NOTICE
 		WHERE board_notice_no = ${board_notice_no}
 	</select>
+	
+	<insert id="admin_insertBoard_notice" parameterType="admin_board_notice">
+		INSERT INTO TB_BOARD_NOTICE(BOARD_FILE_QNA_NO,BOARD_FILE_MEMBER_NO,BOARD_FILE_NAME,BOARD_FILE_RESOURCE)
+		VALUES(#{board_file_qna_no},#{board_file_member_no},#{board_file_name},#{board_file_resource})
+	</insert>
+	
 	
 	<update id ="admin_updateBoard_notice_no" parameterType="admin_board_notice">
 		UPDATE TB_BOARD_NOTICE 
@@ -133,6 +142,36 @@
 	<delete id ="admin_deleteBoard_notice_no" parameterType="int">
 		DELETE FROM TB_BOARD_NOTICE 
 		WHERE BOARD_NOTICE_NO = #{board_notice_no}
+	</delete>
+	
+	<!-- 관리자 faq -->
+	<select id="admin_selectBoard_faq" resultType="admin_board_faq">
+		SELECT * FROM TB_BOARD_FAQ
+		ORDER BY BOARD_FAQ_NO DESC
+	</select>
+	
+	<select id="admin_selectBoard_faq_no" parameterType="int" resultType="admin_board_faq">
+		SELECT * FROM TB_BOARD_FAQ
+		WHERE BOARD_FAQ_NO = ${board_faq_no}
+	</select>
+	
+	
+	<insert id="admin_insertBoard_faq" parameterType="admin_board_faq">
+		INSERT INTO TB_BOARD_FAQ(BOARD_FAQ_TYPE,BOARD_FAQ_TITLE,BOARD_FAQ_CONTENT)
+		VALUES(#{board_faq_type},#{board_faq_title},#{board_faq_content})
+	</insert>
+	
+	
+	<update id ="admin_updateBoard_faq_no" parameterType="admin_board_faq">
+		UPDATE TB_BOARD_FAQ 
+		SET BOARD_FAQ_TITLE = #{board_faq_title} 
+		,BOARD_FAQ_CONTENT = #{board_faq_content} 
+		WHERE BOARD_FAQ_NO = #{board_faq_no}
+	</update>
+	
+	<delete id ="admin_deleteBoard_faq_no" parameterType="int">
+		DELETE FROM TB_BOARD_FAQ
+		WHERE BOARD_FAQ_NO = #{board_faq_no}
 	</delete>
 		
 </mapper>

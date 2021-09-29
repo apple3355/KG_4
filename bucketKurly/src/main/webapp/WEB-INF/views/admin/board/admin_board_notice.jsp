@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BucketKurly::Admin-Goods</title>
+    <title>BucketKurly::Admin-Board</title>
 
     <!-- Custom fonts for this template -->
     <link href="resources/bootstrap/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -25,7 +25,7 @@
 
     <!-- Custom styles for this page -->
     <link href="resources/bootstrap/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+	
 </head>
 
 <body id="page-top">
@@ -41,7 +41,7 @@
             <div id="content">
   				
   				<!-- topbar -->
-      			<%@ include file="/WEB-INF/views//admin_layout/admin_topbar.jsp"%>  		
+      			<%@ include file="/WEB-INF/views/admin_layout/admin_topbar.jsp"%>  		
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -55,6 +55,11 @@
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">게시글 목록보기</h6>
                         </div>
+                        <div align = "right" style="padding:10px 20px 0px 0px; ">
+                        	 <a href="${pageContext.request.contextPath}/admin_board_notice_insert.mdo">
+			            	 	<span class="btn btn-sm btn-primary" id="saveBtn" style="float: none; font-size:18px;">등록</span>
+			                 </a>
+                       	</div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -67,16 +72,7 @@
 											<th>조회</th>
 										</tr>
                                     </thead>
-                                    <!--<tfoot>  필요 없으실 경우 tfoot 부분은 주석처리하시면 됩니다.
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot> -->
+                                    
                                    <c:forEach items="${board_noticeList}" var="board_noticeList" varStatus="status">	
 										<tbody>													
 											<tr>
@@ -126,7 +122,7 @@
 
     <!-- Page level custom scripts -->
     <script src="resources/bootstrap/js/demo/datatables-demo.js"></script>
-    
+   
     <script>
 	    //페이지 번호 클릭
 		function fn_notice_details(notice_no) {

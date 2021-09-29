@@ -118,16 +118,7 @@
 
     <!-- Page level custom scripts -->
     <script src="resources/bootstrap/js/demo/datatables-demo.js"></script>
-    
-    <script>
-    //페이지 번호 클릭
-	function fn_notice_details(notice_no) {
-		var url = "${pageContext.request.contextPath}/admin_board_notice_detail.mdo";
-		url = url + "?notice_no=" + notice_no;
-		location.href = url;	
-    }
-    
-    </script>
+
 
 </body>
 

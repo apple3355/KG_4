@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="UTF-8">
-<META HTTP-EQUIV="Pragma" CONTENT="no-cache"> <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
 
 <!-- 본 파일은 템플릿입니다.  -->
 
@@ -15,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BucketKurly::Admin-Goods</title>
+    <title>BucketKurly::Admin-Board</title>
 
     <!-- Custom fonts for this template -->
     <link href="resources/bootstrap/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -42,46 +41,46 @@
             <div id="content">
   				
   				<!-- topbar -->
-      			<%@ include file="/WEB-INF/views/admin_layout/admin_topbar.jsp"%>  		
+      			<%@ include file="/WEB-INF/views//admin_layout/admin_topbar.jsp"%>  		
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <!-- Page Heading / 기본 테이블 템플릿 사용을 원하시면 해당 부분 아래로 수정하시면 됩니다.-->
-                    <h1 class="h3 mb-2 text-gray-800">카테고리 관리</h1>
-                   
+                    <h1 class="h3 mb-2 text-gray-800">게시글 관리</h1>
+                    
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">상위 카테고리 등록</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">자주하는 질문</h6>
                         </div>
                         <div align = "right" style="padding:10px 20px 0px 0px; ">
-                        	 <a href="${pageContext.request.contextPath}/admin_board_notice_insert.mdo">
-			            	 	<span class="btn btn-sm btn-primary" id="saveBtn" style="float: none; font-size:18px;">글 쓰기</span>
+                        	 <a href="${pageContext.request.contextPath}/admin_board_faq_insert.mdo">
+			            	 	<span class="btn btn-sm btn-primary" id="saveBtn" style="float: none; font-size:18px;">등록</span>
 			                 </a>
                        	</div>
                         <div class="card-body">
-                            <div class="table-responsive" style="text-align:center;">
-	                            <form method="post" role="form" action="${pageContext.request.contextPath}/admin_category_parent_insertDB.mdo" enctype="multipart/form-data">
-	                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="vertical-align:middle;">
-	                                      	<tr>
-												<th width="20%">제목</th><td><input class="form-control" name="category_parent_name"></td>
-											</tr>
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                      	<tr>
+											<th width="15%">번호</th>
+											<th width="30%">분류</th>
+											<th>제목</th>
+										</tr>
+                                    </thead>
+									<tbody>	
+										<c:forEach items="${board_faqList}" var="board_faqList" varStatus="status">												
 											<tr>
-												<th width="20%">icon</th><td><input type="file" name="file" style="width:50%"></td>
+												<td>${status.count}</td>
+												<td><c:out value="${board_faqList.board_faq_type}"/></td>
+												<td><a href="javascript:void(0);" onClick="fn_faq_details('${board_faqList.board_faq_no}')"><c:out value="${board_faqList.board_faq_title}"/></a></td>	
 											</tr>
-											<tr>
-												<th width="20%">icon(color)</th><td><input type="file" name="file" style="width:50%"></td>
-											</tr>
-											<tr>
-												<td colspan="4" align="right">
-													<button type="submit" class="btn btn-outline btn-warning"  style="font-size:18px;">확인</button>
-													<button type="button" class="btn btn-outline btn-default" onclick="history.back()"  style="font-size:18px;">취소</button>
-												</td>
-											</tr>
-	                                </table>
-								</form>
-							</div>
+										</c:forEach>
+									</tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
@@ -118,6 +117,15 @@
 
     <!-- Page level custom scripts -->
     <script src="resources/bootstrap/js/demo/datatables-demo.js"></script>
+    
+    <script>
+	    //페이지 번호 클릭
+		function fn_faq_details(faq_no) {
+			var url = "${pageContext.request.contextPath}/admin_board_faq_no.mdo";
+			url = url + "?faq_no=" + faq_no;
+			location.href = url;	
+	    }
+    </script>
 
 </body>
 
