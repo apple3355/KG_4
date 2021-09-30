@@ -2,6 +2,8 @@ package bucket.kurly.user.goods.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -76,19 +78,27 @@ public class GoodsController {
 	    return "redirect:"+path;
 	}
 	
+	//장바구니 정보
 	@RequestMapping("/getGoods_cart.do")
 	public String getGoods_cart(Model model) {
 		
 		List<Goods_CartShowVO> goods_cartShowVO = goodsService.getGoods_cart(1111);
+		//Integer countGoods_cart = goodsService.countGoods_cart(gcvo);
 		
 		model.addAttribute("goods_cartShowVO", goods_cartShowVO);
+		//model.addAttribute("countGoods_cart",countGoods_cart);
 		
 		return "goods/goods_cart";
 		
 	}
-	//장바구니 정보
+	
 	//장바구니 삭제
-	
-	
+	@RequestMapping("/deleteGoods_cart.do")
+	public String deleteGoods_cart(Goods_CartVO gcvo) {
+		
+		goodsService.deleteGoods_cart(gcvo);
+		
+		return "goods/goods_cart";
+	}
 	
 }

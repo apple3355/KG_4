@@ -25,7 +25,10 @@
 <link rel="stylesheet" type="text/css" href="resources/css/main.css">
 <link rel="stylesheet" type="text/css" href="resources/css/goods_cart.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common.css">
-</head>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <body>
 <!-- header 시작 -->
 <%@ include file="/WEB-INF/views/layout/header.jsp"%>
@@ -72,23 +75,20 @@
 			<h3 class="screen_out">장바구니 상품 목록</h3>
 			
 			<form>
-				<div id="cartItemList" class="only_pc" style="min-height: 561px;">
-					<div class="empty">
+				<div id="cartItemList" items="${countGoods_cart }" var="countGoods_cart"class="only_pc" style="min-height: 561px;">
+					<div class="">
 					<!-- div class "" or empty 시작 -->
 					<div class="cart_item ">
 						<div class="cart_select">
 							<div class="inner_select">
 								<label class="check">
-								<input type="checkbox" name="checkAll" checked="">
-								<span class="ico"></span>전체선택 (2/2)
+								<input type="checkbox" id="checkAll" name="checkAll" checked="" onclick="selectAll(this)">
+								<span class="ico"></span>전체선택 (2/${goods_cart_total })
 								</label>
-								<a href="#none" class="btn_delete">선택삭제</a>
+								<a href="#none" class="btn_delete" id="btn_delete" >선택삭제</a>
 							</div>
 						</div>
 						
-						
-						
-						<c:forEach items="${goods_cartShowVO }" var="goods_cartShowVO">
 						<div class="box cold">
 							<div class="tit_box">
 								<h4 class="tit">
@@ -97,18 +97,14 @@
 									</span>냉장 상품
 								</span>
 								</h4>
-								<button type="button" class="btn_dropup ">접기 / 펼치기</button>
+								<button type="button" class="btn_dropup" id="btn_cold" >접기 / 펼치기</button>
 							</div>
-							<ul class="list ">
+							<ul class="list" id="btn_dropup_cold">
+							<c:forEach items="${goods_cartShowVO }" var="goods_cartShowVO">
 								<li>
-									<div class="item">
-										<label class="check" for="chkItem50302188-e7ab-4a35-930d-d3421536c81d">
-											<input type="checkbox" id="chkItem50302188-e7ab-4a35-930d-d3421536c81d" 
-												 name="chkItem" 
-												 data-item-id="50302188-e7ab-4a35-930d-d3421536c81d"
-												 data-item-no="63110"
-												 data-item-parent-no="63110"
-												 checked="">
+									<div class="item" id="item">
+										<label class="check">
+											<input type="checkbox" id="checkbox" name="chkItem" checked="" onclick='checkSelectAll()'>
 												 <span class="ico"></span>
 										</label>
 										<div class="name">
@@ -128,37 +124,151 @@
 													<p class="noti"></p>
 												</div>
 												<div class="stamper count">
-													<button type="button" class="btn minus off"
-													 data-item-id="50302188-e7ab-4a35-930d-d3421536c81d"
-													 data-item-no="63110" data-opt="decrease">감소
-													 </button>
-													 <input type="number" id="stepperCounter" class="num" readonly="" value="<c:out value="${goods_cartShowVO.goods_cart_count}"/>">
-													 <button type="button" class="btn plus" data-item-id="50302188-e7ab-4a35-930d-d3421536c81d" data-item-no="63110" data-opt="increase">추가</button>
+													<button type="button" class="btn minus off">감소</button>
+													 <input type="number" id="stepperCounter" class="num" readonly="readonly" value="<c:out value="${goods_cartShowVO.goods_cart_count}"/>">
+													 <button type="button" class="btn plus">추가</button>
 												</div>
 											</div>
 										</div>
-										<button type="button" class="btn_delete" 
-										data-item-id="50302188-e7ab-4a35-930d-d3421536c81d"
-										 data-item-no="63110" data-type="cold">상품 삭제
-										 </button>
+										<button type="button" class="btn_delete" onclick="btn_delete" data-cartNum="${goods_cartShowVO.goods_cart_no }">상품 삭제</button>
 									</div>
 								</li>
+								</c:forEach>
 							</ul>
 						</div>
-						</c:forEach>
-						
-						
+						<div class="box room">
+							<div class="tit_box">
+								<h4 class="tit">
+								<span class="inner_tit">
+									<span class="ico">
+									</span>상온 상품
+								</span>
+								</h4>
+								<button type="button" class="btn_dropup" id="btn_room" >접기 / 펼치기</button>
+							</div>
+							<ul class="list" id="btn_dropup_room">
+							<c:forEach items="${goods_cartShowVO }" var="goods_cartShowVO">
+								<li>
+									<div class="item" id="item">
+										<label class="check">
+											<input type="checkbox" id="checkbox" name="chkItem" checked="" onclick='checkSelectAll()'>
+												 <span class="ico"></span>
+										</label>
+										<div class="name">
+											<div class="inner_name">
+												<a href="#" class="package ">
+												<c:out value="${goods_cartShowVO.category_goods_name}"/></a>
+												<div class="info"></div>
+											</div>
+										</div>
+										<div class="goods">
+											<a href="#" class="thumb " style="background-image: url(&quot;${goods_cartShowVO.category_goods_image_thumb}&quot;);">상품이미지</a>
+											<div class="price">
+												<div class="in_price">
+													<span class="selling"><c:out value="${goods_cartShowVO.goods_sell_price}"/>
+														<span class="won">원</span>
+													</span>
+													<p class="noti"></p>
+												</div>
+												<div class="stamper count">
+													<button type="button" class="btn minus off">감소</button>
+													 <input type="number" id="stepperCounter" class="num" readonly="readonly" value="<c:out value="${goods_cartShowVO.goods_cart_count}"/>">
+													 <button type="button" class="btn plus">추가</button>
+												</div>
+											</div>
+										</div>
+										<button type="button" class="btn_delete" onclick="btn_delete" data-cartNum="${goods_cartShowVO.goods_cart_no }">상품 삭제</button>
+									</div>
+								</li>
+								</c:forEach>
+							</ul>
+						</div>
+						<div class="box frozen">
+							<div class="tit_box">
+								<h4 class="tit">
+								<span class="inner_tit">
+									<span class="ico">
+									</span>냉동 상품
+								</span>
+								</h4>
+								<button type="button" class="btn_dropup" id="btn_frozen">접기 / 펼치기</button>
+							</div>
+							<ul class="list" id="btn_dropup_frozen">
+							<c:forEach items="${goods_cartShowVO }" var="goods_cartShowVO">
+								<li>
+									<div class="item" id="item">
+										<label class="check">
+											<input type="checkbox" id="checkbox" name="chkItem" checked="" onclick='checkSelectAll()'>
+												 <span class="ico"></span>
+										</label>
+										<div class="name">
+											<div class="inner_name">
+												<a href="#" class="package ">
+												<c:out value="${goods_cartShowVO.category_goods_name}"/></a>
+												<div class="info"></div>
+											</div>
+										</div>
+										<div class="goods">
+											<a href="#" class="thumb " style="background-image: url(&quot;${goods_cartShowVO.category_goods_image_thumb}&quot;);">상품이미지</a>
+											<div class="price">
+												<div class="in_price">
+													<span class="selling"><c:out value="${goods_cartShowVO.goods_sell_price}"/>
+														<span class="won">원</span>
+													</span>
+													<p class="noti"></p>
+												</div>
+												<div class="stamper count">
+													<button type="button" class="btn minus off">감소</button>
+													 <input type="number" id="stepperCounter" class="num" readonly="readonly" value="<c:out value="${goods_cartShowVO.goods_cart_count}"/>">
+													 <button type="button" class="btn plus">추가</button>
+												</div>
+											</div>
+										</div>
+										<button type="button" class="btn_delete" onclick="btn_delete" data-cartNum="${goods_cartShowVO.goods_cart_no }">상품 삭제</button>
+									</div>
+								</li>
+								</c:forEach>
+							</ul>
+						</div>
 						
 					<div class="cart_select">
 						<div class="inner_select">
 							<label class="check">
-								<input type="checkbox" name="checkAll" checked="">
-								<span class="ico"></span>전체선택 (2/2)
+								<input type="checkbox" name="checkAll" checked="" onclick='selectAll(this)'>
+								<span class="ico"></span>전체선택 (2/${goods_cart_total })
 							</label>
 							<a href="#none" class="btn_delete">선택삭제</a>
 						</div>
 					</div>
 				</div>
+			</div>
+				<div class="empty" >
+					<div class="cart_item no_item">
+						<div class="cart_select">
+							<div class="inner_select">
+								<label class="check">
+								<input type="checkbox" name="checkAll" checked="" disabled="">
+								<span class="ico"></span>전체선택 (0/0)</label>
+								<a href="#none" class="btn_delete">선택삭제</a>
+							</div>
+						</div>
+						<div class="inner_empty">
+							<span class="bg"></span>
+							<p class="txt">장바구니에 담긴 상품이 없습니다</p>
+							<div class="btn_submit  ">
+								<button type="button" class="btn disabled">상품을 담아주세요</button>
+							</div>
+						</div>
+						<div class="cart_select">
+							<div class="inner_select">
+								<label class="check">
+									<input type="checkbox" name="checkAll" checked="" disabled="">
+									<span class="ico"></span>전체선택 (0/0)</label>
+									<a href="#none" class="btn_delete">선택삭제</a>
+								</div>
+							</div>
+						</div>
+							
 					<!-- 이곳에 장바구니 페이지 코드 입력 -->
 				<div class="cart_result">
 					<div class="inner_result" style="top: 60px;">
@@ -166,7 +276,7 @@
 							<h3 class="tit">배송지</h3>
 							<div class="no_address">
 							<span class="emph">배송지를 입력</span>하고<br>배송유형을 확인해 보세요!
-							<a href="#" class="btn default">
+							<a href="#" class="btn default" id="btn default">
 							<span class="ico"></span>주소 검색</a>
 							</div>
 						</div>
@@ -291,5 +401,164 @@
 
 <!-- footer -->
 <%@ include file="/WEB-INF/views/layout/footer.jsp"%>
+
+<!-- 장바구니 리스트 펴기/닫기 --> 
+<!--
+<script type="text/javascript">
+	$('#btn_dropup_cold').click(function(){
+		$('#btn_dropup').toggleClass("off"){
+			$('.list').css({'display' : 'none'})
+			$('#btn_dropup_cold').toggleClass("");
+		}
+	});
+</script>
+ -->
+ 
+ <!-- 접기/펴기 냉장 -->
+<script type="text/javascript">
+$('#btn_cold').click(function(){
+	if($(this).hasClass("off")){
+		$(this).addClass("").removeClass("off");
+		$('#btn_dropup_cold').css({'display' : 'none'});
+	}else{
+		$(this).addClass("off").removeClass("");
+		$('#btn_dropup_cold').css({'display' : 'block'});
+	}
+});
+</script>
+
+ <!-- 접기/펴기 상온 -->
+<script type="text/javascript">
+$('#btn_room').click(function(){
+	if($(this).hasClass("off")){
+		$(this).addClass("").removeClass("off");
+		$('#btn_dropup_room').css({'display' : 'none'});
+	}else{
+		$(this).addClass("off").removeClass("");
+		$('#btn_dropup_room').css({'display' : 'block'});
+	}
+});
+</script>
+
+ <!-- 접기/펴기 냉동 -->
+<script type="text/javascript">
+$('#btn_frozen').click(function(){
+	if($(this).hasClass("off")){
+		$(this).addClass("").removeClass("off");
+		$('#btn_dropup_frozen').css({'display' : 'none'});
+	}else{
+		$(this).addClass("off").removeClass("");
+		$('#btn_dropup_frozen').css({'display' : 'block'});
+	}
+});
+</script>
+
+
+<!-- 
+<script type="text/javascript">
+$(".btn_dropup").click(function(){
+    $('.btn_dropup').toggleClass("off")
+    	$('.list').css({'display' : 'none'})
+        $('.btn_dropup off').toggleClass("");
+});
+</script>
+ -->
+
+ <!--
+<script type="text/javascript">
+$('.btn_dropup').click(function(){
+	if($(this).hasClass("off")){
+		$(this).addClass("").removeClass("off")
+		alert("on -> off")
+	}else{
+		$(this).addClass("off").removeClass("")
+		alert("off -> on");
+	}
+});
+</script>
+-->
+ 
+ 
+ 
+<!-- 장바구니 숫자 올리기/내리기 -->
+<script type="text/javascript">
+	
+//	$(document).ready(function(){
+//	   $("#stepperCounter").on("propertychange change keyup paste input", function() {
+//		   alert("input 어딘가에서 값이 변경되었습니다.");
+//    });
+
+//	function inp_change(obj) {
+//		  obj.value ='yellow';
+//		}
+
+	 $(".btn.minus").click(function(){
+        let EA = Number($(".num").val()); 
+        if(EA == 1){
+          alert("1 개 이하로 선택 할 수 없습니다. ");
+        }else{
+            EA = EA-1;
+        }
+        $(".num").val(EA);
+     });
+     
+     $(".btn.plus").click(function(){
+     	let EA = Number($(".num").val());
+     	let Max = Number(10);
+     	if(EA == Max){
+           alert("해당 상품은 " + Max + "개 이상 선택할 수 없습니다");
+          }else{
+         	 EA = EA+1;
+          }
+        $(".num").val(EA);
+     });
+</script>
+
+
+<!-- 장바구니 삭제 -->
+<script type="text/javascript">
+	$(".btn_delete").click(function(){
+		confirm("삭제하시겠습니까?");
+	});
+</script>
+
+<!-- 전체선택 -->
+<script type="text/javascript">
+function checkSelectAll()  {
+	  // 전체 체크박스
+	  const checkboxes 
+	    = document.querySelectorAll('input[name="chkItem"]');
+	  // 선택된 체크박스
+	  const checked 
+	    = document.querySelectorAll('input[name="chkItem"]:checked');
+	  // select all 체크박스
+	  const selectAll 
+	    = document.querySelector('input[name="checkAll"]');
+	  
+	  if(checkboxes.length === checked.length)  {
+	    selectAll.checked = true;
+	  }else {
+	    selectAll.checked = false;
+	  }
+
+	}
+
+	function selectAll(selectAll)  {
+	  const checkboxes 
+	     = document.getElementsByName('chkItem');
+	  
+	  checkboxes.forEach((checkbox) => {
+	    checkbox.checked = selectAll.checked
+	  })
+	}
+</script>
+
+<!-- 장바구니 empty페이지 출력 or 장바구니 페이지 -->
+<script type="text/javascript">
+
+</script>
+
+
 </body>
+
 </html>

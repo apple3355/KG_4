@@ -38,6 +38,13 @@ public class GoodsDAO {
 		return sqlSessionTemplate.selectOne("GoodsDAO.getGoods_sell", gsvo);
 	}
 	
+	// 장바구니 테이블 개수 조회
+	public Integer countGoods_cart(Goods_CartVO gcvo) {
+		System.out.println("countGoods_cart () 실행");
+		return sqlSessionTemplate.selectOne("GoodsDAO.countGoods_cart",gcvo);
+		
+	}
+	
 	// 장바구니에 담기
 	public void insertGoods_cart(Goods_CartVO gcvo) {
 		System.out.println("insertGoods_cart() 실행");
@@ -49,7 +56,11 @@ public class GoodsDAO {
 		System.out.println("getGoods_cart() 실행");
 		return sqlSessionTemplate.selectList("GoodsDAO.getGoods_cart",goods_cart_member_no);
 	}
-
+	
+	// 장바구니 삭제
+	public void deleteGoods_cart(Goods_CartVO gcvo){
+		sqlSessionTemplate.delete("GoodsDAO.deleteGoods_cart",gcvo);
+	}
 
 	/*
 	 * //공지사항 페이징 public int getnotice_cnt() { System.out.println("게시글 DB수"); return
