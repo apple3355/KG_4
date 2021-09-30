@@ -25,7 +25,9 @@
 
     <!-- Custom styles for this page -->
     <link href="resources/bootstrap/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+	<style type="text/css">
+		#buttondiv{text-align: right;}
+	</style>
 </head>
 
 <body id="page-top">
@@ -59,27 +61,35 @@
 	                            <form role="form" action="${pageContext.request.contextPath}/admin_board_notice_updateDB.mdo">
 	                            	<input type="hidden" name="board_notice_no" value="${vo.board_notice_no}">
 	                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-	                                      	<tr>
-												<th width="20%">글번호</th><td>${vo.board_notice_no}</td>
-												<th width="20%">조회수</th><td>${vo.board_notice_hits}</td>
-											</tr>
-											<tr>
-												<th width="20%">작성자</th><td>${vo.board_notice_writer}</td>
-												<th width="20%">작성일</th><td><fmt:formatDate value="${vo.board_notice_date}" pattern="yyyy-MM-dd" /></td>
-											</tr>
-											<tr>
-												<th width="20%">제목</th><td colspan="3"><input class="form-control" value="${vo.board_notice_title}" name ="board_notice_title"></td>
-											</tr>
-											<tr>
-												<th width="20%">내용</th><td colspan="3"><textarea class="form-control" rows="40" name ="board_notice_content">${vo.board_notice_content}</textarea></td>
-											</tr>
-											<tr>
-												<td colspan="4" align="right">
-													<button type="submit" class="btn btn-outline btn-warning"  style="font-size:18px;" >확인</button>
-													<button type="button" class="btn btn-outline btn-default" onclick="history.back()"  style="font-size:18px;">취소</button>
-												</td>
-											</tr>
+                                      	<tr>
+											<th width="20%">글번호</th><td>${vo.board_notice_no}</td>
+											<th width="20%">조회수</th><td>${vo.board_notice_hits}</td>
+										</tr>
+										<tr>
+											<th width="20%">작성자</th><td>${vo.board_notice_writer}</td>
+											<th width="20%">작성일</th><td><fmt:formatDate value="${vo.board_notice_date}" pattern="yyyy-MM-dd" /></td>
+										</tr>
+										<tr>
+											<th width="20%">제목</th><td colspan="3"><input class="form-control" value="${vo.board_notice_title}" name ="board_notice_title"></td>
+										</tr>
+										<tr>
+											<th width="20%">내용</th><td colspan="3"><textarea class="form-control" rows="40" name ="board_notice_content">${vo.board_notice_content}</textarea></td>
+										</tr>
 	                                </table>
+	                                <div id="buttondiv">
+										<a href="javascript:form.submit();" class="btn btn-info btn-icon-split" >
+											<span class="icon text-white-50">
+												<i class="fas fa-check"></i>
+											</span>
+											<span class="text">수정 하기</span>
+										</a>
+										<a href="javascript:history.back();" class="btn btn-secondary btn-icon-split">
+											<span class="icon text-white-50">
+												<i class="fas fa-arrow-right"></i>
+											</span>
+											<span class="text">목록 보기</span>
+										</a>
+									</div>
 								</form>
 							</div>
                         </div>

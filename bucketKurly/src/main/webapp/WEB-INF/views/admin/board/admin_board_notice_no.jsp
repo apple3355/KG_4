@@ -73,8 +73,6 @@
 											<th width="20%">내용</th><td colspan="3">${vo.board_notice_content}</td>
 										</tr>
 										<tr>
-										
-										
 											<td colspan="4" align="right">
 												<button type="button" class="btn btn-outline btn-info" 
 													onClick="fn_updatePage('${no}')"> 

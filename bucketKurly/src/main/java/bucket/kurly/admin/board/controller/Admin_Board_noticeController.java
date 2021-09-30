@@ -58,7 +58,7 @@ public class Admin_Board_noticeController {
 		
 		Admin_Board_noticeService.insertBoard_notice(vo); 
 		
-		return "redirect:/admin_board_notice";
+		return "redirect:/admin_board_notice.mdo";
 	} 
 	
 

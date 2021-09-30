@@ -26,6 +26,9 @@
 
     <!-- Custom styles for this page -->
     <link href="resources/bootstrap/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+	<style type="text/css">
+		#buttondiv{text-align: right;}
+	</style>
 
 </head>
 
@@ -63,13 +66,22 @@
 	                                      		<th width="20%">상위 카테고리</th><td><input class="form-control" name="category_sub_parent_no"></td>
 												<th width="20%">이름</th><td><input class="form-control" name="category_sub_name"></td>
 											</tr>
-											<tr>
-												<td colspan="4" align="right">
-													<button type="submit" class="btn btn-outline btn-warning" style="font-size:18px;">확인</button>
-													<button type="button" class="btn btn-outline btn-default" onclick="history.back()" style="font-size:18px;">취소</button>
-												</td>
-											</tr>
 	                                </table>
+	                                
+									<div id="buttondiv">
+										<a href="javascript:form.submit();" class="btn btn-success btn-icon-split" >
+											<span class="icon text-white-50">
+												<i class="fas fa-check"></i>
+											</span>
+											<span class="text">등록 하기</span>
+										</a>
+										<a href="javascript:history.back();" class="btn btn-secondary btn-icon-split">
+											<span class="icon text-white-50">
+												<i class="fas fa-arrow-right"></i>
+											</span>
+											<span class="text">목록 보기</span>
+										</a>
+									</div>
 								</form>
 							</div>
                         </div>

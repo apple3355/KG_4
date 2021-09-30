@@ -118,17 +118,17 @@
 	<!-- 관리자 notice -->
 	<select id="admin_selectBoard_notice" resultType="admin_board_notice">
 		SELECT * FROM TB_BOARD_NOTICE
-		ORDER BY BOARD_NOTICE_NO DESC
+		ORDER BY BOARD_NOTICE_NO
 	</select>
 	
 	<select id="admin_selectBoard_notice_no" parameterType="int" resultType="admin_board_notice">
 		SELECT * FROM TB_BOARD_NOTICE
-		WHERE board_notice_no = ${board_notice_no}
+		WHERE BOARD_NOTICE_NO = ${board_notice_no}
 	</select>
 	
 	<insert id="admin_insertBoard_notice" parameterType="admin_board_notice">
-		INSERT INTO TB_BOARD_NOTICE(BOARD_FILE_QNA_NO,BOARD_FILE_MEMBER_NO,BOARD_FILE_NAME,BOARD_FILE_RESOURCE)
-		VALUES(#{board_file_qna_no},#{board_file_member_no},#{board_file_name},#{board_file_resource})
+		INSERT INTO TB_BOARD_NOTICE(BOARD_NOTICE_TITLE,BOARD_NOTICE_WRITER,BOARD_NOTICE_CONTENT)
+		VALUES(#{board_notice_title},#{board_notice_writer},#{board_notice_content})
 	</insert>
 	
 	
@@ -147,7 +147,7 @@
 	<!-- 관리자 faq -->
 	<select id="admin_selectBoard_faq" resultType="admin_board_faq">
 		SELECT * FROM TB_BOARD_FAQ
-		ORDER BY BOARD_FAQ_NO DESC
+		ORDER BY BOARD_FAQ_NO 
 	</select>
 	
 	<select id="admin_selectBoard_faq_no" parameterType="int" resultType="admin_board_faq">
@@ -173,5 +173,43 @@
 		DELETE FROM TB_BOARD_FAQ
 		WHERE BOARD_FAQ_NO = #{board_faq_no}
 	</delete>
-		
+	
+	
+	<!-- 관리자 1:1문의 -->
+	<select id="admin_selectBoard_qna_answait" resultType="admin_board_qna">
+		SELECT * FROM TB_BOARD_QNA
+		WHERE BOARD_QNA_GROUP IN (SELECT BOARD_QNA_GROUP FROM TB_BOARD_QNA
+		GROUP BY BOARD_QNA_GROUP
+	    HAVING COUNT(BOARD_QNA_GROUP) = 1) 
+		AND BOARD_QNA_GSTEP = 0
+		ORDER BY BOARD_QNA_GROUP DESC,BOARD_QNA_GSTEP
+	</select>
+	
+	<select id="admin_selectBoard_qna_anscom" resultType="admin_board_qna">
+		SELECT * FROM TB_BOARD_QNA
+		WHERE BOARD_QNA_GROUP IN (SELECT BOARD_QNA_GROUP FROM TB_BOARD_QNA
+		GROUP BY BOARD_QNA_GROUP
+		having COUNT(BOARD_QNA_GROUP) = 2)
+		AND BOARD_QNA_GSTEP = 0
+		ORDER BY BOARD_QNA_GROUP DESC,BOARD_QNA_GSTEP
+	</select>
+	
+	
+	<select id="admin_selectBoard_qna_no" parameterType="int" resultType="admin_board_qna">
+		SELECT * FROM TB_BOARD_QNA
+		WHERE BOARD_QNA_NO = #{board_qna_no}
+	</select>
+	
+	<select id="admin_selectBoard_qna_no_answer" parameterType="int" resultType="admin_board_qna">
+		SELECT * FROM TB_BOARD_QNA
+		WHERE BOARD_QNA_GROUP =(
+		SELECT BOARD_QNA_GROUP FROM TB_BOARD_QNA
+		WHERE BOARD_QNA_NO = #{board_qna_no}) AND BOARD_QNA_GSTEP=1;
+	</select>
+	
+	<insert id="admin_insertBoard_qna_answer" parameterType="admin_board_qna">
+		INSERT INTO TB_BOARD_QNA(BOARD_QNA_TYPE,BOARD_QNA_TITLE,BOARD_QNA_MEMBER_NO,BOARD_QNA_WRITER,BOARD_QNA_CONTENT,BOARD_QNA_GROUP,BOARD_QNA_GSTEP)
+		VALUES (#{board_qna_type},#{board_qna_title},#{board_qna_member_no},#{board_qna_writer},#{board_qna_content},#{board_qna_group},1)
+	</insert>
+
 </mapper>
