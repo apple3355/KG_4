@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,6 +44,10 @@
 		<h2 class="tit">장바구니</h2>
 	</div>
 	<div id="main">
+	
+		<input type="hidden" value="${id }" id="sessionId"/>
+		
+		 
 		<div id="content">
 			<div id="qnb" class="quick-navigation" style="top: 330.7px;">
 				
@@ -82,8 +90,9 @@
 						<div class="cart_select">
 							<div class="inner_select">
 								<label class="check">
-								<input type="checkbox" id="checkAll" name="checkAll" checked="" onclick="selectAll(this)">
-								<span class="ico"></span>전체선택 (2/${goods_cart_total })
+								<input type="checkbox" id="checkAll" name="checkAll" checked="" onclick="selectAll(this)" value="">
+								<span class="ico"></span>전체선택 (&nbsp;
+								<span class="checkedCnt" id="checkedCnt" value="" ></span> / <span class="checkedCntAll" id="checkedCntAll" value="" ></span>&nbsp;)
 								</label>
 								<a href="#none" class="btn_delete" id="btn_delete" >선택삭제</a>
 							</div>
@@ -130,7 +139,7 @@
 												</div>
 											</div>
 										</div>
-										<button type="button" class="btn_delete" onclick="btn_delete" data-cartNum="${goods_cartShowVO.goods_cart_no }">상품 삭제</button>
+										<button type="button" id="${goods_cartShowVO.category_goods_name}" class="btn_delete" onclick="btn_delete(this.id)">상품 삭제</button>
 									</div>
 								</li>
 								</c:forEach>
@@ -146,42 +155,10 @@
 								</h4>
 								<button type="button" class="btn_dropup" id="btn_room" >접기 / 펼치기</button>
 							</div>
+							
 							<ul class="list" id="btn_dropup_room">
-							<c:forEach items="${goods_cartShowVO }" var="goods_cartShowVO">
-								<li>
-									<div class="item" id="item">
-										<label class="check">
-											<input type="checkbox" id="checkbox" name="chkItem" checked="" onclick='checkSelectAll()'>
-												 <span class="ico"></span>
-										</label>
-										<div class="name">
-											<div class="inner_name">
-												<a href="#" class="package ">
-												<c:out value="${goods_cartShowVO.category_goods_name}"/></a>
-												<div class="info"></div>
-											</div>
-										</div>
-										<div class="goods">
-											<a href="#" class="thumb " style="background-image: url(&quot;${goods_cartShowVO.category_goods_image_thumb}&quot;);">상품이미지</a>
-											<div class="price">
-												<div class="in_price">
-													<span class="selling"><c:out value="${goods_cartShowVO.goods_sell_price}"/>
-														<span class="won">원</span>
-													</span>
-													<p class="noti"></p>
-												</div>
-												<div class="stamper count">
-													<button type="button" class="btn minus off">감소</button>
-													 <input type="number" id="stepperCounter" class="num" readonly="readonly" value="<c:out value="${goods_cartShowVO.goods_cart_count}"/>">
-													 <button type="button" class="btn plus">추가</button>
-												</div>
-											</div>
-										</div>
-										<button type="button" class="btn_delete" onclick="btn_delete" data-cartNum="${goods_cartShowVO.goods_cart_no }">상품 삭제</button>
-									</div>
-								</li>
-								</c:forEach>
 							</ul>
+							
 						</div>
 						<div class="box frozen">
 							<div class="tit_box">
@@ -193,50 +170,19 @@
 								</h4>
 								<button type="button" class="btn_dropup" id="btn_frozen">접기 / 펼치기</button>
 							</div>
+							
 							<ul class="list" id="btn_dropup_frozen">
-							<c:forEach items="${goods_cartShowVO }" var="goods_cartShowVO">
-								<li>
-									<div class="item" id="item">
-										<label class="check">
-											<input type="checkbox" id="checkbox" name="chkItem" checked="" onclick='checkSelectAll()'>
-												 <span class="ico"></span>
-										</label>
-										<div class="name">
-											<div class="inner_name">
-												<a href="#" class="package ">
-												<c:out value="${goods_cartShowVO.category_goods_name}"/></a>
-												<div class="info"></div>
-											</div>
-										</div>
-										<div class="goods">
-											<a href="#" class="thumb " style="background-image: url(&quot;${goods_cartShowVO.category_goods_image_thumb}&quot;);">상품이미지</a>
-											<div class="price">
-												<div class="in_price">
-													<span class="selling"><c:out value="${goods_cartShowVO.goods_sell_price}"/>
-														<span class="won">원</span>
-													</span>
-													<p class="noti"></p>
-												</div>
-												<div class="stamper count">
-													<button type="button" class="btn minus off">감소</button>
-													 <input type="number" id="stepperCounter" class="num" readonly="readonly" value="<c:out value="${goods_cartShowVO.goods_cart_count}"/>">
-													 <button type="button" class="btn plus">추가</button>
-												</div>
-											</div>
-										</div>
-										<button type="button" class="btn_delete" onclick="btn_delete" data-cartNum="${goods_cartShowVO.goods_cart_no }">상품 삭제</button>
-									</div>
-								</li>
-								</c:forEach>
 							</ul>
+							
 						</div>
 						
 					<div class="cart_select">
 						<div class="inner_select">
 							<label class="check">
-								<input type="checkbox" name="checkAll" checked="" onclick='selectAll(this)'>
-								<span class="ico"></span>전체선택 (2/${goods_cart_total })
-							</label>
+								<input type="checkbox" id="checkAll" name="checkAll" checked="" onclick="selectAll(this)" value="">
+								<span class="ico"></span>전체선택 (&nbsp;
+								<span class="checkedCnt" id="checkedCnt" value="" ></span> / <span class="checkedCntAll" id="checkedCntAll" value="" ></span>&nbsp;)
+								</label>
 							<a href="#none" class="btn_delete">선택삭제</a>
 						</div>
 					</div>
@@ -403,16 +349,6 @@
 <%@ include file="/WEB-INF/views/layout/footer.jsp"%>
 
 <!-- 장바구니 리스트 펴기/닫기 --> 
-<!--
-<script type="text/javascript">
-	$('#btn_dropup_cold').click(function(){
-		$('#btn_dropup').toggleClass("off"){
-			$('.list').css({'display' : 'none'})
-			$('#btn_dropup_cold').toggleClass("");
-		}
-	});
-</script>
- -->
  
  <!-- 접기/펴기 냉장 -->
 <script type="text/javascript">
@@ -514,7 +450,6 @@ $('.btn_dropup').click(function(){
      });
 </script>
 
-
 <!-- 장바구니 삭제 -->
 <script type="text/javascript">
 	$(".btn_delete").click(function(){
@@ -522,42 +457,118 @@ $('.btn_dropup').click(function(){
 	});
 </script>
 
-<!-- 전체선택 -->
+<!-- 장바구니 체크박스 *전체선택 수량 파악 안됨 -->
 <script type="text/javascript">
+   //장바구니 진입 시 default:전체선택
+   $("#checkedCnt").html( ${fn:length(goods_cartShowVO )}) //선택
+   $("#checkedCntAll").html( ${fn:length(goods_cartShowVO )})//전체
+
 function checkSelectAll()  {
-	  // 전체 체크박스
-	  const checkboxes 
-	    = document.querySelectorAll('input[name="chkItem"]');
-	  // 선택된 체크박스
-	  const checked 
-	    = document.querySelectorAll('input[name="chkItem"]:checked');
-	  // select all 체크박스
-	  const selectAll 
-	    = document.querySelector('input[name="checkAll"]');
-	  
-	  if(checkboxes.length === checked.length)  {
-	    selectAll.checked = true;
-	  }else {
-	    selectAll.checked = false;
-	  }
+     // 전체 체크박스
+     const checkboxes 
+       = document.querySelectorAll('input[name="chkItem"]');
+     $("#checkedCntAll").html(checkboxes.length); //전체
+     // 선택된 체크박스
+     const checked 
+       = document.querySelectorAll('input[name="chkItem"]:checked');
+     $("#checkedCnt").html(checked.length); //선택
+     
+     // select all 체크박스
+     const selectAll 
+       = document.querySelector('input[name="checkAll"]');
+     $("#checkedCnt").html(checked.length); //선택
+     
+     if(checkboxes.length === checked.length)  { //전체선택일 때 
+       selectAll.checked = true;
 
-	}
+     }else {
+       selectAll.checked = false;    
+     } 
+}
 
-	function selectAll(selectAll)  {
-	  const checkboxes 
-	     = document.getElementsByName('chkItem');
-	  
-	  checkboxes.forEach((checkbox) => {
-	    checkbox.checked = selectAll.checked
-	  })
-	}
+function selectAll(selectAll)  {
+     const checkboxes 
+        = document.getElementsByName('chkItem');
+   
+     
+     checkboxes.forEach((checkbox) => {
+       checkbox.checked = selectAll.checked 
+     })
+     
+
+}
 </script>
 
 <!-- 장바구니 empty페이지 출력 or 장바구니 페이지 -->
 <script type="text/javascript">
+var checkedCntAll = document.getElementById('#checkedCntAll').value;
+console.log(checkedCntAll);
 
+$(document).ready(function(){
+	console.log("테스트");
+	
+	if(checkedCntAll == 0){
+		console.log("0입니다");
+		console.log(checkedCntAll);
+		$('#cart_item').css({'display' : 'none'});
+	}else{
+		console.log("0이 아닙니다");
+		$('#cart_item.no_item').css({'display' : 'none'});
+	}
+});
 </script>
 
+<!-- 장바구니 선택삭제 -->
+<script type="text/javascript">
+function btn_delete(id){
+	$.ajax({
+		url: '/deleteGoods_cart.do',
+		type: 'GET',
+		dataType: 'text',
+		data: {"goods_id":id},// data:{"goods_id"} 괄호
+			
+			success: function(data){
+				if(data == 1){
+					alert("삭제 성공");
+					console.log(data);
+				}else{
+					alert("삭제되었습니다");
+				}	
+			},// success 괄호
+			error: function(){
+				alert("에러");
+			}// error 괄호
+	});
+}
+</script>
+
+<!-- 
+<script type="text/javascript">
+
+function btn_delete(id){
+	
+	$.ajax({
+	    url: 'deleteGoods_cart.do',
+	    type: 'GET',
+	    dataType: 'text', //서버로부터 내가 받는 데이터의 타입
+	    data:  {"goods_id":id, //"goods_id" 는 controller에서 뽑아쓸 변수명이므로 아무거나 지어준다
+	    						// id = jsp에서 가져오는 id값
+	    	//"sessionId" : $('#sessionId'}.val(),
+			
+	    success: function(data){	//컨트롤러에서 서비스 부분을 다 돌고 이상없을시에 실행
+	         if(data == 1){
+	        	 alert("삭제 성공");
+	         }else{
+		         alert("삭제 실패 다시 시도해주세요");
+		     }
+	    }
+	    error: function (){  
+	    	alert("에러");
+	    	}
+	  });
+}
+</script>
+ -->
 
 </body>
 

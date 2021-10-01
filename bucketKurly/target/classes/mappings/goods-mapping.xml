@@ -106,6 +106,10 @@
 		order by cart.goods_cart_no
 	</select>
 	
+	<!-- 장바구니 삭제 -->
+	<delete id="deleteGoods_cart" parameterType="goods_cart">
+		DELETE FROM TB_GOODS_CART
+	</delete>
 	
 	
 	<!-- 관리자 -->

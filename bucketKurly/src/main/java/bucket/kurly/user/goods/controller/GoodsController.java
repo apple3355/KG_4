@@ -98,20 +98,20 @@ public class GoodsController {
 		return "goods/goods_cart";
 		
 	}
-
-	
-	//장바구니 정보
-	//장바구니 삭제
-	
-
 	
 	//장바구니 삭제
-	@RequestMapping("/deleteGoods_cart.do")
-	public String deleteGoods_cart(Goods_CartVO gcvo) {
-		
-		goodsService.deleteGoods_cart(gcvo);
-		
-		return "goods/goods_cart";
-	}
+		@ResponseBody
+		@RequestMapping("/deleteGoods_cart.do")
+		public String deleteGoods_cart(Goods_CartVO gcvo, HttpServletRequest request) {
+			
+			String id = request.getParameter("goods_id");
+			//String sessionId = request.getParameter("sessionId");
+			System.out.println(id);
+			//System.out.println(sessionId);
+			//System.out.println(gcvo.getGoods_cart_no());
+			goodsService.deleteGoods_cart(gcvo);
+			
+			return null;
+		}
 	
 }

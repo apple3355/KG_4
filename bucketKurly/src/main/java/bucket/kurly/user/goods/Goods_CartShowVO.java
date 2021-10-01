@@ -9,6 +9,16 @@ public class Goods_CartShowVO {
 	private String category_goods_name;
 	private String category_goods_delivery_type;
 	private int goods_sell_price;
+	private int goods_sell_discount;
+	
+	
+	
+	public int getGoods_sell_discount() {
+		return goods_sell_discount;
+	}
+	public void setGoods_sell_discount(int goods_sell_discount) {
+		this.goods_sell_discount = goods_sell_discount;
+	}
 	public int getGoods_cart_no() {
 		return goods_cart_no;
 	}
@@ -63,7 +73,6 @@ public class Goods_CartShowVO {
 				+ ", goods_cart_count=" + goods_cart_count + ", goods_cart_status=" + goods_cart_status
 				+ ", category_goods_image_thumb=" + category_goods_image_thumb + ", category_goods_name="
 				+ category_goods_name + ", category_goods_delivery_type=" + category_goods_delivery_type
-				+ ", goods_sell_price=" + goods_sell_price + "]";
+				+ ", goods_sell_price=" + goods_sell_price + ", goods_sell_discount=" + goods_sell_discount + "]";
 	}
-	
 }
