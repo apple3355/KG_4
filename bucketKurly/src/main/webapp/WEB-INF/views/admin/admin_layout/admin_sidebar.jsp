@@ -59,7 +59,7 @@
                         <a class="collapse-item" href="buttons.html">회원관리</a>
                         <a class="collapse-item" href="buttons.html">비회원관리</a>
                         <a class="collapse-item" href="buttons.html">회원등급 관리</a>
-                        <a class="collapse-item" href="/admin_terms.do">약관관리</a>
+                        <a class="collapse-item" href="/admin_terms.mdo">약관관리</a>
                     </div>
                 </div>
             </li>
@@ -119,8 +119,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">컬리 마케팅 및 프로모션관리 :</h6>
                         <a class="collapse-item" href="buttons.html">프로모션 관리</a>
-                        <a class="collapse-item" href="buttons.html">배너관리 </a>
-                        <a class="collapse-item" href="buttons.html">쿠폰관리</a>
+                        <a class="collapse-item" href="/admin_banner_getList.mdo">배너관리</a>
+                        <a class="collapse-item" href="/admin_coupon_getList.mdo">쿠폰관리</a>
                     </div>
                 </div>
             </li>

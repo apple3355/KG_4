@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MarketingDAO">
+	
+	<!-- /*========== 쿠폰 기능 시작 ==========*/ -->
+	
+	<!-- 쿠폰리스트 조회 -->
+	<select id="getCouponList" resultType="coupon">
+		SELECT * FROM tb_coupon
+		ORDER BY coupon_no ASC, coupon_enddate DESC
+	</select>
+	
+	<!-- 쿠폰 등록 -->
+	<insert id="insertCoupon" parameterType="coupon">
+		INSERT INTO	tb_coupon (coupon_code, coupon_name, coupon_filepath, coupon_status, coupon_type, 
+		coupon_limit, coupon_discount, coupon_regway, coupon_regdate, coupon_enddate )
+		VALUES ( #{coupon_code}, #{coupon_name}, #{coupon_filepath}, #{coupon_status}, #{coupon_type}, #{coupon_limit}, #{coupon_discount}, 
+		#{coupon_regway}, #{coupon_regdate}, #{coupon_enddate})
+	</insert>
+		
+	<!-- 쿠폰 상세페이지 조회 -->
+	<select id="getCoupon" parameterType="Integer" resultType="coupon">
+		SELECT * FROM tb_coupon WHERE coupon_no=#{coupon_no}
+	</select>
+	
+	<!-- 쿠폰수정 -->
+	<update id="updateCoupon" parameterType="coupon">
+  		UPDATE tb_coupon SET coupon_code=#{coupon_code}, coupon_name=#{coupon_name}, coupon_filepath=#{coupon_filepath}, 
+  		coupon_status=#{coupon_status}, coupon_type=#{coupon_type}, coupon_limit=#{coupon_limit}, coupon_discount=#{coupon_discount}, 
+  		coupon_regway=#{coupon_regway}, coupon_regdate=#{coupon_regdate}, coupon_enddate=#{coupon_enddate}		
+  		WHERE coupon_no=#{coupon_no}
+  	</update>
+	
+	<!-- 쿠폰삭제 -->
+	<delete id="deleteCoupon">
+		DELETE FROM tb_coupon WHERE coupon_no=#{coupon_no}
+	</delete>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- /*========== 배너 기능 시작 ==========*/ -->
+	
+	
+	<!-- 배너등록 -->
+	<insert id="insertBanner" parameterType="banner">
+		INSERT INTO tb_banner(banner_title, banner_filepath, banner_contents)
+		VALUES(#{banner_title}, #{banner_filepath}, #{banner_contents})
+	</insert>
+	
+	<!-- 배너리스트 조회 -->
+	<select id="getBannerList" resultType="banner">
+		SELECT * FROM tb_banner ORDER BY banner_no ASC;
+	</select>
+	
+	<!-- 배너 개수 -->
+	<select id="countBanner" resultType="int">
+		SELECT COUNT(*) FROM tb_banner
+	</select>
+	
+	<!-- 배너 상세페이지 조회 -->
+	<select id="getBanner" parameterType="Integer" resultType="banner">
+		SELECT * FROM tb_banner WHERE banner_no=#{banner_no}
+	</select>
+	
+	<!-- 배너수정 -->
+	<update id="updateBanner" parameterType="banner">
+  		UPDATE tb_banner SET banner_title=#{banner_title}, banner_filepath=#{banner_filepath}, banner_contents=#{banner_contents}
+  		WHERE banner_no=#{banner_no}
+  	</update>
+	
+	<!-- 배너삭제 -->
+	<delete id="deleteBanner">
+		DELETE FROM tb_banner WHERE banner_no=#{banner_no}
+	</delete>
+	
+	
+</mapper>

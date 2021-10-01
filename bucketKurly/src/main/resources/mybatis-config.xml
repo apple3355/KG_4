@@ -13,6 +13,9 @@
 		<typeAlias type="bucket.kurly.admin.board.Admin_Board_qnaVO" alias="admin_board_qna" />
 		<typeAlias type="bucket.kurly.admin.board.Admin_Board_reviewVO" alias="admin_board_review" />
 		<typeAlias type="bucket.kurly.admin.goods.Goods_adminSellVO" alias="goods_adminsell" />
+		<typeAlias type="bucket.kurly.admin.marketing.BannerVO" alias="banner"/>
+		<typeAlias type="bucket.kurly.admin.marketing.CouponVO" alias="coupon"/>
+		
 		
 		<typeAlias type="bucket.kurly.user.member.MemberVO" alias="member" />
 		<typeAlias type="bucket.kurly.user.member.MemberDetailVO" alias="memberDetail" />
@@ -36,5 +39,6 @@
 		<mapper resource="mappings/goods-mapping.xml" />
 		<mapper resource="mappings/order-mapping.xml"/>
 		<mapper resource="mappings/admin-mapping.xml" />
+		<mapper resource="mappings/marketing-mapping.xml" />
 	</mappers>
 </configuration>
