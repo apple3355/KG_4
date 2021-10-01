@@ -1,5 +1,7 @@
 package bucket.kurly.admin.goods;
 
+import java.util.Date;
+
 public class Goods_adminSellVO {
 
 	private int goods_sell_no;

@@ -855,7 +855,7 @@ $("#password_check").on("click", function checks(){
 	var member_pw = $("#member_pw").val();
 	
 	$.ajax({
-	    url: 'pwCheck',
+	    url: 'pwCheck.do',
 	    type: 'POST',
 	    dataType: 'text', //서버로부터 내가 받는 데이터의 타입
 	    data: {member_pw} ,
@@ -885,7 +885,7 @@ $("#email_check").on("click", function checks(){
 	var member_email = $("#member_email").val();
 	
 	$.ajax({
-	    url: 'emailCheck',
+	    url: 'emailCheck.do',
 	    type: 'POST',
 	    dataType: 'text', //서버로부터 내가 받는 데이터의 타입
 	    data: {member_email} ,
@@ -913,7 +913,7 @@ $("#phoneCheck").on("click", function checks(){
 	var member_phone = $("#member_phone").val();
 	
 	$.ajax({
-	    url: 'phoneCheck',
+	    url: 'phoneCheck.do',
 	    type: 'POST',
 	    dataType: 'text', //서버로부터 내가 받는 데이터의 타입
 	    data: {member_phone} ,

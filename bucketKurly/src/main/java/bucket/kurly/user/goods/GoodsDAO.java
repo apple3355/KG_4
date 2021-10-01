@@ -57,10 +57,14 @@ public class GoodsDAO {
 		return sqlSessionTemplate.selectList("GoodsDAO.getGoods_cart",goods_cart_member_no);
 	}
 	
+<<<<<<< HEAD
+	
+=======
 	// 장바구니 삭제
 	public void deleteGoods_cart(Goods_CartVO gcvo){
 		sqlSessionTemplate.delete("GoodsDAO.deleteGoods_cart",gcvo);
 	}
+>>>>>>> 87d33aa55b5fbd2effd1031e09de81fa23d7ba38
 
 	/*
 	 * //공지사항 페이징 public int getnotice_cnt() { System.out.println("게시글 DB수"); return

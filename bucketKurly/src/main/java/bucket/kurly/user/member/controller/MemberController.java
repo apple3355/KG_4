@@ -275,7 +275,7 @@ public class MemberController {
 
 	// 아이디 중복체크
 	@ResponseBody
-	@RequestMapping("/idCheck")
+	@RequestMapping("/idCheck.do")
 	public String idCheck(@RequestBody String paramData) throws Exception {
 		String member_id = paramData.trim();
 		MemberVO vo = memberService.idCheck(member_id);
@@ -289,7 +289,7 @@ public class MemberController {
 
 	// 현재 비밀번호체크
 	@ResponseBody
-	@RequestMapping("/pwCheck")
+	@RequestMapping("/pwCheck.do")
 	public String pwCheck(@RequestParam Map<String, Object> param) throws Exception {
 		String member_pwd = (String) param.get("member_pw");
 		SHA256 sha256 = new SHA256();
@@ -307,7 +307,7 @@ public class MemberController {
 
 	// 이메일 중복체크
 	@ResponseBody
-	@RequestMapping("/emailCheck")
+	@RequestMapping("/emailCheck.do")
 	public String emailCheck(@RequestParam Map<String, Object> param) throws Exception {
 		String member_email = (String) param.get("member_email");
 		MemberVO vo = memberService.emailCheck(member_email);
@@ -321,7 +321,7 @@ public class MemberController {
 
 	// 전화번호 중복체크
 	@ResponseBody
-	@RequestMapping("/phoneCheck")
+	@RequestMapping("/phoneCheck.do")
 	public String phoneCheck(@RequestParam Map<String, Object> param) throws Exception {
 		String member_phone = (String) param.get("member_phone");
 		MemberVO vo = memberService.phoneCheck(member_phone);
@@ -335,7 +335,7 @@ public class MemberController {
 
 	// 인증번호 전송
 	@ResponseBody
-	@RequestMapping("/sendSMS")
+	@RequestMapping("/sendSMS.do")
 	public String sendSMS(@RequestBody String paramData, HttpSession session) throws Exception {
 		String member_phone = paramData.trim();
 		String smskey;
@@ -360,7 +360,7 @@ public class MemberController {
 
 	// 인증번호 체크
 	@ResponseBody
-	@RequestMapping("/chkCodeNum")
+	@RequestMapping("/chkCodeNum.do")
 	public String chkCodeNum(@RequestBody String paramData, HttpSession session) throws Exception {
 		String code = paramData.trim();
 		String smskey = (String) session.getAttribute("smskey");

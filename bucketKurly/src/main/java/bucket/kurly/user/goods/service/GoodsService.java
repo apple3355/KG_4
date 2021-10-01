@@ -2,6 +2,7 @@ package bucket.kurly.user.goods.service;
 
 import java.util.List;
 
+import bucket.kurly.user.goods.GoodsVO;
 import bucket.kurly.user.goods.Goods_CartShowVO;
 import bucket.kurly.user.goods.Goods_CartVO;
 import bucket.kurly.user.goods.Goods_SellVO;
@@ -32,5 +33,11 @@ public interface GoodsService {
 	List<Goods_CartShowVO> getGoods_cart(int goods_cart_member_no);
 	
 	// 장바구니에서 삭제
+<<<<<<< HEAD
+	
+	
+
+=======
 	void deleteGoods_cart(Goods_CartVO gcvo);
+>>>>>>> 87d33aa55b5fbd2effd1031e09de81fa23d7ba38
 }

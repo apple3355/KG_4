@@ -7,6 +7,7 @@
 	<typeAliases>
 		<typeAlias type="bucket.kurly.admin.category.Admin_Category_parentVO" alias="admin_category_parent" />
 		<typeAlias type="bucket.kurly.admin.category.Admin_Category_subVO" alias="admin_category_sub" />
+		<typeAlias type="bucket.kurly.admin.category.Admin_Category_goodsVO" alias="admin_category_goods" />
 		<typeAlias type="bucket.kurly.admin.board.Admin_Board_faqVO" alias="admin_board_faq" />
 		<typeAlias type="bucket.kurly.admin.board.Admin_Board_fileVO" alias="admin_board_file" />
 		<typeAlias type="bucket.kurly.admin.board.Admin_Board_noticeVO" alias="admin_board_notice" />
