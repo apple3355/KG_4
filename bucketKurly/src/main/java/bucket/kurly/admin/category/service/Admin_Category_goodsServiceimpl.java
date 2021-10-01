@@ -9,7 +9,7 @@ import bucket.kurly.admin.category.Admin_Category_goodsDAO;
 import bucket.kurly.admin.category.Admin_Category_goodsVO;
 
 @Service
-public class Admin_Category_goodsServiceImpl implements Admin_Category_goodsService {
+public class Admin_Category_goodsServiceimpl implements Admin_Category_goodsService {
 
 	@Autowired
 	private Admin_Category_goodsDAO dao;	
@@ -46,6 +46,13 @@ public class Admin_Category_goodsServiceImpl implements Admin_Category_goodsServ
 		dao.updateCategory_goods(vo);
 		
 	}
+
+	
+	// 중위 카테고리에 해당하는 상품 카테고리 리스트
+//	@Override
+//	public List<Admin_Category_goodsVO> selectCategory_goods_name(String category_goods_sub_no) {
+//		return dao.selectCategory_goods_name(category_goods_sub_no);
+//	}
 
 
 }

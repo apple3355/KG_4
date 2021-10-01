@@ -6,24 +6,20 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 87d33aa55b5fbd2effd1031e09de81fa23d7ba38
 @Repository
 public class Admin_Category_goodsDAO {
 
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 
-<<<<<<< HEAD
+
 	// 중위 카테고리에 해당하는 상품 카테고리 리스트
-	public List<Admin_Category_goodsVO> selectCategory_goods_name(String category_goods_sub_no) {
-		System.out.println("selectCategory_goods_name() 실행");
-		return sqlSessionTemplate.selectList("category-mapping.selectCategory_goods_name", category_goods_sub_no);
-	}
-=======
+//	public List<Admin_Category_goodsVO> selectCategory_goods_name(String category_goods_sub_no) {
+//		System.out.println("selectCategory_goods_name() 실행");
+//		return sqlSessionTemplate.selectList("category-mapping.selectCategory_goods_name", category_goods_sub_no);
+//	}
+
 	// 하위 카테고리 조회
 	public List<Admin_Category_goodsVO> selectCategory_goods() {
 		System.out.println("Admin_Category_goodsDAO - selectCategory_goods() 실행");
@@ -54,5 +50,5 @@ public class Admin_Category_goodsDAO {
 		sqlSessionTemplate.insert("category-mapping.insertCategory_goods", vo);
 	}
 
->>>>>>> 87d33aa55b5fbd2effd1031e09de81fa23d7ba38
+
 }

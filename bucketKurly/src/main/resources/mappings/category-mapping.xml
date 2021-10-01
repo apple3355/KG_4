@@ -44,10 +44,14 @@
 	
 	<!-- 하위 카테고리 (상품) -->
 	
-	<select id="selectCategory_goods_name"  resultType="admin_category_goods">
+	<!-- <select id="selectCategory_goods_name"  resultType="admin_category_goods">
 		SELECT category_goods_name, category_goods_no  FROM TB_CATEGORY_GOODS
 		WHERE category_goods_sub_no = #{category_goods_sub_no}
-	</select>
+	</select> -->
 	
+	<select id="selectCategory_goods" resultType="admin_category_goods">
+		SELECT * FROM TB_CATEGORY_GOODS
+		ORDER BY category_goods_no
+	</select>
 	
 </mapper>

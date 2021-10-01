@@ -4,16 +4,12 @@ import java.util.List;
 
 import bucket.kurly.admin.category.Admin_Category_goodsVO;
 
-<<<<<<< HEAD
-
 
 public interface Admin_Category_goodsService {
-
+	
 	// 중위 카테고리에 해당하는 상품 카테고리 리스트
-	List<Admin_Category_goodsVO> selectCategory_goods_name(String category_goods_sub_no);
-}
-=======
-public interface Admin_Category_goodsService {
+//	List<Admin_Category_goodsVO> selectCategory_goods_name(String category_goods_sub_no);
+	
 	
 	//카테고리 상품 조회
 	List<Admin_Category_goodsVO> selectCategory_goods();
@@ -27,6 +23,3 @@ public interface Admin_Category_goodsService {
 	void insertCategory_goods(Admin_Category_goodsVO vo);
 	
 }
-
-
->>>>>>> 87d33aa55b5fbd2effd1031e09de81fa23d7ba38

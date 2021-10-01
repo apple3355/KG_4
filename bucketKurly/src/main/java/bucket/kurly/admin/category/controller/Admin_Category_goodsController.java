@@ -1,19 +1,22 @@
 package bucket.kurly.admin.category.controller;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import bucket.kurly.admin.category.Admin_Category_goodsVO;
+import bucket.kurly.admin.category.Admin_Category_subVO;
 import bucket.kurly.admin.category.service.Admin_Category_goodsService;
-import bucket.kurly.user.board.Board_fileVO;
 import bucket.kurly.util.S3Service;
 
 @Controller
@@ -22,7 +25,21 @@ public class Admin_Category_goodsController {
 	@Autowired
 	private Admin_Category_goodsService Admin_Category_goodsService;
 	private S3Service s3Service = S3Service.getInstance();
-	
+
+//	@ResponseBody
+//	@RequestMapping("/selectCategory_goods.mdo")
+//	public ModelAndView selectCategory_sub(@RequestParam Map<String, Object> param, HttpServletRequest request)
+//			throws IOException {
+//		String sub_no = (String) param.get("sub_no");
+//		System.out.println(parent_no);
+//		List<Admin_Category_subVO> admin_Category_goods = admin_Category_goodsService.selectCategory_goods_name(sub_no);
+//		ModelAndView mv = new ModelAndView("jsonView");
+//
+//		mv.addObject("admin_Category_goods", admin_Category_goods);
+//
+//		return mv;
+//
+//	}
 
 	// 카테고리 GOODS DB 목록 조회
 	@RequestMapping("/admin_category_goodslist.mdo")
@@ -31,7 +48,7 @@ public class Admin_Category_goodsController {
 		System.out.println("[하위 카테고리 목록 조회]");
 		List<Admin_Category_goodsVO> admin_Category_goods = Admin_Category_goodsService.selectCategory_goods();
 
-		model.addAttribute("admin_Category_goods", admin_Category_goods);
+		model.addAttribute("admin_Cateadmin_category_goodslistgory_goods", admin_Category_goods);
 		return "category/admin_category_goodslist";
 	}
 
@@ -91,8 +108,8 @@ public class Admin_Category_goodsController {
 
 	// 카테고리 상품 DB 등록
 	@RequestMapping("/admin_category_goods_insertDB.mdo")
-	public String insertCategory_goods(Model model, Admin_Category_goodsVO vo){
-		//,  MultipartFile[] file) throws IOException 
+	public String insertCategory_goods(Model model, Admin_Category_goodsVO vo) {
+		// , MultipartFile[] file) throws IOException
 		System.out.println("[하위 카테고리 DB 추가]");
 		System.out.println(vo.toString());
 		System.out.println(file.length);
@@ -108,7 +125,7 @@ public class Admin_Category_goodsController {
 //				System.out.println("================== file   END ==================");
 //			}
 //		}
-		
+
 //		System.out.println(S3Service.class);
 //		s3Service.upload(file[0].getInputStream(), file[0].getOriginalFilename(), file[0].getContentType(), file[0].getSize(), bucket);
 //		s3Service.upload(file[1].getInputStream(), file[1].getOriginalFilename(), file[1].getContentType(), file[1].getSize(), bucket);
@@ -126,10 +143,7 @@ public class Admin_Category_goodsController {
 //		
 //		Admin_Category_goodsService.insertCategory_goods(vo);
 		return "redirect:/admin_category_goodslist.mdo";
-		
-	}
-			
-		
 
+	}
 
 }

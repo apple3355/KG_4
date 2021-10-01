@@ -98,13 +98,12 @@ public class GoodsController {
 		return "goods/goods_cart";
 		
 	}
-<<<<<<< HEAD
+
 	
 	//장바구니 정보
 	//장바구니 삭제
 	
-=======
->>>>>>> 87d33aa55b5fbd2effd1031e09de81fa23d7ba38
+
 	
 	//장바구니 삭제
 	@RequestMapping("/deleteGoods_cart.do")
