@@ -1,17 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page import="java.util.Date" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%
-	Date nowTime = new Date();
-	SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
-%>
 <!DOCTYPE html>
 <html lang="UTF-8">
-
-<!-- 본 파일은 템플릿입니다.  -->
-
 <head>
 
     <meta charset="utf-8">
@@ -31,7 +22,7 @@
 
     <!-- Custom styles for this page -->
     <link href="resources/bootstrap/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-	 <style type="text/css">
+	<style type="text/css">
 		#buttondiv{text-align: right;}
 	</style>
 </head>
@@ -55,50 +46,68 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading / 기본 테이블 템플릿 사용을 원하시면 해당 부분 아래로 수정하시면 됩니다.-->
-                    <h1 class="h3 mb-2 text-gray-800">게시글 관리</h1>
-                   
+                    <h1 class="h3 mb-2 text-gray-800" style="margin:20px;">게시글 관리</h1>
+                    
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">자주하는 질문</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">1:1 문의 - 질문 </h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-	                            <form role="form" action="${pageContext.request.contextPath}/admin_board_faq_updateDB.mdo">
-	                            	<input type = "hidden" name = "board_faq_no" value = "${vo.board_faq_no}">
-	                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-											<tr>
-												<th width="20%">분류</th><td width="30%"><input class="form-control" name ="board_faq_type" value="${vo.board_faq_type}"></td>
-											</tr>
-											<tr>
-												<th width="20%">제목</th><td width="70%"><input class="form-control" name ="board_faq_title" value="${vo.board_faq_title}"></td>
-											</tr>
-											<tr>
-												<th width="20%">내용</th><td width="70%"><textarea class="form-control" rows="40" name ="board_faq_content">${vo.board_faq_content}</textarea></td>
-											</tr>
-	                                </table>
-	                               <div id="buttondiv">
-										<a href="javascript:form.submit();" class="btn btn-success btn-icon-split" >
-											<span class="icon text-white-50">
-												<i class="fas fa-check"></i>
-											</span>
-											<span class="text">수정 완료</span>
-										</a>
-										<a href="javascript:history.back();" class="btn btn-secondary btn-icon-split">
-											<span class="icon text-white-50">
-												<i class="fas fa-arrow-right"></i>
-											</span>
-											<span class="text">목록 보기</span>
-										</a>
-									</div>
-								</form>
-							</div>
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+									<tr>
+										<th width="15%">문의 종류</th><td width="35%"><c:out value="${vo_question.board_qna_type}"/></td>
+										<th width="15%">작성자(회원번호)</th><td width="35%"><c:out value="${vo_question.board_qna_writer}"/>(<c:out value="${vo_question.board_qna_member_no}"/>)</td>
+									</tr>
+									<tr>
+										<th>제목</th><td><c:out value="${vo_question.board_qna_title}"/></td>
+										<th>날짜</th><td><fmt:formatDate value="${vo_question.board_qna_regdate}" pattern="yyyy-MM-dd" /></td>
+									</tr>
+									<tr>
+										<th>내용</th><td colspan="3"><c:out value="${vo_question.board_qna_content}"/></td>
+									</tr>
+                                </table>
+                             </div>
                         </div>
                     </div>
 
-                </div>
-                <!-- /.container-fluid -->
 
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">1:1 문의 - 답변 </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <tr>
+										<th width="15%">문의 종류</th><td width="35%"><c:out value="${vo_answer.board_qna_type}"/></td>
+										<th width="15%">작성자</th><td width="35%"><c:out value="${vo_answer.board_qna_writer}"/></td>
+									</tr>
+									<tr>
+										<th>제목</th><td><c:out value="${vo_answer.board_qna_title}"/></td>
+										<th>날짜</th><td><fmt:formatDate value="${vo_answer.board_qna_regdate}" pattern="yyyy-MM-dd" /></td>
+									</tr>
+									<tr>
+										<th>내용</th><td colspan="3"><c:out value="${vo_answer.board_qna_content}"/></td>
+									</tr>									
+                                </table>
+                                                          
+                            </div>
+                        </div>
+                    </div>
+                    <div id="buttondiv">
+	                    <a href="javascript:history.back();" class="btn btn-secondary btn-icon-split">
+							<span class="icon text-white-50">
+								<i class="fas fa-arrow-right"></i>
+							</span>
+							<span class="text">목록 보기</span>
+						</a>
+					</div>
+				</div>
+                <!-- /.container-fluid -->
             </div>
             <!-- End of Main Content -->
 
@@ -129,7 +138,7 @@
 
     <!-- Page level custom scripts -->
     <script src="resources/bootstrap/js/demo/datatables-demo.js"></script>
- 
+   
 </body>
 
 </html>

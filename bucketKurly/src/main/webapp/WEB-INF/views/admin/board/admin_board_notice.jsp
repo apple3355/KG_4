@@ -57,7 +57,7 @@
                         </div>
                         <div align = "right" style="padding:10px 20px 0px 0px; ">
                         	 <a href="${pageContext.request.contextPath}/admin_board_notice_insert.mdo">
-			            	 	<span class="btn btn-sm btn-primary" id="saveBtn" style="float: none; font-size:18px;">등록</span>
+			            	 	<span class="btn btn btn-outline btn-primary" id="saveBtn" style="float: none; font-size:18px;">등록</span>
 			                 </a>
                        	</div>
                         <div class="card-body">

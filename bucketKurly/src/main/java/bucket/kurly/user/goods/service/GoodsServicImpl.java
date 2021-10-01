@@ -43,6 +43,12 @@ public class GoodsServicImpl implements GoodsService {
 		return dao.getGoods_sell(gsvo);
 	}
 	
+	// 장바구니 테이블 개수 조회 
+	@Override
+	public Integer countGoods_cart(Goods_CartVO gcvo) {
+		return dao.countGoods_cart(gcvo);
+	}
+	
 	// 장바구니에 담기
 	@Override
 	public void insertGoods_cart(Goods_CartVO gcvo) {
@@ -55,6 +61,11 @@ public class GoodsServicImpl implements GoodsService {
 		return dao.getGoods_cart(goods_cart_member_no);
 	}
 
-
-
+	@Override
+	public void deleteGoods_cart(Goods_CartVO gcvo) {
+		dao.deleteGoods_cart(gcvo);
+	}
+	
+	//장바구니 삭제
+	
 }

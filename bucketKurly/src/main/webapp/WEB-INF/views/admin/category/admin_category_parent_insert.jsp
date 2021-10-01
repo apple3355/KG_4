@@ -26,7 +26,9 @@
 
     <!-- Custom styles for this page -->
     <link href="resources/bootstrap/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+	<style type="text/css">
+		#buttondiv{text-align: right;}
+	</style>
 </head>
 
 <body id="page-top">
@@ -55,11 +57,7 @@
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">상위 카테고리 등록</h6>
                         </div>
-                        <div align = "right" style="padding:10px 20px 0px 0px; ">
-                        	 <a href="${pageContext.request.contextPath}/admin_board_notice_insert.mdo">
-			            	 	<span class="btn btn-sm btn-primary" id="saveBtn" style="float: none; font-size:18px;">글 쓰기</span>
-			                 </a>
-                       	</div>
+                        
                         <div class="card-body">
                             <div class="table-responsive" style="text-align:center;">
 	                            <form method="post" role="form" action="${pageContext.request.contextPath}/admin_category_parent_insertDB.mdo" enctype="multipart/form-data">
@@ -73,13 +71,22 @@
 											<tr>
 												<th width="20%">icon(color)</th><td><input type="file" name="file" style="width:50%"></td>
 											</tr>
-											<tr>
-												<td colspan="4" align="right">
-													<button type="submit" class="btn btn-outline btn-warning"  style="font-size:18px;">확인</button>
-													<button type="button" class="btn btn-outline btn-default" onclick="history.back()"  style="font-size:18px;">취소</button>
-												</td>
-											</tr>
+											
 	                                </table>
+	                                <div id="buttondiv">
+										<a href="javascript:form.submit();" class="btn btn-success btn-icon-split" >
+											<span class="icon text-white-50">
+												<i class="fas fa-check"></i>
+											</span>
+											<span class="text">등록 하기</span>
+										</a>
+										<a href="javascript:history.back();" class="btn btn-secondary btn-icon-split">
+											<span class="icon text-white-50">
+												<i class="fas fa-arrow-right"></i>
+											</span>
+											<span class="text">목록 보기</span>
+										</a>
+									</div>
 								</form>
 							</div>
                         </div>

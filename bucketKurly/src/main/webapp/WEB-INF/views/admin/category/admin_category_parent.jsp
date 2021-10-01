@@ -55,9 +55,10 @@
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">상위 카테고리</h6>
                         </div>
+                        
                         <div align = "right" style="padding:10px 20px 0px 0px; ">
                         	 <a href="${pageContext.request.contextPath}/admin_category_parent_insert.mdo">
-			            	 	<span class="btn btn-sm btn-primary" id="saveBtn" style="float: none; font-size:18px;">등록</span>
+			            	 	<span class="btn btn btn-outline btn-primary" id="saveBtn" style="float: none; font-size:18px;">등록하기</span>
 			                 </a>
                        	</div>
                         <div class="card-body">
@@ -81,7 +82,11 @@
 												<td><c:out value="${admin_Category_parent.category_parent_name}"/></td>
 												<td><img src="${admin_Category_parent.category_parent_icon}" /></td>
 												<td><img src="${admin_Category_parent.category_parent_icon_color}" /></td>
-												<td><button type="button" class="btn btn-sm btn-primary" style="font-size:18px;" id="saveBtn" onclick="fn_delete('${admin_Category_parent.category_parent_no}')">삭제</button></td>
+												<td>
+													<a href="#" class="btn btn-danger btn-circle btn-lg" onclick="fn_delete('${admin_Category_parent.category_parent_no}')" >
+	                                        			<i class="fas fa-trash"></i>
+	                                    			</a>
+                                    			</td>
 											</tr>
 										</c:forEach>
 									</tbody>

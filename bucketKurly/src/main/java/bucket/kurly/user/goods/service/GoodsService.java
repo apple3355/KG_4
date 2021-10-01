@@ -18,18 +18,26 @@ public interface GoodsService {
 	
 	// 상품DB카운트
 	String getGoods_cnt();
-
-
+	
 	// 상품 판매 정보
 	Goods_SellVO getGoods_sell(Goods_SellVO gsvo);
-
+	
+	
+	// 장바구니 테이블 개수 조회
+	Integer countGoods_cart(Goods_CartVO gcvo);
+	
 	// 장바구니에 담기
 	void insertGoods_cart(Goods_CartVO gcvo);
 
 	// 장바구니 정보
 	List<Goods_CartShowVO> getGoods_cart(int goods_cart_member_no);
+	
 	// 장바구니에서 삭제
+<<<<<<< HEAD
 	
 	
 
+=======
+	void deleteGoods_cart(Goods_CartVO gcvo);
+>>>>>>> 87d33aa55b5fbd2effd1031e09de81fa23d7ba38
 }

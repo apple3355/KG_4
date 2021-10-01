@@ -57,7 +57,7 @@
                         </div>
                         <div align = "right" style="padding:10px 20px 0px 0px; ">
                         	 <a href="${pageContext.request.contextPath}/admin_category_sub_insert.mdo">
-			            	 	<span class="btn btn-sm btn-primary" id="saveBtn" style="float: none; font-size:18px;">등록</span>
+			            	 	<span class="btn btn btn-outline btn-primary" id="saveBtn" style="float: none; font-size:18px;">등록하기</span>
 			                 </a>
                        	</div>
                         <div class="card-body">
@@ -77,7 +77,11 @@
 											 	<td>${status.count}</td>
 												<td><c:out value="${admin_Category_sub.category_sub_parent_no}"/></td>
 												<td><c:out value="${admin_Category_sub.category_sub_name}"/></td>
-												<td><button type="button" class="btn btn-sm btn-primary" style="font-size:18px;" id="saveBtn" onclick="fn_delete('${admin_Category_sub.category_sub_no}')">삭제</button></td>
+												<td>
+													<a href="#" class="btn btn-danger btn-circle btn-lg" onclick="fn_delete('${admin_Category_sub.category_sub_no}')" >
+	                                        			<i class="fas fa-trash"></i>
+	                                    			</a>
+                                    			</td>												
 											</tr>
 										</c:forEach>
 									</tbody>

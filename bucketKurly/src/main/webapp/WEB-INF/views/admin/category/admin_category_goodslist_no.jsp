@@ -47,33 +47,74 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading / 기본 테이블 템플릿 사용을 원하시면 해당 부분 아래로 수정하시면 됩니다.-->
-                    <h1 class="h3 mb-2 text-gray-800">게시글 관리</h1>
+                    <h1 class="h3 mb-2 text-gray-800">카테고리 상품 상세페이지 관리</h1>
                    
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">게시글 상세보기</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">카테고리 상품 상세보기</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                            <c:set var="no" value="${vo.board_notice_no}" />
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <c:set var="no" value="${vo.category_goods_no}" /> 
+                                <table border = "1" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                	
                                       	<tr>
-											<th width="20%">글번호</th><td><c:out value="${no}"/></td>
-											<th width="20%">조회수</th><td>${vo.board_notice_hits}</td>
+											<th width="16%">1차 카테고리</th><td width="16%"><c:out value="${vo.category_goods_parent_no}"/></td>
+											<th width="16%">2차 카테고리</th><td width="16%">${vo.category_goods_sub_no}</td>
+											<th width="16%">상품 카테고리</th><td width="16%">${no}</td>
+										</tr>
+									
+										<tr>
+											<th>상품명</th><td colspan="2">${vo.category_goods_name}</td>
+											<th>상품명 서브</th><td colspan="2">${vo.category_goods_name_sub}</td>
 										</tr>
 										<tr>
-											<th width="20%">작성자</th><td>${vo.board_notice_writer}</td>
-											<th width="20%">작성일</th><td><fmt:formatDate value="${vo.board_notice_date}" pattern="yyyy-MM-dd" /></td>
+											<th>판매단위</th><td>${vo.category_goods_unit}</td>
+											<th>상품용량(중량)</th><td>${vo.category_goods_weight}</td>
+											<th>원산지</th><td>${vo.category_goods_from}</td>
 										</tr>
 										<tr>
-											<th width="20%">제목</th><td colspan="3">${vo.board_notice_title}</td>
+											<th>포장타입</th><td>${vo.category_goods_packaging_type}</td>
+											<th>배송구분</th><td>${vo.category_goods_delivery_type}</td>
+											<th>유통기한</th><td>${vo.category_goods_exp_date}</td>
 										</tr>
 										<tr>
-											<th width="20%">내용</th><td colspan="3">${vo.board_notice_content}</td>
+											<th>안내사항</th><td colspan="5">${vo.category_goods_info}</td>
 										</tr>
 										<tr>
-											<td colspan="4" align="right">
+											<th>참고사항</th><td colspan="5">${vo.category_goods_ref}</td>
+										</tr>
+										<tr>
+											<th>본문 타이틀</th><td colspan="5">${vo.category_goods_contents_tit_main}</td>
+										</tr>
+										<tr>
+											<th>본문<br>서브타이틀</th><td colspan="5">${vo.category_goods_contents_tit_sub}</td>
+										</tr>
+										<tr>
+											<th>본문 설명</th><td colspan="5">${vo.category_goods_contents_intro}</td>
+										</tr>
+										<tr>
+											<th>썸네일</th><td colspan="5" height = "150">
+												<div style = "height:100%"><img src = "${vo.category_goods_image_thumb}" height = "150"></div></td> <!-- 이미지 크기 자동조절 -->
+										</tr>
+										<tr>
+											<th>헤드 이미지</th><td colspan="5" height = "150">
+												<div style = "height:100%"><img src = "${vo.category_goods_image_head}" height = "150"></div></td>
+										</tr>
+										<tr>
+											<th>본문 이미지</th><td colspan="5" height = "400">
+												<div style = "height:100%"><img src = "${vo.category_goods_image_contents}" height = "400"></div></td>
+										</tr>
+										<tr>
+											<th>정보 이미지</th><td colspan="5" height = "400">
+												<div style = "height:100%"><img src = "${vo.category_goods_image_contents_detail}" height = "400"></div></td>
+										</tr>
+									
+										<tr>
+										
+										
+											<td colspan="6" align="right">
 												<button type="button" class="btn btn-outline btn-info" 
 													onClick="fn_updatePage('${no}')"> 
 													수정하기
@@ -83,12 +124,13 @@
 													삭제하기
 												</button>
 												<button type="button" class="btn btn btn-outline btn-primary" 
-													onclick="location.href='${pageContext.request.contextPath}/admin_board_notice.mdo'">
+													onclick="location.href='${pageContext.request.contextPath}/admin_category_goodslist.mdo'">
 													목록보기
 												</button>
-												
+																								
 											</td>
 										</tr>
+									
                                 </table>
 
 							</div>
@@ -130,18 +172,18 @@
     <script src="resources/bootstrap/js/demo/datatables-demo.js"></script>
     <script>
   	//이전 버튼 이벤트
-    function fn_updatePage(notice_no) {
-    	var url = "${pageContext.request.contextPath}/admin_board_notice_update.mdo";
-		url = url + "?notice_no=" + notice_no;
+    function fn_updatePage(category_goods_no) {
+    	var url = "${pageContext.request.contextPath}/admin_category_goodslist_update.mdo";
+		url = url + "?category_goods_no=" + category_goods_no;
 		location.href = url;
 	}
-  	function fn_delete(notice_no) {
-	  	  var result = confirm("이 게시글을 삭제하시겠습니까? ");
+  	function fn_delete(category_goods_no) {
+	  	  var result = confirm("이 상품을 삭제하시겠습니까? ");
 	      if(result){
-	    	 	var url = "${pageContext.request.contextPath}/admin_board_notice_deleteDB.mdo";
-	  			url = url + "?notice_no=" + notice_no;
+	    	 	var url = "${pageContext.request.contextPath}/admin_category_goodslist_deleteDB.mdo";
+	  			url = url + "?category_goods_no=" + category_goods_no;
 	  			location.href = url;
-	            alert("게시글이 삭제되었습니다.");
+	            alert("상품이 삭제되었습니다.");
 	      }else{
 		  	    location.href = "javascript:void(0);";
 	      }

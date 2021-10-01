@@ -53,49 +53,76 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">게시글 목록보기</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">1:1 문의 - 답변 대기</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                       	<tr>
-											<th>번호</th>
-											<th>제목</th>
-											<th>작성자</th>
-											<th>작성일</th>
-											<th>조회</th>
+											<th width="10%">번호</th>
+											<th width="20%">문의 종류</th>
+											<th width="40%">제목</th>
+											<th width="15%">날짜</th>
+											<th width="15%">주문회원</th>
 										</tr>
                                     </thead>
-                                    <!--<tfoot>  필요 없으실 경우 tfoot 부분은 주석처리하시면 됩니다.
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot> -->
-                                   <c:forEach items="${board_noticeList}" var="board_noticeList" varStatus="status">	
+                                    
+                                   <c:forEach items="${board_qnaList_answait}" var="board_qnaList_answait" varStatus="status">	
 										<tbody>													
 											<tr>
 												<td>${status.count}</td>
-												<td><a href="javascript:void(0);" onClick="fn_notice_details('${board_noticeList.board_notice_no}')"><c:out value="${board_noticeList.board_notice_title}"/></a></td>	
-												<td><c:out value="${board_noticeList.board_notice_writer}"/></td>
-												<td><fmt:formatDate value="${board_noticeList.board_notice_date}" pattern="yyyy-MM-dd" />
-												<td><c:out value="${board_noticeList.board_notice_hits}"/></td>
+												<td><c:out value="${board_qnaList_answait.board_qna_type}"/></td>	
+												<td><a href="javascript:void(0);" onClick="fn_qna_answait_details('${board_qnaList_answait.board_qna_no}')"><c:out value="${board_qnaList_answait.board_qna_title}"/></a></td>
+												<td><fmt:formatDate value="${board_qnaList_answait.board_qna_regdate}" pattern="yyyy-MM-dd" />
+												<td><c:out value="${board_qnaList_answait.board_qna_writer}"/></td>
 											</tr>
 										</tbody>
 									</c:forEach>
                                 </table>
+                                
                             </div>
                         </div>
                     </div>
 
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">1:1 문의 - 답변 완료</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                      	<tr>
+											<th width="10%">번호</th>
+											<th width="20%">문의 종류</th>
+											<th width="40%">제목</th>
+											<th width="15%">날짜</th>
+											<th width="15%">주문회원</th>
+										</tr>
+                                    </thead>
+                                    
+                                   <c:forEach items="${board_qnaList_anscom}" var="board_qnaList_anscom" varStatus="status">	
+										<tbody>													
+											<tr>
+												<td>${status.count}</td>
+												<td><c:out value="${board_qnaList_anscom.board_qna_type}"/></td>	
+												<td><a href="javascript:void(0);" onClick="fn_qna_anscom_details('${board_qnaList_anscom.board_qna_no}')"><c:out value="${board_qnaList_anscom.board_qna_title}"/></a></td>
+												<td><fmt:formatDate value="${board_qnaList_anscom.board_qna_regdate}" pattern="yyyy-MM-dd" />
+												<td><c:out value="${board_qnaList_anscom.board_qna_writer}"/></td>
+											</tr>
+										</tbody>
+									</c:forEach>
+                                </table>
+                                                           
+                            </div>
+                        </div>
+                    </div>
+                    
+
                 </div>
                 <!-- /.container-fluid -->
-
             </div>
             <!-- End of Main Content -->
 
@@ -128,10 +155,16 @@
     <script src="resources/bootstrap/js/demo/datatables-demo.js"></script>
     
     <script>
-	    //페이지 번호 클릭
-		function fn_notice_details(notice_no) {
-			var url = "${pageContext.request.contextPath}/admin_board_notice_no.mdo";
-			url = url + "?notice_no=" + notice_no;
+	    //답변대기 글 상세보기
+		function fn_qna_answait_details(qna_no) {
+			var url = "${pageContext.request.contextPath}/admin_board_qna_answait.mdo";
+			url = url + "?qna_no=" + qna_no;
+			location.href = url;	
+	    }
+		//답변완료 글 상세보기
+		function fn_qna_anscom_details(qna_no) {
+			var url = "${pageContext.request.contextPath}/admin_board_qna_anscom.mdo";
+			url = url + "?qna_no=" + qna_no;
 			location.href = url;	
 	    }
     </script>
