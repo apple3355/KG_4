@@ -29,4 +29,10 @@ public class Admin_Category_subServiceImpl implements Admin_Category_subService{
 		dao.insertCategory_sub(vo);
 	}
 
+	//상위 카테고리에 해당하는 중위 카테고리 리스트
+	@Override
+	public List<Admin_Category_subVO> selectCategory_sub_name(String category_sub_parent_no) {
+		return dao.selectCategory_sub_name(category_sub_parent_no);
+	}
+
 }

@@ -226,7 +226,7 @@
   .member_join td {padding: 10px 0;border-top: 0;font-size: 14px;vertical-align: top;text-align: left;}
   .member_join input[type=text], .member_join input[type=password] {width: 332px;}
   input[type="checkbox" i] {background-color: initial;cursor: default;appearance: auto;box-sizing: border-box;margin: 3px 3px 3px 4px;padding: initial;border: initial;}
-  #duplicate_check{border: 1px solid #5f0080;background-color: #fff;color: #5f0080;display: inline-block;width: 120px;margin-left: 5px;vertical-align: top;height: 44px;border-radius: 3px;font-weight: 700;font-size: 14px;line-height: 40px;text-align: center;outline: none;}  
+  .duplicate_check{border: 1px solid #5f0080;background-color: #fff;color: #5f0080;display: inline-block;width: 120px;margin-left: 5px;vertical-align: top;height: 44px;border-radius: 3px;font-weight: 700;font-size: 14px;line-height: 40px;text-align: center;outline: none;}  
   .member_join .field_phone .code_num {position: relative;padding-top: 10px;}
   .member_join .field_phone .code_num input[type=text] {margin: 0;}
   #btn_cert_confirm {border: 1px solid #5f0080;background-color: #fff;color: #5f0080;display: inline-block;width: 120px;margin-left: 5px;vertical-align: top;height: 44px;border-radius: 3px;font-weight: 700;font-size: 14px;line-height: 40px;text-align: center;outline: none;}

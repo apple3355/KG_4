@@ -49,7 +49,8 @@ public class GoodsDAO {
 		System.out.println("getGoods_cart() 실행");
 		return sqlSessionTemplate.selectList("GoodsDAO.getGoods_cart",goods_cart_member_no);
 	}
-
+	
+	
 
 	/*
 	 * //공지사항 페이징 public int getnotice_cnt() { System.out.println("게시글 DB수"); return

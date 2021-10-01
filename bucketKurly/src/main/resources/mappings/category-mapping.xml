@@ -27,6 +27,11 @@
 		ORDER BY category_sub_parent_no
 	</select>
 	
+	<select id="selectCategory_sub_name" parameterType="admin_category_sub" resultType="admin_category_sub">
+		SELECT category_sub_name, category_sub_no FROM TB_CATEGORY_SUB
+		WHERE category_sub_parent_no = #{category_sub_parent_no}
+	</select>
+	
 	<delete id="deleteCategory_sub" parameterType="String">
 		DELETE FROM TB_CATEGORY_SUB
 		WHERE category_sub_no = #{category_sub_no}
@@ -39,7 +44,10 @@
 	
 	<!-- 하위 카테고리 (상품) -->
 	
-	
+	<select id="selectCategory_goods_name"  resultType="admin_category_goods">
+		SELECT category_goods_name, category_goods_no  FROM TB_CATEGORY_GOODS
+		WHERE category_goods_sub_no = #{category_goods_sub_no}
+	</select>
 	
 	
 </mapper>

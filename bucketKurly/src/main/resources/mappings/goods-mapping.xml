@@ -122,8 +122,8 @@
 		TB_GOODS_SELL(GOODS_SELL_PARENT_NO, GOODS_SELL_SUB_NO, GOODS_SELL_GOODS_NO,
 		GOODS_SELL_IN_DATE, GOODS_SELL_IN_EA, GOODS_SELL_EXP, GOODS_SELL_PRICE,
 		GOODS_SELL_PROMOTION, GOODS_SELL_STATUS, GOODS_SELL_DISCOUNT)
-		VALUES(#{goods_sell_parent_no}, #{goods_sell_sub_no}, #{goods_sell_goods_no}, #{goods_sell_price}, #{goods_sell_in_date},
-		#{goods_sell_in_ea}, #{goods_sell_exp}, #{goods_sell_promotion}, #{goods_sell_status}, #{goods_sell_discount})
+		VALUES(#{goods_sell_parent_no}, #{goods_sell_sub_no}, #{goods_sell_goods_no}, #{goods_sell_in_date}, #{goods_sell_in_ea}, 
+		#{goods_sell_exp}, #{goods_sell_price}, #{goods_sell_promotion}, #{goods_sell_status}, #{goods_sell_discount})
 		
 	</insert> 
 	
@@ -146,6 +146,7 @@
   		WHERE GOODS_SELL_NO = #{goods_sell_no}
   		
 	</delete>
+	
 	
 
 	

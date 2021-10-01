@@ -11,7 +11,7 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="shortcut icon" href="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/favicon_v2.webp" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="resources/joinstyle.css">
+<link rel="stylesheet" type="text/css" href="resources/css/join.css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- 우측 quick-navi 플로팅배너 -->
 <script>
@@ -86,7 +86,7 @@ $(document).ready(function(){
 											  <input
 												type="hidden" name="chk_id" required fld_esssential
 												label="아이디중복체크" value=""> 
-												<button id="duplicate_check" type="button" onclick="checkID();">중복확인</button>
+												<button id="id_check" class="duplicate_check" type="button" >중복확인</button>
 												<p class="txt_guide square">
 													<span class="txt txt_case1">6자 이상의 영문 혹은 영문과 숫자를 조합</span>
 													<span class="txt txt_case2">아이디 중복확인</span>
@@ -131,7 +131,7 @@ $(document).ready(function(){
 												placeholder="예: marketkurly@kurly.com"> <input
 												type="hidden" name="chk_member_email" required fld_esssential
 												label="이메일중복체크"> 
-												<button id="duplicate_check" type="button" onclick="checkEmail();">중복확인</button>
+												<button id="email_check" class="duplicate_check" type="button">중복확인</button>
 											</td>
 										</tr>
 										<tr class="field_phone">
@@ -853,6 +853,9 @@ $(document).ready(function(){
 									</div>
 								</form>
 							</div>
+						</div>
+					</div>
+				</div>
 							<!-- layerDSR -->
       <%@ include file="/WEB-INF/views/layout/layerDSR.jsp"%>   
       <!-- footer -->
@@ -885,11 +888,11 @@ function findAddr(){
 
 <!-- 아이디 중복체크 -->
 <script>
-function checkID(){
-	id = $("#member_id").val();
+$("#id_check").on("click", function checks(){
+	var id = $("#member_id").val();
 	
 	$.ajax({
-	    url: 'idCheck',
+	    url: 'idCheck.do',
 	    type: 'POST',
 	    dataType: 'text', //서버로부터 내가 받는 데이터의 타입
 	    contentType : 'text/plain; charset=utf-8;',//내가 서버로 보내는 데이터의 타입
@@ -910,7 +913,7 @@ function checkID(){
 	  });
 
 
-}
+})
 </script>
 <!-- 이메일 체크 -->
 <script>
@@ -918,7 +921,7 @@ $("#email_check").on("click", function checks(){
 	var member_email = $("#member_email").val();
 	
 	$.ajax({
-	    url: 'emailCheck',
+	    url: 'emailCheck.do',
 	    type: 'POST',
 	    dataType: 'text', //서버로부터 내가 받는 데이터의 타입
 	    data: {member_email} ,
@@ -1066,7 +1069,7 @@ function sendSMS(){
 	phone = $("#member_phone").val();
 	
 	$.ajax({
-	    url: 'sendSMS',
+	    url: 'sendSMS.do',
 	    type: 'POST',
 	    dataType: 'text', //서버로부터 내가 받는 데이터의 타입
 	    contentType : 'text/plain; charset=utf-8;',//내가 서버로 보내는 데이터의 타입
@@ -1097,7 +1100,7 @@ function chkCodeNum(){
 	code = $("#auth_code").val();
 	
 	$.ajax({
-	    url: 'chkCodeNum',
+	    url: 'chkCodeNum.do',
 	    type: 'POST',
 	    dataType: 'text', //서버로부터 내가 받는 데이터의 타입
 	    contentType : 'text/plain; charset=utf-8;',//내가 서버로 보내는 데이터의 타입
@@ -1202,7 +1205,7 @@ function startTimer(count, display) {
 function memberTerms(){
 	member_id = $("#member_id").val();
 	$.ajax({
-	    url: 'memberTerms',
+	    url: 'memberTerms.do',
 	    type: 'POST',
 	    dataType: 'text', //서버로부터 내가 받는 데이터의 타입
 	    contentType : 'text/plain; charset=utf-8;',//내가 서버로 보내는 데이터의 타입

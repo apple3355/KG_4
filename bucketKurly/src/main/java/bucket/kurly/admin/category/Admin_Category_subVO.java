@@ -1,5 +1,8 @@
 package bucket.kurly.admin.category;
 
+import lombok.Getter;
+
+@Getter
 public class Admin_Category_subVO {
 	
 	private String category_sub_no;

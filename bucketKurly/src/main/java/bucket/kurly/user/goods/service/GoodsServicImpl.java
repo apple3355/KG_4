@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bucket.kurly.user.goods.GoodsDAO;
+import bucket.kurly.user.goods.GoodsVO;
 import bucket.kurly.user.goods.Goods_CartShowVO;
 import bucket.kurly.user.goods.Goods_CartVO;
 import bucket.kurly.user.goods.Goods_SellVO;

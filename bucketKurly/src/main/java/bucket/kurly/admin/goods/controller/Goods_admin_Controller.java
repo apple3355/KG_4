@@ -30,19 +30,12 @@ public class Goods_admin_Controller {
 		model.addAttribute("selectgoods_sell", selectgoods_sell); // 상품DB품목
 		return "goods/admin_goods_list";
 	}
-	
-	//상품 등록 페이지
-	@RequestMapping("/admin_goods_insertsell.mdo")
-	public String admin_goods_insertsell(Model model){
-		System.out.println("[상품 등록 페이지 요청]");
-		return "goods/admin_goods_insertsell";
-	} 
+	 
 	
 	//상품 등록 요청
 	@RequestMapping("/admin_goods_insertsellDB.mdo")
 	public String admin_goods_insertsellDB(Model model,Goods_adminSellVO vo){
-		System.out.println("[상품 DB 등록 요청]");	
-		
+		System.out.println("[상품 DB 등록 요청]");
 		goods_adminService.insertGoods(vo);		
 		
 		return "redirect:/admin_goods_list.mdo";
