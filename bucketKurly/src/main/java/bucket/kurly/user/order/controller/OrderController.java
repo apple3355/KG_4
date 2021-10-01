@@ -35,4 +35,11 @@ public class OrderController {
 		return "order/order_form";
 	}
 	
+	//주문서 페이지
+	@RequestMapping("/order_form_detail.do")
+	public String order_form_detail()   {
+		  
+		return "order/order_form_detail";
+	}
+	
 }
