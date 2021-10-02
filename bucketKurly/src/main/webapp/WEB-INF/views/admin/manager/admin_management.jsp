@@ -52,21 +52,24 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h4 class="m-0 font-weight-bold text-primary" style="float: left;">매니저 리스트</h4>
-                            <button name="register" id="addBtn" style="left: 750px; position: relative;">매니저 등록</button>      
-                                               
+                            <h4 class="" style="color: #6406ca; font-weight: bolder; float: left;" >매니저 리스트</h4>
+                             <a href="#" class="btn btn-primary btn-icon-split" name="register" id="addBtn" style="float: right; position: relative;">
+								<span class="icon text-white-50">
+									<i class="fas fa-plus"></i>
+								</span>
+								<span class="text">매니저 등록</span>
+							</a>                
                         </div>
                         <div class="card-body">
                             <div class="table-responsive" style="overflow-x: hidden;">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="text-align:center;">
                                     <thead>
                                         <tr>
-                                        	<th>번호</th>
-                                            <th>아이디</th>
-                                            <th>이름</th>
-                                            <th>직급</th>
-                                            <th>수정 / 삭제</th>
-                                            <!-- <th></th> 컬럼추가 -->
+                                        	<td width ="10%" style="font-weight: bolder;">번호</td>
+                                            <td width ="25%" style="font-weight: bolder;">아이디</td>
+                                            <td width ="25%" style="font-weight: bolder;">이름</td>
+                                            <td width ="20%" style="font-weight: bolder;">직급</td>
+                                            <td width ="20%" style="font-weight: bolder;">수정 / 삭제</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -78,8 +81,8 @@
 											<td>${ab.admin_position}</td>
 											<td>
 												<div>
-													<button name="modify" value="${ab.admin_no}" >수정</button>  
-                            						<button name="delete" value="${ab.admin_no}" id="delBtn">삭제</button>
+													<button name="modify" value="${ab.admin_no}" class="btn btn-outline btn-info" >수정</button>  
+                            						<button name="delete" value="${ab.admin_no}" id="delBtn" class="btn btn-outline btn-danger" >삭제</button>
                             					</div>
                             				</td>
 										</tr>
@@ -205,7 +208,7 @@
 
 	<!--유효성 검사 -->
 	<script>
-	$("button[name = 'register']").on("click", function checks(){ 
+	$("a[name = 'register']").on("click", function checks(){ 
 		$("#modal-title").text("메니저 등록");
 		$("#myModal").modal();
 		if($("#myModal").modal("hide")){

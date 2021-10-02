@@ -52,6 +52,14 @@ public class AdminController {
 		return "redirect:/admin_main.mdo";
 	}
 
+	// 관리자 로그아웃
+	@RequestMapping("/logout.mdo")
+	public String logout(HttpSession session) throws Exception {
+		session.invalidate();
+		return "admin_login.mdo";
+	}
+
+	
 	// 약관리스트 조회
 	@RequestMapping("/admin_terms_getList.mdo")
 	public String getTermsList(AdminTermsVO vo, Model model) throws IOException, PSQLException {

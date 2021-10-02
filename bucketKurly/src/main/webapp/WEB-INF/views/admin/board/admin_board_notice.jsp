@@ -73,8 +73,9 @@
 										</tr>
                                     </thead>
                                     
-                                   <c:forEach items="${board_noticeList}" var="board_noticeList" varStatus="status">	
-										<tbody>													
+                                   
+									<tbody>	
+										<c:forEach items="${board_noticeList}" var="board_noticeList" varStatus="status">													
 											<tr>
 												<td>${status.count}</td>
 												<td><a href="javascript:void(0);" onClick="fn_notice_details('${board_noticeList.board_notice_no}')"><c:out value="${board_noticeList.board_notice_title}"/></a></td>	
@@ -82,8 +83,9 @@
 												<td><fmt:formatDate value="${board_noticeList.board_notice_date}" pattern="yyyy-MM-dd" />
 												<td><c:out value="${board_noticeList.board_notice_hits}"/></td>
 											</tr>
-										</tbody>
-									</c:forEach>
+										</c:forEach>
+									</tbody>
+								
                                 </table>
                             </div>
                         </div>

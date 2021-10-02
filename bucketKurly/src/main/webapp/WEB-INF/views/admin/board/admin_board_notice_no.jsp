@@ -82,7 +82,7 @@
 													onclick="fn_delete('${no}')">
 													삭제하기
 												</button>
-												<button type="button" class="btn btn btn-outline btn-primary" 
+												<button type="button" class="btn btn-secondary btn-icon-splitbtn" 
 													onclick="location.href='${pageContext.request.contextPath}/admin_board_notice.mdo'">
 													목록보기
 												</button>

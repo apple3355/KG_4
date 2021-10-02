@@ -85,7 +85,7 @@
 											</span>
 											<span class="text">등록 하기</span>
 										</a>
-										<a href="javascript:history.back();" class="btn btn-secondary btn-icon-split">
+										<a href="javascript:history.back();" class="btn btn-primary btn-icon-split">
 											<span class="icon text-white-50">
 												<i class="fas fa-arrow-right"></i>
 											</span>

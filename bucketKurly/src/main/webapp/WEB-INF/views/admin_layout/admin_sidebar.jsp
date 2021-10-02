@@ -25,7 +25,7 @@
        <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${pageContext.request.contextPath}/admin_main.mdo">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -33,13 +33,13 @@
             </a>
              <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="/admin_main.mdo">
+                <a class="nav-link" href="${pageContext.request.contextPath}/admin_main.mdo">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>대시보드</span></a>
             </li>
-            <c:if test="${sessionScope.id eq 'admin' }">        
+            <c:if test="${sessionScope.id eq 'admin'}">        
 	            <li class="nav-item active">
-	                <a class="nav-link" href="/admin_management.mdo">
+	                <a class="nav-link" href="${pageContext.request.contextPath}/admin_management.mdo">
 	                    <i class="fas fa-fw fa-tachometer-alt"></i>
 	                    <span>매니저관리</span></a>
 	            </li>
@@ -92,7 +92,7 @@
                         <h6 class="collapse-header">컬리 카테고리 :</h6>
                         <a class="collapse-item" href="${pageContext.request.contextPath}/admin_category_parent.mdo">상위 카테고리</a>
                         <a class="collapse-item" href="${pageContext.request.contextPath}/admin_category_sub.mdo">중위 카테고리</a>
-                        <a class="collapse-item" href="##########">하위 카테고리(상품)</a>
+                        <a class="collapse-item" href="${pageContext.request.contextPath}//admin_category_goodslist.mdo">하위 카테고리(상품)</a>
                     </div>
                 </div>
             </li>
@@ -134,7 +134,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">컬리 마케팅 및 프로모션관리 :</h6>
                         <a class="collapse-item" href="buttons.html">프로모션 관리</a>
-                        <a class="collapse-item" href="${pageContext.request.contextPath}/admin_banner_getList.mdo">배너관리 </a>
+                        <a class="collapse-item" href="${pageContext.request.contextPath}/admin_banner_getList.mdo">배너관리</a>
                         <a class="collapse-item" href="${pageContext.request.contextPath}/admin_coupon_getList.mdo">쿠폰관리</a>
                     </div>
                 </div>
