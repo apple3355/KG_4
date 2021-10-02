@@ -43,6 +43,9 @@
 	</insert>
 	
 	<!-- 하위 카테고리 (상품) -->
-
+	<select id="selectCategory_goods_name"  resultType="admin_category_goods">
+		SELECT category_goods_name, category_goods_no  FROM TB_CATEGORY_GOODS
+		WHERE category_goods_sub_no = #{category_goods_sub_no}
+	</select>
 	
 </mapper>
