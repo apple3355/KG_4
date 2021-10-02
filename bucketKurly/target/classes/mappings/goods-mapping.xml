@@ -86,8 +86,7 @@
 		#{goods_cart_member_no}, #{goods_cart_count}, 0)
 	</insert>
 
-	<select id="getGoods_cart" parameterType="int"
-		resultType="goods_cartshow">
+	<select id="getGoods_cart" parameterType="int" resultType="goods_cartshow">
 		SELECT 
 		cart.goods_cart_no,
 		sell.goods_sell_no,
@@ -96,19 +95,20 @@
 		goods.category_goods_delivery_type,
 		cart.goods_cart_count, 
 		sell.goods_sell_price, 
-		cart.goods_cart_status
+		cart.goods_cart_status,
+		sell.goods_sell_discount
 		FROM tb_goods_cart cart
 		LEFT OUTER JOIN tb_goods_sell sell
 		ON cart.goods_cart_sell_no = sell.goods_sell_no
-		LEFT OUTER JOIN tb_category_goods goods ON sell.goods_sell_goods_no =
-		goods.category_goods_no
+		LEFT OUTER JOIN tb_category_goods goods 
+		ON sell.goods_sell_goods_no = goods.category_goods_no
 		where cart.GOODS_CART_MEMBER_NO = #{goods_cart_member_no}
 		order by cart.goods_cart_no
 	</select>
 	
 	<!-- 장바구니 삭제 -->
-	<delete id="deleteGoods_cart" parameterType="goods_cart">
-		DELETE FROM TB_GOODS_CART
+	<delete id="deleteGoods_cart" parameterType="goods_cartshow">
+		DELETE FROM TB_GOODS_CART WHERE GOODS_CART_NO = #{goods_cart_no} 
 	</delete>
 	
 	

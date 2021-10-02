@@ -6,7 +6,7 @@ public class Goods_CartVO {
 	private int goods_cart_member_no;	// 회원번호 --> 회원아이디로 수정 예정
 	private int goods_cart_count;	// 물품 구매 갯수
 	private int goods_cart_status;	// 물품 주문상태
-	private int goods_cart_total; 	// 장바구니에 담긴 총 갯수
+	
 	private Goods_SellVO goods_sellvo;
 	
 	public int getGoods_cart_no() {
@@ -39,23 +39,19 @@ public class Goods_CartVO {
 	public void setGoods_cart_status(int goods_cart_status) {
 		this.goods_cart_status = goods_cart_status;
 	}
-	public int getGoods_cart_total() {
-		return goods_cart_total;
-	}
-	public void setGoods_cart_total(int goods_cart_total) {
-		this.goods_cart_total = goods_cart_total;
-	}
+	
 	public Goods_SellVO getGoods_sellvo() {
 		return goods_sellvo;
 	}
 	public void setGoods_sellvo(Goods_SellVO goods_sellvo) {
 		this.goods_sellvo = goods_sellvo;
 	}
+	
 	@Override
 	public String toString() {
 		return "Goods_CartVO [goods_cart_no=" + goods_cart_no + ", goods_cart_sell_no=" + goods_cart_sell_no
 				+ ", goods_cart_member_no=" + goods_cart_member_no + ", goods_cart_count=" + goods_cart_count
-				+ ", goods_cart_status=" + goods_cart_status + ", goods_cart_total=" + goods_cart_total
-				+ ", goods_sellvo=" + goods_sellvo + "]";
+				+ ", goods_cart_status=" + goods_cart_status + ", goods_sellvo=" + goods_sellvo + "]";
 	}
+	
 }

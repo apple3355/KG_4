@@ -59,8 +59,8 @@ public class GoodsDAO {
 	
 
 	// 장바구니 삭제
-	public void deleteGoods_cart(Goods_CartVO gcvo){
-		sqlSessionTemplate.delete("GoodsDAO.deleteGoods_cart",gcvo);
+	public void deleteGoods_cart(Goods_CartVO gsvo){
+		sqlSessionTemplate.delete("GoodsDAO.deleteGoods_cart",gsvo);
 	}
 
 

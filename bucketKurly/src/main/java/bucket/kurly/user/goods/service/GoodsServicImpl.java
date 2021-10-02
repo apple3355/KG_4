@@ -60,12 +60,12 @@ public class GoodsServicImpl implements GoodsService {
 	public List<Goods_CartShowVO> getGoods_cart(int goods_cart_member_no) {
 		return dao.getGoods_cart(goods_cart_member_no);
 	}
-
-	@Override
-	public void deleteGoods_cart(Goods_CartVO gcvo) {
-		dao.deleteGoods_cart(gcvo);
-	}
 	
 	//장바구니 삭제
+	@Override
+	public void deleteGoods_cart(Goods_CartVO gsvo) {
+		dao.deleteGoods_cart(gsvo);
+	}
+	
 	
 }

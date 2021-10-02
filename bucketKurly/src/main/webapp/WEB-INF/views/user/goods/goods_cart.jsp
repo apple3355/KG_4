@@ -45,7 +45,7 @@
 	</div>
 	<div id="main">
 	
-		<input type="hidden" value="${id }" id="sessionId"/>
+		<input type="hidden" value="${id }" id="session_Id"/>
 		
 		 
 		<div id="content">
@@ -86,7 +86,7 @@
 				<div id="cartItemList" items="${countGoods_cart }" var="countGoods_cart"class="only_pc" style="min-height: 561px;">
 					<div class="">
 					<!-- div class "" or empty 시작 -->
-					<div class="cart_item ">
+					<div class="cart_item" id="cart_item">
 						<div class="cart_select">
 							<div class="inner_select">
 								<label class="check">
@@ -130,6 +130,12 @@
 													<span class="selling"><c:out value="${goods_cartShowVO.goods_sell_price}"/>
 														<span class="won">원</span>
 													</span>
+													<span class="cost"><c:out value="${goods_cartShowVO.goods_sell_price}"/>
+														<span class="won">%</span>
+													</span>
+													<!-- 할인가 숨김표시 -->
+													<input type="hidden" value="${goods_cartShowVO.goods_sell_discount}" />
+													
 													<p class="noti"></p>
 												</div>
 												<div class="stamper count">
@@ -139,7 +145,7 @@
 												</div>
 											</div>
 										</div>
-										<button type="button" id="${goods_cartShowVO.category_goods_name}" class="btn_delete" onclick="btn_delete(this.id)">상품 삭제</button>
+										<button type="button" id="${goods_cartShowVO.goods_cart_no}" class="btn_delete" onclick="btn_delete(this.id)">상품 삭제</button>
 									</div>
 								</li>
 								</c:forEach>
@@ -188,8 +194,9 @@
 					</div>
 				</div>
 			</div>
+				<!-- 장바구니가 비어있을 때 -->
 				<div class="empty" >
-					<div class="cart_item no_item">
+					<div class="cart_item no_item" id="cart_item no_item">
 						<div class="cart_select">
 							<div class="inner_select">
 								<label class="check">
@@ -214,7 +221,7 @@
 								</div>
 							</div>
 						</div>
-							
+					</div>	
 					<!-- 이곳에 장바구니 페이지 코드 입력 -->
 				<div class="cart_result">
 					<div class="inner_result" style="top: 60px;">
@@ -222,7 +229,7 @@
 							<h3 class="tit">배송지</h3>
 							<div class="no_address">
 							<span class="emph">배송지를 입력</span>하고<br>배송유형을 확인해 보세요!
-							<a href="#" class="btn default" id="btn default">
+							<a href="#" class="btn default" id="btn default" onclick="findAddr()">
 							<span class="ico"></span>주소 검색</a>
 							</div>
 						</div>
@@ -388,33 +395,6 @@ $('#btn_frozen').click(function(){
 	}
 });
 </script>
-
-
-<!-- 
-<script type="text/javascript">
-$(".btn_dropup").click(function(){
-    $('.btn_dropup').toggleClass("off")
-    	$('.list').css({'display' : 'none'})
-        $('.btn_dropup off').toggleClass("");
-});
-</script>
- -->
-
- <!--
-<script type="text/javascript">
-$('.btn_dropup').click(function(){
-	if($(this).hasClass("off")){
-		$(this).addClass("").removeClass("off")
-		alert("on -> off")
-	}else{
-		$(this).addClass("off").removeClass("")
-		alert("off -> on");
-	}
-});
-</script>
--->
- 
- 
  
 <!-- 장바구니 숫자 올리기/내리기 -->
 <script type="text/javascript">
@@ -450,13 +430,6 @@ $('.btn_dropup').click(function(){
      });
 </script>
 
-<!-- 장바구니 삭제 -->
-<script type="text/javascript">
-	$(".btn_delete").click(function(){
-		confirm("삭제하시겠습니까?");
-	});
-</script>
-
 <!-- 장바구니 체크박스 *전체선택 수량 파악 안됨 -->
 <script type="text/javascript">
    //장바구니 진입 시 default:전체선택
@@ -489,31 +462,25 @@ function checkSelectAll()  {
 function selectAll(selectAll)  {
      const checkboxes 
         = document.getElementsByName('chkItem');
-   
      
      checkboxes.forEach((checkbox) => {
        checkbox.checked = selectAll.checked 
      })
-     
-
 }
 </script>
 
 <!-- 장바구니 empty페이지 출력 or 장바구니 페이지 -->
 <script type="text/javascript">
-var checkedCntAll = document.getElementById('#checkedCntAll').value;
-console.log(checkedCntAll);
-
-$(document).ready(function(){
-	console.log("테스트");
+//$(document).ready(function(){
+$(window).ready(function(){
+	var checkedCntAll = document.getElementById('checkedCntAll');
 	
-	if(checkedCntAll == 0){
-		console.log("0입니다");
-		console.log(checkedCntAll);
+	console.log(checkedCntAll);
+	
+	if(checkedCntAll.value == 0){
 		$('#cart_item').css({'display' : 'none'});
 	}else{
-		console.log("0이 아닙니다");
-		$('#cart_item.no_item').css({'display' : 'none'});
+		$('.empty').css({'display' : 'none'});
 	}
 });
 </script>
@@ -521,54 +488,52 @@ $(document).ready(function(){
 <!-- 장바구니 선택삭제 -->
 <script type="text/javascript">
 function btn_delete(id){
-	$.ajax({
-		url: '/deleteGoods_cart.do',
-		type: 'GET',
-		dataType: 'text',
-		data: {"goods_id":id},// data:{"goods_id"} 괄호
+	var result = confirm("해당 품목을 삭제하시겠습니까?");
+	
+	if(result){
+		$.ajax({
+			url: '/deleteGoods_cart.do',
+			type: 'GET',
+			dataType: 'text',
+			data: {"goods_cart_no":id},// data:{"cart_no"} 괄호
 			
 			success: function(data){
-				if(data == 1){
-					alert("삭제 성공");
-					console.log(data);
-				}else{
-					alert("삭제되었습니다");
-				}	
+				console.log(data);
+				location.replace('getGoods_cart.do');
 			},// success 괄호
 			error: function(){
 				alert("에러");
 			}// error 괄호
-	});
+		});
+	}
 }
 </script>
 
-<!-- 
-<script type="text/javascript">
-
-function btn_delete(id){
-	
-	$.ajax({
-	    url: 'deleteGoods_cart.do',
-	    type: 'GET',
-	    dataType: 'text', //서버로부터 내가 받는 데이터의 타입
-	    data:  {"goods_id":id, //"goods_id" 는 controller에서 뽑아쓸 변수명이므로 아무거나 지어준다
-	    						// id = jsp에서 가져오는 id값
-	    	//"sessionId" : $('#sessionId'}.val(),
-			
-	    success: function(data){	//컨트롤러에서 서비스 부분을 다 돌고 이상없을시에 실행
-	         if(data == 1){
-	        	 alert("삭제 성공");
-	         }else{
-		         alert("삭제 실패 다시 시도해주세요");
-		     }
-	    }
-	    error: function (){  
-	    	alert("에러");
-	    	}
-	  });
-}
+<!-- 주소검색 -->
+<script>
+function findAddr(){
+	new daum.Postcode({
+		oncomplete: function(data) {
+			console.log(data);
+			// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+			// 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+			// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+			var roadAddr = data.roadAddress; // 도로명 주소 변수
+			var jibunAddr = data.jibunAddress; // 지번 주소 변수
+			// 우편번호와 주소 정보를 해당 필드에 넣는다.
+			document.getElementById('zonecode').value = data.zonecode;
+			if(roadAddr !== ''){
+				document.getElementById("addr").value = roadAddr;
+			}else if(jibunAddr !== ''){
+				document.getElementById("addr").value = data.jibunAddr;
+			}
+			}
+	}).open();
+	}
 </script>
- -->
+
+<!-- 주문하기 버튼 활성/비활성 -->
+btn_submit
 
 </body>
 

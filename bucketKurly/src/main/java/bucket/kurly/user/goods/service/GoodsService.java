@@ -33,6 +33,6 @@ public interface GoodsService {
 	List<Goods_CartShowVO> getGoods_cart(int goods_cart_member_no);
 	
 	// 장바구니에서 삭제
-	void deleteGoods_cart(Goods_CartVO gcvo);
+	void deleteGoods_cart(Goods_CartVO gsvo);
 
 }
