@@ -47,22 +47,23 @@
   				<!-- topbar -->
       			<%@ include file="/WEB-INF/views/admin_layout/admin_topbar.jsp"%>  	
       			
-      				
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading / 기본 테이블 템플릿 사용을 원하시면 해당 부분 아래로 수정하시면 됩니다.-->
-                    <h1 class="h3 mb-2 text-gray-800">상품관리</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the 
-                        <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
-
+                   	<!-- Page Heading -->
+			    	<h1 class="h3 mb-2 text-gray-800">상품 관리</h1>
+					<p class="mb-4">버켓컬리 상품판매·후기를 관리하는 페이지입니다.</p>
 
                      <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        <div class="card-header">
+                            <h4 class="" style="color: #6406ca; font-weight: bolder; float: left; margin-top:10px;" >상품 판매 목록</h4>
+                            <a href="${pageContext.request.contextPath}/admin_goods_insertsell.mdo" class="btn btn-primary btn-icon-split" name="register" id="addBtn" style="float: right; position: relative; margin-top:7px;">
+								<span class="icon text-white-50">
+									<i class="fas fa-plus"></i>
+								</span>
+								<span class="text">등록하기</span>
+							</a> 
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -70,33 +71,22 @@
                                     <thead>
                                         <tr>  
                                         	<th class="hidden-col">숨김 번호</th>                                     	
-                                            <th>상품일련번호</th>
-                                            <th>1차 카테고리</th>
-                                            <th>2차 카테고리</th>
-                                            <th>상품 번호</th>
-                                            <th>가격</th>
-                                            <th>입고 일자</th>
-                                            <th>입고 수량</th>
-                                            <th>재고 수량</th>
-                                            <th>재고 알림 수량</th>
-                                            <th>유통기한</th>
-                                            <th>프로모션 번호</th>
-                                            <th>상품 상태</th>
-                                            <th>할인율</th>
-                                            <th></th>
+                                            <th width="5%">상품일련번호</th>
+                                            <th width="5%">1차 카테고리</th>
+                                            <th width="5%">2차 카테고리</th>
+                                            <th width="5%">상품 번호</th>
+                                            <th width="5%">가격</th>
+                                            <th width="10%">입고 일자</th>
+                                            <th width="5%">입고 수량</th>
+                                            <th width="5%">재고 수량</th>
+                                            <th width="5%">재고 알림 수량</th>
+                                            <th width="10%">유통기한</th>
+                                            <th width="10%">프로모션 번호</th>
+                                            <th width="10%">상품 상태</th>
+                                            <th width="10%">할인율</th>
+                                            <th width="10%"> 수정 / 삭제</th>
                                         </tr>
                                     </thead>
-                                    <!--  <tfoot>필요 없으실 경우 tfoot 부분은 주석처리하시면 됩니다. 
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot> -->
-                                  
                                     <tbody>
                                    		<c:forEach items="${selectgoods_sell}" var="selectgoods_sell" varStatus="tablerow">
                                    		<c:set var="promotion" value="${selectgoods_sell.goods_sell_promotion}" />
@@ -112,40 +102,34 @@
 	                                        	<td><c:out value="${selectgoods_sell.goods_sell_in_date}"/></td>
 	                                        	<td><c:out value="${selectgoods_sell.goods_sell_in_ea}"/></td>
 	                                        	<td><c:out value="${selectgoods_sell.goods_sell_stock_ea}"/></td>
-	                                        	<td><c:out value="${selectgoods_sell.goods_sell_rea}"/></td>
+	                                        	<td><c:out value="${selectgoods_sell.goods_sell_stock_rea}"/></td>
 	                                        	<td><c:out value="${selectgoods_sell.goods_sell_exp}"/></td>
-	                                        	<td><select id="promotion">
+	                                        	<td><select id="promotion" class="form-control">
 													    <option value=0 <c:if test="${promotion == 0}">selected</c:if>>미적용</option>
 													    <option value=1 <c:if test="${promotion == 1}">selected</c:if>>적용</option>
 													</select>
 	                                        	</td>                                        	
-	                                        	<td><select id="status">	                                        		
+	                                        	<td><select id="status" class="form-control">	                                        		
 		                                        		<option value=0 <c:if test="${status == 0}">selected</c:if>>상태선택</option>									
 									                    <option value=1 <c:if test="${status == 1}">selected</c:if>>판매중</option>									
 									                    <option value=2 <c:if test="${status == 2}">selected</c:if>>판매중지</option>									
 									                    <option value=3 <c:if test="${status == 3}">selected</c:if>>판매완료</option>	
 													</select>
 	                                        	</td>                                 	
-	                                        	<td><select id="discount">
+	                                        	<td><select id="discount" class="form-control">
 													    <option value=0 <c:if test="${discount == 0}">selected</c:if>>할인미적용</option>
 													    <option value=1 <c:if test="${discount == 1}">selected</c:if>>할인적용</option>													
 													</select>
 	                                        	</td>
 	                                        	<td>
-	                                        		<button type="button" class="btn btn-sm btn-primary" id="saveBtn" onclick="fn_update(this)">수정</button>
-	                                        		<button type="button" class="btn btn-sm btn-primary" id="saveBtn" onclick="fn_delete('${selectgoods_sell.goods_sell_no}')">삭제</button>	                   					
+	                                        		<button type="button" class="btn btn-outline btn-info" id="saveBtn" onclick="fn_update(this)">수정</button>
+	                                        		<button type="button" class="btn btn-outline btn-danger" id="saveBtn" onclick="fn_delete('${selectgoods_sell.goods_sell_no}')">삭제</button>	                   					
 	                                         	</td>
 	                                        </tr> 
                                     	</c:forEach>    
-	                            		<tr> 
-	                            			<td colspan="15" align="right"> 
-				                   				<a href="${pageContext.request.contextPath}/admin_goods_insertsell.mdo">
-				                   					<span class="btn btn-sm btn-primary" id="saveBtn" style="float: none;">상품 등록</span>
-				                   				</a>
-				                   			</td>
-				                   		</tr>
+	                            		
 			                   		</tbody>
-			                  </table>   
+			                  	</table>   
 			                  </div>
                         </div>	
                     </div>

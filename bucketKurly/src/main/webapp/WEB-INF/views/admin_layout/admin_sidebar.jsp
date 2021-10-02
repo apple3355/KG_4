@@ -85,7 +85,7 @@
                      <h6 class="collapse-header">컬리 카테고리 :</h6>
                      <a class="collapse-item" href="${pageContext.request.contextPath}/admin_category_parent.mdo">상위 카테고리</a>
                      <a class="collapse-item" href="${pageContext.request.contextPath}/admin_category_sub.mdo">중위 카테고리</a>
-                     <a class="collapse-item" href="${pageContext.request.contextPath}/selectCategory_goods.mdo">하위 카테고리(상품)</a>
+                     <a class="collapse-item" href="${pageContext.request.contextPath}/admin_category_goodslist.mdo">하위 카테고리(상품)</a>
                  </div>
              </div>
          </li>

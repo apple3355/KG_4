@@ -9,8 +9,6 @@ public class Admin_Category_goodsVO {
 	private String category_goods_name_sub;
 	private String category_goods_unit;
 	private String category_goods_weight;
-	private String category_goods_form;
-	private String category_packaging_type;
 	private String category_goods_from;
 	private String category_goods_packaging_type;
 	private String category_goods_delivery_type;
@@ -24,6 +22,7 @@ public class Admin_Category_goodsVO {
 	private String category_goods_image_head;
 	private String category_goods_image_contents;
 	private String category_goods_image_contents_detail;
+	
 	public String getCategory_goods_parent_no() {
 		return category_goods_parent_no;
 	}
@@ -65,18 +64,6 @@ public class Admin_Category_goodsVO {
 	}
 	public void setCategory_goods_weight(String category_goods_weight) {
 		this.category_goods_weight = category_goods_weight;
-	}
-	public String getCategory_goods_form() {
-		return category_goods_form;
-	}
-	public void setCategory_goods_form(String category_goods_form) {
-		this.category_goods_form = category_goods_form;
-	}
-	public String getCategory_packaging_type() {
-		return category_packaging_type;
-	}
-	public void setCategory_packaging_type(String category_packaging_type) {
-		this.category_packaging_type = category_packaging_type;
 	}
 	public String getCategory_goods_from() {
 		return category_goods_from;
@@ -156,14 +143,14 @@ public class Admin_Category_goodsVO {
 	public void setCategory_goods_image_contents_detail(String category_goods_image_contents_detail) {
 		this.category_goods_image_contents_detail = category_goods_image_contents_detail;
 	}
+	
 	@Override
 	public String toString() {
 		return "Admin_Category_goodsVO [category_goods_parent_no=" + category_goods_parent_no
 				+ ", category_goods_sub_no=" + category_goods_sub_no + ", category_goods_no=" + category_goods_no
 				+ ", category_goods_name=" + category_goods_name + ", category_goods_name_sub="
 				+ category_goods_name_sub + ", category_goods_unit=" + category_goods_unit + ", category_goods_weight="
-				+ category_goods_weight + ", category_goods_form=" + category_goods_form + ", category_packaging_type="
-				+ category_packaging_type + ", category_goods_from=" + category_goods_from
+				+ category_goods_weight + ", category_goods_from=" + category_goods_from
 				+ ", category_goods_packaging_type=" + category_goods_packaging_type + ", category_goods_delivery_type="
 				+ category_goods_delivery_type + ", category_goods_exp_date=" + category_goods_exp_date
 				+ ", category_goods_info=" + category_goods_info + ", category_goods_ref=" + category_goods_ref
@@ -174,7 +161,6 @@ public class Admin_Category_goodsVO {
 				+ ", category_goods_image_contents=" + category_goods_image_contents
 				+ ", category_goods_image_contents_detail=" + category_goods_image_contents_detail + "]";
 	}
-	
 	
 	
 }

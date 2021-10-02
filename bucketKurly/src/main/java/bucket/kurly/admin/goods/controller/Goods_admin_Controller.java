@@ -8,10 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import bucket.kurly.admin.board.Admin_Board_noticeVO;
 import bucket.kurly.admin.goods.Goods_adminSellVO;
 import bucket.kurly.admin.goods.service.Goods_adminService;
-import bucket.kurly.user.board.Board_noticeVO;
 
 @Controller
 public class Goods_admin_Controller {
@@ -36,14 +34,17 @@ public class Goods_admin_Controller {
 	@RequestMapping("/admin_goods_insertsellDB.mdo")
 	public String admin_goods_insertsellDB(Model model,Goods_adminSellVO vo){
 		System.out.println("[상품 DB 등록 요청]");
+		
+		vo.setGoods_sell_stock_ea(vo.getGoods_sell_in_ea());
+		System.out.println(vo.toString());
+		System.out.println(vo.getGoods_sell_status());
+		
 		goods_adminService.insertGoods(vo);		
 		
 		return "redirect:/admin_goods_list.mdo";
 	} 
 	
-	
-	
-	
+			
 	//상품 수정
 	@RequestMapping("/admin_goodsupdate.mdo")
 	public String update_goods(Model model,Goods_adminSellVO vo){

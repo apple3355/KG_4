@@ -28,7 +28,9 @@
 
     <!-- Custom styles for this page -->
     <link href="resources/bootstrap/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+	<style type="text/css">
+		#buttondiv{text-align: right; margin-top:5px; margin-bottom:8px;}
+	</style>	
 </head>
 
 <body id="page-top">
@@ -49,78 +51,89 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading / 기본 테이블 템플릿 사용을 원하시면 해당 부분 아래로 수정하시면 됩니다.-->
-                    <h1 class="h3 mb-2 text-gray-800">게시글 관리</h1>
+                    <!-- Page Heading -->
+			    	<h1 class="h3 mb-2 text-gray-800">상품 관리</h1>
+					<p class="mb-4">버켓컬리 상품판매·후기를 관리하는 페이지입니다.</p>
                    
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">게시글 상세보기</h6>
+                        <div class="card-header">
+                            <h4 class="" style="color: #6406ca; font-weight: bolder; float: left; margin-top:10px;" >상품 판매 등록</h4>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                             <form role="form" action="${pageContext.request.contextPath}/admin_goods_insertsellDB.mdo">
-                           		 <c:set var="no" value="${vo.goods_sell_no}" />
+                        	<form role="form" id="form" action="${pageContext.request.contextPath}/admin_goods_insertsellDB.mdo">
+                                <input type="hidden" value="미구현" name="goods_sell_stock_rea">
+                                
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        	<tr>
-											<th>카테고리</th><td colspan="3">
-												
-												<select name="goods_sell_parent_no" id="goods_sell_parent_no"  style="width: 200px" >
-													<option value="">선택</option>
-													<c:forEach items="${admin_Category_parent}" var="cp">
-														<option id="parent" value="${cp.category_parent_no }">${cp.category_parent_name }</option>
-													</c:forEach>
-												</select>
-                      						    <select name="goods_sell_sub_no" id="goods_sell_sub_no" style="width: 200px;" >                      						    	
-														<option value="" >선택</option>
-                      						    </select>
-                      						    <select name="goods_sell_goods_no" id="goods_sell_goods_no" style="width: 200px;">
-                      						    	<option value="">선택</option>
-                      						    </select>
-											</td>
-										</tr>	 								
-										<tr>
-											<th>입고날짜</th><td><input type="text" class="form-control" value="${vo.goods_sell_in_date}" name="goods_sell_in_date" id="goods_sell_in_date" ></td>
-											<th>입고수량</th><td><input type="text" class="form-control" value="${vo.goods_sell_in_ea}" name="goods_sell_in_ea" id="goods_sell_in_ea" ></td>
-										</tr>
-										<tr>
-											<th>유통기한</th><td><input type="text" class="form-control" value="${vo.goods_sell_exp}" name="goods_sell_exp" id="goods_sell_exp" ></td>
-											<th>판매가격</th><td><input type="text" class="form-control" value="${vo.goods_sell_price}" name="goods_sell_price" id="goods_sell_price" ></td>
-										</tr>
-										<tr>
-											<th>할인율</th><td><input type="text" class="form-control" value="${vo.goods_sell_discount}" name="goods_sell_discount" id="goods_sell_discount" ></td>
-											<th>프로모션</th><td><input type="text" class="form-control" value="${vo.goods_sell_promotion}" name="goods_sell_promotion" id="goods_sell_promotion" ></td>
-										</tr>	
-																				
-										<tr>
-											<th>상태</th>
-												<td colspan="3">
-													<select value="${vo.goods_sell_status}" name="goods_sell_status" id="goods_sell_status">
-													    <option value="">상태선택</option>
-													    <option value="판매중">판매중</option>
-													    <option value="판매중지">판매중지</option>
-													    <option value="판매완료">판매완료</option>
+                                	<tr>
+										<th>카테고리</th>
+										<td colspan="3">
+											<div>
+												<div style="float: left;">
+													<span>상위 카테고리</span>
+													<select name="goods_sell_parent_no" id="goods_sell_parent_no"  style="width: 200px;" class="form-control" >
+														<option value="">선택</option>
+														<c:forEach items="${admin_Category_parent}" var="cp">
+															<option id="parent" value="${cp.category_parent_no }">${cp.category_parent_name }</option>
+														</c:forEach>
 													</select>
-												</td>
-										</tr>
-										<tr>
-										
-										
-											<td colspan="4" align="right">
-											<input value="${ cp_no}">												
-												<button type="submit" class="btn btn-outline btn-danger" id="fn_insert">
-													등록하기
-												</button>
-												<button type="button" class="btn btn btn-outline btn-primary" 
-													onclick="location.href='${pageContext.request.contextPath}/admin_goods_list.mdo'">
-													목록보기
-												</button>
-												
-											</td>
-										</tr>
+												</div>
+												<div style="float: left;  margin-left:40px;">
+													<span>중위 카테고리</span>
+		                     					    <select name="goods_sell_sub_no" id="goods_sell_sub_no" style="width: 200px;" class="form-control">                      						    	
+														<option value="" >선택</option>
+		                     						</select>
+	                     						</div>
+	                     						<div style="float: left;  margin-left:40px;">
+		                     						<span>하위 카테고리</span>
+		                     					    <select name="goods_sell_goods_no" id="goods_sell_goods_no" style="width: 200px;" class="form-control">
+		                     							<option value="">선택</option>
+		                     						</select>
+	                    						</div>
+	                     					</div>
+										</td>
+									</tr>	 								
+									<tr>
+										<th>입고날짜</th><td><input type="text" class="form-control" value="${vo.goods_sell_in_date}" name="goods_sell_in_date" id="goods_sell_in_date" ></td>
+										<th>입고수량</th><td><input type="text" class="form-control" value="${vo.goods_sell_in_ea}" name="goods_sell_in_ea" id="goods_sell_in_ea" ></td>
+									</tr>
+									<tr>
+										<th>유통기한</th><td><input type="text" class="form-control" value="${vo.goods_sell_exp}" name="goods_sell_exp" id="goods_sell_exp" ></td>
+										<th>판매가격</th><td><input type="text" class="form-control" value="${vo.goods_sell_price}" name="goods_sell_price" id="goods_sell_price" ></td>
+									</tr>
+									<tr>
+										<th>할인율</th><td><input type="text" class="form-control" value="${vo.goods_sell_discount}" name="goods_sell_discount" id="goods_sell_discount" ></td>
+										<th>프로모션</th><td><input type="text" class="form-control" value="${vo.goods_sell_promotion}" name="goods_sell_promotion" id="goods_sell_promotion" ></td>
+									</tr>	
+									<tr>
+										<th>상태</th>
+										<td colspan="3">
+											<select value="${vo.goods_sell_status}" name="goods_sell_status" id="goods_sell_status" style="width: 200px;" class="form-control" >
+											    <option value="">상태선택</option>
+											    <option value="1">판매중</option>
+											    <option value="2">판매중지</option>
+											    <option value="0">판매완료</option>
+											</select>
+										</td>
+									</tr>
                                 </table>
 							</form>
-							</div>
+                        </div>
+                        <div class="card-footer">
+                        	<div id="buttondiv">
+								<a href="javascript:document.getElementById('form').submit();" class="btn btn-primary btn-icon-split" >
+									<span class="icon text-white-50">
+										<i class="fas fa-check"></i>
+									</span>
+									<span class="text">등록 하기</span>
+								</a>
+								<a href="javascript:history.back();" class="btn btn-secondary btn-icon-split">
+									<span class="icon text-white-50">
+										<i class="fas fa-arrow-right"></i>
+									</span>
+									<span class="text">목록 보기</span>
+								</a>
+							 </div>
                         </div>
                     </div>
 

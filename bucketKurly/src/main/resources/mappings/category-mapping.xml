@@ -43,6 +43,50 @@
 	</insert>
 	
 	<!-- 하위 카테고리 (상품) -->
+	<select id="selectCategory_goods"  resultType="admin_category_goods">
+		SELECT * FROM TB_CATEGORY_GOODS
+		ORDER BY category_goods_no 
+	</select>
+	
+	<select id="selectCategory_goods_no" parameterType="String" resultType="admin_category_goods">
+		SELECT * FROM TB_CATEGORY_GOODS
+		WHERE category_goods_no = #{category_goods_no}
+	</select>
+	
+	
+	<delete id="deleteCategory_goods" parameterType="String">
+		DELETE FROM TB_CATEGORY_GOODS
+		WHERE category_goods_no = #{category_goods_no}
+	</delete>
+	
+	<update id="updateCategory_goods" parameterType="admin_category_goods" >
+		UPDATE TB_CATEGORY_GOODS
+		SET category_goods_name =#{category_goods_name},
+		category_goods_name_sub =#{category_goods_name_sub},
+		category_goods_unit =#{category_goods_unit},
+		category_goods_weight =#{category_goods_weight},
+		category_goods_from =#{category_goods_from},
+		category_goods_info =#{category_goods_info},
+		category_goods_ref =#{category_goods_ref},
+		category_goods_contents_tit_main =#{category_goods_contents_tit_main},
+		category_goods_contents_tit_sub =#{category_goods_contents_tit_sub},
+		category_goods_contents_intro =#{category_goods_contents_intro}
+		WHERE category_goods_no = #{category_goods_no}
+	</update>
+	
+	<insert id="insertCategory_goods" parameterType="admin_category_goods">
+		INSERT INTO TB_CATEGORY_GOODS
+		VALUES(#{category_goods_parent_no},#{category_goods_sub_no},
+		LPAD(CAST(NEXTVAL('TB_CATEGORY_GOODS_SEQ')AS VARCHAR), 3, '0'),
+		#{category_goods_name}, #{category_goods_name_sub}, #{category_goods_unit}, 
+		#{category_goods_weight}, #{category_goods_from}, #{category_goods_packaging_type}, 
+		#{category_goods_delivery_type}, #{category_goods_exp_date}, #{category_goods_info},
+		#{category_goods_ref}, #{category_goods_contents_tit_main}, #{category_goods_contents_tit_sub}, 
+		#{category_goods_contents_intro}, #{category_goods_image_thumb}, #{category_goods_image_head}, 
+		#{category_goods_image_contents}, #{category_goods_image_contents_detail} )
+	</insert>
+	
+	
 	<select id="selectCategory_goods_name"  resultType="admin_category_goods">
 		SELECT category_goods_name, category_goods_no  FROM TB_CATEGORY_GOODS
 		WHERE category_goods_sub_no = #{category_goods_sub_no}

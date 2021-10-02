@@ -50,7 +50,7 @@
                 
                 	<!-- Page Heading -->
 			    	<h1 class="h3 mb-2 text-gray-800">카테고리 관리</h1>
-					<p class="mb-4">버캣컬리 상품의 상위 카테고리를 관리하는 페이지입니다.</p>
+					<p class="mb-4">버켓컬리 상품의 상위 카테고리를 관리하는 페이지입니다.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">

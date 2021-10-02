@@ -94,4 +94,14 @@ public class Admin_Category_parentController {
 		return "goods/admin_goods_insertsell";
 	}
 
+	// 상품 등록 페이지
+	@RequestMapping("/admin_category_goods_insert.mdo")
+	public String admin_category_goods_insert(Model model) {
+		List<Admin_Category_parentVO> admin_Category_parent = admin_Category_parentService.selectCategory_parent();
+		model.addAttribute("admin_Category_parent", admin_Category_parent);
+		System.out.println("[하위 카테고리 category_goods] - 카테고리 상품 등록페이지 요청");
+		return "category/admin_category_goods_insert";
+	}
+	
+
 }

@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BucketKurly::Admin-Goods</title>
+    <title>BucketKurly::Admin-Category</title>
 
     <!-- Custom fonts for this template -->
     <link href="resources/bootstrap/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -25,7 +25,9 @@
 
     <!-- Custom styles for this page -->
     <link href="resources/bootstrap/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+	<style type="text/css">
+		#buttondiv{text-align: right; margin-top:5px; margin-bottom:8px;}
+	</style>
 </head>
 
 <body id="page-top">
@@ -46,17 +48,17 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading / 기본 테이블 템플릿 사용을 원하시면 해당 부분 아래로 수정하시면 됩니다.-->
-                    <h1 class="h3 mb-2 text-gray-800">카테고리 상품 상세페이지 관리</h1>
+                    <!-- Page Heading -->
+			    	<h1 class="h3 mb-2 text-gray-800">카테고리 관리</h1>
+					<p class="mb-4">버켓컬리 상품의 하위 카테고리를 관리하는 페이지입니다.</p>
                    
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">카테고리 상품 상세보기</h6>
+                        <div class="card-header">
+                            <h4 class="" style="color: #6406ca; font-weight: bolder; float: left; margin-top:10px;" >하위 카테고리 수정</h4>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                             <form role="form" action="${pageContext.request.contextPath}/admin_category_goodslist_updateDB.mdo">
+                             <form role="form" id="form" action="${pageContext.request.contextPath}/admin_category_goodslist_updateDB.mdo">
                              <input type="hidden" name="category_goods_no" value="${vo.category_goods_no}">
                             	<c:set var="no" value="${vo.category_goods_no}" />                            	
                                 <table border = "1" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -112,18 +114,26 @@
 											<th>정보 이미지</th><td colspan="5" height = "400">
 												<div style = "height:100%"><img src = "${vo.category_goods_image_contents_detail}" height = "400"></div></td>
 										</tr>
-									
-										<tr>
-												<td colspan="6" align="right">
-													<button type="submit" class="btn btn-outline btn-warning"  style="font-size:18px;" >확인</button>
-													<button type="button" class="btn btn-outline btn-default" onclick="history.back()"  style="font-size:18px;">취소</button>
-												</td>
-											</tr>
-									
                                 </table>
 							</form>
+                        </div>
+                        <div class="card-footer">
+                        	<div id="buttondiv">
+								<a href="javascript:document.getElementById('form').submit();" class="btn btn-info btn-icon-split" >
+									<span class="icon text-white-50">
+										<i class="fas fa-edit"></i>
+									</span>
+									<span class="text">수정 하기</span>
+								</a>
+								<a href="javascript:history.back();" class="btn btn-secondary btn-icon-split">
+									<span class="icon text-white-50">
+										<i class="fas fa-arrow-right"></i>
+									</span>
+									<span class="text">취소 하기</span>
+								</a>
 							</div>
                         </div>
+                        
                     </div>
 
                 </div>
