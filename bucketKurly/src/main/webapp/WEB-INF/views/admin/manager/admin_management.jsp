@@ -46,14 +46,13 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">매니저관리</h1>
-                    <p class="mb-4">버켓컬리 매니저들의 계정을 관리하는 페이지입니다.
-                    <!--  <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>-->
+                    <p class="mb-4">버켓컬리 매니저들의 계정을 관리하는 페이지입니다.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h4 class="" style="color: #6406ca; font-weight: bolder; float: left;" >매니저 리스트</h4>
-                             <a href="#" class="btn btn-primary btn-icon-split" name="register" id="addBtn" style="float: right; position: relative;">
+                        <div class="card-header">
+                            <h4 class="" style="color: #6406ca; font-weight: bolder; float: left; margin-top:10px;" >매니저 리스트</h4>
+                             <a href="#" class="btn btn-primary btn-icon-split" name="register" id="addBtn" style="float: right; position: relative; margin-top:7px;">
 								<span class="icon text-white-50">
 									<i class="fas fa-plus"></i>
 								</span>
@@ -126,7 +125,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel" ></h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -146,8 +145,8 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modal-title"></h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <h5 id="modal-title" style="color: #6406ca; font-weight: bolder; margin-top: 10px;"></h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close" style="margin-top:7px;">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
@@ -182,8 +181,8 @@
 	                 </div>
                 </div>
                 <div class="modal-footer">
+                	<button id="submit" type="button" class="btn btn-primary">등록</button>
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-                    <a id="submit"  class="btn btn-primary" >등록</a>
                 </div>
             </div>
         </div>
@@ -209,7 +208,8 @@
 	<!--유효성 검사 -->
 	<script>
 	$("a[name = 'register']").on("click", function checks(){ 
-		$("#modal-title").text("메니저 등록");
+		$("#modal-title").text("매니저 등록");
+		$("#submit").text("등록");
 		$("#myModal").modal();
 		if($("#myModal").modal("hide")){
 			 $("#admin_name").val("");

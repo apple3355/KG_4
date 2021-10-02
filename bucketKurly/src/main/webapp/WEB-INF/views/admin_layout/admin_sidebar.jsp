@@ -22,195 +22,155 @@
 
 <body id="page-top">
 
-       <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${pageContext.request.contextPath}/admin_main.mdo">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Kurly::Admin<sup></sup></div>
-            </a>
-             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="${pageContext.request.contextPath}/admin_main.mdo">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>대시보드</span></a>
-            </li>
-            <c:if test="${sessionScope.id eq 'admin'}">        
-	            <li class="nav-item active">
-	                <a class="nav-link" href="${pageContext.request.contextPath}/admin_management.mdo">
-	                    <i class="fas fa-fw fa-tachometer-alt"></i>
-	                    <span>매니저관리</span></a>
-	            </li>
-	        </c:if>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                인터페이스
-            </div>
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>회원관리</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">컬리 회원관리 :</h6>
-                        <a class="collapse-item" href="buttons.html">회원관리</a>
-                        <a class="collapse-item" href="buttons.html">비회원관리</a>
-                        <a class="collapse-item" href="buttons.html">회원등급 관리</a>
-                        <a class="collapse-item" href="${pageContext.request.contextPath}/admin_terms_getList.mdo">약관관리</a>
-                    </div>
-                </div>
-            </li>
-            
-			<li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>게시글</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">컬리 게시글관리 :</h6>
-                        <a class="collapse-item" href="${pageContext.request.contextPath}/admin_board_notice.mdo">공지사항</a>
-                        <a class="collapse-item" href="${pageContext.request.contextPath}/admin_board_faq.mdo">자주하는 질문</a>
-                        <a class="collapse-item" href="${pageContext.request.contextPath}/admin_board_qna.mdo">1:1문의</a>
-                    </div>
-                </div>
-            </li>
-            
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>카테고리</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">컬리 카테고리 :</h6>
-                        <a class="collapse-item" href="${pageContext.request.contextPath}/admin_category_parent.mdo">상위 카테고리</a>
-                        <a class="collapse-item" href="${pageContext.request.contextPath}/admin_category_sub.mdo">중위 카테고리</a>
-                        <a class="collapse-item" href="${pageContext.request.contextPath}//admin_category_goodslist.mdo">하위 카테고리(상품)</a>
-                    </div>
-                </div>
-            </li>
-            
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>상품</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">컬리 상품관리 :</h6>
-                       <a class="collapse-item" href="${pageContext.request.contextPath}/admin_goods_list.mdo">상품판매</a>
-                    	<a class="collapse-item" href="${pageContext.request.contextPath}/admin_board_review.mdo">상품후기</a>
-                    </div> 
-                </div>
-            </li>
-            
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>주문/결제</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">주문 및 결제 관리 :</h6>
-                        <a class="collapse-item" href="buttons.html">주문관리</a>
-                        <a class="collapse-item" href="buttons.html">결제·배송관리 </a>
-                    </div>
-                </div>
-            </li>
-            
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>마케팅</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">컬리 마케팅 및 프로모션관리 :</h6>
-                        <a class="collapse-item" href="buttons.html">프로모션 관리</a>
-                        <a class="collapse-item" href="${pageContext.request.contextPath}/admin_banner_getList.mdo">배너관리</a>
-                        <a class="collapse-item" href="${pageContext.request.contextPath}/admin_coupon_getList.mdo">쿠폰관리</a>
-                    </div>
-                </div>
-            </li>
-            
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>유틸리티</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">커스텀 유틸리티:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
-            </li>
+    <!-- Sidebar -->
+     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+         <!-- Sidebar - Brand -->
+         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${pageContext.request.contextPath}/admin_main.mdo">
+             <div class="sidebar-brand-icon rotate-n-15">
+                 <i class="fas fa-laugh-wink"></i>
+             </div>
+             <div class="sidebar-brand-text mx-3">Kurly::Admin<sup></sup></div>
+         </a>
+         
+         
+          <!-- Nav Item - Dashboard -->
+         <li class="nav-item active">
+             <a class="nav-link" href="${pageContext.request.contextPath}/admin_main.mdo">
+                 <i class="fas fa-fw fa-tachometer-alt"></i>
+                 <span>대시보드</span></a>
+         </li>
+       
+       
+         <!-- Divider -->
+         <hr class="sidebar-divider">
+         <!-- Heading -->
+         <div class="sidebar-heading">Member</div>
+         <!-- Nav Item - Pages Collapse Menu -->
+         <c:if test="${sessionScope.id eq 'admin'}">     
+          	<li class="nav-item">
+              <a class="nav-link collapsed" href="${pageContext.request.contextPath}/admin_management.mdo" >
+                  <i class="fas fa-fw fa-cog"></i>
+                  <span>매니저관리</span>
+              </a>
+          </li>   
+     	 </c:if>
+         <li class="nav-item">
+             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMember" aria-expanded="true" aria-controls="collapseMember">
+                 <i class="fas fa-fw fa-cog"></i>
+                 <span>회원관리</span>
+             </a>
+             <div id="collapseMember" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                 <div class="bg-white py-2 collapse-inner rounded">
+                     <h6 class="collapse-header">컬리 회원관리 :</h6>
+                     <a class="collapse-item" href="buttons.html">회원관리</a>
+                     <a class="collapse-item" href="buttons.html">비회원관리</a>
+                     <a class="collapse-item" href="buttons.html">회원등급 관리</a>
+                     <a class="collapse-item" href="${pageContext.request.contextPath}/admin_terms_getList.mdo">약관관리</a>
+                 </div>
+             </div>
+         </li>
+         
+         <!-- Divider -->
+        <hr class="sidebar-divider">
+        <!-- Heading -->
+         <div class="sidebar-heading">Goods</div>
+        
+        <li class="nav-item">
+             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategory" aria-expanded="true" aria-controls="collapseCategory">
+                 <i class="fas fa-fw fa-cog"></i>
+                 <span>카테고리</span>
+             </a>
+             <div id="collapseCategory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                 <div class="bg-white py-2 collapse-inner rounded">
+                     <h6 class="collapse-header">컬리 카테고리 :</h6>
+                     <a class="collapse-item" href="${pageContext.request.contextPath}/admin_category_parent.mdo">상위 카테고리</a>
+                     <a class="collapse-item" href="${pageContext.request.contextPath}/admin_category_sub.mdo">중위 카테고리</a>
+                     <a class="collapse-item" href="${pageContext.request.contextPath}/selectCategory_goods.mdo">하위 카테고리(상품)</a>
+                 </div>
+             </div>
+         </li>
+         
+         <li class="nav-item">
+             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGoods" aria-expanded="true" aria-controls="collapseGoods">
+                 <i class="fas fa-fw fa-cog"></i>
+                 <span>상품</span>
+             </a>
+             <div id="collapseGoods" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                 <div class="bg-white py-2 collapse-inner rounded">
+                     <h6 class="collapse-header">컬리 상품관리 :</h6>
+                    <a class="collapse-item" href="${pageContext.request.contextPath}/admin_goods_list.mdo">상품판매</a>
+                 	<a class="collapse-item" href="${pageContext.request.contextPath}/admin_board_review.mdo">상품후기</a>
+                 </div> 
+             </div>
+         </li>
+         
+         <li class="nav-item">
+             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrder" aria-expanded="true" aria-controls="collapseOrder">
+                 <i class="fas fa-fw fa-cog"></i>
+                 <span>주문/결제</span>
+             </a>
+             <div id="collapseOrder" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                 <div class="bg-white py-2 collapse-inner rounded">
+                     <h6 class="collapse-header">주문 및 결제 관리 :</h6>
+                     <a class="collapse-item" href="buttons.html">주문관리</a>
+                     <a class="collapse-item" href="buttons.html">결제·배송관리 </a>
+                 </div>
+             </div>
+         </li>
+        
+        
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+        <!-- Heading -->
+         <div class="sidebar-heading">Marketing</div>
+        
+        <li class="nav-item">
+             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMarketing" aria-expanded="true" aria-controls="collapseMarketing">
+                 <i class="fas fa-fw fa-cog"></i>
+                 <span>마케팅</span>
+             </a>
+             <div id="collapseMarketing" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                 <div class="bg-white py-2 collapse-inner rounded">
+                     <h6 class="collapse-header">컬리 마케팅 및 프로모션관리 :</h6>
+                     <a class="collapse-item" href="buttons.html">프로모션 관리</a>
+                     <a class="collapse-item" href="${pageContext.request.contextPath}/admin_banner_getList.mdo">배너관리</a>
+                     <a class="collapse-item" href="${pageContext.request.contextPath}/admin_coupon_getList.mdo">쿠폰관리</a>
+                 </div>
+             </div>
+         </li>
+        
+        
+         <!-- Divider -->
+        <hr class="sidebar-divider">
+        <!-- Heading -->
+         <div class="sidebar-heading">Board</div>
+		<li class="nav-item">
+             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBoard" aria-expanded="true" aria-controls="collapseBoard">
+                 <i class="fas fa-fw fa-cog"></i>
+                 <span>게시글</span>
+             </a>
+             <div id="collapseBoard" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                 <div class="bg-white py-2 collapse-inner rounded">
+                     <h6 class="collapse-header">컬리 게시글관리 :</h6>
+                     <a class="collapse-item" href="${pageContext.request.contextPath}/admin_board_notice.mdo">공지사항</a>
+                     <a class="collapse-item" href="${pageContext.request.contextPath}/admin_board_faq.mdo">자주하는 질문</a>
+                     <a class="collapse-item" href="${pageContext.request.contextPath}/admin_board_qna.mdo">1:1문의</a>
+                 </div>
+             </div>
+         </li>
+         
+         
+         
+         <!-- Divider -->
+         <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+         <!-- Sidebar Toggler (Sidebar) -->
+         <div class="text-center d-none d-md-inline">
+             <button class="rounded-circle border-0" id="sidebarToggle"></button>
+         </div>
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Addons
-            </div>
+     </ul>
+     <!-- End of Sidebar -->
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html"></a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-            <!-- Sidebar Message : 지웠음-->
-            
-        </ul>
-        <!-- End of Sidebar -->
- 
 </body>
 </html>

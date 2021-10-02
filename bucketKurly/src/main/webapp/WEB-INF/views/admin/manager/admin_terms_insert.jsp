@@ -25,7 +25,10 @@
 
     <!-- Custom styles for this page -->
     <link href="resources/bootstrap/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+	
+	<style type="text/css">
+		#buttondiv{text-align: right;}
+	</style>
 </head>
 
 <body id="page-top">
@@ -46,17 +49,18 @@
                <!-- Begin Page Content -->
 	<div class="container-fluid">
 		<!-- Page Heading -->
-		<h1 class="h3 mb-2 text-gray-800">약관관리</h1>
-		<br>
-			<!-- DataTales Example -->
+    	<h1 class="h3 mb-2 text-gray-800">약관 관리</h1>
+		<p class="mb-4">버캣컬리의 약관을 관리하는 페이지입니다.</p>
+		
+		<!-- DataTales Example -->
 		<div class="card shadow mb-4">
-			<div class="card-header py-3">
-				<h6 style="color: #5f0080; font-weight: bolder;">약관등록</h6> <!-- class="m-0 font-weight-bold text-warning" -->
+			<div class="card-header">
+				<h4 class="" style="color: #6406ca; font-weight: bolder; float: left; margin-top:10px;" >약관등록</h4>
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
 
-			<form action="/insertAdminTerms.mdo" method="post">
+			<form id = "form" action="${pageContext.request.contextPath}/insertAdminTerms.mdo" method="post">
 				<input type="hidden" name="termNum">
 					<div class="container-fluid">
 					<!-- 전체 frame -->
@@ -107,13 +111,18 @@
 						
 						
 					</ul>
-					<div align="center">
-						<input style="padding: 5px; background:#5f0080; border: #5f0080" class="btn btn-warning btn-icon-split"
-							type="submit" id="registerBtn" value="등록하기" />
-					</div>
-					<div align="right">
-						<a href="admin_terms_getList.mdo"  class="btn btn-light btn-icon-split">
-							<span class="text">목록가기</span>
+					<div id="buttondiv">
+						<a href="javascript:document.getElementById('form').submit();" class="btn btn-primary btn-icon-split" >
+							<span class="icon text-white-50">
+								<i class="fas fa-check"></i>
+							</span>
+							<span class="text">등록 하기</span>
+						</a>
+						<a href="javascript:history.back();" class="btn btn-secondary btn-icon-split">
+							<span class="icon text-white-50">
+								<i class="fas fa-arrow-right"></i>
+							</span>
+							<span class="text">목록 보기</span>
 						</a>
 					</div>
 				</div>

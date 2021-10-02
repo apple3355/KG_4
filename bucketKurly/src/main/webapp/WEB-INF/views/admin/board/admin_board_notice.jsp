@@ -46,20 +46,21 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading / 기본 테이블 템플릿 사용을 원하시면 해당 부분 아래로 수정하시면 됩니다.-->
-                    <h1 class="h3 mb-2 text-gray-800">게시글 관리</h1>
+                    <!-- Page Heading -->
+			    	<h1 class="h3 mb-2 text-gray-800">게시글 관리</h1>
+					<p class="mb-4">버캣컬리의 공지사항을 관리하는 페이지입니다.</p>
                     
-
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">게시글 목록보기</h6>
+                     	<div class="card-header">
+                            <h4 class="" style="color: #6406ca; font-weight: bolder; float: left; margin-top:10px;" >공지사항 목록</h4>
+                             <a href="${pageContext.request.contextPath}/admin_board_notice_insert.mdo" class="btn btn-primary btn-icon-split" name="register" id="addBtn" style="float: right; position: relative; margin-top:7px;">
+								<span class="icon text-white-50">
+									<i class="fas fa-plus"></i>
+								</span>
+								<span class="text">등록하기</span>
+							</a>                
                         </div>
-                        <div align = "right" style="padding:10px 20px 0px 0px; ">
-                        	 <a href="${pageContext.request.contextPath}/admin_board_notice_insert.mdo">
-			            	 	<span class="btn btn btn-outline btn-primary" id="saveBtn" style="float: none; font-size:18px;">등록</span>
-			                 </a>
-                       	</div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -72,8 +73,6 @@
 											<th>조회</th>
 										</tr>
                                     </thead>
-                                    
-                                   
 									<tbody>	
 										<c:forEach items="${board_noticeList}" var="board_noticeList" varStatus="status">													
 											<tr>

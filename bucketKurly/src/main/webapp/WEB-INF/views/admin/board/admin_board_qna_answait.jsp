@@ -29,7 +29,7 @@
     <!-- Custom styles for this page -->
     <link href="resources/bootstrap/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 	<style type="text/css">
-		#buttondiv{text-align: right;}
+		#buttondiv{text-align: right; margin-top:5px; margin-bottom:8px;}
 	</style>
 </head>
 
@@ -51,74 +51,72 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading / 기본 테이블 템플릿 사용을 원하시면 해당 부분 아래로 수정하시면 됩니다.-->
-                    <h1 class="h3 mb-2 text-gray-800" style="margin:20px;">게시글 관리</h1>
-                    
+                    <!-- Page Heading -->
+			    	<h1 class="h3 mb-2 text-gray-800">게시글 관리</h1>
+					<p class="mb-4">버캣컬리의 1:1문의를 관리하는 페이지입니다.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">1:1 문의 - 질문 </h6>
+                    	<div class="card-header">
+                            <h4 class="" style="color: #6406ca; font-weight: bolder; float: left; margin-top:10px;" >1:1 문의 - 질문</h4>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-									<tr>
-										<th width="15%">문의 종류</th><td width="35%"><c:out value="${vo_question.board_qna_type}"/></td>
-										<th width="15%">작성자(회원번호)</th><td width="35%"><c:out value="${vo_question.board_qna_writer}"/>(<c:out value="${vo_question.board_qna_member_no}"/>)</td>
-									</tr>
-									<tr>
-										<th>제목</th><td><c:out value="${vo_question.board_qna_title}"/></td>
-										<th>날짜</th><td><fmt:formatDate value="${vo_question.board_qna_regdate}" pattern="yyyy-MM-dd" /></td>
-									</tr>
-									<tr>
-										<th>내용</th><td colspan="3"><c:out value="${vo_question.board_qna_content}"/></td>
-									</tr>
-                                </table>
-                             </div>
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+								<tr>
+									<th width="15%">문의 종류</th><td width="35%"><c:out value="${vo_question.board_qna_type}"/></td>
+									<th width="15%">작성자(회원번호)</th><td width="35%"><c:out value="${vo_question.board_qna_writer}"/>(<c:out value="${vo_question.board_qna_member_no}"/>)</td>
+								</tr>
+								<tr>
+									<th>제목</th><td><c:out value="${vo_question.board_qna_title}"/></td>
+									<th>날짜</th><td><fmt:formatDate value="${vo_question.board_qna_regdate}" pattern="yyyy-MM-dd" /></td>
+								</tr>
+								<tr>
+									<th>내용</th><td colspan="3"><c:out value="${vo_question.board_qna_content}"/></td>
+								</tr>
+                            </table>
                         </div>
                     </div>
 
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">1:1 문의 - 답변 </h6>
+                    	<div class="card-header">
+                            <h4 class="" style="color: #6406ca; font-weight: bolder; float: left; margin-top:10px;" >1:1 문의 - 답변</h4>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                             	<form name = "form" role="form" action="${pageContext.request.contextPath}/admin_board_qna_answer_insertDB.mdo">
-	                                <input type="hidden" name="board_qna_type" value="${vo_question.board_qna_type}">
-	                                <input type="hidden" name="board_qna_group" value="${vo_question.board_qna_group}">
-	                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-	                                    <tr>
-											<th width="15%">문의 종류</th><td width="35%"><c:out value="${vo_question.board_qna_type}"/></td>
-											<th width="15%">작성자</th><td width="35%">bucketkurly</td>
-										</tr>
-										<tr>
-											<th>제목</th><td><input type="text" name="board_qna_title" placeholder="안녕하세요, 고객님 답변드립니다."/></td>
-											<th>날짜</th><td><%= sf.format(nowTime) %></td>
-										</tr>
-										<tr>
-											<th>내용</th><td colspan="3"><textarea class="form-control" rows="40" name ="board_qna_content"></textarea></td>
-										</tr>									
-	                                </table>
-	                                <div id="buttondiv">
-	                                	<a href="javascript:form.submit();" class="btn btn-success btn-icon-split" >
-											<span class="icon text-white-50">
-												<i class="fas fa-check"></i>
-											</span>
-											<span class="text">답변 등록</span>
-										</a>
-										<a href="javascript:history.back();" class="btn btn-secondary btn-icon-split">
-											<span class="icon text-white-50">
-												<i class="fas fa-arrow-right"></i>
-											</span>
-											<span class="text">목록 보기</span>
-										</a>
-	                                </div>
-                                </form>               
-                            </div>
+                           	<form name = "form" role="form" id="form" action="${pageContext.request.contextPath}/admin_board_qna_answer_insertDB.mdo">
+                                <input type="hidden" name="board_qna_type" value="${vo_question.board_qna_type}">
+                                <input type="hidden" name="board_qna_group" value="${vo_question.board_qna_group}">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <tr>
+										<th width="15%">문의 종류</th><td width="35%"><c:out value="${vo_question.board_qna_type}"/></td>
+										<th width="15%">작성자</th><td width="35%">bucketkurly</td>
+									</tr>
+									<tr>
+										<th>제목</th><td><input type="text" name="board_qna_title" placeholder="안녕하세요, 고객님 답변드립니다." style="width:300px;"/></td>
+										<th>날짜</th><td><%= sf.format(nowTime) %></td>
+									</tr>
+									<tr>
+										<th>내용</th><td colspan="3"><textarea class="form-control" rows="40" name ="board_qna_content"></textarea></td>
+									</tr>									
+                                </table>
+                             </form>               
+                        </div>
+                        <div class="card-footer">
+                        	<div id="buttondiv">
+                               	<a href="javascript:document.getElementById('form').submit();" class="btn btn-primary btn-icon-split" >
+									<span class="icon text-white-50">
+										<i class="fas fa-check"></i>
+									</span>
+									<span class="text">답변 등록</span>
+								</a>
+								<a href="javascript:history.back();" class="btn btn-secondary btn-icon-split">
+									<span class="icon text-white-50">
+										<i class="fas fa-arrow-right"></i>
+									</span>
+									<span class="text">목록 보기</span>
+								</a>
+                             </div>
                         </div>
                     </div>
                    
@@ -155,12 +153,6 @@
     <!-- Page level custom scripts -->
     <script src="resources/bootstrap/js/demo/datatables-demo.js"></script>
     
-    <script>
-	    //페이지 번호 클릭
-		function fn_qna_insert() {
-			
-	    }
-    </script>
    
 </body>
 

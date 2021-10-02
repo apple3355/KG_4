@@ -55,7 +55,7 @@ public class Admin_Board_faqController {
 		
 		Admin_Board_faqService.insertBoard_faq(vo); 
 		
-		return "redirect:/admin_board_faq";
+		return "redirect:/admin_board_faq.mdo";
 	} 
 	
 

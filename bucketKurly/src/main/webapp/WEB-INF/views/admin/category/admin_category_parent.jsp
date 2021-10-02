@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BucketKurly::Admin-Goods</title>
+    <title>BucketKurly::Admin-Category</title>
 
     <!-- Custom fonts for this template -->
     <link href="resources/bootstrap/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -25,7 +25,9 @@
 
     <!-- Custom styles for this page -->
     <link href="resources/bootstrap/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-	
+	<style>
+		img { width: 100px; }
+	</style>
 </head>
 
 <body id="page-top">
@@ -45,22 +47,22 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <!-- Page Heading / 기본 테이블 템플릿 사용을 원하시면 해당 부분 아래로 수정하시면 됩니다.-->
-                    <h1 class="h3 mb-2 text-gray-800">카테고리 관리</h1>
-                    
+                
+                	<!-- Page Heading -->
+			    	<h1 class="h3 mb-2 text-gray-800">카테고리 관리</h1>
+					<p class="mb-4">버캣컬리 상품의 상위 카테고리를 관리하는 페이지입니다.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">상위 카테고리</h6>
+                    	<div class="card-header">
+                            <h4 class="" style="color: #6406ca; font-weight: bolder; float: left; margin-top:10px;" >상위 카테고리 목록</h4>
+                            <a href="${pageContext.request.contextPath}/admin_category_parent_insert.mdo" class="btn btn-primary btn-icon-split" name="register" id="addBtn" style="float: right; position: relative; margin-top:7px;">
+								<span class="icon text-white-50">
+									<i class="fas fa-plus"></i>
+								</span>
+								<span class="text">등록하기</span>
+							</a> 
                         </div>
-                        
-                        <div align = "right" style="padding:10px 20px 0px 0px; ">
-                        	 <a href="${pageContext.request.contextPath}/admin_category_parent_insert.mdo">
-			            	 	<span class="btn btn btn-outline btn-primary" id="saveBtn" style="float: none; font-size:18px;">등록하기</span>
-			                 </a>
-                       	</div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"  style="text-align:center;">
@@ -74,8 +76,8 @@
 											<th></th>
 										</tr>
                                     </thead>
-                                   <tbody>	
-                                  		 <c:forEach items="${admin_Category_parent}" var="admin_Category_parent" varStatus="status">	
+                                    <tbody>	
+	                               		 <c:forEach items="${admin_Category_parent}" var="admin_Category_parent" varStatus="status">	
 											<tr>
 											 	<td>${status.count}</td>
 												<td><c:out value="${admin_Category_parent.category_parent_no}"/></td>
@@ -83,12 +85,12 @@
 												<td><img src="${admin_Category_parent.category_parent_icon}" /></td>
 												<td><img src="${admin_Category_parent.category_parent_icon_color}" /></td>
 												<td>
-													<a href="#" class="btn btn-danger btn-circle btn-lg" onclick="fn_delete('${admin_Category_parent.category_parent_no}')" >
+													<a href="#" class="btn btn-primary btn-circle btn-lg" onclick="fn_delete('${admin_Category_parent.category_parent_no}')" >
 	                                        			<i class="fas fa-trash"></i>
 	                                    			</a>
-                                    			</td>
+	                                   			</td>
 											</tr>
-										</c:forEach>
+										 </c:forEach>
 									</tbody>
                                 </table>
                             </div>
@@ -143,18 +145,6 @@
 		      }
 	  	
 		}
-		$("#dataTable").DataTable({
-			// 표시 건수기능 숨기기
-			lengthChange: true,
-			// 검색 기능 숨기기
-			searching: false,
-			// 정렬 기능 숨기기
-			ordering: true,
-			// 정보 표시 숨기기
-			info: true,
-			// 페이징 기능 숨기기
-			paging: true,
-		});
     </script>
 
 </body>

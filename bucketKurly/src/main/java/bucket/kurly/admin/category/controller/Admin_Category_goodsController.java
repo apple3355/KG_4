@@ -22,7 +22,7 @@ public class Admin_Category_goodsController {
 	@Autowired
 	private Admin_Category_goodsService admin_Category_goodsService;
 	
-	// 중위 카테고리에 해당하는 상품 카테고리 리스트
+	// 하위 카테고리에 해당하는 상품 카테고리 리스트
 	@ResponseBody
 	@RequestMapping("/selectCategory_goods.mdo")
 	public ModelAndView selectCategory_sub(@RequestParam Map<String, Object> param, HttpServletRequest request)

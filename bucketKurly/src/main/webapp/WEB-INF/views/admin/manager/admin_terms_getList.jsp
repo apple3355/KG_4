@@ -53,22 +53,25 @@
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">약관관리</h1>
-					<p class="mb-4">버켓컬리의 약관을 관리하는 페이지입니다.</p>
-					<br>
+			    	<h1 class="h3 mb-2 text-gray-800">약관 관리</h1>
+					<p class="mb-4">버캣컬리의 약관을 관리하는 페이지입니다.</p>
+					
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
-						<div class="card-header py-3">
-							<h6 class="" style="color: #5f0080; font-weight: bolder;">약관리스트</h6>
+						<div class="card-header">
+							<h4 class="" style="color: #6406ca; font-weight: bolder; float: left; margin-top:10px;" >약관리스트</h4>
+                             <a href="${pageContext.request.contextPath}/admin_terms_insert.mdo" class="btn btn-primary btn-icon-split" name="register" id="addBtn" style="float: right; position: relative; margin-top:7px;">
+								<span class="icon text-white-50">
+									<i class="fas fa-plus"></i>
+								</span>
+								<span class="text">약관등록</span>
+							</a>   
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
 
-								<form action="/admin_terms_insert.mdo" method="post">
-									<div align="right">
-										<input type="submit" class="btn btn-warning btn-icon-split" style="padding: 5px; background: #5f0080; border: #5f0080"
-											value="약관등록">
-									</div>
+								<form action="" method="post">
+									
 									<div class="my-2"></div>
 									<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 										<thead>
@@ -76,19 +79,18 @@
 												<th width="10%">번호</th>
 												<th width="10%">약관번호</th>
 												<th width="40%">약관이름</th>
-												<th width="18%">약관필수 여부</th>
-												<th width="22%">약관등록일</th>
+												<th width="20%">약관필수여부</th>
+												<th width="20%">약관등록일</th>
 											</tr>
 										</thead>
 										<tbody>
 											<c:forEach items="${terms}" var="terms">
 												<tr>
-													<td>${terms.seq }</td>
-													<td>${terms.terms_no }</td>
-													<td><a type="hidden"
-														href="admin_terms_get.mdo?no=${terms.seq }">${terms.terms_title }</a></td>
-													<td>${terms.terms_essential }</td>
-													<td>${terms.terms_reg_date }</td>
+													<td style="text-align:center;">${terms.seq }</td>
+													<td style="text-align:center;">${terms.terms_no }</td>
+													<td><a type="hidden" href="admin_terms_get.mdo?no=${terms.seq }">${terms.terms_title }</a></td>
+													<td style="text-align:center;">${terms.terms_essential }</td>
+													<td style="text-align:center;">${terms.terms_reg_date }</td>
 												</tr>
 											</c:forEach>
 										</tbody>

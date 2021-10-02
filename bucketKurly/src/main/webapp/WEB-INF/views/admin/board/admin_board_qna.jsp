@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BucketKurly::Admin-Goods</title>
+    <title>BucketKurly::Admin-Board</title>
 
     <!-- Custom fonts for this template -->
     <link href="resources/bootstrap/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -46,18 +46,18 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading / 기본 테이블 템플릿 사용을 원하시면 해당 부분 아래로 수정하시면 됩니다.-->
-                    <h1 class="h3 mb-2 text-gray-800">게시글 관리</h1>
-                    
+                    <!-- Page Heading -->
+			    	<h1 class="h3 mb-2 text-gray-800">게시글 관리</h1>
+					<p class="mb-4">버캣컬리의 1:1문의를 관리하는 페이지입니다.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">1:1 문의 - 답변 대기</h6>
+                    	<div class="card-header">
+                            <h4 class="" style="color: #6406ca; font-weight: bolder; float: left; margin-top:10px;" >1:1 문의 - 답변 대기</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
                                     <thead>
                                       	<tr>
 											<th width="10%">번호</th>
@@ -67,9 +67,8 @@
 											<th width="15%">주문회원</th>
 										</tr>
                                     </thead>
-                                    
-                                   <c:forEach items="${board_qnaList_answait}" var="board_qnaList_answait" varStatus="status">	
-										<tbody>													
+                                    <tbody>
+                                   		<c:forEach items="${board_qnaList_answait}" var="board_qnaList_answait" varStatus="status">	
 											<tr>
 												<td>${status.count}</td>
 												<td><c:out value="${board_qnaList_answait.board_qna_type}"/></td>	
@@ -77,22 +76,21 @@
 												<td><fmt:formatDate value="${board_qnaList_answait.board_qna_regdate}" pattern="yyyy-MM-dd" />
 												<td><c:out value="${board_qnaList_answait.board_qna_writer}"/></td>
 											</tr>
-										</tbody>
-									</c:forEach>
+										</c:forEach>
+									</tbody>
                                 </table>
-                                
                             </div>
                         </div>
                     </div>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">1:1 문의 - 답변 완료</h6>
+                        <div class="card-header">
+                            <h4 class="" style="color: #6406ca; font-weight: bolder; float: left; margin-top:10px;" >1:1 문의 - 답변 완료</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
                                     <thead>
                                       	<tr>
 											<th width="10%">번호</th>
@@ -102,9 +100,8 @@
 											<th width="15%">주문회원</th>
 										</tr>
                                     </thead>
-                                    
-                                   <c:forEach items="${board_qnaList_anscom}" var="board_qnaList_anscom" varStatus="status">	
-										<tbody>													
+									<tbody>		
+										<c:forEach items="${board_qnaList_anscom}" var="board_qnaList_anscom" varStatus="status">												
 											<tr>
 												<td>${status.count}</td>
 												<td><c:out value="${board_qnaList_anscom.board_qna_type}"/></td>	
@@ -112,14 +109,12 @@
 												<td><fmt:formatDate value="${board_qnaList_anscom.board_qna_regdate}" pattern="yyyy-MM-dd" />
 												<td><c:out value="${board_qnaList_anscom.board_qna_writer}"/></td>
 											</tr>
-										</tbody>
-									</c:forEach>
+										</c:forEach>
+									</tbody>
                                 </table>
-                                                           
                             </div>
                         </div>
                     </div>
-                    
 
                 </div>
                 <!-- /.container-fluid -->
@@ -154,6 +149,7 @@
     <!-- Page level custom scripts -->
     <script src="resources/bootstrap/js/demo/datatables-demo.js"></script>
     
+    
     <script>
 	    //답변대기 글 상세보기
 		function fn_qna_answait_details(qna_no) {
@@ -167,6 +163,19 @@
 			url = url + "?qna_no=" + qna_no;
 			location.href = url;	
 	    }
+		
+		$("#dataTable1").DataTable({
+			// 표시 건수기능 숨기기
+			lengthChange: true,
+			// 검색 기능 숨기기
+			searching: false,
+			// 정렬 기능 숨기기
+			ordering: true,
+			// 정보 표시 숨기기
+			info: true,
+			// 페이징 기능 숨기기
+			paging: true,
+		});
     </script>
 
 </body>

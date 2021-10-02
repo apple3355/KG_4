@@ -26,7 +26,6 @@
 	
 	
 	<style>
-	
 	.bg-gradient-primary {background-color: #5f0080;background-size: cover;}
 	.bg-login-image {size: 468x480;}
 	</style>
@@ -46,13 +45,15 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image">
-                            </div>
-                            <div class="col-lg-6">
+                            <img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/admin/logo.png" style="float:inline;">
+                           
+                            <div class="col-lg-6" style="margin-top:25px;">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Kurly!</h1>
                                     </div>
+                                    <hr>
+                                    <br>
                                     <form class="user" method="post" name="form" id="form" onsubmit="return checkReCaptcha();" action="${pageContext.request.contextPath}/chklogin.mdo">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user"
@@ -72,7 +73,6 @@
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             로그인
                                         </button>
-                                        <hr>
                                         
                                     </form>
                                 </div>

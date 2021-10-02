@@ -57,15 +57,15 @@
 					<form method="post">
 						<input name="no" id="seq" type="hidden" value="${terms.seq }">
 						<div class="container-fluid">
-							<!-- Page Heading -->
-							<h1 class="h3 mb-2 text-gray-800">약관관리</h1>
-							<br>
+							 <!-- Page Heading -->
+					    	<h1 class="h3 mb-2 text-gray-800">약관 관리</h1>
+							<p class="mb-4">버캣컬리의 약관을 관리하는 페이지입니다.</p>
 
 							<!-- DataTales Example -->
 							<div class="card shadow mb-4">
-								<div class="card-header py-3">
-									<h6 class="" style="color: #5f0080; font-weight: bolder;">약관
-										수정/삭제</h6>
+								<div class="card-header">
+									<h4 class="" style="color: #6406ca; font-weight: bolder; float: left; margin-top:10px;" >약관
+											수정/삭제</h4>
 								</div>
 								<div class="card-body">
 									<!-- 전체 frame -->
@@ -128,15 +128,29 @@
 										<input style="padding: 2px" class="btn btn-warning btn-icon-split" type="submit" value="수정하기" id="registerBtn" />
 									</div>
 									<div align="right">
-										<a href="admin_terms_insert.mdo" class="btn btn-warning btn-icon-split" style="padding: 2px; background: #5f0080; border: #5f0080">
-											<span class="text">등록하기</span>
-										</a>&nbsp;&nbsp;&nbsp; 
+										
+										
 										<a href="admin_terms_delete.mdo?no=${terms.seq}" class="btn btn-danger btn-icon-split" id="deleteBtn"> 
 											<span class="text">삭제하기</span>
 										</a>&nbsp;&nbsp;&nbsp; 
 										<a href="admin_terms_getList.mdo" class="btn btn-light btn-icon-split"> 
 											<span class="text">목록가기</span>
 										</a>
+										
+										<button type="button" class="btn btn-outline btn-info" 
+											onclick="location.href='joinUs.jsp' 
+											onClick="fn_updatePage('${no}')"> 
+											수정하기
+										</button>
+										<button type="button" class="btn btn-outline btn-danger" 
+											onclick="location.href='joinUs.jsp' 
+											onclick="fn_delete('${no}')">
+											삭제하기
+										</button>
+										<button type="button" class="btn btn-secondary btn-icon-splitbtn" 
+											onclick="javascript:history.back();">
+											목록보기
+										</button>
 									</div>
 								</div>
 							</div>
