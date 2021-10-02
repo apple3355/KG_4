@@ -155,6 +155,13 @@ $(function(){
 
 <style>
 
+	/*썸네일 우측 상품 정보 부분*/
+	.name  {font-size: 14px; font-weight: 700;}
+	#sectionView .goods_info .list {padding: 3px 0;}
+	#sectionView .goods_name .short_desc {  padding: 4px 10px 0 0;}
+	#sectionView .goods_name {padding: 0px 0 0px;}
+	#sectionView .goods_dcinfo {line-height: 0px;}	
+
 	/* 상품 수량 관련(지우지 말아주세요ㅜㅜ-경원) */
    #cartPut .cart_option .list .up.on { background-image: url(https://res.kurly.com/pc/ico/2010/ico_plus_on.svg);}
    #cartPut .cart_option .list .up {    float: right;    margin-left: -1px;    background: #fff url(https://res.kurly.com/pc/ico/2010/ico_plus.svg) no-repeat 50% 50%;    background-size: 30px 30px;}
@@ -252,7 +259,7 @@ $(function(){
 								<p class="goods_price">
 									<span class="position">
 										<span class="dc"><!----> 
-											<span class="dc_price">${goods_sellVO.goods_sell_price}<span class="won">원</span></span> 
+											<span class="dc_price"><fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sellVO.goods_sell_price - (goods_sellVO.goods_sell_price * goods_sellVO.goods_sell_discount) / 100}" /><span class="won">원</span></span> 
 											<span class="dc_percent">${goods_sellVO.goods_sell_discount}<span class="per">%</span></span></span> 
 										<a class="original_price">
 											<span class="price">${goods_sellVO.goods_sell_price}<span class="won">원</span></span>
@@ -356,12 +363,14 @@ $(function(){
 													<span class="txt">삭제하기</span>
 												</button>
 											</span> 
+											<!--  
 											<span class="name">
-											<!---->                                 
+											<!--                                 
 											${goods_sellVO.goodsvo.category_goods_name }                                  
-											<!---->
+											<!--
 											</span> 
-											<span class="tit_item">구매수량</span> 
+											-->
+											<span class="tit_item" style="font-weight: 700; color: #333;">구매수량</span> 
 											<div class="option">
 												 <span class="count">
 						                              <button type="button" class="btn down on">수량내리기</button> 
@@ -371,7 +380,7 @@ $(function(){
 						                    
 												<span class="price">
 													<!----> 
-													<span class="dc_price">${goods_sellVO.goods_sell_price}</span>
+													<span class="dc_price" id="dc_price">${goods_sellVO.goods_sell_price}</span>
 												</span>
 											</div>
 											
@@ -383,7 +392,7 @@ $(function(){
 										<!----> 
 										<strong class="tit">총 상품금액 :</strong> 
 										<span class="sum">
-											<span class="num">${goods_sellVO.goods_sell_price}</span> 
+											<span class="num" id="num"><fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sellVO.goods_sell_price - (goods_sellVO.goods_sell_price * goods_sellVO.goods_sell_discount) / 100}" />	</span> 
 											<span class="won">원</span>
 										</span>
 									</div> 
@@ -396,7 +405,8 @@ $(function(){
 										<!---->
 									</p>
 								</div>
-							</div> 
+							</div>
+							<!--  이 부분 아래에 또 있음 --> 
 							<div class="group_btn off">
 								<div class="view_function">
 									<button type="button" class="btn btn_alarm">재입고 알림</button>
@@ -580,30 +590,35 @@ $(function(){
 	
 	
 	
-	<!-- 화면 위로가기 버튼 -->
+	<!-- 화면 위로가기 버튼 & 수량 및 수량에 따른 합계 -->
     <script type="text/javascript">
 	$(document).ready(function(){
+		/*
 		   $("#inp").on("propertychange change keyup paste input", function() {
 			   alert("input 어딘가에서 값이 변경되었습니다.");
                
             });
 		
+		*/
 		function inp_change(obj) {
 			  obj.value ='yellow';
 			}
 
 		 $(".btn.down.on").click(function(){
 	           let EA = Number($("#inp").val()); 
+	           let num = $("#num").val();
 	           if(EA == 1){
 	             alert("1 개 이하로 선택 할 수 없습니다. ");
 	           }else{
 	               EA = EA-1;
 	           }
 	           $("#inp").val(EA);
+	           $("#num").html( ${goods_sellVO.goods_sell_price - (goods_sellVO.goods_sell_price * goods_sellVO.goods_sell_discount) /100} * EA);   
 	        });
 	        
 	        $(".btn.up.on").click(function(){
 	        	let EA = Number($("#inp").val());
+	        	 let num = $("#num").val();
 	        	let Max = Number(10);
 	        	if(EA == Max){
 	              alert("해당 상품은 " + Max + "개 이상 선택할 수 없습니다");
@@ -611,6 +626,7 @@ $(function(){
 	            	 EA = EA+1;
 	             }
 	           $("#inp").val(EA);
+	           $("#num").html( ${goods_sellVO.goods_sell_price - (goods_sellVO.goods_sell_price * goods_sellVO.goods_sell_discount) /100} * EA);
 	        });
 	        
 	       
