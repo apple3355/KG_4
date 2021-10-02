@@ -84,5 +84,9 @@ public class MarketingDAO {
 		sql.delete("MarketingDAO.deleteBanner", vo);
 	}
 	
+	//유저 메인화면에 배너 띄우기
+	public List<BannerVO> getBannerListView(BannerVO vo){
+		return sql.selectList("MarketingDAO.getBannerListView", vo);
+	}	
 	
 }

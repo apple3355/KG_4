@@ -51,4 +51,7 @@ public interface MarketingService {
 	
 	//배너삭제
 	void deleteBanner(BannerVO vo);
+	
+	//유저 메인화면에 배너 띄우기
+	List<BannerVO> getBannerListView(BannerVO vo);
 }

@@ -93,7 +93,11 @@ public class MarketingServiceImpl implements MarketingService{
 		dao.deleteBanner(vo);
 	}
 
-	
+	//유저 메인화면에 배너 띄우기
+	@Override
+	public List<BannerVO> getBannerListView(BannerVO vo){
+		return dao.getBannerListView(vo);
+	}
 
 	
 

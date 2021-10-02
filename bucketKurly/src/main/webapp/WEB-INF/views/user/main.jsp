@@ -320,52 +320,17 @@ $(function(){
         						<div id="bannerWrap" class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 370px; ">											
 										
 											<ul data-section="main_banner" id="slideBanner" class="list" style="width:1515%; position: relative; transition-timing-function: ease-in-out; transition-duration: 0.5s; transform: translate3d(-2000px, 0px, 0px);">		 
-												<li data-index="13" style="float: left; list-style: none; position: relative; width: 1076px;" class="bx-clone" data-name="main_banner">
-													<a class="thumb_goods" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/pc_img_1596164134.jpg&quot;);">메인배너</a>
-												<!----> </li>
-												<li data-index="1" style="float: left; list-style: none; position: relative; width: 1076px;" data-name="main_banner">
-													<a class="thumb_goods" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/pc_img_1628814309.jpg&quot;);">메인배너</a>
-												<!----></li>												
-												<li data-index="2" data-name="main_banner" style="float: left; list-style: none; position: relative; width: 1076px;">
-													<a class="thumb_goods" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/pc_img_1629898688.jpg&quot;);">메인배너</a>
-												<!----></li>						
-												<li data-index="3" data-name="main_banner" style="float: left; list-style: none; position: relative; width: 1076px;">
-													<a class="thumb_goods" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/pc_img_1629798099.jpg&quot;);">메인배너</a>
-												<!----></li>
-												<li data-index="4" data-name="main_banner" style="float: left; list-style: none; position: relative; width: 1076px;">
-													<a class="thumb_goods" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/pc_img_1629681452.jpg&quot;);">메인배너</a>
-												<!----></li>
-												<li data-index="5" data-name="main_banner" style="float: left; list-style: none; position: relative; width: 1076px;">
-													<a class="thumb_goods" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/pc_img_1630056496.jpg&quot;);">메인배너</a>
-												<!----></li>
-												<li data-index="6" data-name="main_banner" style="float: left; list-style: none; position: relative; width: 1076px;">
-													<a class="thumb_goods" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/pc_img_1629421493.jpg&quot;);">메인배너</a>
-												<!----></li>
-												<li data-index="7" data-name="main_banner" style="float: left; list-style: none; position: relative; width: 1076px;">
-													<a class="thumb_goods" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/pc_img_1629027622.jpg&quot;);">메인배너</a>
-												<!----></li>
-												<li data-index="8" data-name="main_banner" style="float: left; list-style: none; position: relative; width: 1076px;">
-													<a class="thumb_goods" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/pc_img_1629878990.jpg&quot;);">메인배너</a>
-												<!----></li>
-												<li data-index="9" data-name="main_banner" style="float: left; list-style: none; position: relative; width: 1076px;">
-													<a class="thumb_goods" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/pc_img_1628583839.jpg&quot;);">메인배너</a>
-												<!----></li>
-												<li data-index="10" data-name="main_banner" style="float: left; list-style: none; position: relative; width: 1076px;">
-													<a class="thumb_goods" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/pc_img_1628814309.jpg&quot;);">메인배너</a>
-												<!----></li>
-												<li data-index="11" data-name="main_banner" style="float: left; list-style: none; position: relative; width: 1076px;">
-													<a class="thumb_goods" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/pc_img_1621561009.jpg&quot;);">메인배너</a>
-												<!----></li>
-												<li data-index="12" data-name="main_banner" style="float: left; list-style: none; position: relative; width: 1076px;">
-													<a class="thumb_goods" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/pc_img_1583112495.jpg&quot;);">메인배너</a>
-												<!----></li>
-												<li data-index="13" style="float: left; list-style: none; position: relative; width: 1076px;" data-name="main_banner">
-													<a class="thumb_goods" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/pc_img_1596164134.jpg&quot;);">메인배너</a>
-												<!----></li>
-												<li data-index="1" style="float: left; list-style: none; position: relative; width: 1076px;" class="bx-clone" data-name="main_banner">
-													<a class="thumb_goods" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/pc_img_1629880774.jpg&quot;);">메인배너</a>
-												<!----></li>	
+												
+											<!-- 배너 -->								
+											<c:forEach items="${banner }" var="banner" >
+												<div style="float: left; list-style: none; position: relative; width: 1076px;" class="bx-clone" data-name="main_banner">
+													<img class="thumb_goods" alt="${banner.banner_title}" src="${banner.banner_filepath}" />
+												</div>
+											</c:forEach>
+											<!-- 배너 끝 -->
         									</ul>
+												
+        									
         									<!-- 메인 배너 화살표버튼 -->
 											<div class="slider-controls-direction">
 									            <a href="#" id="prevBtn"></a>

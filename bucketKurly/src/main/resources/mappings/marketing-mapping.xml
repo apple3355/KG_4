@@ -81,5 +81,9 @@
 		DELETE FROM tb_banner WHERE banner_no=#{banner_no}
 	</delete>
 	
+	<!-- 유저 메인화면에 배너 띄우기  -->
+	<select id="getBannerListView" resultType="banner">
+		SELECT * FROM tb_banner ORDER BY banner_no DESC
+	</select>
 	
 </mapper>
