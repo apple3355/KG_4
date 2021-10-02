@@ -138,11 +138,14 @@
 													
 													<p class="noti"></p>
 												</div>
-												<div class="stamper count">
-													<button type="button" class="btn minus off">감소</button>
-													 <input type="number" id="stepperCounter" class="num" readonly="readonly" value="<c:out value="${goods_cartShowVO.goods_cart_count}"/>">
-													 <button type="button" class="btn plus">추가</button>
-												</div>
+													<div class="stamper count">
+                                      					<button type="button" id="${goods_cartShowVO.category_goods_name}_down" class="btn minus">-</button>
+                                       					<!--원래 코드:  
+                                       					<input type="number" id="stepperCounter" class="num" readonly="readonly" value="<c:out value="${goods_cartShowVO.goods_cart_count}"/>">  
+                                       					--> 
+                                        				<input type="number" name="stepperCounter" id="${goods_cartShowVO.category_goods_name}_cont" readonly="readonly" onfocus="this.blur()" class="num" value="${goods_cartShowVO.goods_cart_count}" >                                        
+                                        				<button type="button" id="${goods_cartShowVO.goods_cart_count}_up" class="btn plus">+</button>
+                                    				</div>
 											</div>
 										</div>
 										<button type="button" id="${goods_cartShowVO.goods_cart_no}" class="btn_delete" onclick="btn_delete(this.id)">상품 삭제</button>
@@ -397,38 +400,47 @@ $('#btn_frozen').click(function(){
 </script>
  
 <!-- 장바구니 숫자 올리기/내리기 -->
-<script type="text/javascript">
-	
-//	$(document).ready(function(){
-//	   $("#stepperCounter").on("propertychange change keyup paste input", function() {
-//		   alert("input 어딘가에서 값이 변경되었습니다.");
-//    });
+ 
+ <script>
+   $(document).on('click', '.minus', function() {
+      let num = $(this).next().val();
+      let goods_id = $(this).attr("id").split("_down")[0];
+      if (num > 1) {
+         $(this).next().val(--num);
+         
+         let afterPrice = $("#"+goods_id+"_price").text();
+         afterPrice *= num / (num + 1);
+         
+         // 변경된 숫자 및 금액 반영 아직 안돌아감
+         $("#"+goods_id+"_price").text(afterPrice);
+         calc();
+   
+         //ajax 처리해야함
+      }
 
-//	function inp_change(obj) {
-//		  obj.value ='yellow';
-//		}
+   });
+ 
+   $(document).on('click', '.plus', function() {
+      let num = $(this).prev().val();
+      let goods_id = $(this).attr("id").split("_up")[0];
+      /* alert(num) */
+      if (num < 1000) {
+         $(this).prev().val(++num);
 
-	 $(".btn.minus").click(function(){
-        let EA = Number($(".num").val()); 
-        if(EA == 1){
-          alert("1 개 이하로 선택 할 수 없습니다. ");
-        }else{
-            EA = EA-1;
-        }
-        $(".num").val(EA);
-     });
-     
-     $(".btn.plus").click(function(){
-     	let EA = Number($(".num").val());
-     	let Max = Number(10);
-     	if(EA == Max){
-           alert("해당 상품은 " + Max + "개 이상 선택할 수 없습니다");
-          }else{
-         	 EA = EA+1;
-          }
-        $(".num").val(EA);
-     });
-</script>
+         let afterPrice = $("#"+goods_id+"_price").text();
+
+         afterPrice *= num / (num - 1)
+         
+         // 변경된 숫자 및 금액 반영  아직 안돌아감
+         $("#"+goods_id+"_price").text(afterPrice);
+         calc();
+         
+         //ajax 처리해야함
+         }
+      });
+   
+ </script>
+ 
 
 <!-- 장바구니 체크박스 *전체선택 수량 파악 안됨 -->
 <script type="text/javascript">
@@ -473,9 +485,7 @@ function selectAll(selectAll)  {
 <script type="text/javascript">
 //$(document).ready(function(){
 $(window).ready(function(){
-	var checkedCntAll = document.getElementById('checkedCntAll');
-	
-	console.log(checkedCntAll);
+	var checkedCntAll = 1;
 	
 	if(checkedCntAll.value == 0){
 		$('#cart_item').css({'display' : 'none'});
@@ -533,7 +543,6 @@ function findAddr(){
 </script>
 
 <!-- 주문하기 버튼 활성/비활성 -->
-btn_submit
 
 </body>
 
