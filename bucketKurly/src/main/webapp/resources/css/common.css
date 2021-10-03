@@ -11,7 +11,7 @@
   #header, #container, #content {position: relative;}
   div, th, td, li, dt, dd, p {word-break: break-all;}
   div {display: block;}
-  dd {display: block;margin-inline-start: 40px;}
+/*   dd {display: block;margin-inline-start: 40px;} */
   p {display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;}
   iframe {border-width: 2px;border-style: inset;border-color: initial;border-image: initial;}
   button {outline: none;}

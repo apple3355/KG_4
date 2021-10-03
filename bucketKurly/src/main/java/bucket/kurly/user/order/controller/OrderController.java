@@ -21,15 +21,15 @@ public class OrderController {
 	@RequestMapping("/order_form.do")
 	public String order_form(Model model, HttpSession session) throws Exception {
 	
-		String name = (String) session.getAttribute("id");
-		
-		MemberVO result = orderService.order_form(name);
-		
-		System.out.println(result);
-		
-		model.addAttribute("name", result.getMember_name());
-		model.addAttribute("phone", result.getMember_phone());
-		model.addAttribute("email", result.getMember_email());
+//		String name = (String) session.getAttribute("id");
+//		
+//		MemberVO result = orderService.order_form(name);
+//		
+//		System.out.println(result);
+//		
+//		model.addAttribute("name", result.getMember_name());
+//		model.addAttribute("phone", result.getMember_phone());
+//		model.addAttribute("email", result.getMember_email());
 	
 		
 		return "order/order_form";

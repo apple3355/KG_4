@@ -856,7 +856,7 @@ $(document).ready(function(){
 						</div>
 					</div>
 				</div>
-							<!-- layerDSR -->
+	  <!-- layerDSR -->
       <%@ include file="/WEB-INF/views/layout/layerDSR.jsp"%>   
       <!-- footer -->
       <%@ include file="/WEB-INF/views/layout/footer.jsp"%>            
