@@ -10,12 +10,11 @@ public class Goods_adminSellVO {
 	private String goods_sell_in_date;
 	private int goods_sell_in_ea;
 	private int goods_sell_stock_ea;
-	private String goods_sell_stock_rea;
+	private int goods_sell_stock_rea;
 	private String goods_sell_exp;
-	private String goods_sell_promotion;
-	private String goods_sell_status;
+	private int goods_sell_promotion;
+	private int goods_sell_status;
 	private int goods_sell_discount;
-	
 	public int getGoods_sell_no() {
 		return goods_sell_no;
 	}
@@ -64,10 +63,10 @@ public class Goods_adminSellVO {
 	public void setGoods_sell_stock_ea(int goods_sell_stock_ea) {
 		this.goods_sell_stock_ea = goods_sell_stock_ea;
 	}
-	public String getGoods_sell_stock_rea() {
+	public int getGoods_sell_stock_rea() {
 		return goods_sell_stock_rea;
 	}
-	public void setGoods_sell_stock_rea(String goods_sell_stock_rea) {
+	public void setGoods_sell_stock_rea(int goods_sell_stock_rea) {
 		this.goods_sell_stock_rea = goods_sell_stock_rea;
 	}
 	public String getGoods_sell_exp() {
@@ -76,16 +75,16 @@ public class Goods_adminSellVO {
 	public void setGoods_sell_exp(String goods_sell_exp) {
 		this.goods_sell_exp = goods_sell_exp;
 	}
-	public String getGoods_sell_promotion() {
+	public int getGoods_sell_promotion() {
 		return goods_sell_promotion;
 	}
-	public void setGoods_sell_promotion(String goods_sell_promotion) {
+	public void setGoods_sell_promotion(int goods_sell_promotion) {
 		this.goods_sell_promotion = goods_sell_promotion;
 	}
-	public String getGoods_sell_status() {
+	public int getGoods_sell_status() {
 		return goods_sell_status;
 	}
-	public void setGoods_sell_status(String goods_sell_status) {
+	public void setGoods_sell_status(int goods_sell_status) {
 		this.goods_sell_status = goods_sell_status;
 	}
 	public int getGoods_sell_discount() {
@@ -104,6 +103,5 @@ public class Goods_adminSellVO {
 				+ ", goods_sell_promotion=" + goods_sell_promotion + ", goods_sell_status=" + goods_sell_status
 				+ ", goods_sell_discount=" + goods_sell_discount + "]";
 	}
-	
 
 }
