@@ -32,6 +32,7 @@
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <body>
 <!-- header 시작 -->
@@ -127,11 +128,17 @@
 											<a href="#" class="thumb " style="background-image: url(&quot;${goods_cartShowVO.category_goods_image_thumb}&quot;);">상품이미지</a>
 											<div class="price">
 												<div class="in_price">
+													<!-- 
 													<span class="selling"><c:out value="${goods_cartShowVO.goods_sell_price}"/>
 														<span class="won">원</span>
 													</span>
-													<span class="cost"><c:out value="${goods_cartShowVO.goods_sell_price}"/>
-														<span class="won">%</span>
+													 -->
+													 <span class="selling" id="${goods_cartShowVO.category_goods_name}_price"><fmt:formatNumber><c:out value="${goods_cartShowVO.goods_sell_price - goods_cartShowVO.goods_sell_price / goods_cartShowVO.goods_sell_discount}"/></fmt:formatNumber>
+														<span class="won">원</span>
+													</span>
+													 
+													<span class="cost"><c:out value="${goods_cartShowVO.goods_sell_price} "/>
+														<span class="won">원</span>
 													</span>
 													<!-- 할인가 숨김표시 -->
 													<input type="hidden" value="${goods_cartShowVO.goods_sell_discount}" />
@@ -144,7 +151,7 @@
                                        					<input type="number" id="stepperCounter" class="num" readonly="readonly" value="<c:out value="${goods_cartShowVO.goods_cart_count}"/>">  
                                        					--> 
                                         				<input type="number" name="stepperCounter" id="${goods_cartShowVO.category_goods_name}_cont" readonly="readonly" onfocus="this.blur()" class="num" value="${goods_cartShowVO.goods_cart_count}" >                                        
-                                        				<button type="button" id="${goods_cartShowVO.goods_cart_count}_up" class="btn plus">+</button>
+                                        				<button type="button" id="${goods_cartShowVO.category_goods_name}_up" class="btn plus">+</button>
                                     				</div>
 											</div>
 										</div>
@@ -211,9 +218,6 @@
 						<div class="inner_empty">
 							<span class="bg"></span>
 							<p class="txt">장바구니에 담긴 상품이 없습니다</p>
-							<div class="btn_submit  ">
-								<button type="button" class="btn disabled">상품을 담아주세요</button>
-							</div>
 						</div>
 						<div class="cart_select">
 							<div class="inner_select">
@@ -268,7 +272,7 @@
 							<div class="reserve"></div>
 						</div>
 						<div class="btn_submit ">
-							<button type="submit" class="btn disabled">상품을 담아주세요</button>
+							<button type="submit" class="btn disabled" id="btn_submit" onclick="fnOrder()"></button>
 						</div>
 						<div class="notice">
 							<span class="txt">
@@ -404,7 +408,9 @@ $('#btn_frozen').click(function(){
  <script>
    $(document).on('click', '.minus', function() {
       let num = $(this).next().val();
+      console.log(num);
       let goods_id = $(this).attr("id").split("_down")[0];
+      console.log(goods_id);
       if (num > 1) {
          $(this).next().val(--num);
          
@@ -422,7 +428,17 @@ $('#btn_frozen').click(function(){
  
    $(document).on('click', '.plus', function() {
       let num = $(this).prev().val();
+      console.log(num);
       let goods_id = $(this).attr("id").split("_up")[0];
+      console.log(goods_id);
+      let afterPrice = $("#"+goods_id+"_price").text();
+      console.log(afterPrice);
+     
+      //let afterPrice = $("#"+goods_id+"_price").text();
+      //let afterPrice = $(".selling").text();
+      
+      
+      console.log(afterPrice);
       /* alert(num) */
       if (num < 1000) {
          $(this).prev().val(++num);
@@ -483,17 +499,34 @@ function selectAll(selectAll)  {
 
 <!-- 장바구니 empty페이지 출력 or 장바구니 페이지 -->
 <script type="text/javascript">
-//$(document).ready(function(){
-$(window).ready(function(){
-	var checkedCntAll = 1;
+$(document).ready(function(){ 
+	let checkedCntAll = $('#checkedCntAll').text();
 	
-	if(checkedCntAll.value == 0){
+	if(checkedCntAll == "0"){ // 전체 선택갯수가 0일때 
 		$('#cart_item').css({'display' : 'none'});
-	}else{
+	}else{	//전체 선택갯수가 0이 아닐때 (상품이 하나라도 있을때)
 		$('.empty').css({'display' : 'none'});
 	}
 });
 </script>
+
+<!-- 장바구니 체크박스 선택시 가격표시창 css -->
+<script type="text/javascript">
+$(document).ready(function(){
+	let checkedCnt = $('#checkedCnt').text();
+	
+	if(checkedCnt == "0"){
+		$('.btn.disabled').removeClass("active").addClass("disabled");
+		$('#btn_submit').attr("disabled", true);
+		$('#btn_submit').text("상품을 담아주세요");
+	}else{
+		$('.btn.disabled').removeClass("disabled").addClass("active");
+		$('#btn_submit').attr("disabled", false);
+		$('#btn_submit').text("주문하기");
+	}
+});
+</script>
+
 
 <!-- 장바구니 선택삭제 -->
 <script type="text/javascript">
@@ -542,8 +575,15 @@ function findAddr(){
 	}
 </script>
 
-<!-- 주문하기 버튼 활성/비활성 -->
-
+<!-- 주문하기 클릭 페이지 이동 -->
+<script type="text/javascript">
+function fnOrder(){
+	
+	var url = "/order_form.do";
+	
+	location.href = url;
+}
+</script>
 </body>
 
 </html>

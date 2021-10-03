@@ -121,7 +121,8 @@
 	
 	<!-- 상품판매 리스트 등록 -->
 	<insert id="insertGoods" parameterType="goods_adminsell">
-		INSERT INTO TB_GOODS_SELL VALUES(nextval('tb_goods_sell_goods_sell_no_seq'),#{goods_sell_parent_no}, #{goods_sell_sub_no}, #{goods_sell_goods_no}, #{goods_sell_price}, to_timestamp('#{goods_sell_in_date}'), #{goods_sell_in_ea}, #{goods_sell_stock_ea}, #{goods_sell_stock_rea}, to_timestamp('#{goods_sell_exp}'), #{goods_sell_promotion}, #{goods_sell_status}, #{goods_sell_discount})
+		INSERT INTO TB_GOODS_SELL(goods_sell_parent_no,goods_sell_sub_no,goods_sell_goods_no,goods_sell_price,goods_sell_in_date,goods_sell_in_ea,goods_sell_stock_ea,goods_sell_stock_rea,goods_sell_exp,goods_sell_promotion,goods_sell_status,goods_sell_discount)
+		VALUES(#{goods_sell_parent_no},#{goods_sell_sub_no},#{goods_sell_goods_no},#{goods_sell_price},TO_TIMESTAMP(#{goods_sell_in_date}, 'YYYY-MM-DD'),#{goods_sell_in_ea},#{goods_sell_stock_ea},#{goods_sell_stock_rea},TO_TIMESTAMP(#{goods_sell_exp}, 'YYYY-MM-DD'),#{goods_sell_promotion},#{goods_sell_status},#{goods_sell_discount})
 	</insert> 
 	
 	<!-- 상품판매 리스트 수정 -->
