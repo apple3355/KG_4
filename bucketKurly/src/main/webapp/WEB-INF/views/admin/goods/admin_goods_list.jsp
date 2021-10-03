@@ -109,11 +109,10 @@
 													    <option value=1 <c:if test="${promotion == 1}">selected</c:if>>적용</option>
 													</select>
 	                                        	</td>                                        	
-	                                        	<td><select id="status" class="form-control">	                                        		
-		                                        		<option value=0 <c:if test="${status == 0}">selected</c:if>>상태선택</option>									
+	                                        	<td><select id="status" class="form-control">									
 									                    <option value=1 <c:if test="${status == 1}">selected</c:if>>판매중</option>									
 									                    <option value=2 <c:if test="${status == 2}">selected</c:if>>판매중지</option>									
-									                    <option value=3 <c:if test="${status == 3}">selected</c:if>>판매완료</option>	
+									                    <option value=0 <c:if test="${status == 0}">selected</c:if>>판매완료</option>	
 													</select>
 	                                        	</td>                                 	
 	                                        	<td><select id="discount" class="form-control">

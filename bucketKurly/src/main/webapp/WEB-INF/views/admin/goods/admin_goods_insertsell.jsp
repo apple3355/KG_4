@@ -62,7 +62,7 @@
                         </div>
                         <div class="card-body">
                         	<form role="form" id="form" action="${pageContext.request.contextPath}/admin_goods_insertsellDB.mdo">
-                                <input type="hidden" value="미구현" name="goods_sell_stock_rea">
+                                <input type="hidden" value="10" name="goods_sell_stock_rea">
                                 
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 	<tr>
@@ -81,7 +81,7 @@
 												<div style="float: left;  margin-left:40px;">
 													<span>중위 카테고리</span>
 		                     					    <select name="goods_sell_sub_no" id="goods_sell_sub_no" style="width: 200px;" class="form-control">                      						    	
-														<option value="" >선택</option>
+														<option value="">선택</option>
 		                     						</select>
 	                     						</div>
 	                     						<div style="float: left;  margin-left:40px;">
@@ -103,12 +103,19 @@
 									</tr>
 									<tr>
 										<th>할인율</th><td><input type="text" class="form-control" value="${vo.goods_sell_discount}" name="goods_sell_discount" id="goods_sell_discount" ></td>
-										<th>프로모션</th><td><input type="text" class="form-control" value="${vo.goods_sell_promotion}" name="goods_sell_promotion" id="goods_sell_promotion" ></td>
+										<th>프로모션</th>
+										<td>
+											<select name="goods_sell_promotion" id="goods_sell_promotion" style="width: 200px;" class="form-control" >
+											    <option value="">상태선택</option>
+											    <option value="0">미적용</option>
+											    <option value="1">적용</option>
+											</select>
+										</td>
 									</tr>	
 									<tr>
 										<th>상태</th>
 										<td colspan="3">
-											<select value="${vo.goods_sell_status}" name="goods_sell_status" id="goods_sell_status" style="width: 200px;" class="form-control" >
+											<select name="goods_sell_status" id="goods_sell_status" style="width: 200px;" class="form-control" >
 											    <option value="">상태선택</option>
 											    <option value="1">판매중</option>
 											    <option value="2">판매중지</option>
@@ -121,7 +128,7 @@
                         </div>
                         <div class="card-footer">
                         	<div id="buttondiv">
-								<a href="javascript:document.getElementById('form').submit();" class="btn btn-primary btn-icon-split" >
+								<a href="javascript:void(0);" id="fn_insert" class="btn btn-primary btn-icon-split" >
 									<span class="icon text-white-50">
 										<i class="fas fa-check"></i>
 									</span>
@@ -175,33 +182,53 @@
  	$(document).ready(function(){
 		//상품 판매 등록 유효성검사
 		$("#fn_insert").click(function(){
-			alert("상품을 동록하시겠습니까?");
-			var in_date = $("#in_date").val();
-			var in_ea = $("#in_ea").val();
-			var exp = $("#exp").val();
-			var price = $("#price").val();
-			var discount = $("#discount").val();
-			var promotion = $("#promotion").val();
-			var status = $("#status").val();
+			alert("상품을 등록하시겠습니까?");
+			var in_date = $("#goods_sell_in_date").val();
+			var in_ea = $("#goods_sell_in_ea").val();
+			var exp = $("#goods_sell_exp").val();
+			var price = $("#goods_sell_price").val();
+			var discount = $("#goods_sell_discount").val();
+			var promotion = $("#goods_sell_promotion").val();
+			var status = $("#goods_sell_status").val();
+			var goods = $("#goods_sell_goods_no").val();
+			var sub = $("#goods_sell_sub_no").val();
+			var parent = $("#goods_sell_parent_no").val();
 			
-			if(in_date == ""){
+			
+			if (parent == ""){
+				alert("상위 카테고리를 선택해주세요");
+				parent.focus();
+			} else if (sub == ""){
+				alert("중위 카테고리를 선택해주세요");
+				sub.focus();
+			} else if (goods == ""){
+				alert("하위 카테고리를 선택해주세요");
+				goods.focus();
+			} else if(in_date == ""){
 				alert("입고 날짜를 입력해주세요");
-				in_date.foucs();
+				in_date.focus();
 			} else if (in_ea == ""){
 				alert("입고 수량을 입력해주세요");
-				in_ea.foucs();
+				in_ea.focus();
 			} else if (exp == ""){
 				alert("유통기한을 입력해주세요");
-				exp.foucs();
+				exp.focus();
 			} else if (price == ""){
 				alert("상품 가격을 입력해주세요");
-				price.foucs();
+				price.focus();
+			} else if (discount == ""){
+				alert("할인율을 입력해주세요");
+				discount.focus();
+			} else if (promotion == ""){
+				alert("프로모션을 선택해주세요");
+				promotion.focus();
+			} else if (status == ""){
+				alert("상품 상태를 선택해주세요");
+				status.focus();
 			}
 			// 상품 판매 정보 전송
 			alert("상품 정보 전송");
-			alert(get.document.dataTable.action);
-			document.form.action = "${pageContext.request.contextPath}/admin_goods_insertsellDB.mdo"
-			document.form.submit();
+			$("#form").submit();
 		});		
 		
 	});
@@ -264,7 +291,105 @@
     	});
     })
     </script>
-    
+    <script>
+    $("#submit").on("click", function checks(){ 
+	var hobbyCheck = false; 
+	var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/); 
+	var getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/); 
+	var getName= RegExp(/^[가-힣]+$/); 
+	var fmt = RegExp(/^\d{6}[1234]\d{6}$/); 
+	var getPhone = RegExp(/^01\d\d{3,4}\d{4}$/); //형식 설정 
+	//아이디 공백 확인 
+	if($("#member_id").val() == ""){ 
+		alert("아이디를 입력해주세요"); 
+		$("#member_id").focus(); 
+		return false; 
+	} 
+	
+	//아이디 유효성검사 
+	if(!getCheck.test($("#member_id").val())){ 
+		alert("4자 이상 12자 이하 영문과 숫자로 입력해주세요"); 
+		$("#member_id").val(""); 
+		$("#member_id").focus(); 
+		return false; 
+	} 
+	
+	//비밀번호 공백 확인 
+	if($("#member_pw").val() == ""){ 
+		alert("패스워드를 입력해주세요"); 
+		$("#member_pw").focus(); 
+		return false; 
+	} 
+	
+	//아이디 비밀번호 같음 확인 
+	if($("#member_id").val() == $("#member_pw").val()){
+	 	alert("아이디와 비밀번호가 일치합니다"); 
+		$("#member_pw").val(""); 
+		$("#member_pw").focus(); 
+		return false; 
+	} 
+	
+	//비밀번호 유효성검사 
+	if(!getCheck.test($("#member_pw").val())){ 
+		alert("4자 이상 12자 이하 영문과 숫자로 입력해주세요"); 
+		$("#member_pw").val(""); 
+		$("#member_pw").focus(); 
+		return false; 
+	} 
+	
+	//비밀번호 확인란 공백 확인 
+	if($("#chk_member_pw").val() == ""){ 
+		alert("패스워드 확인란을 입력해주세요"); 
+		$("#chk_member_pw").focus(); 
+		return false; 
+	} 
+	
+	//비밀번호 서로확인 
+	if($("#member_pw").val() != $("#chk_member_pw").val()){ 
+		alert("동일한 비밀번호를 입력해주세요"); 
+		$("#member_pw").val(""); 
+		$("#chk_member_pw").val(""); 
+		$("#member_pw").focus(); 
+		return false; 
+	} 
+	
+	//이름 공백 검사 
+	if($("#member_name").val() == ""){ 
+		alert("이름을 입력해주세요"); 
+		$("#member_name").focus(); 
+		return false; 
+	} 
+	
+	//이메일 공백 확인 
+	if($("#member_email").val() == ""){ 
+		alert("이메일을 입력해주세요"); 
+		$("#member_email").focus(); 
+		return false; 
+	} 
+	//이메일 유효성 검사 
+	if(!getMail.test($("#member_email").val())){ 
+		alert("이메일형식에 맞게 입력해주세요") 
+		$("#member_email").val(""); 
+		$("#member_email").focus(); 
+		return false; 
+	} 
+	
+	//전화번호 공백 확인 
+	if($("#member_phone").val() == ""){ 
+		alert("전화번호를 입력해주세요"); 
+		$("#member_phone").focus(); 
+		return false; 
+	} 
+	
+	//전화번호 유효성 검사
+	if(!getPhone.test($("#member_phone").val())){ 
+		alert("전화번호를 맞게 입력해주세요") 
+		$("#member_phone").val(""); 
+		$("#member_phone").focus(); 
+		return false; 
+	}
+})
+</script>
 
    
 </body>
