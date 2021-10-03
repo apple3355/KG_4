@@ -99,17 +99,26 @@ public class GoodsController {
 		
 	}
 	
-		//장바구니 삭제
-			@ResponseBody
-			@RequestMapping("/deleteGoods_cart.do")
-			public String deleteGoods_cart(Goods_CartVO gsvo, HttpServletRequest request) {
+	//장바구니 삭제
+	@ResponseBody
+	@RequestMapping("/deleteGoods_cart.do")
+	public String deleteGoods_cart(Goods_CartVO gsvo, HttpServletRequest request) {
 				
-				String id = request.getParameter("goods_cart_no");
-				System.out.println(id);
-				//System.out.println(gcvo.getGoods_cart_no());
-				goodsService.deleteGoods_cart(gsvo);
-				
-				return null;
-			}
+		String id = request.getParameter("goods_cart_no");
+		System.out.println(id);
+		//System.out.println(gcvo.getGoods_cart_no());
+		goodsService.deleteGoods_cart(gsvo);
+		
+		return null;
+	}
+	
+	@RequestMapping("/test.do")
+	public String test() {
+		
+		return "goods/NewFile";
+		
+	}
+			
+			
 	
 }

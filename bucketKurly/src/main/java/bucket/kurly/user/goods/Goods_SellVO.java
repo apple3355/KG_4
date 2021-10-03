@@ -10,11 +10,12 @@ public class Goods_SellVO {
 	private String goods_sell_in_date;
 	private int goods_sell_in_ea;
 	private int goods_sell_stock_ea;
-	private String goods_sell_rea;
+	private String goods_sell_stock_rea;
 	private String goods_sell_exp;
 	private String goods_sell_promotion;
 	private String goods_sell_status;
 	private int goods_sell_discount;
+	
 	private GoodsVO goodsvo;
 	
 	public GoodsVO getGoodsvo() {
@@ -72,11 +73,12 @@ public class Goods_SellVO {
 	public void setGoods_sell_stock_ea(int goods_sell_stock_ea) {
 		this.goods_sell_stock_ea = goods_sell_stock_ea;
 	}
-	public String getGoods_sell_rea() {
-		return goods_sell_rea;
+	
+	public String getGoods_sell_stock_rea() {
+		return goods_sell_stock_rea;
 	}
-	public void setGoods_sell_rea(String goods_sell_rea) {
-		this.goods_sell_rea = goods_sell_rea;
+	public void setGoods_sell_stock_rea(String goods_sell_stock_rea) {
+		this.goods_sell_stock_rea = goods_sell_stock_rea;
 	}
 	public String getGoods_sell_exp() {
 		return goods_sell_exp;
@@ -108,7 +110,7 @@ public class Goods_SellVO {
 				+ ", goods_sell_sub_no=" + goods_sell_sub_no + ", goods_sell_goods_no=" + goods_sell_goods_no
 				+ ", goods_sell_price=" + goods_sell_price + ", goods_sell_in_date=" + goods_sell_in_date
 				+ ", goods_sell_in_ea=" + goods_sell_in_ea + ", goods_sell_stock_ea=" + goods_sell_stock_ea
-				+ ", goods_sell_rea=" + goods_sell_rea + ", goods_sell_exp=" + goods_sell_exp
+				+ ", goods_sell_stock_rea=" + goods_sell_stock_rea + ", goods_sell_exp=" + goods_sell_exp
 				+ ", goods_sell_promotion=" + goods_sell_promotion + ", goods_sell_status=" + goods_sell_status
 				+ ", goods_sell_discount=" + goods_sell_discount + ", goodsvo=" + goodsvo + "]";
 	}
