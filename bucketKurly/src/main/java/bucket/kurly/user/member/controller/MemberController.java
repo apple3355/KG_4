@@ -382,7 +382,7 @@ public class MemberController {
 	public String logout(HttpSession session){
 		session.invalidate();
 		
-    return "redirect:/main.do";
+		return "redirect:/main.do";
 	}
 	
 	// 경고창

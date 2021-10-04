@@ -56,9 +56,9 @@ public class AdminController {
 	@RequestMapping("/logout.mdo")
 	public String logout(HttpSession session) throws Exception {
 		session.invalidate();
-		return "admin_login.mdo";
+		System.out.println("로그아웃");
+		return "redirect:/admin_login.mdo";
 	}
-
 	
 	// 약관리스트 조회
 	@RequestMapping("/admin_terms_getList.mdo")

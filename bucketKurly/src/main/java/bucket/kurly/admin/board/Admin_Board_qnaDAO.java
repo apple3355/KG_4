@@ -42,6 +42,10 @@ public class Admin_Board_qnaDAO {
 		sqlSessionTemplate.insert("board-mapping.admin_insertBoard_qna_answer",vo);
 	}
 	
-	
+	////게시글 답변 대기 수 검색
+	public int selectBoard_qna_answait_num() {
+		System.out.println("Admin_Board_qnaDAO - selectBoard_qna_answait_num() 실행");
+		return sqlSessionTemplate.selectOne("board-mapping.admin_selectBoard_qna_answait_num");
+	}
 }
 

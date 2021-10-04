@@ -119,26 +119,6 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel" ></h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    
     <!-- Modal-->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -303,6 +283,7 @@
 			        	 $("#admin_password").val("");
 			        	 $("#passwordCheck").val("");
 			        	 $("#myModal").modal("hide");
+			        	 window.location.href = "${pageContext.request.contextPath}/admin_management.mdo";
 			         }else{
 				         alert("매니저 등록 실패 다시 시도해주세요");
 				         $("#admin_name").val("");
@@ -367,6 +348,7 @@
 			        	 $("#admin_password").val("");
 			        	 $("#passwordCheck").val("");
 			        	 $("#myModal").modal("hide");
+			        	 window.location.href = "${pageContext.request.contextPath}/admin_management.mdo";
 			         }else{
 				         alert("매니저 수정 실패 다시 시도해주세요");
 				         $("#admin_name").val("");
@@ -403,6 +385,7 @@
 			    success: function(data){
 			         if(data == 0){
 			        	 alert("매니저 삭제 성공");
+			        	 window.location.href = "${pageContext.request.contextPath}/admin_management.mdo";
 			         }else{
 				         alert("매니저 삭제 실패 다시 시도해주세요");
 				     }

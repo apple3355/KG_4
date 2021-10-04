@@ -64,7 +64,7 @@ public class Admin_Board_qnaController {
 		
 		vo.setBoard_qna_member_no(9999);
 		vo.setBoard_qna_writer("bucketkurly");
-		 Admin_Board_qnaService.insertBoard_qna_answer(vo); 
+		Admin_Board_qnaService.insertBoard_qna_answer(vo); 
 				
 		return "redirect:/admin_board_qna.mdo";
 	} 

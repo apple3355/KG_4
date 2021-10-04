@@ -11,6 +11,9 @@
 	href="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/favicon_v2.webp"
 	type="image/x-icon">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
 <link rel="stylesheet" type="text/css"
 	href="resources/css/order_form.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common.css">
@@ -92,14 +95,14 @@
 										<th>보내는 분</th>
 										<td>
 											한현준
-											<input type="hidden" name="orderer_name" value="한현준">
+											<input type="hidden" id="orderer_name" name="orderer_name" value="한현준">
 										</td>
 									</tr>
 									<tr>
 										<th>휴대폰</th>
 										<td>
 											01049914719
-											<input type="hidden" name="orderer_phone" value="01049914719">
+											<input type="hidden" id="orderer_phone" name="orderer_phone" value="01049914719">
 										</td>
 									</tr>
 									<tr>
@@ -248,7 +251,7 @@
 										<dl class="amount lst">
 											<dt class="tit">최종결제금액</dt>
 											<dd class="price">
-												<span id="paper_settlement">3,700</span>
+												<span id="paper_settlement">3700</span>
 												<span class="won">원</span>
 											</dd>
 										</dl>
@@ -620,50 +623,98 @@
 			<%@ include file="/WEB-INF/views/layout/footer.jsp"%>    
 		</div>
 	</div>
-<script>
-//결제방법 선택(카드 결제)
-$("#card_payments").on("click", function(){
-	$("#cardBenefitKakaopay").removeClass('label_radio checked');
-	$("#cardBenefitKakaopay").addClass('label_radio');
-	$("#settlekindCard").addClass('label_radio checked');
-	$(".card_detail").css({"display":"table-row"})
-})
-//결제방법 선택(카카오페이 결제)
-$("#kakaopay_payment").on("click", function(){
-	$("#settlekindCard").removeClass('label_radio checked');
-	$("#settlekindCard").addClass('label_radio');
-	$(".card_detail").css({"display":"none"});
-	$("#cardBenefitKakaopay").addClass('label_radio checked');
-})
-//카드 리스트 선택
-$("#card_list").on("click", function(){
-	var card = $("#card_list option:selected").text();
-	$("#card").text(card);
 	
-})
-
-//결제 동의 확인
-$("#payment").on("click", function(){
-	if($("#ordAgree").is(":checked") == false) {
-		alert("결제동의를 체크해주세요."); 
-		return;
-	}
-	$('#payment').prop("type", "submit");
-})
-
-$("#btn").on("click", function(){
-	$("#itemList").toggleClass('on');
-	var list = $('#itemList').attr('class');;
-	console.log(list);
-	if(list == "page_aticle order_goodslist on"){
-		$('.short_info').css({"display":"none"});
-		$('.list_product').css({"display":"block"});
-	}else{
-		$('.list_product').css({"display":"none"});
-		$('.short_info').css({"display":"block"});
-	}
+	<script>
+	//결제방법 선택(카드 결제)
+	$("#card_payments").on("click", function(){
+		$("#cardBenefitKakaopay").removeClass('label_radio checked');
+		$("#cardBenefitKakaopay").addClass('label_radio');
+		$("#settlekindCard").addClass('label_radio checked');
+		$(".card_detail").css({"display":"table-row"})
+	})
+	//결제방법 선택(카카오페이 결제)
+	$("#kakaopay_payment").on("click", function(){
+		$("#settlekindCard").removeClass('label_radio checked');
+		$("#settlekindCard").addClass('label_radio');
+		$(".card_detail").css({"display":"none"});
+		$("#cardBenefitKakaopay").addClass('label_radio checked');
+	})
+	//카드 리스트 선택
+	$("#card_list").on("click", function(){
+		var card = $("#card_list option:selected").text();
+		$("#card").text(card);
+		
+	})
 	
-})
+	//결제 동의 확인
+	$("#payment").on("click", function(){
+		
+		if($("#ordAgree").is(":checked") == false) {
+			alert("결제동의를 체크해주세요."); 
+			return;
+		}else{
+			var user_price = $("#paper_settlement").text();
+			var user_orderTitle = '주문명:결제테스트';
+			var user_email = $("#email").val();
+			var user_orderName = $("#orderer_name").val();
+			var user_orderPhone = $("#orderer_phone").val();
+			var user_address = '서울특별시 강남구 삼성동';
+			var user_zipcode = '123-456';
+			
+			
+			var IMP = window.IMP; // 생략가능
+			IMP.init('imp16410680');
+			// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+			// i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
+			IMP.request_pay({
+				pg : 'inicis', // version 1.1.0부터 지원.
+				pay_method : 'card',
+				merchant_uid : 'merchant_' + new Date().getTime(),
+				name : user_orderTitle,
+				amount : user_price,
+				buyer_email : user_email,
+				buyer_name : user_orderName,
+				buyer_tel : user_orderPhone,
+				buyer_addr : user_address,
+				buyer_postcode : user_zipcode,
+				m_redirect_url : 'https://www.yourdomain.com/payments/complete'
+			
+			}, function(rsp) {
+				console.log(rsp);
+				if (rsp.success) {
+					var msg = '결제가 완료되었습니다.';
+					msg += '고유ID : ' + rsp.imp_uid;
+					msg += '상점 거래ID : ' + rsp.merchant_uid;
+					msg += '결제 금액 : ' + rsp.paid_amount;
+					msg += '카드 승인번호 : ' + rsp.apply_num;
+				} else {
+					var msg = '결제에 실패하였습니다.';
+					msg += '에러내용 : ' + rsp.error_msg;
+				}
+				alert(msg);
+			});
+		}
+		
+	
+		
+	})
+	
+	$("#btn").on("click", function(){
+		$("#itemList").toggleClass('on');
+		var list = $('#itemList').attr('class');;
+		console.log(list);
+		if(list == "page_aticle order_goodslist on"){
+			$('.short_info').css({"display":"none"});
+			$('.list_product').css({"display":"block"});
+		}else{
+			$('.list_product').css({"display":"none"});
+			$('.short_info').css({"display":"block"});
+		}
+		
+	})
+	
+	
+	
 </script> 
 </body>
 </html>

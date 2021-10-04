@@ -94,7 +94,7 @@
 												<td><c:out value="${admin_Category_goods.category_goods_parent_no}"/></td>
 												<td><c:out value="${admin_Category_goods.category_goods_sub_no}"/></td>
 												<td><c:out value="${admin_Category_goods.category_goods_no}"/></td>
-												<td>><img src="${admin_Category_goods.category_goods_image_thumb}" style="width: 20%"/></td>
+												<td><img src="${admin_Category_goods.category_goods_image_thumb}" style="width: 20%"/></td>
 												<td><a href="javascript:void(0);" onClick="fn_category_details('${admin_Category_goods.category_goods_no}')"><c:out value="${admin_Category_goods.category_goods_name}"/></a></td>
 												<td><c:out value="${admin_Category_goods.category_goods_contents_tit_main}"/></td>												
 											</tr>

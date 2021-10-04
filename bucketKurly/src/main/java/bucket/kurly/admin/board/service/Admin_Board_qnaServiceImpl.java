@@ -39,6 +39,11 @@ public class Admin_Board_qnaServiceImpl implements Admin_Board_qnaService {
 	public void insertBoard_qna_answer(Admin_Board_qnaVO vo) {
 		dao.insertBoard_qna_answer(vo);
 	}
+
+	@Override
+	public int selectBoard_qna_answait_num() {
+		return dao.selectBoard_qna_answait_num();
+	}
 	
 }
 	

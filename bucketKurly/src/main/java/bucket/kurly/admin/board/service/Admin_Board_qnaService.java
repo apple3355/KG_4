@@ -21,4 +21,7 @@ public interface Admin_Board_qnaService {
 	//게시글 답변 추가
 	void insertBoard_qna_answer(Admin_Board_qnaVO vo);
 	
+	//게시글 답변 대기 수 검색
+	int selectBoard_qna_answait_num();
+	
 }

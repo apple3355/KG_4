@@ -5,6 +5,10 @@
 <configuration>
 	<properties resource="db.properties" />
 	<typeAliases>
+	
+		<typeAlias type="bucket.kurly.admin.member.Admin_MemberVO" alias="admin_member" />
+		<typeAlias type="bucket.kurly.admin.member.Admin_Member_DetailsVO" alias="admin_member_details" />
+		<typeAlias type="bucket.kurly.admin.member.Admin_Member_MembershipVO" alias="admin_member_membership" />
 		<typeAlias type="bucket.kurly.admin.category.Admin_Category_parentVO" alias="admin_category_parent" />
 		<typeAlias type="bucket.kurly.admin.category.Admin_Category_subVO" alias="admin_category_sub" />
 		<typeAlias type="bucket.kurly.admin.category.Admin_Category_goodsVO" alias="admin_category_goods" />

@@ -87,4 +87,56 @@
 		SELECT member_phone FROM tb_member WHERE member_phone = #{member_phone}
 	</select>
 	
+	
+	<!-- 관리자 -->
+	<!-- 회원 목록 조회 -->
+	<select id="admin_selectMember" resultType="admin_member">
+		SELECT MEMBER_NO,TB_MEMBER.MEMBER_ID,MEMBER_NAME,MEMBER_PHONE,MEMBER_RANK,MEMBER_LAST_LOGIN,MEMBER_POINT,MEMBER_STATUS,MEMBER_TOTAL_COST
+		FROM TB_MEMBER INNER JOIN TB_MEMBER_DETAILS
+		ON TB_MEMBER.MEMBER_ID=TB_MEMBER_DETAILS.MEMBER_ID
+	</select>
+	
+	<!-- 회원 상세 조회 -->
+	<select id="admin_selectMember_no" resultType="admin_member_details">
+		SELECT MEMBER_NO,TB_MEMBER.MEMBER_ID,MEMBER_NAME,MEMBER_PHONE,MEMBER_EMAIL,MEMBER_SEX,MEMBER_BIRTH,MEMBER_ADDRESS1,MEMBER_ADDRESS2,MEMBER_ZIPCODE,MEMBER_LAST_LOGIN,MEMBER_RANK,MEMBER_POINT,MEMBER_STATUS,MEMBER_TOTAL_COST 
+		FROM TB_MEMBER INNER JOIN TB_MEMBER_DETAILS
+		ON TB_MEMBER.MEMBER_ID=TB_MEMBER_DETAILS.MEMBER_ID
+		WHERE TB_MEMBER.MEMBER_ID= #{member_id} 
+		ORDER BY MEMBER_NO
+	</select>
+	
+	<!-- 회원 계정 상태 수정 -->
+	<update id="admin_updateMember_state" parameterType="admin_member">
+		UPDATE TB_MEMBER_DETAILS SET member_status= #{member_status} WHERE member_no= #{member_no}
+	</update>
+	
+	<!-- 등급 목록 조회 -->
+	<select id="admin_selectMember_membership" resultType="admin_member_membership">
+		SELECT * FROM TB_MEMBER_MEMBERSHIP
+		ORDER BY MEMBER_MEMBERSHIP_SAVEMONEY DESC
+	</select>
+	
+	<!-- 등급 추가 -->
+	<insert id="admin_insertMember_membership" parameterType="admin_member_membership">
+		INSERT INTO TB_MEMBER_MEMBERSHIP(member_membership_name,member_membership_savemoney,member_membership_performance)
+		VALUES(#{member_membership_name},#{member_membership_savemoney},#{member_membership_performance})
+	</insert>
+	
+	<!-- 등급 수정 -->
+	<update id="admin_updateMember_membership" parameterType="admin_member_membership">
+	   UPDATE TB_MEMBER_MEMBERSHIP SET member_membership_name=#{member_membership_name}, member_membership_savemoney=#{member_membership_savemoney}, member_membership_performance=#{member_membership_performance}
+	   WHERE member_membership_no=#{member_membership_no}
+	</update>
+		
+	<!-- 등급 삭제 -->
+	<delete id="admin_deleteMember_membership" parameterType="int">
+	  	DELETE FROM TB_MEMBER_MEMBERSHIP WHERE member_membership_no=#{member_membership_no}
+	</delete>
+	
+	
+	<!-- 총 회원수 -->
+	<select id="admin_selectMember_num" resultType="int">
+		SELECT COUNT(*) FROM TB_MEMBER
+	</select>
+	
 </mapper> 

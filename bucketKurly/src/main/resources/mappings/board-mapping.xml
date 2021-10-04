@@ -211,5 +211,10 @@
 		INSERT INTO TB_BOARD_QNA(BOARD_QNA_TYPE,BOARD_QNA_TITLE,BOARD_QNA_MEMBER_NO,BOARD_QNA_WRITER,BOARD_QNA_CONTENT,BOARD_QNA_GROUP,BOARD_QNA_GSTEP)
 		VALUES (#{board_qna_type},#{board_qna_title},#{board_qna_member_no},#{board_qna_writer},#{board_qna_content},#{board_qna_group},1)
 	</insert>
+	
+	
+	<select id="admin_selectBoard_qna_answait_num" resultType="int">
+		SELECT COUNT(BOARD_QNA_GROUP) FROM TB_BOARD_QNA WHERE BOARD_QNA_GROUP IN (SELECT BOARD_QNA_GROUP FROM TB_BOARD_QNA GROUP BY BOARD_QNA_GROUP HAVING COUNT(BOARD_QNA_GROUP) = 1) AND BOARD_QNA_GSTEP = 0
+	</select>
 
 </mapper>
