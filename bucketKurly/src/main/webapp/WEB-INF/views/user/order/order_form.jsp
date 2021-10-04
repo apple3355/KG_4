@@ -48,10 +48,10 @@
 							</ul>
 						</div>
 						<h2 class="tit_section fst">주문상품</h2>
-						<div id="itemList" class="page_aticle order_goodslist">
+						<div id="itemList" class="page_aticle order_goodslist" >
 							<div class="info_product">
-								<a class="btn" href="#none">
-									<span class="screen_out">펼침 / 닫힘</span>
+								<a class="btn" id="btn" href="#none">
+									<span class="screen_out" id="screen" >펼침 / 닫힘</span>
 								</a>
 								<div class="short_info">[연세우유 x 마켓컬리] 전용목장우유상품을 주문합니다.</div>
 							</div>
@@ -548,7 +548,7 @@
 											<div class="bg_dim"></div>
 											<div class="check type_form">
 												<label class="agree_check">
-													<input type="checkbox" name="ordAgree" value="y" required="" fld_esssential="" label="결제 진행 필수 동의" msgr="결제 진행 필수 동의 내용에 동의하셔야 결제가 가능합니다.">
+													<input type="checkbox" name="ordAgree" id="ordAgree" value="y" required="" fld_esssential="" label="결제 진행 필수 동의" msgr="결제 진행 필수 동의 내용에 동의하셔야 결제가 가능합니다.">
 													<span class="ico"></span>
 													결제 진행 필수 동의
 												</label>
@@ -600,7 +600,7 @@
 							<div id="paymentMethodResult">
 								<input type="hidden" name="payment_method" value="">
 							</div>
-							<input type="submit" value="결제하기" class="btn_payment">
+							<input type="button" id="payment" value="결제하기" class="btn_payment">
 						</form>
 						<ul class="notice_order">
 							<li>직접 주문취소는 <span class="emph">‘입금확인’</span> 상태에서만 가능합니다.</li>
@@ -621,23 +621,47 @@
 		</div>
 	</div>
 <script>
+//결제방법 선택(카드 결제)
 $("#card_payments").on("click", function(){
 	$("#cardBenefitKakaopay").removeClass('label_radio checked');
 	$("#cardBenefitKakaopay").addClass('label_radio');
 	$("#settlekindCard").addClass('label_radio checked');
 	$(".card_detail").css({"display":"table-row"})
 })
-
+//결제방법 선택(카카오페이 결제)
 $("#kakaopay_payment").on("click", function(){
 	$("#settlekindCard").removeClass('label_radio checked');
 	$("#settlekindCard").addClass('label_radio');
-	$(".card_detail").css({"display":"none"})
+	$(".card_detail").css({"display":"none"});
 	$("#cardBenefitKakaopay").addClass('label_radio checked');
 })
-
+//카드 리스트 선택
 $("#card_list").on("click", function(){
 	var card = $("#card_list option:selected").text();
 	$("#card").text(card);
+	
+})
+
+//결제 동의 확인
+$("#payment").on("click", function(){
+	if($("#ordAgree").is(":checked") == false) {
+		alert("결제동의를 체크해주세요."); 
+		return;
+	}
+	$('#payment').prop("type", "submit");
+})
+
+$("#btn").on("click", function(){
+	$("#itemList").toggleClass('on');
+	var list = $('#itemList').attr('class');;
+	console.log(list);
+	if(list == "page_aticle order_goodslist on"){
+		$('.short_info').css({"display":"none"});
+		$('.list_product').css({"display":"block"});
+	}else{
+		$('.list_product').css({"display":"none"});
+		$('.short_info').css({"display":"block"});
+	}
 	
 })
 </script> 

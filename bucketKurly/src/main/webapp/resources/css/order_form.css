@@ -25,6 +25,7 @@
   .order_goodslist {border-top: 1px solid #333;}
   .order_goodslist .info_product {position: relative;}
   .order_goodslist .info_product .btn {overflow: hidden;position: absolute;right: 4px;top: -45px;width: 30px;height: 30px;border: 0;background: url(https://res.kurly.com/pc/service/cart/2007/ico_dropup.svg) no-repeat 50% 50%;background-size: 30px 30px;transform: rotate(180deg);-webkit-transform: rotate(180deg);-moz-transform: rotate(180deg);-ms-transform: rotate(180deg);-o-transform: rotate(180deg);}
+  .order_goodslist.on .info_product .btn {transform: rotate(0);-webkit-transform: rotate(0);-moz-transform: rotate(0);-ms-transform: rotate(0);-o-transform: rotate(0);}
   .order_goodslist .info_product .short_info {height: 80px;padding-top: 29px;border-bottom: 1px solid #f4f4f4;font-weight: 700;font-size: 16px;color: #333;line-height: 24px;letter-spacing: -.35px;text-align: center;}
   .order_goodslist .info_product .short_info .num {font-weight: 700;color: #5f0080;}
   .order_goodslist .list_product {display: none;}
@@ -271,7 +272,7 @@
   .user_form .goodsinfo_table .agree_check .ico{margin-right:9px;vertical-align:-6px}
   .user_form .goodsinfo_table .list_agree{overflow:hidden;width:100%;padding-top:5px;clear:both}
   .user_form .goodsinfo_table .list_agree li{padding-top:4px}
-  .user_form .goodsinfo_table .list_agree .subject{display:inline-block;width:270px;padding-left:36px;font-size:14px;color:#333;line-height:20px;letter-spacing:-0.4px;vertical-align:0}
+  .user_form .goodsinfo_table .list_agree .subject{display:inline-block;width:283px;padding-left:36px;font-size:14px;color:#333;line-height:20px;letter-spacing:-0.4px;vertical-align:0}
   .user_form .goodsinfo_table .list_agree .subject .emph{color:#999}
   .user_form .goodsinfo_table .list_agree .link_terms{padding-right:11px;background:url(https://res.kurly.com/pc/ico/2011/ico_outlink.svg) no-repeat 100% 50%;background-size:6px 9px;color:#5f0080}
   /* 팝업 */
