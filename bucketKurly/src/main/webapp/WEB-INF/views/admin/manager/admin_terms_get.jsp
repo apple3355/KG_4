@@ -32,6 +32,10 @@
 <link
 	href="resources/bootstrap/vendor/datatables/dataTables.bootstrap4.min.css"
 	rel="stylesheet">
+	
+	<style type="text/css">
+		#buttondiv{text-align: right; margin-top:5px; margin-bottom:8px;}
+	</style>
 
 </head>
 
@@ -122,41 +126,31 @@
 													required><c:out value="${terms.terms_contents}" /></textarea>
 											</div>
 										</li>
-
 									</ul>
-									<div align="center">
-										<input style="padding: 2px" class="btn btn-warning btn-icon-split" type="submit" value="수정하기" id="registerBtn" />
-									</div>
-									<div align="right">
-										
-										
-										<a href="admin_terms_delete.mdo?no=${terms.seq}" class="btn btn-danger btn-icon-split" id="deleteBtn"> 
-											<span class="text">삭제하기</span>
-										</a>&nbsp;&nbsp;&nbsp; 
-										<a href="admin_terms_getList.mdo" class="btn btn-light btn-icon-split"> 
-											<span class="text">목록가기</span>
-										</a>
-										
-										<button type="button" class="btn btn-outline btn-info" 
-											onclick="location.href='joinUs.jsp' 
-											onClick="fn_updatePage('${no}')"> 
-											수정하기
-										</button>
-										<button type="button" class="btn btn-outline btn-danger" 
-											onclick="location.href='joinUs.jsp' 
-											onclick="fn_delete('${no}')">
-											삭제하기
-										</button>
-										<button type="button" class="btn btn-secondary btn-icon-splitbtn" 
-											onclick="javascript:history.back();">
-											목록보기
-										</button>
 									</div>
 								</div>
 							</div>
-
-						</div>
-					</form>
+						</form>
+	                      <div id="buttondiv">
+								<a href='javascript:void(0);' id ="registerBtn" onClick="fn_updatePage('${no}')" class="btn btn-info btn-icon-split" >
+									<span class="icon text-white-50">
+										<i class="fas fa-edit"></i>
+									</span>
+									<span class="text">수정 하기</span>
+								</a>
+								<a href="javascript:void(0);" onClick="fn_delete('${terms.seq}')" class="btn btn-danger btn-icon-split">
+									<span class="icon text-white-50">
+										<i class="fas fa-trash"></i>
+									</span>
+									<span class="text">삭제 하기</span>
+								</a>
+								<a href="javascript:history.back();" class="btn btn-secondary btn-icon-split">
+									<span class="icon text-white-50">
+										<i class="fas fa-arrow-right"></i>
+									</span>
+									<span class="text">목록 보기</span>
+								</a>
+							</div>
 				</div>
 				<!-- /.container-fluid -->
 
@@ -244,7 +238,8 @@
 		        	 $("#terms_title").val("");
 		        	 $('input[name="terms_essential"]').val("");
 		        	 $("#terms_contents").val("");
-		        	 $("#terms_reg_date").val("");		        	
+		        	 $("#terms_reg_date").val("");	
+		        	 window.location.href = "${pageContext.request.contextPath}/admin_terms_getList.mdo";
 		         }else{
 			         alert("약관수정 실패 다시 시도해주세요");
 			     }
@@ -255,6 +250,18 @@
 		  });
 	
 	})
+	function fn_delete(terms_no) {
+	  	  var result = confirm("이 약관을 삭제하시겠습니까? ");
+	      if(result){
+	    	 	var url = "${pageContext.request.contextPath}/admin_terms_delete.mdo";
+	  			url = url + "?no=" + terms_no;
+	  			location.href = url;
+	            alert("약관이 삭제되었습니다.");
+	      }else{
+		  	    location.href = "javascript:void(0);";
+	      }
+    	
+	}
 	</script>
 
 

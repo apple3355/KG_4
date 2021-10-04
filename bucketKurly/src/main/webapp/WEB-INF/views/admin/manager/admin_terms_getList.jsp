@@ -71,8 +71,6 @@
 							<div class="table-responsive">
 
 								<form action="" method="post">
-									
-									<div class="my-2"></div>
 									<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 										<thead>
 											<tr align="center">
@@ -84,10 +82,10 @@
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach items="${terms}" var="terms">
+											<c:forEach items="${terms}" var="terms" varStatus="status">
 												<tr>
-													<td style="text-align:center;">${terms.seq }</td>
-													<td style="text-align:center;">${terms.terms_no }</td>
+													<td style="text-align:center;">${status.count}</td>
+													<td style="text-align:center;">${terms.terms_no}</td>
 													<td><a type="hidden" href="admin_terms_get.mdo?no=${terms.seq }">${terms.terms_title }</a></td>
 													<td style="text-align:center;">${terms.terms_essential }</td>
 													<td style="text-align:center;">${terms.terms_reg_date }</td>
@@ -96,75 +94,46 @@
 										</tbody>
 									</table>
 								</form>
-								</div>
-								<!-- /.container-fluid -->
-
 							</div>
-							<!-- End of Main Content -->
-
-
-							<!-- Footer -->
-							<%@ include file="/WEB-INF/views/admin_layout/admin_footer.jsp"%>
-							<!-- End of Footer -->
-
+								<!-- /.container-fluid -->
 						</div>
-						<!-- End of Content Wrapper -->
+						<!-- End of Main Content -->
+
+	
+						<!-- Footer -->
+						<%@ include file="/WEB-INF/views/admin_layout/admin_footer.jsp"%>
+						<!-- End of Footer -->
 
 					</div>
-					<!-- End of Page Wrapper -->
+					<!-- End of Content Wrapper -->
 
-					<!-- Bootstrap core JavaScript-->
-					<script src="resources/bootstrap/vendor/jquery/jquery.min.js"></script>
-					<script
-						src="resources/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+				</div>
+				<!-- End of Page Wrapper -->
+				</div>
+			</div>
+		</div>
 
-					<!-- Core plugin JavaScript-->
-					<script
-						src="resources/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
+		<!-- Bootstrap core JavaScript-->
+		<script src="resources/bootstrap/vendor/jquery/jquery.min.js"></script>
+		<script
+			src="resources/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-					<!-- Custom scripts for all pages-->
-					<script src="resources/bootstrap/js/sb-admin-2.min.js"></script>
+		<!-- Core plugin JavaScript-->
+		<script
+			src="resources/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-					<!-- Page level plugins -->
-					<script
-						src="resources/bootstrap/vendor/datatables/jquery.dataTables.min.js"></script>
-					<script
-						src="resources/bootstrap/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+		<!-- Custom scripts for all pages-->
+		<script src="resources/bootstrap/js/sb-admin-2.min.js"></script>
 
-					<!-- Page level custom scripts -->
-					<script src="resources/bootstrap/js/demo/datatables-demo.js"></script>
+		<!-- Page level plugins -->
+		<script
+			src="resources/bootstrap/vendor/datatables/jquery.dataTables.min.js"></script>
+		<script
+			src="resources/bootstrap/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-
-					<!-- 버튼 이벤트 -->
-					<script>
-						//이전 버튼 이벤트
-						function fn_prev(page, range, rangeSize) {
-							var page = ((range - 2) * rangeSize) + 1;
-							var range = range - 1;
-							var url = "${pageContext.request.contextPath}/admin_banner_getList.mdo";
-							url = url + "?page=" + page;
-							url = url + "&range=" + range;
-							location.href = url;
-						}
-
-						//페이지 번호 클릭
-						function fn_pagination(page, range, rangeSize) {
-							var url = "${pageContext.request.contextPath}/admin_banner_getList.mdo";
-							url = url + "?page=" + page;
-							url = url + "&range=" + range;
-							location.href = url;
-						}
-
-						//다음 버튼 이벤트
-						function fn_next(page, range, rangeSize, searchKeyword) {
-							var page = parseInt((range * rangeSize)) + 1;
-							var range = parseInt(range) + 1;
-							var url = "${pageContext.request.contextPath}/admin_banner_getList.mdo";
-							url = url + "?page=" + page;
-							url = url + "&range=" + range;
-							location.href = url;
-						}
-					</script>
+		<!-- Page level custom scripts -->
+		<script src="resources/bootstrap/js/demo/datatables-demo.js"></script>
+	
 </body>
 
 </html>

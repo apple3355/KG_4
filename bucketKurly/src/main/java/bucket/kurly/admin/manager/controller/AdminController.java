@@ -102,10 +102,11 @@ public class AdminController {
 
 		adminService.insertAdminTerms(vo);
 
-		return "redirect:/manager/admin_terms_getList.mdo";
+		return "redirect:/admin_terms_getList.mdo";
 	}
 
 	// 약관 수정
+	@ResponseBody
 	@RequestMapping("/admin_terms_update.mdo")
 	public String updateAdminTerms(AdminTermsVO vo, @RequestParam Map<String, Object> param)
 			throws IOException, PSQLException {
@@ -119,8 +120,8 @@ public class AdminController {
 		adminService.updateAdminTerms(vo);
 		System.out.println("VO 출력: " + vo);
 
-		// return "redirect:/admin_terms_get.do?no=" + seq; //수정한 페이지 보여줌
-		return "redirect:/manager/admin_terms_getList.mdo";
+	
+		return "0";
 	}
 
 	// 약관 삭제
@@ -133,7 +134,7 @@ public class AdminController {
 
 		adminService.deleteAdminTerms(terms);
 		System.out.println("삭제 실행됨");
-		return "redirect:/manager/admin_terms_getList.mdo";
+		return "redirect:/admin_terms_getList.mdo";
 	}
 
 	// 관리자 등록
