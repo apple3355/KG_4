@@ -40,6 +40,7 @@
 		<result property="goods_sell_promotion"	column="goods_sell_promotion" />
 		<result property="goods_sell_status" column="goods_sell_status" />
 		<result property="goods_sell_discount"	column="goods_sell_discount" />
+		<collection property="goodsvo"	resultMap="goodsVo" />
 	</resultMap>
 
 	<resultMap type="goods_cart" id="goods_cart">
@@ -48,7 +49,7 @@
 		<result property="goods_cart_member_no"	column="goods_cart_member_no" />
 		<result property="goods_cart_count" column="goods_cart_count" />
 		<result property="goods_cart_status" column="goods_cart_status" />
-		<collection property="goods_sellvo"	resultMap="goods_sellVo" />
+		
 	</resultMap>
 
 	<!-- 상품리스트 목록 -->
@@ -91,7 +92,7 @@
 		sell.goods_sell_no,
 		goods.category_goods_image_thumb, 
 		goods.category_goods_name,
-		goods.category_goods_delivery_type,
+		goods.category_goods_packaging_type,
 		cart.goods_cart_count, 
 		sell.goods_sell_price, 
 		cart.goods_cart_status,

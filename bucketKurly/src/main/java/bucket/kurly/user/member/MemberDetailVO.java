@@ -7,6 +7,16 @@ public class MemberDetailVO {
 	private int member_point;
 	private int member_status;
 	private int member_total_cost;
+	private int member_no;
+	
+	
+	public int getMember_no() {
+		return member_no;
+	}
+
+	public void setMember_no(int member_no) {
+		this.member_no = member_no;
+	}
 
 	public String getMember_id() {
 		return member_id;
@@ -51,6 +61,8 @@ public class MemberDetailVO {
 	@Override
 	public String toString() {
 		return "MemberDetailVO [member_id=" + member_id + ", member_rank=" + member_rank + ", member_point="
-				+ member_point + ", member_status=" + member_status + ", member_total_cost=" + member_total_cost + "]";
+				+ member_point + ", member_status=" + member_status + ", member_total_cost=" + member_total_cost
+				+ ", member_no=" + member_no + "]";
 	}
+	
 }

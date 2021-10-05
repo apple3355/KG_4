@@ -88,9 +88,9 @@ public class MemberController {
 	// 회원정보 조회
 	@RequestMapping("/memberinfo.do")
 	public String getMember(HttpSession session, Model model) {
-		String memebr_id = (String) session.getAttribute("id");
-		MemberVO vo = memberService.selectMember(memebr_id);
-		MemberDetailVO dvo = memberService.selectMemberDetail(memebr_id);
+		String member_id = (String) session.getAttribute("id");
+		MemberVO vo = memberService.selectMember(member_id);
+		MemberDetailVO dvo = memberService.selectMemberDetail(member_id);
 
 
 		String birth = vo.getMember_birth();
@@ -132,6 +132,7 @@ public class MemberController {
 		session.setAttribute("rank", rank);
 		session.setAttribute("id", member_id);
 		session.setAttribute("name", result.getMember_name());
+		session.setAttribute("member_no",dvo.getMember_no());
 
 		return "redirect:/main.do";
 	}

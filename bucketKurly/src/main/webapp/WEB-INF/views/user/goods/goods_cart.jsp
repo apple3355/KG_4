@@ -86,7 +86,7 @@
 			<h3 class="screen_out">장바구니 상품 목록</h3> 
 			
 			
-			<form>
+			<form action="/order_form.do">
 				<div id="cartItemList" items="${countGoods_cart }" var="countGoods_cart"class="only_pc" style="min-height: 561px;">
 					<div class="">
 					<!-- div class "" or empty 시작 -->
@@ -115,6 +115,7 @@
 							<ul class="list" id="btn_dropup_cold">
 							<c:forEach items="${goods_cartShowVO }" var="goods_cartShowVO">
 							<c:set var="name" value="${goods_cartShowVO.category_goods_packaging_type }" />
+							<c:if test="${name eq '냉장/종이포장'}">
 								<li>
 									<div class="item" id="item">
 									<table>
@@ -164,7 +165,6 @@
                                        <!-- 할인률 숨김표시 -->
                                        <input type="hidden" class="goods_discountRate" id="${goods_cartShowVO.category_goods_name}_discprice" value="${goods_cartShowVO.goods_sell_discount}" />
                                        <input type="hidden" class="goods_packagingType" id="${goods_cartShowVO.category_goods_packaging_type }" />
-                                       	<span class="goods_packagingType"/><c:out value="${goods_cartShowVO.category_goods_packaging_type }" />
                                        
                                        <p class="noti"></p>
                                     </div>
@@ -179,6 +179,7 @@
 									</tr>
 									</table>
 								</li>
+								</c:if>
 								</c:forEach>
 							</ul>
 						</div>
@@ -235,19 +236,18 @@
                                     </div>
                                     </th>
                                  
-                                <th>
+                                <th style="padding-left : 75px;">
                                  <div class="price">
                                     <div class="in_price">
                                     <!-- 원가 * 할인율 * 수량 -->
                                        <span class="selling" id="temp" ><fmt:parseNumber><c:out value="${(goods_cartShowVO.goods_sell_price - goods_cartShowVO.goods_sell_price / goods_cartShowVO.goods_sell_discount) * goods_cartShowVO.goods_cart_count}" /></fmt:parseNumber>
-                                       <span class="won"></span> </span>
+                                       <span class="won">원</span> </span>
                                        <!-- 화면에 보이는 원가 (회색글자)-->
                                        <span class="cost" id="tempdisc"><c:out value="${goods_cartShowVO.goods_sell_price}" /> 
                                        <span class="won">원</span> </span>
                                        <!-- 할인률 숨김표시 -->
                                        <input type="hidden" class="goods_discountRate" id="${goods_cartShowVO.category_goods_name}_discprice" value="${goods_cartShowVO.goods_sell_discount}" />
                                        <input type="hidden" class="goods_packagingType" id="${goods_cartShowVO.category_goods_packaging_type }" />
-                                       	<span class="goods_packagingType"/><c:out value="${goods_cartShowVO.category_goods_packaging_type }" />
                                        
                                        <p class="noti"></p>
                                     </div>
@@ -320,19 +320,18 @@
                                     </div>
                                     </th>
                                  
-                                <th>
+                                <th style="padding-left : 75px;">
                                  <div class="price">
                                     <div class="in_price">
                                     <!-- 원가 * 할인율 * 수량 -->
                                        <span class="selling" id="temp" ><fmt:parseNumber><c:out value="${(goods_cartShowVO.goods_sell_price - goods_cartShowVO.goods_sell_price / goods_cartShowVO.goods_sell_discount) * goods_cartShowVO.goods_cart_count}" /></fmt:parseNumber>
-                                       <span class="won"></span> </span>
+                                       <span class="won">원</span> </span>
                                        <!-- 화면에 보이는 원가 (회색글자)-->
                                        <span class="cost" id="tempdisc"><c:out value="${goods_cartShowVO.goods_sell_price}" /> 
                                        <span class="won">원</span> </span>
                                        <!-- 할인률 숨김표시 -->
                                        <input type="hidden" class="goods_discountRate" id="${goods_cartShowVO.category_goods_name}_discprice" value="${goods_cartShowVO.goods_sell_discount}" />
                                        <input type="hidden" class="goods_packagingType" id="${goods_cartShowVO.category_goods_packaging_type }" />
-                                       	<span class="goods_packagingType"/><c:out value="${goods_cartShowVO.category_goods_packaging_type }" />
                                        
                                        <p class="noti"></p>
                                     </div>
@@ -395,19 +394,13 @@
 					<div class="inner_result" style="top: 60px;">
 						<div class="cart_delivery">
 							<h3 class="tit">배송지</h3>
-							<c:if test=""></c:if>
-							<div class="no_address">
-								<span class="emph">${memberVO.member_address1 }</span><br><span><br>${memberVO.member_address2 }</span>
-								<a href="#none" class="btn default" id="btn default" onclick="findAddr()">
-								<span class="ico"></span>주소 검색</a>
-							</div>
-							
 							<div class="address">
 								<input type="hidden" name="member_zipcode" id="zonecode" size="5" />
-								<input type="text" class="addr" name="member_address1" id="addr" readonly="readonly" size="50" style="border:0" />
-								<input type="text" class="addr" name="member_address2" id="adrr_sub" placeholder="상세주소를 입력해주세요" size="50" style="border:0"/>
-								<span class="delivery star">샛별배송</span>
-								<a href="#none" class="btn default" id="btn default" onclick="findAddr()">배송지 변경</a>
+								<input type="text" class="emph" name="member_address1" id="addr" readonly="readonly" size="50" style="border:0" value="${memberVO.member_address1 }" />
+								<br><br>
+								<input type="text" class="emph" name="member_address2" id="addr_sub"  size="50" style="border:0" value="${memberVO.member_address2 }" />
+								<a href="#none" class="btn default" id="btn default" onclick="findAddr()">
+								<span class="ico"></span>배송지 변경</a>
 							</div>
 						</div>
 						<div class="amount_view">
@@ -455,10 +448,8 @@
 				</div><!-- class empty or "" 끝 -->
 				</div>
 			</form>
+			
 
-			<form id="viewCart" name="frmCart" method="post" action="/shop/order/order.php">
-				<input type="hidden" name="mode" value="setOrder">
-			</form>
 			
 			<script src="/appProxy/appData.php?ver=1.39.11"></script>
 			<script src="/asset/js/cart/list.bundle.js?ver=1.39.11"></script>
@@ -741,6 +732,10 @@ function findAddr(){
 			}
 			}
 	}).open();
+	$('#addr_sub').css({'border' : '1px solid gray'});
+	$('#addr_sub').css({'border-radius' : '15px'});
+	$('#addr_sub').val("");
+	$('#addr_sub').attr('placeholder',"상세주소를 입력해주세요");
 	}
 </script>
 

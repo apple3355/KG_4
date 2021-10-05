@@ -17,12 +17,12 @@
 	
 	<!-- 회원 정보 -->
 	<select id="selectMember" resultType="member">
-		SELECT member_id, member_pw, member_name, member_email, member_birth, member_phone  FROM tb_member WHERE member_id=#{member_id}
+		SELECT * FROM tb_member WHERE member_id=#{member_id}
 	</select>
 	
 	<!-- 회원 상세정보 -->
 	<select id="selectMemberDetail" resultType="memberDetail">
-		SELECT member_rank, member_point, member_total_cost FROM tb_member_details WHERE member_id=#{member_id}
+		SELECT * FROM tb_member_details WHERE member_id=#{member_id}
 	</select>
 	
 	<!-- 회원 추가 -->
