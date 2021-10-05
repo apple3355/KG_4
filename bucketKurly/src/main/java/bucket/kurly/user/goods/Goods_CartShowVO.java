@@ -8,17 +8,9 @@ public class Goods_CartShowVO {
 	private String category_goods_image_thumb;
 	private String category_goods_name;
 	private String category_goods_delivery_type;
+	private String category_goods_packaging_type;
 	private int goods_sell_price;
 	private int goods_sell_discount;
-	
-	
-	
-	public int getGoods_sell_discount() {
-		return goods_sell_discount;
-	}
-	public void setGoods_sell_discount(int goods_sell_discount) {
-		this.goods_sell_discount = goods_sell_discount;
-	}
 	public int getGoods_cart_no() {
 		return goods_cart_no;
 	}
@@ -61,11 +53,23 @@ public class Goods_CartShowVO {
 	public void setCategory_goods_delivery_type(String category_goods_delivery_type) {
 		this.category_goods_delivery_type = category_goods_delivery_type;
 	}
+	public String getCategory_goods_packaging_type() {
+		return category_goods_packaging_type;
+	}
+	public void setCategory_goods_packaging_type(String category_goods_packaging_type) {
+		this.category_goods_packaging_type = category_goods_packaging_type;
+	}
 	public int getGoods_sell_price() {
 		return goods_sell_price;
 	}
 	public void setGoods_sell_price(int goods_sell_price) {
 		this.goods_sell_price = goods_sell_price;
+	}
+	public int getGoods_sell_discount() {
+		return goods_sell_discount;
+	}
+	public void setGoods_sell_discount(int goods_sell_discount) {
+		this.goods_sell_discount = goods_sell_discount;
 	}
 	@Override
 	public String toString() {
@@ -73,6 +77,7 @@ public class Goods_CartShowVO {
 				+ ", goods_cart_count=" + goods_cart_count + ", goods_cart_status=" + goods_cart_status
 				+ ", category_goods_image_thumb=" + category_goods_image_thumb + ", category_goods_name="
 				+ category_goods_name + ", category_goods_delivery_type=" + category_goods_delivery_type
-				+ ", goods_sell_price=" + goods_sell_price + ", goods_sell_discount=" + goods_sell_discount + "]";
+				+ ", category_goods_packaging_type=" + category_goods_packaging_type + ", goods_sell_price="
+				+ goods_sell_price + ", goods_sell_discount=" + goods_sell_discount + "]";
 	}
 }

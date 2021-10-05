@@ -40,6 +40,8 @@
 <!-- header 끝-->
 
 <!-- main 시작 -->
+
+
 <div id="header">
 	<div class="tit_page">
 		<h2 class="tit">장바구니</h2>
@@ -81,7 +83,8 @@
 			
 			<link rel="stylesheet" type="text/css" href="/asset/css/cart/list.bundle.css?ver=1.39.11">
 			<link rel="preload" as="script" href="/asset/js/cart/list.bundle.js?ver=1.39.11">
-			<h3 class="screen_out">장바구니 상품 목록</h3>
+			<h3 class="screen_out">장바구니 상품 목록</h3> 
+			
 			
 			<form>
 				<div id="cartItemList" items="${countGoods_cart }" var="countGoods_cart"class="only_pc" style="min-height: 561px;">
@@ -111,12 +114,19 @@
 							</div>
 							<ul class="list" id="btn_dropup_cold">
 							<c:forEach items="${goods_cartShowVO }" var="goods_cartShowVO">
+							<c:set var="name" value="${goods_cartShowVO.category_goods_packaging_type }" />
 								<li>
 									<div class="item" id="item">
-										<label class="check">
+									<table>
+
+								<tr>
+									<th><label class="check">
 											<input type="checkbox" id="checkbox" name="chkItem" checked="" onclick='checkSelectAll()'>
 												 <span class="ico"></span>
 										</label>
+									</th>
+										
+									<th>
 										<div class="name">
 											<div class="inner_name">
 												<a href="#" class="package ">
@@ -124,43 +134,56 @@
 												<div class="info"></div>
 											</div>
 										</div>
-										<div class="goods">
-											<a href="#" class="thumb " style="background-image: url(&quot;${goods_cartShowVO.category_goods_image_thumb}&quot;);">상품이미지</a>
-											<div class="price">
-												<div class="in_price">
-													<!-- 
-													<span class="selling"><c:out value="${goods_cartShowVO.goods_sell_price}"/>
-														<span class="won">원</span>
-													</span>
-													 -->
-													 <span class="selling" id="${goods_cartShowVO.category_goods_name}_price"><fmt:formatNumber><c:out value="${goods_cartShowVO.goods_sell_price - goods_cartShowVO.goods_sell_price / goods_cartShowVO.goods_sell_discount}"/></fmt:formatNumber>
-														<span class="won">원</span>
-													</span>
-													 
-													<span class="cost"><c:out value="${goods_cartShowVO.goods_sell_price} "/>
-														<span class="won">원</span>
-													</span>
-													<!-- 할인가 숨김표시 -->
-													<input type="hidden" value="${goods_cartShowVO.goods_sell_discount}" />
-													
-													<p class="noti"></p>
-												</div>
-													<div class="stamper count">
-                                      					<button type="button" id="${goods_cartShowVO.category_goods_name}_down" class="btn minus">-</button>
-                                       					<!--원래 코드:  
-                                       					<input type="number" id="stepperCounter" class="num" readonly="readonly" value="<c:out value="${goods_cartShowVO.goods_cart_count}"/>">  
-                                       					--> 
-                                        				<input type="number" name="stepperCounter" id="${goods_cartShowVO.category_goods_name}_cont" readonly="readonly" onfocus="this.blur()" class="num" value="${goods_cartShowVO.goods_cart_count}" >                                        
-                                        				<button type="button" id="${goods_cartShowVO.category_goods_name}_up" class="btn plus">+</button>
-                                    				</div>
-											</div>
-										</div>
+									</th>
+								
+								<th>		
+								<div class="goods">
+                                 <a href="#" class="thumb " style="background-image: url(&quot;${goods_cartShowVO.category_goods_image_thumb}&quot;);">상품이미지</a>
+                                 </div>
+                                 </th>
+                                 
+                                 <th> 
+                                    <div class="stamper count">
+                                       <button type="button" id="${goods_cartShowVO.category_goods_name}_down" class="btn minus">-</button>
+                                       <!--원래 코드:  <input type="number" id="stepperCounter" class="num" readonly="readonly" value="<c:out value="${goods_cartShowVO.goods_cart_count}"/>">  --> 
+                                        <input type="number" name="stepperCounter" id="${goods_cartShowVO.category_goods_name}_cont"
+                                          readonly="readonly" onfocus="this.blur()" class="num" value="${goods_cartShowVO.goods_cart_count}" >                                        
+                                        <button type="button" id="${goods_cartShowVO.category_goods_name}_up" class="btn plus">+</button>
+                                    </div>
+                                    </th>
+                                 
+                                <th style="padding-left : 75px;">
+                                 <div class="price">
+                                    <div class="in_price">
+                                    <!-- 원가 * 할인율 * 수량 -->
+                                       <span class="selling" id="temp" ><fmt:parseNumber><c:out value="${(goods_cartShowVO.goods_sell_price - goods_cartShowVO.goods_sell_price / goods_cartShowVO.goods_sell_discount) * goods_cartShowVO.goods_cart_count}" /></fmt:parseNumber>
+                                       <span class="won">원</span> </span>
+                                       <!-- 화면에 보이는 원가 (회색글자)-->
+                                       <span class="cost" id="tempdisc"><c:out value="${goods_cartShowVO.goods_sell_price}" /> 
+                                       <span class="won">원</span> </span>
+                                       <!-- 할인률 숨김표시 -->
+                                       <input type="hidden" class="goods_discountRate" id="${goods_cartShowVO.category_goods_name}_discprice" value="${goods_cartShowVO.goods_sell_discount}" />
+                                       <input type="hidden" class="goods_packagingType" id="${goods_cartShowVO.category_goods_packaging_type }" />
+                                       	<span class="goods_packagingType"/><c:out value="${goods_cartShowVO.category_goods_packaging_type }" />
+                                       
+                                       <p class="noti"></p>
+                                    </div>
+                                    </div> 
+                                  </th>
+                                   
+                                   <th>
+                                
 										<button type="button" id="${goods_cartShowVO.goods_cart_no}" class="btn_delete" onclick="btn_delete(this.id)">상품 삭제</button>
-									</div>
+								  </th>
+								  
+									</tr>
+									</table>
 								</li>
 								</c:forEach>
 							</ul>
 						</div>
+						
+						
 						<div class="box room">
 							<div class="tit_box">
 								<h4 class="tit">
@@ -171,12 +194,82 @@
 								</h4>
 								<button type="button" class="btn_dropup" id="btn_room" >접기 / 펼치기</button>
 							</div>
-							
 							<ul class="list" id="btn_dropup_room">
+							<c:forEach items="${goods_cartShowVO }" var="goods_cartShowVO">
+							<c:set var="name" value="${goods_cartShowVO.category_goods_packaging_type }" />
+							<c:if test="${name eq '상온/종이포장'}">
+								<li>
+									<div class="item" id="item">
+									<table>
+
+								<tr>
+									<th><label class="check">
+											<input type="checkbox" id="checkbox" name="chkItem" checked="" onclick='checkSelectAll()'>
+												 <span class="ico"></span>
+										</label>
+									</th>
+										
+									<th>
+										<div class="name">
+											<div class="inner_name">
+												<a href="#" class="package ">
+												<c:out value="${goods_cartShowVO.category_goods_name}"/></a>
+												<div class="info"></div>
+											</div>
+										</div>
+									</th>
+								
+								<th>		
+								<div class="goods">
+                                 <a href="#" class="thumb " style="background-image: url(&quot;${goods_cartShowVO.category_goods_image_thumb}&quot;);">상품이미지</a>
+                                 </div>
+                                 </th>
+                                 
+                                 <th> 
+                                    <div class="stamper count">
+                                       <button type="button" id="${goods_cartShowVO.category_goods_name}_down" class="btn minus">-</button>
+                                       <!--원래 코드:  <input type="number" id="stepperCounter" class="num" readonly="readonly" value="<c:out value="${goods_cartShowVO.goods_cart_count}"/>">  --> 
+                                        <input type="number" name="stepperCounter" id="${goods_cartShowVO.category_goods_name}_cont"
+                                          readonly="readonly" onfocus="this.blur()" class="num" value="${goods_cartShowVO.goods_cart_count}" >                                        
+                                        <button type="button" id="${goods_cartShowVO.category_goods_name}_up" class="btn plus">+</button>
+                                    </div>
+                                    </th>
+                                 
+                                <th>
+                                 <div class="price">
+                                    <div class="in_price">
+                                    <!-- 원가 * 할인율 * 수량 -->
+                                       <span class="selling" id="temp" ><fmt:parseNumber><c:out value="${(goods_cartShowVO.goods_sell_price - goods_cartShowVO.goods_sell_price / goods_cartShowVO.goods_sell_discount) * goods_cartShowVO.goods_cart_count}" /></fmt:parseNumber>
+                                       <span class="won"></span> </span>
+                                       <!-- 화면에 보이는 원가 (회색글자)-->
+                                       <span class="cost" id="tempdisc"><c:out value="${goods_cartShowVO.goods_sell_price}" /> 
+                                       <span class="won">원</span> </span>
+                                       <!-- 할인률 숨김표시 -->
+                                       <input type="hidden" class="goods_discountRate" id="${goods_cartShowVO.category_goods_name}_discprice" value="${goods_cartShowVO.goods_sell_discount}" />
+                                       <input type="hidden" class="goods_packagingType" id="${goods_cartShowVO.category_goods_packaging_type }" />
+                                       	<span class="goods_packagingType"/><c:out value="${goods_cartShowVO.category_goods_packaging_type }" />
+                                       
+                                       <p class="noti"></p>
+                                    </div>
+                                    </div> <!-- 1005 닫음 -->
+                                  </th>
+                                   
+                                   <th>
+                                
+										<button type="button" id="${goods_cartShowVO.goods_cart_no}" class="btn_delete" onclick="btn_delete(this.id)">상품 삭제</button>
+								  </th>
+								  
+									</tr>
+									</table>
+								</li>
+								</c:if>
+								</c:forEach>
 							</ul>
-							
 						</div>
-						<div class="box frozen">
+						
+						
+						
+							<div class="box frozen">
 							<div class="tit_box">
 								<h4 class="tit">
 								<span class="inner_tit">
@@ -184,13 +277,81 @@
 									</span>냉동 상품
 								</span>
 								</h4>
-								<button type="button" class="btn_dropup" id="btn_frozen">접기 / 펼치기</button>
+								<button type="button" class="btn_dropup" id="btn_frozen" >접기 / 펼치기</button>
 							</div>
-							
 							<ul class="list" id="btn_dropup_frozen">
+							<c:forEach items="${goods_cartShowVO }" var="goods_cartShowVO">
+							<c:set var="name" value="${goods_cartShowVO.category_goods_packaging_type }" />
+							<c:if test="${name eq '냉동/종이포장'}">
+								<li>
+									<div class="item" id="item">
+									<table>
+
+								<tr>
+									<th><label class="check">
+											<input type="checkbox" id="checkbox" name="chkItem" checked="" onclick='checkSelectAll()'>
+												 <span class="ico"></span>
+										</label>
+									</th>
+										
+									<th>
+										<div class="name">
+											<div class="inner_name">
+												<a href="#" class="package ">
+												<c:out value="${goods_cartShowVO.category_goods_name}"/></a>
+												<div class="info"></div>
+											</div>
+										</div>
+									</th>
+								
+								<th>		
+								<div class="goods">
+                                 <a href="#" class="thumb " style="background-image: url(&quot;${goods_cartShowVO.category_goods_image_thumb}&quot;);">상품이미지</a>
+                                 </div>
+                                 </th>
+                                 
+                                 <th> 
+                                    <div class="stamper count">
+                                       <button type="button" id="${goods_cartShowVO.category_goods_name}_down" class="btn minus">-</button>
+                                       <!--원래 코드:  <input type="number" id="stepperCounter" class="num" readonly="readonly" value="<c:out value="${goods_cartShowVO.goods_cart_count}"/>">  --> 
+                                        <input type="number" name="stepperCounter" id="${goods_cartShowVO.category_goods_name}_cont"
+                                          readonly="readonly" onfocus="this.blur()" class="num" value="${goods_cartShowVO.goods_cart_count}" >                                        
+                                        <button type="button" id="${goods_cartShowVO.category_goods_name}_up" class="btn plus">+</button>
+                                    </div>
+                                    </th>
+                                 
+                                <th>
+                                 <div class="price">
+                                    <div class="in_price">
+                                    <!-- 원가 * 할인율 * 수량 -->
+                                       <span class="selling" id="temp" ><fmt:parseNumber><c:out value="${(goods_cartShowVO.goods_sell_price - goods_cartShowVO.goods_sell_price / goods_cartShowVO.goods_sell_discount) * goods_cartShowVO.goods_cart_count}" /></fmt:parseNumber>
+                                       <span class="won"></span> </span>
+                                       <!-- 화면에 보이는 원가 (회색글자)-->
+                                       <span class="cost" id="tempdisc"><c:out value="${goods_cartShowVO.goods_sell_price}" /> 
+                                       <span class="won">원</span> </span>
+                                       <!-- 할인률 숨김표시 -->
+                                       <input type="hidden" class="goods_discountRate" id="${goods_cartShowVO.category_goods_name}_discprice" value="${goods_cartShowVO.goods_sell_discount}" />
+                                       <input type="hidden" class="goods_packagingType" id="${goods_cartShowVO.category_goods_packaging_type }" />
+                                       	<span class="goods_packagingType"/><c:out value="${goods_cartShowVO.category_goods_packaging_type }" />
+                                       
+                                       <p class="noti"></p>
+                                    </div>
+                                    </div> <!-- 1005 닫음 -->
+                                  </th>
+                                   
+                                   <th>
+                                
+										<button type="button" id="${goods_cartShowVO.goods_cart_no}" class="btn_delete" onclick="btn_delete(this.id)">상품 삭제</button>
+								  </th>
+								  
+									</tr>
+									</table>
+								</li>
+								</c:if>
+								</c:forEach>
 							</ul>
-							
 						</div>
+		
 						
 					<div class="cart_select">
 						<div class="inner_select">
@@ -234,10 +395,19 @@
 					<div class="inner_result" style="top: 60px;">
 						<div class="cart_delivery">
 							<h3 class="tit">배송지</h3>
+							<c:if test=""></c:if>
 							<div class="no_address">
-							<span class="emph">배송지를 입력</span>하고<br>배송유형을 확인해 보세요!
-							<a href="#" class="btn default" id="btn default" onclick="findAddr()">
-							<span class="ico"></span>주소 검색</a>
+								<span class="emph">${memberVO.member_address1 }</span><br><span><br>${memberVO.member_address2 }</span>
+								<a href="#none" class="btn default" id="btn default" onclick="findAddr()">
+								<span class="ico"></span>주소 검색</a>
+							</div>
+							
+							<div class="address">
+								<input type="hidden" name="member_zipcode" id="zonecode" size="5" />
+								<input type="text" class="addr" name="member_address1" id="addr" readonly="readonly" size="50" style="border:0" />
+								<input type="text" class="addr" name="member_address2" id="adrr_sub" placeholder="상세주소를 입력해주세요" size="50" style="border:0"/>
+								<span class="delivery star">샛별배송</span>
+								<a href="#none" class="btn default" id="btn default" onclick="findAddr()">배송지 변경</a>
 							</div>
 						</div>
 						<div class="amount_view">
@@ -404,57 +574,56 @@ $('#btn_frozen').click(function(){
 </script>
  
 <!-- 장바구니 숫자 올리기/내리기 -->
+
  
  <script>
-   $(document).on('click', '.minus', function() {
-      let num = $(this).next().val();
-      console.log(num);
-      let goods_id = $(this).attr("id").split("_down")[0];
-      console.log(goods_id);
-      if (num > 1) {
-         $(this).next().val(--num);
-         
-         let afterPrice = $("#"+goods_id+"_price").text();
-         afterPrice *= num / (num + 1);
-         
-         // 변경된 숫자 및 금액 반영 아직 안돌아감
-         $("#"+goods_id+"_price").text(afterPrice);
-         calc();
-   
-         //ajax 처리해야함
-      }
+ $(document).on('click', '.minus', function() { //수량의 - 버튼 클릭 시 
+	   let num = $(this).next().val();
+	   var tr = $(this).parent().parent().parent();
+	   var th = tr.children();
+	   var price = th.eq(4).children().children().children();
+	   var count = th.eq(3).children().children();
+	   let goods_id = $(this).attr("id").split("_down")[0];
+	   if (num > 1) {
+	      $(this).next().val(--num);
+	      
+	      var selling = parseInt(price.eq(0).text());
+		     var cnt = parseInt(count.eq(1).val());
+		     var mp = selling - selling/(cnt+1);
+		     console.log(mp);
+		     console.log(selling);
+		     console.log(cnt);
+		     price.eq(0).text(mp + "원");
 
-   });
- 
-   $(document).on('click', '.plus', function() {
-      let num = $(this).prev().val();
-      console.log(num);
-      let goods_id = $(this).attr("id").split("_up")[0];
-      console.log(goods_id);
-      let afterPrice = $("#"+goods_id+"_price").text();
-      console.log(afterPrice);
-     
-      //let afterPrice = $("#"+goods_id+"_price").text();
-      //let afterPrice = $(".selling").text();
-      
-      
-      console.log(afterPrice);
-      /* alert(num) */
-      if (num < 1000) {
-         $(this).prev().val(++num);
+		
+	      //ajax 처리해야함
+	   }
 
-         let afterPrice = $("#"+goods_id+"_price").text();
+	});
 
-         afterPrice *= num / (num - 1)
-         
-         // 변경된 숫자 및 금액 반영  아직 안돌아감
-         $("#"+goods_id+"_price").text(afterPrice);
-         calc();
-         
-         //ajax 처리해야함
-         }
-      });
-   
+	$(document).on('click', '.plus', function() { //수량의 + 버튼 클릭 시 
+	   let num = $(this).prev().val(); //수량버튼의 숫자 부분
+	   var tr = $(this).parent().parent().parent();
+	   var th = tr.children();
+	   var price = th.eq(4).children().children().children();
+	   var count = th.eq(3).children().children();
+	   let goods_id = $(this).attr("id").split("_up")[0]; //상품의 name의 수량을 올림
+
+	   if (num < 10) {
+	      $(this).prev().val(++num); //조건문일 때 수량 올림
+
+	     var selling = parseInt(price.eq(0).text());
+	     var cnt = parseInt(count.eq(1).val());
+	     var mp = selling + selling/(cnt-1);
+	     console.log(mp);
+	     console.log(selling);
+	     console.log(cnt);
+	     price.eq(0).text(mp + "원");
+
+	     
+	      //ajax 처리해야함
+	      }
+	   });
  </script>
  
 
@@ -532,7 +701,7 @@ $(document).ready(function(){
 <script type="text/javascript">
 function btn_delete(id){
 	var result = confirm("해당 품목을 삭제하시겠습니까?");
-	
+
 	if(result){
 		$.ajax({
 			url: '/deleteGoods_cart.do',
@@ -561,7 +730,7 @@ function findAddr(){
 			// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 			// 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
 			// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-			var roadAddr = data.roadAddress; // 도로명 주소 변수
+			var roadAddr = data.roadAddress; // 도로명 주소 변수9
 			var jibunAddr = data.jibunAddress; // 지번 주소 변수
 			// 우편번호와 주소 정보를 해당 필드에 넣는다.
 			document.getElementById('zonecode').value = data.zonecode;
@@ -573,6 +742,10 @@ function findAddr(){
 			}
 	}).open();
 	}
+</script>
+
+<script type="text/javascript">
+
 </script>
 
 <!-- 주문하기 클릭 페이지 이동 -->
