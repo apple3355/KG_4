@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,23 +58,25 @@
 								<a class="btn" id="btn" href="#none">
 									<span class="screen_out" id="screen" >펼침 / 닫힘</span>
 								</a>
-								<div class="short_info">[연세우유 x 마켓컬리] 전용목장우유상품을 주문합니다.</div>
+								<div class="short_info">${goods_cartShowVO[0].category_goods_name}</div>
 							</div>
 							<ul class="list_product">
+							<c:forEach items="${goods_cartShowVO }" var="goods_cartShowVO">
 								<li>
 									<div class="thumb">
-										<img src="https://img-cf.kurly.com/shop/data/goods/1610086510346i0.jpg" alt="상품이미지">
+										<img src=${goods_cartShowVO.category_goods_image_thumb} alt="상품이미지">
 									</div>
 									<div class="name">
-										<div class="inner_name">[연세우유 x 마켓컬리] 전용목장우유</div>
+										<div class="inner_name">${goods_cartShowVO.category_goods_name}</div>
 									</div>
-									<div class="ea">2개</div>
+									<div class="ea">${goods_cartShowVO.goods_cart_count}개</div>
 									<div class="info_price">
 										<span class="num">
-											<span class="price">3,700원</span>
+											<span class="price"><fmt:parseNumber>${(goods_cartShowVO.goods_sell_price - goods_cartShowVO.goods_sell_price / goods_cartShowVO.goods_sell_discount) * goods_cartShowVO.goods_cart_count}</fmt:parseNumber>원</span>
 										</span>
 									</div>
 								</li>
+							</c:forEach>
 							</ul>
 						</div>
 						<form id="form" name="frmOrder" action="/checkout/settle.php" method="post" onsubmit="return validateOrderForm(this)" class="order_view" novalidate="">
@@ -94,14 +98,14 @@
 									<tr class="fst">
 										<th>보내는 분</th>
 										<td>
-											한현준
+											${memberVO.member_name }
 											<input type="hidden" id="orderer_name" name="orderer_name" value="한현준">
 										</td>
 									</tr>
 									<tr>
 										<th>휴대폰</th>
 										<td>
-											01049914719
+											${memberVO.member_phone }
 											<input type="hidden" id="orderer_phone" name="orderer_phone" value="01049914719">
 										</td>
 									</tr>
@@ -109,7 +113,7 @@
 										<th>이메일</th>
 										<td>
 											<input type="hidden" id="email" name="orderer_email" value="gksguswns95@naver.com" option="regEmail">
-											gksguswns95@naver.com
+											${memberVO.member_email }
 											<p class="txt_guide">
 												<span class="txt txt_case1">이메일을 통해 주문처리과정을 보내드립니다.</span>
 												<span class="txt txt_case2">정보 변경은 <span class="txt_desc">마이컬리 &gt; 개인정보 수정</span> 메뉴에서 가능합니다.</span>
@@ -122,8 +126,8 @@
 							<input type="hidden" name="zonecode" id="zonecode" value="10415">
 							<input type="hidden" name="zipcode[]" id="zipcode0" value="">
 							<input type="hidden" name="zipcode[]" id="zipcode1" value="">
-							<input type="hidden" name="address" id="address" value="경기 고양시 일산동구 마두동 794">
-							<input type="hidden" name="road_address" id="road_address" value="경기 고양시 일산동구 강송로 195 (강촌마을8단지아파트)">
+							<input type="hidden" name="address" id="address" value=${memberVO.member_address1 }>
+							<input type="hidden" name="road_address" id="road_address" value=${memberVO.member_address2 }>
 							<input type="hidden" name="address_sub" id="address_sub" value="811-802">
 							<input type="hidden" name="deliPoli" id="deliPoli" value="0">
 							<input type="hidden" name="deliveryType" id="deliveryType" value="direct">
@@ -148,7 +152,7 @@
 								<div class="section_full">
 									<span class="address" id="divDestination" style="">
 										<span class="default on" id="addrDefault" data-text="기본배송지">기본배송지</span>
-											<span class="addr" id="addrInfo">경기 고양시 일산동구 강송로 195 (강촌마을8단지아파트) 811-802</span>
+											<span class="addr" id="addrInfo">${memberVO.member_address1 } ${memberVO.member_address2 }</span>
 											<span class="tag" id="addrTags">
 											<span class="badge star" id="addrBadge">샛별배송</span>
 										</span>
@@ -160,7 +164,7 @@
 								상세 정보
 								</h3>
 								<div class="section_full">
-									<div class="receiving" id="receiverInfo">한현준, 010-4991-4719</div>
+									<div class="receiving" id="receiverInfo">${memberVO.member_name }, ${memberVO.member_phone }</div>
 									<div class="way" id="wayPlace">
 										<span class="place" id="areaInfo">문 앞</span>
 										<span class="txt" id="meanType">공동현관 비밀번호</span>
