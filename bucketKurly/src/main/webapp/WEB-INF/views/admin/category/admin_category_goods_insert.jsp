@@ -77,13 +77,13 @@
 											</td>
 										</tr>									
 										<tr>
-											<th>상품명</th><td colspan="2"><input class="form-control" name ="category_goods_name"></td>
-											<th>상품명 서브</th><td colspan="2"><input class="form-control" name ="category_goods_name_sub"></td>
+											<th>상품명</th><td colspan="2"><input class="form-control" name ="category_goods_name" placeholder="예)친환경 감자"></td>
+											<th>상품명 서브</th><td colspan="2"><input class="form-control" name ="category_goods_name_sub" placeholder="예)친환경 입니다."></td>
 										</tr>
 										<tr>
-											<th width="16%">판매단위</th><td width="16%"><input class="form-control" name ="category_goods_unit"></td>
-											<th width="16%">상품용량(중량)</th><td width="16%"><input class="form-control" name ="category_goods_weight"></td>
-											<th width="16%">원산지</th><td width="16%"><input class="form-control" name ="category_goods_from"></td>
+											<th width="16%">판매단위</th><td width="16%"><input class="form-control" name ="category_goods_unit" placeholder="예)1봉"></td>
+											<th width="16%">상품용량(중량)</th><td width="16%"><input class="form-control" name ="category_goods_weight" placeholder="예)600g"></td>
+											<th width="16%">원산지</th><td width="16%"><input class="form-control" name ="category_goods_from" placeholder="예)국내산 / 국산"></td>
 										</tr>
 										<tr>
 											<th>포장타입</th>
@@ -94,8 +94,8 @@
 												    <option value="냉동">냉동/종이포장</option>
 												</select>
 											</td>
-											<th>배송구분</th><td><input class="form-control" name ="category_goods_delivery_type"></td>
-											<th>유통기한</th><td><input class="form-control" name ="category_goods_exp_date"></td>
+											<th>배송구분</th><td><input class="form-control" name ="category_goods_delivery_type">샛별배송/택배배송</td>
+											<th>유통기한</th><td><input class="form-control" name ="category_goods_exp_date" ></td>
 										</tr>
 										<tr>
 											<th>안내사항</th><td colspan="5"><textarea class="form-control" rows="5" name ="category_goods_info"></textarea></td>

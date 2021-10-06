@@ -94,15 +94,15 @@
 										</td>
 									</tr>	 								
 									<tr>
-										<th>입고날짜</th><td><input type="text" class="form-control" value="${vo.goods_sell_in_date}" name="goods_sell_in_date" id="goods_sell_in_date" ></td>
-										<th>입고수량</th><td><input type="text" class="form-control" value="${vo.goods_sell_in_ea}" name="goods_sell_in_ea" id="goods_sell_in_ea" ></td>
+										<th>입고날짜</th><td><input type="text" class="form-control" value="${vo.goods_sell_in_date}" name="goods_sell_in_date" id="goods_sell_in_date" placeholder="예)2020-01-01"></td>
+										<th>입고수량</th><td><input type="text" class="form-control" value="${vo.goods_sell_in_ea}" name="goods_sell_in_ea" id="goods_sell_in_ea" placeholder="예)35"></td>
 									</tr>
 									<tr>
-										<th>유통기한</th><td><input type="text" class="form-control" value="${vo.goods_sell_exp}" name="goods_sell_exp" id="goods_sell_exp" ></td>
-										<th>판매가격</th><td><input type="text" class="form-control" value="${vo.goods_sell_price}" name="goods_sell_price" id="goods_sell_price" ></td>
+										<th>유통기한</th><td><input type="text" class="form-control" value="${vo.goods_sell_exp}" name="goods_sell_exp" id="goods_sell_exp" placeholder="예)2020-01-31" ></td>
+										<th>판매가격</th><td><input type="text" class="form-control" value="${vo.goods_sell_price}" name="goods_sell_price" id="goods_sell_price" placeholder="예)10000"></td>
 									</tr>
 									<tr>
-										<th>할인율</th><td><input type="text" class="form-control" value="${vo.goods_sell_discount}" name="goods_sell_discount" id="goods_sell_discount" ></td>
+										<th>할인율</th><td><input type="text" class="form-control" value="${vo.goods_sell_discount}" name="goods_sell_discount" id="goods_sell_discount" placeholder="예)20" ><span>%</span></td>
 										<th>프로모션</th>
 										<td>
 											<select name="goods_sell_promotion" id="goods_sell_promotion" style="width: 200px;" class="form-control" >
