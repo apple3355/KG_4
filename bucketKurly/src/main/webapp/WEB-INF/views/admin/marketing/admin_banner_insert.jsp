@@ -3,8 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="UTF-8">
-
-
 <head>
 
     <meta charset="utf-8">
@@ -13,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BucketKurly::Admin-BannerInsert</title>
+    <title>BucketKurly::Admin-Marketing</title>
 
     <!-- Custom fonts for this template -->
     <link href="resources/bootstrap/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -25,6 +23,9 @@
     <!-- Custom styles for this page -->
     <link href="resources/bootstrap/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+	<style type="text/css">
+		#buttondiv{text-align: right; margin-top:5px; margin-bottom:8px;}
+	</style>
 </head>
 
 <body id="page-top">
@@ -43,72 +44,72 @@
       			<%@ include file="/WEB-INF/views/admin_layout/admin_topbar.jsp"%>  		
 
                <!-- Begin Page Content -->
-	<div class="container-fluid">
-		<!-- Page Heading -->
-		<h1 class="h3 mb-2 text-gray-800">배너 관리</h1>
-		<br>
-			<!-- DataTales Example -->
-		<div class="card shadow mb-4">
-			<div class="card-header py-3">
-				<h6 style="color: #5f0080; font-weight: bolder;">배너등록</h6> <!-- class="m-0 font-weight-bold text-warning" -->
-			</div>
-			<div class="card-body">
-				<div class="table-responsive">
-
-			<form action="/bannerUpload.mdo" method="post" enctype="multipart/form-data">
-		<div class="container-fluid">
-					<!-- 전체 frame -->
-					<ul>						
-						<!-- 제목 -->
-						<li class="title">
-							<div>
-								<div class="index">제목</div>
-								<input class="title_text" type="text" id="banner_title" name="banner_title" style="width: 50%" required />
-							</div><br>							
-						</li>						
-						<!-- 베너 이미지 업로드 -->
-						<li class="img"> 
-							<div>
-								<div class="index">배너 이미지 : <input type="file" id="banner_filepath" name="file" required/>
-								</div>
-								
-							</div><br>
-						</li>
-						<!-- 베너 내용 -->
-						<li class="contents">
-							<div>
-								<div class="index">내용</div>
-								<input type="text" id="banner_contents" name="banner_contents" style="width: 50%;" required/>
-							</div><br>
-						</li>
-					</ul>
-					<div align="center">
-						<input style="padding: 5px; background:#5f0080; border: #5f0080" class="btn btn-warning btn-icon-split"
-							type="submit" id="registerBtn" value="등록하기" />
-					</div>
-					<div align="right">
-						<a href="admin_banner_getList.mdo"  class="btn btn-light btn-icon-split">
-							<span class="text">목록가기</span>
-						</a>
+				<div class="container-fluid">
+					<!-- Page Heading -->
+		    		<h1 class="h3 mb-2 text-gray-800">마케팅 관리</h1>
+					<p class="mb-4">버켓컬리의 배너를 관리하는 페이지입니다.</p>
+					
+					<!-- DataTales Example -->
+					<div class="card shadow mb-4">
+						<div class="card-header">
+							<h4 class="" style="color: #6406ca; font-weight: bolder; float: left; margin-top:10px;" >배너 등록</h4>
+						</div>
+						<div class="card-body">
+							<form id="form" action="${pageContext.request.contextPath}/bannerUpload.mdo" method="post" enctype="multipart/form-data">
+								<!-- 전체 frame -->
+								<ul>						
+									<!-- 제목 -->
+									<li class="title">
+										<div>
+											<div class="index">제목</div>
+											<input class="title_text" type="text" id="banner_title" name="banner_title" style="width: 50%" required />
+										</div><br>							
+									</li>	
+									<br><br>					
+									<!-- 이미지 업로드 -->
+									<li class="img"> 
+										<div>
+											<div class="index">배너 이미지 : <input type="file" id="banner_filepath" name="file" required/>
+											</div>
+										</div>
+									</li>
+									<br><br>
+									<!-- 내용 -->
+									<li class="contents">
+										<div>
+											<div class="index">내용</div>
+											<input type="text" id="banner_contents" name="banner_contents" style="width: 50%;" required/>
+										</div><br>
+									</li>
+								</ul>
+							</form>
+						</div>
+						 <div class="card-footer">
+	                         <div id="buttondiv">
+								<a href="javascript:document.getElementById('form').submit();" class="btn btn-primary btn-icon-split" >
+									<span class="icon text-white-50">
+										<i class="fas fa-check"></i>
+									</span>
+									<span class="text">등록 하기</span>
+								</a>
+								<a href="javascript:history.back();" class="btn btn-secondary btn-icon-split">
+									<span class="icon text-white-50">
+										<i class="fas fa-arrow-right"></i>
+									</span>
+									<span class="text">목록 보기</span>
+								</a>
+							</div>
+						</div>
 					</div>
 				</div>
-		
-			</form>
-		</div>
-	</div>
                 <!-- /.container-fluid -->
-
             </div>
             <!-- End of Main Content -->
-
-
         <!-- Footer -->
      		 <%@ include file="/WEB-INF/views/admin_layout/admin_footer.jsp"%>  
         <!-- End of Footer -->
-
         </div>
         <!-- End of Content Wrapper -->
-
     </div>
     <!-- End of Page Wrapper -->
 
@@ -129,8 +130,5 @@
     <!-- Page level custom scripts -->
     <script src="resources/bootstrap/js/demo/datatables-demo.js"></script>
 
-	
-
 </body>
-
 </html>

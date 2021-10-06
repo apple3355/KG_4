@@ -27,7 +27,7 @@
     <link href="resources/bootstrap/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 	
 	<style type="text/css">
-		#buttondiv{text-align: right;}
+		#buttondiv{text-align: right; margin-top:5px; margin-bottom:8px;}
 	</style>
 </head>
 

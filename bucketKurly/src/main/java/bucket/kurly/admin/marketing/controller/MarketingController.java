@@ -59,7 +59,7 @@ public class MarketingController {
 
 	
 	//쿠폰 등록기능 (DB 업로드)
-	@PostMapping("/insertCoupon.mdo")
+	@RequestMapping("/insertCoupon.mdo")
 	public String insertCoupon(CouponVO vo, MultipartFile file,
 		@RequestParam("start") String start, @RequestParam("end") String end,
 		@RequestParam("coupon_discount") String coupon_discount, @RequestParam("coupon_limit") String coupon_limit) throws ParseException, IOException {
@@ -91,7 +91,7 @@ public class MarketingController {
 		System.out.println(vo.toString());
 		marketingService.insertCoupon(vo);
 
-			return "redirect:/marketing/insertCoupon.mdo";
+			return "redirect:/admin_coupon_getList.mdo";
 		}
 	
 	

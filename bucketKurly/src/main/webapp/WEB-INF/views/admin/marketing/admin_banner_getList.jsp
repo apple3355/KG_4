@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BucketKurly::Admin-BannerList</title>
+    <title>BucketKurly::Admin-Marketing</title>
 
     <!-- Custom fonts for this template -->
     <link href="resources/bootstrap/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -43,75 +43,51 @@
       			<%@ include file="/WEB-INF/views/admin_layout/admin_topbar.jsp"%>  		
 
                <!-- Begin Page Content -->
-	<div class="container-fluid">
-		<!-- Page Heading -->
-		<h1 class="h3 mb-2 text-gray-800">배너관리</h1>
-		  <p class="mb-4">버켓컬리의 배너를 관리하는 페이지입니다.</p>
-		<br>
-		<!-- DataTales Example -->
-		<div class="card shadow mb-4">
-			<div class="card-header py-3">
-				<h6 class="" style="color: #5f0080; font-weight: bolder;">배너리스트</h6>
-			</div>
-			<div class="card-body">
-				<div class="table-responsive">
-
-					<form action="/admin_banner_insert.mdo" method="post">
-						<div align="right">
-							<input type="submit" class="btn btn-warning btn-icon-split" style="padding: 5px; background:#5f0080; border: #5f0080" value="배너등록">
+				<div class="container-fluid">
+					<!-- Page Heading -->
+			    	<h1 class="h3 mb-2 text-gray-800">마케팅 관리</h1>
+					<p class="mb-4">버켓컬리의 배너를 관리하는 페이지입니다.</p>
+					
+					<!-- DataTales Example -->
+					<div class="card shadow mb-4">
+						<div class="card-header">
+			        		<h4 class="" style="color: #6406ca; font-weight: bolder; float: left; margin-top:10px;" >배너 목록</h4>
+			       			<a href="${pageContext.request.contextPath}/admin_banner_insert.mdo" class="btn btn-primary btn-icon-split" name="register" id="addBtn" style="float: right; position: relative; margin-top:7px;">
+								<span class="icon text-white-50">
+									<i class="fas fa-plus"></i>
+								</span>
+								<span class="text">등록하기</span>
+							</a> 
+			            </div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+									<thead>
+										<tr align="center">
+											<th width="7%">번호</th>
+											<th width="10%">배너번호</th>
+											<th width="10%">배너이름</th>
+											<th width="50%">배너파일</th>
+											<th width="13%">배너내용</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${banner}" var="banner" varStatus="status">
+											<tr>
+												<td>${status.count}</td>
+												<td>${banner.banner_no }</td>
+												<td><a type="hidden" href="admin_banner_get.mdo?no=${banner.banner_no }">${banner.banner_title }</a></td>
+												<td><a type="hideen" href="admin_banner_get.mdo?no=${banner.banner_no }"><img
+														width="700px" src="${banner.banner_filepath }"></a></td>
+												<td>${banner.banner_contents }</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
 						</div>
-						<div class="my-2"></div>
-						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-							<thead>
-								<tr align="center">
-									<th width="7%">번호</th>
-									<th width="10%">배너번호</th>
-									<th width="10%">배너이름</th>
-									<th width="50%">배너파일</th>
-									<th width="13%">배너내용</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach items="${banner}" var="banner" varStatus="status">
-									<tr>
-										<td>${status.count}</td>
-										<td>${banner.banner_no }</td>
-										<td><a type="hidden" href="admin_banner_get.mdo?no=${banner.banner_no }">${banner.banner_title }</a></td>
-										<td><a type="hideen" href="admin_banner_get.mdo?no=${banner.banner_no }"><img
-												width="700px" src="${banner.banner_filepath }"></a></td>
-										<td>${banner.banner_contents }</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-					</form>
-
-					<!-- 페이지 네비게이션 (페이지 알고리즘 관련) 출력 -->
-					<!-- pagination{s} -->
-					<div align="center">
-						<ul class="pagination">
-							<c:if test="${pagination.prev}">
-								<li class="page-item"><a class="page-link" href="#" 
-									onClick="fn_prev('${pagination.page}','${pagination.range}','${pagination.rangeSize}')">Prev</a></li>
-							</c:if>
-							<c:forEach begin="${pagination.startPage}"
-								end="${pagination.endPage}" var="idx">
-								<li
-									class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a
-									class="page-link" href="#" 
-									onClick="fn_pagination('${idx}','${pagination.range}','${pagination.rangeSize}')">
-										${idx} </a></li>
-							</c:forEach>
-							<c:if test="${pagination.next}">
-								<li class="page-item"><a class="page-link" href="#"
-									onClick="fn_next('${pagination.page}','${pagination.range}', '${pagination.rangeSize}')">Next</a></li>
-							</c:if>
-						</ul>
 					</div>
 				</div>
-			</div>
-		</div>
-	</div>
                 <!-- /.container-fluid -->
 
             </div>
@@ -146,38 +122,6 @@
     <script src="resources/bootstrap/js/demo/datatables-demo.js"></script>
 
 	
-	<!-- 버튼 이벤트 -->
-	<script>
-	//이전 버튼 이벤트
-	function fn_prev(page, range, rangeSize) {
-		var page = ((range - 2) * rangeSize) + 1;
-		var range = range - 1;
-		var url = "${pageContext.request.contextPath}/admin_banner_getList.do";
-		url = url + "?page=" + page;
-		url = url + "&range=" + range;
-		location.href = url;
-	}
-
-	//페이지 번호 클릭
-	function fn_pagination(page, range, rangeSize ) {
-		var url = "${pageContext.request.contextPath}/admin_banner_getList.do";
-		url = url + "?page=" + page;
-		url = url + "&range=" + range;
-		location.href = url;
-	}
-
-	//다음 버튼 이벤트
-	function fn_next(page, range, rangeSize, searchKeyword) {
-		var page = parseInt((range * rangeSize)) + 1;
-		var range = parseInt(range) + 1;
-		var url = "${pageContext.request.contextPath}/admin_banner_getList.do";
-		url = url + "?page=" + page;
-		url = url + "&range=" + range;
-		location.href = url;
-	}
-</script>
-
-
 </body>
 
 </html>

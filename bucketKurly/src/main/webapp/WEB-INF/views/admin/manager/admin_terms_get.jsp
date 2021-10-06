@@ -57,7 +57,6 @@
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 
-
 					<form method="post">
 						<input name="no" id="seq" type="hidden" value="${terms.seq }">
 						<div class="container-fluid">
@@ -131,26 +130,26 @@
 								</div>
 							</div>
 						</form>
-	                      <div id="buttondiv">
-								<a href='javascript:void(0);' id ="registerBtn" onClick="fn_updatePage('${no}')" class="btn btn-info btn-icon-split" >
-									<span class="icon text-white-50">
-										<i class="fas fa-edit"></i>
-									</span>
-									<span class="text">수정 하기</span>
-								</a>
-								<a href="javascript:void(0);" onClick="fn_delete('${terms.seq}')" class="btn btn-danger btn-icon-split">
-									<span class="icon text-white-50">
-										<i class="fas fa-trash"></i>
-									</span>
-									<span class="text">삭제 하기</span>
-								</a>
-								<a href="javascript:history.back();" class="btn btn-secondary btn-icon-split">
-									<span class="icon text-white-50">
-										<i class="fas fa-arrow-right"></i>
-									</span>
-									<span class="text">목록 보기</span>
-								</a>
-							</div>
+                      	<div id="buttondiv">
+							<a href='javascript:void(0);' id ="registerBtn" class="btn btn-info btn-icon-split" >
+								<span class="icon text-white-50">
+									<i class="fas fa-edit"></i>
+								</span>
+								<span class="text">수정 하기</span>
+							</a>
+							<a href="javascript:void(0);" onClick="fn_delete('${terms.seq}')" class="btn btn-danger btn-icon-split">
+								<span class="icon text-white-50">
+									<i class="fas fa-trash"></i>
+								</span>
+								<span class="text">삭제 하기</span>
+							</a>
+							<a href="javascript:history.back();" class="btn btn-secondary btn-icon-split">
+								<span class="icon text-white-50">
+									<i class="fas fa-arrow-right"></i>
+								</span>
+								<span class="text">목록 보기</span>
+							</a>
+						</div>
 				</div>
 				<!-- /.container-fluid -->
 
