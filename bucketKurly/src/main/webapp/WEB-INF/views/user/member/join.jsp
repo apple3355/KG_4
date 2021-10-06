@@ -254,13 +254,13 @@ $(document).ready(function(){
 														type="checkbox" value="y" name="agree" required label="이용약관">
 														<span class="ico"></span>이용약관 동의 <span
 														class="txt">(필수)</span>
-													</label> <a href="#none" class="link btn_link btn_agreement">약관보기
+													</label> <a href="#none" id="" class="link btn_link btn_agreement" onclick="chk_agreement();">약관보기
 													</a>
 												</div> 
 
 <!-- 시작 -->
 
-												<div class="layer layer_agreement">
+												<div id="layer_agreement"class="layer layer_agreement">
 													<div class="inner_layer">
 														<h4 class="tit_layer">
 															이용약관 <span class="txt">(필수)</span>
@@ -705,11 +705,11 @@ $(document).ready(function(){
 														type="checkbox" id="chkFrom" name="chkFrom" value=""
 														required="" label="개인정보 수집·이용"> <span class="ico"></span>개인정보
 														수집·이용 동의 <span class="txt">(필수)</span>
-													</label> <a href="#none" class="link btn_link btn_essential">약관보기
+													</label> <a href="#none" class="link btn_link btn_essential" onclick="chk_essential();">약관보기
 													</a>
 												</div> 	
 												<!-- 끝 -->
-												<div class="layer layer_essential">
+												<div id="layer_essential" class="layer layer_essential">
 													<div class="inner_layer">
 														<div class="in_layer">
 															<h4 class="tit_layer">
@@ -775,11 +775,11 @@ $(document).ready(function(){
 														value=""> <label class=" check_agree label_block">
 														<input type="checkbox" name="hiddenCheck"> <span
 														class="ico"></span>개인정보 수집·이용 동의 <span class="txt">(선택)</span>
-													</label> <a href="#none" class="link btn_link btn_choice">약관보기
+													</label> <a href="#none" class="link btn_link btn_choice" onclick="chk_choice();">약관보기
 													</a>
 												</div>
 
-												<div class="layer layer_choice">
+												<div id="layer_choice" class="layer layer_choice">
 													<div class="inner_layer">
 														<div class="in_layer">
 															<h4 class="tit_layer">
@@ -1198,6 +1198,43 @@ function startTimer(count, display) {
          }
 	});
 </script>
+<!-- 이용약관 보기 -->
+<script>
+	<!-- 이용약관 필수 -->
+	function chk_agreement(){
+		$(".bg_dim").css({'display': 'block'});
+		$("#layer_agreement").css({'display': 'block', 'margin-top': '-299.5px'});
+	};
+	
+	<!-- 개인정보 수집 필수 -->
+	function chk_essential(){
+		$(".bg_dim").css({'display': 'block'});
+		$("#layer_essential").css({'display': 'block', 'margin-top': '-305px'});
+	};
+	
+	<!-- 개인정보 수집 선택 -->
+	function chk_choice(){
+		$(".bg_dim").css({'display': 'block'});
+		$("#layer_choice").css({'display': 'block', 'margin-top': '-153.5px'});
+	};
+	
+	<!-- 창닫기 -->
+	$(".btn_ok").on("click", function(){
+		$(".bg_dim").css({'display': 'none'});
+		$("#layer_agreement").css({'display': 'none'});
+		$("#layer_essential").css({'display': 'none'});
+		$("#layer_choice").css({'display': 'none'});
+	});
+	
+	<!-- 창닫기 -->
+	$(".btn_close").on("click", function checks(){
+		$(".bg_dim").css({'display': 'none'});
+		$("#layer_agreement").css({'display': 'none'});
+		$("#layer_essential").css({'display': 'none'});
+		$("#layer_choice").css({'display': 'none'});
+	});
+</script>
+
 
 
 <!-- 약관 동의 -->
