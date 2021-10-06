@@ -102,7 +102,7 @@
 										<th>판매가격</th><td><input type="text" class="form-control" value="${vo.goods_sell_price}" name="goods_sell_price" id="goods_sell_price" placeholder="예)10000"></td>
 									</tr>
 									<tr>
-										<th>할인율</th><td><input type="text" class="form-control" value="${vo.goods_sell_discount}" name="goods_sell_discount" id="goods_sell_discount" placeholder="예)20" ><span>%</span></td>
+										<th>할인율</th><td><input type="text" class="form-control" value="${vo.goods_sell_discount}" name="goods_sell_discount" id="goods_sell_discount" placeholder="예)20" >%</td>
 										<th>프로모션</th>
 										<td>
 											<select name="goods_sell_promotion" id="goods_sell_promotion" style="width: 200px;" class="form-control" >
