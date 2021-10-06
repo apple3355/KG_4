@@ -1,8 +1,11 @@
 package bucket.kurly.user.goods.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.amazonaws.Response;
 
 import bucket.kurly.user.goods.Goods_CartShowVO;
 import bucket.kurly.user.goods.Goods_CartVO;
@@ -67,35 +72,71 @@ public class GoodsController {
 	
 	//장바구니에 담기
 	@RequestMapping("/insertGoods_cart.do")
-	public String insertGoods_cart(@RequestParam(value="goods_sell_no",required=false) int goods_sell_no,@RequestParam("count") int count, HttpSession session) {
+	public String insertGoods_cart(@RequestParam(value="goods_sell_no",required=false) int goods_sell_no,@RequestParam("count") int count, HttpSession session,
+			HttpServletRequest request, HttpServletResponse response) {
 		
-		Goods_CartVO vo = new Goods_CartVO();
-		vo.setGoods_cart_count(count);
-		vo.setGoods_cart_sell_no(goods_sell_no);
-		vo.setGoods_cart_member_no((int)session.getAttribute("member_no"));
+		String member_id = (String) session.getAttribute("id");
 		
-		System.out.println(goods_sell_no);
-		System.out.println(count);
-		goodsService.insertGoods_cart(vo);
+		//if 걸어주기
+		if(member_id == null){
+			Cookie cookie = new Cookie(String.valueOf(goods_sell_no), String.valueOf(count));
+			cookie.setMaxAge(60*60*24);
+			response.addCookie(cookie);
 		
-		
+		}else{
+			Goods_CartVO vo = new Goods_CartVO();
+			vo.setGoods_cart_count(count);
+			vo.setGoods_cart_sell_no(goods_sell_no);
+			vo.setGoods_cart_member_no((int)session.getAttribute("member_no"));
+			
+			System.out.println(goods_sell_no);
+			System.out.println(count);
+			goodsService.insertGoods_cart(vo);
+		}
 		String path = "/goods_list_detail.do?goods_sell_no="+goods_sell_no;
-	      
-	    return "redirect:"+path;
+		 return "redirect:"+ path;
 	}
 	
 	//장바구니 정보
 	@RequestMapping("/getGoods_cart.do")
-	public String getGoods_cart(Model model, HttpSession session) {
+	public String getGoods_cart(Model model, HttpSession session, HttpServletRequest request) {
 		String member_id = (String) session.getAttribute("id");
+		List<Goods_CartShowVO> goods_cartShowVO = new ArrayList<Goods_CartShowVO>();
 		
 		if(member_id == null) {
+			Cookie[] cookies = request.getCookies();
+			String cName="";
+			String cValue="";
+			
+			if(cookies != null){
+			    for(int i=0; i < cookies.length; i++){
+			           cName = cookies[i].getName();
+			           if(cName.length() < 4) {
+			        	   cValue = cookies[i].getValue();
+			        	   Goods_SellVO sellvo = goodsService.getGoods_detail(Integer.parseInt(cName));
+			        	   Goods_CartShowVO showvo = new Goods_CartShowVO();
+			        	
+			        	   showvo.setGoods_sell_no(Integer.parseInt(cName));
+			        	   showvo.setCategory_goods_image_thumb(sellvo.getGoodsvo().getCategory_goods_image_thumb());
+			        	   showvo.setCategory_goods_name(sellvo.getGoodsvo().getCategory_goods_name());
+			        	   showvo.setCategory_goods_packaging_type(sellvo.getGoodsvo().getCategory_goods_packaging_type());
+			        	   showvo.setGoods_sell_price(sellvo.getGoods_sell_price());
+			        	   showvo.setGoods_cart_count(Integer.parseInt(cValue));
+			        	   
+			        	   goods_cartShowVO.add(showvo);
+			           }
+			        }
+			    System.out.println("=============================");
+		       System.out.println(goods_cartShowVO);
+			    model.addAttribute("goods_cartShowVO", goods_cartShowVO);
+			    }
+			
 			return "goods/goods_cart_nonmember";
 		}else {
 			MemberVO memberVO = memberService.selectMember(member_id);
 			System.out.println(memberVO);
 			
-			List<Goods_CartShowVO> goods_cartShowVO = goodsService.getGoods_cart((int)session.getAttribute("member_no")); //세션으로
+			goods_cartShowVO = goodsService.getGoods_cart((int)session.getAttribute("member_no")); //세션으로
 			//Integer countGoods_cart = goodsService.countGoods_cart(gcvo);
 			
 			model.addAttribute("memberVO",memberVO);
@@ -105,7 +146,6 @@ public class GoodsController {
 			return "goods/goods_cart";
 		}
 	}
-	
 	//장바구니 삭제
 	@ResponseBody
 	@RequestMapping("/deleteGoods_cart.do")
@@ -116,6 +156,29 @@ public class GoodsController {
 		//System.out.println(gcvo.getGoods_cart_no());
 		goodsService.deleteGoods_cart(gsvo);
 		
+		return null;
+	}
+	
+	//장바구니 비회원 삭제
+	@ResponseBody
+	@RequestMapping("/deleteGoods_cart_nonmember.do")
+	public String deleteGoods_cart_nonmember(@RequestParam("goods_sell_no") int goods_sell_no, HttpServletRequest request, HttpServletResponse response) {
+		
+		System.out.println(goods_sell_no);
+		Cookie[] cookies = request.getCookies();
+		String cName="";
+
+
+		if(cookies != null){
+		    for(int i=0; i < cookies.length; i++){
+		           cName = cookies[i].getName();
+		           if(cName.equals(String.valueOf(goods_sell_no))){
+		        	   cookies[i].setMaxAge(0);
+			           response.addCookie(cookies[i]);
+		        	   System.out.println("쿠키삭제");
+		         }
+		    }
+		}  
 		return null;
 	}
 	
