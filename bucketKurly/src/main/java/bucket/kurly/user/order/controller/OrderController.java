@@ -1,5 +1,6 @@
 package bucket.kurly.user.order.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import bucket.kurly.user.goods.Goods_CartShowVO;
 import bucket.kurly.user.goods.service.GoodsService;
@@ -25,17 +27,19 @@ public class OrderController {
 	private GoodsService goodsService;
 	
 	//주문서 jsp
+	@ResponseBody
 	@RequestMapping("/order_form.do")
-	public String order_form(Model model, HttpSession session, @RequestParam("member_address1") String member_address1, @RequestParam("member_address2") String member_address2) throws Exception {
-	
-		List<Goods_CartShowVO> goods_cartShowVO = goodsService.getGoods_cart((int)session.getAttribute("member_no"));
+	public String order_form(Model model, HttpSession session, @RequestParam("cart_no") List<String> cart_no, @RequestParam("member_address1") String member_address1, @RequestParam("member_address2") String member_address2) throws Exception {
+		
+		System.out.println(cart_no);
+//		List<Goods_CartShowVO> goods_cartShowVO = goodsService.chooseGoods_cart((int)session.getAttribute("member_no"));
 		String name = (String) session.getAttribute("id");
 		
 		MemberVO result = orderService.order_form(name);
 		result.setMember_address1(member_address1);
 		result.setMember_address2(member_address2);
 	
-		model.addAttribute("goods_cartShowVO", goods_cartShowVO);
+//		model.addAttribute("goods_cartShowVO", goods_cartShowVO);
 		model.addAttribute("memberVO", result);
 		
 		

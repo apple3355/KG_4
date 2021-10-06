@@ -61,11 +61,19 @@ public class GoodsServicImpl implements GoodsService {
 		return dao.getGoods_cart(goods_cart_member_no);
 	}
 	
+	// 선택한 장바구니 정보
+	@Override
+	public List<Goods_CartShowVO> chooseGoods_cart(int goods_cart_no) {
+		return dao.chooseGoods_cart(goods_cart_no);
+	}
+	
 	//장바구니 삭제
 	@Override
 	public void deleteGoods_cart(Goods_CartVO gsvo) {
 		dao.deleteGoods_cart(gsvo);
 	}
+
+	
 	
 	
 }
