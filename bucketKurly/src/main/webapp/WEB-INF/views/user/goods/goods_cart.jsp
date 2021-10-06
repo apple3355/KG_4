@@ -115,7 +115,7 @@
 							<ul class="list" id="btn_dropup_cold">
 							<c:forEach items="${goods_cartShowVO }" var="goods_cartShowVO">
 							<c:set var="name" value="${goods_cartShowVO.category_goods_packaging_type }" />
-							<c:if test="${name eq '냉장/종이포장'}">
+							<c:if test="${name eq '냉장'}">
 								<li>
 									<div class="item" id="item">
 									<table>
@@ -157,7 +157,7 @@
                                  <div class="price">
                                     <div class="in_price">
                                     <!-- 원가 * 할인율 * 수량 -->
-                                       <span class="selling" id="temp" ><fmt:parseNumber><c:out value="${(goods_cartShowVO.goods_sell_price - goods_cartShowVO.goods_sell_price / goods_cartShowVO.goods_sell_discount) * goods_cartShowVO.goods_cart_count}" /></fmt:parseNumber>
+                                       <span class="selling" id="temp" ><fmt:parseNumber><c:out value="${(goods_cartShowVO.goods_sell_price - goods_cartShowVO.goods_sell_price * (goods_cartShowVO.goods_sell_discount/100)) * goods_cartShowVO.goods_cart_count}" /></fmt:parseNumber>
                                        <span class="won">원</span> </span>
                                        <!-- 화면에 보이는 원가 (회색글자)-->
                                        <span class="cost" id="tempdisc"><c:out value="${goods_cartShowVO.goods_sell_price}" /> 
@@ -198,7 +198,7 @@
 							<ul class="list" id="btn_dropup_room">
 							<c:forEach items="${goods_cartShowVO }" var="goods_cartShowVO">
 							<c:set var="name" value="${goods_cartShowVO.category_goods_packaging_type }" />
-							<c:if test="${name eq '상온/종이포장'}">
+							<c:if test="${name eq '상온'}">
 								<li>
 									<div class="item" id="item">
 									<table>
@@ -240,7 +240,7 @@
                                  <div class="price">
                                     <div class="in_price">
                                     <!-- 원가 * 할인율 * 수량 -->
-                                       <span class="selling" id="temp" ><fmt:parseNumber><c:out value="${(goods_cartShowVO.goods_sell_price - goods_cartShowVO.goods_sell_price / goods_cartShowVO.goods_sell_discount) * goods_cartShowVO.goods_cart_count}" /></fmt:parseNumber>
+                                       <span class="selling" id="temp" ><fmt:parseNumber><c:out value="${(goods_cartShowVO.goods_sell_price - goods_cartShowVO.goods_sell_price * (goods_cartShowVO.goods_sell_discount/100)) * goods_cartShowVO.goods_cart_count}" /></fmt:parseNumber>
                                        <span class="won">원</span> </span>
                                        <!-- 화면에 보이는 원가 (회색글자)-->
                                        <span class="cost" id="tempdisc"><c:out value="${goods_cartShowVO.goods_sell_price}" /> 
@@ -282,7 +282,7 @@
 							<ul class="list" id="btn_dropup_frozen">
 							<c:forEach items="${goods_cartShowVO }" var="goods_cartShowVO">
 							<c:set var="name" value="${goods_cartShowVO.category_goods_packaging_type }" />
-							<c:if test="${name eq '냉동/종이포장'}">
+							<c:if test="${name eq '냉동'}">
 								<li>
 									<div class="item" id="item">
 									<table>
@@ -324,7 +324,7 @@
                                  <div class="price">
                                     <div class="in_price">
                                     <!-- 원가 * 할인율 * 수량 -->
-                                       <span class="selling" id="temp" ><fmt:parseNumber><c:out value="${(goods_cartShowVO.goods_sell_price - goods_cartShowVO.goods_sell_price / goods_cartShowVO.goods_sell_discount) * goods_cartShowVO.goods_cart_count}" /></fmt:parseNumber>
+                                       <span class="selling" id="temp" ><fmt:parseNumber><c:out value="${(goods_cartShowVO.goods_sell_price - goods_cartShowVO.goods_sell_price * (goods_cartShowVO.goods_sell_discount/100)) * goods_cartShowVO.goods_cart_count}" /></fmt:parseNumber>
                                        <span class="won">원</span> </span>
                                        <!-- 화면에 보이는 원가 (회색글자)-->
                                        <span class="cost" id="tempdisc"><c:out value="${goods_cartShowVO.goods_sell_price}" /> 
