@@ -353,15 +353,15 @@
 		
 						
 					<div class="cart_select">
-						<div class="inner_select">
-							<label class="check">
+							<div class="inner_select">
+								<label class="check">
 								<input type="checkbox" id="checkAll" name="checkAll" checked="" onclick="selectAll(this)" value="">
 								<span class="ico"></span>전체선택 (&nbsp;
-								<span class="checkedCnt" id="checkedCnt" value="" ></span> / <span class="checkedCntAll" id="checkedCntAll" value="" ></span>&nbsp;)
+								<span class="checkedCnt2" id="checkedCnt2" value="" ></span> / <span class="checkedCntAll2" id="checkedCntAll2" value="" ></span>&nbsp;)
 								</label>
-							<a href="#none" class="btn_delete">선택삭제</a>
+								<a href="#none" class="btn_delete" id="btn_delete" >선택삭제</a>
+							</div>
 						</div>
-					</div>
 				</div>
 			</div>
 				<!-- 장바구니가 비어있을 때 -->
@@ -411,28 +411,31 @@
 							<dl class="amount">
 								<dt class="tit">상품금액</dt>
 								<dd class="price">
-								<span class="num">0</span>
+								<span class="num" id="goodsPrice">0</span>
 								<span class="won">원</span>
 								</dd>
 							</dl>
 							<dl class="amount">
 								<dt class="tit">상품할인금액</dt>
 								<dd class="price">
-								<span class="num">0</span>
+								<span class="num" id="discountprice">0</span>
 								<span class="won">원</span>
 								</dd>
 							</dl>
 							<dl class="amount">
 								<dt class="tit">배송비</dt>
 								<dd class="price">
-								<span class="num">0</span>
+								<span class="num" id="deliveryFee">0</span>
 								<span class="won">원</span>
 								</dd>
 							</dl>
+							
+							<p class="free_limit" id="getMorePrice"></p>
+							
 							<dl class="amount lst">
 								<dt class="tit">결제예정금액</dt>
 								<dd class="price">
-								<span class="num">0</span>
+								<span class="num" id="ordersPrice">0</span>
 								<span class="won">원</span>
 								</dd>
 							</dl>
@@ -568,28 +571,134 @@ $('#btn_frozen').click(function(){
 });
 </script>
  
-<!-- 장바구니 숫자 올리기/내리기 -->
-
  
+<!-- 우측 최종 합계 -->
+<script type="text/javascript">
+$(document).ready(function calTot(){ 
+	
+		//전체 상품금액
+		 const priceLists = document.querySelectorAll('.cost'); //우리 가격 클래스: selling 
+	     const priceArr = Array.from(priceLists).map(chkItem => parseInt(chkItem.textContent)); 
+	     const numberLists = document.querySelectorAll('input[type=number]');
+	     const numbersArr = Array.from(numberLists).map(chkItem => parseInt(chkItem.value)); 
+      
+	      var sum = 0;
+	      for(i=0; i<priceArr.length;i++){
+	    	  console.log(priceArr.length);
+	    	  sum = parseInt(sum + priceArr[i]);
+	    //	  console.log("sum: "+sum);
+	    	  $("#goodsPrice").text(sum);
+	      }
+	
+	      //전체 상품할인금액
+		     const costLists = document.querySelectorAll('.selling'); //우리 가격 클래스: selling 
+		     const costArr = Array.from(costLists).map(chkItem => parseInt(chkItem.textContent)); 
+		     const costNumberLists = document.querySelectorAll('input[type=number]');
+		     const costNumbersArr = Array.from(costNumberLists).map(chkItem => parseInt(chkItem.value)); 
+		      		 
+		      var costSum = 0;
+		      for(i=0; i<costArr.length;i++){
+		    	  console.log(costArr.length);
+		    	  costSum = parseInt(costSum + costArr[i]);
+		      }
+		      
+		      $("#discountprice").text(costSum - sum);
+		      		   
+		      //배송비		      
+		      var deliverFee = 3000; 	
+		      var getMore = 0;
+		      if(costSum <50000){
+		    	 $("#deliveryFee").text(deliverFee);
+		    	 $("#getMorePrice").text(50000-costSum + "원 추가주문 시, 무료배송");
+		      } else{//무료배송
+				 $("#deliveryFee").text(deliverFee - 3000); 
+		      }
+
+		      
+		      //결제예정금액
+		      var totOrderPrice = costSum + deliverFee; 
+		      $("#ordersPrice").text(totOrderPrice);
+		
+		      
+		     
+});
+</script>
+ 
+ 
+<!-- 장바구니 숫자 올리기/내리기 -->
  <script>
  $(document).on('click', '.minus', function() { //수량의 - 버튼 클릭 시 
 	   let num = $(this).next().val();
 	   var tr = $(this).parent().parent().parent();
 	   var th = tr.children();
-	   var price = th.eq(4).children().children().children();
-	   var count = th.eq(3).children().children();
+	   var price = th.eq(4).children().children().children(); //할인 적용된 가격
+	   var count = th.eq(3).children().children(); //수량
+	  
 	   let goods_id = $(this).attr("id").split("_down")[0];
+	   
 	   if (num > 1) {
 	      $(this).next().val(--num);
 	      
 	      var selling = parseInt(price.eq(0).text());
-		     var cnt = parseInt(count.eq(1).val());
-		     var mp = selling - selling/(cnt+1);
-		     console.log(mp);
-		     console.log(selling);
-		     console.log(cnt);
-		     price.eq(0).text(mp + "원");
+		  var cnt = parseInt(count.eq(1).val());
+		  var mp = selling - selling/(cnt+1);
+		  var cost = parseInt(price.eq(1).text()); //원가 (할인 미적용) = 장바구니 회색 글자
+		  var costVar = cost - cost/(cnt+1);
+		     
+		  
+		  console.log(mp);
+		  console.log(selling);
+		  console.log(cnt);
+		 
+		  price.eq(0).text(mp + "원");
+		  price.eq(1).text(costVar + "원");	
+		  
 
+	    //전체 상품금액
+			 const priceLists = document.querySelectorAll('.cost'); //우리 가격 클래스: selling 
+		     const priceArr = Array.from(priceLists).map(chkItem => parseInt(chkItem.textContent)); 
+		     const numberLists = document.querySelectorAll('input[type=number]');
+		     const numbersArr = Array.from(numberLists).map(chkItem => parseInt(chkItem.value)); 
+	      
+		      var sum = 0;
+		      for(i=0; i<priceArr.length;i++){
+		    	  console.log(priceArr.length);
+		    	  sum = parseInt(sum - priceArr[i]);
+		    	  console.log("sum: "+sum);
+		    	  $("#goodsPrice").text(Math.abs(sum));
+		      }		     
+	      
+		     //전체 상품할인금액
+		     const costLists = document.querySelectorAll('.selling'); //우리 가격 클래스: selling 
+		     const costArr = Array.from(costLists).map(chkItem => parseInt(chkItem.textContent)); 
+		     const costNumberLists = document.querySelectorAll('input[type=number]');
+		     const costNumbersArr = Array.from(costNumberLists).map(chkItem => parseInt(chkItem.value)); 	      
+ 
+		      var costSum = 0;
+		      for(i=0; i<costArr.length;i++){		    	 
+		    	  costSum = parseInt(costSum - costArr[i]);
+		      }
+		      $("#discountprice").text(sum-costSum);
+		     
+		      //배송비		      
+		      var deliverFee = 3000; 
+		      var getMore = 0;
+		      if(costSum <50000){
+		    	 $("#deliveryFee").text(deliverFee);	
+		    	 console.log("마이너스 테스트:"+costSum);
+		    	 $('.free_limit').css({'display': 'block'});
+		    	 $("#getMorePrice").text(50000-Math.abs(costSum)+ "원 추가주문 시, 무료배송");
+		      } else{
+				 $("#deliveryFee").text(deliverFee - 3000); 
+				 $('.free_limit').css({'display': 'none'});
+		      }
+	
+		      //결제예정금액
+		      var totOrderPrice = Math.abs(costSum) + deliverFee; 
+		      $("#ordersPrice").text(totOrderPrice);
+		
+		      console.log("결제예정금액 :" + totOrderPrice);
+		     
 		
 	      //ajax 처리해야함
 	   }
@@ -600,8 +709,9 @@ $('#btn_frozen').click(function(){
 	   let num = $(this).prev().val(); //수량버튼의 숫자 부분
 	   var tr = $(this).parent().parent().parent();
 	   var th = tr.children();
-	   var price = th.eq(4).children().children().children();
-	   var count = th.eq(3).children().children();
+	   var price = th.eq(4).children().children().children(); 
+	   var count = th.eq(3).children().children(); //수량
+
 	   let goods_id = $(this).attr("id").split("_up")[0]; //상품의 name의 수량을 올림
 
 	   if (num < 10) {
@@ -610,15 +720,79 @@ $('#btn_frozen').click(function(){
 	     var selling = parseInt(price.eq(0).text());
 	     var cnt = parseInt(count.eq(1).val());
 	     var mp = selling + selling/(cnt-1);
+	     var cost = parseInt(price.eq(1).text()); //원가 (할인 미적용)
+	     var costVar = cost + cost/(cnt-1); //원가합
+	     
 	     console.log(mp);
 	     console.log(selling);
-	     console.log(cnt);
-	     price.eq(0).text(mp + "원");
-
+	     console.log(cnt);	     
+	     console.log(cost);
+	     console.log(costVar);
 	     
-	      //ajax 처리해야함
+	     price.eq(0).text(mp + "원");
+	     price.eq(1).text(costVar + "원");
+	     	     
+
+		//전체 상품금액
+		 const priceLists = document.querySelectorAll('.cost'); //우리 가격 클래스: selling 
+	     const priceArr = Array.from(priceLists).map(chkItem => parseInt(chkItem.textContent)); 
+	     const numberLists = document.querySelectorAll('input[type=number]');
+	     const numbersArr = Array.from(numberLists).map(chkItem => parseInt(chkItem.value)); 
+
+	      //console.log("가격배열: " + priceArr); //여기에 각 상품의 합계 담김
+	      //console.log("수량배열: " +numbersArr);
+	      
+	      var sum = 0;
+	      for(i=0; i<priceArr.length;i++){
+	    	  console.log(priceArr.length);
+	    	  sum = parseInt(sum + priceArr[i]);
+	    	  console.log("sum: "+sum);
+	    	  $("#goodsPrice").text(sum);
 	      }
-	   });
+	     
+	     console.log("상품금액 :" + sum);
+	      
+	     //전체 상품할인금액
+	     const costLists = document.querySelectorAll('.selling'); //우리 가격 클래스: selling 
+	     const costArr = Array.from(costLists).map(chkItem => parseInt(chkItem.textContent)); 
+	     const costNumberLists = document.querySelectorAll('input[type=number]');
+	     const costNumbersArr = Array.from(costNumberLists).map(chkItem => parseInt(chkItem.value)); 
+	      	      
+	      var costSum = 0;
+	      for(i=0; i<costArr.length;i++){
+	    	  console.log(costArr.length);
+	    	  costSum = parseInt(costSum + costArr[i]);
+	    	  console.log("costSum: "+costSum);
+	    	 //$("#discountprice").text(costSum);
+	      }	  
+	      $("#discountprice").text(costSum-sum);
+      
+	      
+	      //배송비		      
+	      var deliverFee = 3000; 	
+	      var getMore = 0;
+	      if(costSum <50000){
+	    	 $("#deliveryFee").text(deliverFee);	
+	    	 $("#getMorePrice").text(50000-costSum + "원 추가주문 시, 무료배송");
+	    	 $('.free_limit').css({'display': 'block'});
+	      } else{//무료배송
+			 $("#deliveryFee").text(deliverFee-3000); 
+			 $('.free_limit').css({'display': 'none'});
+	      }     
+	      
+	      //결제예정금액
+	      var totOrderPrice = costSum + deliverFee; 
+	      $("#ordersPrice").text(totOrderPrice);
+
+
+	      //ajax 처리해야함
+	     }
+	
+	 });
+	
+	
+
+	
  </script>
  
 
@@ -628,20 +802,30 @@ $('#btn_frozen').click(function(){
    $("#checkedCnt").html( ${fn:length(goods_cartShowVO )}) //선택
    $("#checkedCntAll").html( ${fn:length(goods_cartShowVO )})//전체
 
+ //하단의 전체선택 부분
+   $("#checkedCnt2").html( ${fn:length(goods_cartShowVO )}) //선택
+   $("#checkedCntAll2").html( ${fn:length(goods_cartShowVO )})//전체
+   
+   
 function checkSelectAll()  {
      // 전체 체크박스
      const checkboxes 
        = document.querySelectorAll('input[name="chkItem"]');
      $("#checkedCntAll").html(checkboxes.length); //전체
+     $("#checkedCntAll2").html(checkboxes.length); //하단
      // 선택된 체크박스
      const checked 
        = document.querySelectorAll('input[name="chkItem"]:checked');
      $("#checkedCnt").html(checked.length); //선택
+     $("#checkedCnt2").html(checked.length); //하단
+     
      
      // select all 체크박스
      const selectAll 
        = document.querySelector('input[name="checkAll"]');
      $("#checkedCnt").html(checked.length); //선택
+     $("#checkedCnt2").html(checked.length); //하단
+     
      
      if(checkboxes.length === checked.length)  { //전체선택일 때 
        selectAll.checked = true;
@@ -651,6 +835,7 @@ function checkSelectAll()  {
      } 
 }
 
+ //장바구니 전체선택 
 function selectAll(selectAll)  {
      const checkboxes 
         = document.getElementsByName('chkItem');
@@ -658,6 +843,25 @@ function selectAll(selectAll)  {
      checkboxes.forEach((checkbox) => {
        checkbox.checked = selectAll.checked 
      })
+     
+     const selectAllBtnChk 
+     = document.getElementsByName('checkAll');
+  
+     const checked 
+     = document.querySelectorAll('input[name="chkItem"]:checked');
+   		$("#checkedCnt").html(checked.length); 
+   		$("#checkedCnt2").html(checked.length); //하단
+
+     if(selectAllBtnChk.checked = true)  { //전체선택일 때 
+     	$("#checkedCnt").html(checked.length); // 선택수량 = 전체수량
+     	$("#checkedCnt2").html(checked.length); //하단
+    
+     }else { //selectAllBtnChk.checked = false 일 때     
+    	$("#checkedCnt").html("0"); // 0출력
+    	$("#checkedCnt2").html("0"); //하단
+     } 
+     
+     
 }
 </script>
 
