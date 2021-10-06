@@ -2,6 +2,7 @@
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -579,11 +580,129 @@ $(function(){
 							</div>
 						</div>
 					</div>
-			  	</div>
-			  </div>
-			 
+					
+					<!-- 상품 후기(리뷰) -->
+					<div class="goods-view-infomation-content" id="goods-review" data-load="0"></div>
+						<div class="goods-view-infomation-content" id="goods-qna">
+							<div class="board-container">
+								<div id="productInquiryBoard" data-productNo=4364 data-boardPageSize="10" data-boardType="product" data-deviceType="pc"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+						<script src="/appProxy/appData.php?ver=1.39.16" defer></script>
+						<script src="/asset/js/product/inquiry/pc.bundle.js?ver=1.39.16" defer></script>
+						<script src="/shop/data/skin/designgj/js/mk_goods.js?ver=1.39.16"></script>
+						<script src="/common_js/common_filter.js?ver=1.39.16"></script>
+						<script src="/common_js/view_v1.js?ver=1.39.16"></script>
+						<script src="/common_js/cartput_v1.js?ver=1.39.16"></script>
+						<script>
+						// 상품상세상단호출
+						var sectionViewDefault = {
+						    'login' : false,
+						    'no' : '4364',
+						    'type' : 'pc'
+						}
+						sectionView.userInfoGet(sectionViewDefault);
+
+						function cartPutLayerTypeShow(){
+						    var winTop = 0, scrollCheckTop = 0;
+						    var $target = $('#cartPut .cart_type1');
+						    $(window).on('scroll', function(){
+						        scrollCheckTop = Number( $('#goods-view-infomation').offset().top ); // 패키지상품치 위치가 바뀌므로 매번 체크
+						        winTop = Number( $(this).scrollTop() );
+						        if(winTop >=scrollCheckTop){
+						            $target.addClass('on');
+						        }else{
+						            $target.removeClass('on');
+						            if($target.find('.btn_close .ico').hasClass('open')){
+						                $target.find('.btn_close').trigger('click');
+						            }
+						        }
+						    }).scroll();
+						}
+						cartPutLayerTypeShow();
+						</script>
+
+						<script src="https://res.kurly.com/js/lib/jquery.inview.js"></script>
+						<script>
+						    // iframe에서 해당 height값가져오는 부분
+						    function resizeFrameHeight(onm, height) {
+						        document.getElementById(onm).height = height;
+						    }
+						    function resizeFrameWidth(onm, width) {
+						        document.getElementById(onm).width = width;
+						    }
+						    jQuery(function ($) {
+						        $("#goods-review").bind("inview", function(event,visible) {
+						            if (visible == true) {
+						                if ( $(this).data("load")==0 ) {
+						                    $(this).data("load",1);
+						                    $(this).html('<iframe id="inreview" src="./goods_review_list.php?goodsno=4364" frameborder="0" class="goods-view-infomation-board"></iframe>');
+						                }
+						            }
+						            $(function(){
+						                $('#inreview').load(function () {
+						                    var iframe = $('#inreview').contents();
+						                    iframe.find(".layout-pagination-button").on('click', function(event) {
+						                        $('html,body').animate({
+						                            scrollTop: $("#goods-review").offset().top-115
+						                        }, 300);
+						                    });
+						                });
+						            });
+						        });
+						    });
+						    // 해당 구역을 경과하면 보여주기 - 2016.01.03 junix
+						    $( document ).ready(function() {
+						        // $(window).height() 브라우저 내 창 높이
+						        // $(document).scrollTop() 현재 스크롤 top 위치
+						        if (($("#goods-review").offset().top - $(document).scrollTop()) < $(window).height())
+						        {
+						            $("#goods-review").data("load", 1);
+						            $("#goods-review").html('<iframe id="inreview" src="./goods_review_list.php?goodsno=4364" frameborder="0" class="goods-view-infomation-board"></iframe>');
+						        }
+						
+						        // 170119 ey
+						        var slideThumb = $('.goods-add-product-item');
+						        var slideThumbCnt = 5;
+						
+						        if(slideThumb.length <= slideThumbCnt){
+						            $('.goods-add-product-move-right').hide();
+						            $('.goods-add-product-move-left').hide();
+						        }
+						    });
+						
+						    $(window).load(function(){
+						        // KM-433 장차석 : 인증서기능추가
+						        showCertify.pageMake();
+						        showCertify.init();
+						    });
+						
+						    // KMF-771 상품상세 과거 이벤트 페이지 랜더링 이슈
+						    $('#goods-description a').on('click', function(){
+						      var httpCheck = $(this).attr('href');
+						      if(httpCheck.indexOf('http://www.kurly.com') > -1) {
+						        $(this).attr('href', httpCheck.replace('http://www.kurly.com', ''));
+						      }
+						      return true;
+						    });
+						</script>
+
+						<script src="https://res.kurly.com/js/vue/data/goods/whykurly.js?ver=1.39.16"></script>
+						<script src="https://res.kurly.com/js/vue/components/listIconTitleDesc.js?ver=1.39.16"></script>
+
+						<script src="/common_js/goods/exchangeRefundPolicyPC.js?ver=1.39.16"></script>
+										
+						<div class="bg_loading" id="bgLoading">
+							<div class="loading_show"></div>
+						</div>
+							<script src="/common_js/product/productDetail.js?ver=1.39.16"></script>
+				</div>
 			</div>
 		</div>
+</div>
 	
 	<!-- 수량관련 -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.min.js" ></script>

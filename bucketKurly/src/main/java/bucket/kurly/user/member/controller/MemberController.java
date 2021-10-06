@@ -394,5 +394,19 @@ public class MemberController {
 		out.flush();
 		out.close();
 	}
+	
+	
+	// 주문내역
+	@RequestMapping("/member_orderlist.do")
+	public String member_orderlist() {
+		return "member/member_orderlist";
+	}
+
+	// 주문내역 상세페이지
+	@RequestMapping("/member_orderlist_detail.do")
+	public String member_orderlist_detail() {
+		return "member/member_orderlist_detail";
+	}
+	
 
 }

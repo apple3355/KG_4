@@ -1,0 +1,168 @@
+@charset "UTF-8";
+
+#main {border-bottom: 1px solid #f7f7f7;}
+#content {min-width: 1050px;padding-bottom: 120px;}
+.screen_out {display: block;overflow: hidden;position: absolute;left: -9999px;width: 1px;height: 1px;font-size: 0;line-height: 0;text-indent: -9999px;}
+b, strong {font-weight: 700;}
+strong {font-weight: bold;}
+div {display: block;}
+.page_aticle button, .page_aticle input, .page_aticle select, .page_aticle * {font-family: noto sans;font-weight: 400;letter-spacing: 0;}
+a {background-color: transparent;text-decoration: none;color: inherit;}
+div {display: block;}
+
+
+
+/* mypage_top */
+.mypage_top {width: 100%;padding: 50px 0;margin-bottom: -20px;background-color: #f7f7f7;}
+.mypage_top .mypagetop_user {overflow: hidden;width: 1050px;margin: 0 auto;}
+.mypage_top .inner_mypagetop {overflow: hidden;width: 100%;display: flex;align-items: stretch;}
+.mypage_top .grade_user {width: 362px;padding: 30px;background-color: #fff;}
+.mypage_top .grade_wrap {display: flex;align-items: center;}
+.mypage_top .grade_wrap .grade_logo.class6 {border: 1px solid #949296;background-color: #fff;color: #949296;}
+.mypage_top .grade_wrap .grade_logo {width: 48px;height: 48px;display: flex;justify-content: center;align-items: center;border-radius: 3px;border: solid 1px gray;font-size: 14px;color: #fff;}
+.mypage_top .grade_user .class6 {border: 1px solid #949296;background-color: #fff;color: #949296;}
+.mypage_top .grade_wrap .name {margin-left: 20px;font-size: 20px;}
+.mypage_top .name {overflow: hidden;float: left;max-width: 263px;font-weight: 700;font-size: 20px;color: #333;line-height: 28px;white-space: nowrap;text-overflow: ellipsis;}
+.mypage_top .grade_bnenfit {overflow: hidden;margin-top: 16px;}
+.mypage_top .grade_user .benefit {padding-top: 4px;}
+.mypage_top .benefit {font-size: 14px;line-height: 18px;color: #333;}
+.mypage_top .benefit .tit {color: #5f0080;}
+.mypage_top .grade_user .benefit {padding-top: 4px;}
+.mypage_top .next {display: flex;align-items: center;justify-content: center;margin-top: 18px;}
+.mypage_top .next a {height: 30px;padding-top: 4px;border: 1px solid #f4f4f3;border-radius: 15px;background-color: #f4f4f4;font-size: 12px;color: #333;line-height: 18px;text-align: center;}
+.mypage_top .total_grade {width: 121px;}
+.mypage_top .next_month {width: 169px;}
+.mypage_top .next a:not(:first-of-type) {margin-left: 10px;}
+
+.mypage_top .list_mypage {display: flex;flex-grow: 1;flex-direction: column;margin-left: 4px;}
+.mypage_top .list_mypage .list {display: flex;overflow: hidden;width: 100%;height: 100%;}
+.mypage_top .list_mypage .link_wrap:not(:last-of-type) {flex-grow: 1;margin-right: 4px;}
+.mypage_top .list_mypage .link_wrap {flex-grow: 1;width: 168px;background-color: #fff;padding: 26px 0 30px 30px;display: flex;flex-direction: column;}
+.mypage_top .list_mypage .link_wrap .link_title {font-size: 14px;font-weight: 500;display: flex;align-items: center;color: #333;position: relative;}
+.mypage_top .list_mypage .link_wrap .link_title .arrow_right {width: 28px;}
+.mypage_top .list_mypage .link_wrap .spacer {flex-grow: 2;}
+.mypage_top .list_mypage .link_wrap .info {font-weight: 700;font-size: 20px;color: #5f0080;line-height: 28px;flex-grow: 3;position: relative;}
+.mypage_top .list_mypage .link_wrap .info .expire {position: absolute;font-size: 12px;color: #999;top: 32px;left: 0;}
+.mypage_top .list_mypage .link_wrap {flex-grow: 1;width: 168px;background-color: #fff;padding: 26px 0 30px 30px;display: flex;flex-direction: column;}
+
+.mypage_top .bnr_event {display: block;overflow: hidden;width: 100%;height: 60px;margin-top: 20px;background-size: 1050px 60px;background-repeat: no-repeat;background-position: 50% 50%;}
+
+
+/* bg_loading */
+
+/* 메인영역 */
+.page_aticle.aticle_type2 {padding-top: 65px;}
+.page_aticle {width: 1050px;margin: 0 auto;}
+.page_aticle.aticle_type2:after {content: "";display: block;overflow: hidden;width: 100%;clear: both;}
+
+/* 왼쪽 메뉴 카테고리 */
+#snb {float: left;width: 200px;}
+#snb .tit_snb {padding: 5px 0 35px 1px;font-weight: 700;font-size: 28px;line-height: 35px;color: #333;letter-spacing: -1px;}
+ol, ul {list-style-type: none;}
+#snb .inner_snb {border: 1px solid #f2f2f2;border-bottom: 0;}
+#snb .list_menu li {border-bottom: 1px solid #f2f2f2;}
+#snb .list_menu li a {display: block;overflow: hidden;padding: 14px 0 16px 20px;background: #fff url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11.svg) no-repeat 174px 52%;background-size: 6px 11px;font-size: 14px;color: #666;line-height: 20px;letter-spacing: -.3px;}
+#snb .list_menu li.on a, #snb .list_menu li a:hover {background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 174px 52%;background-size: 6px 11px;font-weight: 700;color: #5f0080;}
+#snb .link_inquire {display: block;overflow: hidden;width: 200px;height: 60px;margin-top: 20px;padding: 9px 0 0 22px;border-radius: 0 100px 100px 0;background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 175px 25px;background-size: 6px 11px;font-size: 12px;color: #333;line-height: 20px;}
+#snb .link_inquire .emph {display: block;padding-bottom: 1px;font-weight: 700;font-size: 14px;}
+
+/* 주문 내역 상세 */
+.page_aticle.aticle_type2 .page_section {float: right;width: 820px;}
+.page_aticle .head_aticle {padding: 5px 0 34px;}
+.page_aticle .head_aticle .tit {height: 36px;font-weight: 700;font-size: 24px;line-height: 36px;color: #333;letter-spacing: -.5px;}
+
+.section_orderview .head_section {padding: 63px 0 22px;}
+.section_orderview .link_type {position: relative;padding: 0 0 21px;}
+.section_orderview .head_section .tit {font-size: 20px;color: #333;letter-spacing: -.4px;}
+.page_aticle .head_section .tit {font-weight: 700;font-size: 16px;color: gray;line-height: 24px;}
+.section_orderview .link_type .link {position: absolute;right: 1px;top: 5px;font-size: 12px;color: #666;text-align: right;}
+.section_orderview .link_type .link a {padding-right: 11px;background: url(https://res.kurly.com/pc/ico/2011/ico_outlink.svg) no-repeat 100% 50%;background-size: 6px 9px;font-size: 12px;color: #5f0080;line-height: 22px;}
+h3 {display: block;font-size: 1.17em;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;font-weight: bold;}
+form {display: block;margin-top: 0em;}
+.section_orderview .chk_cart {position: absolute;opacity: 0;}
+.section_orderview .tbl_type1 {border-top: 2px solid #333;}
+.page_aticle .tbl {width: 100%;}
+table {border-collapse: collapse;border-spacing: 0;}
+table {display: table;box-sizing: border-box;text-indent: initial;border-spacing: 2px;border-color: grey;}
+colgroup {display: table-column-group;}
+col {display: table-column;}
+tbody {display: table-row-group;vertical-align: middle;border-color: inherit;}
+tr {display: table-row;vertical-align: inherit;border-color: inherit;}
+
+
+input[type=checkbox], input[type=radio] {box-sizing: border-box;padding: 0;}
+
+
+.page_aticle .tbl_type1 tr:first-child td {border-top: 1px solid #333;}
+.section_orderview .tbl_type1 .thumb {padding: 25px 0 24px;}
+.section_orderview .tbl_type1 td {border-bottom: 1px solid #f4f4f4;}
+
+td {display: table-cell;vertical-align: inherit;}
+.section_orderview .tbl_type1 .thumb a {display: block;overflow: hidden;width: 60px;height: 78px;background-color: #f4f4f4;background-repeat: no-repeat;background-position: 50% 50%;background-size: cover;}
+.page_aticle .tbl_type1 td {border-top: 1px solid #f4f4f4;}
+.section_orderview .tbl_type1 .info {padding: 20px 0;}
+td, th {padding: 0;}
+.section_orderview .tbl_type1 .name .link {font-weight: 700;font-size: 16px;color: #333;line-height: 24px;}
+.section_orderview .tbl_type1 .desc {padding-top: 9px;line-height: 20px;}
+.section_orderview .tbl_type1 .price {padding-right: 5px;font-weight: 700;font-size: 14px;color: #333;}
+.section_orderview .tbl_type1 .ea {font-size: 14px;color: #333;}
+.section_orderview .tbl_type1 .ea:before {content: "";display: inline-block;width: 1px;height: 14px;margin-right: 8px;background-color: #ddd;vertical-align: -2px;}
+
+.page_aticle .tbl_type1 tr:first-child td {border-top: 1px solid #333;}
+.section_orderview .tbl_type1 .progress {font-weight: 700;font-size: 16px;color: #5f0080;line-height: 24px;text-align: right;}
+.page_aticle .tbl th, .page_aticle .tbl td {word-break: break-all;}
+.section_orderview .tbl_type1 .action {padding-left: 40px;}
+.section_orderview .order_cancel {padding: 40px 0 0;text-align: center;}
+.section_orderview .order_cancel .inner_cancel {display: inline-block;overflow: hidden;padding-left: 12px;}
+.section_orderview .order_cancel .cancel_notice {padding-top: 39px;font-size: 14px;color: #666;line-height: 20px;}
+p {display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;}
+
+/* 배송 조회 영역 */
+.section_orderview .order_delivery {padding-top: 65px;}
+.section_orderview .order_delivery .tit {font-weight: 700;font-size: 20px;color: #333;}
+.section_orderview .order_delivery .list_status {margin-top: 24px;border-top: 2px solid #333;}
+ol, ul {list-style-type: none;}
+.section_orderview .order_delivery .no_delivery:last-child, .section_orderview .order_delivery .no_delivery {padding: 100px 0;text-align: center;}
+.section_orderview .order_delivery li:last-child {padding-bottom: 28px;border-bottom: 1px solid #f4f4f4;}
+.section_orderview .order_delivery li {overflow: hidden;padding: 12px 0;font-size: 16px;color: #333;line-height: 24px;}
+li {display: list-item;text-align: -webkit-match-parent;}
+.page_aticle .head_section .txt_sub {padding-left: 24px;font-size: 12px;color: #777;letter-spacing: -.2px;}
+
+
+/* 결제 정보 영역 */
+.page_aticle .tbl_type2 {border-top: 2px solid #333;border-bottom: 1px solid #f4f4f4;}
+colgroup {display: table-column-group;}
+col {display: table-column;}
+tr {display: table-row;vertical-align: inherit;border-color: inherit;}
+.section_orderview .tbl_type2 tr:first-child th, .section_orderview .tbl_type2 tr:first-child td {padding-top: 24px;}
+.section_orderview .tbl_type2 th {padding-bottom: 24px;font-size: 16px;color: #666;line-height: 24px;text-align: left;vertical-align: top;}
+th {display: table-cell;vertical-align: inherit;font-weight: bold;text-align: -internal-center;}
+.section_orderview .tbl_type3 td {text-align: right;}
+.section_orderview .tbl_type2 td {font-size: 16px;color: #333;line-height: 24px;vertical-align: top;}
+
+
+/* 주문 정보 영역 */
+.section_orderview .tbl_type2 tr:last-child th, .section_orderview .tbl_type2 tr:last-child td {padding-bottom: 28px;}
+img {border: 0;}
+
+/* 배송 정보 영역 */
+
+/* 추가 정보 영역 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

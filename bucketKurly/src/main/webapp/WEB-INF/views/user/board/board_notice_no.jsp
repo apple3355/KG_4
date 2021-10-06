@@ -43,7 +43,7 @@
 																<th scope="row">작성자</th>
 																<td>${getnotice_no.board_notice_writer}</td>
 															</tr>
-															<tr class="etcArea">
+															<tr class="etcArea" >
 																<td colspan="2">
 																	<ul>
 																		<li class="date ">
@@ -85,7 +85,7 @@
 													<td align=center style="padding-top: 10px;">
 														<table width=100%>
 															<tr>
-																<td align="right"> <a href=/bucketkurly/board_notice.do><span class="bhs_button yb" style="float: none;">목록</span></a></td>
+																<td align="right"> <a href="${pageContext.request.contextPath}/board_notice.do"><span class="bhs_button yb" style="float: none;">목록</span></a></td>
 															</tr>
 														</table>
 													</td>
@@ -94,8 +94,8 @@
 											<div
 												class="xans-element- xans-board xans-board-movement-1002 xans-board-movement xans-board-1002 ">
 												<ul>
-													<li class="prev "><strong>이전글</strong><a href="${path}/bucketkurly/notice_no.do?no=${board_noticeList.board_notice_no}">${getPrev.board_notice_title}</a></li>
-													<li class="next "><strong>다음글</strong><a href="${path}/bucketkurly/notice_no.do?no=${board_noticeList.board_notice_no}">${getNext.board_notice_title}</a></li>
+													<li class="prev "><strong>이전글</strong><a href="${pageContext.request.contextPath}/notice_no.do?no=${board_noticeList.board_notice_no}">${getPrev.board_notice_title}</a></li>
+													<li class="next "><strong>다음글</strong><a href="${pageContext.request.contextPath}/notice_no.do?no=${board_noticeList.board_notice_no}">${getNext.board_notice_title}</a></li>
 												</ul>
 											</div><br>
 											<table width=100% cellpadding=5 cellspacing=0>
