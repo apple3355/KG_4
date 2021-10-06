@@ -206,8 +206,6 @@ $(function(){
 .page_main .list_goods .thumb_goods .ico{z-index:1;transition:all 0.3s ease-in-out}
 .page_main .list_goods .thumb_goods .thumb{display:block;margin:0 auto;background-position:50% 50%;background-size:cover;transform:scale(1);transition:all 0.3s ease-in-out}
 .page_main .list_goods .thumb_goods:hover .thumb{transform:scale(1.02);transition:all 0.3s ease-in-out}
-.bg_loading {position: fixed;z-index: 9998;left: 0;top: 0;width: 100%;height: 100%;background-color: #000;opacity: .5;}
-.loading_show {position: fixed;z-index: 10000;top: 50%;left: 50%;margin: -16px 0 0 -16px;width: 32px;height: 32px;background: url(https://res.kurly.com/pc/img/1909/img_loading_128x128.gif) no-repeat 50% 50%;background-size: 16px 16px;}
   
 
 .main_type1 .list_goods .thumb_goods{width:100%;height:370px;background-repeat:no-repeat;background-position:50% 50%;background-size:auto auto;font-size:0;line-height:0;text-indent:-9999px}

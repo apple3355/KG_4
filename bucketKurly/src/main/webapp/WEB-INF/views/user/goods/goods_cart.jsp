@@ -399,8 +399,12 @@
 								<input type="text" class="emph" name="member_address1" id="addr" readonly="readonly" size="50" style="border:0" value="${memberVO.member_address1 }" />
 								<br><br>
 								<input type="text" class="emph" name="member_address2" id="addr_sub"  size="50" style="border:0" value="${memberVO.member_address2 }" />
+								<span class="delivery star">샛별배송</span>
+								<span class="delivery regular">택배배송</span>
+										
 								<a href="#none" class="btn default" id="btn default" onclick="findAddr()">
-								<span class="ico"></span>배송지 변경</a>
+									<span class="ico"></span>배송지 변경
+								</a>
 							</div>
 						</div>
 						<div class="amount_view">
@@ -723,10 +727,12 @@ function findAddr(){
 			// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
 			var roadAddr = data.roadAddress; // 도로명 주소 변수9
 			var jibunAddr = data.jibunAddress; // 지번 주소 변수
+			var buildingName = data.buildingName; //아파트 명
+			var fulladdr = roadAddr + "\n(" + buildingName + ")"; //합친 것
 			// 우편번호와 주소 정보를 해당 필드에 넣는다.
 			document.getElementById('zonecode').value = data.zonecode;
 			if(roadAddr !== ''){
-				document.getElementById("addr").value = roadAddr;
+				document.getElementById("addr").value = fulladdr;
 			}else if(jibunAddr !== ''){
 				document.getElementById("addr").value = data.jibunAddr;
 			}
