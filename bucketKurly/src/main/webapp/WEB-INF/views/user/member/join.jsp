@@ -246,14 +246,14 @@ $(document).ready(function(){
 														<input type="checkbox" id="checkAll" name="terms_agree_status" value="n" onclick="memberTerms()">
 														<span class="ico"></span>전체 동의합니다.
 													</label>
-													<p class="sub">선택항목에 동의하지 않은 경우도 회원가입 및 일반적인 서비스를 이용할 수 있습니다.</p>
+													<p class="txt">선택항목에 동의하지 않은 경우도 회원가입 및 일반적인 서비스를 이용할 수 있습니다.</p>
 												</div>
 											
 												<div class="check_view">
 													<label class="check_agree label_block"> <input
 														type="checkbox" value="y" name="agree" required label="이용약관">
 														<span class="ico"></span>이용약관 동의 <span
-														class="sub">(필수)</span>
+														class="txt">(필수)</span>
 													</label> <a href="#none" class="link btn_link btn_agreement">약관보기
 													</a>
 												</div> 
@@ -263,7 +263,7 @@ $(document).ready(function(){
 												<div class="layer layer_agreement">
 													<div class="inner_layer">
 														<h4 class="tit_layer">
-															이용약관 <span class="sub">(필수)</span>
+															이용약관 <span class="txt">(필수)</span>
 														</h4>
 														<div id="serviceView" class="box_tbl">
 															<div class="box_type">
@@ -702,18 +702,18 @@ $(document).ready(function(){
 
 												<div class="check_view">
 													<label class="check_agree label_block"> <input
-														type="checkbox" id="private1" name="private1" value=""
+														type="checkbox" id="chkFrom" name="chkFrom" value=""
 														required="" label="개인정보 수집·이용"> <span class="ico"></span>개인정보
-														수집·이용 동의 <span class="sub">(필수)</span>
+														수집·이용 동의 <span class="txt">(필수)</span>
 													</label> <a href="#none" class="link btn_link btn_essential">약관보기
 													</a>
 												</div> 	
-<!-- 끝 -->
+												<!-- 끝 -->
 												<div class="layer layer_essential">
 													<div class="inner_layer">
 														<div class="in_layer">
 															<h4 class="tit_layer">
-																개인정보 수집·이용 동의 <span class="sub">(필수)</span>
+																개인정보 수집·이용 동의 <span class="txt">(필수)</span>
 															</h4>
 															<div class="box_tbl">
 																<table cellpadding="0" cellspacing="0" width="100%">
@@ -774,7 +774,7 @@ $(document).ready(function(){
 													<input type="hidden" id="consentHidden" name="consent[1]"
 														value=""> <label class=" check_agree label_block">
 														<input type="checkbox" name="hiddenCheck"> <span
-														class="ico"></span>개인정보 수집·이용 동의 <span class="sub">(선택)</span>
+														class="ico"></span>개인정보 수집·이용 동의 <span class="txt">(선택)</span>
 													</label> <a href="#none" class="link btn_link btn_choice">약관보기
 													</a>
 												</div>
@@ -783,7 +783,7 @@ $(document).ready(function(){
 													<div class="inner_layer">
 														<div class="in_layer">
 															<h4 class="tit_layer">
-																개인정보 수집·이용 동의 <span class="sub">(선택)</span>
+																개인정보 수집·이용 동의 <span class="txt">(선택)</span>
 															</h4>
 															<div class="box_tbl">
 																<table cellpadding="0" cellspacing="0" width="100%">
@@ -821,7 +821,7 @@ $(document).ready(function(){
 													<label class="label_block check_agree "> <input
 														type="checkbox" name="marketing"> <span
 														class="ico"></span>무료배송, 할인쿠폰 등 혜택/정보 수신 동의 <span
-														class="sub">(선택)</span>
+														class="txt">(선택)</span>
 													</label>
 													<div class="check_event email_sms">
 														<label class="label_block check_agree "> <input
@@ -833,7 +833,7 @@ $(document).ready(function(){
 														</label>
 													</div>
 													<p class="sms_info">
-														동의 시 한 달간 [5% 적립] + [무제한 무료배송] <span class="sub">(첫
+														동의 시 한 달간 [5% 적립] + [무제한 무료배송] <span class="txt">(첫
 															주문 후 적용)</span>
 													</p>
 												</div>
@@ -841,7 +841,7 @@ $(document).ready(function(){
 													<label class=" check_agree label_block"> <input
 														type="checkbox" value="n" name="fourteen_chk" required
 														label="만 14세 이상"> <span class="ico"></span>본인은 만
-														14세 이상입니다. <span class="sub">(필수)</span>
+														14세 이상입니다. <span class="txt">(필수)</span>
 													</label>
 												</div>
 											</td>
