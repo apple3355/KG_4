@@ -72,7 +72,7 @@
 									<div class="ea">${goods_cartShowVO.goods_cart_count}개</div>
 									<div class="info_price">
 										<span class="num">
-											<span class="price"><fmt:parseNumber>${(goods_cartShowVO.goods_sell_price - goods_cartShowVO.goods_sell_price / goods_cartShowVO.goods_sell_discount) * goods_cartShowVO.goods_cart_count}</fmt:parseNumber>원</span>
+											<span class="price"><fmt:parseNumber>${(goods_cartShowVO.goods_sell_price - goods_cartShowVO.goods_sell_price * (goods_cartShowVO.goods_sell_discount/100)) * goods_cartShowVO.goods_cart_count}</fmt:parseNumber>원</span>
 										</span>
 									</div>
 								</li>
