@@ -3,6 +3,7 @@ package bucket.kurly.user.goods;
 public class Goods_CartShowVO {
 	private int goods_cart_no;
 	private int goods_sell_no;
+	private int goods_sell_stock_ea;
 	private int goods_cart_count;
 	private int goods_cart_status;
 	private String category_goods_image_thumb;
@@ -22,6 +23,12 @@ public class Goods_CartShowVO {
 	}
 	public void setGoods_sell_no(int goods_sell_no) {
 		this.goods_sell_no = goods_sell_no;
+	}
+	public int getGoods_sell_stock_ea() {
+		return goods_sell_stock_ea;
+	}
+	public void setGoods_sell_stock_ea(int goods_sell_stock_ea) {
+		this.goods_sell_stock_ea = goods_sell_stock_ea;
 	}
 	public int getGoods_cart_count() {
 		return goods_cart_count;
@@ -74,10 +81,11 @@ public class Goods_CartShowVO {
 	@Override
 	public String toString() {
 		return "Goods_CartShowVO [goods_cart_no=" + goods_cart_no + ", goods_sell_no=" + goods_sell_no
-				+ ", goods_cart_count=" + goods_cart_count + ", goods_cart_status=" + goods_cart_status
-				+ ", category_goods_image_thumb=" + category_goods_image_thumb + ", category_goods_name="
-				+ category_goods_name + ", category_goods_delivery_type=" + category_goods_delivery_type
-				+ ", category_goods_packaging_type=" + category_goods_packaging_type + ", goods_sell_price="
-				+ goods_sell_price + ", goods_sell_discount=" + goods_sell_discount + "]";
+				+ ", goods_sell_stock_ea=" + goods_sell_stock_ea + ", goods_cart_count=" + goods_cart_count
+				+ ", goods_cart_status=" + goods_cart_status + ", category_goods_image_thumb="
+				+ category_goods_image_thumb + ", category_goods_name=" + category_goods_name
+				+ ", category_goods_delivery_type=" + category_goods_delivery_type + ", category_goods_packaging_type="
+				+ category_goods_packaging_type + ", goods_sell_price=" + goods_sell_price + ", goods_sell_discount="
+				+ goods_sell_discount + "]";
 	}
 }

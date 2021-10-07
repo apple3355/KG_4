@@ -132,6 +132,7 @@
 											<div class="inner_name">
 												<a href="#" class="package ">
 												<c:out value="${goods_cartShowVO.category_goods_name}"/></a>
+												<input type="hidden" name="stockChk" id="${goods_cartShowVO.category_goods_name}_stock"  readonly="readonly" class="stockChk" value="${goods_cartShowVO.goods_sell_stock_ea}" >   
 												<div class="info"></div>
 											</div>
 										</div>
@@ -215,6 +216,7 @@
 											<div class="inner_name">
 												<a href="#" class="package ">
 												<c:out value="${goods_cartShowVO.category_goods_name}"/></a>
+												<input type="hidden" name="stockChk" id="${goods_cartShowVO.category_goods_name}_stock"  readonly="readonly" class="stockChk" value="${goods_cartShowVO.goods_sell_stock_ea}" >   
 												<div class="info"></div>
 											</div>
 										</div>
@@ -299,6 +301,7 @@
 											<div class="inner_name">
 												<a href="#" class="package ">
 												<c:out value="${goods_cartShowVO.category_goods_name}"/></a>
+												 <input type="hidden" name="stockChk" id="${goods_cartShowVO.category_goods_name}_stock"  readonly="readonly" class="stockChk" value="${goods_cartShowVO.goods_sell_stock_ea}" >   
 												<div class="info"></div>
 											</div>
 										</div>
@@ -715,6 +718,18 @@ $(document).ready(function calTot(){
 	   let goods_id = $(this).attr("id").split("_up")[0]; //상품의 name의 수량을 올림
 
 	   if (num < 10) {
+		   
+		//재고
+		var stockLoca = th.eq(1).children().children().children(); //화면에서 재고 input 위치
+		var stock = parseInt(stockLoca.eq(1).val()); //재고 value
+		   
+			        
+		if(num > stock-1){ //if(stock == 0) -> 품절
+			alert("담을 수 있는 재고가 부족합니다!");
+			return false;
+		}    
+		   
+		   
 	      $(this).prev().val(++num); //조건문일 때 수량 올림
 
 	     var selling = parseInt(price.eq(0).text());
