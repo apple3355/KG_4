@@ -210,9 +210,6 @@
 			} else if (in_ea == ""){
 				alert("입고 수량을 입력해주세요");
 				in_ea.focus();
-			} else if (exp == ""){
-				alert("유통기한을 입력해주세요");
-				exp.focus();
 			} else if (price == ""){
 				alert("상품 가격을 입력해주세요");
 				price.focus();
