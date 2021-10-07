@@ -61,6 +61,12 @@ public class GoodsDAO {
 		return sqlSessionTemplate.selectList("GoodsDAO.chooseGoods_cart", goods_cart_no);
 	}
 
+	// 장바구니 수정
+	public void updateGoods_cart(Goods_CartVO gsvo){
+		System.out.println("updateGoods_cart() 실행");
+		sqlSessionTemplate.update("GoodsDAO.updateGoods_cart",gsvo);
+	}
+	
 	// 장바구니 삭제
 	public void deleteGoods_cart(Goods_CartVO gsvo) {
 		sqlSessionTemplate.delete("GoodsDAO.deleteGoods_cart", gsvo);

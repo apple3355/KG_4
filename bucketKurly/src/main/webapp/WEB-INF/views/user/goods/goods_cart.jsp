@@ -636,7 +636,8 @@ $(document).ready(function calTot(){
 	   var th = tr.children();
 	   var price = th.eq(4).children().children().children(); //할인 적용된 가격
 	   var count = th.eq(3).children().children(); //수량
-	  
+	   var no = th.eq(0).children().children(); //카트 no -> 해당 상품 수량 수정
+	 
 	   let goods_id = $(this).attr("id").split("_down")[0];
 	   
 	   if (num > 1) {
@@ -656,6 +657,22 @@ $(document).ready(function calTot(){
 		  price.eq(0).text(mp + "원");
 		  price.eq(1).text(costVar + "원");	
 		  
+		  //카트 수량 변경 DB 입력
+		  var numAfter = num--;//수량 내림
+	   	  var cartNo = no.val();//수량 내려간 DB의 cart번호(row) 수량을 수정
+			 	
+				$.ajax({
+					url : 'updateGoods_cart.do',
+					type : 'POST',
+					data : {'cartNo' : cartNo, 'numAfter' : numAfter},					
+					success : function(result) {
+						if (result == 1) {
+						} 
+					},
+						error : function() {
+							alert("카트 담기 실패!");
+						}
+				});
 
 	    //전체 상품금액
 			 const priceLists = document.querySelectorAll('.cost'); //우리 가격 클래스: selling 
@@ -714,7 +731,8 @@ $(document).ready(function calTot(){
 	   var th = tr.children();
 	   var price = th.eq(4).children().children().children(); 
 	   var count = th.eq(3).children().children(); //수량
-
+	   var no = th.eq(0).children().children(); //카트 no -> 해당 상품 수량 수정
+	  
 	   let goods_id = $(this).attr("id").split("_up")[0]; //상품의 name의 수량을 올림
 
 	   if (num < 10) {
@@ -746,7 +764,25 @@ $(document).ready(function calTot(){
 	     
 	     price.eq(0).text(mp + "원");
 	     price.eq(1).text(costVar + "원");
-	     	     
+	     
+	     
+	     //카트 수량 변경 DB 입력
+		  var numAfter = num++;//수량 올림
+	   	  var cartNo = no.val();//수량 올라간 DB의 cart번호(row) 수량을 수정
+			 	
+				$.ajax({
+					url : 'updateGoods_cart.do',
+					type : 'POST',
+					data : {'cartNo' : cartNo, 'numAfter' : numAfter},					
+					success : function(result) {
+						if (result == 1) {
+						} 
+					},
+						error : function() {
+							alert("카트 담기 실패!");
+						}
+				});
+	     
 
 		//전체 상품금액
 		 const priceLists = document.querySelectorAll('.cost'); //우리 가격 클래스: selling 

@@ -67,6 +67,13 @@ public class GoodsServicImpl implements GoodsService {
 		return dao.chooseGoods_cart(goods_cart_no);
 	}
 	
+	//장바구니 수정
+	@Override
+	public void updateGoods_cart(Goods_CartVO gsvo) {
+		dao.updateGoods_cart(gsvo);
+					
+	}
+	
 	//장바구니 삭제
 	@Override
 	public void deleteGoods_cart(Goods_CartVO gsvo) {

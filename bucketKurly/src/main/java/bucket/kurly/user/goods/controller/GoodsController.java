@@ -146,6 +146,24 @@ public class GoodsController {
 			return "goods/goods_cart";
 		}
 	}
+	
+	// 장바구니 수정
+		@ResponseBody
+		@RequestMapping("/updateGoods_cart.do")
+		public String updateGoods_cart(Goods_CartVO gsvo, HttpServletRequest request) {
+
+			String cartNo = request.getParameter("cartNo");
+			String numAfter = request.getParameter("numAfter");
+			System.out.println("cartNo "+cartNo);
+			System.out.println("numAfter "+numAfter);
+			gsvo.setGoods_cart_no(Integer.parseInt(cartNo));
+			gsvo.setGoods_cart_count(Integer.parseInt(numAfter));
+			// System.out.println(gcvo.getGoods_cart_no());
+			goodsService.updateGoods_cart(gsvo);
+			
+			return null;
+		}
+	
 	//장바구니 삭제
 	@ResponseBody
 	@RequestMapping("/deleteGoods_cart.do")
