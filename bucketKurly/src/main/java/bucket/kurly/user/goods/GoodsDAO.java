@@ -55,9 +55,9 @@ public class GoodsDAO {
 		return sqlSessionTemplate.selectList("GoodsDAO.getGoods_cart", goods_cart_member_no);
 	}
 
-	// 장바구니 불러오기
+	// 선택한 장바구니 불러오기
 	public List<Goods_CartShowVO> chooseGoods_cart(int goods_cart_no) {
-		System.out.println("getGoods_cart() 실행");
+		System.out.println("chooseGoods_cart() 실행");
 		return sqlSessionTemplate.selectList("GoodsDAO.chooseGoods_cart", goods_cart_no);
 	}
 

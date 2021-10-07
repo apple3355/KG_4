@@ -86,7 +86,7 @@
 			<h3 class="screen_out">장바구니 상품 목록</h3> 
 			
 			
-			<form action="/order_form.do" method="post">
+			<form action="/order_form.do">
 				<div id="cartItemList" items="${countGoods_cart }" var="countGoods_cart"class="only_pc" style="min-height: 561px;">
 					<div class="">
 					<!-- div class "" or empty 시작 -->
@@ -122,7 +122,7 @@
 
 								<tr>
 									<th><label class="check">
-											<input type="checkbox" id="checkbox" name="chkItem" checked="" onclick='checkSelectAll()'>
+											<input type="checkbox" id="checkbox" name="chkItem" checked="" onclick='checkSelectAll()' value="${goods_cartShowVO.goods_cart_no}">
 												 <span class="ico"></span>
 										</label>
 									</th>
@@ -205,7 +205,7 @@
 
 								<tr>
 									<th><label class="check">
-											<input type="checkbox" id="checkbox" name="chkItem" checked="" onclick='checkSelectAll()'>
+											<input type="checkbox" id="checkbox" name="chkItem" checked="" onclick='checkSelectAll()' value="${goods_cartShowVO.goods_cart_no}">
 												 <span class="ico"></span>
 										</label>
 									</th>
@@ -289,7 +289,7 @@
 
 								<tr>
 									<th><label class="check">
-											<input type="checkbox" id="checkbox" name="chkItem" checked="" onclick='checkSelectAll()'>
+											<input type="checkbox" id="checkbox" name="chkItem" checked="" onclick='checkSelectAll()' value="${goods_cartShowVO.goods_cart_no}">
 												 <span class="ico"></span>
 										</label>
 									</th>
@@ -955,12 +955,19 @@ function findAddr(){
 
 <!-- 주문하기 클릭 페이지 이동 -->
 <script type="text/javascript">
-function fnOrder(){
+$("#btn_submit").on('click',function fnOrder(){
 	
-	var url = "/order_form.do";
+	$("input:checkbox[name=checkAll]").each(function(){
+		if($("#checkbox").is(":checked"){
+			
+		}else{
+			$("#checkbox").val("");
+		}
+
+				
+	});
 	
-	location.href = url;
-}
+})
 </script>
 </body>
 
