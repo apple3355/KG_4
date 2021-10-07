@@ -397,11 +397,10 @@
 					<div class="inner_result" style="top: 60px;">
 						<div class="cart_delivery">
 							<h3 class="tit">배송지</h3>
-							<div class="address">
+							<div class="no_address"><!-- css address에서 no_address로 수정 -->
 								<input type="hidden" name="member_zipcode" id="zonecode" size="5" />
-								<input type="text" class="emph" name="member_address1" id="addr" readonly="readonly" size="50" style="border:0" value="${memberVO.member_address1 }" />
-								<br><br>
-								<input type="text" class="emph" name="member_address2" id="addr_sub"  size="50" style="border:0" value="${memberVO.member_address2 }" />
+								<span type="text" class="emph" name="member_address1" id="addr">${memberVO.member_address1 }${memberVO.member_address2 }</span>
+								
 								<span class="delivery star">샛별배송</span>
 								<span class="delivery regular">택배배송</span>
 										

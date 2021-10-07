@@ -126,6 +126,7 @@ label.label_block{display:block}
 .cart_delivery .inner_delivery{position:absolute;left:0;top:0;width:100%;background-color:#fff}
 .cart_delivery .inner_delivery.focus{position:fixed}
 .cart_delivery .no_address{display:block;position:relative;padding:12px 20px;font-size:16px;color:#5f0080;line-height:20px}
+.cart_delivery .address{display:block;position:relative;padding:12px 20px;font-size:16px;color:#5f0080;line-height:20px}
 .cart_delivery .address .addr:after,.cart_delivery .no_address:after{content:"";position:absolute;top:50%;right:20px;width:12px;height:12px;margin-top:-6px;background-image:url(https://res.kurly.com/mobile/service/cart/2007/ico_arrow_gray_16x16.svg);background-color:transparent;background-repeat:no-repeat;background-size:16px 16px;background-position:100% 50%}.cart_delivery .address{display:block;position:relative;padding:8px 0 10px 16px}
 .cart_delivery .address .addr{position:relative;padding-left:28px;padding-right:64px;font-size:14px;line-height:17px;word-break:break-word}
 .cart_delivery .address .addr:before{content:"";position:absolute;left:0;top:0;width:20px;height:20px;background-image:url(https://res.kurly.com/mobile/service/cart/2007/ico_location_v3.svg);background-color:transparent;background-repeat:no-repeat;background-size:20px 20px;background-position:0 50%}
