@@ -95,6 +95,7 @@
 		goods.category_goods_packaging_type,
 		cart.goods_cart_count, 
 		sell.goods_sell_price, 
+		sell.goods_sell_stock_ea,
 		cart.goods_cart_status,
 		sell.goods_sell_discount
 		FROM tb_goods_cart cart
