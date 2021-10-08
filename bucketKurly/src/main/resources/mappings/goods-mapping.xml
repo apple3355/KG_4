@@ -131,6 +131,11 @@
 		UPDATE TB_GOODS_CART SET goods_cart_count=#{goods_cart_count} WHERE GOODS_CART_NO = #{goods_cart_no} 
 	</update>
 	
+	<!-- 장바구니 상태 수정 -->
+	<update id="updateCart_status" parameterType="goods_cartshow">
+		UPDATE TB_GOODS_CART SET goods_cart_status=1 WHERE goods_cart_no = #{goods_cart_no} AND goods_cart_member_no = #{goods_cart_member_no}
+	</update>
+	
 	<!-- 장바구니 삭제 -->
 	<delete id="deleteGoods_cart" parameterType="goods_cartshow">
 		DELETE FROM TB_GOODS_CART WHERE GOODS_CART_NO = #{goods_cart_no} 

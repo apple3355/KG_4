@@ -3,8 +3,16 @@
 
 <mapper namespace="OrderDAO">
 	<select id="order_form" resultType="member">
-	  	SELECT member_name, member_phone, member_email 
-	  	FROM tb_member 
-	  	WHERE member_id=#{member_id}
+		SELECT member_name, member_phone, member_email ,member_address1,
+		member_address2, member_zipcode
+		FROM tb_member
+		WHERE member_id=#{member_id}
 	</select>
+
+	<insert id="insertOrder" parameterType="order">
+		INSERT INTO tb_order(order_no, order_name, order_member_no, order_date, order_phone, order_address, order_goods_count, order_goods_price, order_delivery_fee, order_coupon_no)
+		VALUES(to_char(now(), 'YYYYMMDD')||'-'|| LPAD(CAST(NEXTVAL('TB_ORDER_SEQ')AS VARCHAR), 8,
+		'0'),#{order_name},#{order_member_no},now(),#{order_phone},#{order_address},3,#{order_goods_price},#{order_delivery_fee},1);
+
+	</insert>
 </mapper> 

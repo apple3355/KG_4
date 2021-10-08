@@ -16,4 +16,9 @@ public class OrderDAO {
 		System.out.println("OrderDAO - order_form() 실행");
 		return sqlSessionTemplate.selectOne("OrderDAO.order_form", id);
 	}
+	
+	public void insert_order(OrderVO vo) throws Exception {
+		System.out.println("OrderDAO - insert_order() 실행");
+		sqlSessionTemplate.insert("OrderDAO.insertOrder", vo);
+	}
 }

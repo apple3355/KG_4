@@ -62,11 +62,17 @@ public class GoodsDAO {
 	}
 
 	// 장바구니 수정
-	public void updateGoods_cart(Goods_CartVO gsvo){
+	public void updateGoods_cart(Goods_CartVO gsvo) {
 		System.out.println("updateGoods_cart() 실행");
-		sqlSessionTemplate.update("GoodsDAO.updateGoods_cart",gsvo);
+		sqlSessionTemplate.update("GoodsDAO.updateGoods_cart", gsvo);
 	}
-	
+
+	// 장바구니 상태수정
+	public void updateCart_status(Goods_CartVO gsvo) {
+		System.out.println("updateCart_status() 실행");
+		sqlSessionTemplate.update("GoodsDAO.updateCart_status", gsvo);
+	}
+
 	// 장바구니 삭제
 	public void deleteGoods_cart(Goods_CartVO gsvo) {
 		sqlSessionTemplate.delete("GoodsDAO.deleteGoods_cart", gsvo);

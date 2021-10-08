@@ -36,7 +36,10 @@ public interface GoodsService {
 	List<Goods_CartShowVO> chooseGoods_cart(int goods_cart_no);
 	
 	// 장바구니수량 수정
-	void updateGoods_cart(Goods_CartVO gsvo);		
+	void updateGoods_cart(Goods_CartVO gsvo);
+	
+	// 장바구니상태 수정
+	void updateCart_status(Goods_CartVO gsvo);
 	
 	// 장바구니에서 삭제
 	void deleteGoods_cart(Goods_CartVO gsvo);

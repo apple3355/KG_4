@@ -99,20 +99,20 @@
 										<th>보내는 분</th>
 										<td>
 											${memberVO.member_name }
-											<input type="hidden" id="orderer_name" name="orderer_name" value="한현준">
+											<input type="hidden" id="order_name" name="order_name" value=${memberVO.member_name }>
 										</td>
 									</tr>
 									<tr>
 										<th>휴대폰</th>
 										<td>
 											${memberVO.member_phone }
-											<input type="hidden" id="orderer_phone" name="orderer_phone" value="01049914719">
+											<input type="hidden" id="order_phone" name="order_phone" value=${memberVO.member_phone }>
 										</td>
 									</tr>
 									<tr>
 										<th>이메일</th>
 										<td>
-											<input type="hidden" id="email" name="orderer_email" value="gksguswns95@naver.com" option="regEmail">
+											<input type="hidden" id="email" name="orderer_email" value="" option="regEmail">
 											${memberVO.member_email }
 											<p class="txt_guide">
 												<span class="txt txt_case1">이메일을 통해 주문처리과정을 보내드립니다.</span>
@@ -123,7 +123,7 @@
 									</tbody>
 								</table>
 							</div>
-							<input type="hidden" name="zonecode" id="zonecode" value="10415">
+							<input type="hidden" name="zonecode" id="zonecode" value="${memberVO.member_zipcode }">
 							<input type="hidden" name="zipcode[]" id="zipcode0" value="">
 							<input type="hidden" name="zipcode[]" id="zipcode1" value="">
 							<input type="hidden" name="address" id="address" value=${memberVO.member_address1 }>
@@ -206,17 +206,17 @@
 									<div id="orderitem_money_info">
 										<dl class="amount fst">
 											<dt class="tit">주문금액</dt>
-											<dd class="price"><span id="productsTotalPrice">3,700</span> 원</dd>
+											<dd class="price"><span id="productsTotalPrice">${goodsPrice }</span> 원</dd>
 										</dl>
 										<dl class="amount sub">
 											<dt class="tit">상품금액</dt>
-											<dd class="price"><span id="paper_goodsprice">3,700</span> 원</dd>
+											<dd class="price"><span id="paper_goodsprice"></span> 원</dd>
 										</dl>
 										<dl class="amount sub">
 											<dt class="tit">상품할인금액</dt>
 											<dd class="price sales_area">
 												<span class="pm_sign normal" style="display: none;">-</span>
-												<span id="special_discount_amount" class="normal">0</span>
+												<span id="special_discount_amount" class="normal">${discountprice }</span>
 												원
 											</dd>
 											<dd id="paper_sale" class="screen_out">0</dd>
@@ -230,7 +230,7 @@
 													<span id="paper_delivery2" style="display:none">0</span>
 													원
 												</div>
-												<div id="paper_delivery_msg2" style="display: block;">0 원</div>
+												<div id="paper_delivery_msg2" style="display: block;">${deliveryFee } 원</div>
 												<div id="paper_delivery_msg_extra" class="small" style="display:none;"></div>
 												<span id="free_delivery_coupon_msg" class="screen_out">미적용</span>
 												<input type="hidden" name="free_delivery" value="0">
@@ -255,7 +255,7 @@
 										<dl class="amount lst">
 											<dt class="tit">최종결제금액</dt>
 											<dd class="price">
-												<span id="paper_settlement">3700</span>
+												<span id="paper_settlement">${ordersPrice }</span>
 												<span class="won">원</span>
 											</dd>
 										</dl>
@@ -658,13 +658,18 @@
 			return;
 		}else{
 			var user_price = $("#paper_settlement").text();
+			var delivery_fee = $("#paper_delivery_msg2").text();
 			var user_orderTitle = '주문명:결제테스트';
 			var user_email = $("#email").val();
-			var user_orderName = $("#orderer_name").val();
-			var user_orderPhone = $("#orderer_phone").val();
-			var user_address = '서울특별시 강남구 삼성동';
-			var user_zipcode = '123-456';
+			var user_orderName = $("#order_name").val();
+			var user_orderPhone = $("#order_phone").val();
+			var user_address = $("#addrInfo").text();
+			var user_zipcode = $("#zonecode").val();
 			
+			console.log(user_orderName);
+			console.log(user_orderPhone);
+			console.log(user_address);
+			console.log(delivery_fee);
 			
 			var IMP = window.IMP; // 생략가능
 			IMP.init('imp16410680');
@@ -687,10 +692,25 @@
 				console.log(rsp);
 				if (rsp.success) {
 					var msg = '결제가 완료되었습니다.';
+					var apply_num = rsp.apply_num;
 					msg += '고유ID : ' + rsp.imp_uid;
 					msg += '상점 거래ID : ' + rsp.merchant_uid;
 					msg += '결제 금액 : ' + rsp.paid_amount;
 					msg += '카드 승인번호 : ' + rsp.apply_num;
+					$.ajax({
+						url: '/approval.do',
+						type: 'GET',
+						dataType: 'text',
+						data: {"apply_num":apply_num, "order_name":user_orderName, "order_phone":user_orderPhone, "order_address":user_address,
+							"order_goods_price":user_price, "delivery_fee":delivery_fee},// data:{"cart_no"} 괄호
+						
+						success: function(data){
+							console.log(data);
+						},// success 괄호
+						error: function(){
+							alert("에러");
+						}
+					});
 				} else {
 					var msg = '결제에 실패하였습니다.';
 					msg += '에러내용 : ' + rsp.error_msg;

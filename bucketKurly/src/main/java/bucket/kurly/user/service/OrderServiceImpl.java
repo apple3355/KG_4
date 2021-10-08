@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import bucket.kurly.user.member.MemberVO;
 import bucket.kurly.user.order.OrderDAO;
+import bucket.kurly.user.order.OrderVO;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -16,6 +17,12 @@ public class OrderServiceImpl implements OrderService {
 	public MemberVO order_form(String id) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.order_form(id);
+	}
+
+	@Override
+	public void insert_order(OrderVO vo) throws Exception {
+		dao.insert_order(vo);
+		
 	}
 
 
