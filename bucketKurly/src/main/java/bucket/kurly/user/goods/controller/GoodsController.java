@@ -38,7 +38,7 @@ public class GoodsController {
 		System.out.println("상품 목록 요청");
 		
 		List<Goods_SellVO> goods_sell_list = goodsService.selectGoods_sell(select_type);
-		System.out.println(goods_sell_list);
+//		System.out.println(goods_sell_list);
 		
 //		String itemCnt = goodsService.getGoods_cnt(); // 아이템 개수
 //		Pagination pagination = new Pagination(); //Pagination 객체 생성
@@ -127,7 +127,7 @@ public class GoodsController {
 			           }
 			        }
 			    System.out.println("=============================");
-		       System.out.println(goods_cartShowVO);
+//		       System.out.println(goods_cartShowVO);
 			    model.addAttribute("goods_cartShowVO", goods_cartShowVO);
 			    }
 			
