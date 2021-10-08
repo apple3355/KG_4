@@ -111,7 +111,9 @@ public class GoodsController {
 			if(cookies != null){
 			    for(int i=0; i < cookies.length; i++){
 			           cName = cookies[i].getName();
-			           if(cName.length() < 4) {
+			           boolean isNumeric = cName.chars().allMatch( Character::isDigit );
+			           System.out.println(isNumeric);
+			           if(isNumeric) {
 			        	   cValue = cookies[i].getValue();
 			        	   Goods_SellVO sellvo = goodsService.getGoods_detail(Integer.parseInt(cName));
 			        	   Goods_CartShowVO showvo = new Goods_CartShowVO();
