@@ -265,7 +265,7 @@ public class MemberController {
 
 	// 약관 동의
 	@ResponseBody
-	@RequestMapping("/memberTerms")
+	@RequestMapping("/memberTerms.do")
 	public String insertMemberTerms(@ModelAttribute MemberTermsVO tvo, @RequestBody String paramData) throws Exception {
 		String member_id = paramData.trim();
 		tvo.setMember_id(member_id);

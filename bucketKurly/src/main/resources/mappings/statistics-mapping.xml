@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Admin_statisticsDAO">
+	<select id="selectMemberRank" resultType="member_statistics">
+		select member_rank,count(member_rank) as member_rank_total from tb_member_details group by member_rank;
+	</select>
+	
+	
+</mapper> 

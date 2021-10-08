@@ -397,15 +397,19 @@
 					<div class="inner_result" style="top: 60px;">
 						<div class="cart_delivery">
 							<h3 class="tit">배송지</h3>
-							<div class="no_address"><!-- css address에서 no_address로 수정 -->
-								<input type="hidden" name="member_zipcode" id="zonecode" size="5" />
-								<span type="text" class="emph" name="member_address1" id="addr">${memberVO.member_address1 }${memberVO.member_address2 }</span>
-								
-								<span class="delivery star">샛별배송</span>
-								<span class="delivery regular">택배배송</span>
-										
-								<a href="#none" class="btn default" id="btn default" onclick="findAddr()">
-									<span class="ico"></span>배송지 변경
+							<div class="no_address">
+								<!-- css address에서 no_address로 수정 -->
+								<input type="hidden" name="member_zipcode" id="zonecode"
+									size="5" /> <input type="hidden" name="member_address1"
+									id="member_address1" /> <span class="emph" id="addr">${memberVO.member_address1 }</span>
+								<p class="emph" id="addr_sub">${memberVO.member_address2 }</p>
+
+								<p>
+									<span class="delivery star">샛별배송/택배배송</span>
+								</p>
+
+								<a href="#none" class="btn default" id="btn default"
+									onclick="findAddr()"> <span class="ico"></span>배송지 변경
 								</a>
 							</div>
 						</div>
@@ -1140,17 +1144,21 @@ function findAddr(){
 			var fulladdr = roadAddr + "\n(" + buildingName + ")"; //합친 것
 			// 우편번호와 주소 정보를 해당 필드에 넣는다.
 			document.getElementById('zonecode').value = data.zonecode;
-			if(roadAddr !== ''){
-				document.getElementById("addr").value = fulladdr;
-			}else if(jibunAddr !== ''){
-				document.getElementById("addr").value = data.jibunAddr;
-			}
-			}
+	         if(roadAddr !== ''){
+	            $('#addr').text(fulladdr);
+	         }else if(jibunAddr !== ''){
+	            $('#addr').text(data.jibunAddr);
+	         }
+	         $('#addr_sub').remove();
+	         
+	          const addr = document.getElementById("addr");
+	            const newP = document.createElement('p');
+	            newP.innerHTML = "<input type='text' class='emph' name='member_address2' id='addr_sub' size='50' style='border:1px solid gray; display:inline-block; border-radius:5px; height:30px; font-size:15px; padding-left: 10px;' placeholder='상세주소를 입력해주세요.' >";
+	            addr.after(newP);
+	            
+	      }
 	}).open();
-	$('#addr_sub').css({'border' : '1px solid gray'});
-	$('#addr_sub').css({'border-radius' : '15px'});
-	$('#addr_sub').val("");
-	$('#addr_sub').attr('placeholder',"상세주소를 입력해주세요");
+
 	}
 </script>
 
