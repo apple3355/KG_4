@@ -397,15 +397,19 @@
 					<div class="inner_result" style="top: 60px;">
 						<div class="cart_delivery">
 							<h3 class="tit">배송지</h3>
-							<div class="no_address"><!-- css address에서 no_address로 수정 -->
-								<input type="hidden" name="member_zipcode" id="zonecode" size="5" />
-								<span type="text" class="emph" name="member_address1" id="addr">${memberVO.member_address1 }${memberVO.member_address2 }</span>
-								
-								<span class="delivery star">샛별배송</span>
-								<span class="delivery regular">택배배송</span>
-										
-								<a href="#none" class="btn default" id="btn default" onclick="findAddr()">
-									<span class="ico"></span>배송지 변경
+							<div class="no_address">
+								<!-- css address에서 no_address로 수정 -->
+								<input type="hidden" name="member_zipcode" id="zonecode"
+									size="5" /> <input type="hidden" name="member_address1"
+									id="member_address1" /> <span class="emph" id="addr">${memberVO.member_address1 }</span>
+								<p class="emph" id="addr_sub">${memberVO.member_address2 }</p>
+
+								<p>
+									<span class="delivery star">샛별배송/택배배송</span>
+								</p>
+
+								<a href="#none" class="btn default" id="btn default"
+									onclick="findAddr()"> <span class="ico"></span>배송지 변경
 								</a>
 							</div>
 						</div>
@@ -577,7 +581,7 @@ $('#btn_frozen').click(function(){
 <!-- 우측 최종 합계 -->
 <script type="text/javascript">
 $(document).ready(function calTot(){ 
-	
+	   	
 		//전체 상품금액
 		 const priceLists = document.querySelectorAll('.cost'); //우리 가격 클래스: selling 
 	     const priceArr = Array.from(priceLists).map(chkItem => parseInt(chkItem.textContent)); 
@@ -611,9 +615,12 @@ $(document).ready(function calTot(){
 		      var getMore = 0;
 		      if(costSum <50000){
 		    	 $("#deliveryFee").text(deliverFee);
+		    	 $('.free_limit').css({'display': 'block'});
 		    	 $("#getMorePrice").text(50000-costSum + "원 추가주문 시, 무료배송");
 		      } else{//무료배송
-				 $("#deliveryFee").text(deliverFee - 3000); 
+				 $("#deliveryFee").text(deliverFee - 3000);
+				 $('.free_limit').css({'display': 'none'});
+				 deliverFee = 0;
 		      }
 
 		      
@@ -823,8 +830,8 @@ $(document).ready(function calTot(){
 	      var getMore = 0;
 	      if(costSum <50000){
 	    	 $("#deliveryFee").text(deliverFee);	
-	    	 $("#getMorePrice").text(50000-costSum + "원 추가주문 시, 무료배송");
 	    	 $('.free_limit').css({'display': 'block'});
+	    	 $("#getMorePrice").text(50000-costSum + "원 추가주문 시, 무료배송");
 	      } else{//무료배송
 			 $("#deliveryFee").text(deliverFee-3000); 
 			 $('.free_limit').css({'display': 'none'});
@@ -840,9 +847,125 @@ $(document).ready(function calTot(){
 	
 	 });
 	
-	
+	//체크박스 선택된 금액
+	$(document).on('click', '#checkbox', function() {
+		var tr = $(this).parent().parent().parent();
+	   	var th = tr.children();
+	   	var price = th.eq(4).children().children().children();
+	   	var selling = parseInt(price.eq(0).text()); //판매가
+	   	var cost = parseInt(price.eq(1).text());  //원가
+	   	var sale = selling - cost; //세일 가격
+	   	console.log("할인 가격 : " + sale);
+	   	var goodsPrice = parseInt($("#goodsPrice").text()); //총가격
+	   	var discountPrice = parseInt($("#discountprice").text()); //총 할인가격
+	   	var chkgp = goodsPrice + cost;
+	   	var chkdp = discountPrice + sale;
+	   	var gp = goodsPrice - cost;
+	   	var dp = discountPrice - sale;
+	   	var orderPrice = parseInt($("#ordersPrice").text());
+	   	
+	   	if($(this).is(":checked")){
+	   		$("#goodsPrice").text(chkgp);
+	   		$("#discountprice").text(chkdp);
+	   		$("#ordersPrice").text(chkgp + chkdp);
+	   		orderPrice = chkgp + chkdp;
+	   	}else{
+	   		$("#goodsPrice").text(gp);
+	   		$("#discountprice").text(dp);
+	   		$("#ordersPrice").text(gp - dp);
+	   		orderPrice = gp + dp;
+	   	}
+	   	
+	   	var deliverFee = 3000; 	
+	      var getMore = 0;
+	      if(orderPrice <50000){
+	    	 $("#deliveryFee").text(deliverFee);
+	    	 $('.free_limit').css({'display': 'block'});
+	    	 $("#getMorePrice").text(50000-orderPrice + "원 추가주문 시, 무료배송");
+	      } else{//무료배송
+			 $("#deliveryFee").text(deliverFee - 3000);
+			 $('.free_limit').css({'display': 'none'});
+			 deliverFee = 0;
+	      }
+	      
+	      if(orderPrice == 0){
+	    	  $("#deliveryFee").text(0);
+	    	  deliverFee = 0;
+	      }
+
+	      var totOrderPrice = orderPrice + deliverFee;
+	      console.log(deliverFee);
+	      $("#ordersPrice").text(totOrderPrice);
+	      
 
 	
+	});
+	
+// 	전체체크 가격
+	$(document).on('click', '#checkAll', function() {
+		//전체 상품금액
+		 const priceLists = document.querySelectorAll('.cost'); //우리 가격 클래스: selling 
+	     const priceArr = Array.from(priceLists).map(chkItem => parseInt(chkItem.textContent)); 
+	     const numberLists = document.querySelectorAll('input[type=number]');
+	     const numbersArr = Array.from(numberLists).map(chkItem => parseInt(chkItem.value)); 
+     		
+	      var sum = 0;
+	      if($(this).is(":checked")){
+	    	  for(i=0; i<priceArr.length;i++){
+		    	  console.log(priceArr.length);
+		    	  sum = parseInt(sum + priceArr[i]);
+		    //	  console.log("sum: "+sum);
+		    	  $("#goodsPrice").text(sum);
+		      }
+		   	}else{
+		   		$("#goodsPrice").text(0);
+		   	}
+	      
+	
+	      //전체 상품할인금액
+		     const costLists = document.querySelectorAll('.selling'); //우리 가격 클래스: selling 
+		     const costArr = Array.from(costLists).map(chkItem => parseInt(chkItem.textContent)); 
+		     const costNumberLists = document.querySelectorAll('input[type=number]');
+		     const costNumbersArr = Array.from(costNumberLists).map(chkItem => parseInt(chkItem.value)); 
+		      		 
+		      var costSum = 0;
+		      if($(this).is(":checked")){
+		    	  for(i=0; i<costArr.length;i++){
+			    	  console.log(costArr.length);
+			    	  costSum = parseInt(costSum + costArr[i]);
+			      } 
+		    	  $("#discountprice").text(costSum - sum);
+		    	  
+		   	}else{
+		   		$("#discountprice").text(0);
+		   		$("#ordersPrice").text(0);
+		   	}
+		      
+		      var deliverFee = 3000; 	
+		      var getMore = 0;
+		      if(costSum <50000){
+		    	 $("#deliveryFee").text(deliverFee);
+		    	 $('.free_limit').css({'display': 'block'});
+		    	 $("#getMorePrice").text(50000-costSum + "원 추가주문 시, 무료배송");
+		      } else{//무료배송
+				 $("#deliveryFee").text(deliverFee - 3000);
+				 $('.free_limit').css({'display': 'none'});
+				 deliverFee = 0;
+		      }
+		      
+		      if(costSum == 0 ){
+		    	  $("#deliveryFee").text(0);
+		    	  deliverFee = 0;
+		      }
+
+		      
+		      //결제예정금액
+		      var totOrderPrice = costSum + deliverFee;
+		      console.log(deliverFee);
+		      $("#ordersPrice").text(totOrderPrice);
+
+	
+	});
  </script>
  
 
@@ -985,17 +1108,21 @@ function findAddr(){
 			var fulladdr = roadAddr + "\n(" + buildingName + ")"; //합친 것
 			// 우편번호와 주소 정보를 해당 필드에 넣는다.
 			document.getElementById('zonecode').value = data.zonecode;
-			if(roadAddr !== ''){
-				document.getElementById("addr").value = fulladdr;
-			}else if(jibunAddr !== ''){
-				document.getElementById("addr").value = data.jibunAddr;
-			}
-			}
+	         if(roadAddr !== ''){
+	            $('#addr').text(fulladdr);
+	         }else if(jibunAddr !== ''){
+	            $('#addr').text(data.jibunAddr);
+	         }
+	         $('#addr_sub').remove();
+	         
+	          const addr = document.getElementById("addr");
+	            const newP = document.createElement('p');
+	            newP.innerHTML = "<input type='text' class='emph' name='member_address2' id='addr_sub' size='50' style='border:1px solid gray; display:inline-block; border-radius:5px; height:30px; font-size:15px; padding-left: 10px;' placeholder='상세주소를 입력해주세요.' >";
+	            addr.after(newP);
+	            
+	      }
 	}).open();
-	$('#addr_sub').css({'border' : '1px solid gray'});
-	$('#addr_sub').css({'border-radius' : '15px'});
-	$('#addr_sub').val("");
-	$('#addr_sub').attr('placeholder',"상세주소를 입력해주세요");
+
 	}
 </script>
 
