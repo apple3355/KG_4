@@ -10,6 +10,7 @@
 <!-- 1. 제이쿼리 라이브러리 파일을 먼저 연동하고,  -->
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="shortcut icon" href="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/favicon_v2.webp" type="image/x-icon">
+
 <link rel="stylesheet" type="text/css" href="resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="resources/css/join.css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -63,7 +64,7 @@ $(document).ready(function(){
 							<script src="/common_js/join_v1.js?ver=1.39.4"></script>
 							<div class="type_form member_join ">
 								<form id="form" name="frmMember" method="post"
-									action="/insert.do" onsubmit="return chkForm2(this)"
+									action="${pageContext.request.contextPath}/insert.do" onsubmit="return chkForm2(this)"
 									novalidate>
 									<input type=hidden name=mode value="joinMember"> <input
 										type="hidden" name="check_mobile" value=""> <input
