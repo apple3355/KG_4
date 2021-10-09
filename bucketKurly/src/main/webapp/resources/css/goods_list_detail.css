@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 /*goods_name*/
 .goods-name p {display: block;margin-block-start: 0em;margin-block-end: 0em;margin-inline-start: 0px;margin-inline-end: 0px;}
@@ -9,14 +10,14 @@
 .goods-view-infomation-tab-group {display: flex;flex-direction: row;width: 1010px;margin: 0 auto;}
 .goods-view-infomation-tab:first-child .goods-view-infomation-tab-anchor {border-left: 1px solid #eee;}
 .goods-view-infomation-tab-anchor.__active{background-color: #fff;color: #5f0080;border-bottom: 0;}
-.goods-view-infomation-tab-anchor {flex: 1;position: relative;top: 1px;height: 60px;line-height: 59px;text-align: center;display: block;color: #666;font-size: 16px;font-weight: 700;letter-spacing: -.3px;font-family: noto sans;background-color: #fafafa;border: 1px solid #eee;border-left: none;}
+.goods-view-infomation-tab-anchor {flex: 1;position: relative;top: 1px;height: 60px;line-height: 59px;text-align: center;display: block;color: #666;font-size: 16px;font-weight: 700;letter-spacing: -.3px;font-family:'Noto Sans KR', sans-serif; background-color: #fafafa;border: 1px solid #eee;border-left: none;}
 
 /*goods-view-infomation-content_active*/
 .goods-view-infomation-content.__active {display: block;}
 .goods-view-infomation-content {padding-top: 40px;min-height: 500px;margin-bottom: 50px;}
 
 /*goods_wrap*/
-.goods_wrap {width: 1010px;margin: 0 auto;font-family: noto sans;font-weight: 200;letter-spacing: 0;}
+.goods_wrap {width: 1010px;margin: 0 auto;font-family:'Noto Sans KR', sans-serif; font-weight: 200;letter-spacing: 0;}
 
 /*context_last*/
 .goods_wrap .context.last {margin-bottom: 170px;}
@@ -28,7 +29,7 @@
 /* sectionView */
 .section_view {width: 1050px;margin: 0 auto;padding-top: 20px;}
 #shareLayer {position: relative;}
-.section_view * {font-family: noto sans;color: #333;letter-spacing: -.5px;}
+.section_view * {font-family: 'Noto Sans KR', sans-serif; color: #333;letter-spacing: -.5px;}
 #shareLayer .layer_share {display: none;position: absolute;right: -25px;top: 39px;width: 278px;height: 164px;background: url(https://res.kurly.com/mobile/service/goodsview/1804/layer_share.png) no-repeat 0 0;}
 #shareLayer .inner_layersns {overflow: hidden;width: 238px;height: 120px;}
 .screen_out {display: block;left: -9999px;font-size: 0;line-height: 0;text-indent: -9999px;}
@@ -92,7 +93,7 @@ b, strong {font-weight: 700;}
 /* cartPut */
 #cartPut .cart_type2 {float: right;width: 560px;padding-bottom: 40px;}
 #cartPut .cart_option {background-color: #fff;}
-#cartPut * {font-family: noto sans;color: #333;letter-spacing: 0;}
+#cartPut * {font-family: 'Noto Sans KR', sans-serif; color: #333;letter-spacing: 0;}
 #cartPut .cart_type2 .list_goods {padding-bottom: 18px;}
 #cartPut .cart_type2 .list_nopackage {padding: 0;}
 #cartPut .cart_option .list {overflow: hidden;padding-bottom: 1px;}

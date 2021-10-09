@@ -1,12 +1,12 @@
 @charset "UTF-8";
 /* notice 공지사항) - 공지사항 상세보기 스타일시트 입니다다.*/
-
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 
  div, th, td, li, dt, dd, p {word-break: break-all;}
  
  body, input, select, textarea, button {
-    font-family: noto sans,malgun gothic,AppleGothic,dotum;
+    font-family: 'Noto Sans KR', sans-serif;
     line-height: 1;
     letter-spacing: -.05em;
     color: #4c4c4c;
@@ -36,9 +36,9 @@
  /* 테이블 타이틀 영역 */
  .tit_page {overflow: hidden;width: 1050px;margin: 0 auto;padding: 50px 0 51px;}
  .tit_page h2.tit {font-weight: 700;font-size: 28px;color: #333;line-height: 35px;text-align: center;letter-spacing: -1px;}
- .tit_page .sub {font-family: noto sans;font-size: 14px;color: #999;line-height: 20px;letter-spacing: -.3px;text-align: center;}
+ .tit_page .sub {font-family: 'Noto Sans KR', sans-serif;font-size: 14px;color: #999;line-height: 20px;letter-spacing: -.3px;text-align: center;}
  .page_aticle.aticle_type2 .page_section {float: right;width: 820px;}
- .page_aticle button, .page_aticle input, .page_aticle select, .page_aticle * {font-family: noto sans;font-weight: 400;letter-spacing: 0;}
+ .page_aticle button, .page_aticle input, .page_aticle select, .page_aticle * {font-family: 'Noto Sans KR', sans-serif;font-weight: 400;letter-spacing: 0;}
  .page_aticle .head_aticle {padding: 5px 0 34px;}
  .page_aticle .head_aticle .tit {height: 36px;font-weight: 700;font-size: 24px;line-height: 36px;color: #333;letter-spacing: -.5px;}
  .page_aticle .head_aticle .tit_sub {padding-left: 11px;font-size: 14px;color: #999;line-height: 20px;letter-spacing: -.3px;vertical-align: 3px;}
@@ -57,7 +57,7 @@
  .boardView tr.etcArea ul .th {float: left;padding: 13px 0 13px 20px;width: 130px;background-color: #f7f5f8;}
  .boardView tr.etcArea ul .td {float: left;padding: 13px 0 13px 20px;width: 180px;}
  .xans-element-.xans-myshop.xans-myshop-couponserial td#contents .board_view_content {line-height: 25px;}
-  element.style {margin-top: 0px;margin-bottom: 0px;font-stretch: normal;font-size: 12px;line-height: normal;font-family: "Helvetica Neue";}
+  element.style {margin-top: 0px;margin-bottom: 0px;font-stretch: normal;font-size: 12px;line-height: normal;font-family: 'Noto Sans KR', sans-serif;}
   element.style {word-wrap: break-word;word-break: break-all;}
   
  

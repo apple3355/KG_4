@@ -1,27 +1,31 @@
-  /*주문서 */
+@charset "UTF-8";
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+  
+  
+  /*二쇰Ц�꽌 */
   .tit_page {overflow: hidden;width: 1050px;margin: 0 auto;padding: 50px 0 51px;}
   .tit_page h2.tit {font-weight: 700;font-size: 28px;color: #333;line-height: 35px;text-align: center;letter-spacing: -1px;}
-  /*메인 */
+  /*硫붿씤 */
   #main {border-bottom: 1px solid #f7f7f7;}
   #content {min-width: 1050px;padding-bottom: 120px;}
   
-  /* 주문서 전용 딤드처리 */
+  /* 二쇰Ц�꽌 �쟾�슜 �뵥�뱶泥섎━ */
   .bg_order{display:block !important}
   .hide{display:none}
-  /* 주문서_공통 */
+  /* 二쇰Ц�꽌_怨듯넻 */
   #gnb.gnb_stop{position:static}
-  .user_form {width: 1050px;margin: 0 auto;font-family: noto sans;font-weight: 400;}
+  .user_form {width: 1050px;margin: 0 auto;font-family:'Noto Sans KR', sans-serif; font-weight: 400;}
   
-  .user_form *{font-family: 'Noto Sans';font-weight:400;letter-spacing:-0.3px}
+  .user_form *{font-family: 'Noto Sans KR', sans-serif; font-weight:400;letter-spacing:-0.3px}
   .user_form input[type="text"]{width:332px;height:44px;padding:12px 16px;border:1px solid #ddd;border-radius:3px;background-color:#fff;font-size:14px;color:#333;letter-spacing:-0.5px;outline:none}
-  .user_form input, .user_form select, .user_form textarea, .user_form button {font-family: noto sans;font-weight: 400;}
+  .user_form input, .user_form select, .user_form textarea, .user_form button {font-family:'Noto Sans KR', sans-serif; font-weight: 400;}
   .user_form input[type="text"]:focus{border:1px solid #333}
   .user_form input[type="radio"]{position:relative;z-index:-1;vertical-align:0}
   .user_form .bar{display:inline-block;position:relative;width:13px;height:33px;vertical-align:top}
   .user_form .bar span{position:absolute;left:3px;top:17px;width:8px;height:1px;background-color:#d8d8d8}
   .user_form .txt_guide .txt{display:block;font-size:12px;line-height:21px;color:#666}
   #means_inp {width: 360px;padding: 10px;}
-  /* 주문서 리스트 */
+  /* 二쇰Ц�꽌 由ъ뒪�듃 */
   .order_goodslist {border-top: 1px solid #333;}
   .order_goodslist .info_product {position: relative;}
   .order_goodslist .info_product .btn {overflow: hidden;position: absolute;right: 4px;top: -45px;width: 30px;height: 30px;border: 0;background: url(https://res.kurly.com/pc/service/cart/2007/ico_dropup.svg) no-repeat 50% 50%;background-size: 30px 30px;transform: rotate(180deg);-webkit-transform: rotate(180deg);-moz-transform: rotate(180deg);-ms-transform: rotate(180deg);-o-transform: rotate(180deg);}
@@ -40,7 +44,7 @@
   .order_goodslist .info_price .price {display: block;font-weight: 700;font-size: 16px;color: #000;line-height: 24px;white-space: nowrap;}
   
   
-  /* 공통_라디오버튼 */
+  /* 怨듯넻_�씪�뵒�삤踰꾪듉 */
   .user_form .label_radio{display:inline-block;padding:0 18px 0 7px;background:#fff url(https://res.kurly.com/pc/service/order/1908/ico_radio_off_x2.png) no-repeat 0 2px;background-size:16px 17px;font-size:14px;color:#333;line-height:22px;cursor:pointer;white-space:nowrap}
   .user_form .label_radio.checked{background:#fff url(https://res.kurly.com/pc/service/order/1908/ico_radio_on_x2.png) no-repeat 0 2px;background-size:16px 17px}
   .user_form .label_radio.disabled{background:#fff url(https://res.kurly.com/pc/service/order/1908/ico_radio_disabled_x2.png) no-repeat 0 2px;background-size:16px 17px}
@@ -48,7 +52,7 @@
   .user_form .label_radio .bubble{margin-left:7px}
   .user_form .label_radio.checked .info{display: block;}
 
-  /* 공통_테이블 */
+  /* 怨듯넻_�뀒�씠釉� */
   table {border-collapse: collapse;border-spacing: 0;}
   .goodsinfo_table {width: 100%;table-layout: fixed;border-top: 2px solid #6a3664;border-bottom: 1px solid #6a3664;line-height: 180%;}
   .goodsinfo_table{border-top:1px solid #333;border-bottom:1px solid #f4f4f4}
@@ -59,7 +63,7 @@
   .goodsinfo_table tr:last-child td {border: none;}
   .tbl_left{float:left;width:742px}
 
-  /* 공통적용 */
+  /* 怨듯넻�쟻�슜 */
   .tit_section.fst{padding-top:14px}
   .tit_section{padding:74px 0 16px;font-weight:bold;font-size:20px;color:#333;line-height:29px;clear:both}
   .tit_section .desc{padding-left:13px;font-size:14px;color:#666;vertical-align:3px}
@@ -77,7 +81,7 @@
   .order_section .section_crux{float:left;width:190px;padding-top:19px;font-weight:bold;font-size:14px;color:#333;line-height:24px;letter-spacing:-0.32px}
   .order_section .section_full{overflow:hidden;padding:19px 20px 20px 0}
 
-  /* 레이어타입_리스트타입 */
+  /* �젅�씠�뼱���엯_由ъ뒪�듃���엯 */
   .layer_typelist{display:none;position:absolute;left:0;top:32px;width:600px;background-color:#fff;border:1px solid #999}
   .layer_typelist li{padding:9px 30px 9px 37px;border-top:1px solid #999;font-size:12px;line-height:18px;letter-spacing:-0.2px}
   .layer_typelist li.fst{border-top:0 none}
@@ -97,7 +101,7 @@
     .layer_coupon li.checked{background:url(https://res.kurly.com/pc/service/order/1908/ico_check_32x20.png) no-repeat 10px 16px;background-size:16px 10px}
   }
 
-  /* 주문자정보 */
+  /* 二쇰Ц�옄�젙蹂� */
   .data_orderer{border-bottom:1px solid #f4f4f4}
   .data_orderer .goodsinfo_table .fst th{padding-top:19px}
   .data_orderer .goodsinfo_table .fst td{padding-top:19px}
@@ -108,7 +112,7 @@
   .data_orderer .no_orderer td{padding:10px 0}
   .data_orderer .no_orderer .fst td{padding-top:20px}
 
-  /* 배송정보_배송정보안내레이어 */
+  /* 諛곗넚�젙蹂�_諛곗넚�젙蹂댁븞�궡�젅�씠�뼱 */
   .address_info{position:relative;}
   .address_info .desc{position:absolute;right:0;top:-42px;font-weight:700;font-size:14px;color:#999;line-height:24px;text-align:right;}
   .address_info .desc:after{content:"";display:inline-block;width:24px;height:24px;background:url(https://res.kurly.com/pc/service/order/2011/ico_question.svg?v=1) no-repeat 50% 50%;background-size:24px 24px;vertical-align:top}
@@ -117,7 +121,7 @@
   .address_info .layer_info:before {content:"";position:absolute;right:54px;top:-9px;width:18px;height:16px;background:url(https://res.kurly.com/pc/service/order/2011/ico_location_picker.svg) no-repeat 100% 50%;background-size:18px 16px}
   .address_info .layer_info:after {content:"";position:absolute;right:14px;top:13px;width:16px;height:17px;background:url(https://res.kurly.com/pc/service/order/2011/ico_tooltip_close.svg) no-repeat 100% 50%;background-size:16px 17px}
   .address_info .layer_info .emph{font-weight:700;color:#fff}
-  /* 배송정보_배송지 */
+  /* 諛곗넚�젙蹂�_諛곗넚吏� */
   .order_address{border-top:1px solid #333;border-bottom:1px solid #f4f4f4}
   .order_address .address.off{display:block;padding-top:1px;font-size:14px;color:#ccc;line-height:20px}
   .order_address.invalid .address.off{color:#f03f40}
@@ -125,7 +129,7 @@
   .order_address .num{white-space:nowrap}
   .order_address .receiving{display:block;padding-top:6px;font-size:14px;color:#666;line-height:20px}
   .order_address .btn{display:block;width:60px;margin-top:13px}
-  /* 배송정보_수령장소 */
+  /* 諛곗넚�젙蹂�_�닔�졊�옣�냼 */
   .order_reception{border-bottom:1px solid #f4f4f4}
   .order_reception .receiving{font-size:14px;color:#333;line-height:24px}
   .order_reception .receiving.off{color:#ccc}
@@ -140,12 +144,12 @@
   .order_reception .btn{display:block;width:60px;margin-top:20px}
   .order_reception.invalid .receiving.off,
   .order_reception.invalid .way .off{color:#f03f40}
-  /* 냉동상품 포장*/
+  /* �깋�룞�긽�뭹 �룷�옣*/
   .order_pack{display:none;padding-bottom:9px;border-top:0 none;border-bottom:1px solid #ddd}
   .order_address.invalid .receiving,
   .order_address.invalid .no_address{color:#f03f40}
 
-  /* 올페이퍼챌린지 */
+  /* �삱�럹�씠�띁梨뚮┛吏� */
   .bnr_order{display:none;padding:41px 0 0;height: 148px}
   .bnr_order img{vertical-align:top}
   .user_form .goodsinfo_table .layer .choice_agree{overflow:hidden;height:600px;margin-top:-300px}
@@ -153,13 +157,13 @@
   .in_allpaper{overflow:hidden;overflow-y:scroll;width:100%;height:540px}
   .in_allpaper img{width:100%;vertical-align:top}
 
-  /* 쿠폰 / 적립금 */
+  /* 荑좏룿 / �쟻由쎄툑 */
   .data_payment{float:left}
   .data_payment .goodsinfo_table{border-bottom:0 none}
   .data_payment th{padding-top:29px}
   .data_payment th.no_emoney{padding-top:20px}
   .data_payment td{padding:20px 0}
-  /* 쿠폰적용 */
+  /* 荑좏룿�쟻�슜 */
   .data_payment .txt_couponinfo{padding:4px 0 0 1px;color:#f00}
   .data_payment .select_box{height:44px;padding:0 54px 0 15px;border:1px solid #ddd;background-color:#fff;font-size:14px;color:#333;line-height:40px;letter-spacing:-0.5px;vertical-align:top}
   .data_payment .select_box:after{content:"";position:absolute;right:16px;top:38px;width:12px;height:8px;background:url(https://res.kurly.com/pc/ico/2011/ico_selectbox_arrow.svg) no-repeat 50% 50%;background-size:12px 8px}
@@ -177,7 +181,7 @@
   #addpopSelList .txt_desc,#addpopSelList .txt_expire{font-size:12px}
   #addpopSelList span{display:block}
   #addpopSelList .inner_item.disabled{color:#777}
-  /* 적립금적용 */
+  /* �쟻由쎄툑�쟻�슜 */
   .data_payment .emoney_use{border-top: 1px solid #f4f4f4;border-bottom: 1px solid #f4f4f4;}
   .data_payment .emoney_use .emoney_reg{overflow:hidden}
   .data_payment .emoney_use input[name="using_point"]{float:left;width:160px;margin-right:8px}
@@ -188,7 +192,7 @@
   .data_payment .emoney_use .list_notice{padding-top:16px}
   .data_payment .emoney_use .list_notice li{padding-top:4px;font-size:12px;color:#666;line-height:18px;letter-spacing:-0.2px}
 
-  /* 결제금액_sticky */
+  /* 寃곗젣湲덉븸_sticky */
   .tax_absolute{position:relative;float:right;width:284px;height:0}
   .tax_absolute .inner_sticky{position:absolute;right:0;top:0;width:100%}
   #orderitem_money_info{width:100%;padding:17px 16px 18px 18px;background:#fafafa;border:1px solid #f2f2f2}
@@ -217,12 +221,12 @@
   .tax_absolute .reserve .emph span{font-weight:700;color:#666}
   .pm_sign{display:none;margin-right:4px}
 
-  /* 포장방법 */
+  /* �룷�옣諛⑸쾿 */
   .reusable_packaging .tit_section{border-bottom: 1px solid #333}
   .reusable_packaging .label_radio{display:block;}
   .reusable_packaging .label_radio + .label_radio{margin-top:20px}
 
-  /* 결제수단 */
+  /* 寃곗젣�닔�떒 */
   .data_method{float:left}
   .data_method .goodsinfo_table th{padding:11px 0 10px 20px}
   .data_method .goodsinfo_table td{padding:13px 0 7px}
@@ -240,14 +244,14 @@
   .data_method td img{vertical-align:0}
   .data_method .tbl_nogoods{border-top:0 none;border-bottom:0 none}
   .data_method input[type="radio"]{margin-right:2px}
-  /* 카드혜택 */
+  /* 移대뱶�삙�깮 */
   .data_method .label_radio .info_benefit{padding-top:2px}
   .data_method .label_radio .info{margin-top:0;line-height:24px}
   .data_method .label_radio .info.txt_kakao{margin-bottom:-2px;padding-top:2px;color:#5f0080}
   .data_method .img_benefit{display:none;position:relative;height:20px;margin:1px 0 0 12px;padding:0 10px 0 7px;border-radius:2px;background-color:#eee;font-size:12px;color:#333;line-height:18px;letter-spacing:-0.5px;vertical-align:top}
   .data_method .img_benefit:before{content:"";position:absolute;left:-5px;top:0;width:6px;height:20px;background:url(https://res.kurly.com/pc/service/order/2105/picker_12_40.png) no-repeat 0 0;background-size:6px 20px}
   .data_method .img_benefit span{font-weight:700}
-  /* 신용카드카드선택 */
+  /* �떊�슜移대뱶移대뱶�꽑�깮 */
   .data_method .card_detail td{padding-top:11px}
   #cardSelect .card_select:after{content:"";display:block;overflow:hidden;height:0;clear:both}
   #cardSelect .select_box{position:relative;float:left;width:200px}
@@ -261,9 +265,9 @@
   #settlekindCard{padding-right:48px}
   #cardSelect .card_point [name=lguplus_use_card_point]{opacity:0}
 
-  /* 개인정보수집및제공 */
+  /* 媛쒖씤�젙蹂댁닔吏묐컦�젣怨� */
   .reg_agree .desc{overflow:auto;height:110px;padding:20px;margin-bottom:10px;background-color:#fff;border:1px solid #bfbfbf;line-height:20px}
-  /* 개인정보처리방침 */
+  /* 媛쒖씤�젙蹂댁쿂由щ갑移� */
   .user_form .txt_guide .txt .txt_desc{font-weight:500}
   .user_form .btn_payment{display:block;width:240px;height:56px;margin:40px auto 0;border:0 none;border-radius:3px;background-color:#5f0080;font-weight:700;font-size:16px;color:#fff}
   .user_form .goodsinfo_table{border-bottom:0 none}
@@ -276,7 +280,7 @@
   .user_form .goodsinfo_table .list_agree .subject{display:inline-block;width:283px;padding-left:36px;font-size:14px;color:#333;line-height:20px;letter-spacing:-0.4px;vertical-align:0}
   .user_form .goodsinfo_table .list_agree .subject .emph{color:#999}
   .user_form .goodsinfo_table .list_agree .link_terms{padding-right:11px;background:url(https://res.kurly.com/pc/ico/2011/ico_outlink.svg) no-repeat 100% 50%;background-size:6px 9px;color:#5f0080}
-  /* 팝업 */
+  /* �뙘�뾽 */
   /* .user_form .goodsinfo_table .inner_layer{position:relative;width:100%;padding: 0 0 30px 0;border-radius: 6px;box-shadow:none} */
   .user_form .goodsinfo_table .inner_layer .tit_layer,
   .user_form .goodsinfo_table .inner_layer button{display:none}
@@ -303,20 +307,20 @@
   .user_form .goodsinfo_table .terms_view:last-child .tit_sub{font-weight:normal}
   .user_form .goodsinfo_table .terms_view:last-child .tit_sub.emph{font-weight:bold}
 
-  /* 주문서 - 확인사항 */
+  /* 二쇰Ц�꽌 - �솗�씤�궗�빆 */
   .notice_order{padding-top:41px;}
   .notice_order li{font-size:14px;color:#666;line-height:20px;text-align:center}
   .notice_order li.emph{color:#333}
   .notice_order .emph{font-weight:700}
 
-  /* 충청샛별 이용자용 -> 추후 제거 필요 */
+  /* 異⑹껌�깫蹂� �씠�슜�옄�슜 -> 異뷀썑 �젣嫄� �븘�슂 */
   .service_delivery{display:none;height:200px;margin:-18px 0 51px;padding-top:30px;border-radius:6px;border:1px solid #e5e4e6;background-color:#fbfbff;letter-spacing:0}
   .service_delivery *{letter-spacing:0}
   .service_delivery .tit_bnr{font-weight:bold;font-size:22px;color:#1a1a1a;line-height:35px;text-align:center}
   #new-satbyul-region {font-weight:bold;}
   .service_delivery .tit_bnr .emph{position:relative;color:#fbfbff}
   .service_delivery .tit_bnr .emph:before{content:"";position:absolute;left:0;bottom:0;width:100%;height:11px;background-color:#ebddf6}
-  .service_delivery .tit_bnr .emph:after{content:"샛별배송";position:absolute;left:0;bottom:0;font-weight:bold;color:#5f0080}
+  .service_delivery .tit_bnr .emph:after{content:"�깫蹂꾨같�넚";position:absolute;left:0;bottom:0;font-weight:bold;color:#5f0080}
   .service_delivery .list{overflow:hidden;padding:30px 0 0 166px}
   .service_delivery .list li{position:relative;float:left;width:386px;height:68px;padding:0 50px 0 86px;font-size:14px;color:#4c4c4c;line-height:19px}
   .service_delivery .list li:before{content:"";position:absolute;left:0;top:-2px;width:68px;height:68px}

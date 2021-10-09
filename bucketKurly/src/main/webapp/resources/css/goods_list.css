@@ -1,12 +1,13 @@
 @charset "UTF-8";
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 #main {border-bottom: 1px solid #f7f7f7;}
 *, *:after, *:before {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;margin: 0;padding: 0;}
-body, input, select, textarea, button {font-family: noto sans,malgun gothic,AppleGothic,dotum;line-height: 1;letter-spacing: -.05em;color: #4c4c4c;font-size: 12px;max-width: 100%;}
+body, input, select, textarea, button {font-family: 'Noto Sans KR', sans-serif; line-height: 1;letter-spacing: -.05em;color: #4c4c4c;font-size: 12px;max-width: 100%;}
 #content {min-width: 1050px;padding-bottom: 120px;}
 #header, #container, #content {position: relative;}
 div {display: block;}
-.page_aticle button, .page_aticle input, .page_aticle select, .page_aticle * {font-family: noto sans;font-weight: 400;letter-spacing: 0;}
+.page_aticle button, .page_aticle input, .page_aticle select, .page_aticle * {font-family: 'Noto Sans KR', sans-serif; font-weight: 400;letter-spacing: 0;}
 div, th, td, li, dt, dd, p {word-break: break-all;}
 a {background-color: transparent;text-decoration: none;color: inherit;}
 

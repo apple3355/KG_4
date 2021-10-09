@@ -1,13 +1,13 @@
 @charset "UTF-8";
-
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
  /* header, 배너, 메뉴카테고리, footer 공통 스타일시트입니다. */
  
   /* document */
   html {scroll-behavior: smooth;}
   html {display: block;}
   head {display: none;}
-  script {display: none;}
-  body, input, select, textarea, button {font-family: noto sans,malgun gothic,AppleGothic,dotum;line-height: 1;letter-spacing: -.05em;color: #4c4c4c;font-size: 12px;max-width: 100%;}
+
+  body, input, select, textarea, button {font-family: 'Noto Sans KR', sans-serif; line-height: 1;letter-spacing: -.05em;color: #4c4c4c;font-size: 12px;max-width: 100%;}
   #header, #container, #content {position: relative;}
   div, th, td, li, dt, dd, p {word-break: break-all;}
   div {display: block;}
@@ -41,7 +41,7 @@
  .page_aticle .head_aticle { padding: 5px 0 34px; }
  .page_aticle .head_aticle .tit {height: 36px; font-weight: 700; font-size: 24px; line-height: 36px; color: #333;letter-spacing: -.5px;}
  .page_aticle.aticle_type2 .page_section {float: right; width: 820px;}
- .page_aticle button, .page_aticle input, .page_aticle select, .page_aticle * {font-family: noto sans;	font-weight: 400; letter-spacing: 0; }
+ .page_aticle button, .page_aticle input, .page_aticle select, .page_aticle * {font-family: 'Noto Sans KR', sans-serif;	font-weight: 400; letter-spacing: 0; }
  .styled-button { display: inline-block;  width: 175px; height: 50px; border: 1px solid #5f0080; background-color: #fff; font-size: 14px; color: #5f0080; line-height: 50px; text-align: center; }
 
   /*배너 설정- 맨위 보라색 띠*/
@@ -59,7 +59,7 @@
   #userMenu .menu:before { content: "";position: absolute; right: 11px; top: 16px; width: 8px; height: 5px; background: url(https://res.kurly.com/pc/ico/1908/ico_down_8x5.png) no-repeat 0 0;}
   #userMenu:after {content: "";display: block;overflow: hidden;width: 100%;height: 0;font-size: 0;text-indent: -9999px;}
   #userMenu .list_menu {float: right;}
-  #userMenu * {font-family: noto sans;font-weight: 400;letter-spacing: -.3px;}
+  #userMenu * {font-family: 'Noto Sans KR', sans-serif;font-weight: 400;letter-spacing: -.3px;}
   #userMenu .list_menu{list-style-type: none;display: block;}
   
   .menu_join {display: list-item;text-align: -webkit-match-parent;}
@@ -124,7 +124,7 @@
  
   /*메인 메뉴*/
   .screen_out {display: block;overflow: hidden;position: absolute;left: -9999px;width: 1px;height: 1px;font-size: 0;line-height: 0;text-indent: -9999px;}
-  #gnb .gnb_kurly {position: relative;z-index: 300;min-width: 1050px;background-color: #fff;font-family: 'Noto Sans';letter-spacing: -0.3px;}
+  #gnb .gnb_kurly {position: relative;z-index: 300;min-width: 1050px;background-color: #fff;font-family: 'Noto Sans KR', sans-serif;letter-spacing: -0.3px;}
   #gnb .inner_gnbkurly{position:relative;width:1050px;height:56px;margin:0 auto}
   #gnb .gnb_kurly:after{content:"";position:absolute;z-index:299;left:0;top:56px;width:100%;height:9px;background:url(https://res.kurly.com/pc/service/common/1902/bg_1x9.png) repeat-x 0 100%}
   #gnb .gnb_main {overflow: hidden;width: 1050px;margin: 0 auto;}
@@ -143,7 +143,7 @@
   /* 메인메뉴 - 검색창 */
   #gnb .gnb_search {position: absolute;right: 108px;top: 10px;width: 242px;}
 
-  #gnb .gnb_search .inp_search {width: 242px;height: 36px;padding: 0 60px 0 14px;border: 1px solid #f7f7f6;border-radius: 18px;background-color: #f7f7f7;font-family: 'Noto Sans';font-weight: 400;font-size: 12px;color: #666;line-height: 16px;outline: none;}
+  #gnb .gnb_search .inp_search {width: 242px;height: 36px;padding: 0 60px 0 14px;border: 1px solid #f7f7f6;border-radius: 18px;background-color: #f7f7f7;font-family: 'Noto Sans KR', sans-serif;font-weight: 400;font-size: 12px;color: #666;line-height: 16px;outline: none;}
   #gnb .gnb_search .btn_search {position: absolute;right: 5px;top: 3px;width: 30px;height: 30px;}
   .gnb_search .init {position: relative;}
   .gnb_search .init .btn_delete {overflow: hidden;position: absolute;left: 170px;top: -36px;width: 36px;height: 36px;border: 0 none;background: url(https://res.kurly.com/pc/ico/2010/ico_search_del.svg) no-repeat 50% 50%;background-size: 12px 12px;font-size: 0;line-height: 0;text-indent: -9999px;opacity: 0;}
@@ -187,7 +187,7 @@
  
   /* 하단버튼 */
   #mainNotice .pop_footer{overflow:hidden;width:100%;height:60px;border-top:1px solid #f7f7f7;background-color:#fff}
-  #mainNotice .pop_footer .btn{overflow:hidden;float:left;width:100%;height:100%;border:0 none;background-color:#fff;font-family:'Noto Sans';font-weight:400;font-size:16px;color:#333;line-height:20px;text-align:center}
+  #mainNotice .pop_footer .btn{overflow:hidden;float:left;width:100%;height:100%;border:0 none;background-color:#fff;font-family:'Noto Sans KR', sans-serif;font-weight:400;font-size:16px;color:#333;line-height:20px;text-align:center}
   #mainNotice .pop_select .btn{float:left;width:219px;}
   #mainNotice .pop_select .btn:last-child{float:right;width:219px;border-left:1px solid #f7f7f7}
   
@@ -205,7 +205,7 @@
   #change_pw .inner_popdiv .link_move{right:2px;width:200px;background-color:#5f0080;color:#fff;border:1px solid #512771; height:50px; text-align:center; line-height:50px; font-size:16px; letter-spacing:0.5px}
   #change_pw .inp_tit{display:block;padding:13px 0 5px 0;font-size:14px;letter-spacing:-.5px; color:#5f0080;font-weight:bold}
   #change_pw .wrap_inp{position:relative}
-  #change_pw .txt_placeholder {position:absolute; z-index:9; display:block; font-size:16px; top:12px; left:10px;font-family:"Noto Sans";font-weight:200;line-height:18px; color:#949296}
+  #change_pw .txt_placeholder {position:absolute; z-index:9; display:block; font-size:16px; top:12px; left:10px;font-family:'Noto Sans KR', sans-serif;font-weight:200;line-height:18px; color:#949296}
   #change_pw .pw_inp{width:100%;padding:10px}
   #change_pw .item_info dt{padding-bottom:5px}
   #change_pw .pw_notice{padding-top:19px}
@@ -222,7 +222,7 @@
   /* LayerDSR */
   #layerDSR {display: none;}
   #layerDSR .bg_dim {position: fixed;z-index: 9998;left: 0;top: 0;width: 100%;height: 100%;background-color: #000;opacity: .5;}
-  #layerDSR * {font-family: noto sans;letter-spacing: 0;}
+  #layerDSR * {font-family:'Noto Sans KR', sans-serif;letter-spacing: 0;}
   #layerDSR .in_layer {position: fixed;z-index: 9999;left: 50%;top: 50%;width: 440px;margin: -258px 0 0 -220px;padding: 31px 30px 0;border-radius: 6px;background-color: #fff;}
   #layerDSR .inner_layer {display: none;padding-bottom: 111px;}
   #layerDSR .layer_star .dsr_result {font-size: 25px;}
@@ -381,7 +381,7 @@
     /*LayerDSR*/
   #layerDSR {display: none;}
   #layerDSR .bg_dim {position: fixed;z-index: 9998;left: 0;top: 0;width: 100%;height: 100%;background-color: #000;opacity: .5;}
-  #layerDSR * {font-family: noto sans;letter-spacing: 0;}
+  #layerDSR * {font-family: 'Noto Sans KR', sans-serif;letter-spacing: 0;}
   #layerDSR .in_layer {position: fixed;z-index: 9999;left: 50%;top: 50%;width: 440px;margin: -258px 0 0 -220px;padding: 31px 30px 0;border-radius: 6px;background-color: #fff;}
   #layerDSR .inner_layer {display: none;padding-bottom: 111px;}
   #layerDSR .layer_star .dsr_result {font-size: 25px;}
@@ -397,7 +397,7 @@
    
 
 	/*footer*/
-	#footer{opacity:1;width: 1050px;margin: 0 auto;padding-bottom: 60px;font-weight: 400;letter-spacing: -.2px;font-family: noto sans;}
+	#footer{opacity:1;width: 1050px;margin: 0 auto;padding-bottom: 60px;font-weight: 400;letter-spacing: -.2px;font-family: 'Noto Sans KR', sans-serif;}
 	#footer .inner_footer {overflow: hidden;padding-bottom: 20px;}
 	*, *:after, *:before {-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0;padding: 0;}
 	#footer .footer_cc {float: left;width: 534px;}
@@ -436,7 +436,7 @@
 
 	
 	/*fatkun-drop-panel*/
-	#fatkun-drop-panel {user-select: none;position: fixed;top: -1e+10px;color: rgb(255, 255, 255);font-family: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;font-weight: 400;z-index: 2147483647;background: rgb(64, 158, 255);overflow: hidden;border-radius: 5px;transition: opacity 0.2s cubic-bezier(0.6, 0, 0.4, 1) 0s, transform 0.2s ease-in-out 0s;}
+	#fatkun-drop-panel {user-select: none;position: fixed;top: -1e+10px;color: rgb(255, 255, 255);font-family: 'Noto Sans KR', sans-serif; font-weight: 400;z-index: 2147483647;background: rgb(64, 158, 255);overflow: hidden;border-radius: 5px;transition: opacity 0.2s cubic-bezier(0.6, 0, 0.4, 1) 0s, transform 0.2s ease-in-out 0s;}
 	#fatkun-drop-panel-close-btn {display: block;width: 24px;height: 24px;position: absolute;right: 0px;top: 0px;font-size: 16px;color: rgb(255, 255, 255);text-align: center;line-height: 24px;text-decoration: none;}
 	#fatkun-drop-panel-inner {width: 206px;height: 206px;margin: 16px;border-width: 1px;border-style: dashed;border-color: rgb(255, 255, 255);border-image: initial;border-radius: 5px;}
 	

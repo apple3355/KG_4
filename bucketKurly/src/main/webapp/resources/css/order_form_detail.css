@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 	
     #qnb{position:absolute;z-index:1;right:20px;top:70px;width:80px;font:normal 12px/16px "Noto Sans";color:#333;letter-spacing:-0.3px;transition:top 0.2s}
@@ -56,8 +57,8 @@
   .hide{display:none}
   /* 주문서_공통 */
   #gnb.gnb_stop{position:static}
-  .user_form {width: 1050px;margin: 0 auto;font-family: noto sans;font-weight: 400;}
-  .user_form *{font-family: 'Noto Sans';font-weight:400;letter-spacing:-0.3px}
+  .user_form {width: 1050px;margin: 0 auto;font-family:'Noto Sans KR', sans-serif; font-weight: 400;}
+  .user_form *{font-family:'Noto Sans KR', sans-serif; font-weight:400;letter-spacing:-0.3px}
   .order_goodslist {border-top: 1px solid #333;}
   .page_aticle {width: 1050px;margin: 0 auto;}
   .user_form input[type="text"]{width:332px;height:44px;padding:12px 16px;border:1px solid #ddd;border-radius:3px;background-color:#fff;font-size:14px;color:#333;letter-spacing:-0.5px;outline:none}
@@ -84,7 +85,7 @@
   .goodsinfo_table tr:last-child td {border: none;}
   
   .tbl_left{float:left;width:742px}
-  .user_form input, .user_form select, .user_form textarea, .user_form button {font-family: noto sans;font-weight: 400;}
+  .user_form input, .user_form select, .user_form textarea, .user_form button {font-family: 'Noto Sans KR', sans-serif; font-weight: 400;}
   tr {display: table-row;vertical-align: inherit;border-color: inherit;}
   
   /* 로딩창 */
@@ -94,7 +95,7 @@
   
    /* 공통적용 */
   #header, #container, #content {position: relative;}
-  body, input, select, textarea, button {font-family: noto sans,malgun gothic,AppleGothic,dotum;line-height: 1;letter-spacing: -.05em;color: #4c4c4c;font-size: 12px;max-width: 100%;}
+  body, input, select, textarea, button {font-family: 'Noto Sans KR', sans-serif; line-height: 1;letter-spacing: -.05em;color: #4c4c4c;font-size: 12px;max-width: 100%;}
   .tit_section{padding:74px 0 16px;font-weight:bold;font-size:20px;color:#333;line-height:29px;clear:both}
   .tit_section.fst{padding-top:14px}
   .tit_section .desc{padding-left:13px;font-size:14px;color:#666;vertical-align:3px}
