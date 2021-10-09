@@ -29,6 +29,7 @@ public class Board_noticeDAO {
 		//sqlSessionTemplate 쿼리문을 수행해주는 역할\
 		//selectOne - id에 대한 select문을 실행한 후 한개의 레코드를 지정한 타입으로 반환합니다.
 	}
+	
 	//조회수 증가
 	public int select_notice_cnt(int num) {
 		System.out.println("조회수 증가");
@@ -41,11 +42,14 @@ public class Board_noticeDAO {
 		return sqlSessionTemplate.selectOne("board-mapping.getnotice_cnt");
 	}
 	
+	
 	//이전 글
 	public Board_noticeVO getPrev(int num){
 		return sqlSessionTemplate.selectOne("board-mapping.getPrev", num);
 	}
-		// 다음 글 
+	
+	
+	// 다음 글 
 	public Board_noticeVO getNext(int num){
 		return sqlSessionTemplate.selectOne("board-mapping.getNext", num);
 	}

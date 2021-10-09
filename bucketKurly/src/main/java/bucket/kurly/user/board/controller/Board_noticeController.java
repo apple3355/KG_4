@@ -1,5 +1,6 @@
 package bucket.kurly.user.board.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import bucket.kurly.user.board.Board_fileVO;
 import bucket.kurly.user.board.Board_noticeVO;
+import bucket.kurly.user.board.Board_qnaVO;
 import bucket.kurly.user.board.service.Board_noticeService;
 import bucket.kurly.util.Pagination;
 
@@ -28,8 +31,9 @@ public class Board_noticeController {
 		@RequestParam(required = false, defaultValue = "") String keyword) //키워드 기본 값을 ""으로 한다.
 			throws Exception {
 		
-		System.out.println("글 목록 요청");
+		System.out.println("[공지사항 게시글] 목록페이지 요청");
 		
+
 //		Search search = new Search();
 //		search.setSearchType(searchType);
 //		search.setKeyword(keyword);
@@ -59,11 +63,11 @@ public class Board_noticeController {
 		//board_noticeService.select_notice_cnt(no); //조회수 증가
 		Board_noticeVO getnotice_no = board_noticeService.select_notice_no(no); // getnotice_no -> vo의 변수, no = num
 		//리스트가 아닌 각 vo에서 내용을 가지고 온다.
-		Board_noticeVO Prev = board_noticeService.getPrev(no); //이전 글
-		Board_noticeVO Next = board_noticeService.getNext(no); //다음 글
+		Board_noticeVO prev = board_noticeService.getPrev(no); //이전 글
+		Board_noticeVO next = board_noticeService.getNext(no); //다음 글
 		
-		model.addAttribute("Prev", Prev);
-		model.addAttribute("Next", Next);
+		model.addAttribute("prev", prev);
+		model.addAttribute("next", next);
 		model.addAttribute("notice_cnt", notice_cnt);
 		model.addAttribute("getnotice_no", getnotice_no);
 		return "board/board_notice_no";

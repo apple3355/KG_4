@@ -33,7 +33,6 @@ public class Board_faqController {
 		Pagination pagination = new Pagination(); //Pagination 객체 생성
 		pagination.pageInfo(page, range, listCnt);
 		
-		
 		List<Board_faqVO> board_faqList = board_faqService.selectBoard_faq(pagination);	
 		
 		model.addAttribute("pagination", pagination);

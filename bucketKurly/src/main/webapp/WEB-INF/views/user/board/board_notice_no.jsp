@@ -20,13 +20,18 @@
 
 			<!-- header -->
 			<%@ include file="/WEB-INF/views/layout/header.jsp"%>
-
+			
+			
 			<!-- main -->
 			<div id="main">
 				<div id="content">
+					<div class="tit_page">
+						<h2 class="tit">공지사항</h2>
+						<p style="text-align:center; font-size:16px;">컬리의 새로운 소식들과 유용한 정보들을 한곳에서 확인하세요.</p>
+					</div>
+					
 					<div class="layout-wrapper">
 						<div class="xans-element- xans-myshop xans-myshop-couponserial ">
-
 							<table width="100%" align="center" cellpadding="0" cellspacing="0">
 								<tbody>
 									<tr>
@@ -94,21 +99,32 @@
 											<div
 												class="xans-element- xans-board xans-board-movement-1002 xans-board-movement xans-board-1002 ">
 												<ul>
-													<li class="prev "><strong>이전글</strong><a href="${pageContext.request.contextPath}/notice_no.do?no=${board_noticeList.board_notice_no}">${getPrev.board_notice_title}</a></li>
-													<li class="next "><strong>다음글</strong><a href="${pageContext.request.contextPath}/notice_no.do?no=${board_noticeList.board_notice_no}">${getNext.board_notice_title}</a></li>
+													<li class="prev">
+														<strong>이전글</strong>
+														<c:if test="${not empty prev}"> 
+															<a href="${pageContext.request.contextPath}/board_notice_no.do?no=${prev.board_notice_no}">${prev.board_notice_title}</a>
+														</c:if>
+														<c:if test="${empty prev}"> 
+															<a>이전글이 없습니다.</a>
+														</c:if>
+													</li>
+													<li class="next">
+														<strong>다음글</strong>
+														<c:if test="${not empty next}"> 
+															<a href="${pageContext.request.contextPath}/board_notice_no.do?no=${next.board_notice_no}">${next.board_notice_title}</a>
+														</c:if>
+														<c:if test="${empty next}"> 
+															<a>다음글이 없습니다.</a>
+														</c:if>
+														
+													</li>
 												</ul>
 											</div><br>
-											<table width=100% cellpadding=5 cellspacing=0>
-												<col width=100 align=right bgcolor=#f7f7f7 style="padding-right: 10px">
-												<col style="padding-left: 10px">
-											</table>
-											<p>
-												<br>
-												<textarea id=examC_1038	style="display: none; width: 100%; height: 300px">&lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; font-stretch: normal; font-size: 12px; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; font-stretch: normal; font-size: 12px; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;;&quot;&gt;안녕하세요 고객님, 마켓컬리입니다.&lt;/p&gt;&lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; font-stretch: normal; font-size: 12px; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;; min-height: 14px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; font-stretch: normal; line-height: normal; min-height: 14px;&quot;&gt;&lt;font face=&quot;Helvetica Neue&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;[마켓컬리] 갤럭시 Z폴드/플립3 사전예약 &amp;amp; 찜하기 이벤트에 참여해주신 모든 고객님들께 감사의 말씀 전하며, 아래와 같이 당첨자와 당첨 제공품 안내 드립니다.&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; font-stretch: normal; line-height: normal; min-height: 14px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; font-stretch: normal; line-height: normal; min-height: 14px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; font-stretch: normal; line-height: normal; min-height: 14px;&quot;&gt;&lt;span style=&quot;font-size: 12px; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;;&quot;&gt;■&amp;nbsp;&lt;/span&gt;&lt;b&gt;&lt;span style=&quot;font-family: &amp;quot;Apple SD Gothic Neo&amp;quot;; font-size: 12px;&quot;&gt;당첨자&lt;/span&gt;&lt;span style=&quot;font-size: 12px; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Apple SD Gothic Neo&amp;quot;; font-size: 12px;&quot;&gt;명단&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; font-stretch: normal; line-height: normal; min-height: 14px;&quot;&gt;&lt;b&gt;&lt;span style=&quot;font-family: &amp;quot;Apple SD Gothic Neo&amp;quot;; font-size: 12px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; font-stretch: normal; line-height: normal; min-height: 14px;&quot;&gt;&lt;b&gt;&lt;span style=&quot;font-family: &amp;quot;Apple SD Gothic Neo&amp;quot;; font-size: 12px;&quot;&gt;&lt;img src=&quot;//img-cf.kurly.com/shop/data/editor/9a4a81774406d22d.png&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; font-stretch: normal; line-height: normal; min-height: 14px;&quot;&gt;&lt;b&gt;&lt;span style=&quot;font-family: &amp;quot;Apple SD Gothic Neo&amp;quot;; font-size: 12px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; font-stretch: normal; font-size: 12px; line-height: normal; font-family: &amp;quot;Apple SD Gothic Neo&amp;quot;;&quot;&gt;&lt;span style=&quot;font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; font-stretch: normal; font-size: 12px; line-height: normal; font-family: &amp;quot;Apple SD Gothic Neo&amp;quot;;&quot;&gt;&lt;span style=&quot;font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;;&quot;&gt;■&amp;nbsp;&lt;/span&gt;&lt;b&gt;상품&lt;span style=&quot;font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;;&quot;&gt;&amp;nbsp;&lt;/span&gt;안내&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; font-stretch: normal; font-size: 12px; line-height: normal; font-family: &amp;quot;Apple SD Gothic Neo&amp;quot;;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; font-stretch: normal; line-height: normal; min-height: 14px;&quot;&gt;&lt;font face=&quot;Helvetica Neue&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;상품 당첨자께는 금주(~9/3) 중 개별 연락으로 경품 발송 관련 내용을 안내해 드리겠습니다.&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; font-stretch: normal; line-height: normal; min-height: 14px;&quot;&gt;&lt;font face=&quot;Helvetica Neue&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;적립금 당첨자께는 익일(9/1) 내로 적립금 별도 지급 예정입니다.&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; font-stretch: normal; line-height: normal; min-height: 14px;&quot;&gt;&lt;font face=&quot;Helvetica Neue&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; font-stretch: normal; line-height: normal; min-height: 14px;&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Apple SD Gothic Neo&amp;quot;; font-size: 12px;&quot;&gt;다시&lt;/span&gt;&lt;span style=&quot;font-size: 12px; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Apple SD Gothic Neo&amp;quot;; font-size: 12px;&quot;&gt;한&lt;/span&gt;&lt;span style=&quot;font-size: 12px; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Apple SD Gothic Neo&amp;quot;; font-size: 12px;&quot;&gt;번&amp;nbsp;&lt;/span&gt;&lt;font face=&quot;Apple SD Gothic Neo&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;[마켓컬리] 갤럭시 Z폴드/플립3 사전예약 &amp;amp; 찜하기 이벤트&lt;/span&gt;&lt;/font&gt;&lt;span style=&quot;font-family: &amp;quot;Apple SD Gothic Neo&amp;quot;; font-size: 12px;&quot;&gt;에&lt;/span&gt;&lt;span style=&quot;font-size: 12px; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Apple SD Gothic Neo&amp;quot;; font-size: 12px;&quot;&gt;참여해주신&lt;/span&gt;&lt;span style=&quot;font-size: 12px; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Apple SD Gothic Neo&amp;quot;; font-size: 12px;&quot;&gt;모든&lt;/span&gt;&lt;span style=&quot;font-size: 12px; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Apple SD Gothic Neo&amp;quot;; font-size: 12px;&quot;&gt;고객님들께&lt;/span&gt;&lt;span style=&quot;font-size: 12px; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Apple SD Gothic Neo&amp;quot;; font-size: 12px;&quot;&gt;감사드립니다&lt;/span&gt;&lt;span style=&quot;font-size: 12px; font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; font-stretch: normal; font-size: 12px; line-height: normal; font-family: &amp;quot;Apple SD Gothic Neo&amp;quot;;&quot;&gt;&lt;span style=&quot;font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; font-stretch: normal; font-size: 12px; line-height: normal; font-family: &amp;quot;Apple SD Gothic Neo&amp;quot;;&quot;&gt;&lt;span style=&quot;font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;;&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; font-stretch: normal; font-size: 12px; line-height: normal; font-family: &amp;quot;Apple SD Gothic Neo&amp;quot;;&quot;&gt;마켓컬리&lt;span style=&quot;font-stretch: normal; line-height: normal; font-family: &amp;quot;Helvetica Neue&amp;quot;;&quot;&gt;&amp;nbsp;&lt;/span&gt;드림&lt;/p&gt;&lt;p style=&quot;margin-top: 0px; margin-bottom: 0px; font-stretch: normal; line-height: normal; min-height: 14px;&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Apple SD Gothic Neo&amp;quot;; font-size: 12px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;br&gt;</textarea>
 										</td>
 									</tr>
 									</tbody>
-							</table>
+								</table>
+							
 						
 						</div>
 					</div>

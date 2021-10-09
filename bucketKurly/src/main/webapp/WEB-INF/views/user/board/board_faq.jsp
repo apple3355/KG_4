@@ -8,16 +8,15 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="resources/css/board_notice.css">
-
-
-<title>board_notice</title>
 <style>
 	.notice .layout-pagination{margin: 0}
 	.eng2{color: #939393}
 	.xans-board-listheader{font-size:12px}
 </style>
-</head>
 
+<title>board_notice</title>
+
+</head>
 <body>
 <div id="wrap" class="">
    <div id="pos_scroll"></div>
@@ -25,101 +24,95 @@
       <!-- header -->
       <%@ include file="/WEB-INF/views/layout/header.jsp"%>
    
-      <!-- content
-      <div id="main">
-         <div id="content">   이런식으로 중간에 넣어주세요-->
-         <div id="main">
-				<div id="content">
-
+    
 			<div id="main">				
 				<div id="content" >					
-					<div id="qnb" class="quick-navigation" style="top=: 70px;">
-							</div>
+					<div id="qnb" class="quick-navigation" style="top=: 70px;"></div>
 					<div class="page_aticle aticle_type2">
 						<div id="snb" class="snb_cc">
 							<h2 class="tit_snb">고객센터</h2>
 							<div class="inner_snb">							
-								<ul class="list_menu"  >								   
+								<ul class="list_menu">								   
 									<li><a href="${pageContext.request.contextPath}/board_notice.do" class="board_notice">공지사항</a></li>
-									<li class="on"><a href="${pageContext.request.contextPath}/board_faq.do" class="faq">자주하는 질문</a></li>
-									<li><a href="${pageContext.request.contextPath}/board_qna.do" class="board_qna">1:1문의</a></li>											   
-									<li><a href="#############" onclick="KurlyTrackerLink('/shop/main/html.php?htmid=mypage/bulk_order.htm', 'select_service_bulk_order')">대량주문 문의</a></li>
-									<li><a href="#############" onclick="KurlyTrackerLink('/shop/mypage/offer.php', 'select_service_product_offer')">상품 제안</a></li>
-									<li><a href="#############" onclick="KurlyTrackerLink('/shop/mypage/echo_packing.php', 'select_service_eco_packing_feedback')">에코포장 피드백</a></li>
+									<li class="on"><a href="${pageContext.request.contextPath}/board_faq.do" class="faq">자주하는 질문</a><br></li>
+									<li><a href="${pageContext.request.contextPath}/board_qna.do" class="board_qna">1:1 문의</a><br></li>
 								</ul>
 							</div>
-							<a href="${pageContext.request.contextPath}/board_qna.do" class="link_inquire">
-								<span class="emph">도움이 필요하신가요 ?</span>1:1 문의하기
-							</a>
+							<a href="/shop/mypage/mypage_qna_register.php?mode=add_qna" class="link_inquire"><span class="emph">도움이 필요하신가요 ?</span>1:1 문의하기</a>
 						</div>
 						
 						<div class="page_section">
 							<div class="head_aticle">
-								<h2 class="tit">
-									자주하는 질문 <span class="tit_sub">컬리의 새로운 소식들과 유용한 정보들을 한곳에서
-										확인하세요.</span>
-								</h2>
+								<h2 class="tit"> 자주하는 질문 <span class="tit_sub">컬리의 고객들이 자주하는 질문의 답변을 이곳에서 확인하세요.</span></h2>
 							</div>
 							
-							<div class="xans-element- xans-myshop xans-myshop-couponserial ">
-								<table width=100% align="center" class="xans-board-listheader jh" cellpadding=0 cellspacing=0>
-								
-									<thead>
-										<tr>
-											<th>번호</th>
-											<th>분류</th>
-											<th>제목</th>
-											<th>작성자</th>
-										</tr>
-									</thead>
 							
-									<tbody>			
-									 	<c:forEach items="${board_faqList}" var="board_faqList" varStatus="status">										
-										<tr>
-											<td width="5%" nowrap align=center>${status.count}</td>
-											<td width="15%">${board_faqList.board_faq_type}</td>
-											<td width="70%" style="padding-left: 10px; text-align: left; color: #999">
-											    <a href="${pageContext.request.contextPath}/board_faq_no.do?no=${board_faqList.board_faq_no}">${board_faqList.board_faq_title}</a></td>	
-											<td width="10%">bucketkurly</td>
-										</tr>
-										</c:forEach>
-									</tbody>
-									
+								<table width="100%" align="center" cellpadding=0 cellspacing=0>
+									<tr>
+										<td>
+											<div class="xans-element- xans-myshop xans-myshop-couponserial ">
+											
+												<table width="100%" class="xans-board-listheader jh" cellpadding=0 cellspacing=0>
+												
+													<thead>
+														<tr>
+															<th>번호</th>
+															<th>문의종류</th>
+															<th>제목</th>
+															<th>작성자</th>
+														</tr>
+													</thead>
+												
+													 <c:forEach items="${board_faqList}" var="board_faqList" varStatus="status">
+																							
+													<tbody>													
+														<tr>
+															<td width="5%" align="center">${pagination.listCnt- ((pagination.page-1) * pagination.rangeSize + status.index) }</td>
+															<td width="20%" align="center"><c:out value="${board_faqList.board_faq_type}"/></td>
+															<td width="60%" style="padding-left: 40px; color: #999"><a href="${pageContext.request.contextPath}/board_faq_no.do?no=${board_faqList.board_faq_no}">${board_faqList.board_faq_title}&nbsp;</a></td>	
+															<td width="15%" align="center">bucketkurly</td>
+														</tr>
+													</tbody>
+													</c:forEach>
+												</table>
+											</div>
+										</td>
+									</tr>
 								</table>
-							</div>
+								
+								<div class="layout-pagination">
+				                     <div class="pagediv">
+				                        <!-- 맨 처음으로 이동 -->
+				                        <a class="layout-pagination-button layout-pagination-first-page" href="javascript:void(0);" 
+				                           onClick="fn_first()">맨 처음 페이지로 가기</a>
+				                        
+				                     
+				                        <!-- 이전 페이지로 이동 -->
+				                        <a class="layout-pagination-button layout-pagination-prev-page" href="javascript:void(0);" 
+				                           onClick="fn_prev('${pagination.page}','${pagination.range}','${pagination.rangeSize}')">이전 페이지로 가기</a>
+				                     
+				                        
+				                        <!-- 페이지 목록 -->
+				                        <c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
+				                           <c:out value="${pagination.page == idx ? 'active' : ''}"/>
+				                           <a class="page-link" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')"> 
+				                           <strong class="layout-pagination-button layout-pagination-number __active">${idx}</strong></a>
+				                        </c:forEach>
+				      
+				                        <!-- 다음 페이지로 이동 -->
+				                        <a class="layout-pagination-button layout-pagination-next-page" href="javascript:void(0);" 
+				                           onClick="fn_next('${pagination.page}','${pagination.range}','${pagination.rangeSize}','${pagination.pageCnt}')">다음 페이지로 가기</a>
+				                     
+				                        
+				                        <!-- 맨 끝 페이지로 이동 -->
+				                        <a class="layout-pagination-button layout-pagination-last-page" href="javascript:void(0);" 
+				                           onClick="fn_last('${pagination.pageCnt}','${pagination.rangeSize}')">맨 끝 페이지로 가기</a>
+				                     </div>
+				                  </div>
+				                  
 							
-							<div class="layout-pagination">
-			                     <div class="pagediv">
-			                        <!-- 맨 처음으로 이동 -->
-			                        <a class="layout-pagination-button layout-pagination-first-page" href="javascript:void(0);" 
-			                           onClick="fn_first()">맨 처음 페이지로 가기</a>
-			                        
-			                     
-			                        <!-- 이전 페이지로 이동 -->
-			                        <a class="layout-pagination-button layout-pagination-prev-page" href="javascript:void(0);" 
-			                           onClick="fn_prev('${pagination.page}','${pagination.range}','${pagination.rangeSize}')">이전 페이지로 가기</a>
-			                     
-			                        
-			                        <!-- 페이지 목록 -->
-			                        <c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
-			                           <c:out value="${pagination.page == idx ? 'active' : ''}"/>
-			                           <a class="page-link" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')"> 
-			                           <strong class="layout-pagination-button layout-pagination-number __active">${idx}</strong></a>
-			                        </c:forEach>
-			      
-			                        <!-- 다음 페이지로 이동 -->
-			                        <a class="layout-pagination-button layout-pagination-next-page" href="javascript:void(0);" 
-			                           onClick="fn_next('${pagination.page}','${pagination.range}','${pagination.rangeSize}','${pagination.pageCnt}')">다음 페이지로 가기</a>
-			                     
-			                        
-			                        <!-- 맨 끝 페이지로 이동 -->
-			                        <a class="layout-pagination-button layout-pagination-last-page" href="javascript:void(0);" 
-			                           onClick="fn_last('${pagination.pageCnt}','${pagination.rangeSize}')">맨 끝 페이지로 가기</a>
-			                     </div>
-			                  </div>
 						</div>
 					</div>
-					
 					<script type="text/javascript">
 		               //맨 앞 페이지 버튼 이벤트
 		                function fn_first() {
@@ -175,6 +168,7 @@
 					</script>
 				</div>
 			</div>
+         
    
       <!-- layerDSR -->
       <%@ include file="/WEB-INF/views/layout/layerDSR.jsp"%>
@@ -185,8 +179,7 @@
             
       </div>  
    </div>
- </div>
-</div>
+ 
    <a href="#top" id="pageTop">맨 위로가기</a>
 </body>
 </html>
