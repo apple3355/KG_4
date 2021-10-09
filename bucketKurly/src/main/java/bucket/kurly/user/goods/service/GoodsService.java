@@ -5,13 +5,24 @@ import java.util.List;
 import bucket.kurly.user.goods.GoodsVO;
 import bucket.kurly.user.goods.Goods_CartShowVO;
 import bucket.kurly.user.goods.Goods_CartVO;
+import bucket.kurly.user.goods.Goods_ListDTO;
 import bucket.kurly.user.goods.Goods_SellVO;
 
 public interface GoodsService {
 
 	// 상품DB조회
-	List<Goods_SellVO> selectGoods_sell(String select_type);
+	List<Goods_SellVO> selectGoods_sell(Goods_ListDTO dto);
 
+	
+	// 상품DB조회(parent_no)
+	List<Goods_SellVO> selectGoods_sell_parent(Goods_ListDTO dto);
+	String selectGoods_sell_parent_title(String parent_no);
+	
+	// 상품DB조회(parent_no)
+	List<Goods_SellVO> selectGoods_sell_sub(Goods_ListDTO dto);
+	String selectGoods_sell_sub_title(String sub_no);
+	
+	
 	// 상품상세페이지
 	Goods_SellVO getGoods_detail(int goods_sell_no);
 	

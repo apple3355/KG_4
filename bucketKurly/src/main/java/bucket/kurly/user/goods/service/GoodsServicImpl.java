@@ -9,6 +9,7 @@ import bucket.kurly.user.goods.GoodsDAO;
 import bucket.kurly.user.goods.GoodsVO;
 import bucket.kurly.user.goods.Goods_CartShowVO;
 import bucket.kurly.user.goods.Goods_CartVO;
+import bucket.kurly.user.goods.Goods_ListDTO;
 import bucket.kurly.user.goods.Goods_SellVO;
 
 @Service
@@ -19,9 +20,31 @@ public class GoodsServicImpl implements GoodsService {
 
 	// 상품리스트
 	@Override
-	public List<Goods_SellVO> selectGoods_sell(String select_type) {
-		return dao.selectGoods_sell(select_type);
+	public List<Goods_SellVO> selectGoods_sell(Goods_ListDTO dto) {
+		return dao.selectGoods_sell(dto);
 	}
+
+	// 상품리스트(parent_no)
+	@Override
+	public List<Goods_SellVO> selectGoods_sell_parent(Goods_ListDTO dto) {
+		return dao.selectGoods_sell_parent(dto);
+	}
+	@Override
+	public String selectGoods_sell_parent_title(String parent_no) {
+		return dao.selectGoods_sell_parent_title(parent_no);
+	}
+	
+	// 상품리스트(sub_no)
+	@Override
+	public List<Goods_SellVO> selectGoods_sell_sub(Goods_ListDTO dto) {
+		return dao.selectGoods_sell_sub(dto);
+	}
+	@Override
+	public String selectGoods_sell_sub_title(String sub_no) {
+		return dao.selectGoods_sell_sub_title(sub_no);
+	}
+
+
 	
 	// 상품 상세페이지
 	@Override
@@ -87,9 +110,5 @@ public class GoodsServicImpl implements GoodsService {
 		dao.deleteGoods_cart(gsvo);
 	}
 
-	
-
-	
-	
 	
 }
