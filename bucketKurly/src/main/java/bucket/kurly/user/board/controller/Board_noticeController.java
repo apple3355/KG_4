@@ -19,7 +19,7 @@ public class Board_noticeController {
 	@Autowired
 	private Board_noticeService board_noticeService;
 	
-	// 글목록 요청
+	// 글 목록 요청
 	@GetMapping("/board_notice.do")
 	public String getBoard_noticeList(Model model, // 모델 리스트를 물고 jsp로 감
 		@RequestParam(required = false, defaultValue = "1") int page,
