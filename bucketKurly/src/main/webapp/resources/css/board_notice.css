@@ -1,38 +1,52 @@
+@charset "UTF-8";
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+/* 페이지 내용 내부 */
+.page_aticle {width: 1050px;margin: 0 auto;}
+.page_aticle.aticle_type2 {padding-top: 65px;}
+.page_aticle.aticle_type2:after {content: "";display: block;overflow: hidden;width: 100%;clear: both;}
+
 #main {border-bottom: 1px solid #f7f7f7;}
 #content {min-width: 1050px;padding-bottom: 120px;}
-
-.page_aticle.aticle_type2 {padding-top: 65px;}
-.page_aticle {width: 1050px;margin: 0 auto;}
-
 #snb {float: left;width: 200px;}
+
+/* 페이지 내용 내부 - 제목 */
+.page_aticle .head_aticle {padding: 5px 0 34px;}
+.page_aticle .head_aticle .tit {height: 36px; font-weight: 700; font-size: 24px; line-height: 36px;color: #333; letter-spacing: -.5px;}
+.xans-board-listheader {border-top: 2px solid #522772; font-size: 13px; line-height: 140%;}
+.xans-board-listheader th {padding: 20px 0; vertical-align: middle; font-size: 12px;}
+.page_aticle .no_data {padding: 50px 0; font-size: 13px; color: #757575; text-align: center;}
+
+  
+/* 메뉴 - 제목(고객센터) 스타일 */
 #snb .tit_snb {padding: 5px 0 35px 1px;font-weight: 700;font-size: 28px;line-height: 35px;color: #333;letter-spacing: -1px;}
-#snb .inner_snb {border: 1px solid #f2f2f2;border-bottom: 0;}
-ol, ul {list-style-type: none;}
 
+  
+/* 메뉴 - 하위 메뉴 스타일 */
+#snb .inner_snb {border: 1px solid #f2f2f2;	border-bottom: 0;}
 #snb .list_menu li {border-bottom: 1px solid #f2f2f2;}
-li {display: list-item;text-align: -webkit-match-parent;}
+#snb .list_menu li a {display: block;overflow: hidden;padding: 14px 0 16px 20px; background: #fff url("https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/ico_arrow_6x11.svg") no-repeat 174px 52%; background-size: 6px 11px; font-size: 14px; color: #666; line-height: 20px; letter-spacing: -.3px;}
+#snb .list_menu li.on a, #snb .list_menu li a:hover {background: #fafafa url("https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/ico_arrow_6x11.svg") no-repeat 174px 52%; background-size: 6px 11px; font-weight: 700; color: #5f0080;}
+ 
 
-#snb .list_menu li.on a, #snb .list_menu li a:hover {background: #fafafa url("https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/ico_arrow_6x11.svg") no-repeat 174px 52%;background-size: 6px 11px;font-weight: 700;color: #5f0080;}
-#snb .list_menu li a {display: block;overflow: hidden;padding: 14px 0 16px 20px;background: #fff url("https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/ico_arrow_6x11.svg") no-repeat 174px 52%;background-size: 6px 11px;font-size: 14px;color: #666;line-height: 20px;letter-spacing: -.3px;}
-
-#snb {float: left;width: 200px;}
-#snb .link_inquire {display: block;overflow: hidden;width: 200px;height: 60px;margin-top: 20px;padding: 9px 0 0 22px;border-radius: 0 100px 100px 0;background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 175px 25px;background-size: 6px 11px;font-size: 12px;color: #333;line-height: 20px;}
-#snb .link_inquire .emph {display: block;padding-bottom: 1px;font-weight: 700;font-size: 14px;}
-
+/* 메뉴 - 하위메뉴 하단(도움이 필요하신가요) 스타일 */
+#snb .link_inquire {display: block; overflow: hidden;width: 200px; height: 60px; margin-top: 20px;padding: 9px 0 0 22px;border-radius: 0 100px 100px 0;background: #fafafa url(https://res.kurly.com/pc/ico/2008/ico_arrow_6x11_on.svg) no-repeat 175px 25px; background-size: 6px 11px; font-size: 12px; color: #333; line-height: 20px;} #snb .link_inquire .emph { display: block; padding-bottom: 1px;font-weight: 700; font-size: 14px;}
+   
 
 
-.page_aticle.aticle_type2:after {content: "";display: block;overflow: hidden;width: 100%;clear: both;}
+
+
 .page_aticle.aticle_type2 .page_section {float: right;width: 820px;}
 .page_aticle .head_aticle {padding: 5px 0 34px;}
 .page_aticle .head_aticle .tit {height: 36px;font-weight: 700;font-size: 24px;line-height: 36px;color: #333;letter-spacing: -.5px;}
-h2 {display: block;font-size: 1.5em;margin-block-start: 0.83em;margin-block-end: 0.83em;margin-inline-start: 0px;margin-inline-end: 0px;font-weight: bold;}
+
 .page_aticle .head_aticle .tit_sub {padding-left: 11px;font-size: 14px;color: #999;line-height: 20px;letter-spacing: -.3px;vertical-align: 3px;}
 .page_aticle .head_aticle .tit {height: 36px;font-weight: 700;font-size: 24px;line-height: 36px;color: #333;letter-spacing: -.5px;}
 form {display: block;margin-top: 0em;}
 tbody {display: table-row-group;vertical-align: middle;border-color: inherit;}
 table {border-collapse: collapse;border-spacing: 0;}
-tr {display: table-row;vertical-align: inherit;border-color: inherit;}
-td, th {padding: 0;}
+
+
 
 .notice .layout-pagination{margin: 0}
 
@@ -51,7 +65,7 @@ td, th {padding: 0;}
 
 .layout-pagination-first-page, .layout-pagination-prev-page, .layout-pagination-next-page, .layout-pagination-last-page {background-repeat: no-repeat;background-position: 50% 50%;text-indent: -9999px;}
 .layout-pagination-button {display: inline-block;width: 34px;height: 34px;border: 1px solid #ddd;border-left: 0;vertical-align: top;}
-a {background-color: transparent;text-decoration: none;color: inherit;}
+
 .layout-pagination-number:hover, .layout-pagination-number.__active {background-color: #f7f7f7;color: #5f0080;}
 .layout-pagination-number {font-weight: 700;color: #333;line-height: 34px;}
 
@@ -77,7 +91,6 @@ input[type=checkbox], input[type=radio] {box-sizing: border-box;padding: 0;}
  .xans-board-listheader td a {color: #555;}
  style attribute {padding-left: 10px;text-align: left;color: #999;}
  .search_bt img {float: right;}
- img {border: 0;}
  .xans-board-search input[type=text] {height: 34px;line-height: 34px;width: 220px;border: 1px solid #bfbfbf;color: #000;float: right;padding: 4px;}
  
  
