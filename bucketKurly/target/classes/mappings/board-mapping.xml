@@ -2,8 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<mapper namespace="board-mapping">
+
 	<!-- 공지사항 글 목록 -->
-	<mapper namespace="board-mapping">
 	<select id="selectBoard_notice" parameterType="int" resultType="board_notice">
 		SELECT * FROM TB_BOARD_NOTICE 
 		ORDER BY BOARD_NOTICE_NO DESC
@@ -111,6 +112,23 @@
 		SELECT * from TB_BOARD_FILE
 		WHERE BOARD_FILE_MEMBER_NO=#{board_file_member_no}	
 	</select>
+	
+	
+	<!-- faq -->
+	<select id="selectBoard_faq" resultType="board_faq">
+		SELECT * FROM TB_BOARD_FAQ
+		ORDER BY BOARD_FAQ_NO DESC
+		LIMIT #{listSize} OFFSET #{startList}
+	</select>
+	<select id="selectBoard_faq_no" parameterType="int" resultType="board_faq">
+		SELECT * from TB_BOARD_FAQ
+		WHERE BOARD_FAQ_NO=#{BOARD_FAQ_NO}
+	</select>
+	<select id="selectBoard_faqListCnt" resultType="int">
+		SELECT COUNT(*) FROM TB_BOARD_FAQ 
+		WHERE BOARD_FAQ_NO=#{BOARD_FAQ_NO}
+	</select>
+	
 	<!-- =========================== -->
 	
 	
@@ -152,7 +170,7 @@
 	
 	<select id="admin_selectBoard_faq_no" parameterType="int" resultType="admin_board_faq">
 		SELECT * FROM TB_BOARD_FAQ
-		WHERE BOARD_FAQ_NO = ${board_faq_no}
+		WHERE BOARD_FAQ_NO = #{board_faq_no}
 	</select>
 	
 	
@@ -216,5 +234,4 @@
 	<select id="admin_selectBoard_qna_answait_num" resultType="int">
 		SELECT COUNT(BOARD_QNA_GROUP) FROM TB_BOARD_QNA WHERE BOARD_QNA_GROUP IN (SELECT BOARD_QNA_GROUP FROM TB_BOARD_QNA GROUP BY BOARD_QNA_GROUP HAVING COUNT(BOARD_QNA_GROUP) = 1) AND BOARD_QNA_GSTEP = 0
 	</select>
-
 </mapper>
