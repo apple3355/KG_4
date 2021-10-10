@@ -2,6 +2,7 @@
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -175,7 +176,7 @@ $(function(){
 .global_sticker .inner_sticker {overflow: hidden;position: absolute;left: 0;top: 0; height: 32px;padding: 0 8px;text-align: center;white-space: nowrap;}
 .global_sticker .bg_sticker {position: absolute;z-index: 1;left: 0;top: 0;width: 80px;height: 32px;background-color: #bd76ff;opacity: .9;} /*width: 100% -> 80px*/
 .global_sticker .txt_sticker {position: relative;z-index: 1;}
-.global_sticker .txt_sticker .emph_sticker {font-weight: 700;font-size: 14px;color: #fff;line-height: 30px;}
+.global_sticker .txt_sticker .emph_sticker {font-weight: 500;font-size: 14px;color: #fff;line-height: 30px;}
 
 /* 메인 배너의 좌측 화살표버튼 */
 #prevBtn{cursor: pointer; overflow:hidden;position:absolute;bottom:316px;width:60px;height:60px;border:0 none;font-size:0;line-height:0;text-indent:-9999px;transition:opacity 0.5s ease; user-select: none}
@@ -194,14 +195,14 @@ $(function(){
 
 /* 공통 */
 .page_main{overflow:hidden;width:100%;margin:0;opacity:0}
-.page_aticle button, .page_aticle input, .page_aticle select, .page_aticle * {font-family: noto sans;font-weight: 400;letter-spacing: 0;}
+.page_aticle button, .page_aticle input, .page_aticle select, .page_aticle * {font-family: 'Noto Sans KR', sans-serif; font-weight: 400;letter-spacing: 0;}
 .page_main .bg{background-color:#f7f7f7}
 .page_main .tit_goods{padding:79px 0 35px}
 .page_main .tit_goods.top_short{padding-top:21px}
-.page_main .tit_goods .tit{font-weight:700;font-size:28px;line-height:32px;letter-spacing:-0.3px;text-align:center}
-.page_main .tit_goods .name{position:relative;font-weight:700}
+.page_main .tit_goods .tit{font-weight:500;font-size:28px;line-height:32px;letter-spacing:-0.3px;text-align:center}
+.page_main .tit_goods .name{position:relative;font-weight:500}
 .page_main .tit_goods a{cursor:pointer}
-.page_main .tit_goods .name .ico{padding:0 31px;background:url(https://res.kurly.com/pc/service/main/1908/ico_title_link_x1.png) no-repeat 100% 50%;font-weight:700}
+.page_main .tit_goods .name .ico{padding:0 31px;background:url(https://res.kurly.com/pc/service/main/1908/ico_title_link_x1.png) no-repeat 100% 50%;font-weight:500}
 .page_main .tit_goods .tit_desc{display:block;padding-top:10px;font-weight:400;font-size:16px;color:#999;line-height:20px;text-align:center}
 .page_main .list_goods a{cursor:pointer}
 .page_main .list_goods .thumb_goods{display:block;overflow:hidden}
@@ -237,11 +238,11 @@ $(function(){
 .main_type2 .list_goods .thumb{width:249px;height:370px} 
 .main_type2 .list_goods .name{display:block;overflow:hidden;max-height:50px;margin-top:12px;text-overflow:ellipsis;display: -webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;word-wrap:break-word} 
 .main_type2 .list_goods .txt{font-size:16px;line-height:23px} 
-.main_type2 .list_goods .price{display:block;padding-top:9px;font-weight:800;font-size:16px;line-height:20px} 
-.main_type2 .list_goods .dc{padding-right:8px;font-weight:800;font-size:16px;color:#fa622f;line-height:20px} 
+.main_type2 .list_goods .price{display:block;padding-top:9px;font-weight:500;font-size:16px;line-height:20px} 
+.main_type2 .list_goods .dc{padding-right:8px;font-weight:500;font-size:16px;color:#fa622f;line-height:20px} 
 .main_type2 .list_goods .cost{display:block;padding-top:5px;font-size:14px;color:#999;line-height:18px;text-decoration:line-through} 
    
-#qnb{position:absolute;z-index:1;right:20px;top:70px;width:80px;font:normal 12px/16px "Noto Sans";color:#333;letter-spacing:-0.3px;transition:top 0.2s}
+#qnb{position:absolute;z-index:1;right:20px;top:70px;width:80px;font:normal 12px/16px "'Noto Sans KR', sans-serif";color:#333;letter-spacing:-0.3px;transition:top 0.2s}
 .goods-goods_view #qnb{top:20px}
    
  /* 배너 */
@@ -268,7 +269,7 @@ $(function(){
 .category_type .category .list_category .menu{display:inline-block;height:40px;padding:9px 20px 0 19px;border:1px solid #f7f7f6;border-radius:20px;background-color:#f7f7f7;font-size:14px;line-height:18px}
 .category_type .category .list_category .menu:hover{border:1px solid #f7f3f7;background-color:#f7f3f8;color:#5f0080}
 .category_type .category .list_category .clicked:hover,
-.category_type .category .list_category .clicked{border:1px solid #5f0081;background-color:#5f0080;font-weight:700;color:#fff}
+.category_type .category .list_category .clicked{border:1px solid #5f0081;background-color:#5f0080;font-weight:600;color:#fff}
 .category_type .link_cate{width:516px;margin:0 auto}
 .category_type .link_cate .link{display:block;overflow:hidden;height:56px;padding-top:16px;border:1px solid #e3e3e3;border-radius:3px;font-size:16px;line-height:20px;text-align:center;letter-spacing:-0.3px;cursor:pointer}
 .category_type .link_cate .ico{padding:0 18px;background:url(https://res.kurly.com/pc/service/main/1903/ico_more_link_x1.png) no-repeat 100% 3px}
@@ -284,6 +285,7 @@ $(function(){
     vertical-align: top;
     font-size: 0;
 }
+
 </style>
 
 
@@ -292,18 +294,17 @@ $(function(){
 <body>
 <div id="wrap" class="">
    <div id="pos_scroll"></div>
-   	<div id="container">
+   <div id="container">
       <!-- header -->
       <%@ include file="/WEB-INF/views/layout/header.jsp"%>  								
-		<div id="main">
-			<div id="content">
+      		<div id="main">
+				<div id="content">
 			
-			<!-- 우측 플로팅 배너 -->
-			<div id="qnb" class="quick-navigation" style="top: 516px;height: 215px;">		
+					<!-- 우측 플로팅 배너 -->
+					<div id="qnb" class="quick-navigation" style="top: 516px;height: 215px;">		
 						<div class="bnr_qnb" id="brnQuick">
 							<a href="/shop/board/view.php?id=notice&amp;no=64" id="brnQuickObj"> 
-							<img class="thumb" src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%ED%80%84%EB%A6%AC%ED%8B%B0%EC%9E%88%EA%B2%8C+%EC%83%9B%EB%B3%84%EB%B0%B0%EC%86%A1.png"
-								alt="퀄리티있게 샛별배송">
+								<img class="thumb" src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%ED%80%84%EB%A6%AC%ED%8B%B0%EC%9E%88%EA%B2%8C+%EC%83%9B%EB%B3%84%EB%B0%B0%EC%86%A1.png" alt="퀄리티있게 샛별배송">
 							</a>
 						</div>
 						<div class="side_menu">
@@ -313,514 +314,150 @@ $(function(){
 						</div>
 					</div>
 				
-				<div id="kurlyMain" class="page_aticle page_main" style="opacity: 1;">
-					<h2 class="screen_out">마켓컬리 메인</h2>
+					<div id="kurlyMain" class="page_aticle page_main" style="opacity: 1;">
+						<h2 class="screen_out">마켓컬리 메인</h2>
+						
 						<div class="main_type1" >
    							<div class="list_goods">
         						<div id="bannerWrap" class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 370px; ">											
 										
-											<ul data-section="main_banner" id="slideBanner" class="list" style="width:1515%; position: relative; transition-timing-function: ease-in-out; transition-duration: 0.5s; transform: translate3d(-2000px, 0px, 0px);">		 
-												
-											<!-- 배너 -->								
-											<c:forEach items="${banner }" var="banner" >
-												<div style="float: left; list-style: none; position: relative; width: 1076px;" class="bx-clone" data-name="main_banner">
-													<img class="thumb_goods" alt="${banner.banner_title}" src="${banner.banner_filepath}" />
-												</div>
-											</c:forEach>
-											<!-- 배너 끝 -->
-        									</ul>
-												
-        									
-        									<!-- 메인 배너 화살표버튼 -->
-											<div class="slider-controls-direction">
-									            <a href="#" id="prevBtn"></a>
-									            <a href="#" id="nextBtn"></a>
-        									</div>
-        								</div>
-        					</div>
-												
-						<div>
-							<div class="main_type2">
-								<div class="product_list">
-									<div class="tit_goods">
-										<h3 class="tit">
-											<!---->
-											<span class="name"> 이 상품 어때요? <!----></span>
-										</h3>
-									</div>
-									<!---->								
-									<div class="list_goods">
-										<div class="bx-wrapper" style="max-width: 1050px; margin: 0px auto;">
-											<div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 506px;">
-											<div class="swiper1"> <!-- class 새로 하나줌 -->	
-											<div class="swiper-container">
-											
-												<ul data-title="이 상품 어때요?" class="swiper-wrapper" data-section="today_recommendation" class="list" style="width: 2215%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
-													<li data-index="1" class="swiper-slide" data-name="today_recommendation" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-													<a class="thumb_goods"><!----> 
-													<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII=" 
-													alt="상품이미지" class="thumb" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/1456402788121l0.jpg&quot;);">
-													</a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">감자</a></span><span class="price"><span class="dc">35%</span>21,450원</span>
-															<span class="cost">2,300원</span>
-														</div></li>
-														
-													<li data-index="2" class="swiper-slide" data-name="today_recommendation" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-														<a class="thumb_goods">
-														  <span class="global_sticker">
-														    <span class="inner_sticker">
-														      <span class="bg_sticker" style="background-color: rgb(189, 118, 255); opacity: 0.9;"></span>
-																	<span class="txt_sticker"><span>
-																	  <span class="emph_sticker">+20%쿠폰</span> 
-																	  <!---->
-																	  </span>
-																	 </span>
-																  </span>
-																</span> 
-																<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/1472727892110l0.jpg&quot;);"></a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">닭가슴살 200g</a></span><span class="price"><span class="dc">5%</span>3,090원</span>
-															<span class="cost">6,980원</span>
-														</div></li>
-														
-													<li data-index="3" class="swiper-slide" class="cut" data-name="today_recommendation" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-													<a class="thumb_goods"><!----> 
-													<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/1487148793685l0.jpg&quot;);">
-													</a>
-														<div class="info_goods"><span class="name"><a class="txt">모짜렐라 치즈</a></span><span class="price"><!---->6.900원</span><!---->
-														</div></li>
-														
-													<li data-index="4" class="swiper-slide" data-name="today_recommendation" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-													<a class="thumb_goods"><!----> 
-													<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-													alt="상품이미지" class="thumb" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/1489978895649l0.jpg&quot;);">
-													</a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">비트</a></span><span class="price"><span class="dc">20%</span>4,590원 </span> 
-															<span class="cost">7,000원</span>
-														</div></li>
-														
-													<li data-index="5" class="swiper-slide" data-name="today_recommendation" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-													<a class="thumb_goods"><!----> 
-													<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-													alt="상품이미지" class="thumb" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/1502159554437l0.jpg&quot;);">
-													</a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">캠핑 어묵탕</a></span><span class="price"><!---->4,990원</span><!---->
-														</div></li>
-													<li data-index="6" class="swiper-slide" class="cut" data-name="today_recommendation" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-														<a class="thumb_goods">
-														  <span class="global_sticker">
-														    <span class="inner_sticker">
-														      <span class="bg_sticker" style="background-color: rgb(189, 118, 255); opacity: 0.9;"></span>
-																	<span class="txt_sticker"><span>
-																	  <span class="emph_sticker">+20%쿠폰</span> 
-																	  <!---->
-																	  </span>
-																	 </span>
-																  </span>
-																</span> 
-																<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/1503380535966l0.jpg&quot;);"></a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">소고기 양지살</a></span> <span class="price"><span class="dc">5%</span>0원</span> 
-															<span class="cost">0원</span>
-														</div></li>
-														
-													<li data-index="7" class="swiper-slide" data-name="today_recommendation" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-														<a class="thumb_goods">
-														  <span class="global_sticker">
-														    <span class="inner_sticker">
-														      <span class="bg_sticker" style="background-color: rgb(189, 118, 255); opacity: 0.9;"></span>
-																	<span class="txt_sticker"><span>
-																	  <span class="emph_sticker">+20%쿠폰</span> 
-																	  <!---->
-																	  </span>
-																	 </span>
-																  </span>
-																</span> 
-																<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/1503380553152l0.jpg&quot;);"></a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">소 불고기</a></span> <span class="price"><span class="dc">5%</span>0원
-															</span> <span class="cost">0원</span>
-														</div></li>
-														
-													<li data-index="8" class="swiper-slide" data-name="today_recommendation" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-														<a class="thumb_goods"><!----> 
-															<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/1518501305566l0.jpg&quot;);">
-													</a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">추억의 오란다</a></span> <span class="price">
-																<!---->0원
-															</span>
-															<!---->
-														</div></li>
-														
-													<li data-index="9" class="swiper-slide" class="cut" data-name="today_recommendation" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-														<a class="thumb_goods">
-														  <span class="global_sticker">
-														    <span class="inner_sticker">
-														      <span class="bg_sticker" style="background-color: rgb(189, 118, 255); opacity: 0.9;"></span>
-																	<span class="txt_sticker"><span>
-																	  <span class="emph_sticker">+20%쿠폰</span> 
-																	  <!---->
-																	  </span>
-																	 </span>
-																  </span>
-																</span> 
-																<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/1518511404883l0.jpg&quot;);"></a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">참깨 꼬소봉</a></span> <span class="price"><span class="dc">5%</span>0원
-															</span> <span class="cost">0원</span>
-														</div></li>
-														
-													<li data-index="10" class="swiper-slide" data-name="today_recommendation" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;"><a
-														class="thumb_goods"> <!----> 
-														<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1622166405389l0.jpg&quot;);">
-													</a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">[상하목장] 마시는 유기농 요구르트 5개입</a></span> <span class="price"><span class="dc">8%</span>2,208원 
-															</span> <span class="cost">2,400원</span>
-														</div></li>
-													<li data-index="11" class="swiper-slide" data-name="today_recommendation" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-														<a class="thumb_goods">
-														  <span class="global_sticker">
-														    <span class="inner_sticker">
-														      <span class="bg_sticker" style="background-color: rgb(189, 118, 255); opacity: 0.9;"></span>
-																	<span class="txt_sticker"><span>
-																	  <span class="emph_sticker">+20%쿠폰</span> 
-																	  <!---->
-																	  </span>
-																	 </span>
-																  </span>
-																</span> 
-																<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1623996225704l0.jpg&quot;);"></a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">친환경 햇 양파 350g</a></span> <span class="price"><span class="dc">5%</span>1,605원
-															</span> <span class="cost">1,690원</span>
-														</div></li>
-														
-													<li data-index="12" class="swiper-slide" class="cut" data-name="today_recommendation" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;"><a
-														class="thumb_goods"><!----> 
-														<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1590727808213l0.jpg&quot;);">
-													</a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">[풀무원] 생면식감 꽃게탕면</a></span> <span class="price"><span class="dc">12%</span>4,760원
-															</span> <span class="cost">5,450원</span>
-														</div></li>
-														
-
-													<li data-index="13" class="swiper-slide" data-name="today_recommendation" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-														<a class="thumb_goods">
-														  <span class="global_sticker">
-														    <span class="inner_sticker">
-														      <span class="bg_sticker" style="background-color: rgb(189, 118, 255); opacity: 0.9;"></span>
-																	<span class="txt_sticker"><span>
-																	  <span class="emph_sticker">+20%쿠폰</span> 
-																	  <!---->
-																	  </span>
-																	 </span>
-																  </span>
-																</span> 
-																<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1605689066515l0.jpg&quot;);"></a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">유기농 달수 고구마 1.5kg</a></span> <span class="price"><span class="dc">5%</span>13,205원
-															</span> <span class="cost">13,900원</span>
-														</div></li>
-														
-													<li data-index="14" class="swiper-slide" data-name="today_recommendation" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-														<a class="thumb_goods">
-														  <span class="global_sticker">
-														    <span class="inner_sticker">
-														      <span class="bg_sticker" style="background-color: rgb(189, 118, 255); opacity: 0.9;"></span>
-																	<span class="txt_sticker"><span>
-																	  <span class="emph_sticker">+20%쿠폰</span> 
-																	  <!---->
-																	  </span>
-																	 </span>
-																  </span>
-																</span> 
-																<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1593752126181l0.jpg&quot;);"></a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">저탄소 GAP 백도 복숭아 1.8kg 내외 (5~7입)</a></span> <span class="price"><span
-																class="dc">5%</span>17,955원 </span> <span class="cost">18,900원</span>
-														</div></li>
-														
-													<li data-index="15" class="swiper-slide" class="cut" data-name="today_recommendation" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-													<a class="thumb_goods"><!----> 
-													<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-														alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1618379552204l0.jpg&quot;);">
-													</a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">[솔가] 오메가-3 700 (60일분)</a></span> <span class="price"><span class="dc">35%</span>29,900원
-															</span> <span class="cost">46,000원</span>
-														</div></li>
-														
-													<li data-index="16" class="swiper-slide" data-name="today_recommendation" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-													<a class="thumb_goods"><!----> 
-													<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-														alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1609141385434l0.jpg&quot;);">
-													</a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">친환경 얼갈이 300g</a></span>
-															<span class="price"><span class="dc">5%</span>1,890원
-															</span> <span class="cost">1,990원</span>
-														</div></li>
-														
-														
-													<li data-index="17" class="swiper-slide" data-name="today_recommendation" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;"><a
-														class="thumb_goods"><!----> 
-														<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1628558475434l0.jpg&quot;);">
-													</a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">[상하목장] 유기농 우유</a></span> <span class="price"><span class="dc">30%</span>4,900원
-															</span> <span class="cost">7,100원</span>
-														</div></li>
-														
-													<li data-index="18" class="swiper-slide"class="cut" data-name="today_recommendation" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-														<a class="thumb_goods">
-														  <span class="global_sticker">
-														    <span class="inner_sticker">
-														      <span class="bg_sticker" style="background-color: rgb(189, 118, 255); opacity: 0.9;"></span>
-																	<span class="txt_sticker"><span>
-																	  <span class="emph_sticker">+20%쿠폰</span> 
-																	  <!---->
-																	  </span>
-																	 </span>
-																  </span>
-																</span>  
-																<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1456401122225l0.jpg&quot;);"></a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">친환경 적양배추 1/2개</a></span> <span class="price"><span class="dc">5%</span>2,650원
-															</span> <span class="cost">2,790원</span>
-														</div></li>
-														
-													<li data-index="19" class="swiper-slide" data-name="today_recommendation" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-													<a class="thumb_goods"><!----> 
-													<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-														alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1607935549902l0.jpg&quot;);">
-													</a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">[돈마루] 한돈 앞다리살 2종 (냉장)</a></span> <span class="price"><!---->5,300원
-															</span>
-															<!---->
-														</div></li>
-														
-													<li data-index="20" class="swiper-slide" data-name="today_recommendation" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-														<a class="thumb_goods">
-														  <span class="global_sticker">
-														    <span class="inner_sticker">
-														      <span class="bg_sticker" style="background-color: rgb(189, 118, 255); opacity: 0.9;"></span>
-																	<span class="txt_sticker"><span>
-																	  <span class="emph_sticker">+20%쿠폰</span> 
-																	  <!---->
-																	  </span>
-																	 </span>
-																  </span>
-																</span> 
-																<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1463996906146l0.jpg&quot;);"></a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">친환경 파채 200g</a></span>
-															<span class="price"><span class="dc">5%</span>3,135원
-															</span> <span class="cost">3,300원</span>
-														</div></li>
-													<!---->
-												</ul>
+									<ul data-section="main_banner" id="slideBanner" class="list" style="width:1515%; position: relative; transition-timing-function: ease-in-out; transition-duration: 0.5s; transform: translate3d(-2000px, 0px, 0px);">		 
+										<!-- 배너 -->								
+										<c:forEach items="${banner }" var="banner" >
+											<div style="float: left; list-style: none; position: relative; width: 1076px;" class="bx-clone" data-name="main_banner">
+												<img class="thumb_goods" alt="${banner.banner_title}" src="${banner.banner_filepath}" />
 											</div>
-											
-											<!--화살표 버튼-->
-											<div class="slider-controls-direction">
-									            <a href="#" id="prevBtn2" class="swiper-button-prev"></a>
-									            <a href="#" id="nextBtn2" class="swiper-button-next"></a>
-        									</div>
-        								</div>
-										</div>
-									</div>
-									<!--여기까지 bx-wrapper-->
+										</c:forEach>
+										<!-- 배너 끝 -->
+	     							</ul>
+        									
+       								<!-- 메인 배너 화살표버튼 -->
+									<div class="slider-controls-direction">
+							            <a href="#" id="prevBtn"></a>
+							            <a href="#" id="nextBtn"></a>
+      								</div>
+        						</div>
+        					</div>
+        				</div>		
+						
+						
+						<div class="main_type2">
+							<div class="product_list">
+								<div class="tit_goods">
+									<h3 class="tit"><span class="name"> 이 상품 어때요?</span></h3>
 								</div>
-							</div>						
-    					</div>
-    				</div> <!-- main_type2 end -->
-    				
-    				<!-- main_type3 start : 얘네는 안움직임 -->
-    				<div>
-							<div class="main_type3 bg">
-								<div class="main_event">
-									<div class="tit_goods">
-										<h3 class="tit">
-											<a class="name"><span class="ico">특가/혜택</span> <!----></a>
-											<!---->
-										</h3>
-									</div>
-									<div class="list_goods">
-										<ul data-title="특가/혜택" data-section="event" class="list">
-											<li data-index="1"><a class="thumb_goods"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAABeCAQAAAAA22vlAAAAAXNSR0IArs4c6QAAACdJREFUeAHtwQENAAAAwiD7p34PBwwAAAAAAAAAAAAAAAAAAAAA4FpFZgABkfKClwAAAABJRU5ErkJggg=="
-													alt="상품이미지" class="thumb" style="background-image: url(&quot;https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/1526289808717l0.jpg&quot;);"></a>
-												<div class="info_goods">
-													<!---->
-													<div class="inner_info">
-														<span class="name"><a class="txt">돼지고기 최대 8% 할인</a></span> 
-														<span class="desc"><a class="txt">우리돼지 한돈</a></span>
-													</div>
-												</div></li>
-											<li data-index="2"><a class="thumb_goods"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAABeCAQAAAAA22vlAAAAAXNSR0IArs4c6QAAACdJREFUeAHtwQENAAAAwiD7p34PBwwAAAAAAAAAAAAAAAAAAAAA4FpFZgABkfKClwAAAABJRU5ErkJggg=="
-													alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/main/3/pc_img_1629888864.jpg&quot;);"></a>
-												<div class="info_goods">
-													<!---->
-													<div class="inner_info">
-														<span class="name"><a class="txt">녹색한우 최대 15% 할인</a></span> 
-														<span class="desc"><a class="txt">국내 최대 규모 한우 브랜드</a></span>
-													</div>
-												</div></li>
-											<li data-index="3"><a class="thumb_goods"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAABeCAQAAAAA22vlAAAAAXNSR0IArs4c6QAAACdJREFUeAHtwQENAAAAwiD7p34PBwwAAAAAAAAAAAAAAAAAAAAA4FpFZgABkfKClwAAAABJRU5ErkJggg=="
-													alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/main/3/pc_img_1629890307.jpg&quot;);"></a>
-												<div class="info_goods">
-													<!---->
-													<div class="inner_info">
-														<span class="name"><a class="txt">매일유업 최대 30% 할인</a></span> 
-														<span class="desc"><a class="txt">믿고 먹는 유제품</a></span>
-													</div>
-												</div></li>
-											<!---->
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div> <!-- main_type3 end -->
-    				
-    				<!-- main_type2 start : 놓치면 후회할 가격 -->
-    				<div>
-							<div class="main_type2">
-								<div class="product_list">
-									<div class="tit_goods">
-										<h3 class="tit">
-											<a class="name"><span class="ico">놓치면 후회할 가격</span> <!----></a>
-											<!---->
-										</h3>
-									</div>
-									<!---->
-									<div class="list_goods">
-										<div class="bx-wrapper" style="max-width: 1050px; margin: 0px auto;">
-											<div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 506px;">
-												
-												<div class="swiper2"> <!-- class 새로 하나줌 -->
+								<!---->								
+								<div class="list_goods">
+									<div class="bx-wrapper" style="max-width: 1050px; margin: 0px auto;">
+										<div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 506px;">
+											<div class="swiper1"> <!-- class 새로 하나줌 -->	
 												<div class="swiper-container">
-
-												<ul data-title="놓치면 후회할 가격" data-section="theme_goods_20" class="swiper-wrapper" class="list" style="width: 815%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
 													
-													<li data-index="1" class="swiper-slide" data-name="theme_goods_20" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-														<a class="thumb_goods">
-															<!----> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1608174435642l0.jpg&quot;);">
-													</a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">[안원당] 특설렁탕</a></span> 
-															<span class="price"><span class="dc">30%</span>6,230원 </span>
-															<span class="cost">8,900원</span>
-														</div></li>
-														
-													<li data-index="2" class="swiper-slide" data-name="theme_goods_20" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-														<a class="thumb_goods">
-														  <span class="global_sticker">
-														    <span class="inner_sticker">
-														      <span class="bg_sticker" style="background-color: rgb(189, 118, 255); opacity: 0.9;"></span>
-																	<span class="txt_sticker"><span>
-																	  <span class="emph_sticker">+20%쿠폰</span> 
-																	  <!---->
-																	  </span>
-																	 </span>
-																  </span>
-																</span>  
-																<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1628752314739l0.jpg&quot;);"></a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">[기획특가] 완도산 전복 1kg내외(생물)</a></span> <span class="price">
-															<span class="dc">30%</span>29,900원 </span> 
-															<span class="cost">43,000원</span>
-														</div></li>
-														
-													<li data-index="3" class="swiper-slide" class="cut" data-name="theme_goods_20" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;"><a
-														class="thumb_goods">
-															<!----> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1626341348405l0.jpg&quot;);">
-													</a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">[이고진] 마사지볼 3종</a></span> 
-															<span class="price"><span class="dc">15%</span>4,165원</span> 
-															<span class="cost">4,900원</span>
-														</div></li>
-														
-													<li data-index="4" class="swiper-slide" data-name="theme_goods_20" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;"><a
-														class="thumb_goods"><!----> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1582018750937l0.jpg&quot;);">
-													</a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">[햇반] 백미밥 210g (1입/6입)</a></span> 
-															<span class="price"><span class="dc">10%</span>6,120원 </span> 
-															<span class="cost">6,800원</span>
-														</div></li>
-														
-														
-													<li data-index="5" class="swiper-slide" data-name="theme_goods_20" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;"><a
-														class="thumb_goods"><!----> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1590470191843l0.jpg&quot;);">
-													</a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">[브리도] 크로아상 냉동 생지 2종</a></span> 
-															<span class="price"><span class="dc">20%</span>4,080원</span> 
-															<span class="cost">5,100원</span>
-														</div></li>
-														
-													<li data-index="6" class="swiper-slide"  class="cut" data-name="theme_goods_20" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-														<a class="thumb_goods">
-														  <span class="global_sticker">
-														    <span class="inner_sticker">
-														      <span class="bg_sticker" style="background-color: rgb(189, 118, 255); opacity: 0.9;"></span>
-																	<span class="txt_sticker"><span>
-																	  <span class="emph_sticker">+20%쿠폰</span> 
-																	  <!---->
-																	  </span>
-																	 </span>
-																  </span>
-																</span> 
-																<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1585888980538l0.jpg&quot;);"></a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">냉동 은빛제주통갈치(특대) 600g 내외(냉동)_국내산</a></span> 
-															<span class="price"><span class="dc">22%</span>31,122원</span> 
-															<span class="cost">39,900원</span>
-														</div></li>
-													<!---->
-												</ul>
-												
+													<ul data-title="이 상품 어때요?" class="swiper-wrapper" data-section="today_recommendation" class="list" style="width: 2215%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+														<c:forEach items="${goods_sell_list1}" var="goods_sell_list1" varStatus="status">
+															<li data-index="${status.count}" class="swiper-slide" data-name="today_recommendation" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
+																
+																<a class="thumb_goods"> 
+																	<input type="hidden" value="${goods_sell_list1.goods_sell_no}">
+																	<img src="${goods_sell_list1.goodsvo.category_goods_image_thumb}" class="thumb">
+																</a>
+																<div class="info_goods">
+																	<input type="hidden" value="${goods_sell_list1.goods_sell_no}">
+																	<span class="name"><a class="txt">${goods_sell_list1.goodsvo.category_goods_name}</a></span>
+
+																	<c:set var="discount" value="${goods_sell_list1.goods_sell_discount}" />
+																	<c:if test="${discount == 0}">
+																	    <span class="price"><fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sell_list1.goods_sell_price}"/><span class="won">원</span></span>
+																	</c:if>
+																	
+																	<c:if test="${discount != 0}">
+																	    <span class="price">
+																	    	<span class="dc">${goods_sell_list1.goods_sell_discount}%</span>
+																	    	<fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sell_list1.goods_sell_price - (goods_sell_list1.goods_sell_price * goods_sell_list1.goods_sell_discount) / 100}" /><span class="won">원</span>
+																	    </span>
+																		<span class="cost"><fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sell_list1.goods_sell_price}"/>원</span>
+																	</c:if>
+																</div>
+															</li>
+														</c:forEach>
+													</ul>
+													
+												</div>
+											
 												<!--화살표 버튼-->
 												<div class="slider-controls-direction">
-									            <a href="#" id="prevBtn2" class="swiper-button-prev"></a>
-									            <a href="#" id="nextBtn2" class="swiper-button-next"></a>
+										            <a href="#" id="prevBtn2" class="swiper-button-prev"></a>
+										            <a href="#" id="nextBtn2" class="swiper-button-next"></a>
+	        									</div>
         									</div>
-											</div>										
-        									</div>	<!-- swiper2 end -->						
 										</div>
-									</div>
-									<!---->
+									</div><!--여기까지 bx-wrapper-->
 								</div>
-							</div><br><br><br><br>
+							</div>						
+   						</div><!-- main_type2 end -->
+    					
+    					<!-- main_type2 start : 놓치면 후회할 가격 -->
+    					
+						<div class="main_type2" style="background-color: #f7f7f7;">
+							<div class="product_list">
+								<div class="tit_goods">
+									<h3 class="tit">
+										<a class="name" href="${pageContext.request.contextPath}/goods_list.do?type=sale"><span class="ico">놓치면 후회할 가격</span></a>
+									</h3>
+								</div>
+								
+								<div class="list_goods">
+									<div class="bx-wrapper" style="max-width: 1050px; margin: 0px auto;">
+										<div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 506px;">
+											
+											<div class="swiper2"> <!-- class 새로 하나줌 -->
+												<div class="swiper-container">
+
+													<ul data-title="놓치면 후회할 가격" data-section="theme_goods_20" class="swiper-wrapper" class="list" style="width: 815%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+														<c:forEach items="${goods_sell_list2}" var="goods_sell_list2" varStatus="status">
+															<li data-index="${status.count}" class="swiper-slide" data-name="theme_goods_20" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
+																<a class="thumb_goods">
+																	<input type="hidden" value="${goods_sell_list2.goods_sell_no}">
+																	<img src="${goods_sell_list2.goodsvo.category_goods_image_thumb}" class="thumb">
+																</a>
+																<div class="info_goods">
+																	<input type="hidden" value="${goods_sell_list2.goods_sell_no}">
+																	<span class="name"><a class="txt">${goods_sell_list2.goodsvo.category_goods_name}</a></span> 
+																	
+																	<c:set var="discount" value="${goods_sell_list2.goods_sell_discount}" />
+																	<c:if test="${discount == 0}">
+																	    <span class="price"><fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sell_list2.goods_sell_price}"/><span class="won">원</span></span>
+																	</c:if>
+																	
+																	<c:if test="${discount != 0}">
+																	    <span class="price">
+																	    	<span class="dc">${goods_sell_list2.goods_sell_discount}%</span>
+																	    	<fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sell_list2.goods_sell_price - (goods_sell_list2.goods_sell_price * goods_sell_list2.goods_sell_discount) / 100}" /><span class="won">원</span>
+																	    </span>
+																		<span class="cost"><fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sell_list2.goods_sell_price}"/>원</span>
+																	</c:if>
+																</div>
+															</li>
+														</c:forEach>
+													</ul>
+												
+													<!--화살표 버튼-->
+													<div class="slider-controls-direction">
+											            <a href="#" id="prevBtn2" class="swiper-button-prev"></a>
+											            <a href="#" id="nextBtn2" class="swiper-button-next"></a>
+	       											</div>
+	       											
+												</div>										
+       										</div>	<!-- swiper2 end -->						
+										</div>
+									</div><!--여기까지 bx-wrapper-->
+								</div>
+							</div>
+							<br><br><br><br><br><br>
 						</div> <!--main_type2 두번째 end-->
-    				
+    					<br><br><br>
+    					
+    					<!-- 현재 여기까지 정리했습니다 10/10 17:50 --경원 -->
     					<div>
 							<div class="bnr_main">
 								<a class="link" style="background-image: url(&quot;//img-cf.kurly.com/shop/data/main/5/pc_img_1629681489.jpg&quot;);">
@@ -831,210 +468,194 @@ $(function(){
 						</div>
 						
 						<!-- 메인 중간 카테고리 부분  -->
-						<div>
-							<div class="main_type2">
-								<div class="category_type">
-									<div class="tit_goods">
-										<h3 class="tit">
-											<!---->
-											<span class="name"> MD의 추천 <!----></span>
-										</h3>
+						<div class="main_type2">
+							<div class="category_type">
+								<div class="tit_goods">
+									<h3 class="tit">
+										<!---->
+										<span class="name"> MD의 추천 <!----></span>
+									</h3>
+								</div>
+								<div class="category_menu">
+									<div class="bg_category">
+										<span class="bg_shadow shadow_before"></span> 
+										<span class="bg_shadow shadow_after"></span>
 									</div>
-									<div class="category_menu">
-										<div class="bg_category">
-											<span class="bg_shadow shadow_before"></span> 
-											<span class="bg_shadow shadow_after"></span>
-										</div>
-										<div class="category">
-											<ul class="list_category">
-												<li data-start="33" data-end="129">
-													<a data-no="522" href="#none" class="menu"> 추석 선물세트 </a></li>
-												<li data-start="155" data-end="196">
-													<a data-no="907" href="#none" class="menu"> 채소 </a></li>
-												<li data-start="221" data-end="317">
-													<a data-no="908" href="#none" class="menu"> 과일·견과·쌀 </a></li>
-												<li data-start="343" data-end="464">
-													<a data-no="909" href="#none" class="menu"> 수산·해산·건어물 </a></li>
-												<li data-start="489" data-end="564">
-													<a data-no="910" href="#none" class="menu"> 정육·계란 </a></li>
-												<li data-start="590" data-end="711">
-													<a data-no="911" href="#none" class="menu"> 국·반찬·메인요리 </a></li>
-												<li data-start="737" data-end="838">
-													<a data-no="912" href="#none" class="menu"> 샐러드·간편식 </a></li>
-												<li data-start="862" data-end="958">
-													<a data-no="913" href="#none" class="menu"> 면·양념·오일 </a></li>
-												<li data-start="984" data-end="1126">
-													<a data-no="914" href="#none" class="menu"> 생수·음료·우유·커피 </a></li>
-												<li data-start="1151" data-end="1247">
-													<a data-no="249" href="#none" class="menu"> 간식·과자·떡 </a></li>
-												<li data-start="1273" data-end="1407">
-													<a data-no="915" href="#none" class="menu"> 베이커리·치즈·델리 </a></li>
-												<li data-start="1432" data-end="1499">
-													<a data-no="032" href="#none" class="menu"> 건강식품 </a></li>
-												<li data-start="1525" data-end="1626">
-													<a data-no="918" href="#none" class="menu"> 생활용품·리빙 </a></li>
-												<li data-start="1652" data-end="1778">
-													<a data-no="233" href="#none" class="menu"> 스킨케어·메이크업 </a></li>
-												<li data-start="1803" data-end="1912">
-													<a data-no="012" href="#none" class="menu"> 헤어·바디·구강 </a></li>
-												<li data-start="1937" data-end="2004">
-													<a data-no="916" href="#none" class="menu"> 주방용품 </a></li>
-												<li data-start="2029" data-end="2096">
-													<a data-no="085" href="#none" class="menu"> 가전제품 </a></li>
-												<li data-start="2121" data-end="2209">
-													<a data-no="919" href="#none" class="menu"> 베이비·키즈 </a></li>
-												<li data-start="2235" data-end="2302">
-													<a data-no="991" href="#none" class="menu"> 반려동물 </a></li>
+									<div class="category">
+										<ul class="list_category">
+											<li data-start="155" data-end="196">
+												<a data-no="907" href="#none" class="menu"> 채소 </a></li>
+											<li data-start="221" data-end="317">
+												<a data-no="908" href="#none" class="menu"> 과일·견과·쌀 </a></li>
+											<li data-start="343" data-end="464">
+												<a data-no="909" href="#none" class="menu"> 수산·해산·건어물 </a></li>
+											<li data-start="489" data-end="564">
+												<a data-no="910" href="#none" class="menu"> 정육·계란 </a></li>
+											<li data-start="590" data-end="711">
+												<a data-no="911" href="#none" class="menu"> 국·반찬·메인요리 </a></li>
+											<li data-start="737" data-end="838">
+												<a data-no="912" href="#none" class="menu"> 샐러드·간편식 </a></li>
+											<li data-start="862" data-end="958">
+												<a data-no="913" href="#none" class="menu"> 면·양념·오일 </a></li>
+											<li data-start="984" data-end="1126">
+												<a data-no="914" href="#none" class="menu"> 생수·음료·우유·커피 </a></li>
+											<li data-start="1151" data-end="1247">
+												<a data-no="249" href="#none" class="menu"> 간식·과자·떡 </a></li>
+											<li data-start="1273" data-end="1407">
+												<a data-no="915" href="#none" class="menu"> 베이커리·치즈·델리 </a></li>
+											<li data-start="1937" data-end="2004">
+												<a data-no="916" href="#none" class="menu"> 주방용품 </a></li>
+											<!---->
+										</ul>
+									</div>
+								</div>
+   								<!-- MD의 추천 밑 카테고리 클릭 이벤트 -->
+											<script>
+												var menu = document
+														.getElementsByClassName("menu");
+
+												function handleClick(event) {
+													console
+															.log(event.target);
+													console
+															.log(event.target.classList);
+
+													if (event.target.classList[1] === "clicked") {
+														event.target.classList
+																.remove("clicked");
+													} else {
+														for (var i = 0; i < menu.length; i++) {
+															menu[i].classList
+																	.remove("clicked");
+														}
+														event.target.classList
+																.add("clicked");
+													}
+												}
+
+												function init() {
+													for (var i = 0; i < menu.length; i++) {
+														menu[i]
+																.addEventListener(
+																		"click",
+																		handleClick);
+													}
+												}
+												init();
+											</script>
+
+											<div class="list_goods">
+									<div class="bx-wrapper" style="max-width: 1050px; margin: 0px auto;">
+										<div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 462px;">
+										
+										<div class="swiper3"> <!-- swiper3 class 새로 하나줌 만드는 순간 기존 화살표 사라짐..-->
+											<div class="swiper-container">
+										
+											<ul data-title="MD의 추천" data-section="md_choice" class="swiper-wrapper" class="list" style="width: 815%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+												<li data-index="1" class="swiper-slide" data-name="md_choice" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
+												<a class="thumb_goods">
+														<!---->
+														<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII=" alt="상품이미지" class="thumb"
+														style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1604387610751l0.jpg&quot;);">
+												</a>
+													<div class="info_goods">
+														<span class="name"><a class="txt">[더슬로우메이드] 쫀득 찰호팡 3종</a></span> 
+														<span class="price"><span class="dc">35%</span>4,290원</span> 
+														<span class="cost">6,600원</span>
+													</div>
+												</li>
+												<li data-index="2" class="swiper-slide" data-name="md_choice" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
+												<a class="thumb_goods">
+														<!---->
+														<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
+														alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/153750968679l0.jpg&quot;);">
+												</a>
+													<div class="info_goods">
+														<span class="name"><a class="txt">[하겐다즈]파인트 피넛버터 크런치</a></span> 
+														<span class="price"><!---->7,900원</span>
+														<!---->
+													</div></li>
+												<li data-index="3" class="swiper-slide" class="cut" data-name="md_choice" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
+												<a class="thumb_goods">
+														<!----> 
+														<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
+														alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1507700947181l0.jpg&quot;);">
+												</a>
+													<div class="info_goods">
+														<span class="name"><a class="txt">[하겐다즈] 파인트 7종</a></span> 
+														<span class="price"><!---->7,900원</span>
+														<!---->
+													</div></li>
+												<li data-index="4" class="swiper-slide" data-name="md_choice" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
+												<a class="thumb_goods">
+														<!----> 
+														<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
+														alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1614922858183l0.jpg&quot;);">
+												</a>
+													<div class="info_goods">
+														<span class="name"><a class="txt">[라고] 이탈리안 도넛 4종</a></span> 
+														<span class="price"><!---->3,180원</span>
+														<!---->
+													</div></li>
+												<li data-index="5" class="swiper-slide" data-name="md_choice" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
+												<a class="thumb_goods">
+														<!----> 
+														<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
+														alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1549602414483l0.jpg&quot;);">
+												</a>
+													<div class="info_goods">
+														<span class="name"><a class="txt">[기라델리] 인텐스다크바 5종</a></span> 
+														<span class="price"><!---->6,000원</span>
+														<!---->
+													</div></li>
+												<li data-index="6" class="swiper-slide" class="cut" data-name="md_choice" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
+												<a class="thumb_goods">
+														<!----> 
+														<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
+														alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1590044732503l0.jpg&quot;);">
+												</a>
+													<div class="info_goods">
+														<span class="name"><a class="txt">[창억] 찰떡 3종</a></span> 
+														<span class="price"><!---->6,600원</span>
+														<!---->
+													</div></li>
 												<!---->
 											</ul>
+										</div>	
+										<!--화살표 버튼-->
+											<div class="slider-controls-direction">
+								           		<a href="#" id="prevBtn2" class="swiper-button-prev"></a>
+								            	<a href="#" id="nextBtn2" class="swiper-button-next"></a>
+       										</div>
+       									
 										</div>
-									</div>
-    								<!-- MD의 추천 밑 카테고리 클릭 이벤트 -->
-												<script>
-													var menu = document
-															.getElementsByClassName("menu");
-
-													function handleClick(event) {
-														console
-																.log(event.target);
-														console
-																.log(event.target.classList);
-
-														if (event.target.classList[1] === "clicked") {
-															event.target.classList
-																	.remove("clicked");
-														} else {
-															for (var i = 0; i < menu.length; i++) {
-																menu[i].classList
-																		.remove("clicked");
-															}
-															event.target.classList
-																	.add("clicked");
-														}
-													}
-
-													function init() {
-														for (var i = 0; i < menu.length; i++) {
-															menu[i]
-																	.addEventListener(
-																			"click",
-																			handleClick);
-														}
-													}
-													init();
-												</script>
-
-												<div class="list_goods">
-										<div class="bx-wrapper" style="max-width: 1050px; margin: 0px auto;">
-											<div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 462px;">
-											
-											<div class="swiper3"> <!-- swiper3 class 새로 하나줌 만드는 순간 기존 화살표 사라짐..-->
-												<div class="swiper-container">
-											
-												<ul data-title="MD의 추천" data-section="md_choice" class="swiper-wrapper" class="list" style="width: 815%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
-													<li data-index="1" class="swiper-slide" data-name="md_choice" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-													<a class="thumb_goods">
-															<!---->
-															<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII=" alt="상품이미지" class="thumb"
-															style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1604387610751l0.jpg&quot;);">
-													</a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">[더슬로우메이드] 쫀득 찰호팡 3종</a></span> 
-															<span class="price"><span class="dc">35%</span>4,290원</span> 
-															<span class="cost">6,600원</span>
-														</div></li>
-													<li data-index="2" class="swiper-slide" data-name="md_choice" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-													<a class="thumb_goods">
-															<!---->
-															<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/153750968679l0.jpg&quot;);">
-													</a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">[하겐다즈]파인트 피넛버터 크런치</a></span> 
-															<span class="price"><!---->7,900원</span>
-															<!---->
-														</div></li>
-													<li data-index="3" class="swiper-slide" class="cut" data-name="md_choice" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-													<a class="thumb_goods">
-															<!----> 
-															<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1507700947181l0.jpg&quot;);">
-													</a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">[하겐다즈] 파인트 7종</a></span> 
-															<span class="price"><!---->7,900원</span>
-															<!---->
-														</div></li>
-													<li data-index="4" class="swiper-slide" data-name="md_choice" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-													<a class="thumb_goods">
-															<!----> 
-															<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1614922858183l0.jpg&quot;);">
-													</a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">[라고] 이탈리안 도넛 4종</a></span> 
-															<span class="price"><!---->3,180원</span>
-															<!---->
-														</div></li>
-													<li data-index="5" class="swiper-slide" data-name="md_choice" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-													<a class="thumb_goods">
-															<!----> 
-															<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1549602414483l0.jpg&quot;);">
-													</a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">[기라델리] 인텐스다크바 5종</a></span> 
-															<span class="price"><!---->6,000원</span>
-															<!---->
-														</div></li>
-													<li data-index="6" class="swiper-slide" class="cut" data-name="md_choice" style="float: left; list-style: none; position: relative; width: 249px; margin-right: 18px;">
-													<a class="thumb_goods">
-															<!----> 
-															<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII="
-															alt="상품이미지" class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1590044732503l0.jpg&quot;);">
-													</a>
-														<div class="info_goods">
-															<span class="name"><a class="txt">[창억] 찰떡 3종</a></span> 
-															<span class="price"><!---->6,600원</span>
-															<!---->
-														</div></li>
-													<!---->
-												</ul>
-											</div>	
-											<!--화살표 버튼-->
-												<div class="slider-controls-direction">
-									           		<a href="#" id="prevBtn2" class="swiper-button-prev"></a>
-									            	<a href="#" id="nextBtn2" class="swiper-button-next"></a>
-        										</div>
-        									
+										</div> 		<!--swiper3 end-->	
+										
+										<!--  기존 화살표 버튼							
+										<div class="bx-controls bx-has-controls-direction">
+											<div class="bx-controls-direction">
+												<a class="bx-prev disabled" href="">Prev</a>
+												<a class="bx-next" href="">Next</a>
 											</div>
-											</div> 		<!--swiper3 end-->	
-											
-											<!--  기존 화살표 버튼							
-											<div class="bx-controls bx-has-controls-direction">
-												<div class="bx-controls-direction">
-													<a class="bx-prev disabled" href="">Prev</a>
-													<a class="bx-next" href="">Next</a>
-												</div>
-											</div>
-											-->		
 										</div>
-									</div><br><br>
-										<div class="link_cate">
-										<a class="link"><span class="ico">간식·과자·떡 전체보기</span></a>
+										-->		
 									</div>
-							
-								
-								
+								</div><br><br>
+									<div class="link_cate">
+									<a class="link"><span class="ico">간식·과자·떡 전체보기</span></a>
 								</div>
-
+						
+							
+							
 							</div>
+
 						</div>
+					</div>
 					
 
 						</div> <br><br>
 						</div>
-    				</div>
+	    				</div>
 				</div>
     		</div>
    			<div>					
@@ -1123,12 +744,30 @@ $(function(){
 			}
 		}
 		pageTop.action();
+		
+		//상위 카테고리 클릭시 상품 리스트 페이지 이동
+		$(".swiper-container ul li").on("click", ".thumb_goods", function() {
+		    var goods_sell_no = $(this).find('input').val();
+		    
+		    var url = "${pageContext.request.contextPath}/goods_list_detail.do";
+			url = url + "?goods_sell_no=" + goods_sell_no;
+			location.href = url;
+		});
+		
+		//상위 카테고리 클릭시 상품 리스트 페이지 이동
+		$(".swiper-container ul li").on("click", ".info_goods", function() {
+		    var goods_sell_no = $(this).find('input').val();
+		    
+		    var url = "${pageContext.request.contextPath}/goods_list_detail.do";
+			url = url + "?goods_sell_no=" + goods_sell_no;
+			location.href = url;
+		});
+		
 	});
+	
 </script>
-
-
     
-<!-- layerDSR -->
+	  <!-- layerDSR -->
       <%@ include file="/WEB-INF/views/layout/layerDSR.jsp"%>   
       <!-- footer -->
       <%@ include file="/WEB-INF/views/layout/footer.jsp"%>            

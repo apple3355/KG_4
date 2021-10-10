@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.amazonaws.Response;
+import com.itextpdf.text.pdf.BaseFont;
 
 import bucket.kurly.user.goods.Goods_CartShowVO;
 import bucket.kurly.user.goods.Goods_CartVO;
@@ -35,7 +36,8 @@ public class GoodsController {
 	private MemberService memberService;
 	// 상품 리스트, 상품 카운트, 페이징
 	@RequestMapping("/goods_list.do")
-	public String getGoods_list(Model model, @RequestParam("type") String select_type) {		
+	public String getGoods_list(Model model, @RequestParam("type") String select_type) {	
+	
 		System.out.println("상품 목록 요청");
 		
 		Goods_ListDTO dto = new Goods_ListDTO();

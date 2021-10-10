@@ -51,6 +51,21 @@
 		<result property="goods_cart_status" column="goods_cart_status" />
 		
 	</resultMap>
+	
+	<!-- 상품리스트 목록(신상품, 낮은가격, 높은가격, 할인 순) -->
+	<select id="selectGoods_sell_main" parameterType="String" resultMap="goods_sell">
+		SELECT * FROM TB_GOODS_SELL s JOIN TB_CATEGORY_GOODS g ON s.goods_sell_goods_no = g.category_goods_no
+			<if test='select_type.equals("random")'>
+				ORDER BY RANDOM()
+			</if>
+			<if test='select_type.equals("sale")'>
+				ORDER BY GOODS_SELL_DISCOUNT DESC
+			</if>
+			<if test='select_type.equals("new")'>
+				ORDER BY GOODS_SELL_IN_DATE DESC
+			</if>
+		LIMIT 20
+	</select>
 
 	<!-- 상품리스트 목록(신상품, 낮은가격, 높은가격, 할인 순) -->
 	<select id="selectGoods_sell" parameterType="goods_listdto" resultMap="goods_sell">

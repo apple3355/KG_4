@@ -9,6 +9,20 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/goods_list.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/common.css">
 	<title>layout</title>
+	<style>
+		#goodsList .list_goods .cost .original {
+			display: block;
+			font-size: 16px;
+			color: #999;
+			text-decoration: line-through;
+		}
+		
+		#goodsList .list_goods .cost .dc {
+			padding-right: 2px;
+			font-weight: 600;
+			color: #fa622f;
+		}
+	</style>
 </head>
 <body>
 	<div id="wrap" class="">
@@ -109,11 +123,19 @@
 															<a class="info" onClick="fn_goods_detail(${goods_sell_list.goods_sell_no})">
 																<span class="name"><c:out value="${goods_sell_list.goodsvo.category_goods_name}"/></span>
 																<span class="cost">
-																	<span class="price"><c:out value="${goods_sell_list.goods_sell_price}"/></span><span>원</span>
+																<c:set var="discount" value="${goods_sell_list.goods_sell_discount}" />
+																	<c:if test="${discount == 0}">
+																	    <span class="price"><fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sell_list.goods_sell_price}"/><span class="won">원</span></span>
+																	</c:if>
+																	
+																	<c:if test="${discount != 0}">
+																		<span class="dc">${goods_sell_list.goods_sell_discount}<span class="per">%</span></span> 
+																		<span class="price"><fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sell_list.goods_sell_price - (goods_sell_list.goods_sell_price * goods_sell_list.goods_sell_discount) / 100}" /><span class="won">원</span></span> 
+																		<span class="original"><fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sell_list.goods_sell_price}"/><span class="won">원</span></span>
+																	</c:if>
 																</span>
 																<span class="desc"><c:out value="${goods_sell_list.goodsvo.category_goods_name_sub}"/></span>
-																<span class="tag"></span>
-															</a>																 	
+															</a>	
 														</div>								
 													</li>			
 												</c:forEach>

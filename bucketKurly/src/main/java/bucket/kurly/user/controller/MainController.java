@@ -1,5 +1,7 @@
 package bucket.kurly.user.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,19 +11,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import bucket.kurly.admin.marketing.BannerVO;
 import bucket.kurly.admin.marketing.service.MarketingService;
+import bucket.kurly.user.goods.Goods_SellVO;
+import bucket.kurly.user.goods.service.GoodsService;
 
 @Controller
 public class MainController {
 
 	@Autowired
 	private MarketingService marketingService;
+	@Autowired
+	private GoodsService goodsService;
 
 	// 메인화면
 	@RequestMapping("/main.do")
 	public String main(Model model, BannerVO vo) {
 
+		List<Goods_SellVO> goods_sell_list1 = goodsService.selectGoods_sell_main("random");
+		List<Goods_SellVO> goods_sell_list2 = goodsService.selectGoods_sell_main("sale");
+		List<Goods_SellVO> goods_sell_list3 = goodsService.selectGoods_sell_main("new");
+		
 		model.addAttribute("banner", marketingService.getBannerListView(vo));
-
+		
+		model.addAttribute("goods_sell_list1", goods_sell_list1);
+		model.addAttribute("goods_sell_list2", goods_sell_list2);
+		model.addAttribute("goods_sell_list3", goods_sell_list3);
 		return "main";
 	}
 

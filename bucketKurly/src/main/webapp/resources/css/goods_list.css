@@ -22,7 +22,7 @@ img, video, canvas {max-width: 100%;}
 
 /* 페이지 헤더 */
 #lnbMenu .inner_lnb {position: relative;}
-#lnbMenu .tit {padding-top: 23px;font-weight: 700;font-size: 28px;color: #333;line-height: 35px;letter-spacing: -1px;text-align: center;}
+#lnbMenu .tit {padding-top: 23px;font-weight: 500;font-size: 28px;color: #333;line-height: 35px;letter-spacing: -1px;text-align: center;}
 h3 {display: block;font-size: 1.17em;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;font-weight: bold;}
 #lnbMenu {padding-top: 26px;}
 
@@ -74,7 +74,7 @@ button, input, optgroup, select, textarea {color: inherit;font: inherit;margin: 
 
 #goodsList .list_goods .name {display: block;overflow: hidden;max-height: 58px;font-weight: 400;font-size: 20px;color: #333;line-height: 29px;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;word-wrap: break-word;}
 #goodsList .list_goods .cost {display: block;padding-top: 7px;font-size: 18px;line-height: 29px;}
-#goodsList .list_goods .cost .price {font-weight: 800;color: #333;}
+#goodsList .list_goods .cost .price {font-weight: 600;color: #333;}
 #goodsList .list_goods .desc {display: block;padding-top: 11px;font-size: 13px;color: #999;line-height: 19px;}
 #goodsList .list_goods .tag {display: block;padding: 12px 10px 10px 0;cursor: default;}
 

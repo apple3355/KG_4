@@ -11,7 +11,15 @@ public class GoodsDAO {
 
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
-
+	
+	
+	// 상품 DB 리스트
+	public List<Goods_SellVO> selectGoods_sell_main(String select_type) {
+		System.out.println("GoosDAO - selectGoods_sell_main() 실행");
+		return sqlSessionTemplate.selectList("GoodsDAO.selectGoods_sell_main",select_type);
+	}
+	
+	
 	// 상품 DB 리스트
 	public List<Goods_SellVO> selectGoods_sell(Goods_ListDTO dto) {
 		System.out.println("GoosDAO - selectGoods_sell() 실행");

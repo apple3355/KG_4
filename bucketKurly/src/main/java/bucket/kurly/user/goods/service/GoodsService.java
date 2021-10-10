@@ -9,10 +9,12 @@ import bucket.kurly.user.goods.Goods_ListDTO;
 import bucket.kurly.user.goods.Goods_SellVO;
 
 public interface GoodsService {
-
+	
+	// 메인페이지 상품 조회
+	List<Goods_SellVO> selectGoods_sell_main(String select_type);
+	
 	// 상품DB조회
 	List<Goods_SellVO> selectGoods_sell(Goods_ListDTO dto);
-
 	
 	// 상품DB조회(parent_no)
 	List<Goods_SellVO> selectGoods_sell_parent(Goods_ListDTO dto);

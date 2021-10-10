@@ -17,6 +17,12 @@ public class GoodsServicImpl implements GoodsService {
 
 	@Autowired
 	private GoodsDAO dao;
+	
+	// 메인페이지 상품
+	@Override
+	public List<Goods_SellVO> selectGoods_sell_main(String select_type) {
+		return dao.selectGoods_sell_main(select_type);
+	}
 
 	// 상품리스트
 	@Override
@@ -110,5 +116,4 @@ public class GoodsServicImpl implements GoodsService {
 		dao.deleteGoods_cart(gsvo);
 	}
 
-	
 }
