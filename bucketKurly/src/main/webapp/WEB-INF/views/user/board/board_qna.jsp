@@ -32,10 +32,10 @@
 					<div id="snb" class="snb_cc">
 						<h2 class="tit_snb">고객센터</h2>
 						<div class="inner_snb">
-							<ul class="list_menu">								   
+							<ul class="list_menu">						
 								<li><a href="${pageContext.request.contextPath}/board_notice.do" class="board_notice">공지사항</a></li>
-								<li><a href="${pageContext.request.contextPath}/board_faq.do" class="faq">자주하는 질문</a><br></li>
-								<li class="on"><a href="${pageContext.request.contextPath}/board_qna.do" class="board_qna">1:1 문의</a><br></li>
+								<li><a href="${pageContext.request.contextPath}/board_faq.do" class="faq">자주하는 질문</a></li>
+								<li class="on"><a href="${pageContext.request.contextPath}/board_qna.do" class="board_qna">1:1 문의</a></li>						
 							</ul>
 							<a href="/shop/mypage/mypage_qna_register.php?mode=add_qna" class="link_inquire"><span class="emph">도움이 필요하신가요 ?</span> 1:1 문의하기</a>
 						</div>
