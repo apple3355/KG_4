@@ -1,15 +1,19 @@
 package bucket.kurly.user.order;
 
+import java.util.Date;
+
 public class OrderVO {
 	private String  order_no;
 	private String  order_name;
 	private int  order_member_no;
+	private String order_date;
 	private String  order_phone;
 	private String  order_address;
 	private int  order_goods_count;
 	private int  order_goods_price;
 	private int  order_delivery_fee;
 	private int  order_coupon_no;
+	private String order_delivery_status;
 	public String getOrder_no() {
 		return order_no;
 	}
@@ -27,6 +31,12 @@ public class OrderVO {
 	}
 	public void setOrder_member_no(int order_member_no) {
 		this.order_member_no = order_member_no;
+	}
+	public String getOrder_date() {
+		return order_date;
+	}
+	public void setOrder_date(String order_date) {
+		this.order_date = order_date;
 	}
 	public String getOrder_phone() {
 		return order_phone;
@@ -64,13 +74,23 @@ public class OrderVO {
 	public void setOrder_coupon_no(int order_coupon_no) {
 		this.order_coupon_no = order_coupon_no;
 	}
+	public String getOrder_delivery_status() {
+		return order_delivery_status;
+	}
+	public void setOrder_delivery_status(String order_delivery_status) {
+		this.order_delivery_status = order_delivery_status;
+	}
 	@Override
 	public String toString() {
 		return "OrderVO [order_no=" + order_no + ", order_name=" + order_name + ", order_member_no=" + order_member_no
-				+ ", order_phone=" + order_phone + ", order_address=" + order_address + ", order_goods_count="
-				+ order_goods_count + ", order_goods_price=" + order_goods_price + ", order_delivery_fee="
-				+ order_delivery_fee + ", order_coupon_no=" + order_coupon_no + "]";
+				+ ", order_date=" + order_date + ", order_phone=" + order_phone + ", order_address=" + order_address
+				+ ", order_goods_count=" + order_goods_count + ", order_goods_price=" + order_goods_price
+				+ ", order_delivery_fee=" + order_delivery_fee + ", order_coupon_no=" + order_coupon_no
+				+ ", order_delivery_status=" + order_delivery_status + "]";
 	}
+	
+	
+	
 	
 	
 }

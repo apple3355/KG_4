@@ -67,6 +67,12 @@ public class GoodsServicImpl implements GoodsService {
 		return dao.chooseGoods_cart(goods_cart_no);
 	}
 	
+	// 결제 상품 정보
+	@Override
+	public List<Goods_CartShowVO> orderGoods(String goods_cart_status) {
+		return dao.orderGoods(goods_cart_status);
+	}
+	
 	//장바구니 수정
 	@Override
 	public void updateGoods_cart(Goods_CartVO gsvo) {
@@ -86,6 +92,13 @@ public class GoodsServicImpl implements GoodsService {
 	public void deleteGoods_cart(Goods_CartVO gsvo) {
 		dao.deleteGoods_cart(gsvo);
 	}
+
+	@Override
+	public List<Goods_CartVO> order_memberNo(int member_no) {
+		return dao.order_memberNo(member_no);
+	}
+
+	
 
 	
 

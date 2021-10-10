@@ -126,14 +126,38 @@
 		where cart.GOODS_CART_NO = #{goods_cart_no}
 	</select>
 	
+	<!--결제 완료 상품 -->
+	<select id="orderGoods" resultType="goods_cartshow">
+		SELECT 
+		cart.goods_cart_no,
+		sell.goods_sell_no,
+		goods.category_goods_image_thumb, 
+		goods.category_goods_name,
+		goods.category_goods_packaging_type,
+		cart.goods_cart_count, 
+		sell.goods_sell_price, 
+		cart.goods_cart_status,
+		sell.goods_sell_discount
+		FROM tb_goods_cart cart
+		LEFT OUTER JOIN tb_goods_sell sell
+		ON cart.goods_cart_sell_no = sell.goods_sell_no
+		LEFT OUTER JOIN tb_category_goods goods 
+		ON sell.goods_sell_goods_no = goods.category_goods_no
+		where cart.goods_cart_status=#{goods_cart_status}
+	</select>
+	
+	<select id="order_memberNo"  resultMap="goods_cart">
+		SELECT goods_cart_status FROM tb_goods_cart where goods_cart_member_no=#{goods_cart_member_no}
+	</select>
+	
 	<!-- 장바구니 수량 수정 -->
 	<update id="updateGoods_cart" parameterType="goods_cartshow">
 		UPDATE TB_GOODS_CART SET goods_cart_count=#{goods_cart_count} WHERE GOODS_CART_NO = #{goods_cart_no} 
 	</update>
 	
 	<!-- 장바구니 상태 수정 -->
-	<update id="updateCart_status" parameterType="goods_cartshow">
-		UPDATE TB_GOODS_CART SET goods_cart_status=1 WHERE goods_cart_no = #{goods_cart_no} AND goods_cart_member_no = #{goods_cart_member_no}
+	<update id="updateCart_status" parameterType="goods_cart">
+		UPDATE TB_GOODS_CART SET goods_cart_status=#{goods_cart_status} WHERE goods_cart_no = #{goods_cart_no} AND goods_cart_member_no = #{goods_cart_member_no}
 	</update>
 	
 	<!-- 장바구니 삭제 -->

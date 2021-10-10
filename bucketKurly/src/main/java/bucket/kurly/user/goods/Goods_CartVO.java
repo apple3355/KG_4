@@ -5,7 +5,7 @@ public class Goods_CartVO {
 	private int goods_cart_sell_no;	// 판매테이블 번호
 	private int goods_cart_member_no;	// 회원번호 --> 회원아이디로 수정 예정
 	private int goods_cart_count;	// 물품 구매 갯수
-	private int goods_cart_status;	// 물품 주문상태
+	private String goods_cart_status;	// 물품 주문상태
 	
 	private Goods_SellVO goods_sellvo;
 	
@@ -33,10 +33,10 @@ public class Goods_CartVO {
 	public void setGoods_cart_count(int goods_cart_count) {
 		this.goods_cart_count = goods_cart_count;
 	}
-	public int getGoods_cart_status() {
+	public String getGoods_cart_status() {
 		return goods_cart_status;
 	}
-	public void setGoods_cart_status(int goods_cart_status) {
+	public void setGoods_cart_status(String goods_cart_status) {
 		this.goods_cart_status = goods_cart_status;
 	}
 	

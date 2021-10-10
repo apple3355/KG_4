@@ -8,6 +8,14 @@
 		FROM tb_member
 		WHERE member_id=#{member_id}
 	</select>
+	
+	<select id="select_orderNo" resultType="order">
+		SELECT order_no FROM tb_order WHERE order_member_no=#{order_member_no} order by order_no DESC limit 1
+	</select>
+	
+	<select id="select_order" resultType="order">
+		SELECT * FROM tb_order WHERE order_no=#{order_no} 
+	</select>
 
 	<insert id="insertOrder" parameterType="order">
 		INSERT INTO tb_order(order_no, order_name, order_member_no, order_date, order_phone, order_address, order_goods_count, order_goods_price, order_delivery_fee, order_coupon_no)

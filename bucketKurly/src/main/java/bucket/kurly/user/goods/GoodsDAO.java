@@ -60,6 +60,17 @@ public class GoodsDAO {
 		System.out.println("chooseGoods_cart() 실행");
 		return sqlSessionTemplate.selectList("GoodsDAO.chooseGoods_cart", goods_cart_no);
 	}
+	
+	public List<Goods_CartVO> order_memberNo(int member_no) {
+		System.out.println("GoosDAO - selectGoods_sell() 실행");
+		return sqlSessionTemplate.selectList("GoodsDAO.order_memberNo", member_no);
+	}
+
+	// 결제 상품 풀러오기
+	public List<Goods_CartShowVO> orderGoods(String goods_cart_status) {
+		System.out.println("orderGoods() 실행");
+		return sqlSessionTemplate.selectList("GoodsDAO.orderGoods", goods_cart_status);
+	}
 
 	// 장바구니 수정
 	public void updateGoods_cart(Goods_CartVO gsvo) {

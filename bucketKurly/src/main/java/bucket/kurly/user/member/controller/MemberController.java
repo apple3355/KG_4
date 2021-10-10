@@ -3,6 +3,8 @@ package bucket.kurly.user.member.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -21,10 +23,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import bucket.kurly.user.goods.Goods_CartShowVO;
+import bucket.kurly.user.goods.Goods_CartVO;
+import bucket.kurly.user.goods.service.GoodsService;
 import bucket.kurly.user.member.MemberDetailVO;
 import bucket.kurly.user.member.MemberTermsVO;
 import bucket.kurly.user.member.MemberVO;
 import bucket.kurly.user.member.service.MemberService;
+import bucket.kurly.user.order.OrderVO;
+import bucket.kurly.user.service.OrderService;
 import bucket.kurly.util.Coolsms;
 import bucket.kurly.util.SHA256;
 
@@ -36,6 +43,10 @@ public class MemberController {
 	private MemberService memberService;
 	@Autowired
 	private JavaMailSender mailSender;
+	@Autowired
+	private GoodsService goodsService;
+	@Autowired
+	private OrderService orderService;
 
 	// 회원가입
 	@RequestMapping("/insert.do")
@@ -398,7 +409,29 @@ public class MemberController {
 	
 	// 주문내역
 	@RequestMapping("/member_orderlist.do")
-	public String member_orderlist() {
+	public String member_orderlist(HttpSession session, Model model) throws Exception {
+		List<Goods_CartShowVO> goods_cartShowVO = new ArrayList<Goods_CartShowVO>();
+		List<OrderVO> orderlist = new ArrayList<OrderVO>();
+		String Goods_cart_status = (String) session.getAttribute("Goods_cart_status");
+		System.out.println(Goods_cart_status);
+		int member_no = (int) session.getAttribute("member_no");
+		System.out.println(member_no);
+		List<Goods_CartVO> cartVO = goodsService.order_memberNo(member_no);
+		System.out.println(cartVO);
+		for(int i=0; i<cartVO.size(); i++) {
+			if(cartVO.get(i).getGoods_cart_status() != "0") {
+				String order_no = cartVO.get(i).getGoods_cart_status();
+				orderlist.addAll(orderService.select_order(order_no));
+				model.addAttribute("orderlist", orderlist);
+			}
+		}
+		System.out.println(orderlist);
+		
+//		goods_cartShowVO = goodsService.orderGoods(Goods_cart_status);
+//		String image = goods_cartShowVO.get(0).getCategory_goods_image_thumb();
+//		model.addAttribute("goodslist", image);
+		System.out.println(model);
+		
 		return "member/member_orderlist";
 	}
 

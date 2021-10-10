@@ -5,7 +5,7 @@ public class Goods_CartShowVO {
 	private int goods_sell_no;
 	private int goods_sell_stock_ea;
 	private int goods_cart_count;
-	private int goods_cart_status;
+	private String goods_cart_status;
 	private String category_goods_image_thumb;
 	private String category_goods_name;
 	private String category_goods_delivery_type;
@@ -36,10 +36,10 @@ public class Goods_CartShowVO {
 	public void setGoods_cart_count(int goods_cart_count) {
 		this.goods_cart_count = goods_cart_count;
 	}
-	public int getGoods_cart_status() {
+	public String getGoods_cart_status() {
 		return goods_cart_status;
 	}
-	public void setGoods_cart_status(int goods_cart_status) {
+	public void setGoods_cart_status(String goods_cart_status) {
 		this.goods_cart_status = goods_cart_status;
 	}
 	public String getCategory_goods_image_thumb() {

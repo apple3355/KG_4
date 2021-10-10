@@ -61,16 +61,6 @@ public class OrderController {
 	@RequestMapping("/approval.do")
 	public String order_form_detail(OrderVO vo, Goods_CartVO cvo, HttpServletRequest request, HttpSession session) throws Exception   {
 		int member_no = (int) session.getAttribute("member_no");
-		cvo.setGoods_cart_member_no(member_no);
-		List<String> cart_no = (List<String>) session.getAttribute("cart_no");
-		for(int i=0; i<cart_no.size(); i++) {
-			cvo.setGoods_cart_no(Integer.parseInt(cart_no.get(i)));
-			goodsService.updateCart_status(cvo);
-		}
-		
-		
-		String apply_num = request.getParameter("apply_num");
-		System.out.println(apply_num);
 		
 		String order_name = request.getParameter("order_name");
 		vo.setOrder_name(order_name);
@@ -89,13 +79,27 @@ public class OrderController {
 		System.out.println(order_goods_price);
 		
 		String delivery_fee = request.getParameter("delivery_fee");
-		vo.setOrder_delivery_fee(Integer.parseInt(delivery_fee));
+		System.out.println(delivery_fee);
+//		vo.setOrder_delivery_fee(Integer.parseInt(delivery_fee));
+		vo.setOrder_delivery_fee(3000);
 		
 		vo.setOrder_member_no(member_no);
 		System.out.println(member_no);
 		
 		orderService.insert_order(vo);
-		return "";
+		OrderVO order_no = orderService.select_orderNo(vo);
+		System.out.println(order_no.getOrder_no());
+		cvo.setGoods_cart_member_no(member_no);
+		cvo.setGoods_cart_status(order_no.getOrder_no());
+		session.setAttribute("Goods_cart_status", order_no.getOrder_no());
+		System.out.println("1 : " + cvo.toString());
+		List<String> cart_no = (List<String>) session.getAttribute("cart_no");
+		for(int i=0; i<cart_no.size(); i++) {
+			cvo.setGoods_cart_no(Integer.parseInt(cart_no.get(i)));
+			System.out.println("2 : " + cvo.toString());
+			goodsService.updateCart_status(cvo);
+		}
+		return "0";
 	}
 	
 }

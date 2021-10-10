@@ -1,9 +1,12 @@
 package bucket.kurly.user.order;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import bucket.kurly.user.goods.Goods_CartVO;
 import bucket.kurly.user.member.MemberVO;
 
 @Repository
@@ -15,6 +18,14 @@ public class OrderDAO {
 	public MemberVO order_form(String id) throws Exception {
 		System.out.println("OrderDAO - order_form() 실행");
 		return sqlSessionTemplate.selectOne("OrderDAO.order_form", id);
+	}
+	
+	public OrderVO select_orderNo(OrderVO vo) {
+		return sqlSessionTemplate.selectOne("OrderDAO.select_orderNo", vo);
+	}
+	
+	public List<OrderVO> select_order(String order_no) {
+		return sqlSessionTemplate.selectList("OrderDAO.select_order", order_no);
 	}
 	
 	public void insert_order(OrderVO vo) throws Exception {

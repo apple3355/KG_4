@@ -190,7 +190,7 @@
 							<span class="sir">님</span></span>
 						</a> 
 						<ul class="sub">
-							<li><a href="########">주문 내역</a></li> 
+							<li><a href="${pageContext.request.contextPath}/member_orderlist.do">주문 내역</a></li> 
 							<li><a href="#none" onclick="#############">선물 내역</a></li> 
 							<li><a href="#none" onclick="#############">배송지 관리</a></li> 
 							<li><a href="#none">상품 후기</a></li> 

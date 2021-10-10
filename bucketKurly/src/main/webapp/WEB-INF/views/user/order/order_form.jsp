@@ -230,7 +230,10 @@
 													<span id="paper_delivery2" style="display:none">0</span>
 													원
 												</div>
-												<div id="paper_delivery_msg2" style="display: block;">${deliveryFee } 원</div>
+												<div id="paper_delivery_msg2" style="display: block;">
+													<span id="deliveryFee">${deliveryFee }</span>
+													<span class="normal">원</span>
+												</div>
 												<div id="paper_delivery_msg_extra" class="small" style="display:none;"></div>
 												<span id="free_delivery_coupon_msg" class="screen_out">미적용</span>
 												<input type="hidden" name="free_delivery" value="0">
@@ -658,7 +661,7 @@
 			return;
 		}else{
 			var user_price = $("#paper_settlement").text();
-			var delivery_fee = $("#paper_delivery_msg2").text();
+			var delivery_fee = $("#deliveryFee").text();
 			var user_orderTitle = '주문명:결제테스트';
 			var user_email = $("#email").val();
 			var user_orderName = $("#order_name").val();
@@ -705,10 +708,13 @@
 							"order_goods_price":user_price, "delivery_fee":delivery_fee},// data:{"cart_no"} 괄호
 						
 						success: function(data){
-							console.log(data);
+							if(data == 0){
+								console.log(data);
+								window.location.href = "${pageContext.request.contextPath}/member_orderlist.do";
+							}
 						},// success 괄호
 						error: function(){
-							alert("에러");
+							window.location.href = "${pageContext.request.contextPath}/member_orderlist.do";
 						}
 					});
 				} else {
