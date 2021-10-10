@@ -51,32 +51,84 @@
 		<result property="goods_cart_status" column="goods_cart_status" />
 		
 	</resultMap>
-
-	<!-- 상품리스트 목록 -->
-	<select id="selectGoods_sell" parameterType="String"
-		resultMap="goods_sell">
-		SELECT *
-		FROM TB_GOODS_SELL s JOIN TB_CATEGORY_GOODS g
-		ON s.goods_sell_goods_no = g.category_goods_no
-
-		<if test='select_type.equals("new")'>
-			ORDER BY GOODS_SELL_IN_DATE DESC
-		</if>
-		<if test='select_type.equals("price_low")'>
-			ORDER BY GOODS_SELL_PRICE
-		</if>
-		<if test='select_type.equals("price_high")'>
-			ORDER BY GOODS_SELL_PRICE DESC
-		</if>
+	
+	<!-- 상품리스트 목록(신상품, 낮은가격, 높은가격, 할인 순) -->
+	<select id="selectGoods_sell_main" parameterType="String" resultMap="goods_sell">
+		SELECT * FROM TB_GOODS_SELL s JOIN TB_CATEGORY_GOODS g ON s.goods_sell_goods_no = g.category_goods_no
+			<if test='select_type.equals("random")'>
+				ORDER BY RANDOM()
+			</if>
+			<if test='select_type.equals("sale")'>
+				ORDER BY GOODS_SELL_DISCOUNT DESC
+			</if>
+			<if test='select_type.equals("new")'>
+				ORDER BY GOODS_SELL_IN_DATE DESC
+			</if>
+		LIMIT 20
 	</select>
 
+	<!-- 상품리스트 목록(신상품, 낮은가격, 높은가격, 할인 순) -->
+	<select id="selectGoods_sell" parameterType="goods_listdto" resultMap="goods_sell">
+		SELECT * FROM TB_GOODS_SELL s JOIN TB_CATEGORY_GOODS g ON s.goods_sell_goods_no = g.category_goods_no
+
+			<if test='select_type.equals("new")'>
+				ORDER BY GOODS_SELL_IN_DATE DESC
+			</if>
+			<if test='select_type.equals("best")'>
+				ORDER BY GOODS_SELL_DISCOUNT DESC
+			</if>
+			<if test='select_type.equals("sale")'>
+				ORDER BY GOODS_SELL_DISCOUNT DESC
+			</if>
+			<if test='select_type.equals("price_low")'>
+				ORDER BY GOODS_SELL_PRICE
+			</if>
+			<if test='select_type.equals("price_high")'>
+				ORDER BY GOODS_SELL_PRICE DESC
+			</if>
+	</select>
+		
+	<!-- 상품리스트 목록(상위 카테고리 별로 구하기) -->
+	<select id="selectGoods_sell_parent" parameterType="goods_listDTO" resultMap="goods_sell">
+		SELECT * FROM TB_GOODS_SELL s JOIN TB_CATEGORY_GOODS g ON s.goods_sell_goods_no = g.category_goods_no
+		WHERE GOODS_SELL_PARENT_NO = #{goods_sell_parent_no}
+			<if test='select_type2 != null and(select_type2.equals("new"))'>
+				ORDER BY GOODS_SELL_IN_DATE DESC
+			</if>
+			<if test='select_type2 != null and(select_type2.equals("best"))'>
+				ORDER BY GOODS_SELL_DISCOUNT DESC
+			</if>
+			<if test='select_type2 != null and(select_type2.equals("sale"))'>
+				ORDER BY GOODS_SELL_DISCOUNT DESC
+			</if>
+			<if test='select_type2 != null and(select_type2.equals("price_low"))'>
+				ORDER BY GOODS_SELL_PRICE
+			</if>
+			<if test='select_type2 != null and(select_type2.equals("price_high"))'>
+				ORDER BY GOODS_SELL_PRICE DESC
+			</if>
+			
+	</select>
+	<select id="selectGoods_sell_parent_title" parameterType="String" resultType="String">
+		SELECT CATEGORY_PARENT_NAME FROM TB_CATEGORY_PARENT
+		WHERE CATEGORY_PARENT_NO = #{parent_no}
+	</select>
+	
+	<!-- 상품리스트 목록(중위 카테고리 별로 구하기) -->
+	<select id="selectGoods_sell_sub" parameterType="goods_listDTO" resultMap="goods_sell">
+		SELECT * FROM TB_GOODS_SELL s JOIN TB_CATEGORY_GOODS g ON s.goods_sell_goods_no = g.category_goods_no
+		WHERE GOODS_SELL_SUB_NO = #{goods_sell_sub_no}
+			
+	</select>
+	<select id="selectGoods_sell_sub_title" parameterType="String" resultType="String">
+		SELECT CATEGORY_SUB_NAME FROM TB_CATEGORY_SUB
+		WHERE CATEGORY_SUB_NO = #{sub_no}
+	</select>
+
+
 	<!-- 상품 상세페이지 -->
-	<select id="getGoods_detail" parameterType="int"
-		resultMap="goods_sell">
-		SELECT *
-		FROM TB_GOODS_SELL s , TB_CATEGORY_GOODS g
-		WHERE s.goods_sell_goods_no = g.category_goods_no
-		AND s.goods_sell_no = #{goods_sell_no}
+	<select id="getGoods_detail" parameterType="int" resultMap="goods_sell">
+		SELECT * FROM TB_GOODS_SELL s , TB_CATEGORY_GOODS g WHERE s.goods_sell_goods_no = g.category_goods_no AND s.goods_sell_no = #{goods_sell_no}
 	</select>
 
 	<insert id="insertGoods_cart" parameterType="goods_cart">

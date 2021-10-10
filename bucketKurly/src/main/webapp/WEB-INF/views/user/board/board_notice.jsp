@@ -6,9 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="resources/css/board_notice.css">
-
+<link rel="stylesheet" type="text/css" href="resources/css/common.css">
+<style>
+	.notice .layout-pagination{margin: 0}
+	.eng2{color: #939393}
+	.xans-board-listheader{font-size:12px}
+</style>
 
 <title>board_notice</title>
 
@@ -20,59 +24,38 @@
       <!-- header -->
       <%@ include file="/WEB-INF/views/layout/header.jsp"%>
    
-      <!-- content
-      <div id="main">
-         <div id="content">   이런식으로 중간에 넣어주세요-->
-         <div id="main">
-				<div id="content">
-
+    
 			<div id="main">				
 				<div id="content" >					
-					<div id="qnb" class="quick-navigation" style="top=: 70px;">
-							</div>
+				
 					<div class="page_aticle aticle_type2">
-						<div id="snb" class="snb_cc">
-							<h2 class="tit_snb">고객센터</h2>
-							<div class="inner_snb">							
-								<ul class="list_menu"  >								   
-									<li class="on"><a href="${pageContext.request.contextPath}/board_notice.do" class="board_notice">공지사항</a><br>
-							<!-- <a href="#none"
-										onclick="KurlyTrackerLink('/WEB_INF/view/layout/board_notice.jsp?id=board_notice', 'select_service_notice_list')">공지사항</a> -->
-									</li>
-									<li><a href="${pageContext.request.contextPath}/board_faq.do" class="faq">자주하는 질문</a><br>
-								<!-- <a href="#none"
-										onclick="KurlyTrackerLink('/shop/service/faq.php', 'select_service_frequently_qna')">자주하는 질문</a></li> -->
-									<li><a href="${pageContext.request.contextPath}/board_qna.do" class="board_qna">1:1 문의</a><br>
-								<!-- <a href="#none"
-										onclick="KurlyTrackerLink('/shop/mypage/mypage_qna.php', 'select_service_personal_inquiry_history')">1:1 문의</a></li> -->
+					
+						<!--  왼쪽 메뉴  -->
+					<div id="snb" class="snb_cc">
+						<h2 class="tit_snb">고객센터</h2>
+						<div class="inner_snb">
+							<ul class="list_menu">	
+									<li class="on"><a href="${pageContext.request.contextPath}/board_notice.do" class="board_notice">공지사항</a></li>
+									<li><a href="${pageContext.request.contextPath}/board_faq.do" class="faq">자주하는 질문</a></li>
+									<li><a href="${pageContext.request.contextPath}/board_qna.do" class="board_qna">1:1 문의</a></li>								
 								</ul>
 							</div>
-							<a href="/shop/mypage/mypage_qna_register.php?mode=add_qna"
-								class="link_inquire"><span class="emph">도움이 필요하신가요 ?</span>
-								1:1 문의하기</a>
+							<a href="/shop/mypage/mypage_qna_register.php?mode=add_qna" class="link_inquire"><span class="emph">도움이 필요하신가요 ?</span>1:1 문의하기</a>
 						</div>
+						
 						<div class="page_section">
 							<div class="head_aticle">
-								<h2 class="tit">
-									공지사항 <span class="tit_sub">컬리의 새로운 소식들과 유용한 정보들을 한곳에서
-										확인하세요.</span>
-								</h2>
+								<h2 class="tit"> 공지사항 <span class="tit_sub">컬리의 새로운 소식들과 유용한 정보들을 한곳에서 확인하세요.</span></h2>
 							</div>
-							<form name=frmList action="/shop/board/list.php?&"
-								onsubmit="return chkFormList(this)">
+							
+							<form name="frmList" action="/shop/board/list.php?&" onsubmit="return chkFormList(this)">
 								<input type=hidden name=id value="notice">
-							<style>
-							.notice .layout-pagination{margin: 0}
-							.eng2{color: #939393}
-							.xans-board-listheader{font-size:12px}
-							</style>
-								<table width=100% align=center cellpadding=0 cellspacing=0>
+								<table width="100%" align="center" cellpadding=0 cellspacing=0>
 									<tr>
 										<td>
-											<div
-												class="xans-element- xans-myshop xans-myshop-couponserial ">
+											<div class="xans-element- xans-myshop xans-myshop-couponserial ">
 											
-												<table width=100% class="xans-board-listheader jh" cellpadding=0 cellspacing=0>
+												<table width="100%" class="xans-board-listheader jh" cellpadding=0 cellspacing=0>
 												
 													<thead>
 														<tr>
@@ -84,20 +67,16 @@
 														</tr>
 													</thead>
 												
-													 <c:forEach items="${board_noticeList}" var="board_noticeList">
+													 <c:forEach items="${board_noticeList}" var="board_noticeList" varStatus="status">
 																							
 													<tbody>													
 														<tr>
-															<td width=50 nowrap align=center><c:out value="${board_noticeList.board_notice_no}"/></td>
-															<td style="padding-left: 10px; text-align: left; color: #999">
-														<!-- <a href="view.php?id=notice&no=1038"><b><c:out value="${board_noticeList.board_notice_title}"/></a></td> -->
-															    <a href="${pageContext.request.contextPath}/board_notice_no.do?no=${board_noticeList.board_notice_no}">${board_noticeList.board_notice_title}&nbsp;</a></td>	
-															<td width=100 nowrap d>
-																<align=center><c:out value="${board_noticeList.board_notice_writer}"/></td>
-															<td width=100 nowrap align=center class=eng2><fmt:formatDate value="${board_noticeList.board_notice_date}" pattern="yyyy-MM-dd" />
-															<td width=30 nowrap align=center class=eng2><c:out value="${board_noticeList.board_notice_hits}"/></td>
+															<td width="5%" align="center">${pagination.listCnt- ((pagination.page-1) * pagination.rangeSize + status.index) }</td>
+															<td width="65%" style="padding-left: 40px; color: #999"><a href="${pageContext.request.contextPath}/board_notice_no.do?no=${board_noticeList.board_notice_no}">${board_noticeList.board_notice_title}&nbsp;</a></td>	
+															<td width="10%" align="center"><c:out value="${board_noticeList.board_notice_writer}"/></td>
+															<td width="15%" align="center" class="eng2"><fmt:formatDate value="${board_noticeList.board_notice_date}" pattern="yyyy-MM-dd" />
+															<td width="5%" align="center" class="eng2"><c:out value="${board_noticeList.board_notice_hits}"/></td>
 														</tr>
-														
 													</tbody>
 													</c:forEach>
 												</table>
@@ -135,6 +114,7 @@
 				                           onClick="fn_last('${pagination.pageCnt}','${pagination.rangeSize}')">맨 끝 페이지로 가기</a>
 				                     </div>
 				                  </div>
+				                  
 								<table class="xans-board-search xans-board-search2">
 									<tr>
 										<td class=input_txt><img
@@ -145,14 +125,13 @@
 										<td class=input_txt>&nbsp;</td>
 										<td>
 											<div class="search_bt">
-												<a href="javascript:document.frmList.submit()"><img
-													src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/search.png"
-													align=absmiddle></a> <input type="text"
+												<a href="javascript:document.frmList.submit()"><img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/search.png" align=absmiddle></a> <input type="text"
 													name="search[word]" value="" required>
 											</div>
 										</td>
 									</tr>
 								</table>
+								
 							</form>
 						</div>
 					</div>
@@ -222,8 +201,7 @@
             
       </div>  
    </div>
- </div>
-</div>
+ 
    <a href="#top" id="pageTop">맨 위로가기</a>
 </body>
 </html>

@@ -158,18 +158,18 @@ $(function(){
 
 	/*썸네일 우측 상품 정보 부분*/
 	.name  {font-size: 14px; font-weight: 700;}
-	#sectionView .goods_info .list {padding: 3px 0;}
+	#sectionView .goods_info .list {padding: 1px 0px 11px;}
 	#sectionView .goods_name .short_desc {  padding: 4px 10px 0 0;}
 	#sectionView .goods_name {padding: 0px 0 0px;}
 	#sectionView .goods_dcinfo {line-height: 0px;}	
 
-	/* 상품 수량 관련(지우지 말아주세요ㅜㅜ-경원) */
+	/* 상품 수량 관련*/
    #cartPut .cart_option .list .up.on { background-image: url(https://res.kurly.com/pc/ico/2010/ico_plus_on.svg);}
    #cartPut .cart_option .list .up {    float: right;    margin-left: -1px;    background: #fff url(https://res.kurly.com/pc/ico/2010/ico_plus.svg) no-repeat 50% 50%;    background-size: 30px 30px;}
    #cartPut .cart_option .list .btn {    overflow: hidden;    float: left;    width: 28px;    height: 28px;    border: 0;    font-size: 0;    line-height: 0;    text-indent: -9999px;}
    #cartPut .cart_option .list .inp {    float: left;    width: 30px;    height: 30px;    margin-right: -1px;    padding: 0 0 4px;    border: 0;    background-color: #fff;    font-size: 14px;    color: #000;    line-height: 18px;    text-align: center;}
    #cartPut .cart_option .list .count {    overflow: hidden;    float: left;    width: 88px;    height: 30px;    border: 1px solid #dddfe1;    border-radius: 3px;}
-   #cartPut * {    font-family: noto sans;    color: #333;    letter-spacing: 0;}
+   #cartPut * {    font-family: 'Noto Sans KR', sans-serif;    color: #333;    letter-spacing: 0;}
    #cartPut .cart_option .list .down.on {    background-image: url(https://res.kurly.com/pc/ico/2010/ico_minus_on.svg);}
    #cartPut .cart_option .list .down {    background: #fff url(https://res.kurly.com/pc/ico/2010/ico_minus.svg) no-repeat 50% 50%;    background-size: 30px 30px;}
    #cartPut .cart_type2 .list_nopackage li {    float: none;    width: 100%;    padding: 0 0 5px;    margin: 0; border: 0;}
@@ -254,90 +254,103 @@ $(function(){
 								<span class="btn_share"><button id="btnShare" class="btnShare" data-goodsno="6016">공유하기</button></span> 
 								<strong class="name">${goods_sellVO.goodsvo.category_goods_name}</strong> 
 								<span class="short_desc">${goods_sellVO.goodsvo.category_goods_name_sub}</span></p> 
-								<p class="goods_dcinfo">회원할인가</p> 
-								<p class="goods_price">
-									<span class="position">
-										<span class="dc"><!----> 
-											<span class="dc_price"><fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sellVO.goods_sell_price - (goods_sellVO.goods_sell_price * goods_sellVO.goods_sell_discount) / 100}" /><span class="won">원</span></span> 
-											<span class="dc_percent">${goods_sellVO.goods_sell_discount}<span class="per">%</span></span></span> 
-										<a class="original_price">
-											<span class="price">${goods_sellVO.goods_sell_price}<span class="won">원</span></span>
-											<img src="https://res.kurly.com/kurly/ico/2021/question_24_24_c999.svg" alt="물음표" class="ico">
-										</a> 
-										<span class="layer_position"><!----> 
-											<span class="layer_price">
-												<strong class="tit_layer">컬리판매가 기준 할인</strong>
-												동일 품질 상품의 주요 온/오프라인 유통사 가격과 비교하여 컬리가 설정한 가격에서 할인된 가격입니다.
-												<span class="bar"></span>                        
-												적용된 할인가는 대표 상품의 가격으로 옵션에 따라 할인 혜택이 다를 수 있습니다. 할인 혜택은 당사 사정에 따라 변경될 수 있습니다.                    
+								
+								
+								<c:set var="discount" value="${goods_sellVO.goods_sell_discount}" />
+								<c:if test="${discount == 0}">
+									<p class="goods_dcinfo"></p> 
+								    <p class="goods_price">
+										<span class="position">
+											<span class="dc"><!----> 
+												<span class="dc_price"><fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sellVO.goods_sell_price - (goods_sellVO.goods_sell_price * goods_sellVO.goods_sell_discount) / 100}" /><span class="won">원</span></span> 
 											</span> 
-											<button type="button" class="btn_close">레이어 닫기</button>
 										</span>
-									</span> 
-									<!----> 
-									<!----> 
-									<!----> 
-									<!----> 
-									<span class="not_login">
-										<span>로그인 후, 회원할인가와 적립혜택이 제공됩니다.</span> 
-										<!---->
-									</span>
-								</p> 
-								<div class="goods_benefit">
-									<div class="benefit">
-										<a class="btn link">                    
-											정육 20% 쿠폰 받으러 가기                
-										</a> 
-										<!---->
-									</div> 
-									<!---->
-								</div> 
+									</p> 
+								</c:if>
+								
+								<c:if test="${discount != 0}">
+									<p class="goods_dcinfo">회원할인가</p> 
+									<p class="goods_price">
+										<span class="position">
+											<span class="dc"><!----> 
+												<span class="dc_price"><fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sellVO.goods_sell_price - (goods_sellVO.goods_sell_price * goods_sellVO.goods_sell_discount) / 100}" /><span class="won">원</span></span> 
+												<span class="dc_percent">${goods_sellVO.goods_sell_discount}<span class="per">%</span></span></span> 
+											<a class="original_price">
+												<span class="price"><fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sellVO.goods_sell_price}"/><span class="won">원</span></span>
+												<img src="https://res.kurly.com/kurly/ico/2021/question_24_24_c999.svg" alt="물음표" class="ico">
+											</a> 
+											
+										</span> 
+										<c:if test="${empty sessionScope.id }"> 
+											<span class="not_login">
+												<span>로그인 후, 회원할인가와 적립혜택이 제공됩니다.</span> 
+												<!---->
+											</span>
+										</c:if>
+									</p> 
+								</c:if>
+							
 								<div class="goods_info">
-									<dl class="list fst">
-										<dt class="tit"><b>판매단위</b></dt> 
-										<dd class="desc">${goods_sellVO.goodsvo.category_goods_unit }</dd>
-									</dl> 
-									<dl class="list">
-										<dt class="tit"><b>중량/용량</b></dt> 
-										<dd class="desc">${goods_sellVO.goodsvo.category_goods_weight }</dd>
-									</dl> 
-									<dl class="list">
-										<dt class="tit"><b>배송구분</b></dt> 
-										<!----> 
-										<dd class="desc">${goods_sellVO.goodsvo.category_goods_delivery_type }</dd>
-									</dl> 
-									<dl class="list">
-										<dt class="tit"><b>원산지</b></dt> 
-										<dd class="desc">${goods_sellVO.goodsvo.category_goods_from }</dd>
-									</dl> 
-									<dl class="list">
-										<dt class="tit"><b>포장타입</b></dt> 
-										<dd class="desc">
-										    ${goods_sellVO.goodsvo.category_goods_packaging_type }
-											<strong class="emph"></strong>
-										</dd>
-									</dl> 
-									<!----> 
-									<dl class="list">
-										<dt class="tit"><b>유통기한</b></dt> 
-										<dd class="desc">${goods_sellVO.goodsvo.category_goods_exp_date }</dd>
-									</dl> 
-									<!----> 
-									<!----> 
-									<dl class="list">
-										<dt class="tit"><b>안내사항<br>(알레르기,<br>당도)</b></dt> 
-										<dd class="desc">
-											<span class="txt">${goods_sellVO.goodsvo.category_goods_info }</span>
-										</dd>
-									</dl> 
-									<dl class="list">
-										<dt class="tit"><b>참고사항<br>(축산물 이력정보,<br>사육 환경번호)</b></dt> 
-										<dd class="desc">
-											<span class="txt">${goods_sellVO.goodsvo.category_goods_ref }</span>
-										</dd>
-									</dl> 
-									<!----> 
-									<!---->
+																		
+									<c:if test="${not empty goods_sellVO.goodsvo.category_goods_unit }"> 
+										<dl class="list">
+											<dt class="tit"><b>판매단위</b></dt> 
+											<dd class="desc">${goods_sellVO.goodsvo.category_goods_unit }</dd>
+										</dl> 
+									</c:if>
+									
+									
+									<c:if test="${not empty goods_sellVO.goodsvo.category_goods_weight }"> 
+										<dl class="list">
+											<dt class="tit"><b>중량/용량</b></dt> 
+											<dd class="desc">${goods_sellVO.goodsvo.category_goods_weight }</dd>
+										</dl> 
+									</c:if>
+									
+									<c:if test="${not empty goods_sellVO.goodsvo.category_goods_delivery_type }"> 
+										<dl class="list">
+											<dt class="tit"><b>배송구분</b></dt> 
+											<dd class="desc"> ${goods_sellVO.goodsvo.category_goods_delivery_type }</dd>
+										</dl> 
+									</c:if>
+									
+									
+									<c:if test="${not empty goods_sellVO.goodsvo.category_goods_from }"> 
+										<dl class="list">
+											<dt class="tit"><b>원산지</b></dt> 
+											<dd class="desc"> ${goods_sellVO.goodsvo.category_goods_from }</dd>
+										</dl> 
+									</c:if>
+									
+									<c:if test="${not empty goods_sellVO.goodsvo.category_goods_packaging_type}"> 
+										<dl class="list">
+											<dt class="tit"><b>포장타입</b></dt> 
+											<dd class="desc"> ${goods_sellVO.goodsvo.category_goods_packaging_type }</dd>
+										</dl> 
+									</c:if>
+									
+									<c:if test="${not empty goods_sellVO.goodsvo.category_goods_exp_date}"> 
+										<dl class="list">
+											<dt class="tit"><b>유통기한</b></dt> 
+											<dd class="desc">${goods_sellVO.goodsvo.category_goods_exp_date}</dd>
+										</dl> 
+									</c:if>
+									
+									
+									<c:if test="${not empty goods_sellVO.goodsvo.category_goods_info }"> 
+										<dl class="list">
+											<dt class="tit"><b>안내사항</b></dt> 
+											<dd class="desc">${goods_sellVO.goodsvo.category_goods_info }</dd>
+										</dl> 
+									</c:if>
+									
+									<c:if test="${not empty goods_sellVO.goodsvo.category_goods_ref}"> 
+										<dl class="list">
+											<dt class="tit"><b>참고사항</b></dt> 
+											<dd class="desc">${goods_sellVO.goodsvo.category_goods_ref}</dd>
+										</dl> 
+									</c:if>
+									
 								</div> 
 								<!---->
 						</div> 
@@ -369,7 +382,7 @@ $(function(){
 											<!--
 											</span> 
 											-->
-											<span class="tit_item" style="font-weight: 700; color: #333;">구매수량</span> 
+											<span class="tit_item" style="font-weight: 700; color: #333;"><b>구매수량</b></span> 
 											<div class="option">
 												 <span class="count">
 						                              <button type="button" class="btn down on">수량내리기</button> 

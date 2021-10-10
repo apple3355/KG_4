@@ -11,12 +11,45 @@ public class GoodsDAO {
 
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
-
+	
+	
 	// 상품 DB 리스트
-	public List<Goods_SellVO> selectGoods_sell(String select_type) {
-		System.out.println("GoosDAO - selectGoods_sell() 실행");
-		return sqlSessionTemplate.selectList("GoodsDAO.selectGoods_sell", select_type);
+	public List<Goods_SellVO> selectGoods_sell_main(String select_type) {
+		System.out.println("GoosDAO - selectGoods_sell_main() 실행");
+		return sqlSessionTemplate.selectList("GoodsDAO.selectGoods_sell_main",select_type);
 	}
+	
+	
+	// 상품 DB 리스트
+	public List<Goods_SellVO> selectGoods_sell(Goods_ListDTO dto) {
+		System.out.println("GoosDAO - selectGoods_sell() 실행");
+		return sqlSessionTemplate.selectList("GoodsDAO.selectGoods_sell", dto);
+	}
+	
+	
+	// 상품 DB 리스트(parent_no)
+	public List<Goods_SellVO> selectGoods_sell_parent(Goods_ListDTO dto) {
+		System.out.println("GoosDAO - selectGoods_sell_parent() 실행");
+		return sqlSessionTemplate.selectList("GoodsDAO.selectGoods_sell_parent", dto);
+	}
+	
+	public String selectGoods_sell_parent_title(String parent_no) {
+		System.out.println("GoosDAO - selectGoods_sell_parent_title() 실행");
+		return sqlSessionTemplate.selectOne("GoodsDAO.selectGoods_sell_parent_title", parent_no);
+	}
+	
+	// 상품 DB 리스트(sub_no)
+	public List<Goods_SellVO> selectGoods_sell_sub(Goods_ListDTO dto) {
+		System.out.println("GoosDAO - selectGoods_sell_sub() 실행");
+		return sqlSessionTemplate.selectList("GoodsDAO.selectGoods_sell_sub", dto);
+	}
+	
+	public String selectGoods_sell_sub_title(String sub_no) {
+		System.out.println("GoosDAO - selectGoods_sell_sub_title() 실행");
+		return sqlSessionTemplate.selectOne("GoodsDAO.selectGoods_sell_sub_title", sub_no);
+	}
+
+
 
 	// 상품 상세페이지(상품정보)
 	public Goods_SellVO getGoods_detail(int goods_sell_no) {

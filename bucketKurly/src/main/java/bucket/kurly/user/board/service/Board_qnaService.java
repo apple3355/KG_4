@@ -14,7 +14,6 @@ public interface Board_qnaService {
 	//전체 게시글 검색(페이징)
 	List<Board_qnaVO> selectBoard_qna(Map map);
 	
-	
 	void insertBoard_qna(Board_qnaVO vo);
 	void updateBoard_qna(Board_qnaVO vo);
 	void deleteBoard_qna(Board_qnaVO vo);

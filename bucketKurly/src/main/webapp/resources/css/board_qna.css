@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 /* 페이지 내용 내부 */
 .page_aticle {width: 1050px;margin: 0 auto;}
@@ -158,12 +159,12 @@ element.style {
     padding: 4px 0 10px;
     font-size: 12px;
     line-height: 20px;
-    font-family: noto sans;
+    font-family: 'Noto Sans KR', sans-serif;
     font-weight: 700;
 }
 
 #qnaNotice dt {
-    font-family: noto sans;
+    font-family: 'Noto Sans KR', sans-serif;
     font-weight: 700;
 }
 

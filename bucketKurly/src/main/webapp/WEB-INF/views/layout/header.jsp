@@ -10,11 +10,15 @@
 <title>header</title>
 
 
+<!-- 1. 제이쿼리 라이브러리 파일을 먼저 연동하고,  -->
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
   $(document).ready(function(){
 	  $('.menu1').hover(function(){
 			$(".menu1").children().first().addClass("on");
 			$(".gnb_sub").css("display","block");
+			 $(".gnb_sub").css("width","219px");
+			$(".inner_sub ul").css("height","400px");	
 		}, function() {
 			$(".menu1").children().first().removeClass("on");
 			$(".gnb_sub").css("display","none");
@@ -31,13 +35,21 @@
 		$('.inner_sub ul li').hover(function(){
 			$(this).addClass("current");
 			$(".gnb_sub").css("width","438px" );
-			$(".inner_sub ul").css("height","800px");	
+			$(".inner_sub ul").css("height","400px");	
 		}, function() {
 		    $(this).removeClass("current");
 		    $(".gnb_sub").css("width","219px");
 		});
-
-	
+		
+		 //상위 카테고리 클릭시 상품 리스트 페이지 이동
+		 $(".inner_sub ul li").on("click", ".menu", function() {
+	         var parent_no = $(this).find('input').val();
+	         
+	         var url = "${pageContext.request.contextPath}/goods_list_parent_no.do";
+	         url = url + "?parent_no=" + parent_no;
+	         location.href = url;
+	     });
+		
 	
 	//스크롤 내렸을때 메뉴 고정
     var topBar = $("#main").offset(); //header 밑 main의 맨윗부분 절대위치
@@ -50,22 +62,25 @@
         }else{
         	$('#gnb').removeClass("gnb_stop");
         }
+        
     }); 
 });
   
+  
+  //중위 카테고리 클릭시 상품 리스트 페이지 이동
+  function goods_list_subPage(sub_no) {
+    var url = "${pageContext.request.contextPath}/goods_list_sub_no.do";
+    url = url + "?sub_no=" + sub_no;
+    location.href = url;
+ }
 </script>
-
-
 <style>
  /*여기추가*/
 /*   #gnb .gnb_sub .sub_menu{background-color: #d8d8d8;} */
   #gnb .gnb_sub .sub_menu{position:relative;z-index:0;left:200px;top:0;width:248px;height:100%;padding:0 0 0 20px;background:url(https://res.kurly.com/images/common/bg_1_1.gif) repeat 0 0;opacity:0;transition:opacity 0.2s} 
   #gnb .gnb_sub .sub_menu .sub {font-size: 75%;line-height: 0;position: relative;vertical-align: baseline}
   #gnb .gnb_sub .sub_menu .sub{display:block;overflow:hidden;width:100%;height:40px;padding:0 0 0 14px;cursor:pointer}  
-  
   #gnb .sub_menu li a{background-color:#f7f7f7; border:0; outline:0;}
- 
-
   .menu {position: relative;z-index: 400;float: left;}
   .menu_login .link_menu {padding: 0 16px 0 15px;}
   .menu:after {content: "";float: right;width: 1px;height: 13px;margin-top: 12px;background-color: #d8d8d8;}
@@ -76,7 +91,6 @@
   .sub a {font-size: 12px;color: #404040;line-height: 24px;white-space: nowrap;cursor: pointer;}
   .lst .sub {left: auto;right: 0;}
   .sub {display: none;position: absolute;left: 0;top: 34px;width: 102px;padding: 3px 9px;border: 1px solid #ddd;background-color: #fff;}
-  
   #gnb .gnb_sub{display:none;overflow:hidden;position:absolute;z-index:301;left:0;top:55px;width:213px;padding-top:1px}
   #gnb .gnb_sub .inner_sub{width:100%;border:1px solid #ddd;background:url(https://res.kurly.com/pc/service/common/1908/bg_gnb_sub_v3.png) repeat-y 0 0}
   #gnb .size_over{overflow-x:hidden;overflow-y:auto}
@@ -85,10 +99,8 @@
   #gnb .gnb_sub .gnb_menu li:first-child{padding-top:0}
   #gnb .gnb_sub .menu{display:block;overflow:hidden;width:100%;height:40px;padding:8px 0 0 14px;cursor:pointer;background:#fffff}
   #gnb .gnb_sub .gnb_menu li:first-child .menu{height:39px;padding-top:7px}
-  
 
   #gnb .gnb_sub .menu{background:#fffff;}
-  
   
   #gnb .gnb_sub .current .menu{background:#f7f7f7;}
   #gnb .gnb_sub .current .txt,
@@ -124,12 +136,9 @@
   #gnb .gnb_sub .recommend .thumb{display:block;width:110px;height:83.4px;margin-bottom:8px;background-position:50% 50%;background-repeat:no-repeat;background-size:cover}
   #gnb .gnb_sub .recommend .thumb img{width:110px;height:84px}
   #gnb .gnb_sub .recommend .name{font-size:14px;line-height:18px}
-  
-
 </style>
-
-
 </head>
+
 <body>
 	<div id = "header">
 	
@@ -185,7 +194,7 @@
 				<ul class="list_menu">
 					<li class="menu menu_user">
 						<a class="link_menu grade_comm" onclick="#####">
-							<span class="ico_grade grade0">${rank }</span> 
+							<span class="ico_grade grade0">${rank}</span> 
 							<span class="txt"><span class="name">${name}</span>
 							<span class="sir">님</span></span>
 						</a> 
@@ -239,22 +248,21 @@
 					<!-- 메인 메뉴바 -->
 					<div class="gnb_main">
 						<ul class="gnb">
-						
 							<!-- 메뉴 이름 (신상품,베스트,알뜰쇼핑,특가/혜택) -->
 							<li class="menu1">
 								<a href="#####"><span class="ico"></span><span class="txt">전체 카테고리</span></a>
 							</li>
 							<li class="menu2">
-								<a href="${pageContext.request.contextPath}/goods_list.do?type=new?" class="link new "><span class="txt">신상품</span></a>
+								<a href="${pageContext.request.contextPath}/goods_list.do?type=new" class="link new"><span class="txt">신상품</span></a>
 							</li>
 							<li class="menu3">
-								<a href="${pageContext.request.contextPath}/goods_list.do?type=best?"><span class="txt">베스트</span></a>
+								<a href="${pageContext.request.contextPath}/goods_list.do?type=best"><span class="txt">베스트</span></a>
 							</li>
 							<li class="menu4">
-								<a href="/shop/goods/goods_list.php?list=sale" class="link bargain "><span class="txt">알뜰쇼핑</span></a>
+								<a href="${pageContext.request.contextPath}/goods_list.do?type=sale"><span class="txt">알뜰쇼핑</span></a>
 							</li>
 							<li class="lst">
-								<a href="/shop/goods/event.php?&amp;" class="link event "><span class="txt">특가/혜택</span></a>
+								<a href="######################################" class="link event"><span class="txt">특가/혜택</span></a>
 							</li>
 						</ul>
 						
@@ -319,37 +327,9 @@
 						<div class="inner_sub">
 							<ul data-default="219" data-min="219" data-max="731"
 								class="gnb_menu" style="height: auto;">
-								<li>				
-									<a class="menu">
-										<span class="ico">
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(2).png" alt="카테고리 아이콘" class="ico_off"> 
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98.png" alt="카테고리 아이콘" class="ico_on">
-										</span> 
-										<span class="tit">
-											<span class="txt">추석 선물세트</span> 
-											<span class="ico_new" style="background-image: url(&quot;https://res.kurly.com/pc/service/common/1908/ico_new_42x42_v2.png&quot;);">new</span>
-										</span>
-									</a>
-									<ul class="sub_menu">
-										<li><a class="sub"><span class="name">=== 카테고리별 ===</span></a></li>
-										<li><a class="sub"><span class="name">홍삼·즙·건강식품</span></a></li>
-										<li><a class="sub"><span class="name">정육·가공육·건육</span></a></li>
-										<li><a class="sub"><span class="name">수산·건어물·젓갈</span></a></li>
-										<li><a class="sub"><span class="name">과일·견과·곡류</span></a></li>
-										<li><a class="sub"><span class="name">디저트·치즈·다과류</span></a></li>
-										<li><a class="sub"><span class="name">면·양념·오일·캔류</span></a></li>
-										<li><a class="sub"><span class="name">생활·주방·뷰티</span></a></li>
-										<li><a class="sub"><span class="name">간편식·반찬</span></a> </li>
-										<li><a class="sub"><span class="name">=== 가격대별 ===</span></a></li>
-										<li><a class="sub"><span class="name">20만원 이상</span></a></li>
-										<li><a class="sub"><span class="name">10-20만원</span></a></li>
-										<li><a class="sub"><span class="name">5-10만원</span></a></li>
-										<li><a class="sub"><span class="name">3-5만원</span></a></li>
-										<li><a class="sub"><span class="name">3만원 미만</span></a></li>
-									</ul>
-								</li>
 								<li>
 									<a class="menu">
+										<input class="hiddenMenuValue" type="hidden" value="P01">
 										<span class="ico">
 											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(1).png" alt="카테고리 아이콘" class="ico_off"> 
 											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(3).png" alt="카테고리 아이콘" class="ico_on">
@@ -357,18 +337,19 @@
 										<span class="tit"><span class="txt">채소</span></span>
 									</a>
 									<ul class="sub_menu">
-										<li><a class="sub"><span class="name">친환경</span></a></li>
-										<li><a class="sub"><span class="name">고구마·감자·당근</span></a></li>
-										<li><a class="sub"><span class="name">시금치·쌈채소·나물</span></a></li>
-										<li><a class="sub"><span class="name">브로콜리·파프리카·양배추</span></a></li>
-										<li><a class="sub"><span class="name">양파·대파·마늘·배추</span></a></li>
-										<li><a class="sub"><span class="name">오이·호박·고추</span></a></li>
-										<li><a class="sub"><span class="name">냉동·이색·간편채소</span></a></li>
-										<li><a class="sub"><span class="name">콩나물·버섯</span></a></li>
+										<li><a class="sub"><span class="name">====카테고리=====</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('002')"><span class="name">고구마·감자·당근</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('003')"><span class="name">시금치·쌈채소·나물</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('004')"><span class="name">브로콜리·파프리카·양배추</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('005')"><span class="name">양파·대파·마늘·배추</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('006')"><span class="name">오이·호박·고추</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('007')"><span class="name">냉동·이색·간편채소</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('008')"><span class="name">콩나물·버섯</span></a></li>
 									</ul>
 								</li>
 								<li>
 									<a class="menu">
+										<input class="hiddenMenuValue" type="hidden" value="P02">
 										<span class="ico">
 											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(4).png" alt="카테고리 아이콘" class="ico_off"> 
 											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(5).png" alt="카테고리 아이콘" class="ico_on">
@@ -376,18 +357,20 @@
 										<span class="tit"><span class="txt">과일·견과·쌀</span></span>
 									</a>
 									<ul class="sub_menu">
-										<li><a class="sub"><span class="name">친환경</span></a></li>
-										<li><a class="sub"><span class="name">제철과일</span></a></li>
-										<li><a class="sub"><span class="name">국산과일</span></a></li>
-										<li><a class="sub"><span class="name">수입과일</span></a></li>
-										<li><a class="sub"><span class="name">간편과일</span></a></li>
-										<li><a class="sub"><span class="name">냉동·건과일</span></a></li>
-										<li><a class="sub"><span class="name">견과류</span></a></li>
-										<li><a class="sub"><span class="name">쌀·잡곡</span></a></li>
+										<li><a class="sub"><span class="name">====카테고리=====</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('011')"><span class="name">국산과일</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('012')"><span class="name">수입과일</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('016')"><span class="name">쌀·잡곡</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('015')"><span class="name">견과류</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('014')"><span class="name">냉동·건과일</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('010')"><span class="name">제철과일</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('013')"><span class="name">간편과일</span></a></li>
+										
 									</ul>
 								</li>
 								<li>
 									<a class="menu">
+										<input class="hiddenMenuValue" type="hidden" value="P03">
 										<span class="ico">
 										<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(6).png" alt="카테고리 아이콘" class="ico_off"> 
 										<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(7).png" alt="카테고리 아이콘" class="ico_on">
@@ -395,19 +378,21 @@
 										<span class="tit"><span class="txt">수산·해산·건어물</span></span>
 									</a>
 									<ul class="sub_menu">
-										<li><a class="sub"><span class="name">제철수산</span></a></li>
-										<li><a class="sub"><span class="name">생선류</span></a></li>
-										<li><a class="sub"><span class="name">굴비·반건류</span></a></li>
-										<li><a class="sub"><span class="name">오징어·낙지·문어</span></a></li>
-										<li><a class="sub"><span class="name">새우·게·랍스터</span></a></li>
-										<li><a class="sub"><span class="name">해산물·조개류</span></a></li>
-										<li><a class="sub"><span class="name">수산가공품</span></a></li>
-										<li><a class="sub"><span class="name">김·미역·해조류</span></a></li>
-										<li><a class="sub"><span class="name">건어물·다시팩</span></a></li>
+										<li><a class="sub"><span class="name">====카테고리=====</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('018')"><span class="name">생선류</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('021')"><span class="name">새우·게·랍스터</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('020')"><span class="name">오징어·낙지·문어</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('017')"><span class="name">제철수산</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('019')"><span class="name">굴비·반건류</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('022')"><span class="name">해산물·조개류</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('023')"><span class="name">수산가공품</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('024')"><span class="name">김·미역·해조류</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('025')"><span class="name">건어물·다시팩</span></a></li>
 									</ul>
 								</li>
 								<li>
 									<a class="menu">
+										<input class="hiddenMenuValue" type="hidden" value="P04">
 										<span class="ico">
 											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(8).png" alt="카테고리 아이콘" class="ico_off"> 
 											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(9).png" alt="카테고리 아이콘" class="ico_on">
@@ -415,53 +400,20 @@
 										<span class="tit"><span class="txt">정육·계란</span></span>
 									</a>
 									<ul class="sub_menu">
-										<li><a class="sub"><span class="name">국내산 소고기</span></a></li>
-										<li><a class="sub"><span class="name">수입산 소고기</span></a></li>
-										<li><a class="sub"><span class="name">돼지고기</span></a></li>
-										<li><a class="sub"><span class="name">계란류</span></a></li>
-										<li><a class="sub"><span class="name">닭·오리고기</span></a></li>
-										<li><a class="sub"><span class="name">양념육·돈까스</span></a></li>
-										<li><a class="sub"><span class="name">양고기</span></a></li>
+										<li><a class="sub"><span class="name">====카테고리=====</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('028')"><span class="name">돼지고기</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('029')"><span class="name">계란류</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('030')"><span class="name">닭·오리고기</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('032')"><span class="name">양고기</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('026')"><span class="name">국내산 소고기</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('027')"><span class="name">수입산 소고기</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('031')"><span class="name">양념육·돈까스</span></a></li>
 									</ul>
 								</li>
+								
 								<li>
 									<a class="menu">
-										<span class="ico">
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(10).png" alt="카테고리 아이콘" class="ico_off"> 
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(12).png" alt="카테고리 아이콘" class="ico_on">
-										</span> 
-										<span class="tit"><span class="txt">국·반찬·메인요리</span></span>
-									</a>
-									<ul class="sub_menu">
-										<li><a class="sub"><span class="name">국·탕·찌개</span></a></li>
-										<li><a class="sub"><span class="name">밀키트·메인요리</span></a></li>
-										<li><a class="sub"><span class="name">밑반찬</span></a></li>
-										<li><a class="sub"><span class="name">김치·젓갈·장류</span></a></li>
-										<li><a class="sub"><span class="name">두부·어묵·부침개</span></a></li>
-										<li><a class="sub"><span class="name">베이컨·햄·통조림</span></a></li>
-									</ul>
-								</li>
-								<li>
-									<a class="menu">
-										<span class="ico">
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(11).png" alt="카테고리 아이콘" class="ico_off"> 
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(13).png" alt="카테고리 아이콘" class="ico_on">
-										</span> 
-										<span class="tit"><span class="txt">샐러드·간편식</span></span>
-									</a>
-									<ul class="sub_menu">
-										<li><a class="sub"><span class="name">샐러드·닭가슴살</span></a></li>
-										<li><a class="sub"><span class="name">도시락·밥류</span></a></li>
-										<li><a class="sub"><span class="name">파스타·면류</span></a></li>
-										<li><a class="sub"><span class="name">떡볶이·튀김·순대</span></a></li>
-										<li><a class="sub"><span class="name">피자·핫도그·만두</span></a></li>
-										<li><a class="sub"><span class="name">폭립·떡갈비·안주</span></a></li>
-										<li><a class="sub"><span class="name">죽·스프·카레</span></a></li>
-										<li><a class="sub"><span class="name">선식·시리얼</span></a></li>
-									</ul>
-								</li>
-								<li>
-									<a class="menu">
+										<input class="hiddenMenuValue" type="hidden" value="P07">
 										<span class="ico">
 											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(14).png" alt="카테고리 아이콘" class="ico_off"> 
 											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(15).png" alt="카테고리 아이콘" class="ico_on">
@@ -469,139 +421,57 @@
 										<span class="tit"><span class="txt">면·양념·오일</span></span>
 									</a>
 									<ul class="sub_menu">
-										<li><a class="sub"><span class="name">파스타·면류</span></a></li>
-										<li><a class="sub"><span class="name">식초·소스·드레싱</span></a></li>
-										<li><a class="sub"><span class="name">양념·액젓·장류</span></a></li>
-										<li><a class="sub"><span class="name">식용유·참기름·오일</span></a></li>
-										<li><a class="sub"><span class="name">소금·설탕·향신료</span></a></li>
-										<li><a class="sub"><span class="name">밀가루·가루·믹스</span></a></li>
+										<li><a class="sub"><span class="name">====카테고리=====</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('047')"><span class="name">파스타·면류</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('048')"><span class="name">식초·소스·드레싱</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('049')"><span class="name">양념·액젓·장류</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('050')"><span class="name">식용유·참기름·오일</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('051')"><span class="name">소금·설탕·향신료</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('052')"><span class="name">밀가루·가루·믹스</span></a></li>
 									</ul>
 								</li>
 								<li>
 									<a class="menu">
-									<span class="ico">
-										<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(16).png" alt="카테고리 아이콘" class="ico_off"> 
-										<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(17).png" alt="카테고리 아이콘" class="ico_on">
-									</span> 
-										<span class="tit"><span class="txt">생수·음료·우유·커피</span></span>
-									</a>
-									<ul class="sub_menu">
-										<li><a class="sub"><span class="name">생수·탄산수</span></a></li>
-										<li><a class="sub"><span class="name">음료·주스</span></a></li>
-										<li><a class="sub"><span class="name">우유·두유·요거트</span></a></li>
-										<li><a class="sub"><span class="name">커피</span></a></li>
-										<li><a class="sub"><span class="name">차</span></a></li>
-									</ul>
-								</li>
-								<li>
-									<a class="menu">
+										<input class="hiddenMenuValue" type="hidden" value="P08">
 										<span class="ico">
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(18).png" alt="카테고리 아이콘" class="ico_off"> 
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(19).png" alt="카테고리 아이콘" class="ico_on">
+											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(16).png" alt="카테고리 아이콘" class="ico_off"> 
+											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(17).png" alt="카테고리 아이콘" class="ico_on">
 										</span> 
-										<span class="tit"><span class="txt">간식·과자·떡</span></span>
+											<span class="tit"><span class="txt">생수·음료·우유·커피</span></span>
 									</a>
 									<ul class="sub_menu">
-										<li><a class="sub"><span class="name">과자·스낵·쿠키</span></a></li>
-										<li><a class="sub"><span class="name">초콜릿·젤리·캔디</span></a></li>
-										<li><a class="sub"><span class="name">떡·한과</span></a></li>
-										<li><a class="sub"><span class="name">아이스크림</span></a></li>
+										<li><a class="sub"><span class="name">====카테고리=====</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('053')"><span class="name">생수·탄산수</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('054')"><span class="name">음료·주스</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('055')"><span class="name">우유·두유·요거트</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('056')"><span class="name">커피</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('057')"><span class="name">차</span></a></li>
 									</ul>
 								</li>
 								<li>
 									<a class="menu">
+										<input class="hiddenMenuValue" type="hidden" value="P06">
 										<span class="ico">
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(20).png" alt="카테고리 아이콘" class="ico_off"> 
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(21).png" alt="카테고리 아이콘" class="ico_on">
+											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(11).png" alt="카테고리 아이콘" class="ico_off"> 
+											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(13).png" alt="카테고리 아이콘" class="ico_on">
 										</span> 
-										<span class="tit"><span class="txt">베이커리·치즈·델리</span></span>
+										<span class="tit"><span class="txt">샐러드·간편식</span></span>
 									</a>
 									<ul class="sub_menu">
-										<li><a class="sub"><span class="name">식빵·빵류</span></a></li>
-										<li><a class="sub"><span class="name">잼·버터·스프레드</span></a></li>
-										<li><a class="sub"><span class="name">케이크·파이·디저트</span></a></li>
-										<li><a class="sub"><span class="name">치즈</span></a></li>
-										<li><a class="sub"><span class="name">델리</span></a></li>
-										<li><a class="sub"><span class="name">올리브·피클</span></a></li>
+										<li><a class="sub"><span class="name">====카테고리=====</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('039')"><span class="name">샐러드·닭가슴살</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('040')"><span class="name">도시락·밥류</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('041')"><span class="name">파스타·면류</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('042')"><span class="name">떡볶이·튀김·순대</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('043')"><span class="name">피자·핫도그·만두</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('044')"><span class="name">폭립·떡갈비·안주</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('045')"><span class="name">죽·스프·카레</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('046')"><span class="name">선식·시리얼</span></a></li>
 									</ul>
 								</li>
 								<li>
 									<a class="menu">
-										<span class="ico">
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(22).png" alt="카테고리 아이콘" class="ico_off"> 
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(23).png" alt="카테고리 아이콘" class="ico_on">								
-										</span> 
-										<span class="tit"><span class="txt">건강식품</span></span>
-									</a>
-									<ul class="sub_menu">
-										<li><a class="sub"><span class="name">영양제</span></a></li>
-										<li><a class="sub"><span class="name">유산균</span></a></li>
-										<li><a class="sub"><span class="name">홍삼·인삼·꿀</span></a></li>
-										<li><a class="sub"><span class="name">건강즙·건강음료</span></a></li>
-										<li><a class="sub"><span class="name">건강분말·건강환</span></a></li>
-										<li><a class="sub"><span class="name">다이어트·이너뷰티</span></a></li>
-										<li><a class="sub"><span class="name">유아동</span></a></li>
-									</ul>
-								</li>
-								<li>
-									<a class="menu">
-										<span class="ico">
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(24).png" alt="카테고리 아이콘" class="ico_off"> 
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(25).png" alt="카테고리 아이콘" class="ico_on">
-										</span> 
-										<span class="tit"><span class="txt">생활용품·리빙</span></span>
-									</a>
-									<ul class="sub_menu">
-										<li><a class="sub"><span class="name">휴지·티슈</span></a></li>
-										<li><a class="sub"><span class="name">여성·위생용품</span></a></li>
-										<li><a class="sub"><span class="name">세제·청소용품</span></a></li>
-										<li><a class="sub"><span class="name">화훼·인테리어소품</span></a></li>
-										<li><a class="sub"><span class="name">의약외품·마스크</span></a></li>
-										<li><a class="sub"><span class="name">생활잡화·문구</span></a></li>
-										<li><a class="sub"><span class="name">캠핑용품</span></a></li>
-									</ul>
-								</li>
-								<li>
-									<a class="menu">
-										<span class="ico">
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(26).png" alt="카테고리 아이콘" class="ico_off"> 
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(27).png" alt="카테고리 아이콘" class="ico_on">
-										</span> 
-										<span class="tit"><span class="txt">스킨케어·메이크업</span></span>
-									</a>
-									<ul class="sub_menu">
-										<li><a class="sub"><span class="name">스킨·미스트·패드</span></a></li>
-										<li><a class="sub"><span class="name">에센스·앰플·로션</span></a></li>
-										<li><a class="sub"><span class="name">크림·오일</span></a> </li>
-										<li><a class="sub"><span class="name">클렌징</span></a> </li>
-										<li><a class="sub"><span class="name">마스크팩</span></a></li>
-										<li><a class="sub"><span class="name">선케어</span></a></li>
-										<li><a class="sub"><span class="name">메이크업</span></a></li>
-										<li><a class="sub"><span class="name">맨즈케어</span></a></li>
-										<li><a class="sub"><span class="name">뷰티소품·기기</span></a></li>
-									</ul>
-								</li>
-								<li>
-									<a class="menu">
-										<span class="ico">
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(28).png" alt="카테고리 아이콘" class="ico_off"> 
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(29).png" alt="카테고리 아이콘" class="ico_on">
-										</span> 
-										<span class="tit"><span class="txt">헤어·바디·구강</span></span>
-									</a>
-									<ul class="sub_menu">
-										<li><a class="sub"><span class="name">구강·면도</span></a></li>
-										<li><a class="sub"><span class="name">샴푸·컨디셔너</span></a></li>
-										<li><a class="sub"><span class="name">트리트먼트·팩</span></a></li>
-										<li><a class="sub"><span class="name">헤어에센스·염모</span></a></li>
-										<li><a class="sub"><span class="name">바디워시·스크럽</span></a></li>
-										<li><a class="sub"><span class="name">바디로션·크림</span></a></li>
-										<li><a class="sub"><span class="name">핸드·립·데오</span></a></li>
-										<li><a class="sub"><span class="name">헤어·바디소품</span></a></li>
-									</ul>
-								</li>
-								<li>
-									<a class="menu">
+										<input class="hiddenMenuValue" type="hidden" value="P11">
 										<span class="ico">
 											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(30).png" alt="카테고리 아이콘" class="ico_off"> 
 											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(31).png" alt="카테고리 아이콘" class="ico_on">
@@ -609,199 +479,50 @@
 										<span class="tit"><span class="txt">주방용품</span></span>
 									</a>
 									<ul class="sub_menu">
-										<li><a class="sub"><span class="name">주방소모품·잡화</span></a></li>
-										<li><a class="sub"><span class="name">주방·조리도구</span></a></li>
-										<li><a class="sub"><span class="name">냄비·팬·솥</span></a></li>
-										<li><a class="sub"><span class="name">보관용기·텀블러</span></a></li>
-										<li><a class="sub"><span class="name">식기·테이블웨어</span></a></li>
-										<li><a class="sub"><span class="name">컵·잔·커피도구</span></a></li>
+										<li><a class="sub"><span class="name">====카테고리=====</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('068')"><span class="name">주방소모품·잡화</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('069')"><span class="name">주방·조리도구</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('070')"><span class="name">냄비·팬·솥</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('071')"><span class="name">보관용기·텀블러</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('072')"><span class="name">식기·테이블웨어</span></a></li>
 									</ul>
 								</li>
 								<li>
 									<a class="menu">
+										<input class="hiddenMenuValue" type="hidden" value="P05">
 										<span class="ico">
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(32).png" alt="카테고리 아이콘" class="ico_off"> 
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(33).png" alt="카테고리 아이콘" class="ico_on">
+											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(10).png" alt="카테고리 아이콘" class="ico_off"> 
+											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(12).png" alt="카테고리 아이콘" class="ico_on">
 										</span> 
-										<span class="tit"><span class="txt">가전제품</span> </span></a>
-									<ul class="sub_menu">
-										<li><a class="sub"><span class="name">주방가전</span></a></li>
-										<li><a class="sub"><span class="name">생활가전</span></a></li>
-										<li><a class="sub"><span class="name">계절가전</span></a></li>
-										<li><a class="sub"><span class="name">디지털·PC</span></a></li>
-										<li><a class="sub"><span class="name">대형·설치가전</span></a></li>
-									</ul>
-								</li>
-								<li>
-									<a class="menu">
-										<span class="ico">
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(34).png" alt="카테고리 아이콘" class="ico_off"> 
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(35).png" alt="카테고리 아이콘" class="ico_on">
-										</span> 
-										<span class="tit"><span class="txt">베이비·키즈</span></span>
+										<span class="tit"><span class="txt">국·반찬·메인요리</span></span>
 									</a>
 									<ul class="sub_menu">
-										<li><a class="sub"><span class="name">분유·간편 이유식</span></a></li>
-										<li><a class="sub"><span class="name">이유식 재료</span></a></li>
-										<li><a class="sub"><span class="name">간식·음식·음료</span></a></li>
-										<li><a class="sub"><span class="name">건강식품</span></a></li>
-										<li><a class="sub"><span class="name">이유·수유용품</span></a></li>
-										<li><a class="sub"><span class="name">기저귀·물티슈</span></a></li>
-										<li><a class="sub"><span class="name">세제·위생용품</span></a></li>
-										<li><a class="sub"><span class="name">스킨·구강케어</span></a></li>
-										<li><a class="sub"><span class="name">완구·잡화류</span></a></li>
+										<li><a class="sub"><span class="name">====카테고리=====</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('033')"><span class="name">국·탕·찌개</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('034')"><span class="name">밀키트·메인요리</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('035')"><span class="name">밑반찬</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('036')"><span class="name">김치·젓갈·장류</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('037')"><span class="name">두부·어묵·부침개</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('038')"><span class="name">베이컨·햄·통조림</span></a></li>
 									</ul>
 								</li>
 								<li>
 									<a class="menu">
+										<input class="hiddenMenuValue" type="hidden" value="P10">
 										<span class="ico">
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(36).png" alt="카테고리 아이콘" class="ico_off"> 
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(37).png" alt="카테고리 아이콘" class="ico_on">
+											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(20).png" alt="카테고리 아이콘" class="ico_off"> 
+											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(21).png" alt="카테고리 아이콘" class="ico_on">
 										</span> 
-										<span class="tit"><span class="txt">반려동물</span> </span>
+										<span class="tit"><span class="txt">베이커리·치즈·델리</span></span>
 									</a>
 									<ul class="sub_menu">
-										<li><a class="sub"><span class="name">강아지 간식</span></a></li>
-										<li><a class="sub"><span class="name">강아지 주식</span></a></li>
-										<li><a class="sub"><span class="name">고양이 간식</span></a></li>
-										<li><a class="sub"><span class="name">고양이 주식</span></a></li>
-										<li><a class="sub"><span class="name">반려동물 용품</span></a></li>
-										<li><a class="sub"><span class="name">배변·위생</span></a></li>
-										<li><a class="sub"><span class="name">소용량·샘플</span></a></li>
-									</ul>
-								</li>
-								<li>
-									<a class="menu">
-										<span class="ico">
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(38).png" alt="카테고리 아이콘" class="ico_off"> 
-											<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC+%EC%95%84%EC%9D%B4%EC%BD%98+(39).png" alt="카테고리 아이콘" class="ico_on">
-										</span> 
-										<span class="tit"><span class="txt">컬리의 추천</span></span>
-									</a>
-									<ul class="sub_menu recommend">
-										<li>
-											<a class="sub">
-												<span class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/category/image/f1fbbe98-127b-4586-b653-9caa932fa238&quot;);">
-													<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/bg_blink_236x179.png" alt="">
-												</span> 
-												<span class="name">호텔 예약</span>
-											</a>
-										</li>
-										<li>
-											<a class="sub">
-												<span class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/category/thumbnail_cool_summer.1621587831.png&quot;);">
-													<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/bg_blink_236x179.png" alt="">
-												</span> 
-												<span class="name">시원한 여름</span>
-											</a>
-										</li>
-										<li>
-											<a class="sub">
-												<span class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/category/thumbnail_diet.1585551225.jpg&quot;);">
-													<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/bg_blink_236x179.png" alt="">
-												</span> 
-												<span class="name">식단관리</span>
-											</a>
-										</li>
-										<li>
-											<a class="sub">
-												<span class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/category/thumbnail_breakfast.1585549149.jpg&quot;);">
-													<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/bg_blink_236x179.png" alt="">
-												</span> 
-												<span class="name">간편한 아침식사</span>
-											</a>
-										</li>
-										<li>
-											<a class="sub"><span class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/category/thumbnail_best_210402.1617341016.png&quot;);">
-													<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/bg_blink_236x179.png" alt="">
-												</span> 
-												<span class="name">재구매 BEST</span>
-											</a>
-										</li>
-										<li>
-											<a class="sub">
-												<span class="thumb"style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/category/thumbnail_3000_210303.1614667552.png&quot;);">
-													<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/bg_blink_236x179.png"  alt="">
-												</span> 
-												<span class="name">3천원의 행복</span>
-											</a>
-										</li>
-										<li>
-											<a class="sub">
-												<span class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/category/thumbnail_kp_210108_4.1610088265.jpg&quot;);">
-													<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/bg_blink_236x179.png" alt="">
-												</span> 
-												<span class="name">컬리마트</span>
-											</a>
-										</li>
-										<li>
-											<a class="sub">
-												<span class="thumb"style="background-image: url(&quot;https://img-cf.kurly.com/category/image/37194cb5-e9c1-4492-ac5a-385a1ff2b624&quot;);">
-													<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/bg_blink_236x179.png" alt=""></span>
-												<span class="name">대용량 상품</span>
-											</a>
-										</li>
-										<li>
-											<a class="sub">
-												<span class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/category/thumbnail_camping_210405.1617341339.png&quot;);">
-													<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/bg_blink_236x179.png" alt=""></span> 
-												<span class="name">캠핑</span>
-											</a>
-										</li>
-										<li>
-											<a class="sub">
-												<span class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/category/thumbnail_single.1594026881.jpg&quot;);">
-													<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/bg_blink_236x179.png" alt="">
-												</span> 
-												<span class="name">1인 가구</span>
-											</a>
-										</li>
-										<li>
-											<a class="sub">
-												<span class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/category/thumbnail_vegan_210303.1614667589.png&quot;);">
-													<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/bg_blink_236x179.png" alt="">
-												</span>
-												<span class="name">비건</span>
-											</a>
-										</li>
-										<li>
-											 <a class="sub">
-											 	<span class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/category/thumbnail_offline_210303.1614666430.png&quot;);">
-											 		<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/bg_blink_236x179.png" alt="">
-											 	</span> 
-											 	<span class="name">오프라인 맛집</span>
-											 </a>
-										</li>
-										<li>
-											 <a class="sub">
-												 <span class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/category/thumbnail_kurly_s_210303.1614667608.png&quot;);">
-													 <img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/bg_blink_236x179.png" alt=""></span> 
-												 <span class="name">컬리가 만든 상품</span>
-											 </a>
-										</li>
-										<li>
-											 <a class="sub">
-												 <span class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/category/thumbnail_only_210303.1614667623.png&quot;);">
-												 	<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/bg_blink_236x179.png" alt=""></span> 
-												 <span class="name">Kurly Only</span>
-											 </a>
-										</li>
-										<li>
-											<a class="sub"> 
-												<span class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/category/image/f8cf5fe6-4123-4147-981e-d7f889f9e316&quot;);">
-													<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/bg_blink_236x179.png" alt="">
-												</span> 
-												<span class="name">KF365</span>
-											</a>
-										</li>
-										<li>
-											<a class="sub">
-												<span class="thumb" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/category/thumb_kp_1PT_201222.1608611417.jpg&quot;);">
-													<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/bg_blink_236x179.png" alt="">
-												</span> 
-												<span class="name">1% Table</span>
-											</a>
-										</li>
+										<li><a class="sub"><span class="name">====카테고리=====</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('062')"><span class="name">식빵·빵류</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('063')"><span class="name">잼·버터·스프레드</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('064')"><span class="name">케이크·파이·디저트</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('065')"><span class="name">치즈</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('066')"><span class="name">델리</span></a></li>
+										<li><a class="sub" onclick="goods_list_subPage('067')"><span class="name">올리브·피클</span></a></li>
 									</ul>
 								</li>
 							</ul>

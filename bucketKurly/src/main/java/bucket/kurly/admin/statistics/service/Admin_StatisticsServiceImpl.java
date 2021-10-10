@@ -14,9 +14,22 @@ public class Admin_StatisticsServiceImpl implements Admin_StatisticsService {
 	@Autowired
 	Admin_StatisticsDAO dao;
 	
+	//회원등급별 회원수 구하기
 	@Override
 	public List<Admin_StatisticsVO> getMemberRank() {
 		return dao.getMemberRank();
 	}
+	//일별매출
+	@Override
+	public List<Admin_StatisticsVO> getRevenue_daily() {
+		return dao.getRevenue_daily();
+	}
+	//월별매출
+	@Override
+	public List<Admin_StatisticsVO> getRevenue_monthly() {
+		return dao.getRevenue_monthly();
+	}
+
+	
 	
 }

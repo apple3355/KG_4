@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 /*goods_name*/
 .goods-name p {display: block;margin-block-start: 0em;margin-block-end: 0em;margin-inline-start: 0px;margin-inline-end: 0px;}
@@ -9,14 +10,14 @@
 .goods-view-infomation-tab-group {display: flex;flex-direction: row;width: 1010px;margin: 0 auto;}
 .goods-view-infomation-tab:first-child .goods-view-infomation-tab-anchor {border-left: 1px solid #eee;}
 .goods-view-infomation-tab-anchor.__active{background-color: #fff;color: #5f0080;border-bottom: 0;}
-.goods-view-infomation-tab-anchor {flex: 1;position: relative;top: 1px;height: 60px;line-height: 59px;text-align: center;display: block;color: #666;font-size: 16px;font-weight: 700;letter-spacing: -.3px;font-family: noto sans;background-color: #fafafa;border: 1px solid #eee;border-left: none;}
+.goods-view-infomation-tab-anchor {flex: 1;position: relative;top: 1px;height: 60px;line-height: 59px;text-align: center;display: block;color: #666;font-size: 16px;font-weight: 500;letter-spacing: -.3px;font-family:'Noto Sans KR', sans-serif; background-color: #fafafa;border: 1px solid #eee;border-left: none;}
 
 /*goods-view-infomation-content_active*/
 .goods-view-infomation-content.__active {display: block;}
 .goods-view-infomation-content {padding-top: 40px;min-height: 500px;margin-bottom: 50px;}
 
 /*goods_wrap*/
-.goods_wrap {width: 1010px;margin: 0 auto;font-family: noto sans;font-weight: 200;letter-spacing: 0;}
+.goods_wrap {width: 1010px;margin: 0 auto;font-family:'Noto Sans KR', sans-serif; font-weight: 200;letter-spacing: 0;}
 
 /*context_last*/
 .goods_wrap .context.last {margin-bottom: 170px;}
@@ -28,7 +29,7 @@
 /* sectionView */
 .section_view {width: 1050px;margin: 0 auto;padding-top: 20px;}
 #shareLayer {position: relative;}
-.section_view * {font-family: noto sans;color: #333;letter-spacing: -.5px;}
+.section_view * {font-family: 'Noto Sans KR', sans-serif; color: #333;letter-spacing: -.5px;}
 #shareLayer .layer_share {display: none;position: absolute;right: -25px;top: 39px;width: 278px;height: 164px;background: url(https://res.kurly.com/mobile/service/goodsview/1804/layer_share.png) no-repeat 0 0;}
 #shareLayer .inner_layersns {overflow: hidden;width: 238px;height: 120px;}
 .screen_out {display: block;left: -9999px;font-size: 0;line-height: 0;text-indent: -9999px;}
@@ -36,7 +37,7 @@
 ul {list-style-type: none;}
 #shareLayer .list_share .btn {position: absolute;top: 0;}
 #shareLayer .list_share .btn_fb {left: 154px;top: 44px;}
-.btn {width: 100%;height: 52px;border: 0;border-radius: 4px;font-weight: 600;font-size: 16px;line-height: 50px;text-align: center;outline: none;}
+.btn {width: 100%;height: 52px;border: 0;border-radius: 4px;font-weight: 500;font-size: 16px;line-height: 50px;text-align: center;outline: none;}
 #shareLayer .list_share .btn img {float: left;width: 30px;height: 30px;margin-right: 8px;}
 img {border: 0;}
 #shareLayer .list_share .txt {float: left;padding-top: 4px;font-size: 12px;color: #000;line-height: 20px;}
@@ -52,14 +53,14 @@ img {border: 0;}
 #sectionView .btn_share {display: block;position: relative;}
 #sectionView #btnShare {overflow: hidden;position: absolute;right: 0;top: 0;width: 40px;height: 40px;border: 0;background: url(https://res.kurly.com/mobile/service/goodsview/1910/ico_view_sns.png) no-repeat 50% 50%;font-size: 0;text-indent: -9999px;}
 button {outline: none;}
-#sectionView .goods_name .name {display: block;padding-right: 60px;font-weight: 700;font-size: 24px;line-height: 34px;word-break: break-all;}
+#sectionView .goods_name .name {display: block;padding-right: 60px;font-weight: 500;font-size: 24px;line-height: 34px;word-break: break-all;}
 #sectionView .goods_name .short_desc {display: block;padding: 4px 60px 0 0;font-size: 14px;color: #999;line-height: 20px;word-break: break-all;}
 #sectionView .goods_dcinfo {float: right;width: 560px;padding-right: 21px;font-size: 14px;line-height: 20px;}
 #sectionView .goods_price {float: right;width: 560px;padding: 0 20px 0 0;}
 #sectionView .goods_price .dc {display: block;padding-top: 4px;}
-#sectionView .goods_price .dc_price {font-weight: 700;font-size: 28px;line-height: 30px;letter-spacing: 0;word-break: break-all;}
-#sectionView .goods_price .dc .won {padding: 0 7px 0 2px;font-weight: 700;font-size: 18px;line-height: 30px;vertical-align: 2px;letter-spacing: 0;}
-#sectionView .goods_price .dc_percent .per, #sectionView .goods_price .dc_percent {font-weight: 700;font-size: 28px;color: #fa622f;line-height: 30px;letter-spacing: 0;}
+#sectionView .goods_price .dc_price {font-weight: 500;font-size: 28px;line-height: 30px;letter-spacing: 0;word-break: break-all;}
+#sectionView .goods_price .dc .won {padding: 0 7px 0 2px;font-weight: 500;font-size: 18px;line-height: 30px;vertical-align: 2px;letter-spacing: 0;}
+#sectionView .goods_price .dc_percent .per, #sectionView .goods_price .dc_percent {font-weight: 500;font-size: 28px;color: #fa622f;line-height: 30px;letter-spacing: 0;}
 #sectionView .goods_price .original_price {float: left;padding-top: 7px;}
 #sectionView .goods_price .price {font-size: 16px;color: #999;line-height: 24px;text-decoration: line-through;}
 #sectionView .goods_price .price .won {color: #999;}
@@ -67,7 +68,7 @@ button {outline: none;}
 #sectionView .goods_price .layer_position {display: none;position: relative;float: left;width: 16px;}
 #sectionView .goods_price .layer_price {position: absolute;left: -18px;top: 32px;width: 320px;padding: 13px 23px 13px 13px;border: 1px solid #333;border-radius: 3px;background-color: #fff;font-size: 12px;color: #666;line-height: 16px;}
 #sectionView .goods_price .layer_price .tit_layer {display: block;padding-bottom: 6px;font-size: 12px;line-height: 16px;}
-b, strong {font-weight: 700;}
+b, strong {font-weight: 600;}
 #sectionView .goods_price .layer_price .bar {display: block;}
 #sectionView .goods_price .position:after {content: "";display: block;overflow: hidden;width: 100%;clear: both;}
 #sectionView .goods_benefit {float: right;width: 560px;}
@@ -92,7 +93,7 @@ b, strong {font-weight: 700;}
 /* cartPut */
 #cartPut .cart_type2 {float: right;width: 560px;padding-bottom: 40px;}
 #cartPut .cart_option {background-color: #fff;}
-#cartPut * {font-family: noto sans;color: #333;letter-spacing: 0;}
+#cartPut * {font-family: 'Noto Sans KR', sans-serif; color: #333;letter-spacing: 0;}
 #cartPut .cart_type2 .list_goods {padding-bottom: 18px;}
 #cartPut .cart_type2 .list_nopackage {padding: 0;}
 #cartPut .cart_option .list {overflow: hidden;padding-bottom: 1px;}
@@ -104,7 +105,7 @@ b, strong {font-weight: 700;}
 #cartPut .cart_option .list .name {display: block;font-size: 12px;line-height: 20px;letter-spacing: -.6px;}
 #cartPut .cart_type2 .list_nopackage .tit_item {float: left;width: 150px;font-weight: 400;font-size: 14px;color: #666;line-height: 20px;letter-spacing: -.5px;}
 #cartPut .cart_type2 .list_nopackage .option {padding-top: 0;}
-#cartPut .cart_type2 .list .option {padding-top: 8px;overflow: hidden;}
+#cartPut .cart_type2 .list .option {padding-bottom: 8px; overflow: hidden;}
 #cartPut .cart_option .list .count {overflow: hidden;float: left;width: 88px;height: 30px;border: 1px solid #dddfe1;border-radius: 3px;}
 #cartPut .cart_option .list .down.on {background-image: url(https://res.kurly.com/pc/ico/2010/ico_minus_on.svg);}
 #cartPut .cart_option .list .down {background: #fff url(https://res.kurly.com/pc/ico/2010/ico_minus.svg) no-repeat 50% 50%;background-size: 30px 30px;}
@@ -113,24 +114,24 @@ b, strong {font-weight: 700;}
 #cartPut .cart_option .list .up.on {background-image: url(https://res.kurly.com/pc/ico/2010/ico_plus_on.svg);}
 #cartPut .cart_option .list .up {float: right;margin-left: -1px;background: #fff url(https://res.kurly.com/pc/ico/2010/ico_plus.svg) no-repeat 50% 50%;background-size: 30px 30px;}
 #cartPut .cart_type2 .list .price {float: right;padding: 5px 4px 0;font-size: 12px;line-height: 20px;letter-spacing: -.6px;}
-#cartPut .cart_option .list .price {font-weight: 700;text-align: right;}
+#cartPut .cart_option .list .price {font-weight: 500;text-align: right;}
 #cartPut .cart_type2 .list .dc_price {float: right;}
 #cartPut .cart_type2 .total {padding: 30px 0 14px;border-top: 1px solid #f4f4f4;}
 #cartPut .cart_option .total .price {overflow: hidden;text-align: right;}
-#cartPut .cart_option .total .tit {font-weight: 700;font-size: 13px;line-height: 20px;vertical-align: 2px;}
-#cartPut .cart_option .total .num {padding-left: 8px;font-weight: 800;font-size: 32px;line-height: 32px;}
-#cartPut .cart_option .total .won {padding-left: 2px;font-size: 20px;font-weight: 700;line-height: 20px;vertical-align: -1px;}
+#cartPut .cart_option .total .tit {font-weight: 500;font-size: 13px;line-height: 20px;vertical-align: 2px;}
+#cartPut .cart_option .total .num {padding-left: 8px;font-weight: 700;font-size: 32px;line-height: 32px;}
+#cartPut .cart_option .total .won {padding-left: 2px;font-size: 20px;font-weight: 500;line-height: 20px;vertical-align: -1px;}
 #cartPut .cart_type2 .total .txt_point {padding-top: 13px;}
 #cartPut .cart_option .total .txt_point {display: block;padding-top: 14px;font-size: 14px;color: #666;line-height: 20px;text-align: right;}
-#cartPut .cart_option .total .ico {display: inline-block;width: 38px;height: 20px;margin-right: 2px;border-radius: 10px;background-color: #ffbf00;font-weight: 700;font-size: 11px;color: #fff;line-height: 20px;text-align: center;vertical-align: 1px;}
+#cartPut .cart_option .total .ico {display: inline-block;width: 38px;height: 20px;margin-right: 2px;border-radius: 10px;background-color: #ffbf00;font-weight: 500;font-size: 11px;color: #fff;line-height: 20px;text-align: center;vertical-align: 1px;}
 #cartPut .cart_option .group_btn {overflow: hidden;width: 100%;}
 #cartPut .cart_type2 .view_function {display: block;float: left;}
 #cartPut .cart_option .view_function .btn_alarm {border: 1px solid #ddd;color: #ddd;}
-#cartPut .cart_option .view_function .btn {overflow: hidden;float: right;width: 138px;height: 56px;margin-right: 12px;padding-bottom: 2px;border: 1px solid #5f0080;border-radius: 3px;background: #fff;font-weight: 700;font-size: 16px;color: #5f0080;line-height: 52px;letter-spacing: -.1px;text-align: center;}
+#cartPut .cart_option .view_function .btn {overflow: hidden;float: right;width: 138px;height: 56px;margin-right: 12px;padding-bottom: 2px;border: 1px solid #5f0080;border-radius: 3px;background: #fff;font-weight: 500;font-size: 16px;color: #5f0080;line-height: 52px;letter-spacing: -.1px;text-align: center;}
 #cartPut .cart_option .group_btn .btn_type1 {width: auto;height: 56px;}
 .btn_type1 {border: 1px solid #5f0081;background-color: #5f0080;}
 .btn_type1, .btn_type2 {display: block;overflow: hidden;width: 100%;height: 54px;border-radius: 3px;font-size: 0;text-align: center;}
-#cartPut .cart_option .group_btn .txt_type {display: block;width: 100%;height: 100%;padding-bottom: 2px;border: 0;background: 0 0;font-weight: 700;color: #fff;font-size: 16px;line-height: 52px;letter-spacing: -.1px;text-align: center;}
+#cartPut .cart_option .group_btn .txt_type {display: block;width: 100%;height: 100%;padding-bottom: 2px;border: 0;background: 0 0;font-weight: 500;color: #fff;font-size: 16px;line-height: 52px;letter-spacing: -.1px;text-align: center;}
 #cartPut .cart_type1 {display: none;position: fixed;z-index: 200;left: 0;bottom: 0;width: 100%;}
 #cartPut .cart_type1 .in_option {left: 0;bottom: 70px;width: 100%;}
 #cartPut .cart_type1 .bar_open {display: block;position: relative;height: 22px;border-top: 2px solid #5f0080;}
@@ -145,8 +146,8 @@ b, strong {font-weight: 700;}
 #cartPut .notify_option {display: none;opacity: 0;}
 #cartPut .cart_type3 {position: fixed;z-index: 9999;left: 50%;top: 50%;width: 440px;max-height: 600px;margin-left: -220px;border-radius: 12px;background-color: #fff;-webkit-transform: translate(0,-50%);-ms-transform: translate(0,-50%);transform: translate(0,-50%);}
 #cartPut .cart_type3 .inner_option {padding: 0 30px;}
-#cartPut .notify_option .tit {display: block;padding-top: 29px;font-weight: 700;font-size: 24px;color: #333;line-height: 32px;letter-spacing: -1px;}
-#cartPut .notify_option .name_deal {padding-top: 30px;font-weight: 700;font-size: 16px;color: #333;line-height: 24px;letter-spacing: -.67px;}
+#cartPut .notify_option .tit {display: block;padding-top: 29px;font-weight: 500;font-size: 24px;color: #333;line-height: 32px;letter-spacing: -1px;}
+#cartPut .notify_option .name_deal {padding-top: 30px;font-weight: 500;font-size: 16px;color: #333;line-height: 24px;letter-spacing: -.67px;}
 #cartPut .notify_option .notice {position: relative;margin-top: 30px;padding-left: 9px;font-size: 12px;color: #666;line-height: 18px;letter-spacing: -.1px;}
 #cartPut .notify_option .notice .ico {content: "·";position: absolute;left: 0;top: -1px;}
 #cartPut .notify_option .group_btn {padding-top: 30px;}
@@ -165,9 +166,6 @@ b, strong {font-weight: 700;}
 #cartPut .cart_type3 .group_btn .btn_type1 .txt_type, #cartPut .cart_type3 .group_btn .btn_type2 .txt_type {width: 100%;border: 0;border-radius: 3px;background: 0 0;}
 #cartPut .cart_result .group_btn .ico_search {display: inline-block;width: 24px;height: 24px;background: url(https://res.kurly.com/pc/ico/2008/ico_search_40x40.png) no-repeat 50% 50%;background-size: 20px 20px;vertical-align: -7px;}
 #cartPut .cart_option .box_select:after, #cartPut:after {content: "";display: block;overflow: hidden;width: 100%;height: 0;}
-
-
-
 
 
 

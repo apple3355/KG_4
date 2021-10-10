@@ -9,6 +9,20 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/goods_list.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/common.css">
 	<title>layout</title>
+	<style>
+		#goodsList .list_goods .cost .original {
+			display: block;
+			font-size: 16px;
+			color: #999;
+			text-decoration: line-through;
+		}
+		
+		#goodsList .list_goods .cost .dc {
+			padding-right: 2px;
+			font-weight: 600;
+			color: #fa622f;
+		}
+	</style>
 </head>
 <body>
 	<div id="wrap" class="">
@@ -32,133 +46,137 @@
 							
 							<div class="inner_lnb">
 								<h3 class="tit">${select_type}</h3>
-								<ul class="list" style="">
-									<li data-start="172" data-end="188">
-										<a class="on">전체보기</a>
-									</li> 
-									<li class="bg"></li>
-								</ul>
 							</div>
 						</div>
 						
-						<div id="goodsList" class="page_section section_goodslist">
-							<div class="list_ability">
-								<div class="sort_menu">
-									<div class="">
-										<p class="count"><span class="inner_count">총 ${itemCnt} 건</span></p>
-										<div class="select_type user_sort">
-											<a class="name_select">신상품순</a>												
-											<ul class="list">
-												<li><a class="">추천순</a></li>
-												<li><a class="">신상품순</a></li>
-												<li><a class="">인기상품순</a></li>
-												<li><a class="">혜택순</a></li>
-												<li><a class="">낮은 가격순</a></li>
-												<li><a class="">높은 가격순</a></li>
-											</ul>
+						
+						<c:if test="${empty goods_sell_list}">
+							
+							<div id="goodsList" class="page_section section_goodslist">
+								<div class="list_ability">
+									<div class="sort_menu">
+										<div class="">
+											<p class="count"><span class="inner_count">총 ${itemCnt} 건</span></p>
+											<div class="select_type user_sort">
+												<a class="name_select">신상품순</a>												
+												<ul class="list">
+													<li><a class="">추천순</a></li>
+													<li><a class="">신상품순</a></li>
+													<li><a class="">인기상품순</a></li>
+													<li><a class="">혜택순</a></li>
+													<li><a class="">낮은 가격순</a></li>
+													<li><a class="">높은 가격순</a></li>
+												</ul>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="list_goods">
-								<div class="inner_listgoods">
-									<ul class="list">
-								
-										<!-- 상품 리스트 구분선 -->
-										<c:forEach items="${goods_sell_list}" var="goods_sell_list">
-											<li>																
-												<div class="item">
-													<div class="thumb">
-														<a class="img" style="background-image: url(&quot;https://img-cf.kurly.com/shop/data/goods/1632445842263l0.jpg&quot;);" 
-															href="javascript:void(0);" onClick="fn_goods_detail(${goods_sell_list.goods_sell_no})">
-															<img src="${goods_sell_list.goodsvo.category_goods_image_thumb}" >
-														</a>
+							<div style="margin:100px; text-align: center;">
+							 	<img id = "sorryimg" src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/sorry_ready.png" style="width:200px; height:200px;"><br>
+							 	<p style="margin-top:50px; text-align: center; font-size: 25px;">죄송합니다.</p>
+									  	<p style="margin-bottom:50px; text-align: center; font-size: 25px;">해당 항목의 상품을 준비중입니다.</p>
+									 </div>
+						</c:if>
+						
+						<c:if test="${not empty goods_sell_list}"> 
+							<div id="goodsList" class="page_section section_goodslist">
+								<div class="list_ability">
+									<div class="sort_menu">
+										<div class="">
+											<p class="count"><span class="inner_count">총 ${itemCnt} 건</span></p>
+											<div class="select_type user_sort">
+												<a class="name_select">신상품순</a>												
+												<ul class="list">
+													<li><a class="">추천순</a></li>
+													<li><a class="">신상품순</a></li>
+													<li><a class="">인기상품순</a></li>
+													<li><a class="">혜택순</a></li>
+													<li><a class="">낮은 가격순</a></li>
+													<li><a class="">높은 가격순</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="list_goods">
+									<div class="inner_listgoods">
+											<ul class="list">
+												<!-- 상품 리스트 구분선 -->
+												<c:forEach items="${goods_sell_list}" var="goods_sell_list">
+													<li>																
+														<div class="item">
+															<div class="thumb">
+																<a class="img"
+																	href="javascript:void(0);" onClick="fn_goods_detail(${goods_sell_list.goods_sell_no})">
+																	<img src="${goods_sell_list.goodsvo.category_goods_image_thumb}" >
+																</a>
+																
+															
+																<div class="group_btn">
+																	<button type="button" class="btn btn_cart">
+																		<span class="screen_out"></span>
+																	</button>
+																</div>
+															</div>
 														
-													
-														<div class="group_btn">
-															<button type="button" class="btn btn_cart">
-																<span class="screen_out"></span>
-															</button>
-														</div>
-													</div>
-												
-													<a class="info" onClick="fn_goods_detail(${goods_sell_list.goods_sell_no})">
-														<span class="name"><c:out value="${goods_sell_list.goodsvo.category_goods_name}"/></span>
-														<span class="cost">
-															<span class="price"><c:out value="${goods_sell_list.goods_sell_price}"/></span>
-														</span>
-														<span class="desc"><c:out value="${goods_sell_list.goodsvo.category_goods_name_sub}"/></span>
-														<span class="tag"></span>
-													</a>																 	
-												</div>								
-											</li>			
-																								
-										</c:forEach>	
+															<a class="info" onClick="fn_goods_detail(${goods_sell_list.goods_sell_no})">
+																<span class="name"><c:out value="${goods_sell_list.goodsvo.category_goods_name}"/></span>
+																<span class="cost">
+																<c:set var="discount" value="${goods_sell_list.goods_sell_discount}" />
+																	<c:if test="${discount == 0}">
+																	    <span class="price"><fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sell_list.goods_sell_price}"/><span class="won">원</span></span>
+																	</c:if>
 																	
-									</ul>
+																	<c:if test="${discount != 0}">
+																		<span class="dc">${goods_sell_list.goods_sell_discount}<span class="per">%</span></span> 
+																		<span class="price"><fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sell_list.goods_sell_price - (goods_sell_list.goods_sell_price * goods_sell_list.goods_sell_discount) / 100}" /><span class="won">원</span></span> 
+																		<span class="original"><fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sell_list.goods_sell_price}"/><span class="won">원</span></span>
+																	</c:if>
+																</span>
+																<span class="desc"><c:out value="${goods_sell_list.goodsvo.category_goods_name_sub}"/></span>
+															</a>	
+														</div>								
+													</li>			
+												</c:forEach>
+											</ul>	
+									</div>
+								</div>
+							
+							
+								<!-- 페이징 처리 -->
+								<div class="layout-pagination" v-if="!noData">
+									<div class="pagediv">
+										<a href="#main" @click="onMoveList(1)" class="layout-pagination-button layout-pagination-first-page">맨 처음 페이지로 가기</a>
+										<a href="#main" @click="onMoveList(pageCount-1)" class="layout-pagination-button layout-pagination-prev-page">이전 페이지로 가기</a>
+											<list-goods-paging v-for="(paging, idx) in pagingCountArray" :idx="idx+1" :key="idx" :page-count="pageCount" :total-page-count="totalPageCount" @on-move-list="onMoveList"></list-goods-paging>
+											<span><strong class="layout-pagination-button layout-pagination-number __active">1</strong>"</span>
+											<span><strong class="layout-pagination-button layout-pagination-number __active">2</strong>"</span>
+											<a href="#main" @click="onMoveList(pageCount+1)" class="layout-pagination-button layout-pagination-next-page">다음 페이지로 가기</a>
+											<a href="#main" @click="onMoveList(totalPaging)" class="layout-pagination-button layout-pagination-last-page">맨 끝 페이지로 가기</a>
+									</div>
 								</div>
 							</div>
-						
-						
-							<!-- 페이징 처리 -->
-							<div class="layout-pagination" v-if="!noData">
-								<div class="pagediv">
-									<a href="#main" @click="onMoveList(1)" class="layout-pagination-button layout-pagination-first-page">맨 처음 페이지로 가기</a>
-									<a href="#main" @click="onMoveList(pageCount-1)" class="layout-pagination-button layout-pagination-prev-page">이전 페이지로 가기</a>
-										<list-goods-paging v-for="(paging, idx) in pagingCountArray" :idx="idx+1" :key="idx" :page-count="pageCount" :total-page-count="totalPageCount" @on-move-list="onMoveList"></list-goods-paging>
-										<span><strong class="layout-pagination-button layout-pagination-number __active">1</strong>"</span>
-										<span><strong class="layout-pagination-button layout-pagination-number __active">2</strong>"</span>
-										<a href="#main" @click="onMoveList(pageCount+1)" class="layout-pagination-button layout-pagination-next-page">다음 페이지로 가기</a>
-										<a href="#main" @click="onMoveList(totalPaging)" class="layout-pagination-button layout-pagination-last-page">맨 끝 페이지로 가기</a>
-								</div>
-							</div>
-						</div>
+						</c:if>
 					</div>
+
 
 					<div class="bg_loading" id="bgLoading" style="display:block">
 						<div class="loading_show"></div>
 					</div>
 					
-					
 					<script src="/common_js/common_filter.js?ver=1.39.10"></script>
 					<script src="/common_js/goodslist_v1.js?ver=1.39.10"></script>
 					<script type="text/javascript">
 					
-					//상품 상세 페이지로 이동
-				    function fn_goods_detail(goods_sell_no){
-						var url = "${pageContext.request.contextPath}/goods_list_detail.do";
-						url = url + "?goods_sell_no=" + goods_sell_no;
-						location.href = url;
-					}			
+						//상품 상세 페이지로 이동
+					    function fn_goods_detail(goods_sell_no){
+							var url = "${pageContext.request.contextPath}/goods_list_detail.do";
+							url = url + "?goods_sell_no=" + goods_sell_no;
+							location.href = url;
+						}			
 						
-					  $(document).ready(function(){
-					    var categoryNo = null;
-					    if(sessionStorage.getItem('goodsListReferrer') && sessionStorage.getItem('goodsListReferrer') === 'goodsView'){
-					      // 이전페이지가 상품상세일경우
-					      lnbMenu.referrer = true;
-					      goodsList.referrer = true;
-					      if(sessionStorage.getItem('gListCategoryNo') && '038' != '029' && '038' != '038'){
-					        categoryNo = sessionStorage.getItem('gListCategoryNo');
-					      }else{
-					        categoryNo = "038";
-					      }
-					    }else{
-					      lnbMenu.referrer = false;
-					      goodsList.referrer = false;
-					      categoryNo = "038";
-					    }
-					
-					    // 카테고리호출
-					    lnbMenu.getCategoryNum = categoryNo;
-					
-					    // 상품목록노출
-					 // 신상품
-					    goodsList.pageType='new';
-					    goodsList.type = "pc";
-					
-					    lnbMenu.update();
-					  });
-						</script>
+					</script>
 				</div>
 			</div>
 			<!-- layerDSR -->

@@ -1,7 +1,8 @@
 @charset "UTF-8";
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
   div {display: block;}
-  body, input, select, textarea, button {font-family: noto sans,malgun gothic,AppleGothic,dotum;line-height: 1;letter-spacing: -.05em;color: #4c4c4c;font-size: 12px;max-width: 100%;}
+  body, input, select, textarea, button {font-family: 'Noto Sans KR', sans-serif; line-height: 1;letter-spacing: -.05em;color: #4c4c4c;font-size: 12px;max-width: 100%;}
   #header, #container, #content {position: relative;}
   
   /*메인(login)*/
@@ -9,7 +10,7 @@
   #content {min-width: 1050px;padding-bottom: 120px;}
   .section_login {width: 340px;margin: 0 auto;padding-top: 90px;letter-spacing: -.6px;}
   .section_login .tit_login {font-weight: 800;font-size: 20px;line-height: 20px;text-align: center;}
-  .section_login * {font-family: noto sans;color: #333;}
+  .section_login * {font-family: 'Noto Sans KR', sans-serif; color: #333;}
   .section_login .write_form {padding-top: 36px;}
   .section_login .login_view {text-align: center;}
   .section_login input[type=number], .section_login input[type=text], .section_login input[type=password] {width: 100%;height: 54px;padding: 0 19px;border: 1px solid #ccc;border-radius: 3px;background-color: #fff;font-size: 14px;line-height: 20px;outline: none;}
