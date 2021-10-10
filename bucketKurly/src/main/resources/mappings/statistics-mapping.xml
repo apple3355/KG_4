@@ -6,5 +6,17 @@
 		select member_rank,count(member_rank) as member_rank_total from tb_member_details group by member_rank;
 	</select>
 	
+	<select id="selectRevenueDaily" resultType="member_statistics">
+		SELECT order_date, COUNT(*) AS order_total, SUM(order_goods_price) as revenue_total
+		FROM tb_order where order_date &gt;= '2021-10-01' and order_date &lt;= '2021-11-01' 
+		GROUP BY order_date
+		ORDER BY order_date;		
+	</select>
 	
+	<select id="selectRevenueMonthly" resultType="member_statistics">
+		SELECT to_char(order_date, 'YYYY-MM'), COUNT(*) AS order_total, SUM(order_goods_price) AS revenue_total
+		FROM  tb_order WHERE order_date &gt;= '2021-01-01' AND order_date &lt;= '2021-12-31'
+		GROUP BY to_char(order_date, 'YYYY-MM')
+		ORDER BY to_char(order_date, 'YYYY-MM');	
+	</select>
 </mapper> 

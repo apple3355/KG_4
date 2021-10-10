@@ -48,9 +48,26 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="${pageContext.request.contextPath}/admin_getPDF.mdo" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i>  보고서 다운로드 </a>
                     </div>
+                    <div>
+                    	 <a href="${pageContext.request.contextPath}/admin_getRankPDF.mdo" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> 등급별 회원 다운로드(PDF) </a>
+                        <a href="${pageContext.request.contextPath}/admin_getRankEXCEL.mdo" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> 등급별 회원 다운로드(EXCEL) </a>
+                    </div>
+                    <div>
+                    	<a href="${pageContext.request.contextPath}/admin_getRevenuePDF_daily.mdo" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> 일별 매출 다운로드(PDF) </a>
+                        <a href="${pageContext.request.contextPath}/admin_getRevenueEXCEL_daily.mdo" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> 일별 매출 다운로드(EXCEL) </a>    
+                    </div>
+                    <div>
+                    	<a href="${pageContext.request.contextPath}/admin_getRevenuePDF_monthly.mdo" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> 월간 매출 다운로드(PDF) </a>
+                        <a href="${pageContext.request.contextPath}/admin_getRevenueEXCEL_monthly.mdo" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> 월간 매출 다운로드(EXCEL) </a>    
+                    </div>
+                    
 
                     <!-- Content Row -->
                     <div class="row">
@@ -181,9 +198,9 @@
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">등급별 회원 수</h6>
-                                    <input type="hidden" id= "purple" value="5" >
-                                    <input type="hidden" id= "laven" value="4" >
-                                    <input type="hidden" id= "white" value="2" >
+                                    <input type="hidden" id= "purple" value="1" >
+                                    <input type="hidden" id= "laven" value="1" >
+                                    <input type="hidden" id= "white" value="1" >
                                     <input type="hidden" id= "normal" value="1" >
                                  
                                     <div class="dropdown no-arrow">
@@ -217,7 +234,7 @@
                                             <i class="fas fa-circle text-defalut"></i> 화이트
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> 일반
+                                            <i class="fas fa-circle text-info"></i> 테스트
                                         </span>
                                     </div>
                                 </div>
@@ -425,7 +442,7 @@
         var myPieChart = new Chart(ctx, {
           type: 'doughnut',
           data: {
-            labels: ["퍼플", "라벤더", "화이트", "일반"],
+            labels: ["퍼플", "라벤더", "화이트", "테스트"],
             datasets: [{
               data: [purple, laven, white, normal],
               backgroundColor: ['#9933ff', '#d9b3ff', '#ffffff','#cccccc'],
@@ -455,6 +472,8 @@
     });
  	
     </script>
+    
+    
 
 </body>
 
