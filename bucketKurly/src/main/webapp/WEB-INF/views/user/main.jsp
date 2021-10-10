@@ -296,7 +296,9 @@ $(function(){
    <div id="pos_scroll"></div>
    <div id="container">
       <!-- header -->
-      <%@ include file="/WEB-INF/views/layout/header.jsp"%>  								
+      <%@ include file="/WEB-INF/views/layout/header.jsp"%>  	
+	  <script src="http://code.jquery.com/jquery-latest.js"></script>
+	  <script src="resources/js/jquery.bxslider.min.js"></script>							
       		<div id="main">
 				<div id="content">
 			
