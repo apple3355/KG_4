@@ -84,10 +84,10 @@
 											<th>유통기한</th><td>${vo.category_goods_exp_date}</td>
 										</tr>
 										<tr>
-											<th>안내사항</th><td colspan="5"><textarea class="form-control" name ="category_goods_info">${vo.category_goods_info}</textarea></td>
+											<th>안내사항</th><td colspan="5"><textarea class="form-control" id = "category_goods_info" name ="category_goods_info">${vo.category_goods_info}</textarea></td>
 										</tr>
 										<tr>
-											<th>참고사항</th><td colspan="5"><textarea class="form-control" name ="category_goods_ref">${vo.category_goods_ref}</textarea></td>
+											<th>참고사항</th><td colspan="5"><textarea class="form-control" id = "category_goods_ref" name ="category_goods_ref">${vo.category_goods_ref}</textarea></td>
 										</tr>
 										<tr>
 											<th>본문 타이틀</th><td colspan="5"><input class="form-control" value="${vo.category_goods_contents_tit_main}" name ="category_goods_contents_tit_main"></td>
@@ -96,7 +96,7 @@
 											<th>본문<br>서브타이틀</th><td colspan="5"><input class="form-control" value="${vo.category_goods_contents_tit_sub}" name ="category_goods_contents_tit_sub"></td>
 										</tr>
 										<tr>
-											<th>본문 설명</th><td colspan="5"><textarea class="form-control" name ="category_goods_contents_intro">${vo.category_goods_contents_intro}</textarea></td>
+											<th>본문 설명</th><td colspan="5"><textarea class="form-control" id = "category_goods_contents_intro" name ="category_goods_contents_intro">${vo.category_goods_contents_intro}</textarea></td>
 										</tr>
 										<tr>
 											<th>썸네일</th><td colspan="5" height = "150">
@@ -119,7 +119,7 @@
                         </div>
                         <div class="card-footer">
                         	<div id="buttondiv">
-								<a href="javascript:document.getElementById('form').submit();" class="btn btn-info btn-icon-split" >
+								<a href="javascript:document.getElementById('form').submit();" id="insertbtn" class="btn btn-info btn-icon-split" >
 									<span class="icon text-white-50">
 										<i class="fas fa-edit"></i>
 									</span>
@@ -169,6 +169,25 @@
 
     <!-- Page level custom scripts -->
     <script src="resources/bootstrap/js/demo/datatables-demo.js"></script>
+    <script>
+	 // <br>로 치환해서 넣기
+	    $("#insertbtn").on("click", function(){
+	  	 
+	  	var str1 = document.getElementById("category_goods_info").value;
+	  	str1 = str1.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+			document.getElementById("category_goods_info").value = str1;
+			 
+			var str2 = document.getElementById("category_goods_ref").value;
+			str2 = str2.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+			document.getElementById("category_goods_ref").value = str2;
+			
+			var str3 = document.getElementById("category_goods_contents_intro").value;
+			str3 = str3.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+			document.getElementById("category_goods_contents_intro").value = str3;
+			
+	    });
+
+    </script>
   
    
 </body>

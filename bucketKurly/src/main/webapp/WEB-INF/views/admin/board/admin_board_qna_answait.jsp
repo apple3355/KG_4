@@ -18,6 +18,7 @@
     <meta name="author" content="">
 
     <title>BucketKurly::Admin-Board</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
 
     <!-- Custom fonts for this template -->
     <link href="resources/bootstrap/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -97,14 +98,14 @@
 										<th>날짜</th><td><%= sf.format(nowTime) %></td>
 									</tr>
 									<tr>
-										<th>내용</th><td colspan="3"><textarea class="form-control" rows="40" name ="board_qna_content"></textarea></td>
+										<th>내용</th><td colspan="3"><textarea class="form-control" rows="40" id="board_qna_content" name="board_qna_content"></textarea></td>
 									</tr>									
                                 </table>
                              </form>               
                         </div>
                         <div class="card-footer">
                         	<div id="buttondiv">
-                               	<a href="javascript:document.getElementById('form').submit();" class="btn btn-primary btn-icon-split" >
+                               	<a href="javascript:document.getElementById('form').submit();" id="insertbtn" class="btn btn-primary btn-icon-split" >
 									<span class="icon text-white-50">
 										<i class="fas fa-check"></i>
 									</span>
@@ -152,6 +153,14 @@
 
     <!-- Page level custom scripts -->
     <script src="resources/bootstrap/js/demo/datatables-demo.js"></script>
+    <script>
+	   	// <br>로 치환해서 넣기
+	    $("#insertbtn").on("click", function(){
+	  		var str1 = document.getElementById("board_qna_content").value;
+	  		str1 = str1.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+			document.getElementById("board_qna_content").value = str1;
+	    });
+    </script>
     
    
 </body>

@@ -13,8 +13,6 @@ import bucket.kurly.util.Pagination;
 @Service
 public class Board_noticeServiceImpl implements Board_noticeService {
 
-//	 private static final Board_noticeVO vo = null;
-	 
 	@Autowired
 	private Board_noticeDAO dao;
 	
@@ -53,9 +51,6 @@ public class Board_noticeServiceImpl implements Board_noticeService {
 	public Board_noticeVO getNext(int num) {
 		return dao.getNext(num);
 	}
-	
-	
-	
 
 	
 }

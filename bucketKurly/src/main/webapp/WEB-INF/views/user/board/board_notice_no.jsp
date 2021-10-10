@@ -75,7 +75,7 @@
 																<td class="board_view_content"
 																	style="word-wrap: break-word; word-break: break-all"
 																	valign=top>
-																	<p>${getnotice_no.board_notice_content}"</p>
+																	<p>${getnotice_no.board_notice_content}</p>
 																</td>
 															</tr>
 														</table>

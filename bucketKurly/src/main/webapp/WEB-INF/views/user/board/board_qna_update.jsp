@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/board_qna.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common.css">
 
@@ -61,7 +62,6 @@
 														
 															<option selected>선택해주세요.</option>
 															<option>배송지연/불만</option>
-															<option>컬리패스(무료배송)</option>
 															<option>반품문의</option>
 															<option>A/S문의</option>
 															<option>환불문의</option>
@@ -164,7 +164,7 @@
 															</div>
 														</div>
 													</div>
-												<textarea name="board_qna_content" style="width:100%;height:474px;" class="editing_area" required="" fld_esssential="" label="내용" ><c:out value="${board_qnaVO.board_qna_content}"/></textarea>
+												<textarea id="board_qna_content" name="board_qna_content" style="width:100%;height:474px;" class="editing_area" required="" fld_esssential="" label="내용" ><c:out value="${board_qnaVO.board_qna_content}"/></textarea>
 												</td>
 											</tr>
 											<tr>
@@ -194,7 +194,7 @@
 										<tbody>
 											<tr>
 												<td align="right" style="padding-top:5px; border:none;" id="avoidDbl">
-													<input type="submit" class="bhs_button yb" value="저장" style="float:none;">
+													<input type="submit" id="insertbtn" class="bhs_button yb" value="저장" style="float:none;">
 												</td>
 											</tr>
 										</tbody>
@@ -255,6 +255,12 @@
 				            	table.rows[i].cells[0].innerHTML = i+1;
 				        	}
 				    	}
+				    	// <br>로 치환해서 넣기
+					    $("#insertbtn").on("click", function(){
+					  		var str1 = document.getElementById("board_qna_content").value;
+					  		str1 = str1.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+							document.getElementById("board_qna_content").value = str1;
+					    });
 				    </script>
 				</div>
 			</div>

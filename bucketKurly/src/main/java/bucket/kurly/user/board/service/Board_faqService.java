@@ -11,7 +11,6 @@ public interface Board_faqService {
 	List<Board_faqVO> selectBoard_faq(Pagination pagination);
 	//글 상세보기
 	Board_faqVO selectBoard_faq_no(int num);
-	
 	//페이징 처리
 	int selectBoard_faqListCnt();
 

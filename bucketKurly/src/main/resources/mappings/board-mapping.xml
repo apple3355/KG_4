@@ -24,7 +24,6 @@
 		SET BOARD_NOTICE_HITS = board_notice_hits +1
 		WHERE BOARD_NOTICE_NO = #{board_notice_no}
 	</update>
-	
 		
 	<!-- 공지사항 게시글 총 DB -->
 	<select id="getnotice_cnt" resultType="int" >
@@ -32,7 +31,6 @@
 	 	FROM TB_BOARD_NOTICE
 	</select>
 	
-
 	<!-- 이전 글 -->
 	<select id="getPrev" resultType="board_notice" >
 		SELECT * FROM TB_BOARD_NOTICE
@@ -76,12 +74,10 @@
 		limit #{listSize} offset #{startList}		
 	</select>
 	
-	
 	<select id="selectBoard_qnaListCnt"  parameterType="int" resultType="int">
 		SELECT COUNT(*) FROM TB_BOARD_QNA 
 		WHERE BOARD_QNA_MEMBER_NO=#{board_qna_member_no}
 	</select>
-	
 	
 	<insert id="insertBoard_qna" parameterType="board_qna">
 		INSERT INTO TB_BOARD_QNA(BOARD_QNA_TYPE,BOARD_QNA_TITLE,BOARD_QNA_ORDER_NO,BOARD_QNA_MEMBER_NO,BOARD_QNA_WRITER,BOARD_QNA_CONTENT,BOARD_QNA_GROUP,BOARD_QNA_GSTEP)
