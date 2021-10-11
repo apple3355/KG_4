@@ -29,6 +29,15 @@ public class Admin_StatisticsServiceImpl implements Admin_StatisticsService {
 	public List<Admin_StatisticsVO> getRevenue_monthly() {
 		return dao.getRevenue_monthly();
 	}
+	//인기품목
+	@Override
+	public List<Admin_StatisticsVO> getBestItem() {
+		return dao.getBestItem();
+	}
+	@Override
+	public int getRevenue_total() {
+		return dao.getRevenue_total();
+	}
 
 	
 	

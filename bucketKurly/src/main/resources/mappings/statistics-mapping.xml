@@ -2,10 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Admin_statisticsDAO">
+	<!-- 등급별 회원 수 -->
 	<select id="selectMemberRank" resultType="member_statistics">
 		select member_rank,count(member_rank) as member_rank_total from tb_member_details group by member_rank;
 	</select>
 	
+	<!-- 일별매출 -->
 	<select id="selectRevenueDaily" resultType="member_statistics">
 		SELECT order_date, COUNT(*) AS order_total, SUM(order_goods_price) as revenue_total
 		FROM tb_order where order_date &gt;= '2021-10-01' and order_date &lt;= '2021-11-01' 
@@ -13,10 +15,20 @@
 		ORDER BY order_date;		
 	</select>
 	
+	<!-- 월별매출 -->
 	<select id="selectRevenueMonthly" resultType="member_statistics">
 		SELECT to_char(order_date, 'YYYY-MM'), COUNT(*) AS order_total, SUM(order_goods_price) AS revenue_total
 		FROM  tb_order WHERE order_date &gt;= '2021-01-01' AND order_date &lt;= '2021-12-31'
 		GROUP BY to_char(order_date, 'YYYY-MM')
 		ORDER BY to_char(order_date, 'YYYY-MM');	
 	</select>
+	
+	<!-- 누적매출 -->
+	<select id="selectRevenueTotal" resultType="integer">
+		select sum(order_goods_price) from tb_order; 	
+	</select>
+	
+	<!-- 베스트 아이템 -->
+	
+	
 </mapper> 

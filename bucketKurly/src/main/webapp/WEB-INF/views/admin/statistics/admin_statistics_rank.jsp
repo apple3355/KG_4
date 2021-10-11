@@ -79,6 +79,7 @@
                                     <div class="chart-area">
                                         <canvas id="myAreaChart"></canvas>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -120,11 +121,25 @@
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">등급별 회원 수</h6>
-                                    <input type="hidden" id= "purple" value="1" data-purple="20000" >
-                                    <input type="hidden" id= "laven" value="1" data-laven="10000">
-                                    <input type="hidden" id= "white" value="1" data-white="5000">
-                                    <input type="hidden" id= "normal" value="1" data-normal="1000">
-                                 
+                                    
+                                    <c:forEach items="${Admin_StatisticsVO}" var="Admin_StatisticsVO">
+                                    <c:set var="rank" value="${Admin_StatisticsVO.member_rank }" scope="session"/>
+                                 	 <c:choose>
+								        <c:when test='${rank eq "퍼플"}'>
+								            <input type="hidden" id= "purple" data-purple="${Admin_StatisticsVO.member_rank_total }" >
+								        </c:when> 
+								        <c:when test='${rank eq "라벤더"}'>
+								              <input type="hidden" id= "laven" data-laven="${Admin_StatisticsVO.member_rank_total }">
+								        </c:when>  
+								        <c:when test='${rank eq "화이트"}'>
+								            <input type="hidden" id= "white" data-white="${Admin_StatisticsVO.member_rank_total }">
+								        </c:when>  
+								        <c:when test='${rank eq "일반"}'>
+								            <input type="hidden" id= "normal" data-normal="${Admin_StatisticsVO.member_rank_total }">
+								        </c:when>          
+							   		 </c:choose>
+                                 	</c:forEach>
+                                 	
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -1,7 +1,6 @@
 package bucket.kurly.admin.statistics.controller;
 
 import java.net.URLEncoder;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,8 +40,13 @@ public class Admin_StatisticsController {
 	// 회원,상품 통계 페이지 이동
 	@RequestMapping("/admin_statistics_rank.mdo")
 	public String getStatistics_rank(Model model) {
-
+		List<Admin_StatisticsVO> memberList = admin_statisticsService.getMemberRank();
+		//List<Admin_StatisticsVO> itemList = admin_statisticsService.getBestItem(); 
+		System.out.println(memberList);
+		//System.out.println(itemList);
 		
+		model.addAttribute("Admin_StatisticsVO",memberList);
+		//model.addAttribute("Admin_StatisticsVO",itemList);
 		
 		return "statistics/admin_statistics_rank";
 	}
@@ -50,9 +54,6 @@ public class Admin_StatisticsController {
 	// 매출 통계 페이지 이동
 	@RequestMapping("/admin_statistics_revenue.mdo")
 	public String getStatistics_revenue(Model model) {
-
-		
-		
 		return "statistics/admin_statistics_revenue";
 	}
 
@@ -271,8 +272,6 @@ public class Admin_StatisticsController {
             table.addCell(cell1);
             table.addCell(cell2);
             table.addCell(cell3);
-            
-            DecimalFormat Commas = new DecimalFormat("#,###");
             
            //검색 결과 데이터를 삽입
             for (int i=0; i< list.size(); i++) {
