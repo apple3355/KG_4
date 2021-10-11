@@ -8,14 +8,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import bucket.kurly.admin.goods.Admin_RefundVO;
 import bucket.kurly.admin.goods.Goods_adminSellVO;
+import bucket.kurly.admin.goods.service.Admin_RefundService;
 import bucket.kurly.admin.goods.service.Goods_adminService;
+import bucket.kurly.util.ImportPayment;
 
 @Controller
 public class Goods_admin_Controller {
 
 	@Autowired
 	private Goods_adminService goods_adminService;
+	
+	@Autowired
+	private Admin_RefundService admin_refundService;
 
 	// 판매 상품 리스트
 	@RequestMapping("/admin_goods_list.mdo")
@@ -69,5 +75,33 @@ public class Goods_admin_Controller {
 	}
 	
 	
+	// 환불 리스트 요청
+	@RequestMapping("/admin_refund.mdo")
+	public String getRefund_list(Model model) {
+
+		System.out.println("환불 리스트 요청");
 	
+		List<Admin_RefundVO> selectRefund = admin_refundService.selectRefund_list();
+		model.addAttribute("selectRefund", selectRefund);
+		
+		return "goods/admin_refund";
+	}
+	
+	// 환불 요청
+	@RequestMapping("/admin_refund_import.mdo")
+	public String getRefund(Model model,
+			@RequestParam("refund_no") int refund_no,
+			@RequestParam("refund_import_no") String refund_import_no) {
+		System.out.println("환불 요청");
+		
+		new ImportPayment().cancelPayment(new ImportPayment().getImportToken(),refund_import_no);
+		
+		admin_refundService.updateRefund_state(refund_no);
+		
+		List<Admin_RefundVO> selectRefund = admin_refundService.selectRefund_list();
+		model.addAttribute("selectRefund", selectRefund);
+		
+		return "goods/admin_refund";
+	}
+
 }

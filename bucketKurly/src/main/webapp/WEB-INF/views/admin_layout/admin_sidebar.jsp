@@ -112,8 +112,8 @@
              <div id="collapseOrder" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                  <div class="bg-white py-2 collapse-inner rounded">
                      <h6 class="collapse-header">주문 및 결제 관리 :</h6>
-                     <a class="collapse-item" href="buttons.html">주문관리</a>
-                     <a class="collapse-item" href="buttons.html">결제·배송관리 </a>
+                     <a class="collapse-item" href="buttons.html">주문·결제·배송관리</a>
+                     <a class="collapse-item" href="${pageContext.request.contextPath}/admin_refund.mdo">환불관리 </a>
                  </div>
              </div>
          </li>

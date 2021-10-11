@@ -650,7 +650,7 @@ $(function(){
 						            if (visible == true) {
 						                if ( $(this).data("load")==0 ) {
 						                    $(this).data("load",1);
-						                    $(this).html('<iframe id="inreview" src="./goods_review_list.php?goodsno=4364" frameborder="0" class="goods-view-infomation-board"></iframe>');
+						                    $(this).html('<iframe id="inreview" src="${pageContext.request.contextPath}/goods_review_list.do" frameborder="0" class="goods-view-infomation-board"></iframe>');
 						                }
 						            }
 						            $(function(){
@@ -723,13 +723,7 @@ $(function(){
 	<!-- 화면 위로가기 버튼 & 수량 및 수량에 따른 합계 -->
     <script type="text/javascript">
 	$(document).ready(function(){
-		/*
-		   $("#inp").on("propertychange change keyup paste input", function() {
-			   alert("input 어딘가에서 값이 변경되었습니다.");
-               
-            });
 		
-		*/
 		function inp_change(obj) {
 			  obj.value ='yellow';
 			}
