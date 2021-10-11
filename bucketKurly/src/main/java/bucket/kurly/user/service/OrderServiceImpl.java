@@ -28,6 +28,11 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	@Override
+	public List<OrderVO> select_order_one(String order_no) throws Exception {
+		return dao.select_order_one(order_no);
+	}
+	
+	@Override
 	public List<OrderVO> select_order(String order_no) throws Exception {
 		return dao.select_order(order_no);
 	}
@@ -37,6 +42,8 @@ public class OrderServiceImpl implements OrderService {
 		dao.insert_order(vo);
 		
 	}
+
+	
 
 	
 

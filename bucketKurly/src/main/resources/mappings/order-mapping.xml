@@ -24,6 +24,18 @@
 		ON sell.goods_sell_goods_no = goods.category_goods_no
 		WHERE order_no=#{order_no} 
 	</select>
+	
+	<select id="select_order_one" resultType="order">
+		SELECT t_order.order_no, t_order.order_name, t_order.order_member_no, t_order.order_date, t_order.order_phone, t_order.order_address, t_order.order_goods_count, t_order.order_goods_price, t_order.order_delivery_fee, t_order.order_delivery_status, goods.category_goods_image_thumb
+		FROM tb_order t_order
+		LEFT OUTER JOIN tb_goods_cart cart
+		ON t_order.order_no = cart.goods_cart_status
+		LEFT OUTER JOIN tb_goods_sell sell
+		ON cart.goods_cart_sell_no = sell.goods_sell_no
+		LEFT OUTER JOIN tb_category_goods goods 
+		ON sell.goods_sell_goods_no = goods.category_goods_no
+		WHERE order_no=#{order_no} order by order_no DESC limit 1
+	</select>
 
 	<insert id="insertOrder" parameterType="order">
 		INSERT INTO tb_order(order_no, order_name, order_member_no, order_date, order_phone, order_address, order_goods_count, order_goods_price, order_delivery_fee, order_coupon_no)

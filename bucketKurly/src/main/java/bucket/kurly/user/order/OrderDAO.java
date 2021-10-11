@@ -24,6 +24,10 @@ public class OrderDAO {
 		return sqlSessionTemplate.selectOne("OrderDAO.select_orderNo", vo);
 	}
 	
+	public List<OrderVO> select_order_one(String order_no) {
+		return sqlSessionTemplate.selectList("OrderDAO.select_order_one", order_no);
+	}
+	
 	public List<OrderVO> select_order(String order_no) {
 		return sqlSessionTemplate.selectList("OrderDAO.select_order", order_no);
 	}

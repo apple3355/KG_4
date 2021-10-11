@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -410,6 +411,7 @@ public class MemberController {
 	// 주문내역
 	@RequestMapping("/member_orderlist.do")
 	public String member_orderlist(HttpSession session, Model model) throws Exception {
+		String order_no = null;
 		List<OrderVO> orderlist = new ArrayList<OrderVO>();
 		int member_no = (int) session.getAttribute("member_no");
 		System.out.println(member_no);
@@ -417,11 +419,18 @@ public class MemberController {
 		System.out.println(cartVO);
 		for(int i=0; i<cartVO.size(); i++) {
 			if(cartVO.get(i).getGoods_cart_status() != "0") {
-				String order_no = cartVO.get(i).getGoods_cart_status();
-				orderlist.addAll(orderService.select_order(order_no));
-				model.addAttribute("orderlist", orderlist);
+				String order_no_list = cartVO.get(i).getGoods_cart_status();
+				if(order_no_list.equals(order_no)) {
+					
+				}else {
+					order_no = order_no_list;
+					orderlist.addAll(orderService.select_order_one(order_no_list));
+					model.addAttribute("orderlist", orderlist);
+				}
+				
 			}
 		}
+		
 		System.out.println(orderlist);
 		
 		return "member/member_orderlist";
