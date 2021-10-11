@@ -10,28 +10,32 @@
 	</select>
 	
 	<select id="select_orderNo" resultType="order">
+		SELECT order_no FROM tb_order t_order  LEFT OUTER JOIN tb_order_details order_details ON order_details.order_details_order_no = t_order.order_no WHERE order_member_no=#{order_member_no} 
+	</select>
+	
+	<select id="orderNo" resultType="order">
 		SELECT order_no FROM tb_order WHERE order_member_no=#{order_member_no} order by order_no DESC limit 1
 	</select>
 	
 	<select id="select_order" resultType="order">
 		SELECT t_order.order_no, t_order.order_name, t_order.order_member_no, t_order.order_date, t_order.order_phone, t_order.order_address, t_order.order_goods_count, t_order.order_goods_price, t_order.order_delivery_fee, t_order.order_delivery_status, goods.category_goods_image_thumb
 		FROM tb_order t_order
-		LEFT OUTER JOIN tb_goods_cart cart
-		ON t_order.order_no = cart.goods_cart_status
+		LEFT OUTER JOIN tb_order_details order_details
+		ON t_order.order_no = order_details.order_details_order_no
 		LEFT OUTER JOIN tb_goods_sell sell
-		ON cart.goods_cart_sell_no = sell.goods_sell_no
+		ON order_details.order_details_goods_sell_no = sell.goods_sell_no
 		LEFT OUTER JOIN tb_category_goods goods 
 		ON sell.goods_sell_goods_no = goods.category_goods_no
-		WHERE order_no=#{order_no} 
+		WHERE order_no=#{order_no}
 	</select>
 	
 	<select id="select_order_one" resultType="order">
-		SELECT t_order.order_no, t_order.order_name, t_order.order_member_no, t_order.order_date, t_order.order_phone, t_order.order_address, t_order.order_goods_count, t_order.order_goods_price, t_order.order_delivery_fee, t_order.order_delivery_status, goods.category_goods_image_thumb
+		SELECT t_order.order_no, t_order.order_date, t_order.order_goods_price, t_order.order_delivery_status, goods.category_goods_image_thumb
 		FROM tb_order t_order
-		LEFT OUTER JOIN tb_goods_cart cart
-		ON t_order.order_no = cart.goods_cart_status
+		LEFT OUTER JOIN tb_order_details order_details
+		ON t_order.order_no = order_details.order_details_order_no
 		LEFT OUTER JOIN tb_goods_sell sell
-		ON cart.goods_cart_sell_no = sell.goods_sell_no
+		ON order_details.order_details_goods_sell_no = sell.goods_sell_no
 		LEFT OUTER JOIN tb_category_goods goods 
 		ON sell.goods_sell_goods_no = goods.category_goods_no
 		WHERE order_no=#{order_no} order by order_no DESC limit 1
@@ -41,6 +45,12 @@
 		INSERT INTO tb_order(order_no, order_name, order_member_no, order_date, order_phone, order_address, order_goods_count, order_goods_price, order_delivery_fee, order_coupon_no)
 		VALUES(to_char(now(), 'YYYYMMDD')||'-'|| LPAD(CAST(NEXTVAL('TB_ORDER_SEQ')AS VARCHAR), 8,
 		'0'),#{order_name},#{order_member_no},now(),#{order_phone},#{order_address},3,#{order_goods_price},#{order_delivery_fee},1);
+
+	</insert>
+	
+	<insert id="insertOrderDetail" parameterType="orderDetails">
+		insert into tb_order_details(order_details_order_no,order_details_goods_sell_no,order_details_goods_count)
+		values(#{order_details_order_no}, #{order_details_goods_sell_no}, #{order_details_goods_count});
 
 	</insert>
 </mapper> 

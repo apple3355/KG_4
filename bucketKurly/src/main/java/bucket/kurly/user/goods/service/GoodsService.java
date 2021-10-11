@@ -6,6 +6,7 @@ import bucket.kurly.user.goods.Goods_CartShowVO;
 import bucket.kurly.user.goods.Goods_CartVO;
 import bucket.kurly.user.goods.Goods_ListDTO;
 import bucket.kurly.user.goods.Goods_SellVO;
+import bucket.kurly.user.order.OrderShowVO;
 
 public interface GoodsService {
 	
@@ -47,7 +48,7 @@ public interface GoodsService {
 	List<Goods_CartShowVO> chooseGoods_cart(int goods_cart_no);
 
 	// 결제 상품 정보
-	List<Goods_CartShowVO> orderGoods(String goods_cart_status);
+	List<OrderShowVO> orderGoods(String goods_cart_status);
 
 	public List<Goods_CartVO> order_memberNo(int member_no);
 
@@ -59,5 +60,7 @@ public interface GoodsService {
 
 	// 장바구니에서 삭제
 	void deleteGoods_cart(Goods_CartVO gsvo);
+	
+	public Goods_CartVO select_goods_cart(int cart_no);
 
 }

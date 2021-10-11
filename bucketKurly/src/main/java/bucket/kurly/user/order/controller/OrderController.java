@@ -17,6 +17,7 @@ import bucket.kurly.user.goods.Goods_CartShowVO;
 import bucket.kurly.user.goods.Goods_CartVO;
 import bucket.kurly.user.goods.service.GoodsService;
 import bucket.kurly.user.member.MemberVO;
+import bucket.kurly.user.order.OrderDetailsVO;
 import bucket.kurly.user.order.OrderVO;
 import bucket.kurly.user.service.OrderService;
 
@@ -59,8 +60,9 @@ public class OrderController {
 	
 	//주문서 페이지
 	@RequestMapping("/approval.do")
-	public String order_form_detail(OrderVO vo, Goods_CartVO cvo, HttpServletRequest request, HttpSession session) throws Exception   {
+	public String order_form_detail(OrderVO vo, Goods_CartVO goods_cart, OrderDetailsVO order_details, HttpServletRequest request, HttpSession session) throws Exception   {
 		int member_no = (int) session.getAttribute("member_no");
+		
 		
 		String order_name = request.getParameter("order_name");
 		vo.setOrder_name(order_name);
@@ -85,20 +87,23 @@ public class OrderController {
 		
 		vo.setOrder_member_no(member_no);
 		System.out.println(member_no);
-		
-		orderService.insert_order(vo);
-		OrderVO order_no = orderService.select_orderNo(vo);
-		System.out.println(order_no.getOrder_no());
-		cvo.setGoods_cart_member_no(member_no);
-		cvo.setGoods_cart_status(order_no.getOrder_no());
-		session.setAttribute("Goods_cart_status", order_no.getOrder_no());
-		System.out.println("1 : " + cvo.toString());
 		List<String> cart_no = (List<String>) session.getAttribute("cart_no");
+		vo.setOrder_goods_count(cart_no.size());
+		orderService.insert_order(vo);
+		
+		
+		OrderVO order_no = orderService.orderNo(vo);
+		
+		order_details.setOrder_details_order_no(order_no.getOrder_no());
+		
+		
 		for(int i=0; i<cart_no.size(); i++) {
-			cvo.setGoods_cart_no(Integer.parseInt(cart_no.get(i)));
-			System.out.println("2 : " + cvo.toString());
-			goodsService.updateCart_status(cvo);
+			goods_cart = (Goods_CartVO) goodsService.select_goods_cart(Integer.parseInt(cart_no.get(i)));
+			order_details.setOrder_details_goods_count(goods_cart.getGoods_cart_count());
+			order_details.setOrder_details_goods_sell_no(goods_cart.getGoods_cart_sell_no());
+			orderService.insertOrderDetail(order_details);
 		}
+		
 		return "0";
 	}
 	

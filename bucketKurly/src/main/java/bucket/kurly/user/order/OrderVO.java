@@ -1,7 +1,5 @@
 package bucket.kurly.user.order;
 
-import java.util.Date;
-
 public class OrderVO {
 	private String  order_no;
 	private String  order_name;

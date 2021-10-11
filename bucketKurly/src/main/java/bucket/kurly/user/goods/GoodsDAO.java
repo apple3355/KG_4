@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import bucket.kurly.user.order.OrderShowVO;
+
 @Repository
 public class GoodsDAO {
 
@@ -109,10 +111,16 @@ public class GoodsDAO {
 	}
 
 	// 결제 상품 풀러오기
-	public List<Goods_CartShowVO> orderGoods(String goods_cart_status) {
+	public List<OrderShowVO> orderGoods(String order_no) {
 		System.out.println("orderGoods() 실행");
-		return sqlSessionTemplate.selectList("GoodsDAO.orderGoods", goods_cart_status);
+		return sqlSessionTemplate.selectList("GoodsDAO.orderGoods", order_no);
 	}
+	
+	public Goods_CartVO select_goods_cart(int cart_no) {
+		System.out.println("select_goods_cart() 실행");
+		return sqlSessionTemplate.selectOne("GoodsDAO.select_goods_cart", cart_no);
+	}
+	
 
 	// 장바구니 수정
 	public void updateGoods_cart(Goods_CartVO gsvo) {

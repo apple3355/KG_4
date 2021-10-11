@@ -31,6 +31,7 @@ import bucket.kurly.user.member.MemberDetailVO;
 import bucket.kurly.user.member.MemberTermsVO;
 import bucket.kurly.user.member.MemberVO;
 import bucket.kurly.user.member.service.MemberService;
+import bucket.kurly.user.order.OrderShowVO;
 import bucket.kurly.user.order.OrderVO;
 import bucket.kurly.user.service.OrderService;
 import bucket.kurly.util.Coolsms;
@@ -416,24 +417,21 @@ public class MemberController {
 	// 주문내역
 	@RequestMapping("/member_orderlist.do")
 	public String member_orderlist(HttpSession session, Model model) throws Exception {
-		String order_no = null;
 		List<OrderVO> orderlist = new ArrayList<OrderVO>();
+		String order_no = null;
 		int member_no = (int) session.getAttribute("member_no");
-		System.out.println(member_no);
-		List<Goods_CartVO> cartVO = goodsService.order_memberNo(member_no);
+		List<OrderVO> cartVO = orderService.select_orderNo(member_no);
 		System.out.println(cartVO);
 		for(int i=0; i<cartVO.size(); i++) {
-			if(cartVO.get(i).getGoods_cart_status() != "0") {
-				String order_no_list = cartVO.get(i).getGoods_cart_status();
-				if(order_no_list.equals(order_no)) {
-					
-				}else {
-					order_no = order_no_list;
-					orderlist.addAll(orderService.select_order_one(order_no_list));
-					model.addAttribute("orderlist", orderlist);
-				}
-				
+			String order_no_list = cartVO.get(i).getOrder_no();
+			if (order_no_list.equals(order_no)) {
+
+			} else {
+				order_no = order_no_list;
+				orderlist.addAll(orderService.select_order_one(order_no_list));
+				model.addAttribute("orderlist", orderlist);
 			}
+			
 		}
 		
 		System.out.println(orderlist);
@@ -443,14 +441,15 @@ public class MemberController {
 
 	// 주문내역 상세페이지
 	@RequestMapping("/member_orderlist_detail.do")
-	public String member_orderlist_detail(@RequestParam("goods_cart_status") String goods_cart_status, Model model) throws Exception {
-		List<Goods_CartShowVO> orderlist =  goodsService.orderGoods(goods_cart_status);
-		List<OrderVO> info_list =  orderService.select_order(goods_cart_status);
+	public String member_orderlist_detail(@RequestParam("order_no") String order_no, Model model) throws Exception {
+		List<OrderShowVO> orderlist =  goodsService.orderGoods(order_no);
+		System.out.println(orderlist);
+		List<OrderVO> info_list =  orderService.select_order(order_no);
 		OrderVO info = info_list.get(0);
 		System.out.println(info_list);
 		System.out.println(info);
 		model.addAttribute("orderlist", orderlist);
-		model.addAttribute("order_no", goods_cart_status);
+		model.addAttribute("order_no", order_no);
 		model.addAttribute("info", info);
 		return "member/member_orderlist_detail";
 	}

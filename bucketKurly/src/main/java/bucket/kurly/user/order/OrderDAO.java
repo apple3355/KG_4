@@ -20,8 +20,12 @@ public class OrderDAO {
 		return sqlSessionTemplate.selectOne("OrderDAO.order_form", id);
 	}
 	
-	public OrderVO select_orderNo(OrderVO vo) {
-		return sqlSessionTemplate.selectOne("OrderDAO.select_orderNo", vo);
+	public OrderVO orderNo(OrderVO vo) {
+		return sqlSessionTemplate.selectOne("OrderDAO.orderNo", vo);
+	}
+	
+	public List<OrderVO> select_orderNo(int member_no) {
+		return sqlSessionTemplate.selectList("OrderDAO.select_orderNo", member_no);
 	}
 	
 	public List<OrderVO> select_order_one(String order_no) {
@@ -35,5 +39,10 @@ public class OrderDAO {
 	public void insert_order(OrderVO vo) throws Exception {
 		System.out.println("OrderDAO - insert_order() 실행");
 		sqlSessionTemplate.insert("OrderDAO.insertOrder", vo);
+	}
+	
+	public void insertOrderDetail(OrderDetailsVO vo) throws Exception {
+		System.out.println("OrderDAO - insertOrderDetail() 실행");
+		sqlSessionTemplate.insert("OrderDAO.insertOrderDetail", vo);
 	}
 }

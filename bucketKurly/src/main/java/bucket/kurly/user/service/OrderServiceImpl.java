@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import bucket.kurly.user.goods.Goods_CartVO;
 import bucket.kurly.user.member.MemberVO;
 import bucket.kurly.user.order.OrderDAO;
+import bucket.kurly.user.order.OrderDetailsVO;
 import bucket.kurly.user.order.OrderVO;
 
 @Service
@@ -23,8 +23,13 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	@Override
-	public OrderVO select_orderNo(OrderVO vo) throws Exception {
-		return dao.select_orderNo(vo);
+	public List<OrderVO> select_orderNo(int member_no) throws Exception {
+		return dao.select_orderNo(member_no);
+	}
+	
+	@Override
+	public OrderVO orderNo(OrderVO vo) {
+		return dao.orderNo(vo);
 	}
 	
 	@Override
@@ -42,6 +47,14 @@ public class OrderServiceImpl implements OrderService {
 		dao.insert_order(vo);
 		
 	}
+
+	@Override
+	public void insertOrderDetail(OrderDetailsVO vo) throws Exception {
+		dao.insertOrderDetail(vo);
+		
+	}
+
+	
 
 	
 

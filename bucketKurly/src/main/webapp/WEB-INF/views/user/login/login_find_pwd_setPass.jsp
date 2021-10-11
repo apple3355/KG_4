@@ -23,8 +23,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="shortcut icon" href="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/favicon_v2.webp" type="image/x-icon">
-<link rel="stylesheet" type="text/css" href="resources/css/mainstyle.css">
-<link rel="stylesheet" type="text/css" href="resources/css/login_find_pwd_setPassstyle.css">
+<link rel="stylesheet" type="text/css" href="resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="resources/css/login_find_pwd_setPass.css">
 </head>
 <body>
 <!-- header 시작 -->

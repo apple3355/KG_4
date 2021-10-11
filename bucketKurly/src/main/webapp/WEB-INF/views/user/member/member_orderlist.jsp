@@ -239,10 +239,10 @@
 <script>
 //상위 카테고리 클릭시 상품 리스트 페이지 이동
 $(".list_order li").on("click", ".desc", function() {
-    var goods_cart_status = $(this).find('input').val();
+    var order_no = $(this).find('input').val();
     
     var url = "${pageContext.request.contextPath}/member_orderlist_detail.do";
-	url = url + "?goods_cart_status=" + goods_cart_status;
+	url = url + "?order_no=" + order_no;
 	location.href = url;
 });
 

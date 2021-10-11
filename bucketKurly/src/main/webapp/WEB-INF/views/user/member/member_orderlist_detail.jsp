@@ -173,7 +173,7 @@
 															</div>
 															<div class="desc">															
 																<span class="price">${orderlist.goods_sell_price}원</span>															
-																<span class="ea">${orderlist.goods_cart_count}개</span>
+																<span class="ea">${orderlist.order_details_goods_count}개</span>
 															</div>
 														</td>
 <!-- 														<td class="progress "> -->

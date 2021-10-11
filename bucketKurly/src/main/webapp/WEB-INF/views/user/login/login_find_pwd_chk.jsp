@@ -22,8 +22,8 @@
 <meta name="facebook-domain-verification" content="tyur3wmoos7t63tpkb7zosur6p98m1">
 
 <link rel="shortcut icon" href="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/favicon_v2.webp" type="image/x-icon">
-<link rel="stylesheet" type="text/css" href="resources/css/mainstyle.css">
-<link rel="stylesheet" type="text/css" href="resources/css/login_find_pwd_chkstyle.css">
+<link rel="stylesheet" type="text/css" href="resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="resources/css/login_find_pwd_chk.css">
 </head>
 <body>
 <!-- header 시작 -->

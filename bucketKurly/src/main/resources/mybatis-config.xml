@@ -37,6 +37,8 @@
 		<typeAlias type="bucket.kurly.user.goods.Goods_CartVO" alias="goods_cart"/>
 		<typeAlias type="bucket.kurly.user.goods.Goods_CartShowVO" alias="goods_cartshow"/>
 		<typeAlias type="bucket.kurly.user.order.OrderVO" alias="order"/>
+		<typeAlias type="bucket.kurly.user.order.OrderShowVO" alias="orderShowVO"/>
+		<typeAlias type="bucket.kurly.user.order.OrderDetailsVO" alias="orderDetails"/>
 		<typeAlias type="bucket.kurly.admin.manager.AdminTermsVO" alias="adminterms"/>
 		<typeAlias type="bucket.kurly.admin.manager.AdminVO" alias="admin"/>
 	</typeAliases>
