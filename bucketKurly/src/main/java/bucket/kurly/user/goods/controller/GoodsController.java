@@ -15,9 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.amazonaws.Response;
-import com.itextpdf.text.pdf.BaseFont;
-
 import bucket.kurly.user.goods.Goods_CartShowVO;
 import bucket.kurly.user.goods.Goods_CartVO;
 import bucket.kurly.user.goods.Goods_ListDTO;
@@ -36,19 +33,24 @@ public class GoodsController {
 	private MemberService memberService;
 	// 상품 리스트, 상품 카운트, 페이징
 	@RequestMapping("/goods_list.do")
-	public String getGoods_list(Model model, @RequestParam("type") String select_type) {	
+	public String getGoods_list(Model model, 
+			@RequestParam("type") String select_type, 
+			@RequestParam(value="type_sub",required = false) String select_type2, 
+			@RequestParam(required = false, defaultValue = "1") int page,
+			@RequestParam(required = false, defaultValue = "1") int range) {	
 	
 		System.out.println("상품 목록 요청");
 		
 		Goods_ListDTO dto = new Goods_ListDTO();
-		dto.setSelect_type(select_type);
-		
+		int listCnt = 150;
+		dto.pageInfo(page, range, listCnt);
+		dto.setSelect_type(select_type);	
+		System.err.println(dto.getSelect_type());
+		if(select_type2 !=null) {
+			dto.setSelect_type2(select_type2);
+		}
+	
 		List<Goods_SellVO> goods_sell_list = goodsService.selectGoods_sell(dto);
-//		System.out.println(goods_sell_list);
-		
-//		String itemCnt = goodsService.getGoods_cnt(); // 아이템 개수
-//		Pagination pagination = new Pagination(); //Pagination 객체 생성
-//		pagination.pageInfo(page, range, itemCnt);
 		
 		String title = null;
 		if(select_type.equals("new")){
@@ -60,43 +62,72 @@ public class GoodsController {
 		}
 
 		model.addAttribute("goods_sell_list", goods_sell_list); // 상품DB품목
-		model.addAttribute("itemCnt", goods_sell_list.size()); // 상품카운트
-		model.addAttribute("select_type",title); // 상품카운트
-//		model.addAttribute("pagination", pagination); //페이징
+		model.addAttribute("itemCnt", listCnt); // 상품카운트
+		model.addAttribute("select_type",title); // 상품리스트 타이틀
+		model.addAttribute("dto", dto); //페이징
 		return "goods/goods_list";
 	}
 	
 	// 상품 리스트 parent_no
 	@RequestMapping("/goods_list_parent_no.do")
-	public String getGoods_list_parent_no(Model model, @RequestParam("parent_no") String parent_no) {		
+	public String getGoods_list_parent_no(Model model, 
+			@RequestParam("parent_no") String parent_no,
+			@RequestParam(value="type_sub",required = false) String select_type2, 
+			@RequestParam(required = false, defaultValue = "1") int page,
+			@RequestParam(required = false, defaultValue = "1") int range) {		
+		
 		System.out.println("상품 목록 요청");
+		
 		Goods_ListDTO dto = new Goods_ListDTO();
 		dto.setGoods_sell_parent_no(parent_no);
 		
+		int listCnt = goodsService.selectGoods_sell_parent_listCnt(parent_no);
+		System.err.println("listcnt :"+listCnt);
+		dto.pageInfo(page, range, listCnt);
+	
+		if(select_type2 !=null) {
+			dto.setSelect_type2(select_type2);
+		}
+		
 		List<Goods_SellVO> goods_sell_list = goodsService.selectGoods_sell_parent(dto);
 		String title = goodsService.selectGoods_sell_parent_title(parent_no);
-	
-
+		System.err.println(dto.getPageCnt());
+		
 		model.addAttribute("goods_sell_list", goods_sell_list); // 상품DB품목
-		model.addAttribute("itemCnt", goods_sell_list.size()); // 상품카운트
+		model.addAttribute("itemCnt", listCnt); // 상품카운트
 		model.addAttribute("select_type",title); // 리스트 제목
+		model.addAttribute("dto", dto); //페이징
 		return "goods/goods_list";
 	}
 	
 	// 상품 리스트 sub_no
 	@RequestMapping("/goods_list_sub_no.do")
-	public String getGoods_list_sub_no(Model model, @RequestParam("sub_no") String sub_no) {		
+	public String getGoods_list_sub_no(Model model, 
+			@RequestParam("sub_no") String sub_no,
+			@RequestParam(value="type_sub",required = false) String select_type2, 
+			@RequestParam(required = false, defaultValue = "1") int page,
+			@RequestParam(required = false, defaultValue = "1") int range) {		
 		System.out.println("상품 목록 요청");
+		
+		
 		Goods_ListDTO dto = new Goods_ListDTO();
 		dto.setGoods_sell_sub_no(sub_no);
+		
+		int listCnt = goodsService.selectGoods_sell_sub_listCnt(sub_no);
+		dto.pageInfo(page, range, listCnt);
+	
+		if(select_type2 !=null) {
+			dto.setSelect_type2(select_type2);
+		}
 		
 		List<Goods_SellVO> goods_sell_list = goodsService.selectGoods_sell_sub(dto);
 		String title = goodsService.selectGoods_sell_sub_title(sub_no);
 	
 
 		model.addAttribute("goods_sell_list", goods_sell_list); // 상품DB품목
-		model.addAttribute("itemCnt", goods_sell_list.size()); // 상품카운트
+		model.addAttribute("itemCnt", listCnt); // 상품카운트
 		model.addAttribute("select_type",title); // 리스트 제목
+		model.addAttribute("dto", dto); //페이징
 		return "goods/goods_list";
 	}
 		

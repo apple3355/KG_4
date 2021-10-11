@@ -145,7 +145,7 @@
 		<!-- sessionScopre.id가 없으면 -->
 		<c:if test="${empty sessionScope.id }"> 
 			<div class="bnr_header" id="top-message">
-				<a href="########" id="eventLanding"> 
+				<a href="${pageContext.request.contextPath}/join.do" id="eventLanding"> 
 				지금 가입하고 인기상품 <b>100원</b>에 받아가세요!<img src="https://res.kurly.com/pc/ico/1908/ico_arrow_fff_84x84.png" class="bnr_arr">
 					<div class="bnr_top">
 						<div class="inner_top_close">
@@ -179,7 +179,7 @@
 				<div id="topBanner" class="on">
 					<div id="bannerImc">
 						<a href="https://www.kurly.com/shop/main/html.php?htmid=event/kurly.htm&amp;name=friend">
-						친구 초대하면 친구도 나도 적립금 <b>5천원!</b><img src="https://res.kurly.com/pc/ico/1908/ico_arrow_333_84x84.png" class="bnr_arr">
+						안녕하세요 컬리 고객님 <b>오늘도 즐거운 쇼핑 되세요!</b><img src="https://res.kurly.com/pc/ico/1908/ico_arrow_333_84x84.png" class="bnr_arr">
 						</a>
 					</div>
 					<div class="bnr_top">
@@ -232,7 +232,7 @@
 					<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketkurly_logo.png" alt="마켓컬리 로고" style="display: block;">
 				</a>
 			</h1>
-			<a href="########" onclick="#######" class="bnr_delivery"> 
+			<a href="${pageContext.request.contextPath}/board_faq_no.do?no=6" class="bnr_delivery"> 
 				<img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%EC%83%9B%EB%B3%84_+%ED%83%9D%EB%B0%B0+%EB%B0%B0%EC%86%A1%EC%95%88%EB%82%B4.png"
 					alt="샛별, 택배 배송안내" width="121" height="22">
 			</a>

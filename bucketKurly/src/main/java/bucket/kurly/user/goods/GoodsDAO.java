@@ -13,14 +13,13 @@ public class GoodsDAO {
 	SqlSessionTemplate sqlSessionTemplate;
 	
 	
-	// 상품 DB 리스트
+	// 상품 메인화면
 	public List<Goods_SellVO> selectGoods_sell_main(String select_type) {
 		System.out.println("GoosDAO - selectGoods_sell_main() 실행");
 		return sqlSessionTemplate.selectList("GoodsDAO.selectGoods_sell_main",select_type);
 	}
 	
-	
-	// 상품 DB 리스트
+	// 상품 DB 리스트(신상품, 베스트 등)
 	public List<Goods_SellVO> selectGoods_sell(Goods_ListDTO dto) {
 		System.out.println("GoosDAO - selectGoods_sell() 실행");
 		return sqlSessionTemplate.selectList("GoodsDAO.selectGoods_sell", dto);
@@ -33,6 +32,11 @@ public class GoodsDAO {
 		return sqlSessionTemplate.selectList("GoodsDAO.selectGoods_sell_parent", dto);
 	}
 	
+	public int selectGoods_sell_parent_listCnt(String parent_no) {
+		System.out.println("GoosDAO - selectGoods_sell_parent_listCnt() 실행");
+		return sqlSessionTemplate.selectOne("GoodsDAO.selectGoods_sell_parent_listCnt",parent_no);
+	}
+	
 	public String selectGoods_sell_parent_title(String parent_no) {
 		System.out.println("GoosDAO - selectGoods_sell_parent_title() 실행");
 		return sqlSessionTemplate.selectOne("GoodsDAO.selectGoods_sell_parent_title", parent_no);
@@ -42,6 +46,11 @@ public class GoodsDAO {
 	public List<Goods_SellVO> selectGoods_sell_sub(Goods_ListDTO dto) {
 		System.out.println("GoosDAO - selectGoods_sell_sub() 실행");
 		return sqlSessionTemplate.selectList("GoodsDAO.selectGoods_sell_sub", dto);
+	}
+	
+	public int selectGoods_sell_sub_listCnt(String sub_no) {
+		System.out.println("GoosDAO - selectGoods_sell_sub_listCnt() 실행");
+		return sqlSessionTemplate.selectOne("GoodsDAO.selectGoods_sell_sub_listCnt",sub_no);
 	}
 	
 	public String selectGoods_sell_sub_title(String sub_no) {

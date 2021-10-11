@@ -2,7 +2,6 @@ package bucket.kurly.user.goods.service;
 
 import java.util.List;
 
-import bucket.kurly.user.goods.GoodsVO;
 import bucket.kurly.user.goods.Goods_CartShowVO;
 import bucket.kurly.user.goods.Goods_CartVO;
 import bucket.kurly.user.goods.Goods_ListDTO;
@@ -12,19 +11,20 @@ public interface GoodsService {
 	
 	// 메인페이지 상품 조회
 	List<Goods_SellVO> selectGoods_sell_main(String select_type);
-	
+
 	// 상품DB조회
 	List<Goods_SellVO> selectGoods_sell(Goods_ListDTO dto);
-	
+
 	// 상품DB조회(parent_no)
 	List<Goods_SellVO> selectGoods_sell_parent(Goods_ListDTO dto);
+	int selectGoods_sell_parent_listCnt(String parent_no);
 	String selectGoods_sell_parent_title(String parent_no);
-	
+
 	// 상품DB조회(parent_no)
 	List<Goods_SellVO> selectGoods_sell_sub(Goods_ListDTO dto);
+	int selectGoods_sell_sub_listCnt(String sub_no);
 	String selectGoods_sell_sub_title(String sub_no);
-	
-	
+
 	// 상품상세페이지
 	Goods_SellVO getGoods_detail(int goods_sell_no);
 
@@ -50,7 +50,7 @@ public interface GoodsService {
 	List<Goods_CartShowVO> orderGoods(String goods_cart_status);
 
 	public List<Goods_CartVO> order_memberNo(int member_no);
-	
+
 	// 장바구니수량 수정
 	void updateGoods_cart(Goods_CartVO gsvo);
 

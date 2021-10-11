@@ -8,20 +8,10 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="resources/css/goods_list.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/common.css">
-	<title>layout</title>
+	<title>goods_list</title>
 	<style>
-		#goodsList .list_goods .cost .original {
-			display: block;
-			font-size: 16px;
-			color: #999;
-			text-decoration: line-through;
-		}
-		
-		#goodsList .list_goods .cost .dc {
-			padding-right: 2px;
-			font-weight: 600;
-			color: #fa622f;
-		}
+		#goodsList .list_goods .cost .original {display: block;font-size: 16px;color: #999;text-decoration: line-through;}
+		#goodsList .list_goods .cost .dc {padding-right: 2px;font-weight: 600;color: #fa622f;}
 	</style>
 </head>
 <body>
@@ -37,18 +27,12 @@
 				<div id="content">
 		
 					<div class="page_aticle">
+						
 						<div id="lnbMenu" class="lnb_menu">
-							<div id="bnrCategory" class="bnr_category" style="">
-								<div class="thumb">
-									<img src="	https://img-cf.kurly.com/category/banner/pc/ae744106-f596-4ca5-a940-7e86a0b8a9a3" alt="카테고리배너">
-								</div>
-							</div>
-							
 							<div class="inner_lnb">
 								<h3 class="tit">${select_type}</h3>
 							</div>
 						</div>
-						
 						
 						<c:if test="${empty goods_sell_list}">
 							
@@ -56,14 +40,10 @@
 								<div class="list_ability">
 									<div class="sort_menu">
 										<div class="">
-											<p class="count"><span class="inner_count">총 ${itemCnt} 건</span></p>
+											<p class="count"><span class="inner_count">총 <b>${itemCnt}</b> 건</span></p>
 											<div class="select_type user_sort">
 												<a class="name_select">신상품순</a>												
 												<ul class="list">
-													<li><a class="">추천순</a></li>
-													<li><a class="">신상품순</a></li>
-													<li><a class="">인기상품순</a></li>
-													<li><a class="">혜택순</a></li>
 													<li><a class="">낮은 가격순</a></li>
 													<li><a class="">높은 가격순</a></li>
 												</ul>
@@ -88,12 +68,8 @@
 											<div class="select_type user_sort">
 												<a class="name_select">신상품순</a>												
 												<ul class="list">
-													<li><a class="">추천순</a></li>
-													<li><a class="">신상품순</a></li>
-													<li><a class="">인기상품순</a></li>
-													<li><a class="">혜택순</a></li>
-													<li><a class="">낮은 가격순</a></li>
-													<li><a class="">높은 가격순</a></li>
+													<li><a class="" onClick="fn_priceLow()">낮은 가격순</a></li>
+													<li><a class="" onClick="fn_priceHigh()">높은 가격순</a></li>
 												</ul>
 											</div>
 										</div>
@@ -143,19 +119,36 @@
 									</div>
 								</div>
 							
-							
-								<!-- 페이징 처리 -->
-								<div class="layout-pagination" v-if="!noData">
-									<div class="pagediv">
-										<a href="#main" @click="onMoveList(1)" class="layout-pagination-button layout-pagination-first-page">맨 처음 페이지로 가기</a>
-										<a href="#main" @click="onMoveList(pageCount-1)" class="layout-pagination-button layout-pagination-prev-page">이전 페이지로 가기</a>
-											<list-goods-paging v-for="(paging, idx) in pagingCountArray" :idx="idx+1" :key="idx" :page-count="pageCount" :total-page-count="totalPageCount" @on-move-list="onMoveList"></list-goods-paging>
-											<span><strong class="layout-pagination-button layout-pagination-number __active">1</strong>"</span>
-											<span><strong class="layout-pagination-button layout-pagination-number __active">2</strong>"</span>
-											<a href="#main" @click="onMoveList(pageCount+1)" class="layout-pagination-button layout-pagination-next-page">다음 페이지로 가기</a>
-											<a href="#main" @click="onMoveList(totalPaging)" class="layout-pagination-button layout-pagination-last-page">맨 끝 페이지로 가기</a>
-									</div>
-								</div>
+							   <!--페이징 -->
+								<div class="layout-pagination">
+				                     <div class="pagediv">
+				                        <!-- 맨 처음으로 이동 -->
+				                        <a class="layout-pagination-button layout-pagination-first-page" href="javascript:void(0);" 
+				                           onClick="fn_first()">맨 처음 페이지로 가기</a>
+				                        
+				                     
+				                        <!-- 이전 페이지로 이동 -->
+				                        <a class="layout-pagination-button layout-pagination-prev-page" href="javascript:void(0);" 
+				                           onClick="fn_prev('${dto.page}','${dto.range}','${dto.rangeSize}')">이전 페이지로 가기</a>
+				                     
+				                        
+				                        <!-- 페이지 목록 -->
+				                        <c:forEach begin="${dto.startPage}" end="${dto.endPage}" var="idx">
+				                           <c:out value="${dto.page == idx ? 'active' : ''}"/>
+				                           <a class="page-link" href="#" onClick="fn_pagination('${idx}', '${dto.range}', '${dto.rangeSize}')"> 
+				                           <strong class="layout-pagination-button layout-pagination-number __active">${idx}</strong></a>
+				                        </c:forEach>
+				      
+				                        <!-- 다음 페이지로 이동 -->
+				                        <a class="layout-pagination-button layout-pagination-next-page" href="javascript:void(0);" 
+				                           onClick="fn_next('${dto.page}','${dto.range}','${dto.rangeSize}','${dto.pageCnt}')">다음 페이지로 가기</a>
+				                     
+				                        
+				                        <!-- 맨 끝 페이지로 이동 -->
+				                        <a class="layout-pagination-button layout-pagination-last-page" href="javascript:void(0);" 
+				                           onClick="fn_last('${dto.pageCnt}','${dto.rangeSize}')">맨 끝 페이지로 가기</a>
+				                     </div>
+				                  </div>
 							</div>
 						</c:if>
 					</div>
@@ -168,14 +161,208 @@
 					<script src="/common_js/common_filter.js?ver=1.39.10"></script>
 					<script src="/common_js/goodslist_v1.js?ver=1.39.10"></script>
 					<script type="text/javascript">
-					
+						
 						//상품 상세 페이지로 이동
 					    function fn_goods_detail(goods_sell_no){
 							var url = "${pageContext.request.contextPath}/goods_list_detail.do";
 							url = url + "?goods_sell_no=" + goods_sell_no;
 							location.href = url;
-						}			
+						}		
+					    
+					   //현재 파라미터 값 얻어오기
+						function getParameter(strParamName) {
+						    var arrResult = null;
+						    if (strParamName) {
+						        arrResult = location.search.match(new RegExp("[&?]" + strParamName+"=(.*?)(&|$)"));
+						        return arrResult && arrResult[1] ? arrResult[1] : null;
+						    }
+						}
+					   
+						//낮은 가격순으로 이동
+		                function fn_priceLow() {
+		                  var type = getParameter("type");
+		                  var parent_no = getParameter("parent_no");
+		                  var sub_no = getParameter("sub_no");
+			              var type_sub = "price_low";
+			              
+			              if (type!=null){
+			            	  var url = "${pageContext.request.contextPath}/goods_list.do";
+			            	  url = url + "?type=" + type;
+		                  }else if(parent_no!=null){
+		                	  var url = "${pageContext.request.contextPath}/goods_list_parent_no.do";
+		                	  url = url + "?parent_no=" + parent_no;
+		                  }else if(sub_no!=null){
+		                	  var url = "${pageContext.request.contextPath}/goods_list_sub_no.do";
+		                	  url = url + "?sub_no=" + sub_no;
+		                  }
+			              url = url + "&type_sub=" + type_sub;
+			              location.href = url;
+		                }
 						
+		               //높은 가격순으로 이동
+		                function fn_priceHigh() {
+		                  var type = getParameter("type");
+				          var parent_no = getParameter("parent_no");
+				          var sub_no = getParameter("sub_no");
+				          var type_sub = "price_high";
+				          
+		                  if (type!=null){
+			            	  var url = "${pageContext.request.contextPath}/goods_list.do";
+			            	  url = url + "?type=" + type;
+		                  }else if(parent_no!=null){
+		                	  var url = "${pageContext.request.contextPath}/goods_list_parent_no.do";
+		                	  url = url + "?parent_no=" + parent_no;
+		                  }else if(sub_no!=null){
+		                	  var url = "${pageContext.request.contextPath}/goods_list_sub_no.do";
+		                	  url = url + "?sub_no=" + sub_no;
+		                  }
+			              url = url + "&type_sub=" + type_sub;
+		                  location.href = url;
+		                }
+						
+					
+		               //맨 앞 페이지 버튼 이벤트
+		                function fn_first() {
+		                  var type = getParameter("type");
+				          var parent_no = getParameter("parent_no");
+				          var sub_no = getParameter("sub_no");
+		                  var type_sub = getParameter("type_sub");
+		                  var page = 1;
+		                  var range = 1;
+		                 
+		                  if (type!=null){
+			            	  var url = "${pageContext.request.contextPath}/goods_list.do";
+			            	  url = url + "?type=" + type;
+		                  }else if(parent_no!=null){
+		                	  var url = "${pageContext.request.contextPath}/goods_list_parent_no.do";
+		                	  url = url + "?parent_no=" + parent_no;
+		                  }else if(sub_no!=null){
+		                	  var url = "${pageContext.request.contextPath}/goods_list_sub_no.do";
+		                	  url = url + "?sub_no=" + sub_no;
+		                  }
+		                  
+		                  if (type_sub!=null){
+		                	  url = url + "&type_sub=" + type_sub;
+		                  }
+		                  url = url + "&page=" + page;
+		                  url = url + "&range=" + range;
+		                  location.href = url;
+		               }
+		            
+		                //이전 버튼 이벤트
+		                function fn_prev(page, range, rangeSize) {
+		                   var type = getParameter("type");
+					       var parent_no = getParameter("parent_no");
+					       var sub_no = getParameter("sub_no");
+			               var type_sub = getParameter("type_sub");
+			               
+		                   if(page > 1){ // 첫 범위가 아닐경우 
+		                      var page = parseInt(page - 1);
+		                      var range = parseInt((page - 1)/rangeSize+1);
+		                   }
+		                   
+		                   if (type!=null){
+			            	   var url = "${pageContext.request.contextPath}/goods_list.do";
+			            	   url = url + "?type=" + type;
+		                   }else if(parent_no!=null){
+		                	   var url = "${pageContext.request.contextPath}//goods_list_parent_no.do";
+		                	   url = url + "?parent_no=" + parent_no;
+		                   }else if(sub_no!=null){
+		                	   var url = "${pageContext.request.contextPath}/goods_list_sub_no.do";
+		                	   url = url + "?sub_no=" + sub_no;
+		                   }
+		                   
+		                   if (type_sub!=null){
+		                	   url = url + "&type_sub=" + type_sub;
+		                   }
+		                   url = url + "&page=" + page;
+		                   url = url + "&range=" + range;
+		                  location.href = url;
+		               }
+
+		                //페이지 번호 클릭
+		               function fn_pagination(page, range, rangeSize) {
+		                  var type = getParameter("type");
+					      var parent_no = getParameter("parent_no");
+					      var sub_no = getParameter("sub_no");
+			              var type_sub = getParameter("type_sub");
+		                 
+			              if (type!=null){
+			            	  var url = "${pageContext.request.contextPath}/goods_list.do";
+			            	  url = url + "?type=" + type;
+		                  }else if(parent_no!=null){
+		                	  var url = "${pageContext.request.contextPath}//goods_list_parent_no.do";
+		                	  url = url + "?parent_no=" + parent_no;
+		                  }else if(sub_no!=null){
+		                	  var url = "${pageContext.request.contextPath}/goods_list_sub_no.do";
+		                	  url = url + "?sub_no=" + sub_no;
+		                  }
+			              
+		                  if (type_sub!=null){
+		                	   url = url + "&type_sub=" + type_sub;
+		                  }
+		                  url = url + "&page=" + page;
+		                  url = url + "&range=" + range;
+		                  location.href = url;   
+		                }
+
+		               //다음 버튼 이벤트
+		               function fn_next(page, range, rangeSize, pageCnt) {
+		                  var type = getParameter("type");
+					      var parent_no = getParameter("parent_no");
+					      var sub_no = getParameter("sub_no");
+			              var type_sub = getParameter("type_sub");
+		                  if(page < pageCnt){ // 마지막 페이지가 아닐경우 
+		                      var page = parseInt(page)+1;
+		                      var range = parseInt((page-1)/rangeSize+1);
+		                  }
+		                  
+		                  if (type!=null){
+			            	  var url = "${pageContext.request.contextPath}/goods_list.do";
+			            	  url = url + "?type=" + type;
+		                  }else if(parent_no!=null){
+		                	  var url = "${pageContext.request.contextPath}//goods_list_parent_no.do";
+		                	  url = url + "?parent_no=" + parent_no;
+		                  }else if(sub_no!=null){
+		                	  var url = "${pageContext.request.contextPath}/goods_list_sub_no.do";
+		                	  url = url + "?sub_no=" + sub_no;
+		                  }
+		                  
+		                  if (type_sub!=null){
+		                	  url = url + "&type_sub=" + type_sub;
+		                  }
+		                  url = url + "&page=" + page;
+		                  url = url + "&range=" + range;
+		                  location.href = url;
+		               }
+		               
+		               //맨 끝 페이지 버튼 이벤트 (page=계산된 끝 페이지 수 / range=계산된 끝 페이지수의 range 구하는 식)
+		               function fn_last(pageCnt, rangeSize) {
+		                  var type = getParameter("type");
+					      var parent_no = getParameter("parent_no");
+					      var sub_no = getParameter("sub_no");
+			              var type_sub = getParameter("type_sub");
+		                  var page = parseInt(pageCnt);
+		                  var range = parseInt((pageCnt-1)/rangeSize+1);         
+		                  
+		                  if (type!=null){
+			            	  var url = "${pageContext.request.contextPath}/goods_list.do";
+			            	  url = url + "?type=" + type;
+		                  }else if(parent_no!=null){
+		                	  var url = "${pageContext.request.contextPath}//goods_list_parent_no.do";
+		                	  url = url + "?parent_no=" + parent_no;
+		                  }else if(sub_no!=null){
+		                	  var url = "${pageContext.request.contextPath}/goods_list_sub_no.do";
+		                	  url = url + "?sub_no=" + sub_no;
+		                  }
+		                  
+		                  if (type_sub!=null){
+		                	  url = url + "&type_sub=" + type_sub;
+		                  }
+		                  url = url + "&page=" + page;
+		                  url = url + "&range=" + range;
+		                  location.href = url;
+		               }
 					</script>
 				</div>
 			</div>

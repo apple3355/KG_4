@@ -40,28 +40,17 @@ $(document).ready(function(){
       <%@ include file="/WEB-INF/views/layout/header.jsp"%>  								
 		<div id="main">
 			<div id="content">
-			
-			<!-- 우측 플로팅 배너 -->
-			<div id="qnb" class="quick-navigation" style="top: 516px;height: 215px;">		
-						<div class="bnr_qnb" id="brnQuick">
-							<a href="/shop/board/view.php?id=notice&amp;no=64" id="brnQuickObj"> 
-							<img class="thumb" src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%ED%80%84%EB%A6%AC%ED%8B%B0%EC%9E%88%EA%B2%8C+%EC%83%9B%EB%B3%84%EB%B0%B0%EC%86%A1.png"
-								alt="퀄리티있게 샛별배송">
-							</a>
-						</div>
-						<div class="side_menu">
-							<a href="#" class="link_menu ">등급별 혜택</a> 
-							<a href="#" class="link_menu ">레시피</a>
-							<a href="#" class="link_menu ">베스트 후기</a>
-						</div>
-			</div>
+					<div class="tit_page">
+						<p></p>
+						<p></p>
+						<h2 class="tit">회원가입</h2>
+					</div>
 						<div class="page_aticle">
 
-							<script type="text/javascript"
-								src="/asset/js/useKurly/libText.bundle.js"></script>
-							<script src="/shop/data/skin/designgj/godo.password_strength.js"
-								type="text/javascript"></script>
+							<script type="text/javascript" src="/asset/js/useKurly/libText.bundle.js"></script>
+							<script src="/shop/data/skin/designgj/godo.password_strength.js" type="text/javascript"></script>
 							<script src="/common_js/join_v1.js?ver=1.39.4"></script>
+							
 							<div class="type_form member_join ">
 								<form id="form" name="frmMember" method="post"
 									action="${pageContext.request.contextPath}/insert.do" onsubmit="return chkForm2(this)"

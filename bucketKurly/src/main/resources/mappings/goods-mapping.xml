@@ -52,7 +52,7 @@
 		
 	</resultMap>
 	
-	<!-- 상품리스트 목록(신상품, 낮은가격, 높은가격, 할인 순) -->
+	<!-- 상품리스트 목록(메인화면 상품 검색) -->
 	<select id="selectGoods_sell_main" parameterType="String" resultMap="goods_sell">
 		SELECT * FROM TB_GOODS_SELL s JOIN TB_CATEGORY_GOODS g ON s.goods_sell_goods_no = g.category_goods_no
 			<if test='select_type.equals("random")'>
@@ -66,60 +66,95 @@
 			</if>
 		LIMIT 20
 	</select>
+	
 
 	<!-- 상품리스트 목록(신상품, 낮은가격, 높은가격, 할인 순) -->
 	<select id="selectGoods_sell" parameterType="goods_listdto" resultMap="goods_sell">
-		SELECT * FROM TB_GOODS_SELL s JOIN TB_CATEGORY_GOODS g ON s.goods_sell_goods_no = g.category_goods_no
-
+		SELECT * FROM(SELECT * FROM TB_GOODS_SELL s JOIN TB_CATEGORY_GOODS g ON s.goods_sell_goods_no = g.category_goods_no
 			<if test='select_type.equals("new")'>
-				ORDER BY GOODS_SELL_IN_DATE DESC
+				ORDER BY GOODS_SELL_IN_DATE DESC LIMIT 150) as subtable
+				<choose>
+					<when test='select_type2 != null and select_type2.equals("price_low")'>
+						ORDER BY GOODS_SELL_PRICE
+					</when>
+					<when test='select_type2 != null and select_type2.equals("price_high")'>
+						ORDER BY GOODS_SELL_PRICE DESC
+					</when>
+				</choose>
 			</if>
 			<if test='select_type.equals("best")'>
-				ORDER BY GOODS_SELL_DISCOUNT DESC
+				ORDER BY GOODS_SELL_IN_DATE DESC LIMIT 150) as subtable
+				<choose>
+					<when test='select_type2 != null and select_type2.equals("price_low")'>
+						ORDER BY GOODS_SELL_PRICE
+					</when>
+					<when test='select_type2 != null and select_type2.equals("price_high")'>
+						ORDER BY GOODS_SELL_PRICE DESC
+					</when>
+				</choose>
 			</if>
 			<if test='select_type.equals("sale")'>
-				ORDER BY GOODS_SELL_DISCOUNT DESC
+				ORDER BY GOODS_SELL_DISCOUNT DESC LIMIT 150) as subtable
+				<choose>
+					<when test='select_type2 != null and select_type2.equals("price_low")'>
+						ORDER BY GOODS_SELL_PRICE
+					</when>
+					<when test='select_type2 != null and select_type2.equals("price_high")'>
+						ORDER BY GOODS_SELL_PRICE DESC
+					</when>
+				</choose>
 			</if>
-			<if test='select_type.equals("price_low")'>
-				ORDER BY GOODS_SELL_PRICE
-			</if>
-			<if test='select_type.equals("price_high")'>
-				ORDER BY GOODS_SELL_PRICE DESC
-			</if>
+			LIMIT #{listSize} OFFSET #{startList}
 	</select>
+	
 		
 	<!-- 상품리스트 목록(상위 카테고리 별로 구하기) -->
-	<select id="selectGoods_sell_parent" parameterType="goods_listDTO" resultMap="goods_sell">
+	<select id="selectGoods_sell_parent" parameterType="goods_listdto" resultMap="goods_sell">
 		SELECT * FROM TB_GOODS_SELL s JOIN TB_CATEGORY_GOODS g ON s.goods_sell_goods_no = g.category_goods_no
 		WHERE GOODS_SELL_PARENT_NO = #{goods_sell_parent_no}
-			<if test='select_type2 != null and(select_type2.equals("new"))'>
-				ORDER BY GOODS_SELL_IN_DATE DESC
-			</if>
-			<if test='select_type2 != null and(select_type2.equals("best"))'>
-				ORDER BY GOODS_SELL_DISCOUNT DESC
-			</if>
-			<if test='select_type2 != null and(select_type2.equals("sale"))'>
-				ORDER BY GOODS_SELL_DISCOUNT DESC
-			</if>
-			<if test='select_type2 != null and(select_type2.equals("price_low"))'>
+			<if test='select_type2 != null and select_type2.equals("price_low")'>
 				ORDER BY GOODS_SELL_PRICE
 			</if>
-			<if test='select_type2 != null and(select_type2.equals("price_high"))'>
+			<if test='select_type2 != null and select_type2.equals("price_high")'>
 				ORDER BY GOODS_SELL_PRICE DESC
 			</if>
-			
+		 LIMIT #{listSize} OFFSET #{startList}			
 	</select>
+	
+	<!-- 상품리스트 목록(상위 카테고리 별로 구하기) -페이징처리-->
+	<select id="selectGoods_sell_parent_listCnt" resultType="int">
+		SELECT COUNT(*) FROM TB_GOODS_SELL s JOIN TB_CATEGORY_GOODS g ON s.goods_sell_goods_no = g.category_goods_no
+		WHERE GOODS_SELL_PARENT_NO = #{goods_sell_parent_no}
+	</select>
+	
+	<!-- 상품리스트 목록(상위 카테고리 별로 구하기) -제목 -->
 	<select id="selectGoods_sell_parent_title" parameterType="String" resultType="String">
 		SELECT CATEGORY_PARENT_NAME FROM TB_CATEGORY_PARENT
 		WHERE CATEGORY_PARENT_NO = #{parent_no}
 	</select>
 	
+	
+	
 	<!-- 상품리스트 목록(중위 카테고리 별로 구하기) -->
-	<select id="selectGoods_sell_sub" parameterType="goods_listDTO" resultMap="goods_sell">
+	<select id="selectGoods_sell_sub" parameterType="goods_listdto" resultMap="goods_sell">
 		SELECT * FROM TB_GOODS_SELL s JOIN TB_CATEGORY_GOODS g ON s.goods_sell_goods_no = g.category_goods_no
 		WHERE GOODS_SELL_SUB_NO = #{goods_sell_sub_no}
-			
+			<if test='select_type2 != null and select_type2.equals("price_low")'>
+				ORDER BY GOODS_SELL_PRICE
+			</if>
+			<if test='select_type2 != null and select_type2.equals("price_high")'>
+				ORDER BY GOODS_SELL_PRICE DESC
+			</if>
+		LIMIT #{listSize} OFFSET #{startList}
 	</select>
+	
+	<!-- 상품리스트 목록(중위 카테고리 별로 구하기) -페이징처리-->
+	<select id="selectGoods_sell_sub_listCnt" resultType="int">
+		SELECT COUNT(*) FROM TB_GOODS_SELL s JOIN TB_CATEGORY_GOODS g ON s.goods_sell_goods_no = g.category_goods_no
+		WHERE GOODS_SELL_SUB_NO = #{goods_sell_sub_no}
+	</select>
+	
+	<!-- 상품리스트 목록(중위 카테고리 별로 구하기) -제목 -->
 	<select id="selectGoods_sell_sub_title" parameterType="String" resultType="String">
 		SELECT CATEGORY_SUB_NAME FROM TB_CATEGORY_SUB
 		WHERE CATEGORY_SUB_NO = #{sub_no}

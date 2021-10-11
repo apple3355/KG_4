@@ -10,8 +10,8 @@ public class Goods_ListDTO {
 
 	
 	//페이징 처리
-	private int listSize = 12; // 한 페이지 안에서 볼 게시글의 갯수 13개
-	private int rangeSize = 5; // 초기값으로 페이지범위를 5으로 셋팅
+	private int listSize = 12; // 한 페이지 안에서 볼 게시글의 갯수 12개
+	private int rangeSize = 3; // 초기값으로 페이지범위를 3으로 셋팅
 	
 	private int page; // 현재 페이지 번호
 	private int range; // 각 페이지 범위 시작번호

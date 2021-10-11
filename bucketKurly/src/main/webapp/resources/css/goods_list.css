@@ -86,9 +86,9 @@ button, input, optgroup, select, textarea {color: inherit;font: inherit;margin: 
 
 /* page_div */
 .page_aticle .layout-pagination-first-page:first-child {border-left: 1px solid #ddd;}
-.page_aticle .layout-pagination-button:first-child {border-left: 0;}
+.page_aticle .layout-pagination-button:first-child {border-left: 1;}
 .page_aticle .layout-pagination a {cursor: pointer;}
-.page_aticle .layout-pagination a, .page_aticle .layout-pagination strong {font-weight: 700;font-size: 12px;}
+.page_aticle .layout-pagination a, .page_aticle .layout-pagination strong {font-weight: 500;font-size: 12px;}
 .layout-pagination-number:hover, .layout-pagination-number.__active {background-color: #f7f7f7;color: #5f0080;}
 .layout-pagination-number {font-weight: 700;color: #333;line-height: 34px;}
 
