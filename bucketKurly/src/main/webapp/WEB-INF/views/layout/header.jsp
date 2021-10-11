@@ -55,6 +55,17 @@
         }
         
     }); 
+    
+    
+  //상위 카테고리 클릭시 상품 리스트 페이지 이동
+    $(".inner_sub ul li").on("click", ".menu", function() {
+         var parent_no = $(this).find('input').val();
+         
+         var url = "${pageContext.request.contextPath}/goods_list_parent_no.do";
+         url = url + "?parent_no=" + parent_no;
+         location.href = url;
+     });
+   
 });
   
   
