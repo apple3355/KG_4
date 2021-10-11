@@ -241,8 +241,6 @@ $(function(){
 .main_type2 .list_goods .price{display:block;padding-top:9px;font-weight:500;font-size:16px;line-height:20px} 
 .main_type2 .list_goods .dc{padding-right:8px;font-weight:500;font-size:16px;color:#fa622f;line-height:20px} 
 .main_type2 .list_goods .cost{display:block;padding-top:5px;font-size:14px;color:#999;line-height:18px;text-decoration:line-through} 
-   
-#qnb{position:absolute;z-index:1;right:20px;top:70px;width:80px;font:normal 12px/16px "'Noto Sans KR', sans-serif";color:#333;letter-spacing:-0.3px;transition:top 0.2s}
 .goods-goods_view #qnb{top:20px}
    
  /* 배너 */
@@ -251,7 +249,7 @@ $(function(){
 
 /* 메뉴 */    
 #qnb .side_menu{width:80px;border:1px solid #ddd;border-top:0 none;background-color:#fff}
-#qnb .link_menu{display:block;height:29px;padding-top:5px;border-top:1px solid #ddd;text-align:center}
+#qnb .link_menu{display:block;height:29px;border-top:1px solid #ddd;text-align:center}
 #qnb .link_menu:hover,
 #qnb .link_menu.on{color:#5f0080}
    
@@ -305,13 +303,13 @@ $(function(){
 					<!-- 우측 플로팅 배너 -->
 					<div id="qnb" class="quick-navigation" style="top: 516px;height: 215px;">		
 						<div class="bnr_qnb" id="brnQuick">
-							<a href="/shop/board/view.php?id=notice&amp;no=64" id="brnQuickObj"> 
+							<a href="${pageContext.request.contextPath}/board_faq_no.do?no=6" id="brnQuickObj"> 
 								<img class="thumb" src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%ED%80%84%EB%A6%AC%ED%8B%B0%EC%9E%88%EA%B2%8C+%EC%83%9B%EB%B3%84%EB%B0%B0%EC%86%A1.png" alt="퀄리티있게 샛별배송">
 							</a>
 						</div>
 						<div class="side_menu">
 							<a href="#" class="link_menu ">등급별 혜택</a> 
-							<a href="#" class="link_menu ">레시피</a>
+							<a href="${pageContext.request.contextPath}/goods_list.do?type=sale" class="link_menu">특가 상품</a>
 							<a href="#" class="link_menu ">베스트 후기</a>
 						</div>
 					</div>
@@ -325,7 +323,7 @@ $(function(){
 										
 									<ul data-section="main_banner" id="slideBanner" class="list" style="width:1515%; position: relative; transition-timing-function: ease-in-out; transition-duration: 0.5s; transform: translate3d(-2000px, 0px, 0px);">		 
 										<!-- 배너 -->								
-										<c:forEach items="${banner }" var="banner" >
+										<c:forEach items="${banner}" var="banner" >
 											<div style="float: left; list-style: none; position: relative; width: 1076px;" class="bx-clone" data-name="main_banner">
 												<img class="thumb_goods" alt="${banner.banner_title}" src="${banner.banner_filepath}" />
 											</div>
