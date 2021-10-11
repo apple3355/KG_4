@@ -44,6 +44,7 @@ public class GoodsDAO {
 		return sqlSessionTemplate.selectOne("GoodsDAO.selectGoods_sell_parent_title", parent_no);
 	}
 	
+	
 	// 상품 DB 리스트(sub_no)
 	public List<Goods_SellVO> selectGoods_sell_sub(Goods_ListDTO dto) {
 		System.out.println("GoosDAO - selectGoods_sell_sub() 실행");
@@ -60,6 +61,19 @@ public class GoodsDAO {
 		return sqlSessionTemplate.selectOne("GoodsDAO.selectGoods_sell_sub_title", sub_no);
 	}
 
+	
+	
+	// 상품 검색
+	public List<Goods_SellVO> selectGoods_sell_search(Goods_ListDTO dto) {
+		System.out.println("GoosDAO - selectGoods_sell_search() 실행");
+		return sqlSessionTemplate.selectList("GoodsDAO.selectGoods_sell_search", dto);
+	}
+	
+	public int selectGoods_sell_search_listCnt(String search_keyword) {
+		System.out.println("GoosDAO - selectGoods_sell_search_listCnt() 실행");
+		return sqlSessionTemplate.selectOne("GoodsDAO.selectGoods_sell_search_listCnt",search_keyword);
+	}
+	
 
 
 	// 상품 상세페이지(상품정보)

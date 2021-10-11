@@ -9596,15 +9596,15 @@ button.bg-dark:focus {
 }
 
 a.text-primary:hover, a.text-primary:focus {
-  color: #224abe !important;
+  color: #d9b3ff !important;
 }
 
 .text-secondary {
-  color: #858796 !important;
+  color: #ffffff !important;
 }
 
 a.text-secondary:hover, a.text-secondary:focus {
-  color: #60616f !important;
+  color: #cccccc !important;
 }
 
 .text-success {

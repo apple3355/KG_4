@@ -25,6 +25,11 @@ public interface GoodsService {
 	List<Goods_SellVO> selectGoods_sell_sub(Goods_ListDTO dto);
 	int selectGoods_sell_sub_listCnt(String sub_no);
 	String selectGoods_sell_sub_title(String sub_no);
+	
+	// 상품 검색
+	List<Goods_SellVO> selectGoods_sell_search(Goods_ListDTO dto);
+	int selectGoods_sell_search_listCnt(String search_keyword);
+	
 
 	// 상품상세페이지
 	Goods_SellVO getGoods_detail(int goods_sell_no);

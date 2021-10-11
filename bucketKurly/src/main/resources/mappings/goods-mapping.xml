@@ -52,7 +52,7 @@
 		
 	</resultMap>
 	
-	<!-- 상품리스트 목록(메인화면 상품 검색) -->
+	<!-- 상품리스트 목록(메인화면 상품) -->
 	<select id="selectGoods_sell_main" parameterType="String" resultMap="goods_sell">
 		SELECT * FROM TB_GOODS_SELL s JOIN TB_CATEGORY_GOODS g ON s.goods_sell_goods_no = g.category_goods_no
 			<if test='select_type.equals("random")'>
@@ -160,6 +160,20 @@
 		WHERE CATEGORY_SUB_NO = #{sub_no}
 	</select>
 
+
+	<!-- 상품리스트 목록(메인화면 검색창에서 상품검색) -->
+	<select id="selectGoods_sell_search" parameterType="goods_listdto" resultMap="goods_sell">
+		SELECT * FROM TB_GOODS_SELL s JOIN TB_CATEGORY_GOODS g ON s.goods_sell_goods_no = g.category_goods_no
+		WHERE g.category_goods_name like CONCAT('%',#{search_keyword}, '%')
+		LIMIT #{listSize} OFFSET #{startList}
+	</select>
+	
+	<!-- 상품리스트 목록(메인화면 검색창에서 상품검색)  -페이징처리-->
+	<select id="selectGoods_sell_search_listCnt" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM TB_GOODS_SELL s JOIN TB_CATEGORY_GOODS g ON s.goods_sell_goods_no = g.category_goods_no
+		WHERE g.category_goods_name like CONCAT('%',#{search_keyword}, '%')
+	</select>
+	
 
 	<!-- 상품 상세페이지 -->
 	<select id="getGoods_detail" parameterType="int" resultMap="goods_sell">

@@ -81,6 +81,14 @@ public class MainController {
 		return "goods/goods_cart";
 	}
 
-	
+	// 특가/혜택화면
+	@RequestMapping("/special_benefit.do")
+	public String benefit_special(Model model, BannerVO vo) {
+		
+		model.addAttribute("banner", marketingService.getBannerListView(vo));
+		
+		return "goods/special_benefit";
+	}
+
 
 }

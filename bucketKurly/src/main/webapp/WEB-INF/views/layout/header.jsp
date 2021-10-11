@@ -40,16 +40,7 @@
 		    $(this).removeClass("current");
 		    $(".gnb_sub").css("width","219px");
 		});
-		
-		 //상위 카테고리 클릭시 상품 리스트 페이지 이동
-		 $(".inner_sub ul li").on("click", ".menu", function() {
-	         var parent_no = $(this).find('input').val();
-	         
-	         var url = "${pageContext.request.contextPath}/goods_list_parent_no.do";
-	         url = url + "?parent_no=" + parent_no;
-	         location.href = url;
-	     });
-		
+	
 	
 	//스크롤 내렸을때 메뉴 고정
     var topBar = $("#main").offset(); //header 밑 main의 맨윗부분 절대위치
@@ -64,6 +55,17 @@
         }
         
     }); 
+    
+    
+  //상위 카테고리 클릭시 상품 리스트 페이지 이동
+    $(".inner_sub ul li").on("click", ".menu", function() {
+         var parent_no = $(this).find('input').val();
+         
+         var url = "${pageContext.request.contextPath}/goods_list_parent_no.do";
+         url = url + "?parent_no=" + parent_no;
+         location.href = url;
+     });
+   
 });
   
   
@@ -86,7 +88,7 @@
   .menu:after {content: "";float: right;width: 1px;height: 13px;margin-top: 12px;background-color: #d8d8d8;}
   .menu.lst:before {right: 0;}
   .menu.lst:before {content: "";position: absolute;top: 16px;width: 8px;height: 5px;background: url(https://res.kurly.com/pc/ico/1908/ico_down_8x5.png) no-repeat 0 0;}
-  .menu.lst .link_menu {padding-right: 13px;}
+  .menu.lst .link_menu {padding: 0 13px 0 10px;}
   .sub{list-style-type: none;margin-block-start: 0px;margin-block-end: 0px;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;}
   .sub a {font-size: 12px;color: #404040;line-height: 24px;white-space: nowrap;cursor: pointer;}
   .lst .sub {left: auto;right: 0;}
@@ -262,24 +264,15 @@
 								<a href="${pageContext.request.contextPath}/goods_list.do?type=sale"><span class="txt">알뜰쇼핑</span></a>
 							</li>
 							<li class="lst">
-								<a href="######################################" class="link event"><span class="txt">특가/혜택</span></a>
+								<a href="${pageContext.request.contextPath}/special_benefit.do" class="link event"><span class="txt">특가/혜택</span></a>
 							</li>
 						</ul>
 						
 						<!-- 검색어 입력 박스 -->
 						<div id="side_search" class="gnb_search">
-							<form action="/shop/goods/goods_search.php?&amp;" onsubmit="return searchTracking(this)">
-								<input type="hidden" name="searched" value="Y"> 
-								<input type="hidden" name="log" value="1"> 
-								<input type="hidden" name="skey" value="all"> 
-								<input type="hidden"name="hid_pr_text" value=""> 
-								<input type="hidden"name="hid_link_url" value=""> 
-								<input type="hidden"id="edit" name="edit" value=""> 
-								<input name="sword" type="text" id="sword" value="" required="required" label="검색어" placeholder="검색어를 입력해주세요." class="inp_search"> 
+							<form action="${pageContext.request.contextPath}/goods_list_search.do">
+								<input name="search_keyword" id="search_keyword" required="required" placeholder="검색어를 입력해주세요." class="inp_search"> 
 								<input type="image" src="https://res.kurly.com/pc/service/common/1908/ico_search_x2.png" class="btn_search">
-								<div class="init">
-									<button type="button" id="searchInit" class="btn_delete">검색어 삭제하기</button>
-								</div>
 							</form>
 						</div>
 						
