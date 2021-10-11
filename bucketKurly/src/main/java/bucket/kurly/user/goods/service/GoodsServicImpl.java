@@ -10,6 +10,7 @@ import bucket.kurly.user.goods.Goods_CartShowVO;
 import bucket.kurly.user.goods.Goods_CartVO;
 import bucket.kurly.user.goods.Goods_ListDTO;
 import bucket.kurly.user.goods.Goods_SellVO;
+import bucket.kurly.user.order.OrderShowVO;
 
 @Service
 public class GoodsServicImpl implements GoodsService {
@@ -119,8 +120,8 @@ public class GoodsServicImpl implements GoodsService {
 	
 	// 결제 상품 정보
 	@Override
-	public List<Goods_CartShowVO> orderGoods(String goods_cart_status) {
-		return dao.orderGoods(goods_cart_status);
+	public List<OrderShowVO> orderGoods(String order_no) {
+		return dao.orderGoods(order_no);
 	}
 	
 	//장바구니 수정
@@ -146,6 +147,11 @@ public class GoodsServicImpl implements GoodsService {
 	@Override
 	public List<Goods_CartVO> order_memberNo(int member_no) {
 		return dao.order_memberNo(member_no);
+	}
+
+	@Override
+	public Goods_CartVO select_goods_cart(int cart_no) {
+		return dao.select_goods_cart(cart_no);
 	}
 
 	
