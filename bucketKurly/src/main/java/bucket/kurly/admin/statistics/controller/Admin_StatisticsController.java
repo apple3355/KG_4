@@ -37,9 +37,25 @@ public class Admin_StatisticsController {
 
 	@Autowired
 	Admin_StatisticsService admin_statisticsService;
+	
+	// 회원,상품 통계 페이지 이동
+	@RequestMapping("/admin_statistics_rank.mdo")
+	public String getStatistics_rank(Model model) {
 
+		
+		
+		return "statistics/admin_statistics_rank";
+	}
 	
-	
+	// 매출 통계 페이지 이동
+	@RequestMapping("/admin_statistics_revenue.mdo")
+	public String getStatistics_revenue(Model model) {
+
+		
+		
+		return "statistics/admin_statistics_revenue";
+	}
+
 	
 //========================================================================================================================================	
 	

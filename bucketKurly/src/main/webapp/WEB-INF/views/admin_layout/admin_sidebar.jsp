@@ -144,20 +144,39 @@
         <hr class="sidebar-divider">
         <!-- Heading -->
          <div class="sidebar-heading">Board</div>
-		<li class="nav-item">
-             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBoard" aria-expanded="true" aria-controls="collapseBoard">
-                 <i class="fas fa-fw fa-cog"></i>
-                 <span>게시글</span>
-             </a>
-             <div id="collapseBoard" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                 <div class="bg-white py-2 collapse-inner rounded">
-                     <h6 class="collapse-header">컬리 게시글관리 :</h6>
-                     <a class="collapse-item" href="${pageContext.request.contextPath}/admin_board_notice.mdo">공지사항</a>
-                     <a class="collapse-item" href="${pageContext.request.contextPath}/admin_board_faq.mdo">자주하는 질문</a>
-                     <a class="collapse-item" href="${pageContext.request.contextPath}/admin_board_qna.mdo">1:1문의</a>
-                 </div>
-             </div>
-         </li>
+			<li class="nav-item">
+	             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBoard" aria-expanded="true" aria-controls="collapseBoard">
+	                 <i class="fas fa-fw fa-cog"></i>
+	                 <span>게시글</span>
+	             </a>
+	             <div id="collapseBoard" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+	                 <div class="bg-white py-2 collapse-inner rounded">
+	                     <h6 class="collapse-header">컬리 게시글관리 :</h6>
+	                     <a class="collapse-item" href="${pageContext.request.contextPath}/admin_board_notice.mdo">공지사항</a>
+	                     <a class="collapse-item" href="${pageContext.request.contextPath}/admin_board_faq.mdo">자주하는 질문</a>
+	                     <a class="collapse-item" href="${pageContext.request.contextPath}/admin_board_qna.mdo">1:1문의</a>
+	                 </div>
+	             </div>
+	         </li>
+	         
+	         
+	    <!-- Divider -->
+        <hr class="sidebar-divider">
+        <!-- Heading -->
+         <div class="sidebar-heading">Statistics</div>
+			<li class="nav-item">
+	             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStatistics" aria-expanded="true" aria-controls="collapseStatistics">
+	                 <i class="fas fa-fw fa-cog"></i>
+	                 <span>통계</span>
+	             </a>
+	             <div id="collapseStatistics" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+	                 <div class="bg-white py-2 collapse-inner rounded">
+	                     <h6 class="collapse-header">컬리 통계관리 :</h6>
+	                     <a class="collapse-item" href="${pageContext.request.contextPath}/admin_statistics_rank.mdo">회원,상품 통계</a>
+	                     <a class="collapse-item" href="${pageContext.request.contextPath}/admin_statistics_revenue.mdo">매출 통계</a>
+	                 </div>
+	             </div>
+	         </li>        
          
          
          
