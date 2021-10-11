@@ -1017,12 +1017,12 @@ $(document).ready(function calTot(){
 <!-- 장바구니 체크박스 *전체선택 수량 파악 안됨 -->
 <script type="text/javascript">
    //장바구니 진입 시 default:전체선택
-   $("#checkedCnt").html( ${fn:length(goods_cartShowVO )}) //선택
-   $("#checkedCntAll").html( ${fn:length(goods_cartShowVO )})//전체
+//    $("#checkedCnt").html( ${fn:length(goods_cartShowVO )}) //선택
+//    $("#checkedCntAll").html( ${fn:length(goods_cartShowVO )})//전체
 
  //하단의 전체선택 부분
-   $("#checkedCnt2").html( ${fn:length(goods_cartShowVO )}) //선택
-   $("#checkedCntAll2").html( ${fn:length(goods_cartShowVO )})//전체
+//    $("#checkedCnt2").html( ${fn:length(goods_cartShowVO )}) //선택
+//    $("#checkedCntAll2").html( ${fn:length(goods_cartShowVO )})//전체
    
    
 function checkSelectAll()  {

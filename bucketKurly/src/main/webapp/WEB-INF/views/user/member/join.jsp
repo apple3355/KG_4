@@ -130,7 +130,7 @@ $(document).ready(function(){
 											<td>
 												<div class="phone_num">
 													<input type="text" value="" pattern="[0-9]*"
-														name="member_phone" id="member_phone" placeholder="숫자만 입력해주세요" class="inp">
+														name="member_phone" id="member_phone" value="" placeholder="숫자만 입력해주세요" class="inp">
 													<input type="hidden" name="mobile[]" id="mobile0" value=""
 														required fld_esssential option=regNum label="휴대폰">
 													<input type="hidden" name="mobile[]" id="mobile1" value=""
@@ -199,30 +199,6 @@ $(document).ready(function(){
 												<p class="txt_guide">
 													<span class="txt bad"></span>
 												</p>
-											</td>
-										</tr>
-										<tr class="route" id="selectRecommend">
-											<th>추가입력 사항</th>
-											<td>
-												<div class="group_radio">
-													<span class="radio_wrapper"> <label> <input
-															type="radio" name="recommend" id="recommendId"
-															label="추천인아이디"> <span class="ico"></span>추천인 아이디
-													</label>
-													</span> <span class="radio_wrapper"> <label> <input
-															type="radio" name="recommend" id="eventName"
-															label="참여이벤트명"> <span class="ico"></span>참여 이벤트명
-													</label>
-													</span>
-												</div>
-												<div class="input_wrapper">
-													<input type="text" name="recommid" value="" class="inp"
-														placeholder="추천인 아이디를 입력해주세요.">
-													<p class="txt_guide">
-														추천인 아이디와 참여 이벤트명 중 하나만 선택 가능합니다. <br> 가입 이후, 수정이
-														불가합니다. <br> 대소문자 및 띄어쓰기에 유의해주세요.
-													</p>
-												</div>
 											</td>
 										</tr>
 										<tr class="reg_agree">
@@ -1029,6 +1005,12 @@ $("#submit").on("click", function checks(){
 		$("#member_phone").focus(); 
 		return false; 
 	}
+	
+	if($("#auth_code").val() == ""){ 
+		alert("전화번호 인증을 완료해주세요"); 
+		$("#auth_code").focus(); 
+		return false; 
+	}
 })
 </script> 
 
@@ -1049,7 +1031,13 @@ $("#submit").on("click", function checks(){
 <!-- 인증번호 -->
 <script>
 	$("#btn_cert").on("click", function checks(){
-		$("#codeNum").css({'display' : 'block'});
+		var getPhone = RegExp(/^01\d\d{4}\d{4}$/);
+		if(getPhone.test($("#member_phone").val())){
+			$("#codeNum").css({'display' : 'block'});
+		}else{
+		
+		}
+		
 	});
 </script>
 
@@ -1057,28 +1045,35 @@ $("#submit").on("click", function checks(){
 <script>
 function sendSMS(){
 	phone = $("#member_phone").val();
-	
-	$.ajax({
-	    url: 'sendSMS.do',
-	    type: 'POST',
-	    dataType: 'text', //서버로부터 내가 받는 데이터의 타입
-	    contentType : 'text/plain; charset=utf-8;',//내가 서버로 보내는 데이터의 타입
-	    data: phone ,
+	var getPhone = RegExp(/^01\d\d{4}\d{4}$/);
+	if(getPhone.test($("#member_phone").val())){
+		$.ajax({
+		    url: 'sendSMS.do',
+		    type: 'POST',
+		    dataType: 'text', //서버로부터 내가 받는 데이터의 타입
+		    contentType : 'text/plain; charset=utf-8;',//내가 서버로 보내는 데이터의 타입
+		    data: phone ,
 
-	    success: function(data){
-	         if(data == 0){
-	         console.log("인증번호 전송");
-	         alert("인증번호가 발송되었습니다.");
-	         $("#btn_cert_confirm").css({'border': '1px solid #5f0080', 'background-color': '#fff', 'color': '#5f0080'});
-	         }else{
-	         	console.log("인증번호 전송 실패");
-	         	alert("인증번호 발송에 실패하였습니다. 다시 시도해주세요");
-	         }
-	    },
-	    error: function (){        
-	                      
-	    }
-	  });
+		    success: function(data){
+		         if(data == 0){
+		         console.log("인증번호 전송");
+		         alert("인증번호가 발송되었습니다.");
+		         $("#btn_cert_confirm").css({'border': '1px solid #5f0080', 'background-color': '#fff', 'color': '#5f0080'});
+		         }else{
+		         	console.log("인증번호 전송 실패");
+		         	alert("인증번호 발송에 실패하였습니다. 다시 시도해주세요");
+		         }
+		    },
+		    error: function (){        
+		                      
+		    }
+		  });
+	}else{
+		alert("전화번호 형식을 확인해주세요"); 
+		$("#member_phone").focus(); 
+		return false;
+	}
+	
 
 
 }

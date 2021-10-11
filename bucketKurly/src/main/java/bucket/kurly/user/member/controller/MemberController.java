@@ -155,12 +155,17 @@ public class MemberController {
 
 		MemberVO result = memberService.find_id(vo);
 		System.out.println(result);
-
+		
 		if (result == null) {
 			return "redirect:/notFind_ID.do";
 		}
-
-		session.setAttribute("find_ID", result.getMember_id());
+		String get_id = result.getMember_id();
+		StringBuilder id = new StringBuilder(get_id.substring(0, 3));
+		for(int i = 0; i < (get_id.length() -3); i++) {
+			id.append("*");
+		}
+		System.out.println(id);
+		session.setAttribute("find_ID", id);
 		return "redirect:/show_ID.do";
 	}
 
