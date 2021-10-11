@@ -114,7 +114,9 @@
 							</div>
 							<ul class="list" id="btn_dropup_cold">
 							<c:forEach items="${goods_cartShowVO }" var="goods_cartShowVO">
+							<c:set var="stauts" value="${goods_cartShowVO.goods_cart_status }" />
 							<c:set var="name" value="${goods_cartShowVO.category_goods_packaging_type }" />
+							<c:if test="${stauts eq '0' }">
 							<c:if test="${name eq '냉장'}">
 								<li>
 									<div class="item" id="item">
@@ -181,6 +183,7 @@
 									</table>
 								</li>
 								</c:if>
+								</c:if>
 								</c:forEach>
 							</ul>
 						</div>
@@ -198,7 +201,9 @@
 							</div>
 							<ul class="list" id="btn_dropup_room">
 							<c:forEach items="${goods_cartShowVO }" var="goods_cartShowVO">
+							<c:set var="stauts" value="${goods_cartShowVO.goods_cart_status }" />
 							<c:set var="name" value="${goods_cartShowVO.category_goods_packaging_type }" />
+							<c:if test="${stauts eq '0' }">
 							<c:if test="${name eq '상온'}">
 								<li>
 									<div class="item" id="item">
@@ -265,6 +270,7 @@
 									</table>
 								</li>
 								</c:if>
+								</c:if>
 								</c:forEach>
 							</ul>
 						</div>
@@ -283,7 +289,9 @@
 							</div>
 							<ul class="list" id="btn_dropup_frozen">
 							<c:forEach items="${goods_cartShowVO }" var="goods_cartShowVO">
+							<c:set var="stauts" value="${goods_cartShowVO.goods_cart_status }" />
 							<c:set var="name" value="${goods_cartShowVO.category_goods_packaging_type }" />
+							<c:if test="${stauts eq '0' }">
 							<c:if test="${name eq '냉동'}">
 								<li>
 									<div class="item" id="item">
@@ -349,6 +357,7 @@
 									</tr>
 									</table>
 								</li>
+								</c:if>
 								</c:if>
 								</c:forEach>
 							</ul>

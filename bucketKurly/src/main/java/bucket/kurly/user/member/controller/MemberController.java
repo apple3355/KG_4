@@ -410,10 +410,7 @@ public class MemberController {
 	// 주문내역
 	@RequestMapping("/member_orderlist.do")
 	public String member_orderlist(HttpSession session, Model model) throws Exception {
-		List<Goods_CartShowVO> goods_cartShowVO = new ArrayList<Goods_CartShowVO>();
 		List<OrderVO> orderlist = new ArrayList<OrderVO>();
-		String Goods_cart_status = (String) session.getAttribute("Goods_cart_status");
-		System.out.println(Goods_cart_status);
 		int member_no = (int) session.getAttribute("member_no");
 		System.out.println(member_no);
 		List<Goods_CartVO> cartVO = goodsService.order_memberNo(member_no);
@@ -427,17 +424,20 @@ public class MemberController {
 		}
 		System.out.println(orderlist);
 		
-//		goods_cartShowVO = goodsService.orderGoods(Goods_cart_status);
-//		String image = goods_cartShowVO.get(0).getCategory_goods_image_thumb();
-//		model.addAttribute("goodslist", image);
-		System.out.println(model);
-		
 		return "member/member_orderlist";
 	}
 
 	// 주문내역 상세페이지
 	@RequestMapping("/member_orderlist_detail.do")
-	public String member_orderlist_detail() {
+	public String member_orderlist_detail(@RequestParam("goods_cart_status") String goods_cart_status, Model model) throws Exception {
+		List<Goods_CartShowVO> orderlist =  goodsService.orderGoods(goods_cart_status);
+		List<OrderVO> info_list =  orderService.select_order(goods_cart_status);
+		OrderVO info = info_list.get(0);
+		System.out.println(info_list);
+		System.out.println(info);
+		model.addAttribute("orderlist", orderlist);
+		model.addAttribute("order_no", goods_cart_status);
+		model.addAttribute("info", info);
 		return "member/member_orderlist_detail";
 	}
 	

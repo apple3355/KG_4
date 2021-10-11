@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
@@ -8,11 +7,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
-<link rel="stylesheet" type="text/css" href="resources/css/member_orderlist.css">
+<link rel="stylesheet" type="text/css" href="resources/css/member_orderlist_detail.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common.css">
 
-<title>마이페이지_주문 내역(member_orderlist)</title>
+<title>마이페이지_주문 내역 상세</title>
 
 </head>
 <body>
@@ -28,10 +26,9 @@
 				<div id="content">
 			
 					<div id="qnb" class="quick-navigation">							
-						<div class="bnr_qnb" id="brnQuick"></div>						
-				
-							
-					</div>				
+						<div class="bnr_qnb" id="brnQuick"></div>				
+					</div>
+					<script id="delivery"></script>				
 <!-- 				<div id="myPageTop" class="page_aticle mypage_top"> -->
 <!-- 				<mypage-top :kurlylovers_benefit_tag="kurlylovers_benefit_tag" :kurlylovers_benefit_badge="kurlylovers_benefit_badge" :member-benefits-point-type="memberBenefitsPointType" :member-benefits-point-tag="memberBenefitsPointTag" :member-benefits-point-vallue="memberBenefitsPointVallue" :member-benefits-point-description="memberBenefitsPointDescription" :member-benefits-delivery-type="memberBenefitsDeliveryType" :member-benefits-delivery-tag="memberBenefitsDeliveryTag" :member-benefits-delivery-vallue="memberBenefitsDeliveryVallue" :member-benefits-delivery-description="memberBenefitsDeliveryDescription" :member-benefits-special-type="memberBenefitsSpecialType" :member-benefits-special-tag="memberBenefitsSpecialTag" :member-benefits-special-vallue="memberBenefitsSpecialVallue" :member-benefits-special-description="memberBenefitsSpecialDescription" :user-name="userName" :user-grade="userGrade" :user-grade-info="userGradeInfo" :user-grade-name="userGradeName" :accumulated-money="accumulatedMoney" :coupon-count="couponCount" :expire-date="expireDate" :expire-point="expirePoint" :kurly-pass-expiration-date="kurlyPassExpirationDate" :type="type" :notification-check="notificationCheck" :imc-data="imcData" :imc-time="imcTime"></mypage-top> -->
 <!-- 					<h2 class="screen_out">마이페이지</h2> -->
@@ -65,7 +62,8 @@
 <!-- 											<div class="link_title"> 적립금  -->
 <!-- 												 -->
 <!-- 												<img src="https://res.kurly.com/kurly/ico/2021/arrow_right_gray_56_56.png" alt="" class="arrow_right"> -->
-<!-- 											</div> <div class="spacer"></div> -->
+<!-- 											</div>  -->
+<!-- 											<div class="spacer"></div> -->
 <!-- 												<p class="info"> 0 원 <span class="expire"> 소멸 예정 0 원 </span> -->
 <!-- 												</p> -->
 <!-- 										</a> -->
@@ -138,86 +136,223 @@
 								</ul>
 							</div>
 							
-								<a href="/shop/mypage/mypage_qna_register.php?mode=add_qna" class="link_inquire"><span class="emph">도움이 필요하신가요 ?
+								<a href="/shop/mypage/mypage_qna_register.php?mode=add_qna" class="link_inquire">
+									<span class="emph">도움이 필요하신가요 ?
 									</span> 1:1 문의하기
 								</a>
 					</div>
 					
-					<div id="viewOrderList" class="page_section section_orderlist" v-cloak>
+					<div class="page_section section_orderview" >
 						<div class="head_aticle">
-							<h2 class="tit">주문 내역 <span class="tit_sub">지난 3년간의 주문 내역 조회가 가능합니다</span></h2>
+							<h2 class="tit">주문 내역 상세</h2>
 						</div>
-							<div class="search_date">
-								<h3 class="screen_out">기간 선택</h3>
-									<a href="#none" v-html="checkYear" class="btn_layer">
-										전체기간
-									</a>
-										<ul class="layer_search">
-											<li><a href="#none" @click="searchResult" class="on">전체기간</a></li>
-											<li><a href="#none" @click="searchResult" data-year="2021">2021 년</a></li>
-											<li><a href="#none" @click="searchResult" data-year="2020">2020 년</a></li>
-											<li><a href="#none" @click="searchResult" data-year="2019">2019 년</a></li>
-										</ul>
+							<div class="head_section link_type">
+								<h3 class="tit">${info.order_no}</h3>
+								<h3 class="link">>${info.order_delivery_status}</h3>
+								
 							</div>
-							
-									<ul class="list_order">
-									<c:forEach items="${orderlist }" var="orderlist" varStatus="status">
-											<!-- <li v-if="noData" class="no_data">
-											주문내역이 없습니다.
-											</li>  -->
-											<li>
-												<div class="date">${orderlist.order_date}</div>
-													<div class="order_goods">
-														<div class="name">
-															<a></a>
-														</div> 
-														<div class="order_info">
-															<div class="thumb">
-																	<img src="${orderlist.category_goods_image_thumb}" alt="해당 주문 대표 상품 이미지">
+								<form name="frmOrdView" method="post">
+									<input type="hidden" name="mode">
+									<input type="checkbox" name="include" checked="checked" value="" class="chk_cart">
+										<table class="tbl tbl_type1">
+											<colgroup>
+												<col style="width:80px;">
+												<col style="width:auto">
+												<col style="width:100px;">
+												<col style="width:136px;">
+											</colgroup>
+												<tbody>
+												<c:forEach items="${orderlist}" var="orderlist">
+													<tr>
+														<td class="thumb">
+															<a href="/shop/goods/goods_view.php?&amp;goodsno=42606" style="background-image: url(&quot;${orderlist.category_goods_image_thumb}&quot;);"></a>
+														</td>
+														<td class="info">
+															<div class="name">
+																<a href="" class="link">${orderlist.category_goods_name}</a>
 															</div>
-																<div class="desc">
-																	<dl><dt>주문번호</dt> <dd>${orderlist.order_no}</dd></dl>
-																	<input type="hidden" value="${orderlist.order_no}">
-																	<dl><dt>결제금액</dt> <dd>${orderlist.order_goods_price}</dd></dl>
-																	<dl><dt>주문상태</dt> <dd class="status">${orderlist.order_delivery_status}</dd></dl>
-																</div>
-														</div>
-															
-															<div class="order_status" style="display: none;"><span class="inner_status">
-																<!---->
-																<!---->
-																<a class="link ga_tracking_event">1:1 문의</a>
-																</span></div>
-													</div>
-												</li>
-											</c:forEach>							
-									</ul>
-									<div class="layout-pagination">
-										<div class="pagediv">
-											<a href="#viewOrderList" class="layout-pagination-button layout-pagination-first-page">맨 처음 페이지로 가기</a>
-											<a href="#viewOrderList" class="layout-pagination-button layout-pagination-prev-page">이전 페이지로 가기</a>
-												<span>
-												<!---->
-												<strong class="layout-pagination-button layout-pagination-number __active">1</strong></span>
-											<a href="#viewOrderList" class="layout-pagination-button layout-pagination-next-page">다음 페이지로 가기</a>
-											<a href="#viewOrderList" class="layout-pagination-button layout-pagination-last-page">맨 끝 페이지로 가기</a>
-										</div>
-									</div>															
+															<div class="desc">															
+																<span class="price">${orderlist.goods_sell_price}원</span>															
+																<span class="ea">${orderlist.goods_cart_count}개</span>
+															</div>
+														</td>
+<!-- 														<td class="progress "> -->
+<!-- 															상품준비중 -->
+<!-- 														</td> -->
+														<td class="action" style="display: none;">
+															<button type="button" class="btn btn_cart ga_tracking_event" onclick="cartLayerOpenAction('42606')">장바구니 담기</button>
+														</td>														
+													</tr>
+												</c:forEach>		
+												</tbody>
+										</table>
+									</form>	
+									
+									<div id="orderCancel" class="order_cancel" style="display: none;">
+									<span class="inner_cancel">
+									
+									<button type="button" id="cartPutAll" class="btn btn_cart">전체 상품 다시 담기</button>
+									<button type="button" class="btn btn_cancel off">전체 상품 주문 취소</button>
+									</span>
+									<p class="cancel_notice">직접 주문취소는 ‘입금확인’ 상태일 경우에만 가능합니다.</p>
+									</div>								
+									
+									
+									<!-- 결제 정보 영역 -->
+									
+									<div class="head_section">
+										<h3 class="tit">
+											결제정보
+										</h3>
+									</div>
+									
+									<table class="tbl tbl_type2 tbl_type3">
+										<colgroup>
+											<col style="width:160px">
+											<col style="width:auto">
+										</colgroup>
+											<tbody>
+												<tr>
+													<th>상품금액</th>
+														<td><span id="paper_goodsprice">${info.order_goods_price - info.order_delivery_fee}</span>원
+														</td>
+												</tr>
+												<tr>
+													<th>배송비</th>
+														<td>
+															<div id="paper_delivery_msg1">
+																<span id="paper_delivery">${info.order_delivery_fee}</span>원
+															</div>
+														</td>
+												</tr>
+												<tr>
+													<th>상품할인금액</th>
+														<td>- <span id="paper_goodsDc">3,890</span>원</td>
+													</tr>
+												<tr>
+													<th>쿠폰할인</th>
+													<td>- <span id="paper_coupon">10,000</span>원</td>
+												</tr>
+												<tr>
+													<th>적립금사용</th>
+														<td><span id="paper_emoney">0</span>원</td>
+												</tr>
+												<tr>
+													<th>결제금액</th>
+														<td><span id="paper_settlement">${info.order_goods_price}</span>원
+														</td>
+												</tr>
+												<tr>
+													<th>적립예정금액</th>
+														<td>
+															<strong class="emph">(배송완료 다음날 적립 예정)</strong>975원
+														</td>
+												</tr>
+												<tr>
+													<th>결제방법</th>
+														<td>신용카드 <img src="//res.kurly.com/pc/admin/1801/icon_payco.gif"></td>
+												</tr>
+											</tbody>
+									</table>
+									
+									<!-- 주문 정보 영역 -->
+									
+									<div class="head_section">
+										<h3 class="tit">주문정보</h3>
+									</div>
+										<table class="tbl tbl_type2">
+											<colgroup>
+												<col style="width:160px">
+												<col style="width:auto">
+											</colgroup>
+												<tbody>
+													<tr>
+														<th>주문자명</th>
+															<td>${info.order_name}</td>
+													</tr>
+													<tr>
+														<th>보내는 분</th>
+															<td>${info.order_name}</td>
+													</tr>
+													<tr>
+														<th>결제일시</th>
+															<td>${info.order_date}</td>
+													</tr>
+												</tbody>
+										</table>
+									
+									<!-- 배송 정보 영역 -->
+									
+									<div class="head_section">
+										<h3 class="tit">배송 정보</h3>
+									</div>
+										<table class="tbl tbl_type2">
+											<colgroup>
+												<col style="width:160px">
+												<col style="width:auto">
+											</colgroup>
+												<tbody>
+													<tr>
+														<th>받는 분</th>
+															<td>${info.order_name}</td>
+													</tr>
+													<tr>
+														<th>핸드폰</th>
+															<td>${info.order_phone}</td>
+													</tr>
+													<tr>
+														<th>배송방법</th>
+															<td>샛별배송</td>
+													</tr>
+													<tr>
+														<th>주소</th>
+															<td>
+																${info.order_address}
+															</td>
+													</tr>
+													<tr>
+														<th>받으실 장소</th>
+															<td>문 앞</td>
+													</tr>
+													<tr>
+														<th>공동현관 출입 방법</th>
+															<td>자유 출입 가능 </td>
+													</tr>
+													
+													<tr>
+														<th>포장방법</th>
+															<td>종이 포장재</td>
+													</tr>
+												
+												</tbody>
+										</table>
+
+									<!--  추가 정보 영역 -->
+									
+									<div class="head_section">
+										<h2 class="tit">추가 정보</h2>
+									</div>
+										<table class="tbl tbl_type2">
+											<colgroup>
+											<col style="width:160px">
+											<col style="width:auto">
+											</colgroup>
+												<tbody>
+													<tr>
+														<th>메세지 전송 시점</th>
+															<td id="orderview_delivery_message_time">배송 직후</td>
+													</tr>
+													<tr>
+														<th>미출시 조치방법</th>
+															<td>결제수단으로 환불</td>
+													</tr>
+												</tbody>
+										</table>					
 						
 					</div>			
 				</div>
 				
-				<div id="oftenList" style="display:none"></div>					
-					<script>
-					    $('.search_date .btn_layer').on('click',function(e){
-					        e.preventDefault();
-					        $(this).toggleClass('on');
-					        $('.search_date .layer_search').slideToggle(100);
-					    });
-					
-					    // KM-1483 Amplitude
-					    KurlyTracker.setScreenName('order_history').setTabName('my_kurly');
-					</script>
+				
 					
 				
 				</div>
@@ -235,19 +370,7 @@
 
 		<a href="#top" id="pageTop" class="on" style="opacity: 1; bottom: 15px;">맨 위로가기</a>
 		</div>
-	</div>
-<script>
-//상위 카테고리 클릭시 상품 리스트 페이지 이동
-$(".list_order li").on("click", ".desc", function() {
-    var goods_cart_status = $(this).find('input').val();
-    
-    var url = "${pageContext.request.contextPath}/member_orderlist_detail.do";
-	url = url + "?goods_cart_status=" + goods_cart_status;
-	location.href = url;
-});
-
-
-</script>	
+	</div>	
 </body>
 </html>
 

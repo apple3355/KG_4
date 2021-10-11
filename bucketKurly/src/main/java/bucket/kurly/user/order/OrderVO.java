@@ -14,6 +14,7 @@ public class OrderVO {
 	private int  order_delivery_fee;
 	private int  order_coupon_no;
 	private String order_delivery_status;
+	private String category_goods_image_thumb;
 	public String getOrder_no() {
 		return order_no;
 	}
@@ -80,16 +81,21 @@ public class OrderVO {
 	public void setOrder_delivery_status(String order_delivery_status) {
 		this.order_delivery_status = order_delivery_status;
 	}
+	public String getCategory_goods_image_thumb() {
+		return category_goods_image_thumb;
+	}
+	public void setCategory_goods_image_thumb(String category_goods_image_thumb) {
+		this.category_goods_image_thumb = category_goods_image_thumb;
+	}
 	@Override
 	public String toString() {
 		return "OrderVO [order_no=" + order_no + ", order_name=" + order_name + ", order_member_no=" + order_member_no
 				+ ", order_date=" + order_date + ", order_phone=" + order_phone + ", order_address=" + order_address
 				+ ", order_goods_count=" + order_goods_count + ", order_goods_price=" + order_goods_price
 				+ ", order_delivery_fee=" + order_delivery_fee + ", order_coupon_no=" + order_coupon_no
-				+ ", order_delivery_status=" + order_delivery_status + "]";
+				+ ", order_delivery_status=" + order_delivery_status + ", category_goods_image_thumb="
+				+ category_goods_image_thumb + "]";
 	}
-	
-	
 	
 	
 	
