@@ -18,53 +18,67 @@ public class GoodsServicImpl implements GoodsService {
 	private GoodsDAO dao;
 
 	// 메인페이지 상품
-		@Override
-		public List<Goods_SellVO> selectGoods_sell_main(String select_type) {
-			return dao.selectGoods_sell_main(select_type);
-		}
-		
-		// 상품리스트
-		@Override
-		public List<Goods_SellVO> selectGoods_sell(Goods_ListDTO dto) {
-			return dao.selectGoods_sell(dto);
-		}
+	@Override
+	public List<Goods_SellVO> selectGoods_sell_main(String select_type) {
+		return dao.selectGoods_sell_main(select_type);
+	}
+	
+	// 상품리스트
+	@Override
+	public List<Goods_SellVO> selectGoods_sell(Goods_ListDTO dto) {
+		return dao.selectGoods_sell(dto);
+	}
+	
 
-		// 상품리스트(parent_no)
-		@Override
-		public List<Goods_SellVO> selectGoods_sell_parent(Goods_ListDTO dto) {
-			return dao.selectGoods_sell_parent(dto);
-		}
-		@Override
-		public int selectGoods_sell_parent_listCnt(String parent_no) {
-			return dao.selectGoods_sell_parent_listCnt(parent_no);
-		}
-		@Override
-		public String selectGoods_sell_parent_title(String parent_no) {
-			return dao.selectGoods_sell_parent_title(parent_no);
-		}
-		
-		// 상품리스트(sub_no)
-		@Override
-		public List<Goods_SellVO> selectGoods_sell_sub(Goods_ListDTO dto) {
-			return dao.selectGoods_sell_sub(dto);
-		}
-		@Override
-		public int selectGoods_sell_sub_listCnt(String sub_no) {
-			return dao.selectGoods_sell_sub_listCnt(sub_no);
-		}
-		@Override
-		public String selectGoods_sell_sub_title(String sub_no) {
-			return dao.selectGoods_sell_sub_title(sub_no);
-		}
+	// 상품리스트(parent_no)
+	@Override
+	public List<Goods_SellVO> selectGoods_sell_parent(Goods_ListDTO dto) {
+		return dao.selectGoods_sell_parent(dto);
+	}
+	@Override
+	public int selectGoods_sell_parent_listCnt(String parent_no) {
+		return dao.selectGoods_sell_parent_listCnt(parent_no);
+	}
+	@Override
+	public String selectGoods_sell_parent_title(String parent_no) {
+		return dao.selectGoods_sell_parent_title(parent_no);
+	}
+	
+	
+	// 상품리스트(sub_no)
+	@Override
+	public List<Goods_SellVO> selectGoods_sell_sub(Goods_ListDTO dto) {
+		return dao.selectGoods_sell_sub(dto);
+	}
+	@Override
+	public int selectGoods_sell_sub_listCnt(String sub_no) {
+		return dao.selectGoods_sell_sub_listCnt(sub_no);
+	}
+	@Override
+	public String selectGoods_sell_sub_title(String sub_no) {
+		return dao.selectGoods_sell_sub_title(sub_no);
+	}
+	
+	
+	// 상품 검색
+	@Override
+	public List<Goods_SellVO> selectGoods_sell_search(Goods_ListDTO dto) {
+		return dao.selectGoods_sell_search(dto);
+	}
 
+	@Override
+	public int selectGoods_sell_search_listCnt(String search_keyword) {
+		return dao.selectGoods_sell_search_listCnt(search_keyword);
+	}
+	
 
-		
-		// 상품 상세페이지
-		@Override
-		public Goods_SellVO getGoods_detail(int goods_sell_no) {
-			// TODO Auto-generated method stub
-			return dao.getGoods_detail(goods_sell_no);
-		}
+	
+	// 상품 상세페이지
+	@Override
+	public Goods_SellVO getGoods_detail(int goods_sell_no) {
+		// TODO Auto-generated method stub
+		return dao.getGoods_detail(goods_sell_no);
+	}
 	
 	// 상품카운트
 	@Override
@@ -133,6 +147,7 @@ public class GoodsServicImpl implements GoodsService {
 	public List<Goods_CartVO> order_memberNo(int member_no) {
 		return dao.order_memberNo(member_no);
 	}
+
 	
 	
 }

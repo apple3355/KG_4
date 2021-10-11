@@ -31,7 +31,9 @@ public class GoodsController {
 	
 	@Autowired
 	private MemberService memberService;
-	// 상품 리스트, 상품 카운트, 페이징
+	
+	
+	// 상품 리스트
 	@RequestMapping("/goods_list.do")
 	public String getGoods_list(Model model, 
 			@RequestParam("type") String select_type, 
@@ -131,7 +133,28 @@ public class GoodsController {
 		return "goods/goods_list";
 	}
 		
+	// 상품 검색
+	@RequestMapping("/goods_list_search.do")
+	public String getGoods_list_search(Model model, 
+			@RequestParam("search_keyword") String search_keyword,
+			@RequestParam(required = false, defaultValue = "1") int page,
+			@RequestParam(required = false, defaultValue = "1") int range) {	
 	
+		System.out.println("상품 검색 요청");
+		
+		Goods_ListDTO dto = new Goods_ListDTO();
+		int listCnt = goodsService.selectGoods_sell_search_listCnt(search_keyword);
+		dto.pageInfo(page, range, listCnt);
+		dto.setSearch_keyword(search_keyword);	
+	
+		List<Goods_SellVO> goods_sell_list = goodsService.selectGoods_sell_search(dto);
+		
+
+		model.addAttribute("goods_sell_list", goods_sell_list); // 상품DB품목
+		model.addAttribute("itemCnt", listCnt); // 상품카운트
+		model.addAttribute("dto", dto); //페이징
+		return "goods/goods_list_search";
+	}
 
 	// 상품 상세페이지
 	@RequestMapping("/goods_list_detail.do")
@@ -226,7 +249,7 @@ public class GoodsController {
 	// 장바구니 수정
 		@ResponseBody
 		@RequestMapping("/updateGoods_cart.do")
-		public String updateGoods_cart(Goods_CartVO gsvo, HttpServletRequest request) {
+	public String updateGoods_cart(Goods_CartVO gsvo, HttpServletRequest request) {
 
 			String cartNo = request.getParameter("cartNo");
 			String numAfter = request.getParameter("numAfter");

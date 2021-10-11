@@ -7,6 +7,7 @@ public class Goods_ListDTO {
 	private String select_type2;
 	private String goods_sell_parent_no;
 	private String goods_sell_sub_no;
+	private String search_keyword;
 
 	
 	//페이징 처리
@@ -77,13 +78,22 @@ public class Goods_ListDTO {
 		this.goods_sell_sub_no = goods_sell_sub_no;
 	}
 	
+	
+	public String getSearch_keyword() {
+		return search_keyword;
+	}
+
+	public void setSearch_keyword(String search_keyword) {
+		this.search_keyword = search_keyword;
+	}
+	
 	@Override
 	public String toString() {
 		return "Goods_ListDTO [select_type=" + select_type + ", select_type2=" + select_type2
-				+ ", goods_sell_parent_no=" + goods_sell_parent_no + ", goods_sell_sub_no=" + goods_sell_sub_no + "]";
+				+ ", goods_sell_parent_no=" + goods_sell_parent_no + ", goods_sell_sub_no=" + goods_sell_sub_no
+				+ ", search_keyword=" + search_keyword + "]";
 	}
-	
-	
+
 	public int getListSize() {
 		return listSize;
 	}
