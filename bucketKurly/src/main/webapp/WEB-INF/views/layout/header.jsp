@@ -253,7 +253,7 @@
 								<a href="${pageContext.request.contextPath}/goods_list.do?type=sale"><span class="txt">알뜰쇼핑</span></a>
 							</li>
 							<li class="lst">
-								<a href="######################################" class="link event"><span class="txt">특가/혜택</span></a>
+								<a href="${pageContext.request.contextPath}/special_benefit.do" class="link event"><span class="txt">특가/혜택</span></a>
 							</li>
 						</ul>
 						
