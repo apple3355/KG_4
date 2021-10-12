@@ -91,10 +91,10 @@ public class Goods_admin_Controller {
 	@RequestMapping("/admin_refund_import.mdo")
 	public String getRefund(Model model,
 			@RequestParam("refund_no") int refund_no,
-			@RequestParam("refund_import_no") String refund_import_no) {
+			@RequestParam("refund_merchant_no") String refund_merchant_no) {
 		System.out.println("환불 요청");
 		
-		new ImportPayment().cancelPayment(new ImportPayment().getImportToken(),refund_import_no);
+		new ImportPayment().cancelPayment(new ImportPayment().getImportToken(),refund_merchant_no);
 		
 		admin_refundService.updateRefund_state(refund_no);
 		

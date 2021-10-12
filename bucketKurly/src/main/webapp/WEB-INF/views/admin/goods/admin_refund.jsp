@@ -86,7 +86,7 @@
 	                                        	</td>                                        	
 	                                        	<td>
 	                                        		<c:if test="${state == 0}">
-	                                        			<a onclick = "fn_update('${selectRefund.refund_no}','${selectRefund.refund_import_no}')">
+	                                        			<a onclick = "fn_update('${selectRefund.refund_no}','${selectRefund.refund_merchant_no}')">
 	                                        				<button type="button" class="btn btn-outline btn-info" id="saveBtn">환불하기</button>
 	                                        			</a>
 	                                         		</c:if>
@@ -133,7 +133,7 @@
     <!-- Page level custom scripts -->
     <script src="resources/bootstrap/js/demo/datatables-demo.js"></script>
 	<script>
-		function fn_update(refund_no,refund_import_no) {
+		function fn_update(refund_no,refund_merchant_no) {
 			var result = confirm("해당 결제건을 환불 하시겠습니까? ");
 			if(result){ 
 				
@@ -141,17 +141,17 @@
 				form.setAttribute("method", "Post");
 				form.setAttribute("action", "${pageContext.request.contextPath}/admin_refund_import.mdo");
 				
-				var refund_import_noField = document.createElement("input");
-				refund_import_noField.setAttribute("type", "hidden");
-				refund_import_noField.setAttribute("name", "refund_import_no");
-				refund_import_noField.setAttribute("value", refund_import_no);
+				var refund_merchant_noField = document.createElement("input");
+				refund_merchant_noField.setAttribute("type", "hidden");
+				refund_merchant_noField.setAttribute("name", "refund_merchant_no");
+				refund_merchant_noField.setAttribute("value", refund_merchant_no);
 				
 				var refund_noField = document.createElement("input");
 				refund_noField.setAttribute("type", "hidden");
 				refund_noField.setAttribute("name", "refund_no");
 				refund_noField.setAttribute("value", refund_no);
 				
-				form.appendChild(refund_import_noField);
+				form.appendChild(refund_merchant_noField);
 				form.appendChild(refund_noField);
 				
 				document.body.appendChild(form);

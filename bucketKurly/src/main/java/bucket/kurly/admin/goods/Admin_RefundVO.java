@@ -5,7 +5,7 @@ public class Admin_RefundVO {
 	
 	private int refund_no;
 	private String refund_order_no;
-	private String refund_import_no;
+	private String refund_merchant_no;
 	private String refund_member_id;
 	private int refund_price;
 	private int refund_state;
@@ -22,11 +22,11 @@ public class Admin_RefundVO {
 	public void setRefund_order_no(String refund_order_no) {
 		this.refund_order_no = refund_order_no;
 	}
-	public String getRefund_import_no() {
-		return refund_import_no;
+	public String getRefund_merchant_no() {
+		return refund_merchant_no;
 	}
-	public void setRefund_import_no(String refund_import_no) {
-		this.refund_import_no = refund_import_no;
+	public void setRefund_merchant_no(String refund_merchant_no) {
+		this.refund_merchant_no = refund_merchant_no;
 	}
 	public String getRefund_member_id() {
 		return refund_member_id;
@@ -48,10 +48,11 @@ public class Admin_RefundVO {
 	}
 	@Override
 	public String toString() {
-		return "Admin_RefundVO [refund_no=" + refund_no + ", refund_order_no=" + refund_order_no + ", refund_import_no="
-				+ refund_import_no + ", refund_member_id=" + refund_member_id + ", refund_price=" + refund_price
-				+ ", refund_state=" + refund_state + "]";
+		return "Admin_RefundVO [refund_no=" + refund_no + ", refund_order_no=" + refund_order_no
+				+ ", refund_merchant_no=" + refund_merchant_no + ", refund_member_id=" + refund_member_id
+				+ ", refund_price=" + refund_price + ", refund_state=" + refund_state + "]";
 	}
+	
 	
 	
 }
