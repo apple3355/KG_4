@@ -47,7 +47,8 @@ public class OrderController {
 		
 		String name = (String) session.getAttribute("id");
 		MemberVO result = orderService.order_form(name);
-	
+		
+		model.addAttribute("count", cart_no.size()-1);
 		model.addAttribute("memberVO", result);
 		model.addAttribute("goodsPrice", goodsPrice);
 		model.addAttribute("discountprice", discountprice);
