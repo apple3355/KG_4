@@ -23,6 +23,7 @@
 		<typeAlias type="bucket.kurly.admin.marketing.BannerVO" alias="banner"/>
 		<typeAlias type="bucket.kurly.admin.marketing.CouponVO" alias="coupon"/>
 		<typeAlias type="bucket.kurly.admin.statistics.Admin_StatisticsVO" alias="member_statistics"/>
+		<typeAlias type="bucket.kurly.admin.statistics.Admin_StatisticsBestVO" alias="member_statistics_best"/>
 		
 		
 		

@@ -1,12 +1,17 @@
 package bucket.kurly.admin.controller;
 
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
 
 import bucket.kurly.admin.board.service.Admin_Board_qnaService;
 import bucket.kurly.admin.member.service.Admin_MemberService;
@@ -24,12 +29,18 @@ public class Admin_MainController {
 	@Autowired
 	Admin_StatisticsService Admin_StatisticsService;
 	
+	DecimalFormat df = new DecimalFormat("###,###");
+	
 	//메인화면
 	@RequestMapping("/admin_main.mdo")
 	public String admin_main(Model model) {
 		int board_qnaList_answait = Admin_Board_qnaService.selectBoard_qna_answait_num();
 		int member_num = Admin_MemberService.selectMember_num();
-		int revenue_total = Admin_StatisticsService.getRevenue_total();
+		
+		int revenue_total_without_format = Admin_StatisticsService.getRevenue_total();
+		String revenue_total = df.format(revenue_total_without_format);
+		revenue_total =  "￦" + revenue_total;
+		
 		
 		List<Admin_StatisticsVO> memberList = Admin_StatisticsService.getMemberRank();
 		model.addAttribute("board_qnaList_answait", board_qnaList_answait);
