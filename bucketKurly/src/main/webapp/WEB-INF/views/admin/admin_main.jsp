@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="UTF-8">
 
@@ -60,8 +61,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                월 매출</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">select sum(order_goods_price) from tb_order; 원</div>
+                                                누적 매출</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${revenue_total } 원</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -135,44 +136,6 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- Test Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-test shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                테스트</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            
-                                            	<div>
-							                    	<a href="${pageContext.request.contextPath}/admin_getRankPDF.mdo" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-							                                class="fas fa-download fa-sm text-white-50"></i> 등급별 회원 다운로드(PDF) </a>
-							                        <a href="${pageContext.request.contextPath}/admin_getRankEXCEL.mdo" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-							                                class="fas fa-download fa-sm text-white-50"></i> 등급별 회원 다운로드(EXCEL) </a>
-                    							</div>
-							                    <div>
-							                    	<a href="${pageContext.request.contextPath}/admin_getRevenuePDF_daily.mdo" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-							                                class="fas fa-download fa-sm text-white-50"></i> 일별 매출 다운로드(PDF) </a>
-							                        <a href="${pageContext.request.contextPath}/admin_getRevenueEXCEL_daily.mdo" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-							                                class="fas fa-download fa-sm text-white-50"></i> 일별 매출 다운로드(EXCEL) </a>    
-							                    </div>
-							                    <div>
-							                    	<a href="${pageContext.request.contextPath}/admin_getRevenuePDF_monthly.mdo" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-							                                class="fas fa-download fa-sm text-white-50"></i> 월간 매출 다운로드(PDF) </a>
-							                        <a href="${pageContext.request.contextPath}/admin_getRevenueEXCEL_monthly.mdo" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-							                                class="fas fa-download fa-sm text-white-50"></i> 월간 매출 다운로드(EXCEL) </a>    
-							                    </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Content Row -->
@@ -217,10 +180,24 @@
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">등급별 회원 수</h6>
-                                    <input type="hidden" id= "purple" value="1" data-purple="20000" >
-                                    <input type="hidden" id= "laven" value="1" data-laven="10000">
-                                    <input type="hidden" id= "white" value="1" data-white="5000">
-                                    <input type="hidden" id= "normal" value="1" data-normal="1000">
+                                    
+                                     <c:forEach items="${Admin_StatisticsVO}" var="Admin_StatisticsVO">
+                                    <c:set var="rank" value="${Admin_StatisticsVO.member_rank }" scope="session"/>
+                                 	 <c:choose>
+								        <c:when test='${rank eq "퍼플"}'>
+								            <input type="hidden" id= "purple" data-purple="${Admin_StatisticsVO.member_rank_total }" >
+								        </c:when> 
+								        <c:when test='${rank eq "라벤더"}'>
+								              <input type="hidden" id= "laven" data-laven="${Admin_StatisticsVO.member_rank_total }">
+								        </c:when>  
+								        <c:when test='${rank eq "화이트"}'>
+								            <input type="hidden" id= "white" data-white="${Admin_StatisticsVO.member_rank_total }">
+								        </c:when>  
+								        <c:when test='${rank eq "일반"}'>
+								            <input type="hidden" id= "normal" data-normal="${Admin_StatisticsVO.member_rank_total }">
+								        </c:when>          
+							   		 </c:choose>
+                                 	</c:forEach>
                                  
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"

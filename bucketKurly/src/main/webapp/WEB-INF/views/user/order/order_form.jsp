@@ -58,7 +58,12 @@
 								<a class="btn" id="btn" href="#none">
 									<span class="screen_out" id="screen" >펼침 / 닫힘</span>
 								</a>
+								<c:if test="${count ne 0 }">
+								<div class="short_info">${goods_cartShowVO[0].category_goods_name} 외 ${count}개의 상품</div>
+								</c:if>
+								<c:if test="${count eq 0 }">
 								<div class="short_info">${goods_cartShowVO[0].category_goods_name}</div>
+								</c:if>
 							</div>
 							<ul class="list_product">
 							<c:forEach items="${goods_cartShowVO }" var="goods_cartShowVO">
@@ -662,7 +667,7 @@
 		}else{
 			var user_price = $("#paper_settlement").text();
 			var delivery_fee = $("#deliveryFee").text();
-			var user_orderTitle = '주문명:결제테스트';
+			var user_orderTitle = $(".short_info").text();
 			var user_email = $("#email").val();
 			var user_orderName = $("#order_name").val();
 			var user_orderPhone = $("#order_phone").val();
