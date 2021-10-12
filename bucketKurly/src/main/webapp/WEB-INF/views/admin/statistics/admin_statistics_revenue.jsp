@@ -58,7 +58,7 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">일별 매출 차트</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">월별 매출 차트</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -115,9 +115,9 @@
                         <div class="col-xl-8 col-lg-7">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
-                                <div
+                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">월별 매출 차트</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">일별 매출 차트</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -136,11 +136,48 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-area">
+                                      <c:forEach items="${Admin_StatisticsVO_monthly}" var="Admin_StatisticsVO_monthly">
+                                    <c:set var="item" value="${Admin_StatisticsVO_monthly.order_date}"/>
+                                    	<c:choose>
+								        <c:when test="${item eq '2021-01'}">	
+								            <input type="hidden" id= "jan" data-jan="${Admin_StatisticsVO_monthly.revenue_total}" >
+								        </c:when>
+								        <c:when test='${item eq "2021-02"}'>
+								            <input type="hidden" id= "feb" data-feb="${Admin_StatisticsVO_monthly.revenue_total}">
+								        </c:when>    
+								        <c:when test='${item eq "2021-03"}'>
+								            <input type="hidden" id= "mar" data-mar="${Admin_StatisticsVO_monthly.revenue_total}">
+								        </c:when>
+								        <c:when test='${item eq "2021-04"}'>
+								            <input type="hidden" id= "aprl" data-aprl="${Admin_StatisticsVO_monthly.revenue_total}">
+								        </c:when>
+								        <c:when test='${item eq "2021-05"}'>
+								            <input type="hidden" id= "may" data-may="${Admin_StatisticsVO_monthly.revenue_total}">
+								        </c:when>
+								        <c:when test='${item eq "2021-06"}'>
+								            <input type="hidden" id= "jun" data-jun="${Admin_StatisticsVO_monthly.revenue_total}">
+								        </c:when>
+								        <c:when test='${item eq "2021-07"}'>
+								            <input type="hidden" id= "jul" data-jul="${Admin_StatisticsVO_monthly.revenue_total}">
+								        </c:when>
+								        <c:when test='${item eq "2021-08"}'>
+								            <input type="hidden" id= "aug" data-aug="${Admin_StatisticsVO_monthly.revenue_total}">
+								        </c:when>
+								        <c:when test='${item eq "2021-09"}'>
+								            <input type="hidden" id= "sep" data-sep="${Admin_StatisticsVO_monthly.revenue_total}">
+								        </c:when>
+								        <c:when test='${item eq "2021-10"}'>
+								            <input type="hidden" id= "oct" data-oct="${Admin_StatisticsVO_monthly.revenue_total}">
+								        </c:when>
+								        <c:when test='${item eq "2021-11"}'>
+								            <input type="hidden" id= "nov" data-nov="${Admin_StatisticsVO_monthly.revenue_total}">
+								        </c:when>
+								        <c:when test='${item eq "2021-12"}'>
+								            <input type="hidden" id= "dec" data-dec="${Admin_StatisticsVO_monthly.revenue_total}">
+								        </c:when>          
+							   		 </c:choose>
+                                 	</c:forEach>
                                         <canvas id="myAreaChart2"></canvas>
-                                        <input type="hidden" data-jan =50000>
-                                        <input type="hidden" data-feb =110000>
-                                        <input type="hidden" data-mar =20000>
-                                        <input type="hidden" data-aprl =10000>
                                     </div>
                                 </div>
                             </div>
@@ -236,6 +273,7 @@
 
     	// Area Chart Example
     	var ctx = document.getElementById("myAreaChart");
+    	
     	var myLineChart = new Chart(ctx, {
     	  type: 'line',
     	  data: {
@@ -253,7 +291,8 @@
     	      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
     	      pointHitRadius: 10,
     	      pointBorderWidth: 2,
-    	      data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+    	      data: [jan.dataset.jan, feb.dataset.feb, mar.dataset.mar, aprl.dataset.aprl, may.dataset.may, jun.dataset.jun, jul.dataset.jul,
+    	    	  aug.dataset.aug, sep.dataset.sep, oct.dataset.oct, nov.dataset.nov, dec.dataset.dec],
     	    }],
     	  },
     	  options: {
@@ -325,8 +364,12 @@
     	});
     
     </script>
+   
+   
+   <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
     
-     <script type="text/javascript">
+    
+    <script type="text/javascript">
     function number_format(number, decimals, dec_point, thousands_sep) {
     	  // *     example: number_format(1234.56, 2, ',', ' ');
     	  // *     return: '1 234,56'
@@ -354,11 +397,21 @@
 
     	// Area Chart Example
     	var ctx = document.getElementById("myAreaChart2");
+    	
+    	var jan = document.getElementById("jan");
+     	var feb = document.getElementById("feb");
+     	var mar = document.getElementById("mar");
+        var aprl = document.getElementById("aprl");
+        var may = document.getElementById("may");
+        var jun = document.getElementById("jun");
+        var jul = document.getElementById("jul");
+        var aug = document.getElementById("aug");
+        var sep = document.getElementById("sep");
+        var oct = document.getElementById("oct");
+        var nov = document.getElementById("nov");
+        var dec = document.getElementById("dec");
+    	
     	var myLineChart = new Chart(ctx, {
-    		var jan = document.getElementById("jan");
-         	var feb = document.getElementById("feb");
-         	var mar = document.getElementById("mar");
-            var aprl = document.getElementById("aprl");
     	  type: 'line',
     	  data: {
     	    labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
@@ -375,7 +428,8 @@
     	      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
     	      pointHitRadius: 10,
     	      pointBorderWidth: 2,
-    	      data: [jan.dataset.jan, feb.dataset.feb, mar.dataset.mar, aprl.dataset.aprl, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+    	      data: [jan.dataset.jan, feb.dataset.feb, mar.dataset.mar, aprl.dataset.aprl, may.dataset.may, jun.dataset.jun, jul.dataset.jul,
+    	    	  aug.dataset.aug, sep.dataset.sep, oct.dataset.oct, nov.dataset.nov, dec.dataset.dec],
     	    }],
     	  },
     	  options: {

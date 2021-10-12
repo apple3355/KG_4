@@ -17,7 +17,7 @@
 	
 	<!-- 월별매출 -->
 	<select id="selectRevenueMonthly" resultType="member_statistics">
-		SELECT to_char(order_date, 'YYYY-MM'), COUNT(*) AS order_total, SUM(order_goods_price) AS revenue_total
+		SELECT to_char(order_date, 'YYYY-MM') as order_date, COUNT(*) AS order_total, SUM(order_goods_price) AS revenue_total
 		FROM  tb_order WHERE order_date &gt;= '2021-01-01' AND order_date &lt;= '2021-12-31'
 		GROUP BY to_char(order_date, 'YYYY-MM')
 		ORDER BY to_char(order_date, 'YYYY-MM');	
@@ -29,6 +29,16 @@
 	</select>
 	
 	<!-- 베스트 아이템 -->
-	
+	<select id="selectBestItem" resultType="member_statistics_best">
+		SELECT goods.category_goods_name,
+	  	SUM(sell.goods_sell_price) as goods_sell_price,
+	  	COUNT(details.order_details_goods_sell_no) as count_total FROM tb_order_details details
+      	LEFT OUTER JOIN tb_goods_sell sell
+      	ON details.order_details_goods_sell_no = sell.goods_sell_no
+      	LEFT OUTER JOIN tb_category_goods goods 
+      	ON sell.goods_sell_goods_no = goods.category_goods_no
+      	GROUP BY goods.category_goods_name,details.order_details_goods_sell_no,sell.goods_sell_price
+      	ORDER BY count(details.order_details_goods_sell_no) DESC;
+	</select>
 	
 </mapper> 

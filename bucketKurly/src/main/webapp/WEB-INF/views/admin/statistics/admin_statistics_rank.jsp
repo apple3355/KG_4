@@ -77,6 +77,11 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-area">
+                                   	<c:forEach items="${Admin_StatisticsBestVO}" var="Admin_StatisticsBestVO">
+                                    	<c:set var="item" value="${Admin_StatisticsBestVO.count_total}"/>
+								            <input type="hidden" id="name" data-name="${Admin_StatisticsBestVO.category_goods_name}" >
+								            <input type="hidden" id="count" data-count="${Admin_StatisticsBestVO.count_total}" >
+                                 	</c:forEach>
                                         <canvas id="myAreaChart"></canvas>
                                     </div>
                                     
@@ -95,9 +100,9 @@
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                             
                                             	<div>
-							                    	<a href="${pageContext.request.contextPath}/admin_getRankPDF.mdo" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+							                    	<a href="${pageContext.request.contextPath}/admin_getBestItemPDF.mdo" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
 							                                class="fas fa-download fa-sm text-white-50"></i> 베스트 상품 다운로드(PDF) </a>
-							                        <a href="${pageContext.request.contextPath}/admin_getRankEXCEL.mdo" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+							                        <a href="${pageContext.request.contextPath}/admin_getBestItemEXCEL.mdo" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
 							                                class="fas fa-download fa-sm text-white-50"></i> 베스트 상품 다운로드(EXCEL) </a>
                     							</div>
                                             </div>
@@ -239,48 +244,7 @@
     <script src="resources/bootstrap/js/demo/chart-area-demo.js"></script>
     <script src="resources/bootstrap/js/demo/chart-pie-demo.js"></script>
     
-    <script>
-    $(document).ready(function(){
-    	// Pie Chart Example
-        var ctx = document.getElementById("myPieChart");
-     	var purple = document.getElementById("purple");
-     	var laven = document.getElementById("laven");
-     	var white = document.getElementById("white");
-        var normal = document.getElementById("normal");
-        var myPieChart = new Chart(ctx, {
-          type: 'doughnut',
-          data: {
-            labels: ["퍼플", "라벤더", "화이트", "테스트"],
-            datasets: [{
-              data: [purple.dataset.purple, laven.dataset.laven, white.dataset.white, normal.dataset.normal],
-              backgroundColor: ['#9933ff', '#d9b3ff', '#FFCCFF','#cccccc'],
-              hoverBackgroundColor: ['#8000ff', '#bf80ff', '#f2f2f2','#a6a6a6'],
-              hoverBorderColor: "rgba(234, 236, 244, 1)",
-            }],
-          },
-          options: {
-            maintainAspectRatio: false,
-            tooltips: {
-              backgroundColor: "rgb(255,255,255)",
-              bodyFontColor: "#858796",
-              borderColor: '#dddfeb',
-              borderWidth: 1,
-              xPadding: 15,
-              yPadding: 15,
-              displayColors: false,
-              caretPadding: 10,
-            },
-            legend: {
-              display: false
-            },
-            cutoutPercentage: 80,
-          },
-        });
-    	
-    });
- 	
-    </script>
-    
+
     <script type="text/javascript">
     
     function number_format(number, decimals, dec_point, thousands_sep) {
@@ -310,10 +274,16 @@
 
     	// Area Chart Example
     	var ctx = document.getElementById("myAreaChart");
+    	
+     	var name = document.getElementById("name");
+     	var count = document.getElementById("count");
+        
+        console.log(jan);
+        
     	var myLineChart = new Chart(ctx, {
     	  type: 'line',
     	  data: {
-    	    labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+    	    labels: ["1","2"],
     	    datasets: [{
     	      label: "Earnings",
     	      lineTension: 0.3,
@@ -327,7 +297,7 @@
     	      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
     	      pointHitRadius: 10,
     	      pointBorderWidth: 2,
-    	      data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+    	      data: [name.dataset.name, count.dataset.count],
     	    }],
     	  },
     	  options: {
@@ -398,6 +368,48 @@
     	  }
     	});
     
+    </script>
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+    <script>
+    $(document).ready(function(){
+    	// Pie Chart Example
+        var ctx = document.getElementById("myPieChart");
+     	var purple = document.getElementById("purple");
+     	var laven = document.getElementById("laven");
+     	var white = document.getElementById("white");
+        var normal = document.getElementById("normal");
+        var myPieChart = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: ["퍼플", "라벤더", "화이트", "테스트"],
+            datasets: [{
+              data: [purple.dataset.purple, laven.dataset.laven, white.dataset.white, normal.dataset.normal],
+              backgroundColor: ['#9933ff', '#d9b3ff', '#FFCCFF','#cccccc'],
+              hoverBackgroundColor: ['#8000ff', '#bf80ff', '#f2f2f2','#a6a6a6'],
+              hoverBorderColor: "rgba(234, 236, 244, 1)",
+            }],
+          },
+          options: {
+            maintainAspectRatio: false,
+            tooltips: {
+              backgroundColor: "rgb(255,255,255)",
+              bodyFontColor: "#858796",
+              borderColor: '#dddfeb',
+              borderWidth: 1,
+              xPadding: 15,
+              yPadding: 15,
+              displayColors: false,
+              caretPadding: 10,
+            },
+            legend: {
+              display: false
+            },
+            cutoutPercentage: 80,
+          },
+        });
+    	
+    });
+ 	
     </script>
     
 </body>

@@ -7,14 +7,6 @@ public class Admin_StatisticsVO {
 	private String order_date;
 	private int order_total;
 	private int revenue_total;
-	private String to_char; //월별날짜
-	
-	public String getTo_char() {
-		return to_char;
-	}
-	public void setTo_char(String to_char) {
-		this.to_char = to_char;
-	}
 	public String getMember_rank() {
 		return member_rank;
 	}
@@ -49,6 +41,7 @@ public class Admin_StatisticsVO {
 	public String toString() {
 		return "Admin_StatisticsVO [member_rank=" + member_rank + ", member_rank_total=" + member_rank_total
 				+ ", order_date=" + order_date + ", order_total=" + order_total + ", revenue_total=" + revenue_total
-				+ ", to_char=" + to_char + ", order_netincome=" + "]";
+				+ "]";
 	}
+
 }

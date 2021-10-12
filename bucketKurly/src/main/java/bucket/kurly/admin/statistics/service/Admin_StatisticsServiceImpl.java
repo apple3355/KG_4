@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import bucket.kurly.admin.statistics.Admin_StatisticsBestVO;
 import bucket.kurly.admin.statistics.Admin_StatisticsDAO;
 import bucket.kurly.admin.statistics.Admin_StatisticsVO;
 
@@ -29,16 +30,14 @@ public class Admin_StatisticsServiceImpl implements Admin_StatisticsService {
 	public List<Admin_StatisticsVO> getRevenue_monthly() {
 		return dao.getRevenue_monthly();
 	}
-	//인기품목
-	@Override
-	public List<Admin_StatisticsVO> getBestItem() {
-		return dao.getBestItem();
-	}
+	//누적금액
 	@Override
 	public int getRevenue_total() {
 		return dao.getRevenue_total();
 	}
-
-	
-	
+	//인기품목
+	@Override
+	public List<Admin_StatisticsBestVO> getBestItem() {
+		return dao.getBestItem();
+	}
 }

@@ -29,7 +29,7 @@ public class Admin_StatisticsDAO {
 			return sqlSessionTemplate.selectOne("Admin_statisticsDAO.selectRevenueTotal");
 		}
 	//베스트 아이템
-	public List<Admin_StatisticsVO> getBestItem(){
+	public List<Admin_StatisticsBestVO> getBestItem(){
 		return sqlSessionTemplate.selectList("Admin_statisticsDAO.selectBestItem");
 	}
 	
