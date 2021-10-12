@@ -11,6 +11,7 @@ public class OrderVO {
 	private int  order_goods_price;
 	private int  order_delivery_fee;
 	private int  order_coupon_no;
+	private String order_merchant_no;
 	private String order_delivery_status;
 	private String category_goods_image_thumb;
 	public String getOrder_no() {
@@ -73,6 +74,12 @@ public class OrderVO {
 	public void setOrder_coupon_no(int order_coupon_no) {
 		this.order_coupon_no = order_coupon_no;
 	}
+	public String getOrder_merchant_no() {
+		return order_merchant_no;
+	}
+	public void setOrder_merchant_no(String order_merchant_no) {
+		this.order_merchant_no = order_merchant_no;
+	}
 	public String getOrder_delivery_status() {
 		return order_delivery_status;
 	}
@@ -91,9 +98,11 @@ public class OrderVO {
 				+ ", order_date=" + order_date + ", order_phone=" + order_phone + ", order_address=" + order_address
 				+ ", order_goods_count=" + order_goods_count + ", order_goods_price=" + order_goods_price
 				+ ", order_delivery_fee=" + order_delivery_fee + ", order_coupon_no=" + order_coupon_no
-				+ ", order_delivery_status=" + order_delivery_status + ", category_goods_image_thumb="
-				+ category_goods_image_thumb + "]";
+				+ ", order_merchant_no=" + order_merchant_no + ", order_delivery_status=" + order_delivery_status
+				+ ", category_goods_image_thumb=" + category_goods_image_thumb + "]";
 	}
+	
+	
 	
 	
 	

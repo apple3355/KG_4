@@ -1,4 +1,4 @@
-package bucket.kurly.user.service;
+package bucket.kurly.user.order.service;
 
 import java.util.List;
 

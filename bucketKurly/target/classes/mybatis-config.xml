@@ -5,7 +5,8 @@
 <configuration>
 	<properties resource="db.properties" />
 	<typeAliases>
-	
+		<typeAlias type="bucket.kurly.admin.manager.AdminVO" alias="admin"/>
+		<typeAlias type="bucket.kurly.admin.manager.AdminTermsVO" alias="adminterms"/>		
 		<typeAlias type="bucket.kurly.admin.member.Admin_MemberVO" alias="admin_member" />
 		<typeAlias type="bucket.kurly.admin.member.Admin_Member_DetailsVO" alias="admin_member_details" />
 		<typeAlias type="bucket.kurly.admin.member.Admin_Member_MembershipVO" alias="admin_member_membership" />
@@ -40,8 +41,7 @@
 		<typeAlias type="bucket.kurly.user.order.OrderVO" alias="order"/>
 		<typeAlias type="bucket.kurly.user.order.OrderShowVO" alias="orderShowVO"/>
 		<typeAlias type="bucket.kurly.user.order.OrderDetailsVO" alias="orderDetails"/>
-		<typeAlias type="bucket.kurly.admin.manager.AdminTermsVO" alias="adminterms"/>
-		<typeAlias type="bucket.kurly.admin.manager.AdminVO" alias="admin"/>
+		<typeAlias type="bucket.kurly.user.refund.RefundVO" alias="refund"/>	
 	</typeAliases>
 
 	<mappers>

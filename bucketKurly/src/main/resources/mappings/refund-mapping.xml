@@ -3,7 +3,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="RefundDAO">
 
+	<!-- 사용자 환불요청 -->
+	<insert id="insertRefund" parameterType="refund">
+		INSERT INTO tb_refund(refund_order_no,refund_merchant_no,refund_member_id,refund_price, refund_state)
+		VALUES(#{refund_order_no},#{refund_merchant_no},#{refund_member_id},#{refund_price}, 0);
+	</insert>
 
+	<!-- 관리자 -->
 	<!-- 환불 리스트 -->
 	<select id="admin_selectRefund_list" resultType="admin_refund">
 		SELECT * FROM TB_REFUND

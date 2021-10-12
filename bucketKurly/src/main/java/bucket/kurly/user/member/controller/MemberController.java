@@ -33,7 +33,7 @@ import bucket.kurly.user.member.MemberVO;
 import bucket.kurly.user.member.service.MemberService;
 import bucket.kurly.user.order.OrderShowVO;
 import bucket.kurly.user.order.OrderVO;
-import bucket.kurly.user.service.OrderService;
+import bucket.kurly.user.order.service.OrderService;
 import bucket.kurly.util.Coolsms;
 import bucket.kurly.util.SHA256;
 
@@ -446,8 +446,8 @@ public class MemberController {
 		System.out.println(orderlist);
 		List<OrderVO> info_list =  orderService.select_order(order_no);
 		OrderVO info = info_list.get(0);
-		System.out.println(info_list);
-		System.out.println(info);
+		System.out.println("info_list:" +info_list);
+		System.out.println("info:" +info);
 		model.addAttribute("orderlist", orderlist);
 		model.addAttribute("order_no", order_no);
 		model.addAttribute("info", info);

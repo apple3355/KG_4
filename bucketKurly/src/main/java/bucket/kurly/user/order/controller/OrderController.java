@@ -20,7 +20,7 @@ import bucket.kurly.user.goods.service.GoodsService;
 import bucket.kurly.user.member.MemberVO;
 import bucket.kurly.user.order.OrderDetailsVO;
 import bucket.kurly.user.order.OrderVO;
-import bucket.kurly.user.service.OrderService;
+import bucket.kurly.user.order.service.OrderService;
 
 @Controller
 public class OrderController {
@@ -87,10 +87,16 @@ public class OrderController {
 		vo.setOrder_delivery_fee(Integer.parseInt(delivery_fee));
 //		vo.setOrder_delivery_fee(3000);
 		
+		String order_merchant_no = request.getParameter("order_merchant_no");
+		System.out.println("order_merchant_no"+order_merchant_no);
+		vo.setOrder_merchant_no(order_merchant_no);
+		
 		vo.setOrder_member_no(member_no);
 		System.out.println(member_no);
 		List<String> cart_no = (List<String>) session.getAttribute("cart_no");
 		vo.setOrder_goods_count(cart_no.size());
+		
+		System.out.println(vo);
 		orderService.insert_order(vo);
 		
 		

@@ -701,6 +701,8 @@
 				if (rsp.success) {
 					var msg = '결제가 완료되었습니다.';
 					var apply_num = rsp.apply_num;
+					var merchant_uid = rsp.merchant_uid;
+					console.log(merchant_uid);
 					msg += '고유ID : ' + rsp.imp_uid;
 					msg += '상점 거래ID : ' + rsp.merchant_uid;
 					msg += '결제 금액 : ' + rsp.paid_amount;
@@ -710,7 +712,7 @@
 						type: 'GET',
 						dataType: 'text',
 						data: {"apply_num":apply_num, "order_name":user_orderName, "order_phone":user_orderPhone, "order_address":user_address,
-							"order_goods_price":user_price, "delivery_fee":delivery_fee},// data:{"cart_no"} 괄호
+							"order_goods_price":user_price, "delivery_fee":delivery_fee, "order_merchant_no":merchant_uid},// data:{"cart_no"} 괄호
 						
 						success: function(data){
 							if(data == 0){
@@ -726,7 +728,7 @@
 					var msg = '결제에 실패하였습니다.';
 					msg += '에러내용 : ' + rsp.error_msg;
 				}
-				alert(msg);
+				
 			});
 		}
 		

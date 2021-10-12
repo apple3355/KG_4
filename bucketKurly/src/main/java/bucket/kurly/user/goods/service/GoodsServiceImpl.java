@@ -13,7 +13,7 @@ import bucket.kurly.user.goods.Goods_SellVO;
 import bucket.kurly.user.order.OrderShowVO;
 
 @Service
-public class GoodsServicImpl implements GoodsService {
+public class GoodsServiceImpl implements GoodsService {
 
 	@Autowired
 	private GoodsDAO dao;

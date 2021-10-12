@@ -147,7 +147,8 @@
 							<h2 class="tit">주문 내역 상세</h2>
 						</div>
 							<div class="head_section link_type">
-								<h3 class="tit">${info.order_no}</h3>
+								<h3 class="tit" id="order_no">${info.order_no}</h3>
+								<input type="hidden" id="merchantNum" value="${info.order_merchant_no}">
 								<h3 class="link">>${info.order_delivery_status}</h3>
 								
 							</div>
@@ -347,7 +348,10 @@
 															<td>결제수단으로 환불</td>
 													</tr>
 												</tbody>
-										</table>					
+										</table>
+										<span class="inner_cancel" style="padding-left: 300px;">
+												<button type="button" class="btn btn_cancel" id="refundRequest" onclick="refundRequest()" style="border: 1px solid #5f0081; background-color: #5f0080;color: #fff; height: 56px; padding-bottom: 2px; line-height: 54px;border-radius: 6px;margin-top: 50px;padding-left: 10px;padding-right: 10px">전체상품 주문취소</button>
+											</span>					
 						
 					</div>			
 				</div>
@@ -370,7 +374,39 @@
 
 		<a href="#top" id="pageTop" class="on" style="opacity: 1; bottom: 15px;">맨 위로가기</a>
 		</div>
-	</div>	
+	</div>
+	
+	<!-- 환불요청 -->
+	<script>	
+		$("#refundRequest").on("click", function(){	
+		
+	     //var refundOrderNum = $().text(); // order_num 필요?	
+	  	 //var merchantNum = no.val(); // merchant_no
+
+		 var refund_price = $('#paper_settlement').text();	//refund price 	
+	  	 console.log(refund_price);
+	  	 var order_no = $('#order_no').text();	//order_no 	
+	  	 console.log(order_no);
+	  	 var merchant_no = $('#merchantNum').val();	//merchant_no 	
+	  	 console.log(merchant_no);
+		 	
+				$.ajax({
+					url : 'insert_refund.do',
+					type : 'POST',
+					data : {'refund_price' : refund_price, 'order_no' : order_no, 'merchant_no' : merchant_no},					
+					success : function(result) {
+						if (result == 1) {
+							alert("환불 요청 전달!");
+						} 
+					},
+						error : function() {
+							alert("환불 처리 실패!");
+						}
+				});
+		
+	});
+	</script>
+		
 </body>
 </html>
 
