@@ -179,6 +179,11 @@
 	<select id="getGoods_detail" parameterType="int" resultMap="goods_sell">
 		SELECT * FROM TB_GOODS_SELL s , TB_CATEGORY_GOODS g WHERE s.goods_sell_goods_no = g.category_goods_no AND s.goods_sell_no = #{goods_sell_no}
 	</select>
+	
+	<!-- 재고 조회 -->
+	<select id="select_goodsStock" parameterType="int" resultType="int">
+		SELECT goods_sell_stock_ea FROM TB_GOODS_SELL WHERE goods_sell_no = #{goods_sell_no}
+	</select>
 
 	<insert id="insertGoods_cart" parameterType="goods_cart">
 		INSERT INTO
@@ -262,6 +267,10 @@
 		DELETE FROM TB_GOODS_CART WHERE GOODS_CART_NO = #{goods_cart_no} 
 	</delete>
 	
+	<!-- 재고수정 -->
+	<update id="updateSell_stock" parameterType="goods_sell">
+		UPDATE TB_GOODS_SELL SET goods_sell_stock_ea=#{goods_sell_stock_ea} WHERE goods_sell_no = #{goods_sell_no}
+	</update>
 	
 	<!-- 관리자 -->
 	<!-- 상품판매 리스트 목록  --> 

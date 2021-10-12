@@ -135,11 +135,22 @@ public class GoodsDAO {
 		return sqlSessionTemplate.selectOne("GoodsDAO.select_goods_cart", cart_no);
 	}
 	
+	//재고 조회
+	public int select_goodsStock(int goods_sell_no) {
+		System.out.println("select_goodsStock() 실행");
+		return sqlSessionTemplate.selectOne("GoodsDAO.select_goodsStock", goods_sell_no);
+	}
 
 	// 장바구니 수정
 	public void updateGoods_cart(Goods_CartVO gsvo) {
 		System.out.println("updateGoods_cart() 실행");
 		sqlSessionTemplate.update("GoodsDAO.updateGoods_cart", gsvo);
+	}
+	
+	// 재고 수정
+	public void updateSell_stock(Goods_SellVO gsvo) {
+		System.out.println("updateSell_stock() 실행");
+		sqlSessionTemplate.update("GoodsDAO.updateSell_stock", gsvo);
 	}
 
 	// 장바구니 상태수정

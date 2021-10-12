@@ -60,6 +60,12 @@ public class GoodsServicImpl implements GoodsService {
 		return dao.selectGoods_sell_sub_title(sub_no);
 	}
 	
+	//재고 조회
+	@Override
+	public int select_goodsStock(int goods_sell_no) {
+		return dao.select_goodsStock(goods_sell_no);
+	}
+	
 	
 	// 상품 검색
 	@Override
@@ -131,6 +137,13 @@ public class GoodsServicImpl implements GoodsService {
 					
 	}
 	
+	//재고 수정
+	@Override
+	public void updateSell_stock(Goods_SellVO gsvo) {
+		dao.updateSell_stock(gsvo);
+		
+	}
+	
 	//장바구니 상태수정
 	@Override
 	public void updateCart_status(Goods_CartVO gsvo) {
@@ -153,6 +166,10 @@ public class GoodsServicImpl implements GoodsService {
 	public Goods_CartVO select_goods_cart(int cart_no) {
 		return dao.select_goods_cart(cart_no);
 	}
+
+	
+
+	
 
 	
 	

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import bucket.kurly.user.goods.Goods_CartShowVO;
 import bucket.kurly.user.goods.Goods_CartVO;
+import bucket.kurly.user.goods.Goods_SellVO;
 import bucket.kurly.user.goods.service.GoodsService;
 import bucket.kurly.user.member.MemberVO;
 import bucket.kurly.user.order.OrderDetailsVO;
@@ -60,7 +61,7 @@ public class OrderController {
 	
 	//주문서 페이지
 	@RequestMapping("/approval.do")
-	public String order_form_detail(OrderVO vo, Goods_CartVO goods_cart, OrderDetailsVO order_details, HttpServletRequest request, HttpSession session) throws Exception   {
+	public String order_form_detail(OrderVO vo, Goods_CartVO goods_cart, Goods_SellVO gsv, OrderDetailsVO order_details, HttpServletRequest request, HttpSession session) throws Exception   {
 		int member_no = (int) session.getAttribute("member_no");
 		
 		
@@ -82,8 +83,8 @@ public class OrderController {
 		
 		String delivery_fee = request.getParameter("delivery_fee");
 		System.out.println(delivery_fee);
-//		vo.setOrder_delivery_fee(Integer.parseInt(delivery_fee));
-		vo.setOrder_delivery_fee(3000);
+		vo.setOrder_delivery_fee(Integer.parseInt(delivery_fee));
+//		vo.setOrder_delivery_fee(3000);
 		
 		vo.setOrder_member_no(member_no);
 		System.out.println(member_no);
@@ -102,6 +103,11 @@ public class OrderController {
 			order_details.setOrder_details_goods_count(goods_cart.getGoods_cart_count());
 			order_details.setOrder_details_goods_sell_no(goods_cart.getGoods_cart_sell_no());
 			orderService.insertOrderDetail(order_details);
+			
+			int stock_ea = goodsService.select_goodsStock(goods_cart.getGoods_cart_sell_no());
+			gsv.setGoods_sell_no(goods_cart.getGoods_cart_sell_no());
+			gsv.setGoods_sell_stock_ea(stock_ea - goods_cart.getGoods_cart_count());
+			goodsService.updateSell_stock(gsv);
 		}
 		
 		return "0";
