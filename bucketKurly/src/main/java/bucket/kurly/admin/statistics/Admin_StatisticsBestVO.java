@@ -5,6 +5,8 @@ public class Admin_StatisticsBestVO {
 	private String category_goods_name;
 	private int goods_sell_price;
 	private int count_total;
+	
+	
 	public String getCategory_goods_name() {
 		return category_goods_name;
 	}

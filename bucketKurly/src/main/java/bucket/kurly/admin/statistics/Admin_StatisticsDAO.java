@@ -17,17 +17,17 @@ public class Admin_StatisticsDAO {
 		return sqlSessionTemplate.selectList("Admin_statisticsDAO.selectMemberRank");
 	}
 	//일별매출
-	public List<Admin_StatisticsVO> getRevenue_daily(){
-		return sqlSessionTemplate.selectList("Admin_statisticsDAO.selectRevenueDaily");
+	public List<Admin_StatisticsVO> getRevenue_daily(Admin_StatisticsVO vo){
+		return sqlSessionTemplate.selectList("Admin_statisticsDAO.selectRevenueDaily",vo);
 	}
 	//월별매출
-	public List<Admin_StatisticsVO> getRevenue_monthly(){
-		return sqlSessionTemplate.selectList("Admin_statisticsDAO.selectRevenueMonthly");
+	public List<Admin_StatisticsVO> getRevenue_monthly(Admin_StatisticsVO vo){
+		return sqlSessionTemplate.selectList("Admin_statisticsDAO.selectRevenueMonthly",vo);
 	}
 	//누척매출
-		public int getRevenue_total(){
-			return sqlSessionTemplate.selectOne("Admin_statisticsDAO.selectRevenueTotal");
-		}
+	public int getRevenue_total(){
+		return sqlSessionTemplate.selectOne("Admin_statisticsDAO.selectRevenueTotal");
+	}
 	//베스트 아이템
 	public List<Admin_StatisticsBestVO> getBestItem(){
 		return sqlSessionTemplate.selectList("Admin_statisticsDAO.selectBestItem");

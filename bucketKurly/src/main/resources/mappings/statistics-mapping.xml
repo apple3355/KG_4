@@ -8,17 +8,18 @@
 	</select>
 	
 	<!-- 일별매출 -->
-	<select id="selectRevenueDaily" resultType="member_statistics">
+	<select id="selectRevenueDaily" parameterType="member_statistics" resultType="member_statistics">
 		SELECT order_date, COUNT(*) AS order_total, SUM(order_goods_price) as revenue_total
-		FROM tb_order where order_date &gt;= '2021-10-01' and order_date &lt;= '2021-11-01' 
+		FROM tb_order where order_date &gt;= #{startdate_daily} and order_date &lt;= #{enddate_daily}
 		GROUP BY order_date
 		ORDER BY order_date;		
 	</select>
+
 	
 	<!-- 월별매출 -->
-	<select id="selectRevenueMonthly" resultType="member_statistics">
+	<select id="selectRevenueMonthly" parameterType="member_statistics" resultType="member_statistics">
 		SELECT to_char(order_date, 'YYYY-MM') as order_date, COUNT(*) AS order_total, SUM(order_goods_price) AS revenue_total
-		FROM  tb_order WHERE order_date &gt;= '2021-01-01' AND order_date &lt;= '2021-12-31'
+		FROM  tb_order WHERE order_date &gt;= #{startdate_monthly} AND order_date &lt;= #{enddate_monthly} 
 		GROUP BY to_char(order_date, 'YYYY-MM')
 		ORDER BY to_char(order_date, 'YYYY-MM');	
 	</select>

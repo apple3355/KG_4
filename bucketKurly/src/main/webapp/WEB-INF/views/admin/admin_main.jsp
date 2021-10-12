@@ -199,18 +199,18 @@
 							   		 </c:choose>
                                  	</c:forEach>
                                  
-                                    <div class="dropdown no-arrow">
+                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                            <i class="fas fa-download fa-sm fa-fw text-gray-400"></i>
                                         </a>
+                                           
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                             aria-labelledby="dropdownMenuLink">
                                             <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
+                                            <a class="dropdown-item" href="${pageContext.request.contextPath}/admin_getRankPDF.mdo">등급별 회원 다운로드(PDF)</a>
+                                             <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="${pageContext.request.contextPath}/admin_getRankEXCEL.mdo">등급별 회원 다운로드(EXCEL)</a>
                                         </div>
                                     </div>
                                 </div>

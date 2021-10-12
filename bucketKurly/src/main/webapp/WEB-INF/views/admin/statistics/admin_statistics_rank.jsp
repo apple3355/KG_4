@@ -50,161 +50,120 @@
 			    	<h1 class="h3 mb-2 text-gray-800">통계 관리</h1>
 					<p class="mb-4">버켓컬리 회원,상품 통계를 관리하는 페이지입니다.</p>
 					
+				
 					<!-- 베스트 상품순 -->
-					<div class="row">
-						<!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">분기별 매출 차트</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                   	<c:forEach items="${Admin_StatisticsBestVO}" var="Admin_StatisticsBestVO">
-                                    	<c:set var="item" value="${Admin_StatisticsBestVO.count_total}"/>
-								            <input type="hidden" id="name" data-name="${Admin_StatisticsBestVO.category_goods_name}" >
-								            <input type="hidden" id="count" data-count="${Admin_StatisticsBestVO.count_total}" >
-                                 	</c:forEach>
-                                        <canvas id="myAreaChart"></canvas>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-                        <!-- Test Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-test shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"> 테스트</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            
-                                            	<div>
-							                    	<a href="${pageContext.request.contextPath}/admin_getBestItemPDF.mdo" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-							                                class="fas fa-download fa-sm text-white-50"></i> 베스트 상품 다운로드(PDF) </a>
-							                        <a href="${pageContext.request.contextPath}/admin_getBestItemEXCEL.mdo" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-							                                class="fas fa-download fa-sm text-white-50"></i> 베스트 상품 다운로드(EXCEL) </a>
-                    							</div>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-					</div>
+					<div class="row" style="justify-content: center;">
 					
-					
-					<!-- 회원 등급별 -->	
-                    <div class="row">
-                     <!-- Pie Chart -->
+                    	 <!-- Pie Chart -->
                         <div class="col-xl-4 col-lg-5">
                             <div class="card shadow mb-4">
+                            
                                 <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">등급별 회원 수</h6>
-                                    
-                                    <c:forEach items="${Admin_StatisticsVO}" var="Admin_StatisticsVO">
-                                    <c:set var="rank" value="${Admin_StatisticsVO.member_rank }" scope="session"/>
-                                 	 <c:choose>
-								        <c:when test='${rank eq "퍼플"}'>
-								            <input type="hidden" id= "purple" data-purple="${Admin_StatisticsVO.member_rank_total }" >
-								        </c:when> 
-								        <c:when test='${rank eq "라벤더"}'>
-								              <input type="hidden" id= "laven" data-laven="${Admin_StatisticsVO.member_rank_total }">
-								        </c:when>  
-								        <c:when test='${rank eq "화이트"}'>
-								            <input type="hidden" id= "white" data-white="${Admin_StatisticsVO.member_rank_total }">
-								        </c:when>  
-								        <c:when test='${rank eq "일반"}'>
-								            <input type="hidden" id= "normal" data-normal="${Admin_StatisticsVO.member_rank_total }">
-								        </c:when>          
-							   		 </c:choose>
-                                 	</c:forEach>
                                  	
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                            <i class="fas fa-download fa-sm fa-fw text-gray-400"></i>
                                         </a>
+                                           
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                             aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
+                                            <div class="dropdown-header">파일 다운로드:</div>
+                                            <a class="dropdown-item" href="${pageContext.request.contextPath}/admin_getRankPDF.mdo">등급별 회원 다운로드(PDF)</a>
+                                             <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="${pageContext.request.contextPath}/admin_getRankEXCEL.mdo">등급별 회원 다운로드(EXCEL)</a>
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <!-- Card Body -->
                                 <div class="card-body">
+                                	<c:forEach items="${Admin_StatisticsVO}" var="Admin_StatisticsVO">
+	                                    <c:set var="rank" value="${Admin_StatisticsVO.member_rank }" scope="session"/>
+	                                 	 <c:choose>
+									        <c:when test='${rank eq "퍼플"}'>
+									            <input type="hidden" id= "purple" data-purple="${Admin_StatisticsVO.member_rank_total }" >
+									        </c:when> 
+									        <c:when test='${rank eq "라벤더"}'>
+									              <input type="hidden" id= "laven" data-laven="${Admin_StatisticsVO.member_rank_total }">
+									        </c:when>  
+									        <c:when test='${rank eq "화이트"}'>
+									            <input type="hidden" id= "white" data-white="${Admin_StatisticsVO.member_rank_total }">
+									        </c:when>  
+									        <c:when test='${rank eq "일반"}'>
+									            <input type="hidden" id= "normal" data-normal="${Admin_StatisticsVO.member_rank_total }">
+									        </c:when>          
+								   		 </c:choose>
+                                 	</c:forEach>
+                                
                                     <div class="chart-pie pt-4 pb-2">
                                         <canvas id="myPieChart"></canvas>
                                     </div>
                                     <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> 퍼플
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> 라벤더
-                                        </span>
-                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-defalut"></i> 화이트
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> 일반
-                                        </span>
+                                        <span class="mr-2"><i class="fas fa-circle text-primary"></i> 퍼플</span>
+                                        <span class="mr-2"><i class="fas fa-circle text-success"></i> 라벤더</span>
+                                        <span class="mr-2"><i class="fas fa-circle text-defalut"></i> 화이트 </span>
+                                        <span class="mr-2"><i class="fas fa-circle text-info"></i> 일반</span>
                                     </div>
                                 </div>
                             </div>
+                            
+                            
+	                            <div class="card border-left-success shadow h-15 py-2">
+	                                <div class="card-body">
+	                                    <div class="row no-gutters align-items-center">
+	                                        <div class="col mr-2">
+	                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+	                                                총 회원 수</div>
+	                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${member_num}</div>
+	                                        </div>
+	                                        <div class="col-auto">
+	                                            <i class="fas fa-user fa-2x text-gray-300"></i>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            
                         </div>
-                    
-						 <!-- Test Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-test shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                테스트</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            
-                                            	<div>
-							                    	<a href="${pageContext.request.contextPath}/admin_getRankPDF.mdo" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-							                                class="fas fa-download fa-sm text-white-50"></i> 등급별 회원 다운로드(PDF) </a>
-							                        <a href="${pageContext.request.contextPath}/admin_getRankEXCEL.mdo" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-							                                class="fas fa-download fa-sm text-white-50"></i> 등급별 회원 다운로드(EXCEL) </a>
-                    							</div>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        
+                        
+                             <!-- Area Chart -->
+                        <div class="col-xl-5 col-lg-6" >
+                            <div class="card shadow mb-4">
+                            
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">베스트 상품 - TOP 5</h6>
+                                    
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-download fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                            aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">파일 다운로드:</div>
+                                            <a class="dropdown-item" href="${pageContext.request.contextPath}/admin_getBestItemPDF.mdo">베스트 상품 다운로드(PDF)</a>
+                                             <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="${pageContext.request.contextPath}/admin_getBestItemEXCEL.mdo">베스트 상품 다운로드(EXCEL)</a>
                                         </div>
                                     </div>
+                                </div>
+                                
+                                <!-- Card Body -->
+                                <div class="card-body">
+									<c:forEach items="${Admin_StatisticsBestVO}" var="Admin_StatisticsBestVO" varStatus="status">
+										<c:if test="${status.count <= 5}">
+		                                    <div class="card bg-primary text-white shadow" style="margin:20px;">
+		                                        <div class="card-body">
+			                                        <span style="font-size:15px;margin:7px;"><b>${status.count}. ${Admin_StatisticsBestVO.category_goods_name}</b></span><br>
+			                                        <div class="text-white-50 small"><b>누적 판매 횟수 :  ${Admin_StatisticsBestVO.count_total}</b></div>
+			                                        <div class="text-white-50 small">누적 판매 금액 : ${Admin_StatisticsBestVO.goods_sell_price}</div>
+		                                        </div>
+	                                    	</div>
+                                    	</c:if>
+	                                </c:forEach>
                                 </div>
                             </div>
                         </div>
@@ -240,13 +199,45 @@
     <!-- Page level plugins -->
     <script src="resources/bootstrap/vendor/chart.js/Chart.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="resources/bootstrap/js/demo/chart-area-demo.js"></script>
-    <script src="resources/bootstrap/js/demo/chart-pie-demo.js"></script>
     
-
-    <script type="text/javascript">
-    
+    <script>
+ 
+   	// Pie Chart Example
+       var ctx = document.getElementById("myPieChart");
+    	var purple = document.getElementById("purple");
+    	var laven = document.getElementById("laven");
+    	var white = document.getElementById("white");
+       var normal = document.getElementById("normal");
+       var myPieChart = new Chart(ctx, {
+         type: 'doughnut',
+         data: {
+           labels: ["퍼플", "라벤더", "화이트", "테스트"],
+           datasets: [{
+             data: [purple.dataset.purple, laven.dataset.laven, white.dataset.white, normal.dataset.normal],
+             backgroundColor: ['#9933ff', '#d9b3ff', '#FFCCFF','#cccccc'],
+             hoverBackgroundColor: ['#8000ff', '#bf80ff', '#f2f2f2','#a6a6a6'],
+             hoverBorderColor: "rgba(234, 236, 244, 1)",
+           }],
+         },
+         options: {
+           maintainAspectRatio: false,
+           tooltips: {
+             backgroundColor: "rgb(255,255,255)",
+             bodyFontColor: "#858796",
+             borderColor: '#dddfeb',
+             borderWidth: 1,
+             xPadding: 15,
+             yPadding: 15,
+             displayColors: false,
+             caretPadding: 10,
+           },
+           legend: {
+             display: false
+           },
+           cutoutPercentage: 80,
+         },
+       });
+   
     function number_format(number, decimals, dec_point, thousands_sep) {
     	  // *     example: number_format(1234.56, 2, ',', ' ');
     	  // *     return: '1 234,56'
@@ -271,147 +262,7 @@
     	  }
     	  return s.join(dec);
     	}
-
-    	// Area Chart Example
-    	var ctx = document.getElementById("myAreaChart");
-    	
-     	var name = document.getElementById("name");
-     	var count = document.getElementById("count");
-        
-        console.log(jan);
-        
-    	var myLineChart = new Chart(ctx, {
-    	  type: 'line',
-    	  data: {
-    	    labels: ["1","2"],
-    	    datasets: [{
-    	      label: "Earnings",
-    	      lineTension: 0.3,
-    	      backgroundColor: "rgba(78, 115, 223, 0.05)",
-    	      borderColor: "rgba(78, 115, 223, 1)",
-    	      pointRadius: 3,
-    	      pointBackgroundColor: "rgba(78, 115, 223, 1)",
-    	      pointBorderColor: "rgba(78, 115, 223, 1)",
-    	      pointHoverRadius: 3,
-    	      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-    	      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-    	      pointHitRadius: 10,
-    	      pointBorderWidth: 2,
-    	      data: [name.dataset.name, count.dataset.count],
-    	    }],
-    	  },
-    	  options: {
-    	    maintainAspectRatio: false,
-    	    layout: {
-    	      padding: {
-    	        left: 10,
-    	        right: 25,
-    	        top: 25,
-    	        bottom: 0
-    	      }
-    	    },
-    	    scales: {
-    	      xAxes: [{
-    	        time: {
-    	          unit: 'date'
-    	        },
-    	        gridLines: {
-    	          display: false,
-    	          drawBorder: false
-    	        },
-    	        ticks: {
-    	          maxTicksLimit: 7
-    	        }
-    	      }],
-    	      yAxes: [{
-    	        ticks: {
-    	          maxTicksLimit: 5,
-    	          padding: 10,
-    	          // Include a dollar sign in the ticks
-    	          callback: function(value, index, values) {
-    	            return number_format(value) + '원';
-    	          }
-    	        },
-    	        gridLines: {
-    	          color: "rgb(234, 236, 244)",
-    	          zeroLineColor: "rgb(234, 236, 244)",
-    	          drawBorder: false,
-    	          borderDash: [2],
-    	          zeroLineBorderDash: [2]
-    	        }
-    	      }],
-    	    },
-    	    legend: {
-    	      display: false
-    	    },
-    	    tooltips: {
-    	      backgroundColor: "rgb(255,255,255)",
-    	      bodyFontColor: "#858796",
-    	      titleMarginBottom: 10,
-    	      titleFontColor: '#6e707e',
-    	      titleFontSize: 14,
-    	      borderColor: '#dddfeb',
-    	      borderWidth: 1,
-    	      xPadding: 15,
-    	      yPadding: 15,
-    	      displayColors: false,
-    	      intersect: false,
-    	      mode: 'index',
-    	      caretPadding: 10,
-    	      callbacks: {
-    	        label: function(tooltipItem, chart) {
-    	          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-    	          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
-    	        }
-    	      }
-    	    }
-    	  }
-    	});
-    
     </script>
-<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-    <script>
-    $(document).ready(function(){
-    	// Pie Chart Example
-        var ctx = document.getElementById("myPieChart");
-     	var purple = document.getElementById("purple");
-     	var laven = document.getElementById("laven");
-     	var white = document.getElementById("white");
-        var normal = document.getElementById("normal");
-        var myPieChart = new Chart(ctx, {
-          type: 'doughnut',
-          data: {
-            labels: ["퍼플", "라벤더", "화이트", "테스트"],
-            datasets: [{
-              data: [purple.dataset.purple, laven.dataset.laven, white.dataset.white, normal.dataset.normal],
-              backgroundColor: ['#9933ff', '#d9b3ff', '#FFCCFF','#cccccc'],
-              hoverBackgroundColor: ['#8000ff', '#bf80ff', '#f2f2f2','#a6a6a6'],
-              hoverBorderColor: "rgba(234, 236, 244, 1)",
-            }],
-          },
-          options: {
-            maintainAspectRatio: false,
-            tooltips: {
-              backgroundColor: "rgb(255,255,255)",
-              bodyFontColor: "#858796",
-              borderColor: '#dddfeb',
-              borderWidth: 1,
-              xPadding: 15,
-              yPadding: 15,
-              displayColors: false,
-              caretPadding: 10,
-            },
-            legend: {
-              display: false
-            },
-            cutoutPercentage: 80,
-          },
-        });
-    	
-    });
- 	
-    </script>
-    
 </body>
 
 </html>

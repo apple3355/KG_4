@@ -22,13 +22,13 @@ public class Admin_StatisticsServiceImpl implements Admin_StatisticsService {
 	}
 	//일별매출
 	@Override
-	public List<Admin_StatisticsVO> getRevenue_daily() {
-		return dao.getRevenue_daily();
+	public List<Admin_StatisticsVO> getRevenue_daily(Admin_StatisticsVO vo) {
+		return dao.getRevenue_daily(vo);
 	}
 	//월별매출
 	@Override
-	public List<Admin_StatisticsVO> getRevenue_monthly() {
-		return dao.getRevenue_monthly();
+	public List<Admin_StatisticsVO> getRevenue_monthly(Admin_StatisticsVO vo) {
+		return dao.getRevenue_monthly(vo);
 	}
 	//누적금액
 	@Override
