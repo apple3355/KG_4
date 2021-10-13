@@ -114,6 +114,14 @@
 		SELECT COUNT(*) FROM TB_BOARD_FAQ
 	</select>
 	
+	
+	<!-- review -->
+
+	<select id="selectBoard_review" parameterType="String" resultType="board_review">
+		SELECT * FROM tb_board_review
+		WHERE board_review_goods_sell_no = #{goods_sell_no}
+		ORDER BY board_review_no DESC
+	</select>
 	<!-- =========================== -->
 	
 	

@@ -100,6 +100,7 @@
 															    <option value="배송준비중" <c:if test="${delivery_status eq '배송준비중'}">selected</c:if>>배송준비중</option>
 															    <option value="배송중" <c:if test="${delivery_status eq '배송중'}">selected</c:if>>배송중</option>
 															    <option value="배송완료" <c:if test="${delivery_status eq '배송완료'}">selected</c:if>>배송완료</option>
+															    <option value="구매확정">구매확정</option>
 															</select>
 			                                        	</td>
 			                                        	<td>

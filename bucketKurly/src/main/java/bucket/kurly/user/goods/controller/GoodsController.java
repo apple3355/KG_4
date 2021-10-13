@@ -32,18 +32,6 @@ public class GoodsController {
 	@Autowired
 	private MemberService memberService;
 	
-	// 상품 리뷰
-	@RequestMapping("/goods_list_review.do")
-	public String getGoods_list_review(Model model, 
-			@RequestParam(value="type_sub",required = false) String select_type2, 
-			@RequestParam(required = false, defaultValue = "1") int page,
-			@RequestParam(required = false, defaultValue = "1") int range) {	
-	
-		
-		return "goods/goods_list_review";
-	}
-	
-	
 	// 상품 리스트
 	@RequestMapping("/goods_list.do")
 	public String getGoods_list(Model model, 
@@ -258,8 +246,8 @@ public class GoodsController {
 	}
 	
 	// 장바구니 수정
-		@ResponseBody
-		@RequestMapping("/updateGoods_cart.do")
+	@ResponseBody
+	@RequestMapping("/updateGoods_cart.do")
 	public String updateGoods_cart(Goods_CartVO gsvo, HttpServletRequest request) {
 
 			String cartNo = request.getParameter("cartNo");
@@ -280,7 +268,8 @@ public class GoodsController {
 	public String deleteGoods_cart(Goods_CartVO gsvo, HttpServletRequest request) {
 				
 		String id = request.getParameter("goods_cart_no");
-		System.out.println(id);
+		System.err.println("goods_cart_no"+id);
+		System.err.println(gsvo);
 		//System.out.println(gcvo.getGoods_cart_no());
 		goodsService.deleteGoods_cart(gsvo);
 		

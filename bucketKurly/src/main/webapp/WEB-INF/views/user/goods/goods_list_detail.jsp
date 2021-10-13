@@ -274,7 +274,7 @@ $(function(){
 										<span class="position">
 											<span class="dc"><!----> 
 												<span class="dc_price"><fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sellVO.goods_sell_price - (goods_sellVO.goods_sell_price * goods_sellVO.goods_sell_discount) / 100}" /><span class="won">원</span></span> 
-												<span class="dc_percent">${goods_sellVO.goods_sell_discount}<span class="per">%</span></span></span> 
+												<span class="dc_percent" id="dc_percent">${goods_sellVO.goods_sell_discount}<span class="per">%</span></span></span> 
 											<a class="original_price">
 												<span class="price"><fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sellVO.goods_sell_price}"/><span class="won">원</span></span>
 												<img src="https://res.kurly.com/kurly/ico/2021/question_24_24_c999.svg" alt="물음표" class="ico">
@@ -391,8 +391,7 @@ $(function(){
 						                           </span>
 						                    
 												<span class="price">
-													<!----> 
-													<span class="dc_price" id="dc_price">${goods_sellVO.goods_sell_price}</span>
+													<input type="hidden" class="dc_price" id="dc_price" value="${goods_sellVO.goods_sell_price}"/>
 												</span>
 											</div>
 											
@@ -432,11 +431,11 @@ $(function(){
 									function fnCart(good_sell_no){
 										var count = document.getElementById("inp").value;
 		                                 if(confirm("장바구니에 담으시겠습니까?")){
+		                                	alert("해당 상품이 장바구니에 담겼습니다.");
 		                                    var url = "${pageContext.request.contextPath}/insertGoods_cart.do";
 		                                    url = url + "?goods_sell_no=" + good_sell_no;
 		                                    url = url + "&count=" + count;
 		                                    location.href = url;
-		                                    alert("해당 상품이 장바구니에 담겼습니다.");
 		                                 }
 		                              }
 									</script>
@@ -671,8 +670,14 @@ $(function(){
 						        // $(document).scrollTop() 현재 스크롤 top 위치
 						        if (($("#goods-review").offset().top - $(document).scrollTop()) < $(window).height())
 						        {
+						        	var goods_sell_no = getParameterByName('goods_sell_no'); // 1060192
+						        	alert(goods_sell_no);
+						        	let str = '<iframe id="inreview" src="http://localhost:8080/kurly/goods_list_review.do?goods_sell_no=';
+						        	str+=goods_sell_no;
+						        	str+='"frameborder="0" class="goods-view-infomation-board"></iframe>';
+						        	alert(str);
 						            $("#goods-review").data("load", 1);
-						            $("#goods-review").html('<iframe id="inreview" src="./goods_review_list.php?goodsno=4364" frameborder="0" class="goods-view-infomation-board"></iframe>');
+						            $("#goods-review").html(str);
 						        }
 						
 						        // 170119 ey
@@ -722,39 +727,68 @@ $(function(){
 	
 	<!-- 화면 위로가기 버튼 & 수량 및 수량에 따른 합계 -->
     <script type="text/javascript">
-	$(document).ready(function(){
+    function getParameterByName(name) { 
+    	name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]"); 
+    	var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"), 
+    	results = regex.exec(location.search); 
+    	return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " ")); 
+
+    }
+    $(document).ready(function(){
 		
 		function inp_change(obj) {
 			  obj.value ='yellow';
 			}
 
 		 $(".btn.down.on").click(function(){
-	           let EA = Number($("#inp").val()); 
-	           let num = $("#num").val();
+			 let EA = Number($("#inp").val());
+	        	let num = Number($("#dc_price").val());
+	        	let discount= Number($("#dc_percent").val());
+	        	let Max = Number(10);
+	        	
 	           if(EA == 1){
 	             alert("1 개 이하로 선택 할 수 없습니다. ");
 	           }else{
-	               EA = EA-1;
+	        		 // 수량 변경
+	            	 EA = EA-1;
+	            	 $("#inp").val(EA);
+	            	 // 가격 계산
+	            	 let calvalue = (num-(num*discount)/100)*EA;
+	            	 console.log(calvalue);
+	            	 calvalue = String(Math.round(calvalue));
+	            	 console.log(calvalue);
+	            	 // 숫자 포맷팅
+	            	 var innerhtml = calvalue.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	            	 console.log(innerhtml);
+	            	 $('#num').html(innerhtml);
 	           }
-	           $("#inp").val(EA);
-	           $("#num").html( ${goods_sellVO.goods_sell_price - (goods_sellVO.goods_sell_price * goods_sellVO.goods_sell_discount) /100} * EA);   
+	          
 	        });
 	        
 	        $(".btn.up.on").click(function(){
 	        	let EA = Number($("#inp").val());
-	        	 let num = $("#num").val();
+	        	let num = Number($("#dc_price").val());
+	        	let discount= Number($("#dc_percent").val());
 	        	let Max = Number(10);
+	        	
+		  	        	
 	        	if(EA == Max){
 	              alert("해당 상품은 " + Max + "개 이상 선택할 수 없습니다");
 	             }else{
+	            	 // 수량 변경
 	            	 EA = EA+1;
+	            	 $("#inp").val(EA);
+	            	 // 가격 계산
+	            	 let calvalue = (num-(num*discount)/100)*EA;
+	            	 console.log(calvalue);
+	            	 calvalue = String(Math.round(calvalue));
+	            	 console.log(calvalue);
+	            	 // 숫자 포맷팅
+	            	 var innerhtml = calvalue.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	            	 console.log(innerhtml);
+	            	 $('#num').html(innerhtml);
 	             }
-	           $("#inp").val(EA);
-	           $("#num").html( ${goods_sellVO.goods_sell_price - (goods_sellVO.goods_sell_price * goods_sellVO.goods_sell_discount) /100} * EA);
 	        });
-	        
-	       
-		
 		
 		var pageTop = {
 			$target : $('#pageTop'),

@@ -2,12 +2,12 @@ package bucket.kurly.user.refund;
 
 public class RefundVO {
 
-	int refund_no;
-	String refund_order_no;
-	String refund_merchant_no;
-	String refund_member_id;
-	int refund_price;
-	int refund_state;
+	private int refund_no;
+	private String refund_order_no;
+	private String refund_merchant_no;
+	private String refund_member_id;
+	private int refund_price;
+	private int refund_state;
 	
 	
 	public int getRefund_no() {

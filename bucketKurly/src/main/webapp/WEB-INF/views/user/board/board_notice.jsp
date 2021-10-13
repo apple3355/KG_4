@@ -66,10 +66,8 @@
 															<th>조회</th>
 														</tr>
 													</thead>
-												
-													 <c:forEach items="${board_noticeList}" var="board_noticeList" varStatus="status">
-																							
-													<tbody>													
+													<tbody>	
+													 <c:forEach items="${board_noticeList}" var="board_noticeList" varStatus="status">												
 														<tr>
 															<td width="5%" align="center">${pagination.listCnt- ((pagination.page-1) * pagination.rangeSize + status.index) }</td>
 															<td width="65%" style="padding-left: 40px; color: #999"><a href="${pageContext.request.contextPath}/board_notice_no.do?no=${board_noticeList.board_notice_no}">${board_noticeList.board_notice_title}&nbsp;</a></td>	
@@ -77,8 +75,8 @@
 															<td width="15%" align="center" class="eng2"><fmt:formatDate value="${board_noticeList.board_notice_date}" pattern="yyyy-MM-dd" />
 															<td width="5%" align="center" class="eng2"><c:out value="${board_noticeList.board_notice_hits}"/></td>
 														</tr>
+														</c:forEach>
 													</tbody>
-													</c:forEach>
 												</table>
 											</div>
 										</td>

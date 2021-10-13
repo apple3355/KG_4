@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="resources/css/common.css">
@@ -94,58 +96,27 @@
 						</colgroup>
 						<tbody>
 							<tr>
-								<input type="hidden" name="index" value="1">
-								<input type="hidden" name="image" value="">
-								<input type="hidden" name="grade" value="2">
-								<input type="hidden" name="best" value="false">
-								<input type="hidden" name="pNo" value="">
-
-								<td align="center">8</td>
-								<td class="subject">
-									<div class="fst">굿</div>
-									<div class="snd">굿</div>
-								</td>
-								<td class="user_grade">이*아</td>
-								<td class="time">2021-10-11</td>
+								<c:forEach items="${reviewList}" var="reviewList" varStatus="status">
+									<td align="center">${status.count}</td>
+									<td class="subject"><div class="fst">${reviewList.board_review_title}</div>
+										<div class="snd">${reviewList.board_review_content}</div>
+									</td>
+									<td class="user_grade">${reviewList.board_review_member_id}</td>
+									<td class="time">${reviewList.board_review_date}</td>
+									
+								</c:forEach>
 							</tr>
 						</tbody>
 					</table>
-					<div data-sno="37631155" class="review_view" style="display: none;">
-						<div class="inner_review">
-							<div class="name_purchase">
-								<strong class="name">장흥 표고 버섯 가루 70g</strong>
-								<p class="package"></p>
-							</div>
-							<div class="review_photo"></div>
-							표고 버섯 가르 장흥 ㅎㅎ
-						</div>
-					</div>
 				</div>
 			</form>
-			
-			
-			<p class="btnArea after">
+		
+		<!-- <p class="btnArea after">
 				<a href="#none" onclick="popup_register( 'add_review', '90050' )"><span
 					class="bhs_button" style="line-height: 30px; width: 130px;">후기쓰기</span></a>
-			</p>
+			</p> -->
+			
 		</div>
-	</div>
-	<div class="board_pg_area">
-		<a href="/shop/goods/goods_review_list.php?goodsno=90050&amp;page=1"
-			class="layout-pagination-button layout-pagination-first-page">맨
-			처음 페이지로 가기</a><a
-			href="/shop/goods/goods_review_list.php?goodsno=90050&amp;page=1"
-			class="layout-pagination-button layout-pagination-prev-page">이전
-			페이지로 가기</a><strong
-			class="layout-pagination-button layout-pagination-number __active">1</strong><a
-			href="/shop/goods/goods_review_list.php?goodsno=90050&amp;page=2"
-			class="layout-pagination-button layout-pagination-number">2</a><a
-			href="/shop/goods/goods_review_list.php?goodsno=90050&amp;page=2"
-			class="layout-pagination-button layout-pagination-next-page">다음
-			페이지로 가기</a><a
-			href="/shop/goods/goods_review_list.php?goodsno=90050&amp;page=2"
-			class="layout-pagination-button layout-pagination-last-page">맨 끝
-			페이지로 가기</a>
 	</div>
 </div>
 <script src="https://res.kurly.com/js/lib/jquery.inview.js"></script>

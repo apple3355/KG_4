@@ -175,9 +175,8 @@
                                   </th>
                                    
                                    <th>
-                                
 										<button type="button" id="${goods_cartShowVO.goods_cart_no}" class="btn_delete" onclick="btn_delete(this.id)">상품 삭제</button>
-								  </th>
+								   </th>
 								  
 									</tr>
 									</table>
@@ -1002,7 +1001,6 @@ $(document).ready(function calTot(){
 		    	  deliverFee = 0;
 		      }
 
-		      
 		      //결제예정금액
 		      var totOrderPrice = costSum + deliverFee;
 		      console.log(deliverFee);
@@ -1121,8 +1119,8 @@ function btn_delete(id){
 
 	if(result){
 		$.ajax({
-			url: '/deleteGoods_cart.do',
-			type: 'GET',
+			url: 'deleteGoods_cart.do',
+			type: 'POST',
 			dataType: 'text',
 			data: {"goods_cart_no":id},// data:{"cart_no"} 괄호
 			

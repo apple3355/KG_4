@@ -195,15 +195,13 @@
 			<div id="userMenu">
 				<ul class="list_menu">
 					<li class="menu menu_user">
-						<a class="link_menu grade_comm" onclick="#####">
-							<span class="ico_grade grade0">${rank}</span> 
+						<a class="link_menu grade_comm" style="margin-right: 18px;" onclick="#####">
+							<span class="ico_grade grade0" style="margin-right: 3px;">${rank}</span> 
 							<span class="txt"><span class="name">${name}</span>
 							<span class="sir">님</span></span>
 						</a> 
 						<ul class="sub">
 							<li><a href="${pageContext.request.contextPath}/member_orderlist.do">주문 내역</a></li> 
-							<li><a href="#none" onclick="#############">선물 내역</a></li> 
-							<li><a href="#none" onclick="#############">배송지 관리</a></li> 
 							<li><a href="#none">상품 후기</a></li> 
 							<li><a>상품 문의</a></li> 
 							<li><a href="#none" onclick="#############">적립금</a></li> 

@@ -89,6 +89,14 @@ public class MainController {
 		
 		return "goods/special_benefit";
 	}
+	
+
+	// 상품 상세화면
+	@RequestMapping("/member_membership.do")
+	public String member_membership() {
+		return "member/member_membership";
+	}
+
 
 
 }

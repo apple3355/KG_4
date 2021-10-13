@@ -10,6 +10,15 @@ public class OrderShowVO {
 	private int goods_sell_price;
 	private int goods_sell_discount;
 	private int order_details_goods_count;
+	private int order_delivery_status;
+	
+	
+	public int getOrder_delivery_status() {
+		return order_delivery_status;
+	}
+	public void setOrder_delivery_status(int order_delivery_status) {
+		this.order_delivery_status = order_delivery_status;
+	}
 	public int getOrder_details_goods_count() {
 		return order_details_goods_count;
 	}

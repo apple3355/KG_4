@@ -210,8 +210,10 @@
 		LEFT OUTER JOIN tb_category_goods goods 
 		ON sell.goods_sell_goods_no = goods.category_goods_no
 		where cart.GOODS_CART_MEMBER_NO = #{goods_cart_member_no}
+		and cart.goods_cart_status='0'
 		order by cart.goods_cart_no
 	</select>
+	
 	<!--선택한 장바구니 -->
 	<select id="chooseGoods_cart" parameterType="int" resultType="goods_cartshow">
 		SELECT 
@@ -234,18 +236,18 @@
 	
 	<!--결제 완료 상품 -->
 	<select id="orderGoods" resultType="orderShowVO">
-	SELECT sell.goods_sell_no, sell.goods_sell_stock_ea, goods.category_goods_image_thumb, goods.category_goods_name, goods.category_goods_delivery_type, sell.goods_sell_price, sell.goods_sell_discount,
-	details.order_details_goods_count
-	FROM tb_order_details details
-	LEFT OUTER JOIN tb_goods_sell sell
-	ON details.order_details_goods_sell_no = sell.goods_sell_no
-	LEFT OUTER JOIN tb_category_goods goods
-	ON sell.goods_sell_goods_no = goods.category_goods_no
-	where order_details_order_no = #{order_details_order_no};
+		SELECT sell.goods_sell_no, sell.goods_sell_stock_ea, goods.category_goods_image_thumb, goods.category_goods_name, goods.category_goods_delivery_type, sell.goods_sell_price, sell.goods_sell_discount,
+		details.order_details_goods_count
+		FROM tb_order_details details
+		LEFT OUTER JOIN tb_goods_sell sell
+		ON details.order_details_goods_sell_no = sell.goods_sell_no
+		LEFT OUTER JOIN tb_category_goods goods
+		ON sell.goods_sell_goods_no = goods.category_goods_no
+		where order_details_order_no = #{order_details_order_no};
 	</select>
 	
 	<select id="order_memberNo"  resultMap="goods_cart">
-		SELECT goods_cart_status FROM tb_goods_cart where goods_cart_member_no=#{goods_cart_member_no}
+		SELECT goods_cart_status FROM tb_goods_cart where goods_cart_member_no=#{goods_cart_member_no} 
 	</select>
 	
 	<select id="select_goods_cart" parameterType="int"  resultMap="goods_cart">
@@ -263,7 +265,7 @@
 	</update>
 	
 	<!-- 장바구니 삭제 -->
-	<delete id="deleteGoods_cart" parameterType="goods_cartshow">
+	<delete id="deleteGoods_cart" parameterType="goods_cart">
 		DELETE FROM TB_GOODS_CART WHERE GOODS_CART_NO = #{goods_cart_no} 
 	</delete>
 	

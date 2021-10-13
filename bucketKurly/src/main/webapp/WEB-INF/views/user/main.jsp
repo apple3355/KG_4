@@ -308,7 +308,7 @@ $(function(){
 							</a>
 						</div>
 						<div class="side_menu">
-							<a href="#" class="link_menu ">등급별 혜택</a> 
+							<a href="${pageContext.request.contextPath}/member_membership.do" class="link_menu ">등급별 혜택</a> 
 							<a href="${pageContext.request.contextPath}/goods_list.do?type=sale" class="link_menu">특가 상품</a>
 							<a href="#" class="link_menu ">베스트 후기</a>
 						</div>

@@ -296,7 +296,7 @@
 																</li>
 															</ul>
 															<div class="coupon_list_default" style="display: none;">
-																<li class="fst checked ">
+																<li class="fst checked">
 																	<div class="inner_item">
 																		<span class="txt_tit default">쿠폰 적용 안 함</span>
 																	</div>
