@@ -63,7 +63,6 @@
                  <div class="bg-white py-2 collapse-inner rounded">
                      <h6 class="collapse-header">컬리 회원관리 :</h6>
                      <a class="collapse-item" href="${pageContext.request.contextPath}/admin_member.mdo">회원관리</a>
-                     <a class="collapse-item" href="buttons.html">비회원관리</a>
                      <a class="collapse-item" href="${pageContext.request.contextPath}/admin_member_membership.mdo">회원등급 관리</a>
                      <a class="collapse-item" href="${pageContext.request.contextPath}/admin_terms_getList.mdo">약관관리</a>
                  </div>
@@ -112,7 +111,7 @@
              <div id="collapseOrder" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                  <div class="bg-white py-2 collapse-inner rounded">
                      <h6 class="collapse-header">주문 및 결제 관리 :</h6>
-                     <a class="collapse-item" href="buttons.html">주문·결제·배송관리</a>
+                     <a class="collapse-item" href="${pageContext.request.contextPath}/admin_order.mdo">주문·결제·배송관리</a>
                      <a class="collapse-item" href="${pageContext.request.contextPath}/admin_refund.mdo">환불관리 </a>
                  </div>
              </div>
@@ -131,8 +130,7 @@
              </a>
              <div id="collapseMarketing" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                  <div class="bg-white py-2 collapse-inner rounded">
-                     <h6 class="collapse-header">컬리 마케팅 및 프로모션관리 :</h6>
-                     <a class="collapse-item" href="buttons.html">프로모션 관리</a>
+                     <h6 class="collapse-header">컬리 마케팅 관리 :</h6>
                      <a class="collapse-item" href="${pageContext.request.contextPath}/admin_banner_getList.mdo">배너관리</a>
                      <a class="collapse-item" href="${pageContext.request.contextPath}/admin_coupon_getList.mdo">쿠폰관리</a>
                  </div>
@@ -176,7 +174,7 @@
 	                     <a class="collapse-item" href="${pageContext.request.contextPath}/admin_statistics_revenue.mdo">매출 통계</a>
 	                 </div>
 	             </div>
-	         </li>        
+	         </li>      
          
          
          
@@ -190,6 +188,7 @@
 
      </ul>
      <!-- End of Sidebar -->
+    
 
 </body>
 </html>

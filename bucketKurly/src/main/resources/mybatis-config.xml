@@ -5,31 +5,31 @@
 <configuration>
 	<properties resource="db.properties" />
 	<typeAliases>
-		<typeAlias type="bucket.kurly.admin.manager.AdminVO" alias="admin"/>
-		<typeAlias type="bucket.kurly.admin.manager.AdminTermsVO" alias="adminterms"/>		
-		<typeAlias type="bucket.kurly.admin.member.Admin_MemberVO" alias="admin_member" />
-		<typeAlias type="bucket.kurly.admin.member.Admin_Member_DetailsVO" alias="admin_member_details" />
-		<typeAlias type="bucket.kurly.admin.member.Admin_Member_MembershipVO" alias="admin_member_membership" />
-		<typeAlias type="bucket.kurly.admin.category.Admin_Category_parentVO" alias="admin_category_parent" />
-		<typeAlias type="bucket.kurly.admin.category.Admin_Category_subVO" alias="admin_category_sub" />
-		<typeAlias type="bucket.kurly.admin.category.Admin_Category_goodsVO" alias="admin_category_goods" />
+		
+		
+		
 		<typeAlias type="bucket.kurly.admin.board.Admin_Board_faqVO" alias="admin_board_faq" />
 		<typeAlias type="bucket.kurly.admin.board.Admin_Board_fileVO" alias="admin_board_file" />
 		<typeAlias type="bucket.kurly.admin.board.Admin_Board_noticeVO" alias="admin_board_notice" />
 		<typeAlias type="bucket.kurly.admin.board.Admin_Board_qnaVO" alias="admin_board_qna" />
 		<typeAlias type="bucket.kurly.admin.board.Admin_Board_reviewVO" alias="admin_board_review" />
-		<typeAlias type="bucket.kurly.admin.goods.Goods_adminSellVO" alias="goods_adminsell" />
+		<typeAlias type="bucket.kurly.admin.category.Admin_Category_parentVO" alias="admin_category_parent" />
+		<typeAlias type="bucket.kurly.admin.category.Admin_Category_subVO" alias="admin_category_sub" />
+		<typeAlias type="bucket.kurly.admin.category.Admin_Category_goodsVO" alias="admin_category_goods" />
 		<typeAlias type="bucket.kurly.admin.goods.Admin_RefundVO" alias="admin_refund" />
+		<typeAlias type="bucket.kurly.admin.manager.AdminVO" alias="admin"/>
+		<typeAlias type="bucket.kurly.admin.manager.AdminTermsVO" alias="adminterms"/>		
 		<typeAlias type="bucket.kurly.admin.marketing.BannerVO" alias="banner"/>
 		<typeAlias type="bucket.kurly.admin.marketing.CouponVO" alias="coupon"/>
+		<typeAlias type="bucket.kurly.admin.goods.Goods_adminSellVO" alias="goods_adminsell" />
+		<typeAlias type="bucket.kurly.admin.member.Admin_MemberVO" alias="admin_member" />
+		<typeAlias type="bucket.kurly.admin.member.Admin_Member_DetailsVO" alias="admin_member_details" />
+		<typeAlias type="bucket.kurly.admin.member.Admin_Member_MembershipVO" alias="admin_member_membership" />
+		<typeAlias type="bucket.kurly.admin.order.Admin_OrderVO" alias="admin_order"/>
 		<typeAlias type="bucket.kurly.admin.statistics.Admin_StatisticsVO" alias="member_statistics"/>
 		<typeAlias type="bucket.kurly.admin.statistics.Admin_StatisticsBestVO" alias="member_statistics_best"/>
+	
 		
-		
-		
-		<typeAlias type="bucket.kurly.user.member.MemberVO" alias="member" />
-		<typeAlias type="bucket.kurly.user.member.MemberDetailVO" alias="memberDetail" />
-		<typeAlias type="bucket.kurly.user.member.MemberTermsVO" alias="memberterms" />
 		<typeAlias type="bucket.kurly.user.board.Board_noticeVO" alias="board_notice" />
 		<typeAlias type="bucket.kurly.user.board.Board_qnaVO" alias="board_qna"/>
 		<typeAlias type="bucket.kurly.user.board.Board_fileVO" alias="board_file"/>
@@ -39,20 +39,24 @@
 		<typeAlias type="bucket.kurly.user.goods.Goods_SellVO" alias="goods_sell"/>
 		<typeAlias type="bucket.kurly.user.goods.Goods_CartVO" alias="goods_cart"/>
 		<typeAlias type="bucket.kurly.user.goods.Goods_CartShowVO" alias="goods_cartshow"/>
+		<typeAlias type="bucket.kurly.user.member.MemberVO" alias="member" />
+		<typeAlias type="bucket.kurly.user.member.MemberDetailVO" alias="memberDetail" />
+		<typeAlias type="bucket.kurly.user.member.MemberTermsVO" alias="memberterms" />
 		<typeAlias type="bucket.kurly.user.order.OrderVO" alias="order"/>
 		<typeAlias type="bucket.kurly.user.order.OrderShowVO" alias="orderShowVO"/>
 		<typeAlias type="bucket.kurly.user.order.OrderDetailsVO" alias="orderDetails"/>
 		<typeAlias type="bucket.kurly.user.refund.RefundVO" alias="refund"/>	
+		
 	</typeAliases>
 
 	<mappers>
-		<mapper resource="mappings/category-mapping.xml" />
-		<mapper resource="mappings/member-mapping.xml" />
-		<mapper resource="mappings/board-mapping.xml" />
-		<mapper resource="mappings/goods-mapping.xml" />
-		<mapper resource="mappings/order-mapping.xml"/>
 		<mapper resource="mappings/admin-mapping.xml" />
+		<mapper resource="mappings/board-mapping.xml" />
+		<mapper resource="mappings/category-mapping.xml" />
+		<mapper resource="mappings/goods-mapping.xml" />
 		<mapper resource="mappings/marketing-mapping.xml" />
+		<mapper resource="mappings/member-mapping.xml" />
+		<mapper resource="mappings/order-mapping.xml"/>
 		<mapper resource="mappings/refund-mapping.xml" />
 		<mapper resource="mappings/statistics-mapping.xml" />
 	</mappers>

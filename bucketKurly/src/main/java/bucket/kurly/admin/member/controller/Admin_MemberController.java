@@ -11,12 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import bucket.kurly.admin.manager.AdminVO;
 import bucket.kurly.admin.member.Admin_MemberVO;
 import bucket.kurly.admin.member.Admin_Member_DetailsVO;
 import bucket.kurly.admin.member.Admin_Member_MembershipVO;
 import bucket.kurly.admin.member.service.Admin_MemberService;
-import bucket.kurly.util.SHA256;
 
 @Controller
 public class Admin_MemberController {

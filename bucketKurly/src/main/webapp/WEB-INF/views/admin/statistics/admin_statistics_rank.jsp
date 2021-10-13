@@ -115,7 +115,7 @@
 	                                <div class="card-body">
 	                                    <div class="row no-gutters align-items-center">
 	                                        <div class="col mr-2">
-	                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+	                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1" style="color: #1cc88a!important;">
 	                                                총 회원 수</div>
 	                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${member_num}</div>
 	                                        </div>

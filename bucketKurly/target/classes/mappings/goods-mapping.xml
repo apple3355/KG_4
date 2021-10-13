@@ -302,7 +302,4 @@
   		WHERE GOODS_SELL_NO = #{goods_sell_no}
 	</delete>
 	
-	
-
-	
 </mapper>

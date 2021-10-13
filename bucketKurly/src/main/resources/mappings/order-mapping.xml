@@ -51,6 +51,17 @@
 	<insert id="insertOrderDetail" parameterType="orderDetails">
 		insert into tb_order_details(order_details_order_no,order_details_goods_sell_no,order_details_goods_count)
 		values(#{order_details_order_no}, #{order_details_goods_sell_no}, #{order_details_goods_count});
-
 	</insert>
+	
+	
+	<!-- 관리자 -->
+	<select id="admin_selectOrder" resultType="admin_order">
+		SELECT * FROM TB_ORDER ORDER BY ORDER_NO
+	</select>
+	
+	<update id="admin_updateOrder" parameterType="admin_order">
+		UPDATE TB_ORDER 
+		SET ORDER_DELIVERY_STATUS = #{order_delivery_status} 
+		WHERE ORDER_NO = #{order_no}		
+	</update>
 </mapper> 

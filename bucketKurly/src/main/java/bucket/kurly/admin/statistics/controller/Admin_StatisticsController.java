@@ -62,8 +62,6 @@ public class Admin_StatisticsController {
 		return "statistics/admin_statistics_rank";
 	}
 	
-	
-
 	// 매출 통계 페이지 이동
 	@RequestMapping("/admin_statistics_revenue.mdo")
 	public String getStatistics_revenue(Model model, HttpServletResponse response,
@@ -100,7 +98,6 @@ public class Admin_StatisticsController {
 		
 		return "statistics/admin_statistics_revenue";
 	}
-	
 	
 	public String getjson_label(List<Admin_StatisticsVO> list) {
 		
@@ -166,7 +163,6 @@ public class Admin_StatisticsController {
 			BaseFont baseFont = BaseFont.createFont(
 					request.getSession().getServletContext().getRealPath("resources/font/NanumGothic.ttf"),
 					BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-			System.out.println();
 			Font font = new Font(baseFont, 10);
 
 			System.out.println(request.getSession().getServletContext().getRealPath("resources/font/NanumGothic.ttf"));
@@ -299,8 +295,6 @@ public class Admin_StatisticsController {
 	public String getEXCEL_best(Model model, HttpServletResponse response) {
 
 		List<Admin_StatisticsBestVO> list = admin_statisticsService.getBestItem();
-		System.out.println(list);
-
 		try {
 			// 액셀 생성
 			Workbook workbook = makeExcel_best(list);
@@ -567,7 +561,7 @@ public class Admin_StatisticsController {
 
 		Admin_StatisticsVO insertvo = new Admin_StatisticsVO();
 		insertvo.setStartdate_daily(fm.parse("2021-10-01"));
-		insertvo.setEnddate_daily(fm.parse("2021-10-01"));
+		insertvo.setEnddate_daily(fm.parse("2021-10-31"));
 
 		List<Admin_StatisticsVO> list = admin_statisticsService.getRevenue_daily(insertvo);
 		System.out.println(list);
@@ -636,7 +630,7 @@ public class Admin_StatisticsController {
 
 		Admin_StatisticsVO insertvo = new Admin_StatisticsVO();
 		insertvo.setStartdate_daily(fm.parse("2021-10-01"));
-		insertvo.setEnddate_daily(fm.parse("2021-10-01"));
+		insertvo.setEnddate_daily(fm.parse("2021-10-31"));
 
 		List<Admin_StatisticsVO> list = admin_statisticsService.getRevenue_daily(insertvo);
 		System.out.println(list);
@@ -752,8 +746,8 @@ public class Admin_StatisticsController {
 	public void getRevenue_monthly(HttpServletResponse response, HttpServletRequest request) throws Exception {
 
 		Admin_StatisticsVO insertvo = new Admin_StatisticsVO();
-		insertvo.setStartdate_daily(fm.parse("2021-10-01"));
-		insertvo.setEnddate_daily(fm.parse("2021-10-01"));
+		insertvo.setStartdate_daily(fm.parse("2021-01-01"));
+		insertvo.setEnddate_daily(fm.parse("2021-12-31"));
 
 		List<Admin_StatisticsVO> list = admin_statisticsService.getRevenue_monthly(insertvo);
 		System.out.println(list);
@@ -822,8 +816,8 @@ public class Admin_StatisticsController {
 	public String getEXCEL_monthly(Model model, HttpServletResponse response) throws ParseException {
 
 		Admin_StatisticsVO insertvo = new Admin_StatisticsVO();
-		insertvo.setStartdate_daily(fm.parse("2021-10-01"));
-		insertvo.setEnddate_daily(fm.parse("2021-10-01"));
+		insertvo.setStartdate_daily(fm.parse("2021-01-01"));
+		insertvo.setEnddate_daily(fm.parse("2021-12-31"));
 
 		List<Admin_StatisticsVO> list = admin_statisticsService.getRevenue_monthly(insertvo);
 		System.out.println(list);
