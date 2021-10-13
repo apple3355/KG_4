@@ -14,6 +14,7 @@ public class OrderVO {
 	private String order_merchant_no;
 	private String order_delivery_status;
 	private String category_goods_image_thumb;
+	private String category_goods_name;
 	public String getOrder_no() {
 		return order_no;
 	}
@@ -91,6 +92,12 @@ public class OrderVO {
 	}
 	public void setCategory_goods_image_thumb(String category_goods_image_thumb) {
 		this.category_goods_image_thumb = category_goods_image_thumb;
+	}
+	public String getCategory_goods_name() {
+		return category_goods_name;
+	}
+	public void setCategory_goods_name(String category_goods_name) {
+		this.category_goods_name = category_goods_name;
 	}
 	@Override
 	public String toString() {

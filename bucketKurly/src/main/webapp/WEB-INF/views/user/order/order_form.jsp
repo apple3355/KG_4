@@ -708,7 +708,7 @@
 					msg += '결제 금액 : ' + rsp.paid_amount;
 					msg += '카드 승인번호 : ' + rsp.apply_num;
 					$.ajax({
-						url: '/approval.do',
+						url: '${pageContext.request.contextPath}/approval.do',
 						type: 'GET',
 						dataType: 'text',
 						data: {"apply_num":apply_num, "order_name":user_orderName, "order_phone":user_orderPhone, "order_address":user_address,

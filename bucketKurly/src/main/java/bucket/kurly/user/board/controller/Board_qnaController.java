@@ -2,6 +2,7 @@ package bucket.kurly.user.board.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,6 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 import bucket.kurly.user.board.Board_fileVO;
 import bucket.kurly.user.board.Board_qnaVO;
 import bucket.kurly.user.board.service.Board_qnaService;
+import bucket.kurly.user.order.OrderVO;
+import bucket.kurly.user.order.service.OrderService;
 import bucket.kurly.util.Pagination;
 import bucket.kurly.util.S3Service;
 
@@ -27,34 +30,33 @@ public class Board_qnaController {
 	@Autowired
 	private Board_qnaService board_qnaService;
 	private S3Service s3Service = S3Service.getInstance();
+	@Autowired
+	private OrderService orderService;
 
 	// 글 목록 요청
 	@RequestMapping("/board_qna.do")
 	public String getBoard_qnaList(Model model,
 			@RequestParam(required = false, defaultValue = "1") int page, 
-			@RequestParam(required = false, defaultValue = "1") int range) {
+			@RequestParam(required = false, defaultValue = "1") int range,HttpSession session) {
 		
 		
 		System.out.println("[1:1 문의 게시글] 목록페이지 요청");
+		
+		//현재 회원 번호
+		int member_no = (int)session.getAttribute("member_no");
 		//전체 게시글 개수
-		int listCnt = board_qnaService.selectBoard_qnaListCnt(1111);
+		int listCnt = board_qnaService.selectBoard_qnaListCnt(member_no);
 		
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(page, range, listCnt);
-		System.out.println("page=======>"+page);
-		System.out.println("range=======>"+range);
-		System.out.println("pageCnt=======>"+pagination.getPageCnt());
-		System.out.println("listCnt=======>"+listCnt);
-		System.out.println("startpage=======>"+pagination.getStartPage());
-		System.out.println("endpage=======>"+pagination.getEndPage());
 		
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		map.put( "board_qna_member_no", 1111 );
-		map.put( "listSize", pagination.getListSize() );
-		map.put( "startList", pagination.getStartList() );
+		map.put( "board_qna_member_no", member_no);
+		map.put( "listSize", pagination.getListSize());
+		map.put( "startList", pagination.getStartList());
 		
 		List<Board_qnaVO> board_qnaList = board_qnaService.selectBoard_qna(map);
-		List<Board_fileVO> board_fileList = board_qnaService.selectBoard_qnaFile(1111);
+		List<Board_fileVO> board_fileList = board_qnaService.selectBoard_qnaFile(member_no);
 		
 		model.addAttribute("pagination",pagination);
 		model.addAttribute("board_qnaList", board_qnaList);
@@ -72,8 +74,29 @@ public class Board_qnaController {
 
 	// 글쓰기 안의 주문조회 iframe요청
 	@RequestMapping("/board_qna_insert_orderNoSearch.do")
-	public String getBoard_qna_insert_orderNoSearch(Model model) {
+	public String getBoard_qna_insert_orderNoSearch(Model model,HttpSession session) throws Exception {
 		System.out.println("[1:1 문의 게시글] 등록페이지 - iframe(주문조회) 요청");
+		
+		List<OrderVO> orderlist = new ArrayList<OrderVO>();
+		String order_no = null;
+		int member_no = (int) session.getAttribute("member_no");
+		
+		
+		List<OrderVO> cartVO = orderService.select_orderNo(member_no);
+		System.out.println(cartVO);
+		
+		for(int i=0; i<cartVO.size(); i++) {
+			String order_no_list = cartVO.get(i).getOrder_no();
+			if (order_no_list.equals(order_no)) {
+
+			} else {
+				order_no = order_no_list;
+				orderlist.addAll(orderService.select_order_one(order_no_list));
+				model.addAttribute("orderlist", orderlist);
+			}
+			
+		}
+		
 		return "board/board_qna_insert_orderNoSearch";
 	}
 
@@ -85,7 +108,7 @@ public class Board_qnaController {
 		System.out.println("file.length=========>" + file.length);
 		
 		System.out.println(qnavo.toString());
-		qnavo.setBoard_qna_member_no(1111);
+		qnavo.setBoard_qna_member_no((int)session.getAttribute("member_no"));
 		qnavo.setBoard_qna_writer((String) session.getAttribute("name"));
 		board_qnaService.insertBoard_qna(qnavo);
 		
@@ -120,7 +143,7 @@ public class Board_qnaController {
 			}
 		}
 		
-		return "redirect:board/board_qna.do";
+		return "redirect:/board_qna.do";
 	}
 	
 	

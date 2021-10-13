@@ -12,7 +12,6 @@ public class Admin_Board_reviewController {
 	@Autowired
 	private Admin_Board_reviewService Admin_Board_reviewService;
 	
-	
 }
 
 

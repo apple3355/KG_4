@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
@@ -45,15 +45,17 @@
 												<th style="font: bold 8pt 돋움; color: #FFFFFF">주문금액</th>
 												<th style="font: bold 8pt 돋움; color: #FFFFFF">선택</th>
 											</tr>
-											<tr height="25" align="center">
-												<td>1621912549309</td>
-												<td>21-05-25</td>
-												<td>[KF365] DOLE 실속 바.. 외 5건</td>
-												<td align="right">7 개</td>
-												<td align="right">5,882 원</td>
-												<td><input type="radio" name="ordernoSelect"
-													onclick="parent.order_put('1621912549309')"></td>
-											</tr>
+
+											<c:forEach items="${orderlist}" var="orderlist" varStatus="status">
+												<tr height="25" align="center">
+													<td><c:out value="${orderlist.order_no}"/></td>
+													<td><c:out value="${orderlist.order_date}"/></td>
+													<td><c:out value="${orderlist.category_goods_name}"/></td>
+													<td align="right"><c:out value="${orderlist.order_goods_count}"/></td>
+													<td align="right"><c:out value="${orderlist.order_goods_price}"/></td>
+													<td><input type="radio" name="ordernoSelect" onclick="parent.order_put('${orderlist.order_no}')"></td>
+												</tr>
+											</c:forEach>
 											<tr>
 												<td colspan="6" height="1" bgcolor="E5E5E5"></td>
 											</tr>

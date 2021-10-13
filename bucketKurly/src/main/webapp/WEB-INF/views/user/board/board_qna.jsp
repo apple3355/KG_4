@@ -87,11 +87,6 @@
 											</c:forEach>
 											<c:out value="${board_qnaList.board_qna_content}"/>
 										</div>
-										<div class="goods-review-grp-btn" style="text-align: right;">
-											<a href="${pageContext.request.contextPath}/board_qna_update.do?qna_no=${board_qnaList.board_qna_no}">
-												<button type="button" class="styled-button">수정</button>
-											</a>
-										</div>
 									</div>
 								
 								</c:if>
