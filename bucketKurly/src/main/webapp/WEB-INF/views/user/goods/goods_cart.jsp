@@ -86,7 +86,7 @@
 			<h3 class="screen_out">장바구니 상품 목록</h3> 
 			
 			
-			<form action="/order_form.do">
+			<form action="${pageContext.request.contextPath}/order_form.do">
 				<div id="cartItemList" items="${countGoods_cart }" var="countGoods_cart"class="only_pc" style="min-height: 561px;">
 					<div class="">
 					<!-- div class "" or empty 시작 -->
