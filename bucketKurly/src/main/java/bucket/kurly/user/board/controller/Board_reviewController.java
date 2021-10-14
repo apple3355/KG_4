@@ -25,6 +25,7 @@ public class Board_reviewController {
 		System.out.println(reviewList);
 		model.addAttribute("reviewList", reviewList);
 		
+		
 		return "goods/goods_list_review";
 	}
 	

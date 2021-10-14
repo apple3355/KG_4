@@ -66,7 +66,8 @@
 							</div>
 							
 							<div class="head_section link_type">
-								<h3 class="tit" id="order_no"> 주문번호 &nbsp;&nbsp;:&nbsp;&nbsp;${info.order_no}</h3>
+								<input type = "hidden" id = "order_no" value = "${info.order_no}"/>
+								<h3 class="tit"> 주문번호 &nbsp;&nbsp;:&nbsp;&nbsp;${info.order_no}</h3>
 								<input type="hidden" id="merchantNum" value="${info.order_merchant_no}">
 							</div>
 							
@@ -243,7 +244,7 @@
 											</tbody>
 									</table>
 									
-									<c:if test="${info.order_delivery_status ne '환불대기' or info.order_delivery_status ne '환불완료' or info.order_delivery_status ne '구매확정'}">
+									<c:if test="${info.order_delivery_status ne '환불대기' and info.order_delivery_status ne '환불완료' and info.order_delivery_status ne '구매확정'}">
 										<div style="text-align: center;">
 											<button id="refundRequest" onclick="refundRequest()" class="duplicate_check" type="button">전체상품 주문취소</button>
 										</div>
@@ -272,7 +273,7 @@
 		
 	     var refund_price = $('#paper_settlement').text();	//refund price 	
 	  	 console.log(refund_price);
-	  	 var order_no = $('#order_no').text();	//order_no 	
+	  	 var order_no = $('#order_no').val();	//order_no 	
 	  	 console.log(order_no);
 	  	 var merchant_no = $('#merchantNum').val();	//merchant_no 	
 	  	 console.log(merchant_no);

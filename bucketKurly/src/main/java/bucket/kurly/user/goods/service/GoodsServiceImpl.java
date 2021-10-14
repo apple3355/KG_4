@@ -146,8 +146,8 @@ public class GoodsServiceImpl implements GoodsService {
 	
 	//장바구니 상태수정
 	@Override
-	public void updateCart_status(Goods_CartVO gsvo) {
-		dao.updateCart_status(gsvo);
+	public void updateCart_status(int goods_cart_no) {
+		dao.updateCart_status(goods_cart_no);
 		
 	}
 	

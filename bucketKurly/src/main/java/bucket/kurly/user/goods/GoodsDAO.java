@@ -154,9 +154,9 @@ public class GoodsDAO {
 	}
 
 	// 장바구니 상태수정
-	public void updateCart_status(Goods_CartVO gsvo) {
+	public void updateCart_status(int goods_cart_no) {
 		System.out.println("updateCart_status() 실행");
-		sqlSessionTemplate.update("GoodsDAO.updateCart_status", gsvo);
+		sqlSessionTemplate.update("GoodsDAO.updateCart_status", goods_cart_no);
 	}
 
 	// 장바구니 삭제

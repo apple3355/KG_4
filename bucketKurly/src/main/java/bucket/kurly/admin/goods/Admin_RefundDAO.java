@@ -29,6 +29,12 @@ public class Admin_RefundDAO {
 		System.out.println("RefundDAO - updateGoods_sell_stock_plus() 실행");
 		sqlSessionTemplate.update("RefundDAO.updateGoods_sell_stock_plus",refund_order_no);
 	}
+	
+	//주문상태 변경
+	public void updateOrder_state(String refund_order_no) {
+		System.out.println("RefundDAO - updateOrder_state 실행");
+		sqlSessionTemplate.update("RefundDAO.updateOrder_state_admin",refund_order_no);
+	}
 
 }
 

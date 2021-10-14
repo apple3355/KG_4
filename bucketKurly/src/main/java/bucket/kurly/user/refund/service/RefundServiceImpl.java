@@ -18,4 +18,9 @@ public class RefundServiceImpl implements RefundService{
 		dao.insert_refund(vo);
 		
 	}
+
+	@Override
+	public void updateOrder_state(String order_no) throws Exception {
+		dao.updateOrder_state(order_no);
+	}
 }

@@ -8,6 +8,15 @@
 		INSERT INTO tb_refund(refund_order_no,refund_merchant_no,refund_member_id,refund_price, refund_state)
 		VALUES(#{refund_order_no},#{refund_merchant_no},#{refund_member_id},#{refund_price}, 0);
 	</insert>
+	
+	
+	<!-- 주문 상태 변경 -->
+	<update id="updateOrder_state" parameterType="string" >
+		UPDATE TB_ORDER
+		SET ORDER_DELIVERY_STATUS = '환불대기'
+		WHERE ORDER_NO = #{order_no}
+	</update>
+	
 
 	<!-- 관리자 -->
 	<!-- 환불 리스트 -->
@@ -30,5 +39,13 @@
 		ON o.ORDER_DETAILS_GOODS_SELL_NO = g.GOODS_SELL_NO 
 		WHERE o.ORDER_DETAILS_ORDER_NO = #{refund_order_no})
 	</update>
+	
+	<!-- 주문 상태 변경 -->
+	<update id="updateOrder_state_admin" parameterType="string" >
+		UPDATE TB_ORDER
+		SET ORDER_DELIVERY_STATUS = '환불완료'
+		WHERE ORDER_NO = #{refund_order_no}
+	</update>
+	
 	
 </mapper>

@@ -86,7 +86,7 @@
 	                                        	</td>                                        	
 	                                        	<td>
 	                                        		<c:if test="${state == 0}">
-	                                        			<a onclick = "fn_update('${selectRefund.refund_no}','${selectRefund.refund_merchant_no},${selectRefund.refund_order_no}')">
+	                                        			<a onclick = "fn_update('${selectRefund.refund_no}','${selectRefund.refund_merchant_no}','${selectRefund.refund_order_no}')">
 	                                        				<button type="button" class="btn btn-outline btn-info" id="saveBtn">환불하기</button>
 	                                        			</a>
 	                                         		</c:if>

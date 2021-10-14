@@ -41,10 +41,8 @@ public class Board_qnaDAO {
 		 return sqlSessionTemplate.selectOne("board-mapping.selectBoard_qnaLastNo"); 
 	}
 	
+	public MemberVO selectBoard_memberinfo(String member_id){
+		return sqlSessionTemplate.selectOne("board-mapping.selectBoard_memberinfo",member_id);
+	}
 	
-	
-//	public void updateMember(int qna_no) {
-//		System.out.println("Board_qnaDAO - updateBoard_qna() 실행");
-//		sqlSessionTemplate.update("board-mapping.updateBoard_qna", qna_no);
-//	} 
 }

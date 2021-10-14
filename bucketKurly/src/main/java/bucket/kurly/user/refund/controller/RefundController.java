@@ -37,13 +37,12 @@ public class RefundController {
 		System.out.println(refund_price);
 		
 		
-		
-		
 		System.out.println("vo: "+ vo);
 		
 		refundService.insert_refund(vo);
+		refundService.updateOrder_state(order_no);
 		
-	return "1";
+		return "1";
 	
 	}
 	

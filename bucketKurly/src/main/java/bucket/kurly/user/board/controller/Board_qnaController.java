@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import bucket.kurly.user.board.Board_fileVO;
 import bucket.kurly.user.board.Board_qnaVO;
 import bucket.kurly.user.board.service.Board_qnaService;
+import bucket.kurly.user.member.MemberVO;
 import bucket.kurly.user.order.OrderVO;
 import bucket.kurly.user.order.service.OrderService;
 import bucket.kurly.util.Pagination;
@@ -67,8 +68,14 @@ public class Board_qnaController {
 
 	// 글쓰기 요청
 	@RequestMapping("/board_qna_insert.do")
-	public String getBoard_qnaInsert(Model model) {
+	public String getBoard_qnaInsert(Model model,HttpSession session) {
 		System.out.println("[1:1 문의 게시글] 등록페이지 요청");
+		
+		String member_id = (String)session.getAttribute("id");
+		MemberVO vo = board_qnaService.selectBoard_memberinfo(member_id);
+		
+		model.addAttribute("membervo",vo);
+		
 		return "board/board_qna_insert";
 	}
 

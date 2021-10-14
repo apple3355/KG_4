@@ -591,16 +591,6 @@ $(function(){
 						</div>
 					</div>
 					
-					<!-- 상품 후기(리뷰) -->
-					<div class="goods-view-infomation-content" id="goods-review" data-load="0"></div>
-						<div class="goods-view-infomation-content" id="goods-qna">
-							<div class="board-container">
-								<div id="productInquiryBoard" data-productNo=4364 data-boardPageSize="10" data-boardType="product" data-deviceType="pc"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-
 						<script src="/appProxy/appData.php?ver=1.39.16" defer></script>
 						<script src="/asset/js/product/inquiry/pc.bundle.js?ver=1.39.16" defer></script>
 						<script src="/shop/data/skin/designgj/js/mk_goods.js?ver=1.39.16"></script>
@@ -644,42 +634,12 @@ $(function(){
 						    function resizeFrameWidth(onm, width) {
 						        document.getElementById(onm).width = width;
 						    }
-						    jQuery(function ($) {
-						        $("#goods-review").bind("inview", function(event,visible) {
-						            if (visible == true) {
-						                if ( $(this).data("load")==0 ) {
-						                    $(this).data("load",1);
-						                    $(this).html('<iframe id="inreview" src="${pageContext.request.contextPath}/goods_review_list.do" frameborder="0" class="goods-view-infomation-board"></iframe>');
-						                }
-						            }
-						            $(function(){
-						                $('#inreview').load(function () {
-						                    var iframe = $('#inreview').contents();
-						                    iframe.find(".layout-pagination-button").on('click', function(event) {
-						                        $('html,body').animate({
-						                            scrollTop: $("#goods-review").offset().top-115
-						                        }, 300);
-						                    });
-						                });
-						            });
-						        });
-						    });
+						    
 						    // 해당 구역을 경과하면 보여주기 - 2016.01.03 junix
 						    $( document ).ready(function() {
 						        // $(window).height() 브라우저 내 창 높이
 						        // $(document).scrollTop() 현재 스크롤 top 위치
-						        if (($("#goods-review").offset().top - $(document).scrollTop()) < $(window).height())
-						        {
-						        	var goods_sell_no = getParameterByName('goods_sell_no'); // 1060192
-						        	alert(goods_sell_no);
-						        	let str = '<iframe id="inreview" src="http://localhost:8080/kurly/goods_list_review.do?goods_sell_no=';
-						        	str+=goods_sell_no;
-						        	str+='"frameborder="0" class="goods-view-infomation-board"></iframe>';
-						        	alert(str);
-						            
-						            $("#goods-review").html(str);
-						        }
-						
+						       
 						        // 170119 ey
 						        var slideThumb = $('.goods-add-product-item');
 						        var slideThumbCnt = 5;

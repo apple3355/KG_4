@@ -10,6 +10,7 @@ import bucket.kurly.user.board.Board_fileDAO;
 import bucket.kurly.user.board.Board_fileVO;
 import bucket.kurly.user.board.Board_qnaDAO;
 import bucket.kurly.user.board.Board_qnaVO;
+import bucket.kurly.user.member.MemberVO;
 @Service
 public class Board_qnaServiceImpl implements Board_qnaService {
 	
@@ -34,17 +35,6 @@ public class Board_qnaServiceImpl implements Board_qnaService {
 		qnaDao.insertBoard_qna(vo);
 	}
 
-	@Override
-	public void updateBoard_qna(Board_qnaVO vo) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteBoard_qna(Board_qnaVO vo) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	@Override
 	public int selectBoard_qnaListCnt(int member_no) {
@@ -69,6 +59,11 @@ public class Board_qnaServiceImpl implements Board_qnaService {
 	}
 
 
-	
+	@Override
+	public MemberVO selectBoard_memberinfo(String member_id) {
+		// TODO Auto-generated method stub
+		return qnaDao.selectBoard_memberinfo(member_id);
+	}
+
 }
 

@@ -10,7 +10,7 @@
 	</select>
 	
 	<select id="select_orderNo" resultType="order">
-		SELECT order_no FROM tb_order t_order  LEFT OUTER JOIN tb_order_details order_details ON order_details.order_details_order_no = t_order.order_no WHERE order_member_no=#{order_member_no} 
+		SELECT order_no FROM tb_order t_order  LEFT OUTER JOIN tb_order_details order_details ON order_details.order_details_order_no = t_order.order_no WHERE order_member_no=#{order_member_no} order by order_no desc
 	</select>
 	
 	<select id="orderNo" resultType="order">

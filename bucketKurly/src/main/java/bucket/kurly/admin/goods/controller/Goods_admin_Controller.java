@@ -99,6 +99,8 @@ public class Goods_admin_Controller {
 		
 		admin_refundService.updateRefund_state(refund_no);
 		admin_refundService.updateGoods_sell_stock_plus(refund_order_no);
+		System.out.println("refund_order_no"+refund_order_no);
+		admin_refundService.updateOrder_state(refund_order_no);
 		
 		List<Admin_RefundVO> selectRefund = admin_refundService.selectRefund_list();
 		model.addAttribute("selectRefund", selectRefund);

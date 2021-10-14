@@ -4,29 +4,30 @@
 <mapper namespace="Admin_statisticsDAO">
 	<!-- 등급별 회원 수 -->
 	<select id="selectMemberRank" resultType="member_statistics">
-		select member_rank,count(member_rank) as member_rank_total from tb_member_details group by member_rank;
+		select member_rank,count(member_rank) as member_rank_total from tb_member_details group by member_rank
 	</select>
 	
 	<!-- 일별매출 -->
 	<select id="selectRevenueDaily" parameterType="member_statistics" resultType="member_statistics">
 		SELECT order_date, COUNT(*) AS order_total, SUM(order_goods_price) as revenue_total
-		FROM tb_order where order_date &gt;= #{startdate_daily} and order_date &lt;= #{enddate_daily}
+		FROM tb_order where order_date &gt;= #{startdate_daily} and order_date &lt;= #{enddate_daily} and order_delivery_status = '구매확정'
 		GROUP BY order_date
-		ORDER BY order_date;		
+		ORDER BY order_date		
+		
 	</select>
 
 	
 	<!-- 월별매출 -->
 	<select id="selectRevenueMonthly" parameterType="member_statistics" resultType="member_statistics">
 		SELECT to_char(order_date, 'YYYY-MM') as order_date, COUNT(*) AS order_total, SUM(order_goods_price) AS revenue_total
-		FROM  tb_order WHERE order_date &gt;= #{startdate_monthly} AND order_date &lt;= #{enddate_monthly} 
+		FROM  tb_order WHERE order_date &gt;= #{startdate_monthly} AND order_date &lt;= #{enddate_monthly} and order_delivery_status = '구매확정'
 		GROUP BY to_char(order_date, 'YYYY-MM')
-		ORDER BY to_char(order_date, 'YYYY-MM');	
+		ORDER BY to_char(order_date, 'YYYY-MM')
 	</select>
 	
 	<!-- 누적매출 -->
 	<select id="selectRevenueTotal" resultType="integer">
-		select sum(order_goods_price) from tb_order; 	
+		select sum(order_goods_price) from tb_order where order_delivery_status = '구매확정'
 	</select>
 	
 	<!-- 베스트 아이템 -->
@@ -39,7 +40,7 @@
       	LEFT OUTER JOIN tb_category_goods goods 
       	ON sell.goods_sell_goods_no = goods.category_goods_no
       	GROUP BY goods.category_goods_name,details.order_details_goods_sell_no,sell.goods_sell_price
-      	ORDER BY count(details.order_details_goods_sell_no) DESC;
+      	ORDER BY count(details.order_details_goods_sell_no) DESC
 	</select>
 	
 </mapper> 

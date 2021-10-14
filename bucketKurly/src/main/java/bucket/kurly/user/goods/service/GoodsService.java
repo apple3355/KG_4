@@ -71,7 +71,7 @@ public interface GoodsService {
 	public void updateSell_stock(Goods_SellVO gsvo);
 
 	// 장바구니상태 수정
-	void updateCart_status(Goods_CartVO gsvo);
+	void updateCart_status(int goods_cart_no);
 
 	// 장바구니에서 삭제
 	void deleteGoods_cart(Goods_CartVO gsvo);

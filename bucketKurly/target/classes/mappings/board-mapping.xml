@@ -62,6 +62,12 @@
 	</select> -->
 	
 	<!-- 1:1문의 -->
+	
+	<select id="selectBoard_memberinfo" parameterType="String" resultType="member">
+		select member_email,member_phone from tb_member
+		where member_id=#{member_id}
+	</select> 
+	
 	<select id="selectBoard_qna_no" parameterType="int" resultType="board_qna">
 		SELECT * from TB_BOARD_QNA
 		WHERE BOARD_QNA_NO=#{board_qna_no}

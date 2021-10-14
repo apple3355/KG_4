@@ -14,4 +14,10 @@ public class RefundDAO {
 		System.out.println("RefundDAO - insert_refund() 실행");
 		sqlSessionTemplate.insert("RefundDAO.insertRefund", vo);
 	}
+	
+	public void updateOrder_state(String order_no) throws Exception {
+		System.out.println("RefundDAO - updateOrder_state() 실행");
+		sqlSessionTemplate.update("RefundDAO.updateOrder_state", order_no);
+	}
+	
 }

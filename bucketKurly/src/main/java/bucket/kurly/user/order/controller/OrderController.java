@@ -96,6 +96,15 @@ public class OrderController {
 		System.out.println(member_no);
 		List<String> cart_no = (List<String>) session.getAttribute("cart_no");
 		System.out.println("카트 카운트 : " + cart_no.size());
+		
+		for(int i=0; i<cart_no.size(); i++) {
+			goodsService.updateCart_status(Integer.parseInt(cart_no.get(i)));
+			System.err.println(Integer.parseInt(cart_no.get(i)) + "의 상태변경");
+		}
+		
+		
+		
+		
 		vo.setOrder_goods_count(cart_no.size());
 		
 		System.out.println(vo);

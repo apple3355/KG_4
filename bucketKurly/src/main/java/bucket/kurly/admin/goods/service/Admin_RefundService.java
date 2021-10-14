@@ -15,4 +15,8 @@ public interface Admin_RefundService {
 	//재고 수량 변경(up)
 	void updateGoods_sell_stock_plus(String refund_order_no);
 	
+	//환불 상태 변경
+	void updateOrder_state(String refund_order_no);
+	
+	
 }

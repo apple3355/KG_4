@@ -225,8 +225,7 @@ public class GoodsController {
 			        	   goods_cartShowVO.add(showvo);
 			           }
 			        }
-			    System.out.println("=============================");
-//		       System.out.println(goods_cartShowVO);
+			    
 			    model.addAttribute("goods_cartShowVO", goods_cartShowVO);
 			    }
 			

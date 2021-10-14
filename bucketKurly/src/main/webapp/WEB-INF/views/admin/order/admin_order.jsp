@@ -153,7 +153,6 @@
 		function fn_update(row) {
 			var result = confirm("해당 주문·결제·배송 상태를 수정하시겠습니까? ");
 			if(result){ 
-				alert("수정 안으로 들어옴");
 				var i = row.parentNode.parentNode.rowIndex;	//버튼이 눌러진 테이블의 로우넘버 저장
 				
 				var order_no = document.getElementById("dataTable").rows[i].cells[0].innerHTML;	//해당 로우넘버의 아이디가 있는 칼럼 값 저장

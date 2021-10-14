@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html lang="UTF-8">
 
@@ -79,7 +80,7 @@
                                             <th width="10%">입고 일자</th>
                                             <th width="5%">입고 수량</th>
                                             <th width="5%">재고 수량</th>
-                                            <th width="5%">재고 알림 수량</th>
+                                            <th width="5%" class="hidden-col">재고 알림 수량</th>
                                             <th width="10%">유통기한</th>
                                             <th width="10%">프로모션 번호</th>
                                             <th width="10%">상품 상태</th>
@@ -87,8 +88,11 @@
                                             <th width="10%"> 수정 / 삭제</th>
                                         </tr>
                                     </thead>
+                                    <jsp:useBean id="now" class="java.util.Date" />
+									<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
                                     <tbody>
                                    		<c:forEach items="${selectgoods_sell}" var="selectgoods_sell" varStatus="tablerow">
+                                   		<c:set var="exp" value="${selectgoods_sell.goods_sell_exp}" />
                                    		<c:set var="promotion" value="${selectgoods_sell.goods_sell_promotion}" />
                                    		<c:set var="status" value="${selectgoods_sell.goods_sell_status}" />
                                    		<c:set var="discount" value="${selectgoods_sell.goods_sell_discount}" />
@@ -102,17 +106,37 @@
 	                                        	<td><c:out value="${selectgoods_sell.goods_sell_in_date}"/></td>
 	                                        	<td><c:out value="${selectgoods_sell.goods_sell_in_ea}"/></td>
 	                                        	<td><c:out value="${selectgoods_sell.goods_sell_stock_ea}"/></td>
-	                                        	<td><c:out value="${selectgoods_sell.goods_sell_stock_rea}"/></td>
-	                                        	<td><c:out value="${selectgoods_sell.goods_sell_exp}"/></td>
+	                                        	<td class="hidden-col"><c:out value="${selectgoods_sell.goods_sell_stock_rea}"/></td>
+	                                        	<c:if test="${exp < today}">
+	                                        		<td style="color: red;"><c:out value="${selectgoods_sell.goods_sell_exp}"/></td>
+	                                        	</c:if>
+	                                        	<c:if test="${exp >= today}">
+	                                        		<td><c:out value="${selectgoods_sell.goods_sell_exp}"/></td>
+	                                        	</c:if>
+	                                        	
 	                                        	<td><select id="promotion" class="form-control">
 													    <option value=0 <c:if test="${promotion == 0}">selected</c:if>>미적용</option>
 													    <option value=1 <c:if test="${promotion == 1}">selected</c:if>>적용</option>
 													</select>
 	                                        	</td>                                        	
-	                                        	<td><select id="status" class="form-control">									
-									                    <option value=1 <c:if test="${status == 1}">selected</c:if>>판매중</option>									
-									                    <option value=2 <c:if test="${status == 2}">selected</c:if>>판매중지</option>									
-									                    <option value=0 <c:if test="${status == 0}">selected</c:if>>판매완료</option>	
+	                                        	<td><select id="status" class="form-control">	
+	                                        			<c:if test="${selectgoods_sell.goods_sell_stock_ea == 0}">
+	                                        				<option value=1 >판매중</option>									
+										                    <option value=2 >판매중지</option>									
+										                   	<option value=0 selected>판매완료</option>
+	                                        			</c:if>
+	                                        			<c:if test="${selectgoods_sell.goods_sell_stock_ea != 0}">
+	                                        				<c:if test="${exp < today}">
+		                                        				<option value=1 >판매중</option>									
+										                    	<option value=2 selected>판매중지</option>									
+										                   		<option value=0 >판매완료</option>	
+		                                        			</c:if>			
+		                                        			<c:if test="${exp >= today}">
+		                                        				<option value=1 <c:if test="${status == 1}">selected</c:if>>판매중</option>									
+										                    	<option value=2 <c:if test="${status == 2}">selected</c:if>>판매중지</option>									
+										                    	<option value=0 <c:if test="${status == 0}">selected</c:if>>판매완료</option>	
+		                                        			</c:if>			
+	                                        			</c:if>
 													</select>
 	                                        	</td>                                 	
 	                                        	<td><select id="discount" class="form-control">
@@ -169,7 +193,6 @@
 		function fn_update(row) {
 			var result = confirm("이 상품을 수정하시겠습니까? ");
 			if(result){ 
-				alert("수정 안으로 들어옴");
 				var i = row.parentNode.parentNode.rowIndex;	//버튼이 눌러진 테이블의 로우넘버 저장
 				
 				var goods_sell_no = document.getElementById("dataTable").rows[i].cells[0].innerHTML;	//해당 로우넘버의 아이디가 있는 칼럼 값 저장

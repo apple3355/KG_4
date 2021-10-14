@@ -5,6 +5,7 @@ import java.util.Map;
 
 import bucket.kurly.user.board.Board_fileVO;
 import bucket.kurly.user.board.Board_qnaVO;
+import bucket.kurly.user.member.MemberVO;
 
 public interface Board_qnaService {
 	
@@ -15,8 +16,7 @@ public interface Board_qnaService {
 	List<Board_qnaVO> selectBoard_qna(Map map);
 	
 	void insertBoard_qna(Board_qnaVO vo);
-	void updateBoard_qna(Board_qnaVO vo);
-	void deleteBoard_qna(Board_qnaVO vo);
+	
 	//마지막 글 번호 검색
 	int selectBoard_qnaLastNo();
 	
@@ -26,4 +26,6 @@ public interface Board_qnaService {
 	//파일
 	void insertBoard_qnaFile(Board_fileVO vo);
 	List<Board_fileVO> selectBoard_qnaFile(int member_no);
+	
+	MemberVO selectBoard_memberinfo(String member_id);
 }
