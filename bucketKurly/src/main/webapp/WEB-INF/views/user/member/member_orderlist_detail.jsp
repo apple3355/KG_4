@@ -243,7 +243,7 @@
 											</tbody>
 									</table>
 									
-									<c:if test="${info.order_delivery_status eq '환불대기' or info.order_delivery_status eq '환불완료'}">
+									<c:if test="${info.order_delivery_status ne '환불대기' or info.order_delivery_status ne '환불완료' or info.order_delivery_status ne '구매확정'}">
 										<div style="text-align: center;">
 											<button id="refundRequest" onclick="refundRequest()" class="duplicate_check" type="button">전체상품 주문취소</button>
 										</div>
