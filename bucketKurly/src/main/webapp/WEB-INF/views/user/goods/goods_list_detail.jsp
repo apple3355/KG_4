@@ -676,7 +676,7 @@ $(function(){
 						        	str+=goods_sell_no;
 						        	str+='"frameborder="0" class="goods-view-infomation-board"></iframe>';
 						        	alert(str);
-						            $("#goods-review").data("load", 1);
+						            
 						            $("#goods-review").html(str);
 						        }
 						

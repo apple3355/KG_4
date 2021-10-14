@@ -112,24 +112,6 @@
 				                           onClick="fn_last('${pagination.pageCnt}','${pagination.rangeSize}')">맨 끝 페이지로 가기</a>
 				                     </div>
 				                  </div>
-				                  
-								<table class="xans-board-search xans-board-search2">
-									<tr>
-										<td class=input_txt><img
-											src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/ico_function+(1).gif">검색어</td>
-										<td class=stxt><input type=checkbox name="search[name]">이름
-											<input type=checkbox name="search[subject]">제목 <input
-											type=checkbox name="search[contents]">내용&nbsp;</td>
-										<td class=input_txt>&nbsp;</td>
-										<td>
-											<div class="search_bt">
-												<a href="javascript:document.frmList.submit()"><img src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/search.png" align=absmiddle></a> <input type="text"
-													name="search[word]" value="" required>
-											</div>
-										</td>
-									</tr>
-								</table>
-								
 							</form>
 						</div>
 					</div>

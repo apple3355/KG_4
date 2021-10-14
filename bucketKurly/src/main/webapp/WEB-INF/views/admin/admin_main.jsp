@@ -225,7 +225,7 @@
                                 </div>
                                 
                                 <!-- Card Body -->
-                                <div class="card-body" style="margin-left:110px">
+                                <div class="card-body" style="text-align:center;">
 									<c:forEach items="${Admin_StatisticsBestVO}" var="Admin_StatisticsBestVO" varStatus="status">
 										<c:if test="${status.count <= 5}">
 		                                    <div class="text-xs font-weight-bold .text-gray-900 text-uppercase mb-1" style="padding:8px;" >
@@ -250,11 +250,7 @@
                                     <p>1. 관리자 공지사항을 숙지 후 업무를 진행해주시기 바랍니다.</p>
                                     <p>2. 1:1문의 답변은 문의 등록 순대로 진행해주시기 바랍니다.</p>
                                     <p>3. 배송상태 수동 변경은 주문일자 순으로 진행해주시기 바랍니다.</p>
-                                    <p>2. 1:1문의 답변은 문의 등록 순대로 진행해주시기 바랍니다.</p>
-                                    <p>3. 배송상태 수동 변경은 주문일자 순으로 진행해주시기 바랍니다.</p>
-                                    <p>2. 1:1문의 답변은 문의 등록 순대로 진행해주시기 바랍니다.</p>
-                                    <p>3. 배송상태 수동 변경은 주문일자 순으로 진행해주시기 바랍니다.</p>
-                                    <p>3. 배송상태 수동 변경은 주문일자 순으로 진행해주시기 바랍니다.</p>
+                                    <p>4. 1:1문의 답변은 문의 등록 순대로 진행해주시기 바랍니다.</p>
                                 </div>
                             </div>
                         </div>

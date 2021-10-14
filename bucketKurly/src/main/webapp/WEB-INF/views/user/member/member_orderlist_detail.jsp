@@ -39,10 +39,10 @@
 										<a href="${pageContext.request.contextPath}/member_orderlist.do">주문 내역</a>
 									</li>
 									<li>
-										<a href="########">상품 후기</a>
+										<a href="${pageContext.request.contextPath}/board_qna_insert.do">상품 문의</a>
 									</li>
 									<li>
-										<a href="${pageContext.request.contextPath}/board_qna_insert.do">상품 문의</a>
+										<a href="########">상품 후기</a>
 									</li>
 									<li>
 										<a href="#none">적립금</a>
