@@ -91,7 +91,12 @@
 												<div class="order_goods">
 													<div class="name">
 														<input type="hidden" value="${orderlist.order_no}">
-														<a>${orderlist.category_goods_name} 외 ${orderlist.order_goods_count} 건</a>
+														<c:if test="${ orderlist.order_goods_count eq 1}">
+														<a>${orderlist.category_goods_name}</a>
+														</c:if>
+														<c:if test="${ orderlist.order_goods_count ne 1}">
+														<a>${orderlist.category_goods_name} 외 ${orderlist.order_goods_count-1} 건</a>
+														</c:if>
 													</div> 
 													<div class="order_info">
 														<input type="hidden" value="${orderlist.order_no}">

@@ -37,7 +37,8 @@ public class OrderController {
 		List<Goods_CartShowVO> goods_cartShowVO = new ArrayList<Goods_CartShowVO>();
 		
 		session.setAttribute("cart_no", cart_no);
-		System.out.println(cart_no);
+		System.out.println("카트번호" + cart_no);
+		System.out.println("카운트  : " + cart_no.size());
 		for(int i=0; i<cart_no.size(); i++) {
 			goods_cartShowVO.addAll(goodsService.chooseGoods_cart(Integer.parseInt(cart_no.get(i))));
 			model.addAttribute("goods_cartShowVO", goods_cartShowVO);
@@ -94,6 +95,7 @@ public class OrderController {
 		vo.setOrder_member_no(member_no);
 		System.out.println(member_no);
 		List<String> cart_no = (List<String>) session.getAttribute("cart_no");
+		System.out.println("카트 카운트 : " + cart_no.size());
 		vo.setOrder_goods_count(cart_no.size());
 		
 		System.out.println(vo);

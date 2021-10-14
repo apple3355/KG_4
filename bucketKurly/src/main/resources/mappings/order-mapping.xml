@@ -44,7 +44,7 @@
 	<insert id="insertOrder" parameterType="order">
 		INSERT INTO tb_order(order_no, order_name, order_member_no, order_date, order_phone, order_address, order_goods_count, order_goods_price, order_delivery_fee, order_coupon_no, order_merchant_no)
 		VALUES(to_char(now(), 'YYYYMMDD')||'-'|| LPAD(CAST(NEXTVAL('TB_ORDER_SEQ')AS VARCHAR), 8,
-		'0'),#{order_name},#{order_member_no},now(),#{order_phone},#{order_address},3,#{order_goods_price},#{order_delivery_fee},1, #{order_merchant_no});
+		'0'),#{order_name},#{order_member_no},now(),#{order_phone},#{order_address},#{order_goods_count},#{order_goods_price},#{order_delivery_fee},1, #{order_merchant_no});
 
 	</insert>
 	
