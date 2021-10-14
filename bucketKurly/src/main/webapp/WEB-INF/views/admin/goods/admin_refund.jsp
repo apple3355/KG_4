@@ -86,7 +86,7 @@
 	                                        	</td>                                        	
 	                                        	<td>
 	                                        		<c:if test="${state == 0}">
-	                                        			<a onclick = "fn_update('${selectRefund.refund_no}','${selectRefund.refund_merchant_no}')">
+	                                        			<a onclick = "fn_update('${selectRefund.refund_no}','${selectRefund.refund_merchant_no},${selectRefund.refund_order_no}')">
 	                                        				<button type="button" class="btn btn-outline btn-info" id="saveBtn">환불하기</button>
 	                                        			</a>
 	                                         		</c:if>
@@ -133,10 +133,10 @@
     <!-- Page level custom scripts -->
     <script src="resources/bootstrap/js/demo/datatables-demo.js"></script>
 	<script>
-		function fn_update(refund_no,refund_merchant_no) {
+		function fn_update(refund_no,refund_merchant_no,refund_order_no) {
 			var result = confirm("해당 결제건을 환불 하시겠습니까? ");
 			if(result){ 
-				
+
 				var form = document.createElement("form");
 				form.setAttribute("method", "Post");
 				form.setAttribute("action", "${pageContext.request.contextPath}/admin_refund_import.mdo");
@@ -151,8 +151,14 @@
 				refund_noField.setAttribute("name", "refund_no");
 				refund_noField.setAttribute("value", refund_no);
 				
+				var refund_order_noField = document.createElement("input");
+				refund_order_noField.setAttribute("type", "hidden");
+				refund_order_noField.setAttribute("name", "refund_order_no");
+				refund_order_noField.setAttribute("value", refund_order_no);
+			
 				form.appendChild(refund_merchant_noField);
 				form.appendChild(refund_noField);
+				form.appendChild(refund_order_noField);
 				
 				document.body.appendChild(form);
 				form.submit();

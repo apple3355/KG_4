@@ -22,4 +22,13 @@
 		WHERE REFUND_NO = #{refund_no}
 	</update>
 	
+	<!-- 재고 수량 변경 -->
+	<update id="updateGoods_sell_stock_plus" parameterType="String" >
+		UPDATE TB_GOODS_SELL
+		SET GOODS_SELL_STOCK_EA = GOODS_SELL_STOCK_EA + 1
+		WHERE GOODS_SELL_NO IN (SELECT g.GOODS_SELL_NO FROM TB_ORDER_DETAILS o JOIN TB_GOODS_SELL g
+		ON o.ORDER_DETAILS_GOODS_SELL_NO = g.GOODS_SELL_NO 
+		WHERE o.ORDER_DETAILS_ORDER_NO = #{refund_order_no})
+	</update>
+	
 </mapper>

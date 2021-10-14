@@ -24,4 +24,9 @@ public class Admin_RefundServiceImpl implements Admin_RefundService {
 		dao.updateRefund_state(refund_no);
 	}
 
+	@Override
+	public void updateGoods_sell_stock_plus(String refund_order_no) {
+		dao.updateGoods_sell_stock_plus(refund_order_no);
+	}
+
 }

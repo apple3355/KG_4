@@ -91,12 +91,14 @@ public class Goods_admin_Controller {
 	@RequestMapping("/admin_refund_import.mdo")
 	public String getRefund(Model model,
 			@RequestParam("refund_no") int refund_no,
+			@RequestParam("refund_order_no") String refund_order_no,
 			@RequestParam("refund_merchant_no") String refund_merchant_no) {
 		System.out.println("환불 요청");
 		
 		new ImportPayment().cancelPayment(new ImportPayment().getImportToken(),refund_merchant_no);
 		
 		admin_refundService.updateRefund_state(refund_no);
+		admin_refundService.updateGoods_sell_stock_plus(refund_order_no);
 		
 		List<Admin_RefundVO> selectRefund = admin_refundService.selectRefund_list();
 		model.addAttribute("selectRefund", selectRefund);
