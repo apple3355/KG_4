@@ -725,19 +725,20 @@ $(document).ready(function calTot(){
 		      $("#discountprice").text(sum-costSum);
 		      $("#discountprice_hd").val(sum-costSum);
 		     
+		      console.log("CostSum 검사 : " + Math.abs(costSum));
 		      //배송비		      
 		      var deliverFee = 3000; 
 		      var getMore = 0;
-		      if(costSum <50000){
+		      if(Math.abs(costSum) <50000){
 		    	 $("#deliveryFee").text(deliverFee);
 		    	 $("#deliveryFee_hd").val(deliverFee);
 		    	 console.log("마이너스 테스트:"+costSum);
-		    	 $('.free_limit').css({'display': 'block'});
-		    	 $("#getMorePrice").text(50000-Math.abs(costSum)+ "원 추가주문 시, 무료배송");
+		    	 $('#getMorePrice').css({'display': 'block'});
+		    	 $("#getMorePrice").text(50000-Math.abs(costSum)+ "원 추가주문 시, 무료배송"); 
 		      } else{
 				 $("#deliveryFee").text(deliverFee - 3000); 
 				 $("#deliveryFee_hd").val(deliverFee - 3000);
-				 $('.free_limit').css({'display': 'none'});
+				 $('#getMorePrice').css({'display': 'none'});
 		      }
 	
 		      //결제예정금액
@@ -842,7 +843,7 @@ $(document).ready(function calTot(){
 	      for(i=0; i<costArr.length;i++){
 	    	  console.log(costArr.length);
 	    	  costSum = parseInt(costSum + costArr[i]);
-	    	  console.log("costSum: "+costSum);
+	    	  
 	    	 //$("#discountprice").text(costSum);
 	      }	  
 	      $("#discountprice").text(costSum-sum);
@@ -855,12 +856,12 @@ $(document).ready(function calTot(){
 	      if(costSum <50000){
 	    	 $("#deliveryFee").text(deliverFee);	
 	    	 $("#deliveryFee_hd").val(deliverFee);
-	    	 $('.free_limit').css({'display': 'block'});
+	    	 $('#getMorePrice').css({'display': 'block'});
 	    	 $("#getMorePrice").text(50000-costSum + "원 추가주문 시, 무료배송");
 	      } else{//무료배송
 			 $("#deliveryFee").text(deliverFee-3000); 
 			 $("#deliveryFee_hd").val(deliverFee-3000);
-			 $('.free_limit').css({'display': 'none'});
+			 $('#getMorePrice').css({'display': 'none'});
 	      }     
 	      
 	      //결제예정금액
