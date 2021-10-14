@@ -114,7 +114,7 @@ $(document).ready(function(){
 			<div class="inner_snb">
 			  <ul class="list_menu">
 		 	    <li>
-		 	      <a href="/shop/mypage/mypage_orderlist.php">주문 내역</a>
+		 	      <a href="${pageContext.request.contextPath}/member_orderlist.do">주문 내역</a>
 			    </li>
 				<li>
 				  <a href="#none" onclick="KurlyTrackerLink('/shop/mypage/mypage_gift.php', 'select_my_kurly_gift_list')">선물	내역</a>
@@ -122,7 +122,7 @@ $(document).ready(function(){
 										<li><a href="#none"
 											onclick="KurlyTrackerLink('/shop/mypage/destination/list.php', 'select_shipping_address_list')">배송지
 												관리</a></li>
-										<li><a href="/shop/mypage/mypage_review.php">상품 후기</a></li>
+										<li><a href="">상품 후기</a></li>
 										<li><a href="/shop/mypage/product_inquiry.php">상품 문의</a>
 										</li>
 										<li><a href="#none"
@@ -132,7 +132,7 @@ $(document).ready(function(){
 											onclick="KurlyTrackerLink('/shop/mypage/mypage_coupon.php', 'select_my_kurly_coupon_list', {selection_type: 'mypage'})">쿠폰</a>
 										</li>
 										<li class="on">
-										  <a href="/shop/member/myinfo.php">개인정보 수정</a>
+										  <a href="${pageContext.request.contextPath}/memberinfo.do">개인정보 수정</a>
 										</li>
 									</ul>
 								</div>

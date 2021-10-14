@@ -44,7 +44,7 @@
 						<br>
 						<span class="find_ID" value="">아이디 : ${find_ID}</span>
 						</p>
-							<a href="/find_ID.do" class="btn_type1"><span class="txt_type">로그인 하기</span></a>
+							<a href="${pageContext.request.contextPath}/find_ID.do" class="btn_type1"><span class="txt_type">로그인 하기</span></a>
 						</div>
 					</div>
 				</div>

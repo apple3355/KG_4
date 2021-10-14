@@ -174,7 +174,7 @@ var getGoodsRecent = (function(){
 <div class="section_login">
 	<h3 class="tit_login">비밀번호 찾기</h3>
 <div class="write_form find_view new_pw">
-<form name="certForm" action="update_pwd.do" method="post">
+<form name="certForm" action="${pageContext.request.contextPath}/update_pwd.do" method="post">
 <input type="hidden" name="passwordSkin" value="Y">
 <strong class="tit_label">새 비밀번호 등록</strong>
 <input type="password" name="member_pw" id="member_pw" class="password" onfocus="pwValidate.checkNewPassword(document.frmMember)" onkeyup="pwValidate.checkNewPassword(document.frmMember)" onblur="pwValidate.emptyPwState()" maxlength="16" placeholder="새 비밀번호를 입력해주세요">

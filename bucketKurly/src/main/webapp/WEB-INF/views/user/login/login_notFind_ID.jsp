@@ -42,7 +42,7 @@
 						<br>
 						정확한지 확인 후 다시 시도해주세요.
 						</p>
-							<a href="/find_ID.do" class="btn_type1"><span class="txt_type">아이디 다시 찾기</span></a>
+							<a href="${pageContext.request.contextPath}/find_ID.do" class="btn_type1"><span class="txt_type">아이디 다시 찾기</span></a>
 						</div>
 					</div>
 				</div>

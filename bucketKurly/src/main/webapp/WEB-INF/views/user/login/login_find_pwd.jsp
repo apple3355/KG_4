@@ -35,7 +35,7 @@
 					<div class="section_login">
 						<h3 class="tit_login">비밀번호 찾기</h3>
 					    <div class="write_form find_view">
-							<form method="post" id="form" name="fm" action="/find_pwd_chk.do" onsubmit="return chkForm( this );">
+							<form method="post" id="form" name="fm" action="${pageContext.request.contextPath}/find_pwd_chk.do" onsubmit="return chkForm( this );">
 								<input type="hidden" name="act" value="Y"> 
 								<input type="hidden" name=rncheck value="none"> 
 								<input type="hidden" name=dupeinfo value=""> 

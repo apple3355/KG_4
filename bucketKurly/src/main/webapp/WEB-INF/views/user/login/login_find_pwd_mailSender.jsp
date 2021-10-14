@@ -269,7 +269,7 @@ function checkcertKey(){
        success: function(data){
             if(data == 0){
             console.log("인증번호 일치");
-            let url = '/find_pwd_setPass.do'
+            let url = '${pageContext.request.contextPath}/find_pwd_setPass.do'
             location.replace(url);
             }else{
                console.log("인증번호 불일치");

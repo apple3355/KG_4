@@ -195,7 +195,7 @@ var getGoodsRecent = (function(){
 									</p>
 									<p class="info">입력하신 ${member_email}로 인증번호가 발송되며,
 										인증 후 비밀번호가 재발급됩니다. 전송량이 많은 경우 이메일 전송이 지연될 수 있습니다.</p>
-									<a href="find_pwd_mailSender.do" class="btn_type1">
+									<a href="${pageContext.request.contextPath}/find_pwd_mailSender.do" class="btn_type1">
 									<span class="txt_type">인증번호받기</span></a>
 							</div>
 						</div>
