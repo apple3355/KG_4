@@ -70,41 +70,52 @@
 
 	<!-- 상품리스트 목록(신상품, 낮은가격, 높은가격, 할인 순) -->
 	<select id="selectGoods_sell" parameterType="goods_listdto" resultMap="goods_sell">
-		SELECT * FROM(SELECT * FROM TB_GOODS_SELL s JOIN TB_CATEGORY_GOODS g ON s.goods_sell_goods_no = g.category_goods_no
-			<if test='select_type.equals("new")'>
-				ORDER BY GOODS_SELL_IN_DATE DESC LIMIT 150) as subtable
-				<choose>
-					<when test='select_type2 != null and select_type2.equals("price_low")'>
-						ORDER BY GOODS_SELL_PRICE
-					</when>
-					<when test='select_type2 != null and select_type2.equals("price_high")'>
-						ORDER BY GOODS_SELL_PRICE DESC
-					</when>
-				</choose>
-			</if>
-			<if test='select_type.equals("best")'>
-				ORDER BY GOODS_SELL_IN_DATE DESC LIMIT 150) as subtable
-				<choose>
-					<when test='select_type2 != null and select_type2.equals("price_low")'>
-						ORDER BY GOODS_SELL_PRICE
-					</when>
-					<when test='select_type2 != null and select_type2.equals("price_high")'>
-						ORDER BY GOODS_SELL_PRICE DESC
-					</when>
-				</choose>
-			</if>
-			<if test='select_type.equals("sale")'>
-				ORDER BY GOODS_SELL_DISCOUNT DESC LIMIT 150) as subtable
-				<choose>
-					<when test='select_type2 != null and select_type2.equals("price_low")'>
-						ORDER BY GOODS_SELL_PRICE
-					</when>
-					<when test='select_type2 != null and select_type2.equals("price_high")'>
-						ORDER BY GOODS_SELL_PRICE DESC
-					</when>
-				</choose>
-			</if>
+		<if test='select_type.equals("new")'>
+			SELECT * FROM(SELECT * FROM TB_GOODS_SELL s JOIN TB_CATEGORY_GOODS g ON s.goods_sell_goods_no = g.category_goods_no
+			ORDER BY GOODS_SELL_IN_DATE DESC LIMIT 150) as subtable
+			<choose>
+				<when test='select_type2 != null and select_type2.equals("price_low")'>
+					ORDER BY GOODS_SELL_PRICE
+				</when>
+				<when test='select_type2 != null and select_type2.equals("price_high")'>
+					ORDER BY GOODS_SELL_PRICE DESC
+				</when>
+			</choose>
 			LIMIT #{listSize} OFFSET #{startList}
+		</if>
+		<if test='select_type.equals("best")'>
+			SELECT * FROM (SELECT DISTINCT goods.category_goods_name,goods.category_goods_name_sub, goods.category_goods_image_thumb, sell.goods_sell_no, sell.goods_sell_discount, sell.goods_sell_price
+			,COUNT(details.order_details_goods_sell_no) as count_total FROM tb_order_details details
+			LEFT JOIN tb_goods_sell sell
+			ON details.order_details_goods_sell_no = sell.goods_sell_no
+			LEFT JOIN tb_category_goods goods 
+			ON sell.goods_sell_goods_no = goods.category_goods_no
+			GROUP BY goods.category_goods_name,goods.category_goods_name_sub, goods.category_goods_image_thumb, sell.goods_sell_no, sell.goods_sell_discount, sell.goods_sell_price
+			ORDER BY count(details.order_details_goods_sell_no) DESC LIMIT 20) AS fourth
+			<choose>
+				<when test='select_type2 != null and select_type2.equals("price_low")'>
+					ORDER BY GOODS_SELL_PRICE
+				</when>
+				<when test='select_type2 != null and select_type2.equals("price_high")'>
+					ORDER BY GOODS_SELL_PRICE DESC
+				</when>
+			</choose>
+			LIMIT #{listSize} OFFSET #{startList}
+		</if>
+		<if test='select_type.equals("sale")'>
+			SELECT * FROM(SELECT * FROM TB_GOODS_SELL s JOIN TB_CATEGORY_GOODS g ON s.goods_sell_goods_no = g.category_goods_no
+			ORDER BY GOODS_SELL_DISCOUNT DESC LIMIT 150) as subtable
+			<choose>
+				<when test='select_type2 != null and select_type2.equals("price_low")'>
+					ORDER BY GOODS_SELL_PRICE
+				</when>
+				<when test='select_type2 != null and select_type2.equals("price_high")'>
+					ORDER BY GOODS_SELL_PRICE DESC
+				</when>
+			</choose>
+			LIMIT #{listSize} OFFSET #{startList}
+		</if>
+			
 	</select>
 	
 		

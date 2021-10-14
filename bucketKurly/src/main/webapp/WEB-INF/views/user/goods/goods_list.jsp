@@ -90,9 +90,11 @@
 																
 															
 																<div class="group_btn">
-																	<button type="button" class="btn btn_cart">
-																		<span class="screen_out"></span>
-																	</button>
+																	<a href="${pageContext.request.contextPath}/insertGoods_cart.do?goods_sell_no=${goods_sell_list.goods_sell_no}&count=1">
+																		<button type="button" class="btn btn_cart" >
+																			<span class="screen_out"></span>
+																		</button>
+																	</a>
 																</div>
 															</div>
 														
@@ -161,7 +163,8 @@
 					<script src="/common_js/common_filter.js?ver=1.39.10"></script>
 					<script src="/common_js/goodslist_v1.js?ver=1.39.10"></script>
 					<script type="text/javascript">
-						
+					
+				
 						//상품 상세 페이지로 이동
 					    function fn_goods_detail(goods_sell_no){
 							var url = "${pageContext.request.contextPath}/goods_list_detail.do";

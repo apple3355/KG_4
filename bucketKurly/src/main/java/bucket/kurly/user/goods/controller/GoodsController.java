@@ -43,24 +43,25 @@ public class GoodsController {
 		System.out.println("상품 목록 요청");
 		
 		Goods_ListDTO dto = new Goods_ListDTO();
-		int listCnt = 150;
-		dto.pageInfo(page, range, listCnt);
-		dto.setSelect_type(select_type);	
-		System.err.println(dto.getSelect_type());
+		int listCnt = 0;
 		if(select_type2 !=null) {
 			dto.setSelect_type2(select_type2);
 		}
-	
-		List<Goods_SellVO> goods_sell_list = goodsService.selectGoods_sell(dto);
 		
 		String title = null;
 		if(select_type.equals("new")){
 			title = "신상품순";
+			listCnt = 150;
 		}else if(select_type.equals("best")){
 			title = "베스트순";
+			listCnt = 20;
 		}else if(select_type.equals("sale")){
 			title = "할인율순";
+			listCnt = 150;
 		}
+		dto.pageInfo(page, range, listCnt);
+		dto.setSelect_type(select_type);	
+		List<Goods_SellVO> goods_sell_list = goodsService.selectGoods_sell(dto);
 
 		model.addAttribute("goods_sell_list", goods_sell_list); // 상품DB품목
 		model.addAttribute("itemCnt", listCnt); // 상품카운트
