@@ -40,19 +40,7 @@ $(document).ready(function(){
 		<div id="main">
 			<div id="content">
 			
-			<!-- 우측 플로팅 배너 -->
-			<div id="qnb" class="quick-navigation" style="top: 516px;height: 215px;">		
-			  <div class="bnr_qnb" id="brnQuick">
-				<a href="/shop/board/view.php?id=notice&amp;no=64" id="brnQuickObj"> 
-				  <img class="thumb" src="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/%ED%80%84%EB%A6%AC%ED%8B%B0%EC%9E%88%EA%B2%8C+%EC%83%9B%EB%B3%84%EB%B0%B0%EC%86%A1.png"	alt="퀄리티있게 샛별배송">
-			   	</a>
-			  </div>
-			  <div class="side_menu">
-			    <a href="#" class="link_menu ">등급별 혜택</a> 
-				<a href="#" class="link_menu ">레시피</a>
-				<a href="#" class="link_menu ">베스트 후기</a>
-			  </div>
-			</div>
+			
  			<div id="myPageTop" class="page_aticle mypage_top">
 	  		  <h2 class="screen_out">마이페이지</h2>
 			  <div class="mypagetop_user">
@@ -113,449 +101,446 @@ $(document).ready(function(){
 			<h2 class="tit_snb">마이컬리</h2>
 			<div class="inner_snb">
 			  <ul class="list_menu">
-		 	    <li>
-		 	      <a href="/shop/mypage/mypage_orderlist.php">주문 내역</a>
-			    </li>
-				<li>
-				  <a href="#none" onclick="KurlyTrackerLink('/shop/mypage/mypage_gift.php', 'select_my_kurly_gift_list')">선물	내역</a>
+		 	   <li class="on">
+					<a href="${pageContext.request.contextPath}/member_orderlist.do">주문 내역</a>
 				</li>
-										<li><a href="#none"
-											onclick="KurlyTrackerLink('/shop/mypage/destination/list.php', 'select_shipping_address_list')">배송지
-												관리</a></li>
-										<li><a href="/shop/mypage/mypage_review.php">상품 후기</a></li>
-										<li><a href="/shop/mypage/product_inquiry.php">상품 문의</a>
-										</li>
-										<li><a href="#none"
-											onclick="KurlyTrackerLink('/shop/mypage/mypage_emoney.php', 'select_my_kurly_point_history', {selection_type: 'mypage'})">적립금</a>
-										</li>
-										<li><a href="#none"
-											onclick="KurlyTrackerLink('/shop/mypage/mypage_coupon.php', 'select_my_kurly_coupon_list', {selection_type: 'mypage'})">쿠폰</a>
-										</li>
-										<li class="on">
-										  <a href="/shop/member/myinfo.php">개인정보 수정</a>
-										</li>
-									</ul>
-								</div>
-								<a href="/shop/mypage/mypage_qna_register.php?mode=add_qna"
-									class="link_inquire"><span class="emph">도움이 필요하신가요 ?</span>
-									1:1 문의하기</a>
-							</div>
-							<div class="page_section section_myinfo">
-								<div class="head_aticle">
-									<h2 class="tit">개인 정보 수정</h2>
-								</div>
+				<li>
+					<a href="${pageContext.request.contextPath}/board_qna_insert.do">상품 문의</a>
+				</li>
+				<li>
+					<a href="########">상품 후기</a>
+				</li>
+				<li>
+					<a href="#none">적립금</a>
+				</li>
+				<li>
+					<a href="#none">쿠폰</a>
+				</li>
+				<li>
+					<a href="${pageContext.request.contextPath}/memberinfo.do">개인 정보 수정</a>
+				</li>
+				</ul>
+			</div>
+				<a href="/shop/mypage/mypage_qna_register.php?mode=add_qna"
+					class="link_inquire"><span class="emph">도움이 필요하신가요 ?</span>
+					1:1 문의하기</a>
+			</div>
+			<div class="page_section section_myinfo">
+				<div class="head_aticle">
+					<h2 class="tit">개인 정보 수정</h2>
+				</div>
 
-								<script type="text/javascript"
-									src="/asset/js/useKurly/libText.bundle.js"></script>
-								<script src="/shop/data/skin/designgj/godo.password_strength.js"
-									type="text/javascript"></script>
-								<script src="/common_js/join_v1.js?ver=1.39.6"></script>
-								<div class="type_form member_join member_mod">
-									<form id=form name=frmMember method=post
-										action="/update.do"
-										onsubmit="return chkForm2(this)" novalidate>
-										<input type=hidden name=mode value="modMember"> <input
-											type="hidden" name="check_mobile" value="1"> <input
-											type="hidden" name="auth_finish_code" value=""> <input
-											type=hidden name=rncheck value=""> <input type=hidden
-											name=dupeinfo value=""> <input type=hidden name=pakey
-											value=""> <input type=hidden name=foreigner value="1">
-										<input type=hidden name=passwordSkin value="Y"> <input
-											type=hidden name=m_id value="">
-										<table class="tbl_comm">
-											<tr class="fst">
-												<th>아이디<span class="ico">*<span
-														class="screen_out">필수항목</span></span></th>
-												<td><input type="text" name="member_id" value="${mypage.member_id}" readonly
-													class="inp_read"></td>
-											</tr>
-											<tr>
-												<th>현재 비밀번호</th>
-												<td><input type="password" name="member_pw"
-													id="member_pw"
-													onblur="checkCurrentPassword(this);return;" /> <input
-													type="hidden" name="originalPasswordCheck" value="1">
-													<p class="txt_guide square">
-														<span class="txt txt_case4 bad">현재 비밀번호를 확인해주세요</span>
-													</p><button id="password_check" class="btn default" type="button">비밀번호 확인</button>
-												</td>
-											</tr>
-											<tr class="member_pwd">
-												<th>새 비밀번호</th>
-												<td><input type="password" name="newPassword"
-													id="newPassword" label="새 비밀번호" option=regPass
-													maxlength="16" class="reg_pw" disabled> <input type="hidden"
-													name="newPasswordCheck" value="0">
-													<p class="txt_guide square">
-														<span class="txt txt_case4">현재 비밀번호와 다르게 입력</span> <span
-															class="txt txt_case1">10자 이상 입력</span> <span
-															class="txt txt_case2">영문/숫자/특수문자(공백 제외)만 허용하며, 2개
-															이상 조합</span> <span class="txt txt_case3">동일한 숫자 3개 이상 연속
-															사용 불가</span>
-													</p></td>
-											</tr>
-											<tr class="member_pwd">
-												<th>새 비밀번호 확인</th>
-												<td><input type="password" name="member_pw"
-													id="confirmPassword" label="새 비밀번호" option=regPass
-													maxlength="16" class="confirm_pw" disabled>
-													<p class="txt_guide square">
-														<span class="txt txt_case1">동일한 비밀번호를 입력해주세요.</span>
-													</p></td>
-											</tr>
-											<tr>
-												<th>이름<span class="ico">*<span
-														class="screen_out">필수항목</span></span></th>
-												<td><input type="text" id="member_name" name="member_name" value="${mypage.member_name}" required
-													fld_esssential label="이름" placeholder="이름을 입력해주세요">
-												</td>
-											</tr>
-											<tr>
-												<th>이메일<span class="ico">*<span
-														class="screen_out">필수항목</span></span></th>
-												<td><input type="text" name="member_email" id="member_email" value="${mypage.member_email}"
-													data-email="" size=30  label="이메일"
-													placeholder="예: marketkurly@kurly.com"
-													> <input
-													type="hidden" name="chk_email" required label="이메일중복체크"
-													value="1"> <button id="email_check" class="btn default" type="button" onclick="checkEmail();">중복확인</button>
-												</td>
-											</tr>
-											<tr class="field_phone">
-												<th>휴대폰<span class="ico">*<span
-														class="screen_out">필수항목</span></span></th>
-												<td>
-													<div class="phone_num">
-														<input type="text" value="${mypage.member_phone}" pattern="[0-9]*"
-															name="member_phone" id="member_phone" placeholder="숫자만 입력해주세요" class="inp"
-															readonly="readonly"> <input type="hidden"
-															name="mobile[]" id="mobile0" value="010" required
-															option=regNum label="휴대폰"> <input type="hidden"
-															name="mobile[]" id="mobile1" value="4991" required
-															option=regNum label="휴대폰"> <input type="hidden"
-															name="mobile[]" id="mobile2" value="4719" required
-															option=regNum label="휴대폰">
-														<button id="phoneCheck" class="btn default" type="button">다른번호
-															인증</button>
-													</div>
-													<div id="codeNum" class="code_num">
-														<input type="text" name="auth_code" id="auth_code"
-															value="" size="6" maxlength="6" pattern="[0-9]*"
-															label="인증번호 확인" disabled class="inp_confirm"
-															oninput="if(value.length>6)value=value.slice(0,6);$(this).val($(this).val().replace(/[^0-9]/g,''));">
-														<button id="btn_cert_confirm" class="btn default disabled"
-															type="button">인증번호 확인</button>
-														<p id="countdown" class="count_down"></p>
-													</div>
-													<p class="txt_guide">
-														<span class="txt txt_case1"></span>
-													</p>
-												</td>
-											</tr>
-											<tr class="select_sex">
-												<th>성별</th>
-												<td><label class=""> <input type="radio"
-														name="member_sex" value="m"> <span class="ico"></span>남자
-												</label> <label class=""> <input type="radio" name="member_sex"
-														value="w"> <span class="ico"></span>여자
-												</label> <label class="checked"> <input type="radio"
-														name="member_sex" value="n" checked="checked"> <span
-														class="ico"></span>선택안함
-												</label></td>
-											</tr>
-											<tr class="birth field_birth">
-												<th>생년월일</th>
-												<td>
-													<div class="birth_day">
-														<input type="text" name=birth_year id="birth_year"
-															pattern="[0-9]*" value="${year }" label="생년월일" size=4 maxlength=4
-															placeholder="YYYY"> <span class="bar"></span> <input
-															type="text" name=birth_month id="birth_month"
-															pattern="[0-9]*" value="${month }" label="생년월일" size=2 maxlength=2
-															placeholder="MM"> <span class="bar"></span> <input
-															type="text" name=birth_day id="birth_day" pattern="[0-9]*"
-															value="${day }" label="생년월일" size=2 maxlength=2 placeholder="DD">
-													</div>
-													<p class="txt_guide">
-														<span class="txt bad"></span>
-													</p>
-												</td>
-											</tr>
-											<tr class="route" id="selectRecommend">
-												<th>추천인 아이디</th>
-												<td>
-													<div class="desc">
-														<input type="text" name="recommid" value=""
-															readonly="readonly">
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<th>선택약관 동의</th>
-												<td class="reg_agree">
-													<div class="check_view">
-														<input type="hidden" id="consentHidden" name="consent[1]"
-															value=""> <label class="label_block check_agree ">
-															<input type="checkbox" name="hiddenCheck"> <span
-															class="ico"></span>개인정보 수집·이용 동의 <span class="sub">(선택)</span>
-														</label> <a href="#none" class="link btn_link btn_choice">약관보기
-														</a>
-													</div>
+				<script type="text/javascript"
+					src="/asset/js/useKurly/libText.bundle.js"></script>
+				<script src="/shop/data/skin/designgj/godo.password_strength.js"
+					type="text/javascript"></script>
+				<script src="/common_js/join_v1.js?ver=1.39.6"></script>
+				<div class="type_form member_join member_mod">
+					<form id=form name=frmMember method=post
+						action="/update.do"
+						onsubmit="return chkForm2(this)" novalidate>
+						<input type=hidden name=mode value="modMember"> <input
+							type="hidden" name="check_mobile" value="1"> <input
+							type="hidden" name="auth_finish_code" value=""> <input
+							type=hidden name=rncheck value=""> <input type=hidden
+							name=dupeinfo value=""> <input type=hidden name=pakey
+							value=""> <input type=hidden name=foreigner value="1">
+						<input type=hidden name=passwordSkin value="Y"> <input
+							type=hidden name=m_id value="">
+						<table class="tbl_comm">
+							<tr class="fst">
+								<th>아이디<span class="ico">*<span
+										class="screen_out">필수항목</span></span></th>
+								<td><input type="text" name="member_id" value="${mypage.member_id}" readonly
+									class="inp_read"></td>
+							</tr>
+							<tr>
+								<th>현재 비밀번호</th>
+								<td><input type="password" name="member_pw"
+									id="member_pw"
+									onblur="checkCurrentPassword(this);return;" /> <input
+									type="hidden" name="originalPasswordCheck" value="1">
+									<p class="txt_guide square">
+										<span class="txt txt_case4 bad">현재 비밀번호를 확인해주세요</span>
+									</p><button id="password_check" class="btn default" type="button">비밀번호 확인</button>
+								</td>
+							</tr>
+							<tr class="member_pwd">
+								<th>새 비밀번호</th>
+								<td><input type="password" name="newPassword"
+									id="newPassword" label="새 비밀번호" option=regPass
+									maxlength="16" class="reg_pw" disabled> <input type="hidden"
+									name="newPasswordCheck" value="0">
+									<p class="txt_guide square">
+										<span class="txt txt_case4">현재 비밀번호와 다르게 입력</span> <span
+											class="txt txt_case1">10자 이상 입력</span> <span
+											class="txt txt_case2">영문/숫자/특수문자(공백 제외)만 허용하며, 2개
+											이상 조합</span> <span class="txt txt_case3">동일한 숫자 3개 이상 연속
+											사용 불가</span>
+									</p></td>
+							</tr>
+							<tr class="member_pwd">
+								<th>새 비밀번호 확인</th>
+								<td><input type="password" name="member_pw"
+									id="confirmPassword" label="새 비밀번호" option=regPass
+									maxlength="16" class="confirm_pw" disabled>
+									<p class="txt_guide square">
+										<span class="txt txt_case1">동일한 비밀번호를 입력해주세요.</span>
+									</p></td>
+							</tr>
+							<tr>
+								<th>이름<span class="ico">*<span
+										class="screen_out">필수항목</span></span></th>
+								<td><input type="text" id="member_name" name="member_name" value="${mypage.member_name}" required
+									fld_esssential label="이름" placeholder="이름을 입력해주세요">
+								</td>
+							</tr>
+							<tr>
+								<th>이메일<span class="ico">*<span
+										class="screen_out">필수항목</span></span></th>
+								<td><input type="text" name="member_email" id="member_email" value="${mypage.member_email}"
+									data-email="" size=30  label="이메일"
+									placeholder="예: marketkurly@kurly.com"
+									> <input
+									type="hidden" name="chk_email" required label="이메일중복체크"
+									value="1"> <button id="email_check" class="btn default" type="button" onclick="checkEmail();">중복확인</button>
+								</td>
+							</tr>
+							<tr class="field_phone">
+								<th>휴대폰<span class="ico">*<span
+										class="screen_out">필수항목</span></span></th>
+								<td>
+									<div class="phone_num">
+										<input type="text" value="${mypage.member_phone}" pattern="[0-9]*"
+											name="member_phone" id="member_phone" placeholder="숫자만 입력해주세요" class="inp"
+											readonly="readonly"> <input type="hidden"
+											name="mobile[]" id="mobile0" value="010" required
+											option=regNum label="휴대폰"> <input type="hidden"
+											name="mobile[]" id="mobile1" value="4991" required
+											option=regNum label="휴대폰"> <input type="hidden"
+											name="mobile[]" id="mobile2" value="4719" required
+											option=regNum label="휴대폰">
+										<button id="phoneCheck" class="btn default" type="button">다른번호
+											인증</button>
+									</div>
+									<div id="codeNum" class="code_num">
+										<input type="text" name="auth_code" id="auth_code"
+											value="" size="6" maxlength="6" pattern="[0-9]*"
+											label="인증번호 확인" disabled class="inp_confirm"
+											oninput="if(value.length>6)value=value.slice(0,6);$(this).val($(this).val().replace(/[^0-9]/g,''));">
+										<button id="btn_cert_confirm" class="btn default disabled"
+											type="button">인증번호 확인</button>
+										<p id="countdown" class="count_down"></p>
+									</div>
+									<p class="txt_guide">
+										<span class="txt txt_case1"></span>
+									</p>
+								</td>
+							</tr>
+							<tr class="select_sex">
+								<th>성별</th>
+								<td><label class=""> <input type="radio"
+										name="member_sex" value="m"> <span class="ico"></span>남자
+								</label> <label class=""> <input type="radio" name="member_sex"
+										value="w"> <span class="ico"></span>여자
+								</label> <label class="checked"> <input type="radio"
+										name="member_sex" value="n" checked="checked"> <span
+										class="ico"></span>선택안함
+								</label></td>
+							</tr>
+							<tr class="birth field_birth">
+								<th>생년월일</th>
+								<td>
+									<div class="birth_day">
+										<input type="text" name=birth_year id="birth_year"
+											pattern="[0-9]*" value="${year }" label="생년월일" size=4 maxlength=4
+											placeholder="YYYY"> <span class="bar"></span> <input
+											type="text" name=birth_month id="birth_month"
+											pattern="[0-9]*" value="${month }" label="생년월일" size=2 maxlength=2
+											placeholder="MM"> <span class="bar"></span> <input
+											type="text" name=birth_day id="birth_day" pattern="[0-9]*"
+											value="${day }" label="생년월일" size=2 maxlength=2 placeholder="DD">
+									</div>
+									<p class="txt_guide">
+										<span class="txt bad"></span>
+									</p>
+								</td>
+							</tr>
+							<tr class="route" id="selectRecommend">
+								<th>추천인 아이디</th>
+								<td>
+									<div class="desc">
+										<input type="text" name="recommid" value=""
+											readonly="readonly">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>선택약관 동의</th>
+								<td class="reg_agree">
+									<div class="check_view">
+										<input type="hidden" id="consentHidden" name="consent[1]"
+											value=""> <label class="label_block check_agree ">
+											<input type="checkbox" name="hiddenCheck"> <span
+											class="ico"></span>개인정보 수집·이용 동의 <span class="sub">(선택)</span>
+										</label> <a href="#none" class="link btn_link btn_choice">약관보기
+										</a>
+									</div>
 
-													<div class="layer layer_choice">
-														<div class="inner_layer">
-															<div class="in_layer">
-																<h4 class="tit_layer">
-																	개인정보 수집·이용 동의 <span class="sub">(선택)</span>
-																</h4>
-																<div class="box_tbl">
-																	<table cellpadding="0" cellspacing="0" width="100%">
-																		<caption class="screen_out">개인정보의 수집 및 이용목적</caption>
-																		<thead>
-																			<tr>
-																				<th scope="row" class="tit1">수집 목적</th>
-																				<th scope="row" class="tit2">수집 항목</th>
-																				<th scope="row" class="tit3">보유 기간</th>
-																			</tr>
-																		</thead>
-																		<tbody>
-																			<tr>
-																				<td>맞춤형 회원 서비스 제공</td>
-																				<td>성별, 생년월일</td>
-																				<td class="emph">회원 탈퇴<br> 즉시 파기
-																				</td>
-																			</tr>
-																		</tbody>
-																	</table>
-																</div>
-																<p class="txt_service">동의를 거부하시는 경우에도 서비스는 이용하실 수
-																	있습니다.</p>
-															</div>
-															<button type="button" class="btn_ok">
-																<span class="txt_type">확인</span>
-															</button>
-															<button type="button" class="btn_close">
-																<span class="screen_out">레이어 닫기</span>
-															</button>
-														</div>
-													</div>
-
-												</td>
-											</tr>
-											<tr style="display: none">
-												<td cospan="2"><input id="nosendf" name="messge_time"
-													fw-filter="isFill" fw-label="배송 시 받기" fw-msg="" value="0"
-													type="hidden"> <input id="sendf" name="messge_time"
-													fw-filter="isFill" fw-label="오전 7시에 받기" fw-msg="" checked
-													value="1" type="hidden"> <input id="passwords"
-													name="means_type" fw-filter="isFill"
-													fw-label="공동현관 출입 특이사항" fw-msg="" value="비밀번호"
-													type="hidden"> <input id="calls" name="means_type"
-													fw-filter="isFill" fw-label="공동현관 출입 특이사항" fw-msg=""
-													value="경비실호출" type="hidden"> <input id="send"
-													name="means_type" fw-filter="isFill"
-													fw-label="공동현관 출입 특이사항" fw-msg="" value="경비실로배송"
-													type="hidden"> <input id="callm" name="means_type"
-													fw-filter="isFill" fw-label="공동현관 출입 특이사항" fw-msg=""
-													value="세대호출" type="hidden"> <input id="phonem"
-													name="means_type" fw-filter="isFill"
-													fw-label="공동현관 출입 특이사항" fw-msg="" value="연락처로전화"
-													type="hidden"> <input id="free" name="means_type"
-													fw-filter="isFill" fw-label="공동현관 출입 특이사항" fw-msg=""
-													value="자유출입가능" type="hidden"> <input id="anys"
-													name="means_type" fw-filter="isFill"
-													fw-label="공동현관 출입 특이사항" fw-msg="" value="기타사항"
-													type="hidden"> <input id="means_inp" name="means"
-													fw-filter="" fw-label="비밀번호 및 호출방법" fw-msg=""
-													class="inputTypeText" maxlength="50" value=" "
-													type="hidden" autocomplete="off" autocorrect="off"
-													autocapitalize="off" spellcheck="true"> <input
-													id="no_means_inp" type="hidden"> <input id="pass"
-													name="pass_type" fw-filter="isFill" fw-label="동의" fw-msg=""
-													value="y" type="hidden"> <input id="nopass"
-													name="pass_type" fw-filter="isFill" checked fw-label="동의안함"
-													fw-msg="" value="n" type="hidden"></td>
-											</tr>
-											<tr class="reg_agree">
-												<th>이용약관동의 <span class="ico">*<span
-														class="screen_out">필수항목</span></span></th>
-												<td>
-													<div class="bg_dim"></div>
-													<div class="check_view">
-														<label class="label_block check_agree "> <input
-															type="checkbox" name="marketing"> <span
-															class="ico"></span>무료배송, 할인쿠폰 등 혜택/정보 수신 동의 <span
-															class="sub">(선택)</span>
-														</label>
-														<div class="check_event email_sms">
-															<label class="label_block check_agree "> <input
-																type="checkbox" name="sms" value="n"> <span
-																class="ico"></span>SMS
-															</label> <label class="label_block check_agree "> <input
-																type="checkbox" name="mailling" value="n"> <span
-																class="ico"></span>이메일
-															</label>
-														</div>
-													</div>
-												</td>
-											</tr>
-										</table>
-										<div id="formSubmit" class="form_footer">
-											<a href="/shop/member/hack.php?&" class="btn default" style="margin-left: 138px;">탈퇴하기</a>
-											<button id="submit" type="submit" class="btn active">회원정보수정</button>
+									<div class="layer layer_choice">
+										<div class="inner_layer">
+											<div class="in_layer">
+												<h4 class="tit_layer">
+													개인정보 수집·이용 동의 <span class="sub">(선택)</span>
+												</h4>
+												<div class="box_tbl">
+													<table cellpadding="0" cellspacing="0" width="100%">
+														<caption class="screen_out">개인정보의 수집 및 이용목적</caption>
+														<thead>
+															<tr>
+																<th scope="row" class="tit1">수집 목적</th>
+																<th scope="row" class="tit2">수집 항목</th>
+																<th scope="row" class="tit3">보유 기간</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>맞춤형 회원 서비스 제공</td>
+																<td>성별, 생년월일</td>
+																<td class="emph">회원 탈퇴<br> 즉시 파기
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<p class="txt_service">동의를 거부하시는 경우에도 서비스는 이용하실 수
+													있습니다.</p>
+											</div>
+											<button type="button" class="btn_ok">
+												<span class="txt_type">확인</span>
+											</button>
+											<button type="button" class="btn_close">
+												<span class="screen_out">레이어 닫기</span>
+											</button>
 										</div>
-									</form>
-								</div>
-								<iframe id="ifrmRnCheck" name="ifrmRnCheck"
-									style="display: none;"></iframe>
-								<iframe id="ifrmHpauth" name="ifrmHpauth" style="display: none;"></iframe>
-								
-<script type="text/javascript">
+									</div>
 
-    // 이용약관전체동의
-    var agree = $('.reg_agree');
-    $('.check_agree input[name = agree_allcheck]').change(function(){
-      if($(this).is(':checked') === true){
-        $('.check_agree').addClass('checked')
-        agree.find('input[type=checkbox]').attr('checked','checked');
-        agree.find('input[type=checkbox]').prop('checked','checked');
-        agree.find('input[type=checkbox]').val('y');
-        $('#consentHidden').val('y');
-      }else{
-        $('.check_agree').removeClass('checked')
-        agree.find('input[type=checkbox]').attr('checked','');
-        agree.find('input[type=checkbox]').prop('checked','');
-        agree.find('input[type=checkbox]').val('n');
-        $('#consentHidden').val('n');
-      }
-    });
-    $('.reg_agree').find('input[type=checkbox]').change(function(){
-      if($(this).is(':checked')){
-        $(this).parent().addClass('checked');
-        $(this).attr('checked','checked');
-        $(this).prop('checked','checked');
-        $(this).val('y');
-        if($(this).attr('name') == 'hiddenCheck') $('#consentHidden').val('y');
-      }else{
-        $(this).parent().removeClass('checked');
-        $(this).attr('checked','');
-        $(this).prop('checked','');
-        $(this).val('n');
-        if($(this).attr('name') == 'hiddenCheck') $('#consentHidden').val('n');
-      }
-      $('.reg_agree').find('input[type=checkbox]').each(function(){
-        if($(this).is(':checked') === false){
-          $('.label_all_check').removeClass('checked');
-          return false;
-        }
-      });
-      if($(this).attr('name') === 'marketing'){
-        if($(this).is(':checked')){
-          $('.email_sms').find('.check_agree').addClass('checked');
-          $('.email_sms').find('input').attr('checked','checked');
-          $('.email_sms').find('input').prop('checked','checked');
-          $('.email_sms').find('input').val('y');
-        }else{
-          $('.email_sms').find('.check_agree').removeClass('checked');
-          $('.email_sms').find('input').attr('checked','');
-          $('.email_sms').find('input').prop('checked','');
-          $('.email_sms').find('input').val('n');
-        }
-      }
-      if($(this).attr('name') === 'mailling' || $(this).attr('name') === 'sms'){
-        var emailSmsCount = 0;
-        $(this).parents('.email_sms').find('input').each(function(){
-          if($(this).is(':checked')) emailSmsCount++;
-        });
-        if(emailSmsCount === 2){
-          $('input[name=marketing]').parent().addClass('checked');
-          $('input[name=marketing]').attr('checked','checked');
-          $('input[name=marketing]').prop('checked','checked');
-        }else{
-          $('input[name=marketing]').parent().removeClass('checked');
-          $('input[name=marketing]').attr('checked','');
-          $('input[name=marketing]').prop('checked','');
-        }
-      }
-
-      // 전체동의
-      if($('.reg_agree').find('.checked').length >= 7){
-        $('.check_agree input[name = agree_allcheck]').parent().addClass('checked');
-        $('.check_agree input[name = agree_allcheck]').prop('checked','checked');
-      }else{
-        $('.check_agree input[name = agree_allcheck]').parent().removeClass('checked');
-        $('.check_agree input[name = agree_allcheck]').prop('checked','');
-      }
-    });
-
-    function inputFocus() {
-      $('#form input').focus(function () {
-        var element = $(this);
-        if (element.offset().top - $(window).scrollTop() < 80)
-        {
-          $('html, body').animate({
-            scrollTop: element.offset().top - 80
-          }, 0);
-        }
-      });
-    }
-    inputFocus();
-
-      // 라디오버튼 토글
-      inputOptions.not(targetInput).removeClass('checked')
-      targetInput.addClass('checked')
-
-      // 기존 텍스트 리셋
-      textBox.val("")
-
-      // placeholder 텍스트 변경
-      textBox.attr('placeholder', placeholderMessage)
-
-      // input name, value값 변경
-      var nameOptions = {
-        'recommendId': 'recommid',
-        'eventName': 'ex2'
-      }
-      textBox.attr('id', nameOptions[selectOptionId])
-      inputWrapper.addClass('selected')
-    })
-  });
-
-  // 클래스변경
-  function class_change(obj,state){
-    if(state === 'good') {
-      if (obj.hasClass('bad')) obj.removeClass('bad');
-      obj.addClass('good');
-    }else{
-      if(obj.hasClass('good')) obj.removeClass('good');
-      obj.addClass('bad');
-    }
-  }
-
-  // 생년월일 입력시 폼 포커스 이벤트
-  $('.birth_day input').focus(function(){
-    $(this).parent().addClass('on');
-  }).keyup(function(){
-    var inputText = $(this).val();
-    var number = $(this).val().replace(/[^0-9]/g,'');
-    $(this).val(number);
-  }).blur(function(){
-    $(this).parent().removeClass('on');
-    // KM-1261 회원가입 14세 인증
-    birthCheckAction.validatorText();
-  });
-
-  $(document).ready(function() {
-    // 추천인 자동 설정
-    var recommRegExp = new RegExp("recommid=([^&]+)", "i");
-    var match = location.search.match(recommRegExp);
-    if(match !== null && match.length === 2) {
-      $('#labelRecomm').click();
-      $('input[name=recommid]').val("");
-    }
-  });
-
-</script>
+								</td>
+							</tr>
+							<tr style="display: none">
+								<td cospan="2"><input id="nosendf" name="messge_time"
+									fw-filter="isFill" fw-label="배송 시 받기" fw-msg="" value="0"
+									type="hidden"> <input id="sendf" name="messge_time"
+									fw-filter="isFill" fw-label="오전 7시에 받기" fw-msg="" checked
+									value="1" type="hidden"> <input id="passwords"
+									name="means_type" fw-filter="isFill"
+									fw-label="공동현관 출입 특이사항" fw-msg="" value="비밀번호"
+									type="hidden"> <input id="calls" name="means_type"
+									fw-filter="isFill" fw-label="공동현관 출입 특이사항" fw-msg=""
+									value="경비실호출" type="hidden"> <input id="send"
+									name="means_type" fw-filter="isFill"
+									fw-label="공동현관 출입 특이사항" fw-msg="" value="경비실로배송"
+									type="hidden"> <input id="callm" name="means_type"
+									fw-filter="isFill" fw-label="공동현관 출입 특이사항" fw-msg=""
+									value="세대호출" type="hidden"> <input id="phonem"
+									name="means_type" fw-filter="isFill"
+									fw-label="공동현관 출입 특이사항" fw-msg="" value="연락처로전화"
+									type="hidden"> <input id="free" name="means_type"
+									fw-filter="isFill" fw-label="공동현관 출입 특이사항" fw-msg=""
+									value="자유출입가능" type="hidden"> <input id="anys"
+									name="means_type" fw-filter="isFill"
+									fw-label="공동현관 출입 특이사항" fw-msg="" value="기타사항"
+									type="hidden"> <input id="means_inp" name="means"
+									fw-filter="" fw-label="비밀번호 및 호출방법" fw-msg=""
+									class="inputTypeText" maxlength="50" value=" "
+									type="hidden" autocomplete="off" autocorrect="off"
+									autocapitalize="off" spellcheck="true"> <input
+									id="no_means_inp" type="hidden"> <input id="pass"
+									name="pass_type" fw-filter="isFill" fw-label="동의" fw-msg=""
+									value="y" type="hidden"> <input id="nopass"
+									name="pass_type" fw-filter="isFill" checked fw-label="동의안함"
+									fw-msg="" value="n" type="hidden"></td>
+							</tr>
+							<tr class="reg_agree">
+								<th>이용약관동의 <span class="ico">*<span
+										class="screen_out">필수항목</span></span></th>
+								<td>
+									<div class="bg_dim"></div>
+									<div class="check_view">
+										<label class="label_block check_agree "> <input
+											type="checkbox" name="marketing"> <span
+											class="ico"></span>무료배송, 할인쿠폰 등 혜택/정보 수신 동의 <span
+											class="sub">(선택)</span>
+										</label>
+										<div class="check_event email_sms">
+											<label class="label_block check_agree "> <input
+												type="checkbox" name="sms" value="n"> <span
+												class="ico"></span>SMS
+											</label> <label class="label_block check_agree "> <input
+												type="checkbox" name="mailling" value="n"> <span
+												class="ico"></span>이메일
+											</label>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</table>
+						<div id="formSubmit" class="form_footer">
+							<a href="/shop/member/hack.php?&" class="btn default" style="margin-left: 138px;">탈퇴하기</a>
+							<button id="submit" type="submit" class="btn active">회원정보수정</button>
+						</div>
+					</form>
+				</div>
+				<iframe id="ifrmRnCheck" name="ifrmRnCheck"
+					style="display: none;"></iframe>
+				<iframe id="ifrmHpauth" name="ifrmHpauth" style="display: none;"></iframe>
+				
+					<script type="text/javascript">
+					
+					    // 이용약관전체동의
+					    var agree = $('.reg_agree');
+					    $('.check_agree input[name = agree_allcheck]').change(function(){
+					      if($(this).is(':checked') === true){
+					        $('.check_agree').addClass('checked')
+					        agree.find('input[type=checkbox]').attr('checked','checked');
+					        agree.find('input[type=checkbox]').prop('checked','checked');
+					        agree.find('input[type=checkbox]').val('y');
+					        $('#consentHidden').val('y');
+					      }else{
+					        $('.check_agree').removeClass('checked')
+					        agree.find('input[type=checkbox]').attr('checked','');
+					        agree.find('input[type=checkbox]').prop('checked','');
+					        agree.find('input[type=checkbox]').val('n');
+					        $('#consentHidden').val('n');
+					      }
+					    });
+					    $('.reg_agree').find('input[type=checkbox]').change(function(){
+					      if($(this).is(':checked')){
+					        $(this).parent().addClass('checked');
+					        $(this).attr('checked','checked');
+					        $(this).prop('checked','checked');
+					        $(this).val('y');
+					        if($(this).attr('name') == 'hiddenCheck') $('#consentHidden').val('y');
+					      }else{
+					        $(this).parent().removeClass('checked');
+					        $(this).attr('checked','');
+					        $(this).prop('checked','');
+					        $(this).val('n');
+					        if($(this).attr('name') == 'hiddenCheck') $('#consentHidden').val('n');
+					      }
+					      $('.reg_agree').find('input[type=checkbox]').each(function(){
+					        if($(this).is(':checked') === false){
+					          $('.label_all_check').removeClass('checked');
+					          return false;
+					        }
+					      });
+					      if($(this).attr('name') === 'marketing'){
+					        if($(this).is(':checked')){
+					          $('.email_sms').find('.check_agree').addClass('checked');
+					          $('.email_sms').find('input').attr('checked','checked');
+					          $('.email_sms').find('input').prop('checked','checked');
+					          $('.email_sms').find('input').val('y');
+					        }else{
+					          $('.email_sms').find('.check_agree').removeClass('checked');
+					          $('.email_sms').find('input').attr('checked','');
+					          $('.email_sms').find('input').prop('checked','');
+					          $('.email_sms').find('input').val('n');
+					        }
+					      }
+					      if($(this).attr('name') === 'mailling' || $(this).attr('name') === 'sms'){
+					        var emailSmsCount = 0;
+					        $(this).parents('.email_sms').find('input').each(function(){
+					          if($(this).is(':checked')) emailSmsCount++;
+					        });
+					        if(emailSmsCount === 2){
+					          $('input[name=marketing]').parent().addClass('checked');
+					          $('input[name=marketing]').attr('checked','checked');
+					          $('input[name=marketing]').prop('checked','checked');
+					        }else{
+					          $('input[name=marketing]').parent().removeClass('checked');
+					          $('input[name=marketing]').attr('checked','');
+					          $('input[name=marketing]').prop('checked','');
+					        }
+					      }
+					
+					      // 전체동의
+					      if($('.reg_agree').find('.checked').length >= 7){
+					        $('.check_agree input[name = agree_allcheck]').parent().addClass('checked');
+					        $('.check_agree input[name = agree_allcheck]').prop('checked','checked');
+					      }else{
+					        $('.check_agree input[name = agree_allcheck]').parent().removeClass('checked');
+					        $('.check_agree input[name = agree_allcheck]').prop('checked','');
+					      }
+					    });
+					
+					    function inputFocus() {
+					      $('#form input').focus(function () {
+					        var element = $(this);
+					        if (element.offset().top - $(window).scrollTop() < 80)
+					        {
+					          $('html, body').animate({
+					            scrollTop: element.offset().top - 80
+					          }, 0);
+					        }
+					      });
+					    }
+					    inputFocus();
+					
+					      // 라디오버튼 토글
+					      inputOptions.not(targetInput).removeClass('checked')
+					      targetInput.addClass('checked')
+					
+					      // 기존 텍스트 리셋
+					      textBox.val("")
+					
+					      // placeholder 텍스트 변경
+					      textBox.attr('placeholder', placeholderMessage)
+					
+					      // input name, value값 변경
+					      var nameOptions = {
+					        'recommendId': 'recommid',
+					        'eventName': 'ex2'
+					      }
+					      textBox.attr('id', nameOptions[selectOptionId])
+					      inputWrapper.addClass('selected')
+					    })
+					  });
+					
+					  // 클래스변경
+					  function class_change(obj,state){
+					    if(state === 'good') {
+					      if (obj.hasClass('bad')) obj.removeClass('bad');
+					      obj.addClass('good');
+					    }else{
+					      if(obj.hasClass('good')) obj.removeClass('good');
+					      obj.addClass('bad');
+					    }
+					  }
+					
+					  // 생년월일 입력시 폼 포커스 이벤트
+					  $('.birth_day input').focus(function(){
+					    $(this).parent().addClass('on');
+					  }).keyup(function(){
+					    var inputText = $(this).val();
+					    var number = $(this).val().replace(/[^0-9]/g,'');
+					    $(this).val(number);
+					  }).blur(function(){
+					    $(this).parent().removeClass('on');
+					    // KM-1261 회원가입 14세 인증
+					    birthCheckAction.validatorText();
+					  });
+					
+					  $(document).ready(function() {
+					    // 추천인 자동 설정
+					    var recommRegExp = new RegExp("recommid=([^&]+)", "i");
+					    var match = location.search.match(recommRegExp);
+					    if(match !== null && match.length === 2) {
+					      $('#labelRecomm').click();
+					      $('input[name=recommid]').val("");
+					    }
+					  });
+					
+					</script>
 							</div>
 						</div>
 					</div>

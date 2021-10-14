@@ -1189,6 +1189,23 @@ $("#btn_submit").on('click',function fnOrder(){
 	
 })
 </script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+   let checkedAddr = $('#addr').text();
+   console.log(checkedAddr);
+   if(checkedAddr.substring(0,2) == ('경기') || ('서울')){
+      $('.delivery.star').text('샛별배송 가능한 지역입니다');
+      console.log('있음');
+   }else{
+      console.log(checkedAddr.substring(0,2));
+      console.log('없음');
+      $('.delivery.star').text('택배배송만 가능합니다');
+   }
+      
+});
+</script>
+
 </body>
 
 </html>
