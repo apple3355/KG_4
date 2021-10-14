@@ -284,6 +284,7 @@
 					success : function(result) {
 						if (result == 1) {
 							alert("환불 요청에 성공했습니다.");
+							window.location.href = "${pageContext.request.contextPath}/member_orderlist.do";
 						} 
 					},
 						error : function() {

@@ -43,7 +43,7 @@ public class RefundController {
 		
 		refundService.insert_refund(vo);
 		
-	return "member/member_orderlist";
+	return "1";
 	
 	}
 	
