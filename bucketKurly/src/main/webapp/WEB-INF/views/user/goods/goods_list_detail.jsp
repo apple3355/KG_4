@@ -274,12 +274,11 @@ $(function(){
 										<span class="position">
 											<span class="dc"><!----> 
 												<span class="dc_price"><fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sellVO.goods_sell_price - (goods_sellVO.goods_sell_price * goods_sellVO.goods_sell_discount) / 100}" /><span class="won">원</span></span> 
-												<span class="dc_percent" id="dc_percent">${goods_sellVO.goods_sell_discount}<span class="per">%</span></span></span> 
+												<span class="dc_percent" >${goods_sellVO.goods_sell_discount}<span class="per">%</span></span></span> 
 											<a class="original_price">
 												<span class="price"><fmt:formatNumber type="number" maxFractionDigits="0" value="${goods_sellVO.goods_sell_price}"/><span class="won">원</span></span>
 												<img src="https://res.kurly.com/kurly/ico/2021/question_24_24_c999.svg" alt="물음표" class="ico">
 											</a> 
-											
 										</span> 
 										<c:if test="${empty sessionScope.id }"> 
 											<span class="not_login">
@@ -392,6 +391,7 @@ $(function(){
 						                    
 												<span class="price">
 													<input type="hidden" class="dc_price" id="dc_price" value="${goods_sellVO.goods_sell_price}"/>
+													<input type="hidden" class="dc_percent" id="dc_percent" value="${goods_sellVO.goods_sell_discount}"/>
 												</span>
 											</div>
 											
@@ -769,6 +769,7 @@ $(function(){
 	        	let EA = Number($("#inp").val());
 	        	let num = Number($("#dc_price").val());
 	        	let discount= Number($("#dc_percent").val());
+	        	console.log(discount);
 	        	let Max = Number(10);
 	        	
 		  	        	
