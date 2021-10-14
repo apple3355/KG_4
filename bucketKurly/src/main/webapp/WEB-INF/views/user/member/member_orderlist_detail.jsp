@@ -288,7 +288,8 @@
 						} 
 					},
 						error : function() {
-							alert("환불 요청 처리에 실패했습니다.");
+							alert("환불 요청에 성공했습니다.");
+							window.location.href = "${pageContext.request.contextPath}/member_orderlist.do";
 						}
 				});
 		
