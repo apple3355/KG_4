@@ -9,6 +9,9 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/board_qna.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common.css">
+<link rel="shortcut icon"
+	href="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/favicon_v2.webp"
+	type="image/x-icon">
 
 <title>board_qna</title>
 </head>

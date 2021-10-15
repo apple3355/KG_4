@@ -8,6 +8,9 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="resources/css/goods_list.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/common.css">
+	<link rel="shortcut icon"
+	href="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/favicon_v2.webp"
+	type="image/x-icon">
 	<title>goods_list</title>
 	<style>
 		#goodsList .list_goods .cost .original {display: block;font-size: 16px;color: #999;text-decoration: line-through;}

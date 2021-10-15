@@ -8,6 +8,9 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="resources/css/board_notice.css">
+<link rel="shortcut icon"
+	href="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/favicon_v2.webp"
+	type="image/x-icon">
 <style>
 	.notice .layout-pagination{margin: 0}
 	.eng2{color: #939393}

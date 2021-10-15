@@ -11,6 +11,9 @@
 
 <link rel="stylesheet" type="text/css" href="resources/css/member_orderlist.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common.css">
+<link rel="shortcut icon"
+	href="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/favicon_v2.webp"
+	type="image/x-icon">
 
 <title>마이페이지_주문 내역(member_orderlist)</title>
 

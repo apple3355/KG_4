@@ -33,7 +33,7 @@ public class OrderController {
 	//주문서 jsp
 	@RequestMapping("/order_form.do")
 	public String order_form(Model model, HttpSession session, @RequestParam("chkItem") List<String> cart_no, @RequestParam("goodsPrice") String goodsPrice,@RequestParam("discountprice") String discountprice, 
-			@RequestParam("deliveryFee") String deliveryFee, @RequestParam("ordersPrice") String ordersPrice) throws Exception {
+			@RequestParam("deliveryFee") String deliveryFee, @RequestParam("ordersPrice") String ordersPrice, HttpServletRequest request) throws Exception {
 		List<Goods_CartShowVO> goods_cartShowVO = new ArrayList<Goods_CartShowVO>();
 		
 		session.setAttribute("cart_no", cart_no);
@@ -48,6 +48,13 @@ public class OrderController {
 		
 		String name = (String) session.getAttribute("id");
 		MemberVO result = orderService.order_form(name);
+		String member_address1 = request.getParameter("member_address1");
+		String member_address2 = request.getParameter("member_address2");
+		if(member_address1 != "") {
+			result.setMember_address1(member_address1);
+			result.setMember_address2(member_address2);
+		}
+		System.out.println(result);
 		
 		model.addAttribute("count", cart_no.size()-1);
 		model.addAttribute("memberVO", result);

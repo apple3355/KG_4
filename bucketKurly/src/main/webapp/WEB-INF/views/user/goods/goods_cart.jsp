@@ -408,10 +408,11 @@
 							<div class="no_address">
 								<!-- css address에서 no_address로 수정 -->
 								<input type="hidden" name="member_zipcode" id="zonecode"
-									size="5" /> <input type="hidden" name="member_address1"
+									size="5" /> <input type="hidden" 
 									id="member_address1" /> <span class="emph" id="addr">${memberVO.member_address1 }</span>
 								<p class="emph" id="addr_sub">${memberVO.member_address2 }</p>
-
+								<input type="hidden" name="member_address1" id="ch_address1"/>
+								<input type="hidden" name="member_address2" id="ch_address2"/>
 								<p>
 									<span class="delivery star">샛별배송/택배배송</span>
 								</p>
@@ -1153,9 +1154,11 @@ function findAddr(){
 			// 우편번호와 주소 정보를 해당 필드에 넣는다.
 			document.getElementById('zonecode').value = data.zonecode;
 	         if(roadAddr !== ''){
-	            $('#addr').text(fulladdr);
+	            $('#addr').text(roadAddr);
+	            $('#ch_address1').val(roadAddr);
 	         }else if(jibunAddr !== ''){
 	            $('#addr').text(data.jibunAddr);
+	            $('#ch_address1').val(data.jibunAddr);
 	         }
 	         $('#addr_sub').remove();
 	         

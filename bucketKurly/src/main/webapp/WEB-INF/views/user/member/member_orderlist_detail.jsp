@@ -9,6 +9,9 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="resources/css/member_orderlist_detail.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common.css">
+<link rel="shortcut icon"
+	href="https://bucketkurly.s3.ap-northeast-2.amazonaws.com/bucketKurly(main)/favicon_v2.webp"
+	type="image/x-icon">
 <style>
 	.duplicate_check {    border: 1px solid #5f0080;    background-color: #fff;    color: #5f0080;    display: inline-block;    width: 300px;   margin-top: 30px;   margin-left: 5px;    vertical-align: top;    height: 70px;    border-radius: 3px;    font-weight: 700;    font-size: 18px;    line-height: 40px;    text-align: center;    outline: none;}
 </style>
